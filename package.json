@@ -2,6 +2,9 @@
   "name": "getto-admin",
   "version": "0.0.0",
   "description": "simple admin css theme",
+  "scripts": {
+    "css": "gulp css"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/getto-systems/getto-admin.git"
@@ -30,9 +33,11 @@
     "postcss-initial": "^1.5.3",
     "postcss-media-minmax": "^2.1.2",
     "postcss-nested": "^1.0.0",
+    "postcss-reporter": "^3.0.0",
     "postcss-selector-matches": "^2.0.5",
     "postcss-selector-not": "^2.0.0",
     "postcss-utilities": "^0.6.1",
-    "stylelint": "^7.9.0"
+    "stylelint": "^7.9.0",
+    "stylelint-config-standard": "^16.0.0"
   }
 }
