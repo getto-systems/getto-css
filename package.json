@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "simple admin css theme",
   "scripts": {
-    "css": "gulp css"
+    "livereload": "gulp livereload"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
     "autoprefixer": "^6.7.5",
     "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
     "gulp-postcss": "^6.3.0",
     "gulp-sourcemaps": "^2.4.1",
     "lost": "^8.0.0",
