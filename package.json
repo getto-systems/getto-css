@@ -1,0 +1,38 @@
+{
+  "name": "getto-admin",
+  "version": "0.0.0",
+  "description": "simple admin css theme",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/getto-systems/getto-admin.git"
+  },
+  "author": "shun@getto.systems",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/getto-systems/getto-admin/issues"
+  },
+  "homepage": "https://github.com/getto-systems/getto-admin#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.7.5",
+    "cssnano": "^3.10.0",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^6.3.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "lost": "^8.0.0",
+    "pixrem": "^3.0.2",
+    "postcss-apply": "^0.5.0",
+    "postcss-calc": "^5.3.1",
+    "postcss-color-function": "^3.0.0",
+    "postcss-color-gray": "^3.0.1",
+    "postcss-custom-media": "^5.0.1",
+    "postcss-custom-properties": "^5.0.2",
+    "postcss-import": "^9.1.0",
+    "postcss-initial": "^1.5.3",
+    "postcss-media-minmax": "^2.1.2",
+    "postcss-nested": "^1.0.0",
+    "postcss-selector-matches": "^2.0.5",
+    "postcss-selector-not": "^2.0.0",
+    "postcss-utilities": "^0.6.1",
+    "stylelint": "^7.9.0"
+  }
+}
