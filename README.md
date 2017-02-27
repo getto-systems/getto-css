@@ -17,5 +17,5 @@ copy dist/*.css to your css directory, and include stylesheets:
 
 ```
 npm install
-npm run css # build by gulp
+npm run livereload # serve http://localhost:8000, livereload port 35729, watch and build css
 ```
