@@ -1,0 +1,13 @@
+:root {
+  --base-ratio: 2.414;
+
+  --font-size-medium: 11pt;
+  --font-size-large: calc(var(--font-size-medium) * var(--base-ratio));
+  --font-size-xlarge: calc(var(--font-size-large) * var(--base-ratio));
+  --font-size-small: calc(var(--font-size-medium) / var(--base-ratio));
+  --font-size-xsmall: calc(var(--font-size-small) / var(--base-ratio));
+}
+
+body {
+  font-size: var(--font-size-medium);
+}

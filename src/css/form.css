@@ -1,0 +1,21 @@
+:root {
+  --form-textbox: {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-border-gray);
+
+    padding: 0.75rem;
+
+    font-size: var(--font-size-medium);
+  }
+
+  --form-button: {
+    cursor: pointer;
+    border-style: none;
+
+    font-size: var(--font-size-medium);
+
+    padding: 0.75rem 4rem;
+    margin: 0.5rem 0;
+  }
+}
