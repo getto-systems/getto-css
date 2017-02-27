@@ -1,0 +1,108 @@
+:root {
+  --loginPage-border: {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-border-gray);
+    border-radius: 0.5rem;
+  }
+
+  --loginPage-side-margin: 3rem;
+}
+
+@component loginPage {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+
+  @descendent title {
+    font-size: var(--font-size-xlarge);
+    margin: 6rem var(--loginPage-side-margin) 1rem;
+    text-align: center;
+  }
+  @descendent subTitle {
+    font-size: var(--font-size-large);
+    margin: 1rem var(--loginPage-side-margin) 3rem;
+    text-align: center;
+  }
+  @descendent alert {
+    margin: -2rem var(--loginPage-side-margin) 0 var(--loginPage-side-margin);
+    padding: 1.5rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    background-color: var(--color-danger);
+    color: var(--color-fg-white);
+  }
+  @descendent form {
+    margin: 1rem 0 0;
+  }
+  @descendent row {
+    text-align: right;
+    margin: 0 var(--loginPage-side-margin);
+
+    @modifier button {
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
+  @descendent textbox {
+    @apply --form-textbox;
+    margin: 0.5rem 0 0.5rem 0.5rem;
+    width: 65%;
+  }
+  @descendent checkbox {
+    margin: 0.5rem 0 0.5rem 0.5rem;
+    cursor: pointer;
+  }
+  @descendent checkboxLabel {
+    cursor: pointer;
+  }
+  @descendent button {
+    @apply --form-button;
+    background-color: var(--color-primary);
+    color: var(--color-fg-white);
+  }
+  @descendent link {
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+}
+
+@media (--phone) {
+  @component loginPage {
+    width: 100%;
+  }
+}
+@media (--tablet) {
+  @component loginPage {
+    lost-column: 6/8;
+    lost-offset: 1/8;
+
+    top: 12.5%;
+    height: 75%;
+
+    @apply --loginPage-border;
+  }
+}
+@media (--desktop) {
+  @component loginPage {
+    lost-column: 4/6;
+    lost-offset: 1/6;
+
+    top: 16.67%;
+    height: 66.67%;
+
+    @apply --loginPage-border;
+  }
+}
+@media (--large-desktop) {
+  @component loginPage {
+    lost-column: 2/4;
+    lost-offset: 1/4;
+
+    top: 25%;
+    height: 50%;
+
+    @apply --loginPage-border;
+  }
+}

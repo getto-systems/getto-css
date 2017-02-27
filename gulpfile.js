@@ -11,17 +11,24 @@ gulp.task("css", function(){
         "plugins": [
           require("stylelint")({
             "config": {
-              "extends": "stylelint-config-standard"
+              "extends": "stylelint-config-standard",
+              "rules": {
+                "at-rule-empty-line-before": null,
+                "property-no-unknown": null,
+                "declaration-empty-line-before": null,
+                "custom-property-empty-line-before": null
+              }
             }
           })
         ]
       }),
+      require("postcss-bem"),
+      require("lost"),
       require("postcss-utilities"),
       require("postcss-custom-properties"),
       require("postcss-apply"),
       require("postcss-calc"),
       require("postcss-custom-media"),
-      require("postcss-media-minmax"),
       require("postcss-nested"),
       require("postcss-color-function"),
       require("postcss-color-gray"),
@@ -29,7 +36,6 @@ gulp.task("css", function(){
       require("pixrem"),
       require("postcss-selector-matches"),
       require("postcss-selector-not"),
-      require("lost"),
 
       require("autoprefixer"),
       require("postcss-reporter")({"clearMessages": true}),

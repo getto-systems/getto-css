@@ -1,0 +1,14 @@
+:root {
+  --color-primary: #3261ab;
+  --color-danger: #da5019;
+  --color-warning: #edad0b;
+  --color-success: #23ac0e;
+
+  --color-fg-gray: gray(32);
+  --color-fg-white: gray(224);
+  --color-border-gray: gray(128);
+}
+
+body {
+  color: var(--color-fg-gray);
+}
