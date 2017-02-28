@@ -63,8 +63,7 @@
     color: var(--color-fg-white);
   }
   @descendent link {
-    text-decoration: none;
-    color: var(--color-primary);
+    @apply --link-primary;
   }
 }
 

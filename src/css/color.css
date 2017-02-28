@@ -6,6 +6,9 @@
 
   --color-fg-gray: gray(32);
   --color-fg-white: gray(224);
+  --color-bg-gray: gray(208);
+  --color-bg-white: gray(224);
+
   --color-border-gray: gray(128);
 }
 
