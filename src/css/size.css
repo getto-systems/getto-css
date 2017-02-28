@@ -2,8 +2,9 @@
   --base-ratio: 1.414;
 
   --font-size-medium: 12pt;
-  --font-size-large: calc(var(--font-size-medium) * var(--base-ratio) * var(--base-ratio));
-  --font-size-xlarge: calc(var(--font-size-large) * var(--base-ratio) * var(--base-ratio));
+  --font-size-large: calc(var(--font-size-medium) * var(--base-ratio));
+  --font-size-xlarge: calc(var(--font-size-large) * var(--base-ratio));
+  --font-size-xxlarge: calc(var(--font-size-xlarge) * var(--base-ratio) * var(--base-ratio));
   --font-size-small: calc(var(--font-size-medium) / var(--base-ratio));
   --font-size-xsmall: calc(var(--font-size-small) / var(--base-ratio));
 }
