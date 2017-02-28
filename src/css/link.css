@@ -1,0 +1,11 @@
+:root {
+  --link-primary: {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--color-primary);
+
+    &:hover {
+      color: var(--color-danger);
+    }
+  }
+}
