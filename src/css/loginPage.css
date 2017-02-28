@@ -10,10 +10,6 @@
 }
 
 @component loginPage {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-
   @descendent title {
     font-size: var(--font-size-xlarge);
     margin: 6rem var(--loginPage-side-margin) 1rem;
@@ -33,10 +29,11 @@
     color: var(--color-fg-white);
   }
   @descendent form {
-    margin: 1rem 0 0;
+    margin: 1rem 0;
   }
   @descendent row {
     text-align: right;
+    white-space: nowrap;
     margin: 0 var(--loginPage-side-margin);
 
     @modifier button {
@@ -72,36 +69,29 @@
     width: 100%;
   }
 }
+@media (--over-tablet) {
+  @component loginPage {
+    position: fixed;
+    margin-top: 15vh;
+
+    @apply --loginPage-border;
+  }
+}
 @media (--tablet) {
   @component loginPage {
     lost-column: 6/8;
     lost-offset: 1/8;
-
-    top: 12.5%;
-    height: 75%;
-
-    @apply --loginPage-border;
   }
 }
 @media (--desktop) {
   @component loginPage {
     lost-column: 4/6;
     lost-offset: 1/6;
-
-    top: 16.67%;
-    height: 66.67%;
-
-    @apply --loginPage-border;
   }
 }
 @media (--large-desktop) {
   @component loginPage {
     lost-column: 2/4;
     lost-offset: 1/4;
-
-    top: 25%;
-    height: 50%;
-
-    @apply --loginPage-border;
   }
 }
