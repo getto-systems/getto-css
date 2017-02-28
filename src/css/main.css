@@ -2,7 +2,7 @@
   --mainMenu-logo: {
     background-color: var(--color-primary);
     color: var(--color-fg-white);
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-xlarge);
     padding: 1rem;
   }
   --mainMenu-mobileLogo: {
@@ -33,7 +33,7 @@
   margin: 1rem;
 
   @descendent title {
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-xlarge);
     padding: 0.5rem 0 0.5rem 1rem;
     margin-bottom: 1rem;
     border-bottom: 1px dotted var(--color-border-gray);

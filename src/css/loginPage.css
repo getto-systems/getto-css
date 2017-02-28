@@ -11,12 +11,12 @@
 
 @component loginPage {
   @descendent title {
-    font-size: var(--font-size-xlarge);
+    font-size: var(--font-size-xxlarge);
     margin: 6rem var(--loginPage-side-margin) 1rem;
     text-align: center;
   }
   @descendent subTitle {
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-xlarge);
     margin: 1rem var(--loginPage-side-margin) 3rem;
     text-align: center;
   }
