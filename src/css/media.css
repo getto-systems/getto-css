@@ -5,3 +5,4 @@
 
 @custom-media --all-mobile (max-width: 992px);
 @custom-media --all-desktop (min-width: 992px);
+@custom-media --over-tablet (min-width: 768px);
