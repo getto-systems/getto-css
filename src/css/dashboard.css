@@ -133,18 +133,28 @@
       }
     }
     @descendent help {
-      margin: 0.5rem 0 1rem 0;
+      margin: 0.5rem 0;
       padding: 1rem;
       border-radius: 0.2rem;
-      border: 1px solid var(--color-primary);
-      background-color: var(--color-primary);
-      color: var(--color-bg-white);
+      border: 1px solid var(--color-border-gray);
 
+      @when primary {
+        color: var(--color-bg-white);
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+      @when success {
+        color: var(--color-bg-white);
+        background-color: var(--color-success);
+        border-color: var(--color-success);
+      }
       @when warning {
+        color: var(--color-bg-white);
         background-color: var(--color-warning);
         border-color: var(--color-warning);
       }
       @when danger {
+        color: var(--color-bg-white);
         background-color: var(--color-danger);
         border-color: var(--color-danger);
       }
