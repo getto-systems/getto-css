@@ -36,7 +36,7 @@
     font-size: var(--font-size-xlarge);
     padding: 0.5rem 0 0.5rem 1rem;
     margin-bottom: 1rem;
-    border-bottom: 1px dotted var(--color-border-gray);
+    border-bottom: 1px solid var(--color-border-gray);
   }
   @descendent breadcrumb {
     @descendent item {
@@ -93,6 +93,12 @@
     }
   }
 }
+@component mainFooter {
+  font-size: var(--font-size-xsmall);
+  border-top: 1px solid var(--color-border-gray);
+  padding: 0.25rem;
+  text-align: right;
+}
 
 @media (--all-mobile) {
   @component mainContent {
@@ -145,7 +151,7 @@
       margin-top: 1rem;
       margin-bottom: 1rem;
     }
-    @descendent copyright {
+    @descendent footer {
       font-size: var(--font-size-xsmall);
       margin: 0.5rem;
     }
@@ -195,7 +201,7 @@
       padding-left: 1rem;
       margin-bottom: 1rem;
     }
-    @descendent copyright {
+    @descendent footer {
       lost-utility: clearfix;
       display: inline-block;
       white-space: nowrap;
@@ -268,7 +274,7 @@
       margin: 0.2rem 0.2rem 0.2rem 0.5rem;
       @util truncate;
     }
-    @descendent copyright {
+    @descendent footer {
       margin: 0.5rem;
       font-size: var(--font-size-xsmall);
     }

@@ -1,0 +1,280 @@
+:root {
+  --listPage-search-box: {
+    border: 1px solid var(--color-border-gray);
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+  }
+  --listPage-search-field: {
+    border: 1px solid var(--color-border-gray);
+    padding: 0.2rem;
+    margin: 0.1rem;
+  }
+  --listPage-table-row-cell: {
+    padding: 0.25rem;
+    white-space: nowrap;
+  }
+  --listPage-table-field: {
+    font-size: var(--font-size-small);
+    border: 1px solid var(--color-border-gray);
+    padding: 0.2rem;
+    margin: 0.05rem;
+  }
+}
+@component listPage {
+  @descendent search {
+    @descendent form {
+      @apply --listPage-search-box;
+
+      margin: 0 0.5rem 0.5rem;
+      font-size: var(--font-size-small);
+    }
+
+    @descendent header {
+      font-weight: normal;
+      text-align: right;
+      padding-right: 0.2rem;
+      @util truncate;
+    }
+    @descendent field {
+      @apply --listPage-search-field;
+      width: 8rem;
+
+      @modifier small {
+        @apply --listPage-search-field;
+        width: 6rem;
+      }
+      @modifier large {
+        @apply --listPage-search-field;
+        width: 10rem;
+      }
+    }
+    @descendent checkbox {
+      display: inline-block;
+      padding: 0.2rem;
+    }
+    @descendent button {
+      @apply --form-button;
+      @apply --form-button-gray;
+
+      padding: 0.2rem 1rem;
+
+      @when modified {
+        @apply --form-button-primary;
+      }
+    }
+    @descendent action {
+      border-top: 1px solid var(--color-border-gray);
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    @descendent params {
+      @apply --listPage-search-box;
+
+      margin: 0 0.5rem 0.5rem;
+
+      @descendent header {
+        font-weight: normal;
+        border-bottom: 1px solid var(--color-border-gray);
+        padding: 0.5rem 0 0.2rem 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      @descendent table {
+        margin: 0.5rem;
+      }
+      @descendent label {
+        font-weight: normal;
+        text-align: right;
+        padding: 0.2rem;
+        @util truncate;
+      }
+      @descendent value {
+        padding: 0.2rem;
+      }
+    }
+  }
+  @descendent loading {
+    background-color: var(--color-warning);
+    color: var(--color-fg-white);
+    font-size: var(--font-size-large);
+    margin: 0.5rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  @descendent listContainer {
+    @util clearfix;
+    margin: 0.5rem;
+  }
+  @descendent pages {
+    float: right;
+
+    @descendent item {
+      list-style: none;
+      margin: 0.2rem;
+    }
+    @descendent link {
+      @apply --form-button;
+      @apply --form-button-gray;
+
+      display: block;
+      text-decoration: none;
+      padding: 0.25rem 0;
+      text-align: center;
+      width: 3.5rem;
+      font-size: var(--font-size-large);
+
+      @when active {
+        background-color: white;
+      }
+    }
+  }
+  @descendent tableContainer {
+    width: calc(99.9% - 4.5rem);
+    float: left;
+    overflow-x: auto;
+  }
+  @descendent table {
+    margin: 0.5rem;
+    width: 100%;
+
+    @descendent header {
+      border-top: 3px double var(--color-border-gray);
+      border-bottom: 3px double var(--color-border-gray);
+
+      @descendent cell {
+        font-size: var(--font-size-small);
+        padding: 0.5rem;
+      }
+    }
+    @descendent row {
+      border-bottom: 1px solid var(--color-border-gray);
+
+      @descendent cell {
+        @apply --listPage-table-row-cell;
+
+        @modifier center {
+          @apply --listPage-table-row-cell;
+          text-align: center;
+        }
+        @modifier right {
+          @apply --listPage-table-row-cell;
+          text-align: right;
+        }
+      }
+
+      @when deleted {
+        background-color: var(--color-bg-gray);
+      }
+    }
+    @descendent field {
+      @apply --listPage-table-field;
+      width: 10rem;
+
+      @modifier small {
+        @apply --listPage-table-field;
+        width: 6rem;
+      }
+      @modifier large {
+        @apply --listPage-table-field;
+        width: 16rem;
+      }
+    }
+    @descendent button {
+      @modifier edit {
+        @apply --form-button;
+        @apply --form-button-gray-primary;
+      }
+      @modifier delete {
+        @apply --form-button;
+        @apply --form-button-gray-danger;
+      }
+      @modifier save {
+        @apply --form-button;
+        @apply --form-button-gray;
+
+        @when modified {
+          @apply --form-button-primary;
+        }
+      }
+      @modifier cancel {
+        @apply --form-button;
+        @apply --form-button-gray;
+      }
+      @modifier revert {
+        @apply --form-button;
+        @apply --form-button-white-primary;
+      }
+      @modifier insert {
+        @apply --form-button;
+        @apply --form-button-gray;
+
+        @when modified {
+          @apply --form-button-primary;
+        }
+      }
+    }
+    @descendent saving {
+      display: inline-block;
+      background-color: var(--color-warning);
+      color: var(--color-fg-white);
+      border-radius: 0.4rem;
+      font-size: var(--font-size-small);
+      padding: 0.2rem 1rem;
+    }
+  }
+}
+
+@media (--all-mobile) {
+  @component listPage {
+    @descendent table {
+      @descendent field {
+        padding: 0.5rem;
+
+        @modifier small {
+          padding: 0.5rem;
+        }
+        @modifier large {
+          padding: 0.5rem;
+        }
+      }
+      @descendent button {
+        @modifier edit {
+          padding: 0.5rem 1rem;
+        }
+        @modifier save {
+          padding: 0.5rem 1rem;
+        }
+        @modifier cancel {
+          padding: 0.5rem 1rem;
+        }
+        @modifier revert {
+          padding: 0.5rem 1rem;
+        }
+        @modifier delete {
+          padding: 0.5rem 1rem;
+        }
+        @modifier insert {
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+  }
+}
+@media (--over-tablet) {
+  @component listPage {
+    @descendent search {
+      lost-utility: clearfix;
+
+      @descendent formContainer {
+        lost-column: 1/2 0 0;
+
+        &:nth-child(1n) {
+          float: right !important;
+        }
+      }
+      @descendent paramsContainer {
+        lost-column: 1/2 0 0;
+      }
+    }
+  }
+}
