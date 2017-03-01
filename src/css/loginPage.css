@@ -56,8 +56,10 @@
   }
   @descendent button {
     @apply --form-button;
-    background-color: var(--color-primary);
-    color: var(--color-fg-white);
+    @apply --form-button-primary;
+    font-size: var(--font-size-medium);
+    padding: 0.75rem 4rem;
+    margin: 0.5rem 0;
   }
   @descendent link {
     @apply --link-primary;

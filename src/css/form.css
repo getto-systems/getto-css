@@ -11,11 +11,60 @@
 
   --form-button: {
     cursor: pointer;
-    border-style: none;
+    border: 1px solid var(--color-border-gray);
+    white-space: nowrap;
+    margin: 0.1rem;
+  }
+  --form-button-gray: {
+    border-color: var(--color-border-gray);
+    background-color: var(--color-bg-gray);
+    color: var(--color-fg-gray);
 
-    font-size: var(--font-size-medium);
+    &:hover {
+      background-color: white;
+    }
+  }
+  --form-button-white-primary: {
+    border-color: var(--color-border-gray);
+    background-color: var(--color-bg-white);
+    color: var(--color-fg-gray);
 
-    padding: 0.75rem 4rem;
-    margin: 0.5rem 0;
+    &:hover {
+      color: var(--color-fg-white);
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+  }
+  --form-button-gray-primary: {
+    border-color: var(--color-border-gray);
+    background-color: var(--color-bg-gray);
+    color: var(--color-fg-gray);
+
+    &:hover {
+      color: var(--color-fg-white);
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+  }
+  --form-button-gray-danger: {
+    border-color: var(--color-border-gray);
+    background-color: var(--color-bg-gray);
+    color: var(--color-fg-gray);
+
+    &:hover {
+      color: var(--color-fg-white);
+      background-color: var(--color-danger);
+      border-color: var(--color-danger);
+    }
+  }
+  --form-button-primary: {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-fg-white);
+
+    &:hover {
+      background-color: var(--color-danger);
+      border-color: var(--color-danger);
+    }
   }
 }
