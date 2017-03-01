@@ -146,6 +146,9 @@
         padding: 0.5rem;
       }
     }
+    @descendent sort {
+      text-decoration: none;
+    }
     @descendent row {
       border-bottom: 1px solid var(--color-border-gray);
 
@@ -226,6 +229,21 @@
 
 @media (--all-mobile) {
   @component listPage {
+    @descendent search {
+      @descendent field {
+        padding: 0.5rem;
+
+        @modifier small {
+          padding: 0.5rem;
+        }
+        @modifier large {
+          padding: 0.5rem;
+        }
+      }
+      @descendent button {
+        padding: 0.5rem 1rem;
+      }
+    }
     @descendent table {
       @descendent field {
         padding: 0.5rem;
