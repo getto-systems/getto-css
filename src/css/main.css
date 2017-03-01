@@ -98,6 +98,7 @@
   @component mainContent {
     @descendent breadcrumb {
       border-bottom: 1px dotted var(--color-border-gray);
+      margin-bottom: 1rem;
 
       @descendent item {
         margin: 0.5rem;
@@ -211,6 +212,7 @@
     @descendent breadcrumb {
       text-align: right;
       margin-right: 1rem;
+      margin-bottom: 1rem;
 
       @descendent item {
         display: inline-block;

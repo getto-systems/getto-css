@@ -1,0 +1,180 @@
+:root {
+  --dashboard-box: {
+    border: 1px solid var(--color-border-gray);
+    border-radius: 0.3rem;
+    padding: 1rem;
+  }
+  --dashboard-title: {
+    font-size: var(--font-size-large);
+    border-bottom: 1px solid var(--color-border-gray);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@component dashboard {
+  @descendent summaries {
+    lost-utility: clearfix;
+
+    margin: 0.5rem;
+  }
+  @descendent summary {
+    margin-bottom: 0.5rem;
+
+    @descendent box {
+      @apply --dashboard-box;
+    }
+
+    @descendent title {
+      @apply --dashboard-title;
+    }
+    @descendent values {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    @descendent value {
+      font-size: var(--font-size-xxlarge);
+
+      @modifier small {
+        font-size: var(--font-size-xlarge);
+      }
+
+      @descendent unit {
+        font-size: var(--font-size-medium);
+      }
+    }
+    @descendent separator {
+      font-size: var(--font-size-xxlarge);
+    }
+    @descendent bar {
+      position: relative;
+      border: 1px solid var(--color-border-gray);
+      overflow: hidden;
+
+      @descendent fill {
+        background-color: var(--color-primary);
+        margin-left: auto;
+        height: 1rem;
+
+        @when warning {
+          background-color: var(--color-warning);
+        }
+        @when danger {
+          background-color: var(--color-danger);
+        }
+        @when success {
+          background-color: var(--color-success);
+        }
+      }
+
+      @descendent value {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: var(--color-fg-white);
+        font-size: var(--font-size-small);
+        padding: 0.25rem 0.5rem;
+      }
+    }
+  }
+  @descendent graph {
+    @apply --dashboard-box;
+
+    margin: 0.5rem;
+    overflow: auto;
+
+    @descendent title {
+      @apply --dashboard-title;
+    }
+  }
+
+  @descendent link {
+    @descendent header {
+      list-style: none;
+      margin: 2rem 0.5rem 1rem 1rem;
+      font-size: var(--font-size-large);
+      font-weight: bold;
+    }
+    @descendent item {
+      list-style: none;
+      margin: 0.5rem;
+    }
+    @descendent box {
+      @apply --link-primary;
+
+      lost-utility: clearfix;
+      position: relative;
+      display: block;
+      border: 1px solid var(--color-primary);
+      background-color: var(--color-bg-white);
+
+      &:hover {
+        border-color: var(--color-danger);
+        background-color: white;
+
+        .dashboard-link-box-icon {
+          background-color: var(--color-danger);
+        }
+      }
+
+      @descendent icon {
+        lost-column: 1/3 0 0;
+        color: var(--color-fg-white);
+        background-color: var(--color-primary);
+        font-size: var(--font-size-xlarge);
+      }
+      @descendent text {
+        lost-column: 2/3 0 0;
+        font-size: var(--font-size-xlarge);
+      }
+      @descendent inner {
+        text-align: center;
+        margin: 2rem 0;
+      }
+    }
+    @descendent help {
+      margin: 0.5rem 0 1rem 0;
+      padding: 1rem;
+      border-radius: 0.2rem;
+      border: 1px solid var(--color-primary);
+      background-color: var(--color-primary);
+      color: var(--color-bg-white);
+
+      @when warning {
+        background-color: var(--color-warning);
+        border-color: var(--color-warning);
+      }
+      @when danger {
+        background-color: var(--color-danger);
+        border-color: var(--color-danger);
+      }
+    }
+  }
+}
+
+@media (--desktop) {
+  @component dashboard {
+    @descendent content {
+      lost-column: 2/3 0 0;
+    }
+    @descendent links {
+      lost-column: 1/3 0 0;
+    }
+    @descendent summary {
+      lost-column: 1/2 2 0.5rem;
+    }
+  }
+}
+@media (--large-desktop) {
+  @component dashboard {
+    @descendent content {
+      lost-column: 3/4 0 0;
+    }
+    @descendent links {
+      lost-column: 1/4 0 0;
+    }
+    @descendent summary {
+      lost-column: 1/3 3 0.5rem;
+    }
+  }
+}
