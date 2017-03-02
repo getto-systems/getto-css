@@ -19,6 +19,11 @@
     padding: 0.2rem;
     margin: 0.05rem;
   }
+  --listPage-table-field-error: {
+    font-size: var(--font-size-small);
+    color: var(--color-danger);
+    margin: 0.3rem 0.5rem 0.2rem 0.2rem;
+  }
 }
 @component listPage {
   @descendent search {
@@ -176,10 +181,41 @@
       @modifier small {
         @apply --listPage-table-field;
         width: 6rem;
+
+        @when error {
+          border-color: var(--color-danger);
+        }
+        @when warning {
+          border-color: var(--color-warning);
+        }
       }
       @modifier large {
         @apply --listPage-table-field;
         width: 16rem;
+
+        @when error {
+          border-color: var(--color-danger);
+        }
+        @when warning {
+          border-color: var(--color-warning);
+        }
+      }
+
+      @when error {
+        border-color: var(--color-danger);
+      }
+      @when warning {
+        border-color: var(--color-warning);
+      }
+
+      @descendent error {
+        @apply --listPage-table-field-error;
+
+        @modifier warning {
+          @apply --listPage-table-field-error;
+
+          color: var(--color-warning);
+        }
       }
     }
     @descendent button {
