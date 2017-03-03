@@ -55,8 +55,6 @@
       @apply --form-button;
       @apply --form-button-gray;
 
-      padding: 0.2rem 1rem;
-
       @when modified {
         @apply --form-button-primary;
       }
