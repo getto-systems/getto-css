@@ -50,7 +50,7 @@
       padding: 0.3rem;
       vertical-align: middle;
 
-      @modifier double {
+      @when double {
         border-right: 3px double var(--color-border-gray);
       }
     }
@@ -60,7 +60,7 @@
       vertical-align: middle;
       text-align: center;
 
-      @modifier double {
+      @when double {
         border-right: 3px double var(--color-border-gray);
       }
     }

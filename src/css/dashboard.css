@@ -35,7 +35,7 @@
     @descendent value {
       font-size: var(--font-size-xxlarge);
 
-      @modifier small {
+      @when small {
         font-size: var(--font-size-xlarge);
       }
 
