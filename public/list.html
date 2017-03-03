@@ -27,7 +27,7 @@
                 <table>
                   <tr>
                     <th class="listPage-search-header">名前</th>
-                    <td><input class="listPage-search-field--small" type="text"></td>
+                    <td><input class="listPage-search-field listPage-search-field--small" type="text"></td>
                   </tr>
                   <tr>
                     <th class="listPage-search-header">日時</th>
@@ -44,6 +44,15 @@
                   <tr>
                     <th class="listPage-search-header">状態</th>
                     <td><label class="listPage-search-checkbox"><input type="checkbox"> 作業済</label></td>
+                  </tr>
+                  <tr>
+                    <th class="listPage-search-header">状態</th>
+                    <td>
+                      <select class="listPage-search-select">
+                        <option>作業済</option>
+                        <option>その他の状態</option>
+                      </select>
+                    </td>
                   </tr>
                 </table>
                 <div class="listPage-search-action">
@@ -111,84 +120,103 @@
                     <th class="listPage-table-header-cell">
                       <a class="listPage-table-sort" href="/list.html">状態 <i class="fa fa-sort"></i></a>
                     </th>
+                    <th class="listPage-table-header-cell">
+                      <a class="listPage-table-sort" href="/list.html">状態 <i class="fa fa-sort"></i></a>
+                    </th>
                     <th class="listPage-table-header-cell"></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="listPage-table-row">
                     <td class="listPage-table-row-cell">
-                      <button class="listPage-table-button--delete" type="button"><i class="fa fa-remove"></i></button>
+                      <button class="listPage-table-button listPage-table-button--delete" type="button"><i class="fa fa-remove"></i></button>
                     </td>
                     <td class="listPage-table-row-cell">データ1</td>
-                    <td class="listPage-table-row-cell--center">2017/11/10 12:32</td>
+                    <td class="listPage-table-row-cell listPage-table-row-cell--center">2017/11/10 12:32</td>
                     <td class="listPage-table-row-cell">email@example.com</td>
-                    <td class="listPage-table-row-cell--right">作業済</td>
+                    <td class="listPage-table-row-cell listPage-table-row-cell--right">作業済</td>
+                    <td class="listPage-table-row-cell">その他の状態</td>
                     <td class="listPage-table-row-cell">
-                      <button class="listPage-table-button--edit" type="button">編集</button>
+                      <button class="listPage-table-button listPage-table-button--edit" type="button">編集</button>
                     </td>
                   </tr>
                   <tr class="listPage-table-row">
                     <td class="listPage-table-row-cell">
-                      <button class="listPage-table-button--delete" type="button"><i class="fa fa-remove"></i></button>
+                      <button class="listPage-table-button listPage-table-button--delete" type="button"><i class="fa fa-remove"></i></button>
                     </td>
                     <td class="listPage-table-row-cell">
-                      <input class="listPage-table-field--large" type="text" value="データ2">
+                      <input class="listPage-table-field listPage-table-field--large" type="text" value="データ2">
                     </td>
                     <td class="listPage-table-row-cell">
                       <input class="listPage-table-field" type="date" value="2017-09-03">
-                      <input class="listPage-table-field--small" type="time" value="09:30:00">
+                      <input class="listPage-table-field listPage-table-field--small" type="time" value="09:30:00">
                     </td>
                     <td class="listPage-table-row-cell">
                       <input class="listPage-table-field" type="email" value="email@example.com">
                     </td>
-                    <td class="listPage-table-row-cell--right"><label><input type="checkbox"> 作業済</label></td>
+                    <td class="listPage-table-row-cell listPage-table-row-cell--right"><label><input type="checkbox"> 作業済</label></td>
                     <td class="listPage-table-row-cell">
-                      <button class="listPage-table-button--save" type="button">保存</button>
-                      <button class="listPage-table-button--save is-modified" type="button">保存</button>
-                      <button class="listPage-table-button--cancel" type="button">キャンセル</button>
+                      <select class="listPage-table-select listPage-table-select--large">
+                        <option>作業済</option>
+                        <option>その他の状態</option>
+                      </select>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <button class="listPage-table-button listPage-table-button--save" type="button">保存</button>
+                      <button class="listPage-table-button listPage-table-button--save is-modified" type="button">保存</button>
+                      <button class="listPage-table-button listPage-table-button--cancel" type="button">キャンセル</button>
                     </td>
                   </tr>
                   <tr class="listPage-table-row">
                     <td class="listPage-table-row-cell">
-                      <button class="listPage-table-button--delete" type="button"><i class="fa fa-remove"></i></button>
+                      <button class="listPage-table-button listPage-table-button--delete" type="button"><i class="fa fa-remove"></i></button>
                     </td>
                     <td class="listPage-table-row-cell">
-                      <input class="listPage-table-field--large is-error" type="text" value="データ2">
+                      <input class="listPage-table-field listPage-table-field--large is-error" type="text" value="データ2">
                       <div class="listPage-table-field-error">不明な名前です</div>
                     </td>
                     <td class="listPage-table-row-cell">
                       <input class="listPage-table-field" type="date" value="2017-09-03">
-                      <input class="listPage-table-field--small" type="time" value="09:30:00">
+                      <input class="listPage-table-field listPage-table-field--small" type="time" value="09:30:00">
                     </td>
                     <td class="listPage-table-row-cell">
                       <input class="listPage-table-field is-warning" type="email" value="email@example.com">
-                      <div class="listPage-table-field-error--warning">正しいメールアドレスではありません</div>
+                      <div class="listPage-table-field-error listPage-table-field-error--warning">正しいメールアドレスではありません</div>
                     </td>
-                    <td class="listPage-table-row-cell--right"><label><input type="checkbox"> 作業済</label></td>
+                    <td class="listPage-table-row-cell listPage-table-row-cell--right"><label><input type="checkbox"> 作業済</label></td>
                     <td class="listPage-table-row-cell">
-                      <button class="listPage-table-button--save" type="button">保存</button>
-                      <button class="listPage-table-button--save is-modified" type="button">保存</button>
-                      <button class="listPage-table-button--cancel" type="button">キャンセル</button>
+                      <select class="listPage-table-select listPage-table-select--large is-error">
+                        <option>作業済</option>
+                        <option>その他の状態</option>
+                      </select>
+                      <div class="listPage-table-field-error listPage-table-field-error--error">選択してください</div>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <button class="listPage-table-button listPage-table-button--save" type="button">保存</button>
+                      <button class="listPage-table-button listPage-table-button--save is-modified" type="button">保存</button>
+                      <button class="listPage-table-button listPage-table-button--cancel" type="button">キャンセル</button>
                     </td>
                   </tr>
                   <tr class="listPage-table-row is-deleted">
                     <td class="listPage-table-row-cell"></td>
                     <td class="listPage-table-row-cell">データ3</td>
-                    <td class="listPage-table-row-cell--center">2017/8/10 12:32</td>
+                    <td class="listPage-table-row-cell listPage-table-row-cell--center">2017/8/10 12:32</td>
                     <td class="listPage-table-row-cell">email@example.com</td>
-                    <td class="listPage-table-row-cell--right">未作業</td>
+                    <td class="listPage-table-row-cell listPage-table-row-cell--right">未作業</td>
+                    <td class="listPage-table-row-cell">その他の状態</td>
                     <td class="listPage-table-row-cell">
-                      <button class="listPage-table-button--revert" type="button">元に戻す</button>
+                      <button class="listPage-table-button listPage-table-button--revert" type="button">元に戻す</button>
                     </td>
                   </tr>
                   <tr class="listPage-table-row">
                     <td class="listPage-table-row-cell">
-                      <button class="listPage-table-button--delete" type="button"><i class="fa fa-remove"></i></button>
+                      <button class="listPage-table-button listPage-table-button--delete" type="button"><i class="fa fa-remove"></i></button>
                     </td>
                     <td class="listPage-table-row-cell">データ4</td>
-                    <td class="listPage-table-row-cell--center">2017/7/10 12:32</td>
+                    <td class="listPage-table-row-cell listPage-table-row-cell--center">2017/7/10 12:32</td>
                     <td class="listPage-table-row-cell">email@example.com</td>
-                    <td class="listPage-table-row-cell--right">未作業</td>
+                    <td class="listPage-table-row-cell listPage-table-row-cell--right">未作業</td>
+                    <td class="listPage-table-row-cell">その他の状態</td>
                     <td class="listPage-table-row-cell">
                       <div class="listPage-table-saving"><i class="fa fa-spin fa-refresh"></i> 保存中</div>
                     </td>
@@ -201,24 +229,31 @@
                     <th class="listPage-table-header-cell">日時</th>
                     <th class="listPage-table-header-cell">メール</th>
                     <th class="listPage-table-header-cell">状態</th>
+                    <th class="listPage-table-header-cell">状態</th>
                     <th class="listPage-table-header-cell"></th>
                   </tr>
                   <tr class="listPage-table-row">
                     <td class="listPage-table-row-cell"></td>
                     <td class="listPage-table-row-cell">
-                      <input class="listPage-table-field--large" type="text">
+                      <input class="listPage-table-field listPage-table-field--large" type="text">
                     </td>
                     <td class="listPage-table-row-cell">
                       <input class="listPage-table-field" type="date">
-                      <input class="listPage-table-field--small" type="time">
+                      <input class="listPage-table-field listPage-table-field--small" type="time">
                     </td>
                     <td class="listPage-table-row-cell">
                       <input class="listPage-table-field" type="email">
                     </td>
-                    <td class="listPage-table-row-cell--right"><label><input type="checkbox"> 作業済</label></td>
+                    <td class="listPage-table-row-cell listPage-table-row-cell--right"><label><input type="checkbox"> 作業済</label></td>
                     <td class="listPage-table-row-cell">
-                      <button class="listPage-table-button--insert" type="button">登録</button>
-                      <button class="listPage-table-button--insert is-modified" type="button">登録</button>
+                      <select class="listPage-table-select listPage-table-select--large">
+                        <option>作業済</option>
+                        <option>その他の状態</option>
+                      </select>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <button class="listPage-table-button listPage-table-button--insert" type="button">登録</button>
+                      <button class="listPage-table-button listPage-table-button--insert is-modified" type="button">登録</button>
                     </td>
                   </tr>
                 </tfoot>

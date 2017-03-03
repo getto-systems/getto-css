@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>GETTO Admin CSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/dist/reset.css">
+    <link rel="stylesheet" href="/dist/getto-admin.css">
+  </head>
+  <body>
+    <div>
+      <div class="mainContent">
+        <h1 class="mainContent-title">集計1</h1>
+        <ul class="mainContent-breadcrumb">
+          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/">
+            <span class="mainContent-breadcrumb-item-icon"><i class="fa fa-dashboard"></i></span>
+            ダッシュボード
+          </a></li>
+          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/list.html">集計1</a></li>
+        </ul>
+
+        <div class="tablePage">
+          <form class="tablePage-params" action="table.html" method="get">
+            <select class="tablePage-params-select">
+              <option>月間</option>
+              <option>週間</option>
+            </select>
+            <select class="tablePage-params-select">
+              <option>2017/01/01</option>
+              <option>2017/01/02</option>
+              <option>2017/01/03</option>
+            </select>
+
+            <div class="tablePage-params-radioContainer">
+              <label class="tablePage-params-radio"><input type="radio" name="sheet"> 形式1</label>
+              <label class="tablePage-params-radio"><input type="radio" name="sheet"> 形式2</label>
+              <label class="tablePage-params-radio"><input type="radio" name="sheet"> 形式3</label>
+            </div>
+            <div class="tablePage-params-action">
+              <button class="tablePage-params-button" type="button">ダウンロード</button>
+            </div>
+          </form>
+
+          <div class="tablePage-tableContainer">
+            <table class="tablePage-table">
+              <thead class="tablePage-table-thead">
+                <tr>
+                  <th class="tablePage-table-header" rowspan="2">クライアント</th>
+                  <th class="tablePage-table-header tablePage-table-header--double" rowspan="2">担当者</th>
+
+                  <th class="tablePage-table-header" colspan="2">仕入</th>
+                  <th class="tablePage-table-header" colspan="2">売上</th>
+                </tr>
+                <tr>
+                  <th class="tablePage-table-header">部門1</th>
+                  <th class="tablePage-table-header">部門2</th>
+                  <th class="tablePage-table-header">部門1</th>
+                  <th class="tablePage-table-header">部門2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="tablePage-table-cell">クライアント1</td>
+                  <td class="tablePage-table-cell tablePage-table-cell--double">山田花子</td>
+                  <td class="tablePage-table-cell">10</td>
+                  <td class="tablePage-table-cell">20</td>
+                  <td class="tablePage-table-cell">30</td>
+                  <td class="tablePage-table-cell">40</td>
+                </tr>
+                <tr>
+                  <td class="tablePage-table-cell">クライアント2</td>
+                  <td class="tablePage-table-cell tablePage-table-cell--double">鈴木太郎</td>
+                  <td class="tablePage-table-cell">10</td>
+                  <td class="tablePage-table-cell">20</td>
+                  <td class="tablePage-table-cell">30</td>
+                  <td class="tablePage-table-cell">40</td>
+                </tr>
+                <tr>
+                  <td class="tablePage-table-cell">クライアント3</td>
+                  <td class="tablePage-table-cell tablePage-table-cell--double">田中佳子</td>
+                  <td class="tablePage-table-cell">10</td>
+                  <td class="tablePage-table-cell">20</td>
+                  <td class="tablePage-table-cell">30</td>
+                  <td class="tablePage-table-cell">40</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="mainFooter">
+          <i class="fa fa-copyright"></i> GETTO systems
+        </div>
+      </div>
+
+      <div class="mainMenu">
+        <h2 class="mainMenu-logo">GETTO Admin CSS</h2>
+
+        <ul class="mainMenu-login">
+          <li class="mainMenu-login-user"><a class="mainMenu-login-link" href="/profile.html">
+            <p class="mainMenu-login-user-name">shun@getto.systems</p>
+
+            <ul class="mainMenu-login-channels">
+              <li class="mainMenu-login-channel">
+                <span class="mainMenu-login-channel-icon is-joined"><i class="fa fa-circle"></i></span>
+                main-channel
+              </li>
+              <li class="mainMenu-login-channel">
+                <span class="mainMenu-login-channel-icon is-joining"><i class="fa fa-spin fa-refresh"></i></span>
+                sub-channel
+              </li>
+            </ul>
+          </a></li>
+        </ul>
+
+        <div class="mainMenu-menu">
+          <ul class="mainMenu-items">
+            <li class="mainMenu-header">MAIN</li>
+            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/">
+              <span class="mainMenu-item-icon"><i class="fa fa-dashboard"></i></span>
+              ダッシュボード
+            </a></li>
+            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/login.html">
+              <span class="mainMenu-item-icon"><i class="fa fa-user"></i></span>
+              ログインページ
+            </a></li>
+          </ul>
+
+          <ul class="mainMenu-items">
+            <li class="mainMenu-header">DATA</li>
+            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/list.html">
+              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
+              データ1
+            </a></li>
+            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/list.html">
+              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
+              データ2
+            </a></li>
+          </ul>
+
+          <ul class="mainMenu-items">
+            <li class="mainMenu-header">SUMMARY</li>
+            <li class="mainMenu-item"><a class="mainMenu-item-link is-active" href="/table.html">
+              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
+              集計1
+            </a></li>
+            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/table.html">
+              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
+              集計2
+            </a></li>
+          </ul>
+
+          <ul class="mainMenu-items">
+            <li class="mainMenu-header">SYSTEM</li>
+            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/system.html">
+              <span class="mainMenu-item-icon"><i class="fa fa-cogs"></i></span>
+              システム設定
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="mainMenu-footer">
+          version : 0.0.0
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
