@@ -1,0 +1,11 @@
+@component data {
+  @descendent loading {
+    background-color: var(--color-warning);
+    color: var(--color-fg-white);
+    font-size: var(--font-size-large);
+    margin: 0.5rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+}
