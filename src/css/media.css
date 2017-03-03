@@ -6,3 +6,4 @@
 @custom-media --all-mobile (max-width: 991px);
 @custom-media --all-desktop (min-width: 992px);
 @custom-media --over-tablet (min-width: 768px);
+@custom-media --medium (min-width: 768px) and (max-width: 1199px);
