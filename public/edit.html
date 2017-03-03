@@ -11,82 +11,16 @@
   <body>
     <div>
       <div class="mainContent">
-        <h1 class="mainContent-title">集計1</h1>
+        <h1 class="mainContent-title">システム設定</h1>
         <ul class="mainContent-breadcrumb">
           <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/">
             <span class="mainContent-breadcrumb-item-icon"><i class="fa fa-dashboard"></i></span>
             ダッシュボード
           </a></li>
-          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/list.html">集計1</a></li>
+          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/list.html">システム設定</a></li>
         </ul>
 
-        <div class="tablePage">
-          <form class="tablePage-params" action="table.html" method="get">
-            <select class="tablePage-params-select">
-              <option>月間</option>
-              <option>週間</option>
-            </select>
-            <select class="tablePage-params-select">
-              <option>2017/01/01</option>
-              <option>2017/01/02</option>
-              <option>2017/01/03</option>
-            </select>
-
-            <div class="tablePage-params-radioContainer">
-              <label class="tablePage-params-radio"><input type="radio" name="sheet"> 形式1</label>
-              <label class="tablePage-params-radio"><input type="radio" name="sheet"> 形式2</label>
-              <label class="tablePage-params-radio"><input type="radio" name="sheet"> 形式3</label>
-            </div>
-            <div class="tablePage-params-action">
-              <button class="tablePage-params-button" type="button">ダウンロード</button>
-            </div>
-          </form>
-
-          <div class="tablePage-tableContainer">
-            <table class="tablePage-table">
-              <thead class="tablePage-table-thead">
-                <tr>
-                  <th class="tablePage-table-header" rowspan="2">クライアント</th>
-                  <th class="tablePage-table-header is-double" rowspan="2">担当者</th>
-
-                  <th class="tablePage-table-header" colspan="2">仕入</th>
-                  <th class="tablePage-table-header" colspan="2">売上</th>
-                </tr>
-                <tr>
-                  <th class="tablePage-table-header">部門1</th>
-                  <th class="tablePage-table-header">部門2</th>
-                  <th class="tablePage-table-header">部門1</th>
-                  <th class="tablePage-table-header">部門2</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="tablePage-table-cell">クライアント1</td>
-                  <td class="tablePage-table-cell is-double">山田花子</td>
-                  <td class="tablePage-table-cell">10</td>
-                  <td class="tablePage-table-cell">20</td>
-                  <td class="tablePage-table-cell">30</td>
-                  <td class="tablePage-table-cell">40</td>
-                </tr>
-                <tr>
-                  <td class="tablePage-table-cell">クライアント2</td>
-                  <td class="tablePage-table-cell is-double">鈴木太郎</td>
-                  <td class="tablePage-table-cell">10</td>
-                  <td class="tablePage-table-cell">20</td>
-                  <td class="tablePage-table-cell">30</td>
-                  <td class="tablePage-table-cell">40</td>
-                </tr>
-                <tr>
-                  <td class="tablePage-table-cell">クライアント3</td>
-                  <td class="tablePage-table-cell is-double">田中佳子</td>
-                  <td class="tablePage-table-cell">10</td>
-                  <td class="tablePage-table-cell">20</td>
-                  <td class="tablePage-table-cell">30</td>
-                  <td class="tablePage-table-cell">40</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="editPage">
         </div>
 
         <div class="mainFooter">
@@ -141,7 +75,7 @@
 
           <ul class="mainMenu-items">
             <li class="mainMenu-header">SUMMARY</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link is-active" href="/table.html">
+            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/table.html">
               <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
               集計1
             </a></li>
@@ -153,7 +87,7 @@
 
           <ul class="mainMenu-items">
             <li class="mainMenu-header">SYSTEM</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/edit.html">
+            <li class="mainMenu-item"><a class="mainMenu-item-link is-active" href="/edit.html">
               <span class="mainMenu-item-icon"><i class="fa fa-cogs"></i></span>
               システム設定
             </a></li>

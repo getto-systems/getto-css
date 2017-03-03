@@ -31,10 +31,10 @@
       margin: 0.1rem;
       width: 8rem;
 
-      @modifier small {
+      @when small {
         width: 6rem;
       }
-      @modifier large {
+      @when large {
         width: 10rem;
       }
     }
@@ -48,10 +48,10 @@
       margin: 0.1rem;
       width: 9rem;
 
-      @modifier small {
+      @when small {
         width: 7rem;
       }
-      @modifier large {
+      @when large {
         width: 12rem;
       }
     }
@@ -163,10 +163,10 @@
         padding: 0.25rem;
         white-space: nowrap;
 
-        @modifier center {
+        @when center {
           text-align: center;
         }
-        @modifier right {
+        @when right {
           text-align: right;
         }
       }
@@ -182,7 +182,7 @@
       margin: 0.05rem;
       width: 10rem;
 
-      @modifier small {
+      @when small {
         width: 6rem;
 
         @when error {
@@ -192,7 +192,7 @@
           border-color: var(--color-warning);
         }
       }
-      @modifier large {
+      @when large {
         width: 16rem;
 
         @when error {
@@ -213,7 +213,7 @@
       @descendent error {
         @apply --listPage-table-field-error;
 
-        @modifier warning {
+        @when warning {
           color: var(--color-warning);
         }
       }
@@ -227,7 +227,7 @@
       margin: 0.1rem;
       width: 9rem;
 
-      @modifier small {
+      @when small {
         width: 7rem;
 
         @when error {
@@ -237,7 +237,7 @@
           border-color: var(--color-warning);
         }
       }
-      @modifier large {
+      @when large {
         width: 12rem;
 
         @when error {
@@ -258,31 +258,24 @@
     @descendent button {
       @apply --form-button;
 
-      @modifier edit {
+      @when edit {
         @apply --form-button-gray-primary;
       }
-      @modifier delete {
+      @when delete {
         @apply --form-button-gray-danger;
       }
-      @modifier save {
+      @when save {
         @apply --form-button-gray;
 
         @when modified {
           @apply --form-button-primary;
         }
       }
-      @modifier cancel {
+      @when cancel {
         @apply --form-button-gray;
       }
-      @modifier revert {
+      @when revert {
         @apply --form-button-white-primary;
-      }
-      @modifier insert {
-        @apply --form-button-gray;
-
-        @when modified {
-          @apply --form-button-primary;
-        }
       }
     }
     @descendent saving {

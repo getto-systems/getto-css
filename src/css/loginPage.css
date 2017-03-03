@@ -36,7 +36,7 @@
     white-space: nowrap;
     margin: 0 var(--loginPage-side-margin);
 
-    @modifier button {
+    @when button {
       text-align: center;
       margin-top: 1rem;
       margin-bottom: 2rem;
