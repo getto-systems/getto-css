@@ -91,21 +91,12 @@
       }
     }
   }
-  @descendent loading {
-    background-color: var(--color-warning);
-    color: var(--color-fg-white);
-    font-size: var(--font-size-large);
-    margin: 0.5rem;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    text-align: center;
-  }
   @descendent listContainer {
     @util clearfix;
     margin: 0.5rem;
   }
   @descendent pages {
-    float: right;
+    float: left;
 
     @descendent item {
       list-style: none;
@@ -129,7 +120,7 @@
   }
   @descendent tableContainer {
     width: calc(99.9% - 4.5rem);
-    float: left;
+    float: right;
     overflow-x: auto;
   }
   @descendent table {
