@@ -1,0 +1,68 @@
+@component tablePage {
+  @descendent params {
+    @util clearfix;
+    margin-bottom: 0.5rem;
+
+    @descendent select {
+      @apply --form-select;
+
+      font-size: var(--font-size-large);
+      border: 1px solid var(--color-border-gray);
+      padding: 0.7rem 1.4rem;
+      margin: 0.1rem;
+    }
+    @descendent radioContainer {
+      display: inline-block;
+
+      font-size: var(--font-size-large);
+      vertical-align: middle;
+      margin: 1rem 0.5rem;
+    }
+    @descendent radio {
+      cursor: pointer;
+      margin: 0.2rem;
+    }
+    @descendent action {
+      float: right;
+      margin-right: 0.5rem;
+    }
+    @descendent button {
+      @apply --form-button;
+      @apply --form-button-gray-primary;
+
+      font-size: var(--font-size-medium);
+      padding: 0.4rem 0.8rem;
+    }
+  }
+
+  @descendent tableContainer {
+    padding: 0.5rem;
+  }
+  @descendent table {
+    width: 100%;
+
+    @descendent thead {
+      border-bottom: 3px double var(--color-border-gray);
+    }
+    @descendent header {
+      border: 1px solid var(--color-border-gray);
+      font-size: var(--font-size-small);
+      padding: 0.3rem;
+      vertical-align: middle;
+
+      @modifier double {
+        border-right: 3px double var(--color-border-gray);
+      }
+    }
+    @descendent cell {
+      border: 1px solid var(--color-border-gray);
+      padding: 0.35rem;
+      vertical-align: middle;
+      text-align: center;
+
+      @modifier double {
+        border-right: 3px double var(--color-border-gray);
+      }
+    }
+  }
+}

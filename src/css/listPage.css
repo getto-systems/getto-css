@@ -4,25 +4,10 @@
     border-radius: 0.2rem;
     padding: 0.5rem;
   }
-  --listPage-search-field: {
-    border: 1px solid var(--color-border-gray);
-    padding: 0.2rem;
-    margin: 0.1rem;
-  }
-  --listPage-table-row-cell: {
-    padding: 0.25rem;
-    white-space: nowrap;
-  }
-  --listPage-table-field: {
-    font-size: var(--font-size-small);
-    border: 1px solid var(--color-border-gray);
-    padding: 0.2rem;
-    margin: 0.05rem;
-  }
   --listPage-table-field-error: {
     font-size: var(--font-size-small);
-    color: var(--color-danger);
     margin: 0.3rem 0.5rem 0.2rem 0.2rem;
+    color: var(--color-danger);
   }
 }
 @component listPage {
@@ -41,16 +26,33 @@
       @util truncate;
     }
     @descendent field {
-      @apply --listPage-search-field;
+      border: 1px solid var(--color-border-gray);
+      padding: 0.2rem;
+      margin: 0.1rem;
       width: 8rem;
 
       @modifier small {
-        @apply --listPage-search-field;
         width: 6rem;
       }
       @modifier large {
-        @apply --listPage-search-field;
         width: 10rem;
+      }
+    }
+    @descendent select {
+      cursor: pointer;
+      appearance: none;
+      border: 1px solid var(--color-border-gray);
+      background-color: white;
+      border-radius: 0;
+      padding: 0.1rem 0.5rem;
+      margin: 0.1rem;
+      width: 9rem;
+
+      @modifier small {
+        width: 7rem;
+      }
+      @modifier large {
+        width: 12rem;
       }
     }
     @descendent checkbox {
@@ -143,7 +145,7 @@
     width: 100%;
 
     @descendent header {
-      border-top: 3px double var(--color-border-gray);
+      border-top: 1px solid var(--color-border-gray);
       border-bottom: 3px double var(--color-border-gray);
 
       @descendent cell {
@@ -158,14 +160,13 @@
       border-bottom: 1px solid var(--color-border-gray);
 
       @descendent cell {
-        @apply --listPage-table-row-cell;
+        padding: 0.25rem;
+        white-space: nowrap;
 
         @modifier center {
-          @apply --listPage-table-row-cell;
           text-align: center;
         }
         @modifier right {
-          @apply --listPage-table-row-cell;
           text-align: right;
         }
       }
@@ -175,11 +176,13 @@
       }
     }
     @descendent field {
-      @apply --listPage-table-field;
+      font-size: var(--font-size-small);
+      border: 1px solid var(--color-border-gray);
+      padding: 0.2rem;
+      margin: 0.05rem;
       width: 10rem;
 
       @modifier small {
-        @apply --listPage-table-field;
         width: 6rem;
 
         @when error {
@@ -190,7 +193,6 @@
         }
       }
       @modifier large {
-        @apply --listPage-table-field;
         width: 16rem;
 
         @when error {
@@ -212,23 +214,57 @@
         @apply --listPage-table-field-error;
 
         @modifier warning {
-          @apply --listPage-table-field-error;
-
           color: var(--color-warning);
         }
       }
     }
+    @descendent select {
+      @apply --form-select;
+
+      font-size: var(--font-size-small);
+      border: 1px solid var(--color-border-gray);
+      padding: 0.1rem 0.5rem;
+      margin: 0.1rem;
+      width: 9rem;
+
+      @modifier small {
+        width: 7rem;
+
+        @when error {
+          border-color: var(--color-danger);
+        }
+        @when warning {
+          border-color: var(--color-warning);
+        }
+      }
+      @modifier large {
+        width: 12rem;
+
+        @when error {
+          border-color: var(--color-danger);
+        }
+        @when warning {
+          border-color: var(--color-warning);
+        }
+      }
+
+      @when error {
+        border-color: var(--color-danger);
+      }
+      @when warning {
+        border-color: var(--color-warning);
+      }
+    }
     @descendent button {
+      @apply --form-button;
+
       @modifier edit {
-        @apply --form-button;
         @apply --form-button-gray-primary;
       }
       @modifier delete {
-        @apply --form-button;
         @apply --form-button-gray-danger;
       }
       @modifier save {
-        @apply --form-button;
         @apply --form-button-gray;
 
         @when modified {
@@ -236,15 +272,12 @@
         }
       }
       @modifier cancel {
-        @apply --form-button;
         @apply --form-button-gray;
       }
       @modifier revert {
-        @apply --form-button;
         @apply --form-button-white-primary;
       }
       @modifier insert {
-        @apply --form-button;
         @apply --form-button-gray;
 
         @when modified {
@@ -256,9 +289,9 @@
       display: inline-block;
       background-color: var(--color-warning);
       color: var(--color-fg-white);
-      border-radius: 0.4rem;
+      border-radius: 0.3rem;
       font-size: var(--font-size-small);
-      padding: 0.2rem 1rem;
+      padding: 0.3rem 0.7rem;
     }
   }
 }
@@ -268,13 +301,9 @@
     @descendent search {
       @descendent field {
         padding: 0.5rem;
-
-        @modifier small {
-          padding: 0.5rem;
-        }
-        @modifier large {
-          padding: 0.5rem;
-        }
+      }
+      @descendent select {
+        padding: 0.5rem 1rem;
       }
       @descendent button {
         padding: 0.5rem 1rem;
@@ -283,33 +312,12 @@
     @descendent table {
       @descendent field {
         padding: 0.5rem;
-
-        @modifier small {
-          padding: 0.5rem;
-        }
-        @modifier large {
-          padding: 0.5rem;
-        }
+      }
+      @descendent select {
+        padding: 0.5rem 1rem;
       }
       @descendent button {
-        @modifier edit {
-          padding: 0.5rem 1rem;
-        }
-        @modifier save {
-          padding: 0.5rem 1rem;
-        }
-        @modifier cancel {
-          padding: 0.5rem 1rem;
-        }
-        @modifier revert {
-          padding: 0.5rem 1rem;
-        }
-        @modifier delete {
-          padding: 0.5rem 1rem;
-        }
-        @modifier insert {
-          padding: 0.5rem 1rem;
-        }
+        padding: 0.5rem 1rem;
       }
     }
   }
