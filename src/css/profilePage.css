@@ -1,22 +1,23 @@
-@component editPage {
-  @descendent box {
+@component profilePage {
+  @descendent profile {
     border: 1px solid var(--color-border-gray);
     border-radius: 0.2rem;
     margin: 0.5rem;
     padding: 0.5rem;
-
-    @descendent title {
-      font-weight: normal;
-      border-bottom: 1px solid var(--color-border-gray);
-      margin: 0.5rem 0;
-      padding-bottom: 0.5rem;
-      padding-left: 1rem;
-    }
   }
   @descendent action {
     border-top: 1px solid var(--color-border-gray);
     margin-top: 0.5rem;
     padding-top: 0.5rem;
+  }
+  @descendent header {
+    font-weight: normal;
+    font-size: var(--font-size-small);
+    padding: 0.5rem;
+    white-space: nowrap;
+  }
+  @descendent cell {
+    padding: 0.3rem;
   }
   @descendent button {
     @apply --form-button;
@@ -34,15 +35,9 @@
     @when cancel {
       @apply --form-button-gray;
     }
-  }
-  @descendent header {
-    font-size: var(--font-size-small);
-    font-weight: normal;
-    padding: 0.5rem;
-    white-space: nowrap;
-  }
-  @descendent cell {
-    padding: 0.3rem;
+    @when logout {
+      @apply --form-button-gray-danger;
+    }
   }
   @descendent field {
     font-size: var(--font-size-medium);
@@ -125,36 +120,43 @@
       border-color: var(--color-warning);
     }
   }
+  @descendent guide {
+    border: 1px solid var(--color-border-gray);
+    border-radius: 0.2rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+
+    @descendent title {
+      font-size: var(--font-size-large);
+      margin: 0.5rem 0;
+      padding: 0 0.5rem 0.5rem;
+      border-bottom: 1px solid var(--color-border-gray);
+    }
+    @descendent content {
+      padding: 0.5rem;
+    }
+  }
 }
 
 @media (--all-mobile) {
-  @component editPage {
+  @component profilePage {
     @descendent field {
       padding: 0.5rem;
-    }
-    @descendent select {
-      padding: 0.5rem 1rem;
     }
     @descendent button {
       padding: 0.5rem 1rem;
     }
   }
 }
-@media (--medium) {
-  @component editPage {
-    lost-utility: clearfix;
-
-    @descendent boxContainer {
-      lost-column: 1/2 2 0;
-    }
-  }
-}
 @media (--large-desktop) {
-  @component editPage {
+  @component profilePage {
     lost-utility: clearfix;
 
-    @descendent boxContainer {
-      lost-column: 1/3 3 0;
+    @descendent profileContainer {
+      lost-column: 1/3 0 0;
+    }
+    @descendent guideContainer {
+      lost-column: 2/3 0 0;
     }
   }
 }
