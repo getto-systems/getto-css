@@ -232,11 +232,15 @@
         }
       }
     }
+    @descendent body {
+      @util clearfix;
+    }
   }
   @component mainMenu {
     position: fixed;
     top: 0;
     bottom: 0;
+    left: 0;
 
     @descendent logo {
       @apply --mainMenu-logo;
