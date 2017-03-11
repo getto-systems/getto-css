@@ -10,6 +10,10 @@
     margin-top: 0.5rem;
     padding-top: 0.5rem;
   }
+  @descendent outOfDate {
+    font-size: var(--font-size-small);
+    padding: 0.2rem 0.5rem;
+  }
   @descendent header {
     font-weight: normal;
     font-size: var(--font-size-small);
@@ -37,6 +41,9 @@
     }
     @when logout {
       @apply --form-button-gray-danger;
+    }
+    @when upgrade {
+      @apply --form-button-primary;
     }
   }
   @descendent field {
