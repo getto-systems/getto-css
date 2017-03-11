@@ -73,6 +73,14 @@
         }
       }
     }
+    @descendent outOfDate {
+      font-size: var(--font-size-small);
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--color-danger);
+      color: var(--color-fg-white);
+      border-radius: 0.5rem;
+    }
   }
   @descendent header {
     list-style: none;
