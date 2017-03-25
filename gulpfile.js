@@ -43,11 +43,11 @@ gulp.task("css", function(){
       require("cssnano")
     ]) )
     .pipe( sourcemaps.write(".") )
-    .pipe( gulp.dest("public/dist/") )
+    .pipe( gulp.dest("dist/css/") )
 });
 
 gulp.task("dist", function(){
-  gulp.src("public/dist/*.css")
+  gulp.src("dist/css/*.css")
     .pipe( connect.reload() )
 });
 gulp.task("html", function(){
@@ -62,6 +62,6 @@ gulp.task("livereload", function(){
     livereload: true
   });
   gulp.watch("src/**/*.css",["css"]);
-  gulp.watch("public/dist/*.css",["dist"]);
+  gulp.watch("dist/css/*.css",["dist"]);
   gulp.watch("public/*.html",["html"]);
 });
