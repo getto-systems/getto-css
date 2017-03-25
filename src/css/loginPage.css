@@ -27,6 +27,11 @@
     text-align: center;
     background-color: var(--color-danger);
     color: var(--color-fg-white);
+
+    @when gray {
+      background-color: var(--color-bg-gray);
+      color: var(--color-fg-gray);
+    }
   }
   @descendent form {
     margin: 1rem 0;
