@@ -4,13 +4,13 @@
     color: var(--color-fg-white);
     font-size: var(--font-size-xlarge);
     padding: 1rem;
+    text-align: center;
   }
   --mainMenu-mobileLogo: {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    text-align: center;
   }
   --mainMenu-icon: {
     display: inline-block;
