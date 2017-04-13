@@ -1,13 +1,11 @@
-# getto-admin
+# getto-css
 
 simple admin css theme
 
 ## Usage
 
-copy dist/getto-admin.css to your css directory, and include stylesheets:
-
 ```
-<link rel="stylesheet" href="/css/getto-admin.css">
+<link rel="stylesheet" href="https://css.getto.systems/0.0.2/getto.css">
 ```
 
 * imported: reset.css : [http://html5doctor.com/html-5-reset-stylesheet/]
