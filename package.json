@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "simple admin css theme",
   "scripts": {
-    "livereload": "gulp livereload"
+    "livereload": "gulp livereload",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
