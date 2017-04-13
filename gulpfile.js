@@ -5,7 +5,7 @@ gulp.task("build", function(){
   var postcss = require("gulp-postcss");
   var sourcemaps = require("gulp-sourcemaps");
 
-  return gulp.src("src/getto-admin.css")
+  return gulp.src("src/getto.css")
     .pipe( sourcemaps.init() )
     .pipe( postcss([
       require("postcss-import")({
