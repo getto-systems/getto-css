@@ -12,3 +12,7 @@ build:
       bucket-url: $AWS_S3_URL
       source-dir: public
       opts: --acl-private
+  after-steps:
+    - wantedly/pretty-slack-notify:
+        webhook_url: $SLACK_URL
+        channel: getto-css
