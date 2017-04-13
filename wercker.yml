@@ -1,0 +1,14 @@
+build:
+  box: node:7.8.0
+  steps:
+    - npm-install
+    - script:
+        name: build css
+        code: |
+          bin/build.sh
+    - s3sync:
+      key-id: $AWS_KEY_ID
+      key-secret: $AWS_SECRET
+      bucket-url: $AWS_S3_URL
+      source-dir: public
+      opts: --acl-private
