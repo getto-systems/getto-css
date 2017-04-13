@@ -1,5 +1,5 @@
 {
-  "name": "getto-admin",
+  "name": "getto-css",
   "version": "0.0.0",
   "description": "simple admin css theme",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/getto-systems/getto-admin.git"
+    "url": "git://github.com/getto-systems/getto-css.git"
   },
   "author": "shun@getto.systems",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/getto-systems/getto-admin/issues"
+    "url": "https://github.com/getto-systems/getto-css/issues"
   },
-  "homepage": "https://github.com/getto-systems/getto-admin#readme",
+  "homepage": "https://github.com/getto-systems/getto-css#readme",
   "devDependencies": {
     "autoprefixer": "^6.7.5",
     "cssnano": "^3.10.0",
