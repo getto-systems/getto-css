@@ -1,6 +1,6 @@
 {
   "name": "getto-admin",
-  "version": "0.0.0",
+  "version": "2017.4.13-1",
   "description": "simple admin css theme",
   "scripts": {
     "livereload": "gulp livereload",
