@@ -1,7 +1,7 @@
 var gulp = require("gulp");
 var connect = require("gulp-connect");
 
-gulp.task("css", function(){
+gulp.task("build", function(){
   var postcss = require("gulp-postcss");
   var sourcemaps = require("gulp-sourcemaps");
 
@@ -43,11 +43,11 @@ gulp.task("css", function(){
       require("cssnano")
     ]) )
     .pipe( sourcemaps.write(".") )
-    .pipe( gulp.dest("dist/css/") )
+    .pipe( gulp.dest("public/dist/") )
 });
 
 gulp.task("dist", function(){
-  gulp.src("dist/css/*.css")
+  gulp.src("public/dist/*.css")
     .pipe( connect.reload() )
 });
 gulp.task("html", function(){
@@ -61,7 +61,7 @@ gulp.task("livereload", function(){
     root: "public/",
     livereload: true
   });
-  gulp.watch("src/**/*.css",["css"]);
-  gulp.watch("dist/css/*.css",["dist"]);
+  gulp.watch("src/**/*.css",["build"]);
+  gulp.watch("public/dist/*.css",["dist"]);
   gulp.watch("public/*.html",["html"]);
 });
