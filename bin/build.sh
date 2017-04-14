@@ -5,7 +5,6 @@ build_main(){
   local file
 
   version=$(grep '"version":' package.json | cut -d'"' -f4)
-  rm -rf public/dist
 
   for file in public/*.html; do
     sed -i "s/\/dist\//\/$version\//g" $file
