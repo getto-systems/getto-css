@@ -14,7 +14,7 @@ build:
       opts: --acl-private
 notify:
   box: ruby:2.4.1
-  steps:
+  after-steps:
     - wantedly/pretty-slack-notify:
         webhook_url: $SLACK_URL
         channel: getto-css
