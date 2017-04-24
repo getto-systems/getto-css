@@ -13,6 +13,7 @@ build_main(){
   if [ "$(curl -sI -o /dev/null -w "%{http_code}" $AWS_URL/$version/getto.css)" == "404" ]; then
     npm run build
     mv public/dist public/$version
+    curl -X POST --data-urlencode 'payload={"channel": "#getto-css", "username": "build", "text": "build completed", "icon_emoji": ":thumbsup:"}' $SLACK_URL
   fi
 }
 
