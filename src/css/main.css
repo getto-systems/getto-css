@@ -6,11 +6,19 @@
     padding: 1rem;
     text-align: center;
   }
-  --mainMenu-mobileLogo: {
+  --mainMenu-mobile-logo: {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
+  }
+  --mainMenu-logo-company: {
+    font-size: var(--font-size-large);
+    display: block;
+  }
+  --mainMenu-mobile-logo-company: {
+    font-size: var(--font-size-large);
+    display: inline-block;
   }
   --mainMenu-icon: {
     display: inline-block;
@@ -131,7 +139,11 @@
 
     @descendent logo {
       @apply --mainMenu-logo;
-      @apply --mainMenu-mobileLogo;
+      @apply --mainMenu-mobile-logo;
+
+      @descendent company {
+        @apply --mainMenu-mobile-logo-company;
+      }
     }
     @descendent login {
       @apply --mainMenu-loginButton;
@@ -174,7 +186,11 @@
 
     @descendent logo {
       @apply --mainMenu-logo;
-      @apply --mainMenu-mobileLogo;
+      @apply --mainMenu-mobile-logo;
+
+      @descendent company {
+        @apply --mainMenu-mobile-logo-company;
+      }
     }
     @descendent login {
       lost-column: 1/4 0 0;
@@ -252,6 +268,10 @@
 
     @descendent logo {
       @apply --mainMenu-logo;
+
+      @descendent company {
+        @apply --mainMenu-logo-company;
+      }
     }
     @descendent login {
       @apply --mainMenu-loginButton;
