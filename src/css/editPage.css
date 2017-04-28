@@ -63,13 +63,6 @@
     @when cancel {
       @apply --form-button-gray;
     }
-    @when download {
-      @apply --form-button-primary;
-
-      @when large {
-        font-size: var(--font-size-large);
-      }
-    }
     @when success {
       @apply --form-button-success;
 
