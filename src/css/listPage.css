@@ -102,7 +102,7 @@
     }
     @descendent link {
       @apply --form-button;
-      @apply --form-button-gray;
+      @apply --form-button-gray-danger-border;
 
       display: block;
       text-decoration: none;
@@ -112,7 +112,7 @@
       font-size: var(--font-size-large);
 
       @when active {
-        background-color: white;
+        @apply --form-button-white-danger-border;
       }
     }
   }
