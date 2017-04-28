@@ -10,15 +10,17 @@
 }
 
 @component loginPage {
-  @descendent title {
-    font-size: var(--font-size-xxlarge);
-    margin: 6rem var(--loginPage-side-margin) 1rem;
+  @descendent titleContainer {
+    margin: 6rem var(--loginPage-side-margin) 3rem;
     text-align: center;
+  }
+  @descendent title {
+    margin-bottom: 1rem;
+    font-size: var(--font-size-xxlarge);
   }
   @descendent subTitle {
     font-size: var(--font-size-xlarge);
-    margin: 1rem var(--loginPage-side-margin) 3rem;
-    text-align: center;
+    margin-bottom: 1rem;
   }
   @descendent alert {
     margin: -2rem var(--loginPage-side-margin) 0 var(--loginPage-side-margin);
