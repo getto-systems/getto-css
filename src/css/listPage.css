@@ -136,6 +136,15 @@
     }
     @descendent sort {
       text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--color-danger);
+      }
+
+      @when active {
+        color: var(--color-danger);
+      }
     }
     @descendent row {
       border-bottom: 1px solid var(--color-border-gray);
