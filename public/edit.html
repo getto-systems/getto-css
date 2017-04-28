@@ -21,114 +21,1423 @@
 
         <div class="mainContent-body">
           <div class="editPage">
-            <div class="editPage-boxContainer">
-              <form class="editPage-box" action="/edit.html" method="get">
-                <h3 class="editPage-box-title">設定名</h3>
-                <table>
-                  <tr>
-                    <th class="editPage-header">システム名</th>
-                    <td class="editPage-cell"><input class="editPage-field" type="text" value="GETTO Admin CSS"></td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">バージョン</th>
-                    <td class="editPage-cell"><input class="editPage-field is-small" type="text" value="0.0.0"></td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">更新日</th>
-                    <td class="editPage-cell"><input class="editPage-field" type="date" value="2017-03-03"></td>
-                  </tr>
-                </table>
-                <div class="editPage-action">
-                  <button class="editPage-button is-save" type="button">保存</button>
-                  <button class="editPage-button is-save is-modified" type="button">保存</button>
-                  <button class="editPage-button is-cancel" type="button">キャンセル</button>
+            <h2 class="editPage-title">
+              商品陳列業務 状況報告・完了確認書
+              <span class="editPage-status is-gray">仮</span>
+              <span class="editPage-status is-warning">作業中</span>
+              <span class="editPage-status is-success">確認中</span>
+              <span class="editPage-status is-primary">完了</span>
+            </h2>
+            <form action="/edit.html">
+              <button class="editPage-button is-large is-primary">ダウンロード</button>
+              <button class="editPage-button is-large is-success">確認中にする</button>
+              <button class="editPage-button is-large is-warning">作業中にする</button>
+              <button class="editPage-button is-large is-primary">完了にする</button>
+            </form>
+            <div class="editPage-container">
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">店舗</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">エリア</th>
+                      <td class="editPage-cell">東北</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">種別</th>
+                      <td class="editPage-cell">新店</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">実施店舗</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">ファミリーマート</span>
+                        秋田大館比内
+                        <span class="editPage-label">店</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">店番</th>
+                      <td class="editPage-cell"> 25540 </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
                 </div>
-              </form>
-            </div>
-
-            <div class="editPage-boxContainer">
-              <form class="editPage-box" action="/edit.html" method="get">
-                <h3 class="editPage-box-title">設定名</h3>
-                <table>
-                  <tr>
-                    <th class="editPage-header">システム名</th>
-                    <td class="editPage-cell">
-                      <input class="editPage-field is-error" type="text" value="">
-                      <div class="editPage-field-error">
-                        入力してください
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">バージョン</th>
-                    <td class="editPage-cell">
-                      <input class="editPage-field is-small is-warning" type="text" value="000">
-                      <div class="editPage-field-error is-warning">
-                        正しい形式ではありません
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">更新日</th>
-                    <td class="editPage-cell">
-                      <input class="editPage-field is-error" type="date" value="2017-03-03">
-                      <input class="editPage-field is-small is-error" type="time" value="09:30:00">
-                      <div class="editPage-field-error is-warning">
-                        正しい日付を入力してください
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-                <div class="editPage-action">
-                  <button class="editPage-button is-save" type="button">保存</button>
-                  <button class="editPage-button is-save is-modified" type="button">保存</button>
-                  <button class="editPage-button is-cancel" type="button">キャンセル</button>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">作業</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">実施日</th>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">月</span>
+                        28
+                        <span class="editPage-label">日</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">オープン日</th>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">月</span>
+                        30
+                        <span class="editPage-label">日</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">作業時間</th>
+                      <td class="editPage-cell">
+                        8
+                        <span class="editPage-label">:</span>
+                        20
+                        <span class="editPage-label">～</span>
+                        17
+                        <span class="editPage-label">:</span>
+                        00
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">作業責任者</th>
+                      <td class="editPage-cell">加藤秀一</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">担当SV様名</th>
+                      <td class="editPage-cell">
+                        宮澤SV
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">SV様からの事前FAX</th>
+                      <td class="editPage-cell">有</td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
                 </div>
-              </form>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">部門</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">合計</th>
+                      <td class="editPage-cell" colspan="4">
+                        41.5
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">日用品</th>
+                      <td class="editPage-cell">
+                      </td>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">尺</span>
+                      </td>
+                      <td class="editPage-cell">
+                        8
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">菓子</th>
+                      <td class="editPage-cell">
+                      </td>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">尺</span>
+                      </td>
+                      <td class="editPage-cell">
+                        12
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">無印</th>
+                      <td class="editPage-cell">
+                      </td>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">尺</span>
+                      </td>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">加食</th>
+                      <td class="editPage-cell">
+                      </td>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">尺</span>
+                      </td>
+                      <td class="editPage-cell">
+                        7.5
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">飲料</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">WI</span>
+                      </td>
+                      <td class="editPage-cell">
+                        4
+                        <span class="editPage-label">枚</span>
+                      </td>
+                      <td class="editPage-cell is-right">
+                        <span class="editPage-label">DC</span>
+                      </td>
+                      <td class="editPage-cell">
+                        1
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">酒</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">WI</span>
+                      </td>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">枚</span>
+                      </td>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">尺</span>
+                      </td>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <table>
+                    <tr>
+                      <th class="editPage-header">お酒仕入れ<br>入力の依頼</th>
+                      <td class="editPage-cell">担当SV様</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">お酒の<br>読上げ検品</th>
+                      <td class="editPage-cell">無</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">単品カード</th>
+                      <td class="editPage-cell">
+                        有
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">備考: </span>
+                        新8%PC貼付
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">フェイス表</th>
+                      <td class="editPage-cell">
+                        有
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">備考: </span>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">MAT検品</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">MAT<br>検品状況</th>
+                      <td class="editPage-cell">検品はないと指示された</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">指示者</th>
+                      <td class="editPage-cell">
+                        宮澤SV
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">状況や理由</th>
+                    </tr>
+                    <tr>
+                      <td class="editPage-cell" colspan="2">
+                        <div class="text-pre-wrap">入店時宮澤CV様から検品はしませんとのことでした</div>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">実施作業</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">棚合わせ</th>
+                      <td class="editPage-cell"><i class="fa fa-check"></i></td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">単品カード貼付</th>
+                      <td class="editPage-cell"><i class="fa fa-check"></i></td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">商品陳列</th>
+                      <td class="editPage-cell"><i class="fa fa-check"></i></td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">欠品確認</th>
+                      <td class="editPage-cell"><i class="fa fa-check"></i></td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">在庫片付け</th>
+                      <td class="editPage-cell"><i class="fa fa-check"></i></td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">確認</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header" colspan="2">SV様に当日のスケジュールを確認しましたか？</th>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">確認した</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">備考: </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">最終確認者</th>
+                      <td class="editPage-cell">担当SV様</td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer-2">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">伝票発送</h3>
+                  <table class="display-inline-block">
+                    <tr>
+                      <th class="editPage-header">日用品</th>
+                      <td class="editPage-cell" colspan="2">
+                        東京堂・他
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">枚数</th>
+                      <td class="editPage-cell">
+                        6
+                        <span class="editPage-label">枚</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">発送日</th>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">月</span>
+                        28
+                        <span class="editPage-label">日</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">方法</th>
+                      <td class="editPage-cell">
+                        センター様持帰り
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">菓子</th>
+                      <td class="editPage-cell" colspan="2">
+                        ドルチェ
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">枚数</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">枚</span>
+                      </td>
+                    </tr>
+                    </tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">発送日</th>
+                      <td class="editPage-cell">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">方法</th>
+                      <td class="editPage-cell">
+                      </td>
+                    </tr>
+                  </table>
+                  <table class="display-inline-block">
+                    <tr>
+                      <th class="editPage-header">食品</th>
+                      <td class="editPage-cell" colspan="2">
+                        ( 日本A・加藤 )
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">枚数</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">枚</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">発送日</th>
+                      <td class="editPage-cell">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">方法</th>
+                      <td class="editPage-cell">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">酒類</th>
+                      <td class="editPage-cell" colspan="2">
+                        ( 国分・日本A )
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">枚数</th>
+                      <td class="editPage-cell">
+                        41
+                        <span class="editPage-label">枚</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">発送日</th>
+                      <td class="editPage-cell">
+                        3
+                        <span class="editPage-label">月</span>
+                        28
+                        <span class="editPage-label">日</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">方法</th>
+                      <td class="editPage-cell">
+                        センター様持帰り
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div class="editPage-boxContainer">
-              <div class="editPage-box">
-                <h3 class="editPage-box-title">設定名</h3>
-                <table>
-                  <tr>
-                    <th class="editPage-header">システム名</th>
-                    <td class="editPage-cell">GETTO Admin CSS</td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">バージョン</th>
-                    <td class="editPage-cell">0.0.0</td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">更新日</th>
-                    <td class="editPage-cell">2017/03/03</td>
-                  </tr>
-                </table>
-                <div class="editPage-action">
-                  <button class="editPage-button is-edit" type="button">編集</button>
+            <div class="editPage-container">
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">待機</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">有無</th>
+                      <td class="editPage-cell">
+                        あり
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">待機時間合計</th>
+                      <td class="editPage-cell">
+                        0.5
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">事由による<br>超過時間</th>
+                      <td class="editPage-cell">
+                        0.5
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">セレモニー</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">店舗様施錠</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">陳列備品不足</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">竣工検査<br>工事</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">その他</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        納品遅れ
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">店舗様ご依頼事項</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">有無</th>
+                      <td class="editPage-cell">
+                        あり
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">作業時間合計</th>
+                      <td class="editPage-cell">
+                        2.0
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">事由による<br>超過時間</th>
+                      <td class="editPage-cell">
+                        1.0
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">アレンジ<br>陳列</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">指示者: </span>
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">所要時間: </span>
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">預り品<br>陳列</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">指示者: </span>
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">所要時間: </span>
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">プロモーション<br>陳列</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">指示者: </span>
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">所要時間: </span>
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">その他</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">指示者: </span>
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">所要時間: </span>
+                        2.0
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell" colspan="2">
+                        単品カードの貼付け
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">陳列時の状況</h3>
+                  <table>
+                    <tr>
+                      <td class="editPage-cell">
+                        <div class="text-pre-wrap">●当日は実施店舗が4店舗重なりＳＶ様のご了承を得て27日に事前準備をさせて頂きましたが手馴れたスタッフが分散した為陳列に時間が掛かってしまいました
+●本日常温便の納品が9:30でした。納品が遅れ手の悪スタッフが発生し待機となりました。</div>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="editPage-container">
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">店舗</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">エリア</th>
+                      <td class="editPage-cell"><input class="editPage-field" type="text" value="東北"></td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">種別</th>
+                      <td class="editPage-cell">
+                        <label><input type="radio" name="open_type"> 新店</label>
+                        <label><input type="radio" name="open_type"> リオープン</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">実施店舗</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">ファミリーマート</span>
+                        <input class="editPage-field" type="text" value="秋田大館比内">
+                        <span class="editPage-label">店</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">店番</th>
+                      <td class="editPage-cell"><input class="editPage-field is-small" type="text" value="25540"></td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">作業</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">実施日</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-date" type="date" value="2017-03-28">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">オープン日</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-date" type="date" value="2017-03-30">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">作業時間</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-time" type="time" value="08:20">
+                        <span class="editPage-label">～</span>
+                        <input class="editPage-field is-time" type="time" value="17:00">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">作業責任者</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field" type="text" value="加藤秀一">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">担当SV様名</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field" type="text" value="宮澤SV">
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">SV様からの<br>事前FAX</th>
+                      <td class="editPage-cell">
+                        <label><input type="radio" name="is_pre_fax"> 有</label>
+                        <label><input type="radio" name="is_pre_fax"> 無</label>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">部門</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">合計</th>
+                      <td class="editPage-cell" colspan="4">
+                        41.5
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">日用品</th>
+                      <td class="editPage-cell">
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="3">
+                        <span class="editPage-label">尺</span>
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="8">
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">菓子</th>
+                      <td class="editPage-cell">
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="3">
+                        <span class="editPage-label">尺</span>
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="12">
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">無印</th>
+                      <td class="editPage-cell">
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="3">
+                        <span class="editPage-label">尺</span>
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="3">
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">加食</th>
+                      <td class="editPage-cell">
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="3">
+                        <span class="editPage-label">尺</span>
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="7.5">
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">飲料</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">WI</span>
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="4">
+                        <span class="editPage-label">枚</span>
+                      </td>
+                      <td class="editPage-cell is-right">
+                        <span class="editPage-label">DC</span>
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="1">
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">酒</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">WI</span>
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="3">
+                        <span class="editPage-label">枚</span>
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="3">
+                        <span class="editPage-label">尺</span>
+                      </td>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="3">
+                        <span class="editPage-label">本</span>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <table>
+                    <tr>
+                      <th class="editPage-header">お酒仕入れ<br>入力の依頼</th>
+                      <td class="editPage-cell">
+                        <label class="editPage-block-label"><input type="radio" name="drink_input"> 担当SV様</label>
+                        <label class="editPage-block-label"><input type="radio" name="drink_input"> 開店担当者様</label>
+                        <label class="editPage-block-label"><input type="radio" name="drink_input"> オーナー様</label>
+                        <label class="editPage-block-label"><input type="radio" name="drink_input"> 店長様</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">お酒の<br>読上げ検品</th>
+                      <td class="editPage-cell">
+                        <label><input type="radio" name="drink_check"> 有</label>
+                        <label><input type="radio" name="drink_check"> 無</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">単品カード</th>
+                      <td class="editPage-cell">
+                        <label><input type="radio" name="card"> 有</label>
+                        <label><input type="radio" name="card"> 無</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">備考: </span>
+                        <input class="editPage-field" type="text" value="新8%PC貼付">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">フェイス表</th>
+                      <td class="editPage-cell">
+                        <label><input type="radio" name="card"> 有</label>
+                        <label><input type="radio" name="card"> 無</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">備考: </span>
+                        <input class="editPage-field" type="text" value="">
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">MAT検品</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">MAT<br>検品状況</th>
+                      <td class="editPage-cell">
+                        <label class="editPage-block-label"><input type="radio" name="mat_check"> 店舗の方が実施</label>
+                        <label class="editPage-block-label"><input type="radio" name="mat_check"> MATが使用できなかった</label>
+                        <label class="editPage-block-label"><input type="radio" name="mat_check"> MAT検品を依頼され実施した</label>
+                        <label class="editPage-block-label"><input type="radio" name="mat_check"> 検品はないと指示された</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">指示者</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field" type="text" value="宮澤SV">
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">状況や理由</th>
+                    </tr>
+                    <tr>
+                      <td class="editPage-cell" colspan="2">
+                        <div class="editPage-label">(検品を実施しなかった時に記載)</div>
+                        <textarea class="editPage-field is-large" rows="4">入店時宮澤CV様から検品はしませんとのことでした</textarea>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">実施作業</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">棚合わせ</th>
+                      <td class="editPage-cell">
+                        <label><input type="checkbox"> 実施</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">単品カード貼付</th>
+                      <td class="editPage-cell">
+                        <label><input type="checkbox"> 実施</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">商品陳列</th>
+                      <td class="editPage-cell">
+                        <label><input type="checkbox"> 実施</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">欠品確認</th>
+                      <td class="editPage-cell">
+                        <label><input type="checkbox"> 実施</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">在庫片付け</th>
+                      <td class="editPage-cell">
+                        <label><input type="checkbox"> 実施</label>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">確認</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header" colspan="2">SV様に当日のスケジュールを確認しましたか？</th>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <label class="editPage-block-label"><input type="radio" name="check_schedule"> 確認した</label>
+                        <label class="editPage-block-label"><input type="radio" name="check_schedule"> 確認できなかった</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">備考: </span>
+                        <input class="editPage-field" type="text" value="">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">最終確認者</th>
+                      <td class="editPage-cell">
+                        <label class="editPage-block-label"><input type="radio" name="last_check"> 担当SV様</label>
+                        <label class="editPage-block-label"><input type="radio" name="last_check"> 開店担当者様</label>
+                        <label class="editPage-block-label"><input type="radio" name="last_check"> オーナー様</label>
+                        <label class="editPage-block-label"><input type="radio" name="last_check"> 店長様</label>
+                        <label class="editPage-block-label"><input type="radio" name="last_check"> その他</label>
+                        <input class="editPage-field" type="text" value="">
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer-2">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">伝票発送</h3>
+                  <table class="display-inline-block">
+                    <tr>
+                      <th class="editPage-header">日用品</th>
+                      <td class="editPage-cell" colspan="2">
+                        <input class="editPage-field" type="text" value="東京堂・他">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">枚数</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="6">
+                        <span class="editPage-label">枚</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">発送日</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-date" type="date" value="2017-03-28">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">方法</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field" type="text" value="センター様持帰り">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">菓子</th>
+                      <td class="editPage-cell" colspan="2">
+                        <input class="editPage-field" type="text" value="ドルチェ">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">枚数</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="">
+                        <span class="editPage-label">枚</span>
+                      </td>
+                    </tr>
+                    </tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">発送日</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-date" type="date" value="">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">方法</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field" type="text" value="">
+                      </td>
+                    </tr>
+                  </table>
+                  <table class="display-inline-block">
+                    <tr>
+                      <th class="editPage-header">食品</th>
+                      <td class="editPage-cell" colspan="2">
+                        <input class="editPage-field" type="text" value="( 日本A・加藤 )">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">枚数</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="">
+                        <span class="editPage-label">枚</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">発送日</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-date" type="date" value="">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">方法</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field" type="text" value="">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">酒類</th>
+                      <td class="editPage-cell" colspan="2">
+                        <input class="editPage-field" type="text" value="( 国分・日本A )">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">枚数</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="41">
+                        <span class="editPage-label">枚</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">発送日</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-date" type="date" value="2017-03-28">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <th class="editPage-header">方法</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field" type="text" value="センター様持帰り">
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="editPage-container">
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">待機</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">有無</th>
+                      <td class="editPage-cell">
+                        <label><input type="radio" name="wait"> あり</label>
+                        <label><input type="radio" name="wait"> なし</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">待機時間合計</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="0.5">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">事由による<br>超過時間</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="0.5">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">セレモニー</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">店舗様施錠</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">陳列備品不足</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">竣工検査<br>工事</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">その他</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field" type="text" value="納品遅れ">
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">店舗様ご依頼事項</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">有無</th>
+                      <td class="editPage-cell">
+                        <label><input type="radio" name="shop_order"> あり</label>
+                        <label><input type="radio" name="shop_order"> なし</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">作業時間合計</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="2.0">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">事由による<br>超過時間</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-tiny" type="number" value="1.0">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">アレンジ<br>陳列</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">指示者: </span>
+                        <input class="editPage-field is-small" type="text" value="">
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">所要時間: </span>
+                        <input class="editPage-field is-tiny" type="number" value="">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">預り品<br>陳列</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">指示者: </span>
+                        <input class="editPage-field is-small" type="text" value="">
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">所要時間: </span>
+                        <input class="editPage-field is-tiny" type="number" value="">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">プロモーション<br>陳列</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">指示者: </span>
+                        <input class="editPage-field is-small" type="text" value="">
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">所要時間: </span>
+                        <input class="editPage-field is-tiny" type="number" value="">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">その他</th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">指示者: </span>
+                        <input class="editPage-field is-small" type="text" value="">
+                        <span class="editPage-label">様</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell">
+                        <span class="editPage-label">所要時間: </span>
+                        <input class="editPage-field is-tiny" type="number" value="2.0">
+                        <span class="editPage-label">時間</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header"></th>
+                      <td class="editPage-cell" colspan="2">
+                        <input class="editPage-field" type="text" value="単品カードの貼付け">
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">陳列時の状況</h3>
+                  <table>
+                    <tr>
+                      <td class="editPage-cell">
+                        <textarea class="editPage-field is-xlarge" rows="16">●当日は実施店舗が4店舗重なりＳＶ様のご了承を得て27日に事前準備をさせて頂きましたが手馴れたスタッフが分散した為陳列に時間が掛かってしまいました
+●本日常温便の納品が9:30でした。納品が遅れ手の悪スタッフが発生し待機となりました。</textarea>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="editPage-boxContainer">
-              <div class="editPage-box">
-                <h3 class="editPage-box-title">設定名</h3>
-                <table>
-                  <tr>
-                    <th class="editPage-header">システム名</th>
-                    <td class="editPage-cell">GETTO Admin CSS</td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">バージョン</th>
-                    <td class="editPage-cell">0.0.0</td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">更新日</th>
-                    <td class="editPage-cell">2017/03/03</td>
-                  </tr>
-                </table>
-                <div class="editPage-action">
-                  <button class="editPage-button is-edit" type="button">編集</button>
+
+
+
+            <div class="editPage-container">
+              <div class="editPage-boxContainer">
+                <form class="editPage-box" action="/edit.html" method="get">
+                  <h3 class="editPage-box-title">設定名</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">システム名</th>
+                      <td class="editPage-cell"><input class="editPage-field" type="text" value="GETTO Admin CSS"></td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">バージョン</th>
+                      <td class="editPage-cell"><input class="editPage-field is-small" type="text" value="0.0.0"></td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">更新日</th>
+                      <td class="editPage-cell"><input class="editPage-field" type="date" value="2017-03-03"></td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-save" type="button">保存</button>
+                    <button class="editPage-button is-save is-modified" type="button">保存</button>
+                    <button class="editPage-button is-cancel" type="button">キャンセル</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="editPage-boxContainer">
+                <form class="editPage-box" action="/edit.html" method="get">
+                  <h3 class="editPage-box-title">設定名</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">システム名</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-error" type="text" value="">
+                        <div class="editPage-field-error">
+                          入力してください
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">バージョン</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-small is-warning" type="text" value="000">
+                        <div class="editPage-field-error is-warning">
+                          正しい形式ではありません
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">更新日</th>
+                      <td class="editPage-cell">
+                        <input class="editPage-field is-error" type="date" value="2017-03-03">
+                        <input class="editPage-field is-small is-error" type="time" value="09:30:00">
+                        <div class="editPage-field-error is-warning">
+                          正しい日付を入力してください
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-save" type="button">保存</button>
+                    <button class="editPage-button is-save is-modified" type="button">保存</button>
+                    <button class="editPage-button is-cancel" type="button">キャンセル</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">設定名</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">システム名</th>
+                      <td class="editPage-cell">GETTO Admin CSS</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">バージョン</th>
+                      <td class="editPage-cell">0.0.0</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">更新日</th>
+                      <td class="editPage-cell">2017/03/03</td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button">編集</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="editPage-boxContainer">
+                <div class="editPage-box">
+                  <h3 class="editPage-box-title">設定名</h3>
+                  <table>
+                    <tr>
+                      <th class="editPage-header">システム名</th>
+                      <td class="editPage-cell">GETTO Admin CSS</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">バージョン</th>
+                      <td class="editPage-cell">0.0.0</td>
+                    </tr>
+                    <tr>
+                      <th class="editPage-header">更新日</th>
+                      <td class="editPage-cell">2017/03/03</td>
+                    </tr>
+                  </table>
+                  <div class="editPage-action">
+                    <button class="editPage-button is-edit" type="button">編集</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -215,7 +1524,7 @@
         </div>
 
         <div class="mainMenu-footer">
-          version : 0.0.4
+          version : 0.0.5
         </div>
       </div>
     </div>
