@@ -247,6 +247,9 @@
       @when delete {
         @apply --form-button-gray-danger;
       }
+      @when delete-confirm {
+        @apply --form-button-gray-danger;
+      }
       @when save {
         @apply --form-button-gray;
 

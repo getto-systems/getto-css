@@ -111,7 +111,6 @@
                 <table class="listPage-table">
                   <thead>
                     <tr class="listPage-table-header">
-                      <th class="listPage-table-header-cell"></th>
                       <th class="listPage-table-header-cell">
                         <a class="listPage-table-sort is-active" href="/list.html">名前 <i class="fa fa-sort-down"></i></a>
                       </th>
@@ -132,22 +131,17 @@
                   </thead>
                   <tbody>
                     <tr class="listPage-table-row">
-                      <td class="listPage-table-row-cell">
-                        <button class="listPage-table-button is-delete" type="button"><i class="fa fa-remove"></i></button>
-                      </td>
                       <td class="listPage-table-row-cell">データ1</td>
                       <td class="listPage-table-row-cell is-center">2017/11/10 12:32</td>
                       <td class="listPage-table-row-cell">email@example.com</td>
                       <td class="listPage-table-row-cell is-right">作業済</td>
                       <td class="listPage-table-row-cell">その他の状態</td>
                       <td class="listPage-table-row-cell">
-                        <button class="listPage-table-button is-edit" type="button">編集</button>
+                        <button class="listPage-table-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                        <button class="listPage-table-button is-delete" type="button"><i class="fa fa-remove"></i></button>
                       </td>
                     </tr>
                     <tr class="listPage-table-row">
-                      <td class="listPage-table-row-cell">
-                        <button class="listPage-table-button is-delete" type="button"><i class="fa fa-remove"></i></button>
-                      </td>
                       <td class="listPage-table-row-cell">
                         <input class="listPage-table-field is-large" type="text" value="データ2">
                       </td>
@@ -166,15 +160,18 @@
                         </select>
                       </td>
                       <td class="listPage-table-row-cell">
-                        <button class="listPage-table-button is-save" type="button">保存</button>
-                        <button class="listPage-table-button is-save is-modified" type="button">保存</button>
-                        <button class="listPage-table-button is-cancel" type="button">キャンセル</button>
+                        <div>
+                          <button class="listPage-table-button is-save" type="button">保存</button>
+                          <button class="listPage-table-button is-save is-modified" type="button">保存</button>
+                          <button class="listPage-table-button is-cancel" type="button">キャンセル</button>
+                        </div>
+                        <div>
+                          <button class="listPage-table-button is-delete-confirm" type="button">削除</button>
+                          <button class="listPage-table-button is-cancel" type="button">キャンセル</button>
+                        </div>
                       </td>
                     </tr>
                     <tr class="listPage-table-row">
-                      <td class="listPage-table-row-cell">
-                        <button class="listPage-table-button is-delete" type="button"><i class="fa fa-remove"></i></button>
-                      </td>
                       <td class="listPage-table-row-cell">
                         <input class="listPage-table-field is-large is-error" type="text" value="データ2">
                         <div class="listPage-table-field-error">不明な名前です</div>
@@ -202,7 +199,6 @@
                       </td>
                     </tr>
                     <tr class="listPage-table-row is-deleted">
-                      <td class="listPage-table-row-cell"></td>
                       <td class="listPage-table-row-cell">データ3</td>
                       <td class="listPage-table-row-cell is-center">2017/8/10 12:32</td>
                       <td class="listPage-table-row-cell">email@example.com</td>
@@ -213,9 +209,6 @@
                       </td>
                     </tr>
                     <tr class="listPage-table-row">
-                      <td class="listPage-table-row-cell">
-                        <button class="listPage-table-button is-delete" type="button"><i class="fa fa-remove"></i></button>
-                      </td>
                       <td class="listPage-table-row-cell">データ4</td>
                       <td class="listPage-table-row-cell is-center">2017/7/10 12:32</td>
                       <td class="listPage-table-row-cell">email@example.com</td>
@@ -229,7 +222,6 @@
                   </tbody>
                   <tfoot>
                     <tr class="listPage-table-header">
-                      <th class="listPage-table-header-cell"></th>
                       <th class="listPage-table-header-cell">名前</th>
                       <th class="listPage-table-header-cell">日時</th>
                       <th class="listPage-table-header-cell">メール</th>
@@ -238,7 +230,6 @@
                       <th class="listPage-table-header-cell"></th>
                     </tr>
                     <tr class="listPage-table-row">
-                      <td class="listPage-table-row-cell"></td>
                       <td class="listPage-table-row-cell">
                         <input class="listPage-table-field is-large" type="text">
                       </td>
