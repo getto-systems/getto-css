@@ -66,6 +66,27 @@
       border-color: var(--color-danger);
     }
   }
+  --form-button-gray-danger-border: {
+    border-color: var(--color-border-gray);
+    background-color: var(--color-bg-gray);
+    color: var(--color-fg-gray);
+
+    &:hover {
+      color: var(--color-danger);
+      border-color: var(--color-danger);
+      background-color: white;
+    }
+  }
+  --form-button-white-danger-border: {
+    border-color: var(--color-border-gray);
+    background-color: white;
+    color: var(--color-fg-gray);
+
+    &:hover {
+      color: var(--color-danger);
+      border-color: var(--color-danger);
+    }
+  }
   --form-button-primary: {
     border-color: var(--color-primary);
     background-color: var(--color-primary);
