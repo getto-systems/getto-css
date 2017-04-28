@@ -261,13 +261,20 @@
         @apply --form-button-white-primary;
       }
     }
-    @descendent saving {
+    @descendent action {
       display: inline-block;
-      background-color: var(--color-warning);
-      color: var(--color-fg-white);
       border-radius: 0.3rem;
       font-size: var(--font-size-small);
       padding: 0.3rem 0.7rem;
+
+      @when connecting {
+        background-color: var(--color-primary);
+        color: var(--color-fg-white);
+      }
+      @when error {
+        background-color: var(--color-danger);
+        color: var(--color-fg-white);
+      }
     }
   }
 }
