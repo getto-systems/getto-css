@@ -11,10 +11,4 @@ build:
       key-secret: $AWS_SECRET
       bucket-url: $AWS_S3_URL
       source-dir: public
-      opts: --acl-private
-notify:
-  box: ruby:2.4.1
-  after-steps:
-    - wantedly/pretty-slack-notify:
-        webhook_url: $SLACK_URL
-        channel: getto-css
+      opts: --acl-private --cf-invalidate
