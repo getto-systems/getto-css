@@ -1,11 +1,22 @@
-@component data {
-  @descendent loading {
-    background-color: var(--color-warning);
-    color: var(--color-fg-white);
+:root {
+  --data-load-message: {
     font-size: var(--font-size-large);
     margin: 0.5rem;
     padding: 2rem;
     border-radius: 0.5rem;
     text-align: center;
+  }
+}
+
+@component data {
+  @descendent loading {
+    @apply --data-load-message;
+    background-color: var(--color-warning);
+    color: var(--color-fg-white);
+  }
+  @descendent empty {
+    @apply --data-load-message;
+    background-color: var(--color-bg-gray);
+    color: var(--color-fg-gray);
   }
 }
