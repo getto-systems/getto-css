@@ -1,0 +1,5 @@
+@component text {
+  @descendent pre-wrap {
+    white-space: pre-wrap;
+  }
+}
