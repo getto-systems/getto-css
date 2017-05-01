@@ -32,9 +32,10 @@
                     <tr>
                       <th class="listPage-search-header">日時</th>
                       <td>
-                        <input class="listPage-search-field" type="date">
+                        <input class="listPage-search-field is-date" type="date">
                         ～
-                        <input class="listPage-search-field" type="date">
+                        <input class="listPage-search-field is-date" type="date">
+                        <input class="listPage-search-field is-time" type="time">
                       </td>
                     </tr>
                     <tr>
@@ -48,7 +49,7 @@
                     <tr>
                       <th class="listPage-search-header">状態</th>
                       <td>
-                        <select class="listPage-search-select">
+                        <select class="listPage-search-select is-tiny">
                           <option>作業済</option>
                           <option>その他の状態</option>
                         </select>
@@ -80,8 +81,11 @@
                     <tr>
                       <th class="listPage-search-params-label">状態</th>
                       <td class="listPage-search-params-value">作業済</td>
-                    </li>
+                    </tr>
                   </table>
+                  <div class="listPage-search-note">
+                    Notice : この項目は他の項目と合わせて検索できません
+                  </div>
                 </div>
               </div>
             </div>
@@ -134,7 +138,13 @@
                   </thead>
                   <tbody>
                     <tr class="listPage-table-row">
-                      <td class="listPage-table-row-cell">データ1</td>
+                      <td class="listPage-table-row-cell">
+                        データ1
+                        <span class="listPage-table-status is-gray">仮</span>
+                        <span class="listPage-table-status is-warning">作業中</span>
+                        <span class="listPage-table-status is-success">確認中</span>
+                        <span class="listPage-table-status is-primary">完了</span>
+                      </td>
                       <td class="listPage-table-row-cell is-center">2017/11/10 12:32</td>
                       <td class="listPage-table-row-cell">email@example.com</td>
                       <td class="listPage-table-row-cell is-right">作業済</td>
@@ -154,8 +164,8 @@
                         <input class="listPage-table-field is-large" type="text" value="データ2">
                       </td>
                       <td class="listPage-table-row-cell">
-                        <input class="listPage-table-field" type="date" value="2017-09-03">
-                        <input class="listPage-table-field is-small" type="time" value="09:30:00">
+                        <input class="listPage-table-field is-date" type="date" value="2017-09-03">
+                        <input class="listPage-table-field is-time" type="time" value="09:30:00">
                       </td>
                       <td class="listPage-table-row-cell">
                         <input class="listPage-table-field" type="email" value="email@example.com">
@@ -190,8 +200,8 @@
                         <div class="listPage-table-field-error">不明な名前です</div>
                       </td>
                       <td class="listPage-table-row-cell">
-                        <input class="listPage-table-field" type="date" value="2017-09-03">
-                        <input class="listPage-table-field is-small" type="time" value="09:30:00">
+                        <input class="listPage-table-field is-date" type="date" value="2017-09-03">
+                        <input class="listPage-table-field is-time" type="time" value="09:30:00">
                       </td>
                       <td class="listPage-table-row-cell">
                         <input class="listPage-table-field is-warning" type="email" value="email@example.com">
@@ -263,8 +273,8 @@
                         <input class="listPage-table-field is-large" type="text">
                       </td>
                       <td class="listPage-table-row-cell">
-                        <input class="listPage-table-field" type="date">
-                        <input class="listPage-table-field is-small" type="time">
+                        <input class="listPage-table-field is-date" type="date">
+                        <input class="listPage-table-field is-time" type="time">
                       </td>
                       <td class="listPage-table-row-cell">
                         <input class="listPage-table-field" type="email">
