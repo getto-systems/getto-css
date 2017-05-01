@@ -19,4 +19,9 @@
     background-color: var(--color-bg-gray);
     color: var(--color-fg-gray);
   }
+  @descendent load-error {
+    @apply --data-load-message;
+    background-color: var(--color-danger);
+    color: var(--color-fg-white);
+  }
 }
