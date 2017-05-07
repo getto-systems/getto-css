@@ -23,6 +23,12 @@
 
     @descendent box {
       @apply --dashboard-box;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--color-danger);
+        border-color: var(--color-danger);
+      }
     }
 
     @descendent title {
@@ -118,14 +124,14 @@
       }
 
       @descendent icon {
-        lost-column: 1/3 0 0;
+        lost-column: 1/4 0 0;
         color: var(--color-fg-white);
         background-color: var(--color-primary);
-        font-size: var(--font-size-xlarge);
+        font-size: var(--font-size-large);
       }
       @descendent text {
-        lost-column: 2/3 0 0;
-        font-size: var(--font-size-xlarge);
+        lost-column: 3/4 0 0;
+        font-size: var(--font-size-large);
       }
       @descendent inner {
         text-align: center;
