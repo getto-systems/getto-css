@@ -9,6 +9,22 @@
     border-top: 1px solid var(--color-border-gray);
     margin-top: 0.5rem;
     padding-top: 0.5rem;
+
+    @descendent badge {
+      display: inline-block;
+      border-radius: 0.3rem;
+      font-size: var(--font-size-small);
+      padding: 0.3rem 0.7rem;
+
+      @when connecting {
+        background-color: var(--color-primary);
+        color: var(--color-fg-white);
+      }
+      @when error {
+        background-color: var(--color-danger);
+        color: var(--color-fg-white);
+      }
+    }
   }
   @descendent outOfDate {
     font-size: var(--font-size-small);
