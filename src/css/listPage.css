@@ -25,8 +25,9 @@
       @util truncate;
     }
     @descendent field {
-      border: 1px solid var(--color-border-gray);
-      padding: 0.2rem;
+      @apply --form-textbox;
+      font-size: var(--font-size-small);
+      padding: 0.2rem 0.4rem;
       margin: 0.1rem;
       width: 8rem;
 
@@ -183,9 +184,9 @@
       }
     }
     @descendent field {
+      @apply --form-textbox;
       font-size: var(--font-size-small);
-      border: 1px solid var(--color-border-gray);
-      padding: 0.2rem;
+      padding: 0.3rem 0.6rem;
       margin: 0.05rem;
       width: 10rem;
 
