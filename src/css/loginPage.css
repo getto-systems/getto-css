@@ -7,6 +7,7 @@
   }
 
   --loginPage-side-margin: 3rem;
+  --loginPage-side-margin-phone: 0.5rem;
 }
 
 @component loginPage {
@@ -76,6 +77,24 @@
 @media (--phone) {
   @component loginPage {
     width: 100%;
+
+    @descendent titleContainer {
+      margin: 3rem var(--loginPage-side-margin-phone) 2rem var(--loginPage-side-margin-phone);
+    }
+    @descendent alert {
+      margin-left: var(--loginPage-side-margin-phone);
+      margin-right: var(--loginPage-side-margin-phone);
+    }
+    @descendent row {
+      margin-left: var(--loginPage-side-margin-phone);
+      margin-right: var(--loginPage-side-margin-phone);
+    }
+
+    @descendent subTitle {
+      @descendent break {
+        display: block;
+      }
+    }
   }
 }
 @media (--over-tablet) {
@@ -84,6 +103,12 @@
     margin-top: 15vh;
 
     @apply --loginPage-border;
+
+    @descendent subTitle {
+      @descendent break {
+        display: none;
+      }
+    }
   }
 }
 @media (--tablet) {
