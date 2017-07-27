@@ -39,11 +39,11 @@
           display: inline-block;
           margin: 0 0.25em;
 
-          &::after {
+          &::before {
             content: " ＞ ";
           }
 
-          &:last-child::after {
+          &:first-child::before {
             content: "";
           }
         }
@@ -128,6 +128,14 @@
         padding: 0.5em;
         border-top: 3px double var(--color-border-gray);
         line-height: 1.5em;
+
+        > li {
+          display: block;
+
+          > a {
+            display: block;
+          }
+        }
       }
     }
 
@@ -171,8 +179,16 @@
 }
 
 @media (--all-mobile) {
-  .MainLayout > nav > header {
-    display: none;
+  .MainLayout {
+    > nav {
+      > header {
+        display: none;
+      }
+
+      > section > ul > li {
+        line-height: 2em;
+      }
+    }
   }
 }
 @media (--all-desktop) {
