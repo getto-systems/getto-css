@@ -1,5 +1,5 @@
 :root {
-  --main-header: {
+  --main-logo: {
     background-color: var(--color-primary);
     color: var(--color-fg-white);
     text-align: center;
@@ -17,7 +17,7 @@
 
 .MainLayout {
   > header {
-    @apply --main-header;
+    @apply --main-logo;
   }
 
   > article {
@@ -26,9 +26,7 @@
 
       > h1 {
         font-size: var(--font-size-xlarge);
-        margin-bottom: 0.3em;
-        padding: 0.3em;
-        border-bottom: 1px solid var(--color-border-gray);
+        @apply --header-title;
       }
 
       > ul {
@@ -71,7 +69,7 @@
     background-color: var(--color-bg-gray);
 
     > header {
-      @apply --main-header;
+      @apply --main-logo;
     }
 
     > address {
@@ -116,7 +114,7 @@
           padding: 0.5em 1em;
           background-color: var(--color-danger);
           color: var(--color-fg-white);
-          border-radius: 0.5em;
+          border-radius: var(--border-radius-box);
         }
       }
     }

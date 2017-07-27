@@ -34,6 +34,7 @@
         input[type=email],
         input[type=password] {
           width: 60%;
+          font-size: var(--font-size-medium);
         }
 
         button {
@@ -48,6 +49,7 @@
       }
     }
   }
+
   > footer {
     font-size: var(--font-size-small);
   }
@@ -59,7 +61,7 @@
       position: fixed;
       top: 15vh;
       border: 1px solid var(--color-border-gray);
-      border-radius: 0.5em;
+      border-radius: var(--border-radius-box);
     }
   }
 }

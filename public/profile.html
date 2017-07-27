@@ -8,7 +8,224 @@
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
-    <div>
+    <div class="MainLayout">
+      <header>
+        <p>
+        <small>GETTO</small>
+        <wbr>
+        Admin CSS
+        </p>
+      </header>
+      <article>
+        <header>
+          <h1>プロフィール</h1>
+          <ul>
+            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+            <li><a href="/profile.html"><i class="fa fa-user"></i> プロフィール</a></li>
+          </ul>
+        </header>
+        <section class="profile">
+          <section>
+            <section>
+              <table>
+                <tr><th>メール</th><td>shun@getto.systems</td></tr>
+              </table>
+              <footer>
+                <a href="/profile-edit.html">編集</a>
+                <a href="/login.html">ログアウト</a>
+              </footer>
+            </section>
+          </section>
+
+          <aside>
+            <section>
+              <h2>FAQ</h2>
+              <dl>
+                <dt><b>Q.</b> CSS を適用するには？</dt>
+                <dd>
+                <b>A.</b>
+                <p>
+                getto.css をスタイルシートとしてリンクします<br>
+                サンプルページを参考に html を記述します
+                </p>
+                </dd>
+
+                <dt><b>Q.</b> CSS を適用するには？</dt>
+                <dd>
+                <b>A.</b>
+                <p>
+                getto.css をスタイルシートとしてリンクします
+                </p>
+                </dd>
+              </dl>
+            </section>
+          </aside>
+
+          <div class="profilePage-profileContainer">
+            <div class="profilePage-profile">
+              <table>
+                <tr>
+                  <th class="profilePage-header">メール</th>
+                  <td class="profilePage-cell">shun@getto.systems</td>
+                </tr>
+              </table>
+              <div class="profilePage-action">
+                <button class="profilePage-button is-edit" type="button">編集</button>
+              </div>
+              <div class="profilePage-action">
+                <button class="profilePage-button is-logout" type="button">ログアウト</button>
+              </div>
+            </div>
+            <form class="profilePage-profile" action="/profile.html" method="get">
+              <table>
+                <tr>
+                  <th class="profilePage-header">メール</th>
+                  <td class="profilePage-cell"><input class="profilePage-field" type="email" value="shun@getto.systems"></td>
+                </tr>
+                <tr>
+                  <th class="profilePage-header">パスワード</th>
+                  <td class="profilePage-cell"><input class="profilePage-field" type="password" value=""></td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <th class="profilePage-header">メール</th>
+                  <td class="profilePage-cell">
+                    <input class="profilePage-field is-error" type="email" value="">
+                    <div class="profilePage-field-error">
+                      入力してください
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="profilePage-header">パスワード</th>
+                  <td class="profilePage-cell">
+                    <input class="profilePage-field is-small is-warning" type="password" value="">
+                    <div class="profilePage-field-error is-warning">
+                      短すぎます
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <div class="profilePage-action">
+                <button class="profilePage-button is-save" type="button">保存</button>
+                <button class="profilePage-button is-save is-modified" type="button">保存</button>
+                <button class="profilePage-button is-cancel" type="button">キャンセル</button>
+                <span class="profilePage-action-badge is-connecting"><i class="fa fa-spin fa-refresh"></i></span>
+                <span class="profilePage-action-badge is-error"><i class="fa fa-exclamation-triangle"></i> 保存エラー</span>
+              </div>
+              <div class="profilePage-action">
+                <button class="profilePage-button is-logout" type="button">ログアウト</button>
+              </div>
+            </form>
+
+            <div class="profilePage-profile">
+              <div class="profilePage-outOfDate">
+                最新版が利用可能です<br>
+                再読み込みするか、アップデートボタンを押してください
+              </div>
+              <div class="profilePage-action">
+                <button class="profilePage-button is-upgrade" type="button">アップデート</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="profilePage-guideContainer">
+            <div class="profilePage-guide">
+              <h3 class="profilePage-guide-title">システムガイド</h3>
+              <p class="profilePage-guide-content">
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明
+              </p>
+              <p class="profilePage-guide-content">
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明
+              </p>
+            </div>
+
+            <div class="profilePage-guide">
+              <h3 class="profilePage-guide-title">システムガイド</h3>
+              <p class="profilePage-guide-content">
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              </p>
+              <p class="profilePage-guide-content">
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              システムの説明、システムの説明、システムの説明、システムの説明、
+              </p>
+            </div>
+          </div>
+        </section>
+        <footer>
+          <p>
+          <i class="fa fa-copyright"></i> GETTO systems
+          </p>
+        </footer>
+      </article>
+      <nav>
+        <header>
+          <p>
+          <small>GETTO</small>
+          <br>
+          Admin CSS
+          </p>
+        </header>
+        <address>
+          <a href="/profile.html">
+            <p>
+            管理者: shun.verylong@getto.systems
+            </p>
+            <ul>
+              <li><i class="fa fa-circle"></i> 管理</li>
+            </ul>
+            <strong><i class="fa fa-exclamation-triangle"></i> アップデートが必要です</strong>
+          </a>
+        </address>
+        <section>
+          <ul>
+            <li>MAIN</li>
+            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+            <li><a href="/loading.html"><i class="fa fa-spinner"></i> Loading</a></li>
+            <li><a href="/login.html"><i class="fa fa-sign-in"></i> ログイン</a></li>
+            <li><a href="/404.html"><i class="fa fa-exclamation-triangle"></i> 404 Not Found</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="#"><i class="fa fa-file"></i> データ１</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="#"><i class="fa fa-folder"></i> データ２</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> データ３</a></li>
+          </ul>
+        </section>
+        <footer>
+          <p>
+          version: 0.1.0
+          </p>
+        </footer>
+      </nav>
+    </div>
+    <div style="display:none">
       <div class="mainContent">
         <h1 class="mainContent-title">プロフィール</h1>
         <ul class="mainContent-breadcrumb">
