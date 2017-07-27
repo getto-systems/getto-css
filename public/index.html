@@ -8,334 +8,154 @@
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
-    <div>
-      <div class="mainContent">
-        <h1 class="mainContent-title">ダッシュボード</h1>
-        <ul class="mainContent-breadcrumb">
-          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/">
-            <span class="mainContent-breadcrumb-item-icon"><i class="fa fa-dashboard"></i></span>
-            ダッシュボード
-          </a></li>
-          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/">画面1</a></li>
-          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/">画面2</a></li>
+    <header>
+      <p>
+      <small>GETTO</small>
+      <wbr>
+      Admin CSS
+      </p>
+    </header>
+    <article>
+      <header>
+        <h1>ダッシュボード</h1>
+        <ul>
+          <li><a href="#"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+          <li><a href="#"><i class="fa fa-file"></i> 画面１</a></li>
+          <li><a href="#"><i class="fa fa-folder"></i> 画面２</a></li>
         </ul>
-
-        <div class="mainContent-body">
-          <div class="dashboard">
-            <div class="dashboard-content">
-              <div class="dashboard-summaries">
-                <div class="dashboard-summary">
-                  <div class="dashboard-summary-box">
-                    <h2 class="dashboard-summary-title">登録人数 / 広告費用</h2>
-                    <div class="dashboard-summary-values">
-                      <span class="dashboard-summary-value">3</span>
-                      <span class="dashboard-summary-value-unit">万人</span>
-                      <span class="dashboard-summary-separator">/</span>
-                      <span class="dashboard-summary-value">20</span>
-                      <span class="dashboard-summary-value-unit">万円</span>
-                    </div>
-                    <div class="dashboard-summary-bar">
-                      <div class="dashboard-summary-bar-fill is-success" style="width: 80%"></div>
-                      <div class="dashboard-summary-bar-value">80%</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="dashboard-summary">
-                  <div class="dashboard-summary-box">
-                    <h2 class="dashboard-summary-title">販売個数 / 目標</h2>
-                    <div class="dashboard-summary-values">
-                      <span class="dashboard-summary-value">3.5</span>
-                      <span class="dashboard-summary-separator">/</span>
-                      <span class="dashboard-summary-value is-small">6</span>
-                      <span class="dashboard-summary-value-unit">千個</span>
-                    </div>
-                    <div class="dashboard-summary-bar">
-                      <div class="dashboard-summary-bar-fill is-warning" style="width: 80%"></div>
-                      <div class="dashboard-summary-bar-value">80%</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="dashboard-summary">
-                  <div class="dashboard-summary-box">
-                    <h2 class="dashboard-summary-title">売り上げ / 前月</h2>
-                    <div class="dashboard-summary-values">
-                      <span class="dashboard-summary-value">50</span>
-                      <span class="dashboard-summary-separator">/</span>
-                      <span class="dashboard-summary-value is-small">20</span>
-                      <span class="dashboard-summary-value-unit">万円</span>
-                    </div>
-                    <div class="dashboard-summary-bar">
-                      <div class="dashboard-summary-bar-fill is-danger" style="width: 80%"></div>
-                      <div class="dashboard-summary-bar-value">80%</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="dashboard-summary">
-                  <div class="dashboard-summary-box">
-                    <h2 class="dashboard-summary-title">稼働時間 / 前月</h2>
-                    <div class="dashboard-summary-values">
-                      <span class="dashboard-summary-value">50</span>
-                      <span class="dashboard-summary-separator">/</span>
-                      <span class="dashboard-summary-value is-small">20</span>
-                      <span class="dashboard-summary-value-unit">時間</span>
-                    </div>
-                    <div class="dashboard-summary-bar">
-                      <div class="dashboard-summary-bar-fill" style="width: 200%"></div>
-                      <div class="dashboard-summary-bar-value">1%</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="dashboard-graphs">
-                <div class="dashboard-graph">
-                  <h2 class="dashboard-graph-title">グラフ1</h2>
-                  <div class="dashboard-graph-content">
-                    <div style="border: 1px solid gray; width: 640px; height: 480px">ここにグラフ</div>
-                  </div>
-                </div>
-
-                <div class="dashboard-graph">
-                  <h2 class="dashboard-graph-title">グラフ2</h2>
-                  <div class="dashboard-graph-content">
-                    <div style="border: 1px solid gray; width: 640px; height: 480px">ここにグラフ</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <ul class="dashboard-links">
-              <li class="dashboard-link-header">PROFILE</li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/profile.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-user"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">プロフィール</div>
-                  </div>
-                </a>
-              </li>
-              <li class="dashboard-link-header">DATA</li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/list.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-folder"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">データ1</div>
-                  </div>
-                </a>
-                <p class="dashboard-link-help">
-                データの説明
-                </p>
-              </li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/list.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-folder"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">データ2</div>
-                  </div>
-                </a>
-                <p class="dashboard-link-help is-warning">
-                データの説明
-                </p>
-              </li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/list.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-folder"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">データ3</div>
-                  </div>
-                </a>
-                <p class="dashboard-link-help is-danger">
-                データの説明
-                </p>
-              </li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/list.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-folder"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">データ4</div>
-                  </div>
-                </a>
-                <p class="dashboard-link-help is-primary">
-                データの説明
-                </p>
-              </li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/list.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-folder"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">データ5</div>
-                  </div>
-                </a>
-                <p class="dashboard-link-help is-success">
-                データの説明
-                </p>
-              </li>
-            </ul>
-
-            <ul class="dashboard-links">
-              <li class="dashboard-link-header">SUMMARY</li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/table.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-folder"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">集計1</div>
-                  </div>
-                </a>
-                <p class="dashboard-link-help">
-                集計の説明
-                </p>
-              </li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/table.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-folder"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">集計2</div>
-                  </div>
-                </a>
-              </li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/table.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-folder"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">集計3</div>
-                  </div>
-                </a>
-              </li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/table.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-folder"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">集計4</div>
-                  </div>
-                </a>
-              </li>
-              <li class="dashboard-link-item">
-                <a class="dashboard-link-box" href="/table.html">
-                  <div class="dashboard-link-box-icon">
-                    <div class="dashboard-link-box-inner"><i class="fa fa-folder"></i></div>
-                  </div>
-                  <div class="dashboard-link-box-text">
-                    <div class="dashboard-link-box-inner">集計5</div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mainFooter">
-          <p class="mainFooter-item">
-          <i class="fa fa-copyright"></i> GETTO systems
+      </header>
+      <section class="dashboard">
+        <dl>
+          <dd>
+          <a href="#">
+            <h2>登録人数 / 広告費用</h2>
+            <p>
+            <em>3<small><small>万人</small></small></em>
+            <em>/</em>
+            <em>20<small><small>万円</small></small></em>
+            </p>
+            <meter value="50" max="100">50%</meter>
+          </a>
+          </dd>
+          <dd>
+          <a href="#">
+            <h2>販売個数 / 目標</h2>
+            <p>
+            <em>3.5</em>
+            <em>/</em>
+            <em><small>6<small>千個</small></small></em>
+            </p>
+          </a>
+          </dd>
+          <dd>
+          <a href="#">
+            <h2>売り上げ / 前月</h2>
+            <p>
+            <em>50</em>
+            <em>/</em>
+            <em><small>20<small>万円</small></small></em>
+            </p>
+            <meter value="50" max="100">50%</meter>
+          </a>
+          </dd>
+          <dd class="double">
+          <a href="#">
+            <h2>稼働時間 / 前月</h2>
+            <p>
+            <em>50</em>
+            <em>/</em>
+            <em><small>20<small>時間</small></small></em>
+            </p>
+          </a>
+          </dd>
+          <dd>
+          <a href="#">
+            <p>
+            <i class="fa fa-refresh fa-spin"></i> 読み込み中
+            </p>
+          </a>
+          </dd>
+          <dd class="triple">
+          <a href="#">
+            <h2>処理数 / 前月</h2>
+            <p>
+            <em>50</em>
+            <em>/</em>
+            <em><small>20<small>個</small></small></em>
+            </p>
+          </a>
+          </dd>
+        </dl>
+        <nav>
+          <ul>
+            <li>PROFILE</li>
+            <li><a href="#"><i class="fa fa-user"></i> プロフィール</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="#"><i class="fa fa-file"></i> データ１</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="#"><i class="fa fa-folder"></i> データ２</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> データ３</a></li>
+          </ul>
+        </nav>
+      </section>
+      <footer>
+        <p>
+        <i class="fa fa-copyright"></i> GETTO systems
+        </p>
+      </footer>
+    </article>
+    <nav>
+      <header>
+        <p>
+        <small>GETTO</small>
+        <br>
+        Admin CSS
+        </p>
+      </header>
+      <address>
+        <a href="#">
+          <p>
+          管理者: shun.verylong@getto.systems
           </p>
-        </div>
-      </div>
-
-      <div class="mainMenu">
-        <h2 class="mainMenu-logo">GETTO Admin CSS</h2>
-
-        <ul class="mainMenu-login">
-          <li class="mainMenu-login-user"><a class="mainMenu-login-link" href="/profile.html">
-            <p class="mainMenu-login-user-name">shun@getto.systems</p>
-
-            <ul class="mainMenu-login-channels">
-              <li class="mainMenu-login-channel">
-                <span class="mainMenu-login-channel-icon is-joined"><i class="fa fa-circle"></i></span>
-                main-channel
-              </li>
-              <li class="mainMenu-login-channel">
-                <span class="mainMenu-login-channel-icon is-joining"><i class="fa fa-spin fa-refresh"></i></span>
-                sub-channel
-              </li>
-            </ul>
-
-            <div class="mainMenu-login-outOfDate">
-              <i class="fa fa-exclamation-triangle"></i>
-              アップデートが必要です
-            </div>
-          </a></li>
+          <ul>
+            <li><i class="fa fa-circle"></i> 管理</li>
+          </ul>
+          <strong><i class="fa fa-exclamation-triangle"></i> アップデートが必要です</strong>
+        </a>
+      </address>
+      <section>
+        <ul>
+          <li>MAIN</li>
+          <li><a href="#"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+          <li><a href="#"><i class="fa fa-refresh"></i> Loading</a></li>
+          <li><a href="#"><i class="fa fa-sign-in"></i> ログイン</a></li>
+          <li><a href="#"><i class="fa fa-exclamation-triangle"></i> 404 Not Found</a></li>
         </ul>
-
-        <div class="mainMenu-menu">
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">MAIN</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link is-active" href="/">
-              <span class="mainMenu-item-icon"><i class="fa fa-dashboard"></i></span>
-              ダッシュボード
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/loading.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-refresh"></i></span>
-              Loading
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/login.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-user"></i></span>
-              ログイン
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/404.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-exclamation-triangle"></i></span>
-              404 Not Found
-            </a></li>
-          </ul>
-
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">DATA</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/list.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              データ1
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/list.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              データ2
-            </a></li>
-          </ul>
-
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">SUMMARY</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/table.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              集計1
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/table.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              集計2
-            </a></li>
-          </ul>
-
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">SYSTEM</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/edit.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-cogs"></i></span>
-              システム設定
-            </a></li>
-          </ul>
-        </div>
-
-        <div class="mainMenu-footer">
-          version : 0.0.10
-        </div>
-      </div>
-    </div>
+        <ul>
+          <li>DATA</li>
+          <li><a href="#"><i class="fa fa-file"></i> データ１</a></li>
+        </ul>
+        <ul>
+          <li>DATA</li>
+          <li><a href="#"><i class="fa fa-folder"></i> データ２</a></li>
+        </ul>
+        <ul>
+          <li>DATA</li>
+          <li><a href="#"><i class="fa fa-folder-open"></i> データ３</a></li>
+        </ul>
+      </section>
+      <footer>
+        <p>
+        version: 0.1.0
+        </p>
+      </footer>
+    </nav>
   </body>
 </html>
