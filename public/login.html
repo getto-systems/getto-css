@@ -33,5 +33,15 @@
         version : 0.1.0
       </footer>
     </div>
+    <script>
+      document.forms[0].elements[3].addEventListener("click", function(e){
+        if(this.className != "is-connecting") {
+          this.className += "is-connecting";
+          this.innerHTML = '<i class="fa fa-spin fa-spinner"></i>';
+          e.preventDefault();
+          alert("画面遷移するにはもう一度クリックします");
+        }
+      });
+    </script>
   </body>
 </html>
