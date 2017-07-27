@@ -8,15 +8,16 @@
 @import "css/form.css";
 @import "css/text.css";
 @import "css/data.css";
-@import "css/display.css";
+@import "css/alert.css";
 
-@import "css/loginPage.css";
 @import "css/base.css";
-@import "css/layout.css";
+@import "css/main.css";
+@import "css/login.css";
+
+@import "css/dashboard.css";
 
 @import "css/notfound.css";
 
-@import "css/dashboard.css";
 @import "css/listPage.css";
 @import "css/tablePage.css";
 @import "css/editPage.css";

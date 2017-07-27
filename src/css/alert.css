@@ -1,0 +1,19 @@
+:root {
+  --alert: {
+    border-radius: 0.3em;
+    text-align: center;
+  }
+
+  --alert-danger: {
+    background-color: var(--color-danger);
+    color: var(--color-fg-white);
+  }
+  --alert-success: {
+    background-color: var(--color-success);
+    color: var(--color-fg-white);
+  }
+  --alert-gray: {
+    background-color: var(--color-bg-gray);
+    color: var(--color-fg-gray);
+  }
+}
