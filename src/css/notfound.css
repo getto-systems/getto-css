@@ -12,6 +12,7 @@ section.notfound {
 
   > p {
     margin: 3em 6em;
+    line-height: 1.5em;
   }
 
   > form {
