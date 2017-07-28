@@ -8,7 +8,329 @@
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
-    <div>
+    <div class="MainLayout">
+      <header>
+        <p>
+        <small>GETTO</small>
+        <wbr>
+        Admin CSS
+        </p>
+      </header>
+      <article>
+        <header>
+          <h1>ダッシュボード</h1>
+          <ul>
+            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+            <li><a href="/list.html"><i class="fa fa-file"></i> データ１</a></li>
+          </ul>
+        </header>
+        <section class="list">
+          <section class="search">
+            <form method="get" action="/list.html">
+              <section>
+                <div>
+                  <table>
+                    <tr class="form-search"><th>名前</th><td><input type="text" value="データ１"></td></tr>
+                    <tr class="form-search-disabled"><th>メール</th><td><input type="text" disabled></td></tr>
+                  </table>
+                </div>
+                <div>
+                  <table>
+                    <tr><th>日時</th><td><input type="date"> ～ <input type="date"> <input type="time"></td></tr>
+                  </table>
+                </div>
+                <div>
+                  <table>
+                    <tr><th>状態</th><td><label><input type="checkbox"> 作業済</label></td></tr>
+                    <tr><th>状態</th><td><select><option>作業済</option><option>その他の状態</option></select></td></tr>
+                  </table>
+                </div>
+              </section>
+              <footer>
+                <button>絞り込み</button>
+              </footer>
+            </form>
+          </section>
+
+          <section class="data">
+            <p id="empty" class="data-empty">
+              <i class="fa fa-exclamation-triangle"></i> データがありません
+            </p>
+
+            <p id="loading" class="data-loading" style="display:none">
+              <i class="fa fa-spin fa-spinner"></i> 読み込み中
+            </p>
+
+            <section id="data">
+              <nav>
+                <ul>
+                  <li><a href="/list.html">1</a></li>
+                  <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                  <li><a href="/list.html">5</a></li>
+                  <li><a href="/list.html">6</a></li>
+                  <li class="is-active"><a href="/list.html">7</a></li>
+                  <li><a href="/list.html">8</a></li>
+                  <li><a href="/list.html">9</a></li>
+                  <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                  <li><a href="/list.html">20</a></li>
+                </ul>
+              </nav>
+              <table class="listPage-table">
+                <thead>
+                  <tr class="listPage-table-header">
+                    <th class="listPage-table-header-cell">
+                      <a class="listPage-table-sort is-active" href="/list.html">名前 <i class="fa fa-sort-down"></i></a>
+                    </th>
+                    <th class="listPage-table-header-cell">
+                      <a class="listPage-table-sort" href="/list.html">日時 <i class="fa fa-sort"></i></a>
+                    </th>
+                    <th class="listPage-table-header-cell">
+                      <a class="listPage-table-sort" href="/list.html">メール <i class="fa fa-sort"></i></a>
+                    </th>
+                    <th class="listPage-table-header-cell">
+                      <a class="listPage-table-sort" href="/list.html">状態 <i class="fa fa-sort"></i></a>
+                    </th>
+                    <th class="listPage-table-header-cell">
+                      <a class="listPage-table-sort" href="/list.html">状態 <i class="fa fa-sort"></i></a>
+                    </th>
+                    <th class="listPage-table-header-cell">
+                      <a class="listPage-table-sort" href="/list.html">内容 <i class="fa fa-sort"></i></a>
+                    </th>
+                    <th class="listPage-table-header-cell"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="listPage-table-row">
+                    <td class="listPage-table-row-cell">
+                      データ1
+                      <span class="listPage-table-status is-gray">仮</span>
+                      <span class="listPage-table-status is-warning">作業中</span>
+                      <span class="listPage-table-status is-success">確認中</span>
+                      <span class="listPage-table-status is-primary">完了</span>
+                    </td>
+                    <td class="listPage-table-row-cell is-center">2017/11/10 12:32</td>
+                    <td class="listPage-table-row-cell">email@example.com</td>
+                    <td class="listPage-table-row-cell is-right">作業済</td>
+                    <td class="listPage-table-row-cell">その他の状態</td>
+                    <td class="listPage-table-row-cell">
+                      <div class="text-pre-wrap">* 項目１
+* 項目２
+* 項目３</div>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <button class="listPage-table-button is-edit" type="button"><i class="fa fa-pencil"></i></button>
+                      <button class="listPage-table-button is-delete" type="button"><i class="fa fa-remove"></i></button>
+                    </td>
+                  </tr>
+                  <tr class="listPage-table-row">
+                    <td class="listPage-table-row-cell">
+                      <input class="listPage-table-field is-large" type="text" value="データ2">
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <input class="listPage-table-field is-date" type="date" value="2017-09-03">
+                      <input class="listPage-table-field is-time" type="time" value="09:30:00">
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <input class="listPage-table-field" type="email" value="email@example.com">
+                    </td>
+                    <td class="listPage-table-row-cell is-right"><label><input type="checkbox"> 作業済</label></td>
+                    <td class="listPage-table-row-cell">
+                      <select class="listPage-table-select is-large">
+                        <option>作業済</option>
+                        <option>その他の状態</option>
+                      </select>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <textarea class="listPage-table-field is-large" rows="8">* 項目１
+* 項目２
+* 項目３</textarea>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <div>
+                        <button class="listPage-table-button is-save" type="button">保存</button>
+                        <button class="listPage-table-button is-save is-modified" type="button">保存</button>
+                        <button class="listPage-table-button is-cancel" type="button">キャンセル</button>
+                      </div>
+                      <div>
+                        <button class="listPage-table-button is-delete-confirm" type="button">削除</button>
+                        <button class="listPage-table-button is-cancel" type="button">キャンセル</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="listPage-table-row">
+                    <td class="listPage-table-row-cell">
+                      <input class="listPage-table-field is-large is-error" type="text" value="データ2">
+                      <div class="listPage-table-field-error">不明な名前です</div>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <input class="listPage-table-field is-date" type="date" value="2017-09-03">
+                      <input class="listPage-table-field is-time" type="time" value="09:30:00">
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <input class="listPage-table-field is-warning" type="email" value="email@example.com">
+                      <div class="listPage-table-field-error is-warning">正しいメールアドレスではありません</div>
+                    </td>
+                    <td class="listPage-table-row-cell is-right"><label><input type="checkbox"> 作業済</label></td>
+                    <td class="listPage-table-row-cell">
+                      <select class="listPage-table-select is-large is-error">
+                        <option>作業済</option>
+                        <option>その他の状態</option>
+                      </select>
+                      <div class="listPage-table-field-error is-error">選択してください</div>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <textarea class="listPage-table-field is-large" rows="8">* 項目１
+* 項目２
+* 項目３</textarea>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <button class="listPage-table-button is-save" type="button">保存</button>
+                      <button class="listPage-table-button is-save is-modified" type="button">保存</button>
+                      <button class="listPage-table-button is-cancel" type="button">キャンセル</button>
+                    </td>
+                  </tr>
+                  <tr class="listPage-table-row is-deleted">
+                    <td class="listPage-table-row-cell">データ3</td>
+                    <td class="listPage-table-row-cell is-center">2017/8/10 12:32</td>
+                    <td class="listPage-table-row-cell">email@example.com</td>
+                    <td class="listPage-table-row-cell is-right">未作業</td>
+                    <td class="listPage-table-row-cell">その他の状態</td>
+                    <td class="listPage-table-row-cell">
+                      <div class="text-pre-wrap">* 項目１
+* 項目２
+* 項目３</div>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <button class="listPage-table-button is-revert" type="button">元に戻す</button>
+                    </td>
+                  </tr>
+                  <tr class="listPage-table-row">
+                    <td class="listPage-table-row-cell">データ4</td>
+                    <td class="listPage-table-row-cell is-center">2017/7/10 12:32</td>
+                    <td class="listPage-table-row-cell">email@example.com</td>
+                    <td class="listPage-table-row-cell is-right">未作業</td>
+                    <td class="listPage-table-row-cell">その他の状態</td>
+                    <td class="listPage-table-row-cell">
+                      <div class="text-pre-wrap">* 項目１
+* 項目２
+* 項目３</div>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <div class="listPage-table-action is-connecting"><i class="fa fa-spin fa-refresh"></i></div>
+                      <div class="listPage-table-action is-error"><i class="fa fa-ban"></i></div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr class="listPage-table-header">
+                    <th class="listPage-table-header-cell">名前</th>
+                    <th class="listPage-table-header-cell">日時</th>
+                    <th class="listPage-table-header-cell">メール</th>
+                    <th class="listPage-table-header-cell">状態</th>
+                    <th class="listPage-table-header-cell">状態</th>
+                    <th class="listPage-table-header-cell">内容</th>
+                    <th class="listPage-table-header-cell"></th>
+                  </tr>
+                  <tr class="listPage-table-row">
+                    <td class="listPage-table-row-cell">
+                      <input class="listPage-table-field is-large" type="text">
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <input class="listPage-table-field is-date" type="date">
+                      <input class="listPage-table-field is-time" type="time">
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <input class="listPage-table-field" type="email">
+                    </td>
+                    <td class="listPage-table-row-cell is-right"><label><input type="checkbox"> 作業済</label></td>
+                    <td class="listPage-table-row-cell">
+                      <select class="listPage-table-select is-large">
+                        <option>作業済</option>
+                        <option>その他の状態</option>
+                      </select>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <textarea class="listPage-table-field is-large" rows="8">* 項目１
+* 項目２
+* 項目３</textarea>
+                    </td>
+                    <td class="listPage-table-row-cell">
+                      <button class="listPage-table-button is-save" type="button">登録</button>
+                      <button class="listPage-table-button is-save is-modified" type="button">登録</button>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+              <nav>
+                <ul>
+                  <li><a href="/list.html">1</a></li>
+                  <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                  <li><a href="/list.html">5</a></li>
+                  <li><a href="/list.html">6</a></li>
+                  <li class="is-active"><a href="/list.html">7</a></li>
+                  <li><a href="/list.html">8</a></li>
+                  <li><a href="/list.html">9</a></li>
+                  <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                  <li><a href="/list.html">20</a></li>
+                </ul>
+              </nav>
+            </section>
+          </section>
+        </section>
+        <footer>
+          <p>
+          <i class="fa fa-copyright"></i> GETTO systems
+          </p>
+        </footer>
+      </article>
+      <nav>
+        <header>
+          <p>
+          <small>GETTO</small>
+          <br>
+          Admin CSS
+          </p>
+        </header>
+        <address>
+          <a href="/profile.html">
+            <p>
+            管理者: shun.verylong@getto.systems
+            </p>
+            <ul>
+              <li><i class="fa fa-circle"></i> 管理</li>
+            </ul>
+            <strong><i class="fa fa-exclamation-triangle"></i> アップデートが必要です</strong>
+          </a>
+        </address>
+        <section>
+          <ul>
+            <li>MAIN</li>
+            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+            <li><a href="/loading.html"><i class="fa fa-spinner"></i> Loading</a></li>
+            <li><a href="/login.html"><i class="fa fa-sign-in"></i> ログイン</a></li>
+            <li><a href="/404.html"><i class="fa fa-exclamation-triangle"></i> 404 Not Found</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li class="is-active"><a href="/list.html"><i class="fa fa-file"></i> データ１</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="#"><i class="fa fa-folder"></i> データ２</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> データ３</a></li>
+          </ul>
+        </section>
+        <footer>
+          <p>
+          version: 0.1.0
+          </p>
+        </footer>
+      </nav>
+    </div>
+    <div style="display:none">
       <div class="mainContent">
         <h1 class="mainContent-title">データ1</h1>
         <ul class="mainContent-breadcrumb">
@@ -390,5 +712,29 @@
         </div>
       </div>
     </div>
+    <script>
+      document.forms[0].elements[7].addEventListener("click", function(e){
+        var connectingClass = "is-connecting";
+        if(!this.className) {
+          this.className = connectingClass;
+          this.innerHTML = '<i class="fa fa-spin fa-spinner"></i>';
+
+          document.getElementById("empty").style.display = "none";
+          document.getElementById("loading").style.display = "block";
+
+          e.preventDefault();
+        } else {
+          if(this.className == connectingClass) {
+            this.className = "is-loaded";
+            this.innerHTML = '絞り込み';
+
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("data").style.display = "block";
+
+            e.preventDefault();
+          }
+        }
+      });
+    </script>
   </body>
 </html>

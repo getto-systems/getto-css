@@ -14,6 +14,7 @@
 
       &:hover {
         background-color: white;
+        color: var(--color-fg-gray);
         border-color: var(--color-border-gray);
       }
     }
@@ -48,6 +49,17 @@
       color: var(--color-fg-white);
       background-color: var(--color-primary);
       border-color: var(--color-primary);
+    }
+  }
+  --button-white-success: {
+    border-color: var(--color-border-gray);
+    background-color: var(--color-bg-white);
+    color: var(--color-fg-gray);
+
+    &:hover {
+      color: var(--color-fg-white);
+      background-color: var(--color-success);
+      border-color: var(--color-success);
     }
   }
   --button-gray-primary: {
@@ -123,6 +135,23 @@
       border-color: var(--color-danger);
     }
   }
+
+  --form-table: {
+    th {
+      font-size: var(--font-size-small);
+      font-weight: normal;
+      padding: 1em 0.5em;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.25em;
+
+      .help {
+        font-size: var(--font-size-small);
+      }
+    }
+  }
 }
 
 input[type=email],
@@ -141,11 +170,46 @@ select {
   appearance: none;
   background-color: white;
   border-radius: 0;
+  padding: 0.75em;
+}
+
+label {
+  cursor: pointer;
 }
 
 .help {
   margin: 0.5em;
   line-height: 1.25em;
+}
+
+.form-search {
+  color: var(--color-success);
+
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  input[type=date] {
+    border-color: var(--color-success);
+  }
+
+  select {
+    border-color: var(--color-success);
+  }
+}
+
+.form-search-disabled {
+  color: var(--color-fg-lightgray);
+
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  input[type=date] {
+    border-color: var(--color-border-white);
+  }
+
+  select {
+    border-color: var(--color-border-white);
+  }
 }
 
 .form-error {
