@@ -22,8 +22,8 @@ section.notfound {
       font-size: var(--font-size-large);
       padding: 0.5em 1em;
 
-      @apply --form-button;
-      @apply --form-button-warning;
+      @apply --button;
+      @apply --button-warning;
     }
   }
 }

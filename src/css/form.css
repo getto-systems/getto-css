@@ -1,5 +1,5 @@
 :root {
-  --form-button: {
+  --button: {
     display: inline-block;
     cursor: pointer;
     border: 1px solid;
@@ -18,7 +18,7 @@
       }
     }
   }
-  --form-button-gray: {
+  --button-gray: {
     border-color: var(--color-border-gray);
     background-color: var(--color-bg-gray);
     color: var(--color-fg-gray);
@@ -27,7 +27,7 @@
       background-color: white;
     }
   }
-  --form-button-white-primary: {
+  --button-white-primary: {
     border-color: var(--color-border-gray);
     background-color: var(--color-bg-white);
     color: var(--color-fg-gray);
@@ -38,7 +38,7 @@
       border-color: var(--color-primary);
     }
   }
-  --form-button-gray-primary: {
+  --button-gray-primary: {
     border-color: var(--color-border-gray);
     background-color: var(--color-bg-gray);
     color: var(--color-fg-gray);
@@ -49,7 +49,7 @@
       border-color: var(--color-primary);
     }
   }
-  --form-button-gray-danger: {
+  --button-gray-danger: {
     border-color: var(--color-border-gray);
     background-color: var(--color-bg-gray);
     color: var(--color-fg-gray);
@@ -60,7 +60,7 @@
       border-color: var(--color-danger);
     }
   }
-  --form-button-gray-danger-border: {
+  --button-gray-danger-border: {
     border-color: var(--color-border-gray);
     background-color: var(--color-bg-gray);
     color: var(--color-fg-gray);
@@ -71,7 +71,7 @@
       background-color: white;
     }
   }
-  --form-button-white-danger-border: {
+  --button-white-danger-border: {
     border-color: var(--color-border-gray);
     background-color: white;
     color: var(--color-fg-gray);
@@ -81,7 +81,7 @@
       border-color: var(--color-danger);
     }
   }
-  --form-button-primary: {
+  --button-primary: {
     border-color: var(--color-primary);
     background-color: var(--color-primary);
     color: var(--color-fg-white);
@@ -91,7 +91,7 @@
       border-color: var(--color-danger);
     }
   }
-  --form-button-success: {
+  --button-success: {
     border-color: var(--color-success);
     background-color: var(--color-success);
     color: var(--color-fg-white);
@@ -101,7 +101,7 @@
       border-color: var(--color-danger);
     }
   }
-  --form-button-warning: {
+  --button-warning: {
     border-color: var(--color-warning);
     background-color: var(--color-warning);
     color: var(--color-fg-white);

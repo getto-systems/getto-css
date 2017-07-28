@@ -43,8 +43,8 @@
           width: 30%;
           height: 3em;
 
-          @apply --form-button;
-          @apply --form-button-primary;
+          @apply --button;
+          @apply --button-primary;
         }
       }
     }
