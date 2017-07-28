@@ -21,10 +21,18 @@ section.profile {
           th {
             font-size: var(--font-size-small);
             font-weight: normal;
-            padding: 0.5em;
+            padding: 1em 0.5em;
           }
           td {
-            padding: 0.5em;
+            padding: 0.25em;
+
+            .help {
+              font-size: var(--font-size-small);
+            }
+
+            input {
+              width: 18em;
+            }
           }
         }
 
@@ -84,14 +92,16 @@ section.profile {
   }
 }
 
-@media (--all-mobile) {
+@media (--desktop) {
   section.profile {
+    lost-utility: clearfix;
+
     > section {
-      padding: 0.5rem;
+      lost-column: 2/5 0 0;
     }
 
     > aside {
-      padding: 0.5rem 1rem;
+      lost-column: 3/5 0 0;
     }
   }
 }

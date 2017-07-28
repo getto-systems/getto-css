@@ -4,7 +4,7 @@
     cursor: pointer;
     border: 1px solid;
     white-space: nowrap;
-    margin: 0.1rem;
+    margin: 0.1em;
     text-decoration: none;
 
     &.is-connecting {
@@ -15,6 +15,18 @@
       &:hover {
         background-color: white;
         border-color: var(--color-border-gray);
+      }
+    }
+
+    &.is-error {
+      background-color: var(--color-danger);
+      color: var(--color-fg-white);
+      border-color: var(--color-danger);
+
+      &:hover {
+        background-color: white;
+        border-color: var(--color-border-gray);
+        color: var(--color-fg-gray);
       }
     }
   }
@@ -128,4 +140,38 @@ select {
   appearance: none;
   background-color: white;
   border-radius: 0;
+}
+
+.help {
+  margin: 0.5em;
+  line-height: 1.25em;
+}
+
+.form-error {
+  color: var(--color-danger);
+
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  input[type=date] {
+    border-color: var(--color-danger);
+  }
+
+  select {
+    border-color: var(--color-danger);
+  }
+}
+.form-warning {
+  color: var(--color-warning);
+
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  input[type=date] {
+    border-color: var(--color-warning);
+  }
+
+  select {
+    border-color: var(--color-warning);
+  }
 }
