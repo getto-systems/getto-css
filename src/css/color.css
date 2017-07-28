@@ -5,9 +5,11 @@
   --color-success: #23ac0e;
 
   --color-fg-gray: gray(32);
+  --color-fg-lightgray: gray(128);
   --color-fg-white: gray(240);
   --color-bg-gray: gray(224);
   --color-bg-white: gray(240);
 
   --color-border-gray: gray(128);
+  --color-border-white: gray(160);
 }

@@ -1,16 +1,7 @@
-:root {
-  --profile-box: {
-    border: 1px solid var(--color-border-gray);
-    border-radius: 0.2rem;
-    margin: 0.5rem;
-    padding: 0.5rem;
-  }
-}
-
 section.profile {
   > section {
     > section {
-      @apply --profile-box;
+      @apply --bordered-box;
 
       > a {
         display: block;
@@ -18,29 +9,15 @@ section.profile {
 
       > form {
         > table {
-          th {
-            font-size: var(--font-size-small);
-            font-weight: normal;
-            padding: 1em 0.5em;
-          }
+          @apply --form-table;
 
-          td {
-            padding: 0.25em;
-
-            .help {
-              font-size: var(--font-size-small);
-            }
-
-            input {
-              width: 18em;
-            }
+          input {
+            width: 18em;
           }
         }
 
         > footer {
-          margin-top: 0.5em;
-          padding-top: 0.5em;
-          border-top: 1px solid var(--color-border-gray);
+          @apply --footer-action;
           font-size: var(--font-size-small);
 
           > button {
@@ -55,7 +32,7 @@ section.profile {
 
   > aside {
     > section {
-      @apply --profile-box;
+      @apply --bordered-box;
 
       > h2 {
         font-size: var(--font-size-large);

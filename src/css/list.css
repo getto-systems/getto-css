@@ -1,0 +1,55 @@
+section.list {
+  > section.search {
+    @apply --bordered-box;
+
+    > form {
+      > section {
+        > div {
+          > table {
+            @apply --form-table;
+
+            input[type=text] {
+              width: 16em;
+            }
+
+            input[type=date] {
+              width: 10em;
+            }
+
+            input[type=time] {
+              width: 6em;
+            }
+          }
+        }
+      }
+
+      > footer {
+        @apply --footer-action;
+
+        > button {
+          @apply --button;
+          @apply --button-white-success;
+        }
+      }
+    }
+  }
+
+  > section.data {
+  }
+}
+
+@media (--over-tablet) {
+  section.list {
+    > section.search {
+      > form {
+        > section {
+          lost-utility: clearfix;
+
+          > div {
+            lost-column: 1/3;
+          }
+        }
+      }
+    }
+  }
+}

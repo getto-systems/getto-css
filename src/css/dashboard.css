@@ -3,14 +3,16 @@ section.dashboard {
     > dd {
       > a {
         display: block;
-        border: 1px solid;
-        border-radius: var(--border-radius-box);
         color: var(--color-fg-gray);
-        margin: 0.25em;
-        padding: 0.5em;
+        @apply --bordered-box;
 
         &:hover {
           color: var(--color-danger);
+          border-color: var(--color-danger);
+
+          > h2 {
+            border-color: var(--color-danger);
+          }
         }
 
         > h2 {
