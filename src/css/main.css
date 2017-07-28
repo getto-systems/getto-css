@@ -133,6 +133,12 @@
           > a {
             display: block;
           }
+
+          &.is-active {
+            > a {
+              color: var(--color-danger);
+            }
+          }
         }
       }
     }

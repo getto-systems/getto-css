@@ -8,6 +8,10 @@
   }
 }
 
+body {
+  color: var(--color-fg-gray);
+}
+
 i {
   width: 1em;
   text-align: center;

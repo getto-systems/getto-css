@@ -161,6 +161,7 @@ select {
     border-color: var(--color-danger);
   }
 }
+
 .form-warning {
   color: var(--color-warning);
 
