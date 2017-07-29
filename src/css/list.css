@@ -11,14 +11,6 @@ section.list {
             input[type=text] {
               width: 16em;
             }
-
-            input[type=date] {
-              width: 10em;
-            }
-
-            input[type=time] {
-              width: 6em;
-            }
           }
         }
       }
@@ -35,6 +27,105 @@ section.list {
   }
 
   > section.data {
+    > section {
+      > nav {
+        > ul {
+          text-align: right;
+
+          > li {
+            display: inline-block;
+
+            > a {
+              display: inline-block;
+              color: var(--color-fg-gray);
+              border: 1px solid var(--color-border-gray);
+              margin: 0.1em;
+              padding: 0.5em 0.8em;
+
+              &:hover {
+                color: var(--color-danger);
+                border-color: var(--color-danger);
+              }
+            }
+
+            &.is-ellipsis {
+              > a {
+                border: none;
+                padding: 0.5em 0.1em;
+              }
+            }
+
+            &.is-active {
+              > a {
+                color: var(--color-danger);
+                border-color: var(--color-danger);
+              }
+            }
+          }
+        }
+      }
+
+      > form > table,
+      > table {
+        margin: 0.5em 0;
+
+        thead {
+          border-top: 1px solid var(--color-border-gray);
+          border-bottom: 3px double var(--color-border-gray);
+          font-size: var(--font-size-small);
+        }
+
+        th {
+          padding: 0.5rem;
+
+          a {
+            text-decoration: none;
+            cursor: pointer;
+
+            &:hover {
+              color: var(--color-danger);
+            }
+
+            &.is-active {
+              color: var(--color-danger);
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            border-bottom: 1px solid var(--color-border-gray);
+          }
+        }
+
+        td {
+          padding: 0.5rem 0.25rem;
+          vertical-align: top;
+
+          &.is-center {
+            text-align: center;
+          }
+          &.is-right {
+            text-align: right;
+          }
+
+          input.is-large,
+          select.is-large,
+          textarea.is-large {
+            width: 20em;
+          }
+        }
+
+        button {
+          @apply --button;
+          @apply --button-primary;
+
+          &.is-delete {
+            @apply --button-gray-danger;
+          }
+        }
+      }
+    }
   }
 }
 

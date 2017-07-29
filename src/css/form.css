@@ -146,10 +146,6 @@
 
     td {
       padding: 0.25em;
-
-      .help {
-        font-size: var(--font-size-small);
-      }
     }
   }
 }
@@ -180,6 +176,7 @@ label {
 .help {
   margin: 0.5em;
   line-height: 1.25em;
+  font-size: var(--font-size-small);
 }
 
 .form-search {
