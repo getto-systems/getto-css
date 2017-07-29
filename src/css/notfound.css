@@ -1,24 +1,29 @@
-@component notfound {
-  @descendent icon {
-    font-size: var(--font-size-xxlarge);
-    color: var(--color-warning);
-    vertical-align: middle;
-  }
-  @descendent title {
+section.notfound {
+  > h2 {
     font-size: var(--font-size-xlarge);
     margin: 0.5rem 0 1rem 1rem;
+
+    > i {
+      color: var(--color-warning);
+      font-size: var(--font-size-xxlarge);
+      vertical-align: middle;
+    }
   }
-  @descendent messages {
-    margin: 2rem;
+
+  > p {
+    margin: 3em 6em;
+    line-height: 1.5em;
   }
-  @descendent message {
-    margin: 1rem 2rem;
-  }
-  @descendent button {
-    display: inline-block;
-    text-decoration: none;
-    background-color: var(--color-warning);
-    color: var(--color-fg-white);
-    padding: 1rem 2rem;
+
+  > form {
+    margin: 3em 6em;
+
+    > button {
+      font-size: var(--font-size-large);
+      padding: 0.5em 1em;
+
+      @apply --button;
+      @apply --button-warning;
+    }
   }
 }

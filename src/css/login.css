@@ -1,0 +1,91 @@
+.LoginLayout {
+  > article {
+    > header {
+      text-align: center;
+      padding: 1rem;
+
+      > p {
+        font-size: var(--font-size-xxlarge);
+
+        > small {
+          font-size: var(--font-size-xlarge);
+        }
+      }
+    }
+
+    > section {
+      text-align: center;
+
+      > p {
+        text-align: center;
+        margin: 1em 2em;
+        padding: 1.5em;
+
+        @apply --alert;
+        @apply --alert-danger;
+      }
+
+      > form {
+        > p {
+          text-align: right;
+          margin: 1em 2em;
+        }
+
+        input[type=email],
+        input[type=password] {
+          width: 60%;
+          font-size: var(--font-size-medium);
+        }
+
+        button {
+          font-size: var(--font-size-medium);
+          display: block;
+          width: 30%;
+          height: 3em;
+
+          @apply --button;
+          @apply --button-primary;
+        }
+      }
+    }
+  }
+
+  > footer {
+    font-size: var(--font-size-small);
+  }
+}
+
+@media (--over-tablet) {
+  .LoginLayout {
+    > article {
+      position: fixed;
+      top: 15vh;
+      border: 1px solid var(--color-border-gray);
+      border-radius: var(--border-radius-box);
+    }
+  }
+}
+@media (--tablet) {
+  .LoginLayout {
+    > article {
+      lost-column: 6/8;
+      lost-offset: 1/8;
+    }
+  }
+}
+@media (--desktop) {
+  .LoginLayout {
+    > article {
+      lost-column: 4/6;
+      lost-offset: 1/6;
+    }
+  }
+}
+@media (--large-desktop) {
+  .LoginLayout {
+    > article {
+      lost-column: 2/4;
+      lost-offset: 1/4;
+    }
+  }
+}

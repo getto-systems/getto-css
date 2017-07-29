@@ -1,28 +1,37 @@
 :root {
-  --form-textbox: {
-    appearance: none;
-    border-radius: 0;
-    border: 1px solid var(--color-border-gray);
-    font-size: var(--font-size-medium);
-    padding: 0.75rem;
-  }
-
-  --form-select: {
-    cursor: pointer;
-    appearance: none;
-    background-color: white;
-    border-radius: 0;
-  }
-
-  --form-button: {
+  --button: {
     display: inline-block;
     cursor: pointer;
-    border: 1px solid var(--color-border-gray);
+    border: 1px solid;
     white-space: nowrap;
-    margin: 0.1rem;
+    margin: 0.1em;
     text-decoration: none;
+
+    &.is-connecting {
+      background-color: var(--color-bg-gray);
+      color: var(--color-fg-gray);
+      border-color: var(--color-border-gray);
+
+      &:hover {
+        background-color: white;
+        color: var(--color-fg-gray);
+        border-color: var(--color-border-gray);
+      }
+    }
+
+    &.is-error {
+      background-color: var(--color-danger);
+      color: var(--color-fg-white);
+      border-color: var(--color-danger);
+
+      &:hover {
+        background-color: white;
+        border-color: var(--color-border-gray);
+        color: var(--color-fg-gray);
+      }
+    }
   }
-  --form-button-gray: {
+  --button-gray: {
     border-color: var(--color-border-gray);
     background-color: var(--color-bg-gray);
     color: var(--color-fg-gray);
@@ -31,7 +40,7 @@
       background-color: white;
     }
   }
-  --form-button-white-primary: {
+  --button-white-primary: {
     border-color: var(--color-border-gray);
     background-color: var(--color-bg-white);
     color: var(--color-fg-gray);
@@ -42,7 +51,18 @@
       border-color: var(--color-primary);
     }
   }
-  --form-button-gray-primary: {
+  --button-white-success: {
+    border-color: var(--color-border-gray);
+    background-color: var(--color-bg-white);
+    color: var(--color-fg-gray);
+
+    &:hover {
+      color: var(--color-fg-white);
+      background-color: var(--color-success);
+      border-color: var(--color-success);
+    }
+  }
+  --button-gray-primary: {
     border-color: var(--color-border-gray);
     background-color: var(--color-bg-gray);
     color: var(--color-fg-gray);
@@ -53,7 +73,7 @@
       border-color: var(--color-primary);
     }
   }
-  --form-button-gray-danger: {
+  --button-gray-danger: {
     border-color: var(--color-border-gray);
     background-color: var(--color-bg-gray);
     color: var(--color-fg-gray);
@@ -64,7 +84,7 @@
       border-color: var(--color-danger);
     }
   }
-  --form-button-gray-danger-border: {
+  --button-gray-danger-border: {
     border-color: var(--color-border-gray);
     background-color: var(--color-bg-gray);
     color: var(--color-fg-gray);
@@ -75,7 +95,7 @@
       background-color: white;
     }
   }
-  --form-button-white-danger-border: {
+  --button-white-danger-border: {
     border-color: var(--color-border-gray);
     background-color: white;
     color: var(--color-fg-gray);
@@ -85,7 +105,7 @@
       border-color: var(--color-danger);
     }
   }
-  --form-button-primary: {
+  --button-primary: {
     border-color: var(--color-primary);
     background-color: var(--color-primary);
     color: var(--color-fg-white);
@@ -95,7 +115,7 @@
       border-color: var(--color-danger);
     }
   }
-  --form-button-success: {
+  --button-success: {
     border-color: var(--color-success);
     background-color: var(--color-success);
     color: var(--color-fg-white);
@@ -105,7 +125,7 @@
       border-color: var(--color-danger);
     }
   }
-  --form-button-warning: {
+  --button-warning: {
     border-color: var(--color-warning);
     background-color: var(--color-warning);
     color: var(--color-fg-white);
@@ -114,5 +134,127 @@
       background-color: var(--color-danger);
       border-color: var(--color-danger);
     }
+  }
+
+  --form-table: {
+    th {
+      font-size: var(--font-size-small);
+      font-weight: normal;
+      padding: 1em 0.5em;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.25em;
+    }
+  }
+}
+
+input[type=email],
+input[type=password],
+input[type=text],
+input[type=date],
+input[type=time] {
+  appearance: none;
+  border-radius: 0;
+  border: 1px solid var(--color-border-gray);
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-color: white;
+  border-radius: 0;
+}
+
+@media (--all-mobile) {
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  input[type=date],
+  input[type=time],
+  select {
+    padding: 1.5em;
+  }
+}
+
+@media (--all-desktop) {
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  input[type=date],
+  input[type=time],
+  select {
+    padding: 0.75em;
+  }
+}
+
+label {
+  cursor: pointer;
+}
+
+.help {
+  margin: 0.5em;
+  line-height: 1.25em;
+  font-size: var(--font-size-small);
+}
+
+.form-search {
+  color: var(--color-success);
+
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  input[type=date] {
+    border-color: var(--color-success);
+  }
+
+  select {
+    border-color: var(--color-success);
+  }
+}
+
+.form-search-disabled {
+  color: var(--color-fg-lightgray);
+
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  input[type=date] {
+    border-color: var(--color-border-white);
+  }
+
+  select {
+    border-color: var(--color-border-white);
+  }
+}
+
+.form-error {
+  color: var(--color-danger);
+
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  input[type=date] {
+    border-color: var(--color-danger);
+  }
+
+  select {
+    border-color: var(--color-danger);
+  }
+}
+
+.form-warning {
+  color: var(--color-warning);
+
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  input[type=date] {
+    border-color: var(--color-warning);
+  }
+
+  select {
+    border-color: var(--color-warning);
   }
 }

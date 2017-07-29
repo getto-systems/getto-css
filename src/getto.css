@@ -4,19 +4,19 @@
 @import "css/font.css";
 @import "css/size.css";
 @import "css/color.css";
-@import "css/link.css";
 @import "css/form.css";
 @import "css/text.css";
 @import "css/data.css";
-@import "css/display.css";
+@import "css/alert.css";
+@import "css/badge.css";
 
-@import "css/loginPage.css";
+@import "css/base.css";
 @import "css/main.css";
-
-@import "css/notfound.css";
+@import "css/login.css";
 
 @import "css/dashboard.css";
-@import "css/listPage.css";
-@import "css/tablePage.css";
-@import "css/editPage.css";
-@import "css/profilePage.css";
+@import "css/notfound.css";
+@import "css/profile.css";
+@import "css/list.css";
+@import "css/table.css";
+@import "css/edit.css";

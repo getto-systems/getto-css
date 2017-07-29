@@ -8,38 +8,40 @@
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
-    <div>
-      <div class="loginPage">
-        <div class="loginPage-titleContainer">
-          <h2 class="loginPage-subTitle">GETTO</h2>
-          <h1 class="loginPage-title">Admin Css</h1>
-          <h2 class="loginPage-subTitle">
-            simple
-            <span class="loginPage-subTitle-break"></span>
-            admin theme
-          </h2>
-        </div>
-        <form class="loginPage-form" method="get" action="/login-error.html">
-          <div class="loginPage-row">
-            <label>メール : <input type="text" class="loginPage-textbox"></label>
-          </div>
-          <div class="loginPage-row">
-            <label>パスワード : <input type="password" class="loginPage-textbox"></label>
-          </div>
-          <div class="loginPage-row">
-            <label class="loginPage-checkboxLabel">
-              <input type="checkbox" class="loginPage-checkbox"> ログイン情報を２週間記憶する
-            </label>
-          </div>
-          <div class="loginPage-row is-button"><button class="loginPage-button">ログイン</button></div>
-          <div class="loginPage-row">
-            <a class="loginPage-link" href="#"><i class="fa fa-question-circle"></i> パスワードがわかりません</a>
-          </div>
-        </form>
-      </div>
-      <div class="mainMenu-footer">
-        version : 0.0.10
-      </div>
+    <div class="LoginLayout">
+      <article>
+        <header>
+          <p>
+          <small>GETTO</small>
+          <br>
+          Admin CSS
+          <br>
+          <small>Simple Admin Theme</small>
+          </p>
+        </header>
+        <section>
+          <form method="get" action="/login-error.html">
+            <p><label>メール：<input type="email"></label></p>
+            <p><label>パスワード：<input type="password"></label></p>
+            <p><label><input type="checkbox"> ログイン情報を２週間記憶する</label></p>
+            <button>ログイン</button>
+            <p><a href="#"><i class="fa fa-question-circle"></i> パスワードがわかりません</a></p>
+          </form>
+        </section>
+      </article>
+      <footer>
+        version : 0.1.0
+      </footer>
     </div>
+    <script>
+      document.forms[0].elements[3].addEventListener("click", function(e){
+        var connectingClass = "is-connecting";
+        if(this.className != connectingClass) {
+          this.className = connectingClass;
+          this.innerHTML = '<i class="fa fa-spin fa-spinner"></i>';
+          e.preventDefault();
+        }
+      });
+    </script>
   </body>
 </html>

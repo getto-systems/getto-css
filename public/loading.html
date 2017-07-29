@@ -8,24 +8,27 @@
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
-    <div>
-      <div class="loginPage">
-        <div class="loginPage-titleContainer">
-          <h2 class="loginPage-subTitle">GETTO</h2>
-          <h1 class="loginPage-title">Admin Css</h1>
-          <h2 class="loginPage-subTitle">- simple admin theme -</h1>
-        </div>
-        <div class="loginPage-alert is-gray">
-          <i class="fa fa-spin fa-refresh"></i>
-          Loading...
-        </div>
-        <div class="loginPage-row is-button">
-          <a class="loginPage-button" href="/load-error.html">再読み込み</a>
-        </div>
-      </div>
-      <div class="mainMenu-footer">
-        version : 0.0.10
-      </div>
+    <div class="LoginLayout">
+      <article>
+        <header>
+          <p>
+          <small>GETTO</small>
+          <br>
+          Admin CSS
+          <br>
+          <small>Simple Admin Theme</small>
+          </p>
+        </header>
+        <section>
+          <p><i class="fa fa-spin fa-spinner"></i> Loading...</p>
+          <form method="get" action="/">
+            <p><a href="/load-error.html"><i class="fa fa-refresh"></i> 再読み込み</a></p>
+          </form>
+        </section>
+      </article>
+      <footer>
+        version : 0.1.0
+      </footer>
     </div>
   </body>
 </html>

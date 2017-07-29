@@ -8,175 +8,165 @@
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
-    <div>
-      <div class="mainContent">
-        <h1 class="mainContent-title">集計1</h1>
-        <ul class="mainContent-breadcrumb">
-          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/">
-            <span class="mainContent-breadcrumb-item-icon"><i class="fa fa-dashboard"></i></span>
-            ダッシュボード
-          </a></li>
-          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/list.html">集計1</a></li>
-        </ul>
-
-        <div class="mainContent-body">
-          <div class="tablePage">
-            <form class="tablePage-params" action="table.html" method="get">
-              <select class="tablePage-params-select">
+    <div class="MainLayout">
+      <header>
+        <p>
+        <small>GETTO</small>
+        <wbr>
+        Admin CSS
+        </p>
+      </header>
+      <article>
+        <header>
+          <h1>データ２</h1>
+          <ul>
+            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+            <li><a href="/table.html"><i class="fa fa-file"></i> データ２</a></li>
+          </ul>
+        </header>
+        <section class="table">
+          <section class="search">
+            <form action="/table.html" method="get">
+              <select>
                 <option>月間</option>
                 <option>週間</option>
               </select>
-              <select class="tablePage-params-select">
+              <select>
                 <option>2017/01/01</option>
                 <option>2017/01/02</option>
                 <option>2017/01/03</option>
               </select>
 
-              <div class="tablePage-params-radioContainer">
-                <label class="tablePage-params-radio"><input type="radio" name="sheet"> 形式1</label>
-                <label class="tablePage-params-radio"><input type="radio" name="sheet"> 形式2</label>
-                <label class="tablePage-params-radio"><input type="radio" name="sheet"> 形式3</label>
-              </div>
-              <div class="tablePage-params-action">
-                <button class="tablePage-params-button" type="button">ダウンロード</button>
-              </div>
+              <ul>
+                <li><label><input type="radio" name="sheet"> 形式1</label></li>
+                <li><label><input type="radio" name="sheet"> 形式2</label></li>
+                <li><label><input type="radio" name="sheet"> 形式3</label></li>
+              </ul>
+
+              <button>集計</button>
             </form>
+          </section>
 
-            <div class="data-loading">
+          <section class="data">
+            <p id="loading" class="data-loading">
               <i class="fa fa-spin fa-refresh"></i> 読み込み中
-            </div>
+            </p>
 
-            <div class="tablePage-tableContainer">
+            <section id="data" style="display:none">
+              <section class="download">
+                <a href="#"><i class="fa fa-download"></i> ダウンロード</a>
+              </section>
+
               <table class="tablePage-table">
-                <thead class="tablePage-table-thead">
+                <thead>
                   <tr>
-                    <th class="tablePage-table-header" rowspan="2">クライアント</th>
-                    <th class="tablePage-table-header is-double" rowspan="2">担当者</th>
+                    <th rowspan="2">クライアント</th>
+                    <th class="is-double" rowspan="2">担当者</th>
 
-                    <th class="tablePage-table-header" colspan="2">仕入</th>
-                    <th class="tablePage-table-header" colspan="2">売上</th>
+                    <th colspan="2">仕入</th>
+                    <th colspan="2">売上</th>
                   </tr>
                   <tr>
-                    <th class="tablePage-table-header">部門1</th>
-                    <th class="tablePage-table-header">部門2</th>
-                    <th class="tablePage-table-header">部門1</th>
-                    <th class="tablePage-table-header">部門2</th>
+                    <th>部門1</th>
+                    <th>部門2</th>
+                    <th>部門1</th>
+                    <th>部門2</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="tablePage-table-cell">クライアント1</td>
-                    <td class="tablePage-table-cell is-double">山田花子</td>
-                    <td class="tablePage-table-cell">10</td>
-                    <td class="tablePage-table-cell">20</td>
-                    <td class="tablePage-table-cell">30</td>
-                    <td class="tablePage-table-cell">40</td>
+                    <td>クライアント1</td>
+                    <td class="is-double">山田花子</td>
+                    <td>10</td>
+                    <td>20</td>
+                    <td>30</td>
+                    <td>40</td>
                   </tr>
                   <tr>
-                    <td class="tablePage-table-cell">クライアント2</td>
-                    <td class="tablePage-table-cell is-double">鈴木太郎</td>
-                    <td class="tablePage-table-cell">10</td>
-                    <td class="tablePage-table-cell">20</td>
-                    <td class="tablePage-table-cell">30</td>
-                    <td class="tablePage-table-cell">40</td>
+                    <td>クライアント2</td>
+                    <td class="is-double">鈴木太郎</td>
+                    <td>10</td>
+                    <td>20</td>
+                    <td>30</td>
+                    <td>40</td>
                   </tr>
                   <tr>
-                    <td class="tablePage-table-cell">クライアント3</td>
-                    <td class="tablePage-table-cell is-double">田中佳子</td>
-                    <td class="tablePage-table-cell">10</td>
-                    <td class="tablePage-table-cell">20</td>
-                    <td class="tablePage-table-cell">30</td>
-                    <td class="tablePage-table-cell">40</td>
+                    <td>クライアント3</td>
+                    <td class="is-double">田中佳子</td>
+                    <td>10</td>
+                    <td>20</td>
+                    <td>30</td>
+                    <td>40</td>
                   </tr>
                 </tbody>
               </table>
-            </div>
-          </div>
-        </div>
-
-        <div class="mainFooter">
+            </section>
+          </section>
+        </section>
+        <footer>
+          <p>
           <i class="fa fa-copyright"></i> GETTO systems
-        </div>
-      </div>
-
-      <div class="mainMenu">
-        <h2 class="mainMenu-logo">GETTO Admin CSS</h2>
-
-        <ul class="mainMenu-login">
-          <li class="mainMenu-login-user"><a class="mainMenu-login-link" href="/profile.html">
-            <p class="mainMenu-login-user-name">shun@getto.systems</p>
-
-            <ul class="mainMenu-login-channels">
-              <li class="mainMenu-login-channel">
-                <span class="mainMenu-login-channel-icon is-joined"><i class="fa fa-circle"></i></span>
-                main-channel
-              </li>
-              <li class="mainMenu-login-channel">
-                <span class="mainMenu-login-channel-icon is-joining"><i class="fa fa-spin fa-refresh"></i></span>
-                sub-channel
-              </li>
+          </p>
+        </footer>
+      </article>
+      <nav>
+        <header>
+          <p>
+          <small>GETTO</small>
+          <br>
+          Admin CSS
+          </p>
+        </header>
+        <address>
+          <a href="/profile.html">
+            <p>
+            管理者: shun.verylong@getto.systems
+            </p>
+            <ul>
+              <li><i class="fa fa-circle"></i> 管理</li>
             </ul>
-          </a></li>
-        </ul>
-
-        <div class="mainMenu-menu">
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">MAIN</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/">
-              <span class="mainMenu-item-icon"><i class="fa fa-dashboard"></i></span>
-              ダッシュボード
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/loading.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-refresh"></i></span>
-              Loading
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/login.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-user"></i></span>
-              ログイン
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/404.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-question"></i></span>
-              404 Not Found
-            </a></li>
+            <strong><i class="fa fa-exclamation-triangle"></i> アップデートが必要です</strong>
+          </a>
+        </address>
+        <section>
+          <ul>
+            <li>MAIN</li>
+            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+            <li><a href="/loading.html"><i class="fa fa-spinner"></i> Loading</a></li>
+            <li><a href="/login.html"><i class="fa fa-sign-in"></i> ログイン</a></li>
+            <li><a href="/404.html"><i class="fa fa-exclamation-triangle"></i> 404 Not Found</a></li>
           </ul>
-
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">DATA</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/list.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              データ1
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/list.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              データ2
-            </a></li>
+          <ul>
+            <li>DATA</li>
+            <li><a href="/list.html"><i class="fa fa-file"></i> データ１</a></li>
           </ul>
-
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">SUMMARY</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link is-active" href="/table.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              集計1
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/table.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              集計2
-            </a></li>
+          <ul>
+            <li>DATA</li>
+            <li class="is-active"><a href="/table.html"><i class="fa fa-folder"></i> データ２</a></li>
           </ul>
-
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">SYSTEM</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/edit.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-cogs"></i></span>
-              システム設定
-            </a></li>
+          <ul>
+            <li>DATA</li>
+            <li><a href="/edit.html"><i class="fa fa-folder-open"></i> データ３</a></li>
           </ul>
-        </div>
-
-        <div class="mainMenu-footer">
-          version : 0.0.10
-        </div>
-      </div>
+        </section>
+        <footer>
+          <p>
+          version: 0.1.0
+          </p>
+        </footer>
+      </nav>
     </div>
+    <script>
+      document.forms[0].elements[5].addEventListener("click", function(e){
+        if(!this.className) {
+          this.className = " ";
+
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("data").style.display = "block";
+
+          e.preventDefault();
+        }
+      });
+    </script>
   </body>
 </html>

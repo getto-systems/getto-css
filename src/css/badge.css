@@ -1,0 +1,32 @@
+@component badge {
+  display: inline-block;
+  margin: 0.1em;
+  padding: 0.5em 0.8em;
+  border-radius: 0.3em;
+  font-weight: normal;
+  font-style: normal;
+
+  @when small {
+    font-size: var(--font-size-small);
+  }
+
+  @when gray {
+    background-color: var(--color-bg-gray);
+  }
+  @when warning {
+    color: var(--color-fg-white);
+    background-color: var(--color-warning);
+  }
+  @when primary {
+    color: var(--color-fg-white);
+    background-color: var(--color-primary);
+  }
+  @when success {
+    color: var(--color-fg-white);
+    background-color: var(--color-success);
+  }
+  @when danger {
+    color: var(--color-fg-white);
+    background-color: var(--color-danger);
+  }
+}
