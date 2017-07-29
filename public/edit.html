@@ -8,216 +8,281 @@
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
-    <div>
-      <div class="mainContent">
-        <h1 class="mainContent-title">システム設定</h1>
-        <ul class="mainContent-breadcrumb">
-          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/">
-            <span class="mainContent-breadcrumb-item-icon"><i class="fa fa-dashboard"></i></span>
-            ダッシュボード
-          </a></li>
-          <li class="mainContent-breadcrumb-item"><a class="mainContent-breadcrumb-link" href="/list.html">システム設定</a></li>
-        </ul>
+    <div class="MainLayout">
+      <header>
+        <p>
+        <small>GETTO</small>
+        <wbr>
+        Admin CSS
+        </p>
+      </header>
+      <article>
+        <header>
+          <h1>データ３</h1>
+          <ul>
+            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+            <li><a href="/edit.html"><i class="fa fa-file"></i> データ３</a></li>
+          </ul>
+        </header>
+        <section class="edit">
+          <section>
+            <form action="/edit.html" method="get">
+              <h2>カテゴリ名</h2>
+              <table>
+                <tr>
+                  <th>状態</th>
+                  <td>
+                    <em class="badge is-gray">仮</em>
+                    <em class="badge is-warning">作業中</em>
+                    <em class="badge is-success">確認中</em>
+                    <em class="badge is-primary">完了</em>
+                    <em class="badge is-danger">エラー</em>
+                  </td>
+                </tr>
+                <tr>
+                  <th>名前</th>
+                  <td>GETTO Admin CSS</td>
+                </tr>
+                <tr>
+                  <th>メール</th>
+                  <td>shun@getto.systems</td>
+                </tr>
+                <tr>
+                  <th>更新日</th>
+                  <td>2017-03-03 10:00</td>
+                </tr>
+                <tr>
+                  <th>確認</th>
+                  <td>済</td>
+                </tr>
+                <tr>
+                  <th>作業</th>
+                  <td>チェック中</td>
+                </tr>
+              </table>
+              <footer>
+                <button>編集</button>
+                <button class="is-delete">削除</button>
+              </footer>
+            </form>
+          </section>
 
-        <div class="mainContent-body">
-          <div class="editPage">
-            <div class="editPage-boxContainer">
-              <form class="editPage-box" action="/edit.html" method="get">
-                <h3 class="editPage-box-title">設定名</h3>
-                <table>
-                  <tr>
-                    <th class="editPage-header">システム名</th>
-                    <td class="editPage-cell"><input class="editPage-field" type="text" value="GETTO Admin CSS"></td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">バージョン</th>
-                    <td class="editPage-cell"><input class="editPage-field is-small" type="text" value="0.0.0"></td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">更新日</th>
-                    <td class="editPage-cell"><input class="editPage-field" type="date" value="2017-03-03"></td>
-                  </tr>
-                </table>
-                <div class="editPage-action">
-                  <button class="editPage-button is-save" type="button">保存</button>
-                  <button class="editPage-button is-save is-modified" type="button">保存</button>
-                  <button class="editPage-button is-cancel" type="button">キャンセル</button>
-                </div>
-              </form>
-            </div>
+          <section>
+            <form action="/edit.html" method="get">
+              <h2>カテゴリ名</h2>
+              <table>
+                <tr>
+                  <th>名前</th>
+                  <td><input type="text" value="GETTO Admin CSS"></td>
+                </tr>
+                <tr>
+                  <th>メール</th>
+                  <td><input type="email" value="shun@getto.systems"></td>
+                </tr>
+                <tr>
+                  <th>更新日</th>
+                  <td><input type="date" value="2017-03-03"> <input type="time" value="10:00"></td>
+                </tr>
+                <tr>
+                  <th>確認</th>
+                  <td>
+                    <ul class="is-inline">
+                      <li><label><input type="radio"> 未</label></li>
+                      <li><label><input type="radio"> 済</label></li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <th>作業</th>
+                  <td>
+                    <ul>
+                      <li><label><input type="radio"> 編集中</label></li>
+                      <li><label><input type="radio"> チェック中</label></li>
+                      <li><label><input type="radio"> 完了</label></li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+              <footer>
+                <button class="is-save">保存</button>
+              </footer>
+            </form>
+          </section>
 
-            <div class="editPage-boxContainer">
-              <form class="editPage-box" action="/edit.html" method="get">
-                <h3 class="editPage-box-title">設定名</h3>
-                <table>
-                  <tr>
-                    <th class="editPage-header">システム名</th>
-                    <td class="editPage-cell">
-                      <input class="editPage-field is-error" type="text" value="">
-                      <div class="editPage-field-error">
-                        入力してください
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">バージョン</th>
-                    <td class="editPage-cell">
-                      <input class="editPage-field is-small is-warning" type="text" value="000">
-                      <div class="editPage-field-error is-warning">
-                        正しい形式ではありません
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">更新日</th>
-                    <td class="editPage-cell">
-                      <input class="editPage-field is-error" type="date" value="2017-03-03">
-                      <input class="editPage-field is-small is-error" type="time" value="09:30:00">
-                      <div class="editPage-field-error is-warning">
-                        正しい日付を入力してください
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-                <div class="editPage-action">
-                  <button class="editPage-button is-save" type="button">保存</button>
-                  <button class="editPage-button is-save is-modified" type="button">保存</button>
-                  <button class="editPage-button is-cancel" type="button">キャンセル</button>
-                </div>
-              </form>
-            </div>
+          <section>
+            <form action="/edit.html" method="get">
+              <h2>カテゴリ名</h2>
+              <table>
+                <tr class="form-error">
+                  <th>名前</th>
+                  <td>
+                    <input type="text" value="">
+                    <p class="help">入力してください</p>
+                  </td>
+                </tr>
+                <tr class="form-warning">
+                  <th>メール</th>
+                  <td>
+                    <input type="email" value="example">
+                    <p class="help">正しくありません</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>更新日</th>
+                  <td><input type="date" value="2017-03-03"> <input type="time" value="10:00"></td>
+                </tr>
+                <tr>
+                  <th>確認</th>
+                  <td>
+                    <ul class="is-inline">
+                      <li><label><input type="radio"> 未</label></li>
+                      <li><label><input type="radio"> 済</label></li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <th>作業</th>
+                  <td>
+                    <ul>
+                      <li><label><input type="radio"> 編集中</label></li>
+                      <li><label><input type="radio"> チェック中</label></li>
+                      <li><label><input type="radio"> 完了</label></li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+              <footer>
+                <button class="is-save">保存</button>
+              </footer>
+            </form>
+          </section>
 
-            <div class="editPage-boxContainer">
-              <div class="editPage-box">
-                <h3 class="editPage-box-title">設定名</h3>
-                <table>
-                  <tr>
-                    <th class="editPage-header">システム名</th>
-                    <td class="editPage-cell">GETTO Admin CSS</td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">バージョン</th>
-                    <td class="editPage-cell">0.0.0</td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">更新日</th>
-                    <td class="editPage-cell">2017/03/03</td>
-                  </tr>
-                </table>
-                <div class="editPage-action">
-                  <button class="editPage-button is-edit" type="button">編集</button>
-                </div>
-              </div>
-            </div>
+          <section class="double">
+            <form action="/edit.html" method="get">
+              <h2>カテゴリ名</h2>
+              <table>
+                <tr>
+                  <th>名前</th>
+                  <td><input type="text" value=""></td>
+                  <th>メール</th>
+                  <td><input type="email" value="example"></td>
+                </tr>
+                <tr>
+                  <th>更新日</th>
+                  <td><input type="date" value="2017-03-03"> <input type="time" value="10:00"></td>
+                  <th>確認</th>
+                  <td>
+                    <ul class="is-inline">
+                      <li><label><input type="radio"> 未</label></li>
+                      <li><label><input type="radio"> 済</label></li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <th>作業</th>
+                  <td>
+                    <ul>
+                      <li><label><input type="radio"> 編集中</label></li>
+                      <li><label><input type="radio"> チェック中</label></li>
+                      <li><label><input type="radio"> 完了</label></li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+              <footer>
+                <button class="is-save">保存</button>
+              </footer>
+            </form>
+          </section>
 
-            <div class="editPage-boxContainer">
-              <div class="editPage-box">
-                <h3 class="editPage-box-title">設定名</h3>
-                <table>
-                  <tr>
-                    <th class="editPage-header">システム名</th>
-                    <td class="editPage-cell">GETTO Admin CSS</td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">バージョン</th>
-                    <td class="editPage-cell">0.0.0</td>
-                  </tr>
-                  <tr>
-                    <th class="editPage-header">更新日</th>
-                    <td class="editPage-cell">2017/03/03</td>
-                  </tr>
-                </table>
-                <div class="editPage-action">
-                  <button class="editPage-button is-edit" type="button">編集</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mainFooter">
+          <section class="triple">
+            <form action="/edit.html" method="get">
+              <h2>カテゴリ名</h2>
+              <table>
+                <tr>
+                  <th>名前</th>
+                  <td><input type="text" value=""></td>
+                  <th>メール</th>
+                  <td><input type="email" value="example"></td>
+                  <th>更新日</th>
+                  <td><input type="date" value="2017-03-03"> <input type="time" value="10:00"></td>
+                  <th>確認</th>
+                  <td>
+                    <ul class="is-inline">
+                      <li><label><input type="radio"> 未</label></li>
+                      <li><label><input type="radio"> 済</label></li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <th>作業</th>
+                  <td>
+                    <ul>
+                      <li><label><input type="radio"> 編集中</label></li>
+                      <li><label><input type="radio"> チェック中</label></li>
+                      <li><label><input type="radio"> 完了</label></li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+              <footer>
+                <button class="is-save">保存</button>
+              </footer>
+            </form>
+          </section>
+        </section>
+        <footer>
+          <p>
           <i class="fa fa-copyright"></i> GETTO systems
-        </div>
-      </div>
-
-      <div class="mainMenu">
-        <h2 class="mainMenu-logo">GETTO Admin CSS</h2>
-
-        <ul class="mainMenu-login">
-          <li class="mainMenu-login-user"><a class="mainMenu-login-link" href="/profile.html">
-            <p class="mainMenu-login-user-name">shun@getto.systems</p>
-
-            <ul class="mainMenu-login-channels">
-              <li class="mainMenu-login-channel">
-                <span class="mainMenu-login-channel-icon is-joined"><i class="fa fa-circle"></i></span>
-                main-channel
-              </li>
-              <li class="mainMenu-login-channel">
-                <span class="mainMenu-login-channel-icon is-joining"><i class="fa fa-spin fa-refresh"></i></span>
-                sub-channel
-              </li>
+          </p>
+        </footer>
+      </article>
+      <nav>
+        <header>
+          <p>
+          <small>GETTO</small>
+          <br>
+          Admin CSS
+          </p>
+        </header>
+        <address>
+          <a href="/profile.html">
+            <p>
+            管理者: shun.verylong@getto.systems
+            </p>
+            <ul>
+              <li><i class="fa fa-circle"></i> 管理</li>
             </ul>
-          </a></li>
-        </ul>
-
-        <div class="mainMenu-menu">
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">MAIN</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/">
-              <span class="mainMenu-item-icon"><i class="fa fa-dashboard"></i></span>
-              ダッシュボード
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/loading.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-refresh"></i></span>
-              Loading
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/login.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-user"></i></span>
-              ログイン
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/404.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-question"></i></span>
-              404 Not Found
-            </a></li>
+            <strong><i class="fa fa-exclamation-triangle"></i> アップデートが必要です</strong>
+          </a>
+        </address>
+        <section>
+          <ul>
+            <li>MAIN</li>
+            <li class="is-active"><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+            <li><a href="/loading.html"><i class="fa fa-spinner"></i> Loading</a></li>
+            <li><a href="/login.html"><i class="fa fa-sign-in"></i> ログイン</a></li>
+            <li><a href="/404.html"><i class="fa fa-exclamation-triangle"></i> 404 Not Found</a></li>
           </ul>
-
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">DATA</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/list.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              データ1
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/list.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              データ2
-            </a></li>
+          <ul>
+            <li>DATA</li>
+            <li><a href="/list.html"><i class="fa fa-file"></i> データ１</a></li>
           </ul>
-
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">SUMMARY</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/table.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              集計1
-            </a></li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link" href="/table.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-folder"></i></span>
-              集計2
-            </a></li>
+          <ul>
+            <li>DATA</li>
+            <li><a href="/table.html"><i class="fa fa-folder"></i> データ２</a></li>
           </ul>
-
-          <ul class="mainMenu-items">
-            <li class="mainMenu-header">SYSTEM</li>
-            <li class="mainMenu-item"><a class="mainMenu-item-link is-active" href="/edit.html">
-              <span class="mainMenu-item-icon"><i class="fa fa-cogs"></i></span>
-              システム設定
-            </a></li>
+          <ul>
+            <li>DATA</li>
+            <li><a href="#"><i class="fa fa-folder-open"></i> データ３</a></li>
           </ul>
-        </div>
-
-        <div class="mainMenu-footer">
-          version : 0.0.10
-        </div>
-      </div>
+        </section>
+        <footer>
+          <p>
+          version: 0.1.0
+          </p>
+        </footer>
+      </nav>
     </div>
   </body>
 </html>

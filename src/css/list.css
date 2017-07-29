@@ -114,6 +114,7 @@ section.list {
           &.is-center {
             text-align: center;
           }
+
           &.is-right {
             text-align: right;
           }

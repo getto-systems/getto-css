@@ -25,4 +25,8 @@
     color: var(--color-fg-white);
     background-color: var(--color-success);
   }
+  @when danger {
+    color: var(--color-fg-white);
+    background-color: var(--color-danger);
+  }
 }
