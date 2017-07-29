@@ -28,6 +28,15 @@ section.list {
 
   > section.data {
     > section {
+      > section.download {
+        float: left;
+
+        > a {
+          display: inline-block;
+          margin: 0.5em;
+        }
+      }
+
       > nav {
         > ul {
           text-align: right;
@@ -114,6 +123,10 @@ section.list {
           textarea.is-large {
             width: 20em;
           }
+        }
+
+        tfoot {
+          border-bottom: 3px double var(--color-border-gray);
         }
 
         button {
