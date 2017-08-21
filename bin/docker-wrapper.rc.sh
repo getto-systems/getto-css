@@ -1,4 +1,4 @@
-docker_wrapper_map node 7.8.0
+docker_wrapper_map node 8.4.0
 docker_wrapper_map getto/awscli 1.0.0
 
 docker_wrapper_server_env_livereload(){
