@@ -1,5 +1,10 @@
 var gulp = require("gulp");
-var connect = require("gulp-connect");
+
+path = {
+  root: "public/",
+  dist: "public/dist/",
+  src: "src/**/*.css"
+};
 
 gulp.task("build", function(){
   var postcss = require("gulp-postcss");
@@ -43,25 +48,15 @@ gulp.task("build", function(){
       require("cssnano")
     ]) )
     .pipe( sourcemaps.write(".") )
-    .pipe( gulp.dest("public/dist/") )
-});
-
-gulp.task("dist", function(){
-  gulp.src("public/dist/*.css")
-    .pipe( connect.reload() )
-});
-gulp.task("html", function(){
-  gulp.src("public/*.html")
-    .pipe( connect.reload() )
+    .pipe( gulp.dest(path.dist) )
 });
 
 gulp.task("livereload", function(){
-  connect.server({
-    port: 8000,
-    root: "public/",
-    livereload: true
-  });
-  gulp.watch("src/**/*.css",["build"]);
-  gulp.watch("public/dist/*.css",["dist"]);
-  gulp.watch("public/*.html",["html"]);
+  gulp.src(path.root)
+    .pipe( require("gulp-server-livereload")({
+      host: "0.0.0.0",
+      livereload: true,
+      open: true
+    }) );
+  gulp.watch(path.src,["build"]);
 });
