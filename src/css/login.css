@@ -23,6 +23,13 @@
 
         @apply --alert;
         @apply --alert-danger;
+
+        &.is-gray {
+          @apply --alert-gray;
+        }
+        &.is-success {
+          @apply --alert-success;
+        }
       }
 
       > form {

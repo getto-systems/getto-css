@@ -20,19 +20,28 @@
           </p>
         </header>
         <section>
-          <p>メールかパスワードが違います</p>
-          <form method="get" action="/">
+          <p class="is-gray">パスワードリセットのためのメールを送信します</p>
+          <form method="get" action="/forget-success.html">
             <p><label>ログインID：<input type="text"></label></p>
-            <p><label>パスワード：<input type="password"></label></p>
-            <p><label><input type="checkbox"> ログイン情報を２週間記憶する</label></p>
-            <button>ログイン</button>
-            <p><a href="/forget.html"><i class="fa fa-question-circle"></i> パスワードがわかりません</a></p>
+            <button>メール送信</button>
+            <p><a href="/login.html"><i class="fa fa-sign-in"></i> ログイン画面へ</a></p>
           </form>
+          <p class="is-gray">登録されたメールアドレスにメールを送信します</p>
         </section>
       </article>
       <footer>
         version : 0.1.2
       </footer>
     </div>
+    <script>
+      document.forms[0].elements[1].addEventListener("click", function(e){
+        var connectingClass = "is-connecting";
+        if(this.className != connectingClass) {
+          this.className = connectingClass;
+          this.innerHTML = '<i class="fa fa-spin fa-spinner"></i>';
+          e.preventDefault();
+        }
+      });
+    </script>
   </body>
 </html>
