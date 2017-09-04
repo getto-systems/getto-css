@@ -55,7 +55,7 @@ gulp.task("livereload", function(){
   gulp.src(path.root)
     .pipe( require("gulp-server-livereload")({
       host: "0.0.0.0",
-      livereload: true,
+      livereload: {enable: true, port: process.env.LABO_PORT_PREFIX + "29"},
       open: true
     }) );
   gulp.watch(path.src,["build"]);
