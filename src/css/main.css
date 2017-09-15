@@ -10,6 +10,10 @@
 
       > small {
         font-size: var(--font-size-large);
+
+        > small {
+          font-size: var(--font-size-medium);
+        }
       }
     }
   }
