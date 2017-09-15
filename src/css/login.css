@@ -27,6 +27,7 @@
         &.is-gray {
           @apply --alert-gray;
         }
+
         &.is-success {
           @apply --alert-success;
         }
