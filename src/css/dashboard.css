@@ -50,10 +50,11 @@ section.dashboard {
     > ul {
       list-style: none;
       font-size: var(--font-size-large);
-      margin: 1em 0.5em;
+      margin: 1rem 0.5rem;
 
       > li {
         line-height: 1.5em;
+        margin: 0.5rem 0;
 
         > a {
           display: block;
