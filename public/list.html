@@ -54,142 +54,144 @@
             </form>
           </section>
 
-          <section class="data">
-            <p id="empty" class="data-empty">
+          <section class="data" id="empty">
+            <p class="data-empty">
               <i class="fa fa-exclamation-triangle"></i> データがありません
             </p>
+          </section>
 
-            <p id="loading" class="data-loading" style="display:none">
+          <section class="data" id="loading" style="display:none">
+            <p class="data-loading">
               <i class="fa fa-spin fa-spinner"></i> 読み込み中
             </p>
+          </section>
 
-            <section id="data" style="display:none">
-              <section class="download">
-                <a href="#"><i class="fa fa-download"></i> ダウンロード</a>
-              </section>
+          <section class="data" id="data" style="display:none">
+            <section class="download">
+              <a href="#"><i class="fa fa-download"></i> ダウンロード</a>
+            </section>
 
-              <nav>
-                <ul>
-                  <li><a href="/list.html">1</a></li>
-                  <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
-                  <li><a href="/list.html">5</a></li>
-                  <li><a href="/list.html">6</a></li>
-                  <li class="is-active"><a href="/list.html">7</a></li>
-                  <li><a href="/list.html">8</a></li>
-                  <li><a href="/list.html">9</a></li>
-                  <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
-                  <li><a href="/list.html">20</a></li>
-                </ul>
-              </nav>
-              <table>
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th><a class="is-active" href="/list.html">名前 <i class="fa fa-sort-down"></i></a></th>
-                    <th><a href="/list.html">日時 <i class="fa fa-sort"></i></a></th>
-                    <th><a href="/list.html">メール <i class="fa fa-sort"></i></a></th>
-                    <th><a href="/list.html">状態 <i class="fa fa-sort"></i></a></th>
-                    <th><a href="/list.html">状態 <i class="fa fa-sort"></i></a></th>
-                    <th><a href="/list.html">内容 <i class="fa fa-sort"></i></a></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a href="/edit.html"><i class="fa fa-edit"></i> 詳細</a></td>
-                    <td>
-                      データ1
-                      <em class="badge is-gray is-small">仮</em>
-                      <em class="badge is-warning is-small">作業中</em>
-                      <em class="badge is-success is-small">確認中</em>
-                      <em class="badge is-primary is-small">完了</em>
-                    </td>
-                    <td class="is-center">2017/11/10 12:32</td>
-                    <td>email@example.com</td>
-                    <td class="is-right">作業済</td>
-                    <td>その他の状態</td>
-                    <td>
-                      <div class="text-pre-wrap">* 項目１
+            <nav>
+              <ul>
+                <li><a href="/list.html">1</a></li>
+                <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                <li><a href="/list.html">5</a></li>
+                <li><a href="/list.html">6</a></li>
+                <li class="is-active"><a href="/list.html">7</a></li>
+                <li><a href="/list.html">8</a></li>
+                <li><a href="/list.html">9</a></li>
+                <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                <li><a href="/list.html">20</a></li>
+              </ul>
+            </nav>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th><a class="is-active" href="/list.html">名前 <i class="fa fa-sort-down"></i></a></th>
+                  <th><a href="/list.html">日時 <i class="fa fa-sort"></i></a></th>
+                  <th><a href="/list.html">メール <i class="fa fa-sort"></i></a></th>
+                  <th><a href="/list.html">状態 <i class="fa fa-sort"></i></a></th>
+                  <th><a href="/list.html">状態 <i class="fa fa-sort"></i></a></th>
+                  <th><a href="/list.html">内容 <i class="fa fa-sort"></i></a></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="/edit.html"><i class="fa fa-edit"></i> 詳細</a></td>
+                  <td>
+                    データ1
+                    <em class="badge is-gray is-small">仮</em>
+                    <em class="badge is-warning is-small">作業中</em>
+                    <em class="badge is-success is-small">確認中</em>
+                    <em class="badge is-primary is-small">完了</em>
+                  </td>
+                  <td class="is-center">2017/11/10 12:32</td>
+                  <td>email@example.com</td>
+                  <td class="is-right">作業済</td>
+                  <td>その他の状態</td>
+                  <td>
+                    <div class="text-pre-wrap">* 項目１
 * 項目２
 * 項目３</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="/edit.html"><i class="fa fa-edit"></i> 詳細</a></td>
-                    <td>
-                      <input class="is-large" type="text" value="データ2">
-                    </td>
-                    <td>
-                      <input type="date" value="2017-09-03">
-                      <input type="time" value="09:30:00">
-                    </td>
-                    <td>
-                      <input type="email" value="email@example.com">
-                    </td>
-                    <td class="is-right"><label><input type="checkbox"> 作業済</label></td>
-                    <td>
-                      <select>
-                        <option>作業済</option>
-                        <option>その他の状態</option>
-                      </select>
-                    </td>
-                    <td>
-                      <textarea class="is-large" rows="8">* 項目１
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="/edit.html"><i class="fa fa-edit"></i> 詳細</a></td>
+                  <td>
+                    <input class="is-large" type="text" value="データ2">
+                  </td>
+                  <td>
+                    <input type="date" value="2017-09-03">
+                    <input type="time" value="09:30:00">
+                  </td>
+                  <td>
+                    <input type="email" value="email@example.com">
+                  </td>
+                  <td class="is-right"><label><input type="checkbox"> 作業済</label></td>
+                  <td>
+                    <select>
+                      <option>作業済</option>
+                      <option>その他の状態</option>
+                    </select>
+                  </td>
+                  <td>
+                    <textarea class="is-large" rows="8">* 項目１
 * 項目２
 * 項目３</textarea>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="/edit.html"><i class="fa fa-edit"></i> 詳細</a></td>
-                    <td class="form-error">
-                      <input class="is-large" type="text" value="データ2">
-                      <p class="help">不明な名前です</p>
-                    </td>
-                    <td>
-                      <input type="date" value="2017-09-03">
-                      <input type="time" value="09:30:00">
-                    </td>
-                    <td class="form-warning">
-                      <input type="email" value="email@example.com">
-                      <p class="help">正しいメールアドレスではありません</p>
-                    </td>
-                    <td class="is-right"><label><input type="checkbox"> 作業済</label></td>
-                    <td class="form-error">
-                      <select>
-                        <option>作業済</option>
-                        <option>その他の状態</option>
-                      </select>
-                      <p class="help">選択してください</p>
-                    </td>
-                    <td>
-                      <textarea class="is-large" rows="8">* 項目１
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="/edit.html"><i class="fa fa-edit"></i> 詳細</a></td>
+                  <td class="form-error">
+                    <input class="is-large" type="text" value="データ2">
+                    <p class="help">不明な名前です</p>
+                  </td>
+                  <td>
+                    <input type="date" value="2017-09-03">
+                    <input type="time" value="09:30:00">
+                  </td>
+                  <td class="form-warning">
+                    <input type="email" value="email@example.com">
+                    <p class="help">正しいメールアドレスではありません</p>
+                  </td>
+                  <td class="is-right"><label><input type="checkbox"> 作業済</label></td>
+                  <td class="form-error">
+                    <select>
+                      <option>作業済</option>
+                      <option>その他の状態</option>
+                    </select>
+                    <p class="help">選択してください</p>
+                  </td>
+                  <td>
+                    <textarea class="is-large" rows="8">* 項目１
 * 項目２
 * 項目３</textarea>
-                    </td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="7">
-                      <button>保存</button>
-                      <button class="is-delete">削除</button>
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
-              <nav>
-                <ul>
-                  <li><a href="/list.html">1</a></li>
-                  <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
-                  <li><a href="/list.html">5</a></li>
-                  <li><a href="/list.html">6</a></li>
-                  <li class="is-active"><a href="/list.html">7</a></li>
-                  <li><a href="/list.html">8</a></li>
-                  <li><a href="/list.html">9</a></li>
-                  <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
-                  <li><a href="/list.html">20</a></li>
-                </ul>
-              </nav>
-            </section>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="7">
+                    <button>保存</button>
+                    <button class="is-delete">削除</button>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+            <nav>
+              <ul>
+                <li><a href="/list.html">1</a></li>
+                <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                <li><a href="/list.html">5</a></li>
+                <li><a href="/list.html">6</a></li>
+                <li class="is-active"><a href="/list.html">7</a></li>
+                <li><a href="/list.html">8</a></li>
+                <li><a href="/list.html">9</a></li>
+                <li class="is-ellipsis"><a href="/list.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                <li><a href="/list.html">20</a></li>
+              </ul>
+            </nav>
           </section>
         </section>
         <footer>
