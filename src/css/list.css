@@ -27,116 +27,114 @@ section.list {
   }
 
   > section.data {
-    > section {
-      > section.download {
-        float: left;
+    > section.download {
+      float: left;
 
-        > a {
+      > a {
+        display: inline-block;
+        margin: 0.5em;
+      }
+    }
+
+    > nav {
+      > ul {
+        text-align: right;
+
+        > li {
           display: inline-block;
-          margin: 0.5em;
-        }
-      }
 
-      > nav {
-        > ul {
-          text-align: right;
-
-          > li {
+          > a {
             display: inline-block;
-
-            > a {
-              display: inline-block;
-              color: var(--color-fg-gray);
-              border: 1px solid var(--color-border-gray);
-              margin: 0.1em;
-              padding: 0.5em 0.8em;
-
-              &:hover {
-                color: var(--color-danger);
-                border-color: var(--color-danger);
-              }
-            }
-
-            &.is-ellipsis {
-              > a {
-                border: none;
-                padding: 0.5em 0.1em;
-              }
-            }
-
-            &.is-active {
-              > a {
-                color: var(--color-danger);
-                border-color: var(--color-danger);
-              }
-            }
-          }
-        }
-      }
-
-      > form > table,
-      > table {
-        margin: 0.5em 0;
-
-        thead {
-          border-top: 1px solid var(--color-border-gray);
-          border-bottom: 3px double var(--color-border-gray);
-          font-size: var(--font-size-small);
-        }
-
-        th {
-          padding: 0.5rem;
-
-          a {
-            text-decoration: none;
-            cursor: pointer;
+            color: var(--color-fg-gray);
+            border: 1px solid var(--color-border-gray);
+            margin: 0.1em;
+            padding: 0.5em 0.8em;
 
             &:hover {
               color: var(--color-danger);
+              border-color: var(--color-danger);
             }
+          }
 
-            &.is-active {
+          &.is-ellipsis {
+            > a {
+              border: none;
+              padding: 0.5em 0.1em;
+            }
+          }
+
+          &.is-active {
+            > a {
               color: var(--color-danger);
+              border-color: var(--color-danger);
             }
           }
         }
+      }
+    }
 
-        tbody {
-          tr {
-            border-bottom: 1px solid var(--color-border-gray);
+    > form > table,
+    > table {
+      margin: 0.5em 0;
+
+      thead {
+        border-top: 1px solid var(--color-border-gray);
+        border-bottom: 3px double var(--color-border-gray);
+        font-size: var(--font-size-small);
+      }
+
+      th {
+        padding: 0.5rem;
+
+        a {
+          text-decoration: none;
+          cursor: pointer;
+
+          &:hover {
+            color: var(--color-danger);
+          }
+
+          &.is-active {
+            color: var(--color-danger);
           }
         }
+      }
 
-        td {
-          padding: 0.5rem 0.25rem;
-          vertical-align: top;
+      tbody {
+        tr {
+          border-bottom: 1px solid var(--color-border-gray);
+        }
+      }
 
-          &.is-center {
-            text-align: center;
-          }
+      td {
+        padding: 0.5rem 0.25rem;
+        vertical-align: top;
 
-          &.is-right {
-            text-align: right;
-          }
-
-          input.is-large,
-          select.is-large,
-          textarea.is-large {
-            width: 20em;
-          }
+        &.is-center {
+          text-align: center;
         }
 
-        tfoot {
-          border-bottom: 3px double var(--color-border-gray);
+        &.is-right {
+          text-align: right;
         }
 
-        button {
-          @apply --button;
-          @apply --button-primary;
+        input.is-large,
+        select.is-large,
+        textarea.is-large {
+          width: 20em;
+        }
+      }
 
-          &.is-delete {
-            @apply --button-gray-danger;
-          }
+      tfoot {
+        border-bottom: 3px double var(--color-border-gray);
+      }
+
+      button {
+        @apply --button;
+        @apply --button-primary;
+
+        &.is-delete {
+          @apply --button-gray-danger;
         }
       }
     }
