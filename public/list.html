@@ -174,7 +174,7 @@
                 <tr>
                   <td colspan="7">
                     <button>保存</button>
-                    <button class="is-delete">削除</button>
+                    <button class="is-delete" id="delete">削除</button>
                   </td>
                 </tr>
               </tfoot>
@@ -248,6 +248,18 @@
           </p>
         </footer>
       </nav>
+      <section class="modal" id="modal">
+        <section>
+          <h3>この項目を削除しますか？</h3>
+          <p>
+          この項目を削除すると、関連するデータも全て削除されます
+          </p>
+          <footer class="is-center">
+            <button class="is-delete" id="close-button1">削除</button>
+            <button class="is-gray" id="close-button2">キャンセル</button>
+          </footer>
+        </section>
+      </section>
     </div>
     <script>
       document.forms[0].elements[7].addEventListener("click", function(e){
@@ -271,6 +283,18 @@
             e.preventDefault();
           }
         }
+      });
+      document.getElementById("delete").addEventListener("click", function(e){
+        document.getElementById("modal").className = "modal is-active"
+        e.preventDefault();
+      });
+      document.getElementById("close-button1").addEventListener("click", function(e){
+        document.getElementById("modal").className = "modal"
+        e.preventDefault();
+      });
+      document.getElementById("close-button2").addEventListener("click", function(e){
+        document.getElementById("modal").className = "modal"
+        e.preventDefault();
       });
     </script>
   </body>
