@@ -1,0 +1,9 @@
+@media (--over-tablet) {
+  .column-single {
+    lost-column: 1/3 3 0;
+  }
+
+  .column-double {
+    lost-column: 2/3 3 0;
+  }
+}
