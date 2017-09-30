@@ -107,7 +107,7 @@ section.list {
       }
 
       td {
-        padding: 0.5rem 0.25rem;
+        padding: 0.5em 0.75em;
         vertical-align: top;
 
         &.is-center {
