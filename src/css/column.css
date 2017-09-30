@@ -1,9 +1,14 @@
 @media (--over-tablet) {
   .column-single {
-    lost-column: 1/3 3 0;
+    lost-column: 1/3 0 0;
   }
 
   .column-double {
-    lost-column: 2/3 3 0;
+    lost-column: 2/3 0 0;
+  }
+
+  .MainLayout > article > .column-single + footer,
+  .MainLayout > article > .column-double + footer {
+    lost-column: 1/1 1 0;
   }
 }
