@@ -3,4 +3,8 @@
     white-space: pre-wrap;
     line-height: 1.4em;
   }
+
+  @descendent no-wrap {
+    white-space: nowrap;
+  }
 }
