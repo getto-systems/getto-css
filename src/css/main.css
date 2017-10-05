@@ -31,6 +31,14 @@
       > h1 {
         font-size: var(--font-size-xlarge);
         @apply --header-title;
+
+        > small {
+          font-size: var(--font-size-large);
+
+          > small {
+            font-size: var(--font-size-medium);
+          }
+        }
       }
 
       > ul {
