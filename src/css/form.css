@@ -167,6 +167,29 @@ select {
   border-radius: 0;
 }
 
+input[type=email],
+input[type=password],
+input[type=text],
+input[type=date],
+input[type=time],
+select {
+  &.is-tiny {
+    width: 3em;
+  }
+
+  &.is-small {
+    width: 6em;
+  }
+
+  &.is-large {
+    width: 12em;
+  }
+
+  &.is-xlarge {
+    width: 20em;
+  }
+}
+
 @media (--all-mobile) {
   input[type=email],
   input[type=password],

@@ -13,6 +13,7 @@ section.modal {
 
   > section {
     background-color: white;
+    overflow: auto;
     border: 1px solid var(--color-border-gray);
     padding: 1em;
 
@@ -20,6 +21,7 @@ section.modal {
     top: 30%;
     left: 30%;
     width: 40%;
+    max-height: 60%;
 
     > h3 {
       font-size: var(--font-size-large);
@@ -40,11 +42,14 @@ section.modal {
       &.is-center {
         text-align: center;
       }
+
+      button {
+        font-size: var(--font-size-large);
+      }
     }
   }
 
   button {
-    font-size: var(--font-size-large);
     padding: 0.5em 1em;
 
     @apply --button;
