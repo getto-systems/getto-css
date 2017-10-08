@@ -153,6 +153,7 @@
 input[type=email],
 input[type=password],
 input[type=text],
+input[type=number],
 input[type=date],
 input[type=time] {
   appearance: none;
@@ -170,6 +171,7 @@ select {
 input[type=email],
 input[type=password],
 input[type=text],
+input[type=number],
 input[type=date],
 input[type=time],
 select {
@@ -194,6 +196,7 @@ select {
   input[type=email],
   input[type=password],
   input[type=text],
+  input[type=number],
   input[type=date],
   input[type=time],
   select {
@@ -205,6 +208,7 @@ select {
   input[type=email],
   input[type=password],
   input[type=text],
+  input[type=number],
   input[type=date],
   input[type=time],
   select {
@@ -228,10 +232,8 @@ label {
   input[type=email],
   input[type=password],
   input[type=text],
-  input[type=date] {
-    border-color: var(--color-success);
-  }
-
+  input[type=number],
+  input[type=date],
   select {
     border-color: var(--color-success);
   }
@@ -243,10 +245,8 @@ label {
   input[type=email],
   input[type=password],
   input[type=text],
-  input[type=date] {
-    border-color: var(--color-border-white);
-  }
-
+  input[type=number],
+  input[type=date],
   select {
     border-color: var(--color-border-white);
   }
@@ -258,10 +258,8 @@ label {
   input[type=email],
   input[type=password],
   input[type=text],
-  input[type=date] {
-    border-color: var(--color-danger);
-  }
-
+  input[type=number],
+  input[type=date],
   select {
     border-color: var(--color-danger);
   }
@@ -273,10 +271,8 @@ label {
   input[type=email],
   input[type=password],
   input[type=text],
-  input[type=date] {
-    border-color: var(--color-warning);
-  }
-
+  input[type=number],
+  input[type=date],
   select {
     border-color: var(--color-warning);
   }
