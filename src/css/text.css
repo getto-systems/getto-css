@@ -7,4 +7,20 @@
   @descendent no-wrap {
     white-space: nowrap;
   }
+
+  @descendent primary {
+    color: var(--color-primary);
+  }
+
+  @descendent danger {
+    color: var(--color-danger);
+  }
+
+  @descendent warning {
+    color: var(--color-warning);
+  }
+
+  @descendent success {
+    color: var(--color-success);
+  }
 }
