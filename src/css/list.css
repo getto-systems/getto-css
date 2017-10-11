@@ -21,6 +21,14 @@ section.list {
         > button {
           @apply --button;
           @apply --button-white-success;
+
+          &.is-primary {
+            @apply --button-primary;
+          }
+
+          &.is-cancel {
+            @apply --button-gray;
+          }
         }
       }
     }
