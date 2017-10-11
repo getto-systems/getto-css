@@ -83,6 +83,35 @@ section.list {
         font-size: var(--font-size-small);
       }
 
+      tbody {
+        tr {
+          border-bottom: 1px solid var(--color-border-gray);
+        }
+      }
+
+      tfoot {
+        border-bottom: 3px double var(--color-border-gray);
+      }
+
+      th,
+      td {
+        &.border-left {
+          border-left: 1px solid var(--color-border-gray);
+        }
+
+        &.border-right {
+          border-right: 1px solid var(--color-border-gray);
+        }
+
+        &.border-left-double {
+          border-left: 3px double var(--color-border-gray);
+        }
+
+        &.border-right-double {
+          border-right: 3px double var(--color-border-gray);
+        }
+      }
+
       th {
         padding: 0.5rem;
 
@@ -97,12 +126,6 @@ section.list {
           &.is-active {
             color: var(--color-danger);
           }
-        }
-      }
-
-      tbody {
-        tr {
-          border-bottom: 1px solid var(--color-border-gray);
         }
       }
 
@@ -123,10 +146,6 @@ section.list {
         textarea.is-large {
           width: 20em;
         }
-      }
-
-      tfoot {
-        border-bottom: 3px double var(--color-border-gray);
       }
 
       button {
