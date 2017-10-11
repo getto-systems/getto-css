@@ -17,6 +17,10 @@ section.list {
           @apply --button;
           @apply --button-white-success;
 
+          &.is-error {
+            @apply --button-danger;
+          }
+
           &.is-primary {
             @apply --button-primary;
           }
