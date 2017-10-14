@@ -26,6 +26,10 @@ section.edit {
         &.is-delete {
           @apply --button-gray-danger;
         }
+
+        &.is-cancel {
+          @apply --button-gray;
+        }
       }
 
       ul {
