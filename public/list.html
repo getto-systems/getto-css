@@ -191,6 +191,7 @@
                 <tr>
                   <td colspan="7">
                     <button id="modal">保存</button>
+                    <button id="modal2">完了</button>
                     <button class="is-delete" id="delete">削除</button>
                     <button class="is-cancel">キャンセル</button>
                   </td>
@@ -227,6 +228,18 @@
           <footer class="is-center">
             <button class="is-delete" id="close-button1">削除</button>
             <button class="is-gray" id="close-button2">キャンセル</button>
+          </footer>
+        </section>
+      </section>
+      <section class="modal" id="complete-modal">
+        <section>
+          <h3>この項目を完了しますか？</h3>
+          <p>
+          この項目を完了すると、関連するデータも全て完了になります
+          </p>
+          <footer class="is-center">
+            <button class="is-success" id="close-button4">完了</button>
+            <button class="is-gray" id="close-button5">キャンセル</button>
           </footer>
         </section>
       </section>
@@ -360,6 +373,18 @@
       });
       document.getElementById("close-button3").addEventListener("click", function(e){
         document.getElementById("table-modal").className = "modal"
+        e.preventDefault();
+      });
+      document.getElementById("modal2").addEventListener("click", function(e){
+        document.getElementById("complete-modal").className = "modal is-active"
+        e.preventDefault();
+      });
+      document.getElementById("close-button4").addEventListener("click", function(e){
+        document.getElementById("complete-modal").className = "modal"
+        e.preventDefault();
+      });
+      document.getElementById("close-button5").addEventListener("click", function(e){
+        document.getElementById("complete-modal").className = "modal"
         e.preventDefault();
       });
     </script>
