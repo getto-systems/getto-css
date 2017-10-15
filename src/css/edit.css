@@ -23,6 +23,10 @@ section.edit {
           @apply --button-primary;
         }
 
+        &.is-complete {
+          @apply --button-white-success;
+        }
+
         &.is-delete {
           @apply --button-gray-danger;
         }
