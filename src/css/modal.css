@@ -62,5 +62,9 @@ section.modal {
     &.is-delete {
       @apply --button-gray-danger;
     }
+
+    &.is-success {
+      @apply --button-success;
+    }
   }
 }
