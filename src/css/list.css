@@ -21,6 +21,10 @@ section.list {
             @apply --button-danger;
           }
 
+          &.is-delete {
+            @apply --button-gray-danger;
+          }
+
           &.is-primary {
             @apply --button-primary;
           }
