@@ -28,6 +28,11 @@ section.modal {
       width: 60%;
     }
 
+    &.is-tall {
+      top: 10%;
+      max-height: 80%;
+    }
+
     > h3 {
       font-size: var(--font-size-large);
       margin: 1em 0;
