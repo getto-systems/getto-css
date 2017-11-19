@@ -11,4 +11,5 @@ build:
       key-secret: $AWS_SECRET
       bucket-url: $AWS_S3_URL
       source-dir: public
+      delete-removed: false
       opts: --acl-private --cf-invalidate
