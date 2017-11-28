@@ -165,10 +165,17 @@ input[type=password],
 input[type=text],
 input[type=number],
 input[type=date],
-input[type=time] {
+input[type=time],
+textarea {
   appearance: none;
   border-radius: 0;
   border: 1px solid var(--color-border-gray);
+}
+
+textarea {
+  &.is-middle {
+    vertical-align: middle;
+  }
 }
 
 select {
@@ -184,7 +191,8 @@ input[type=text],
 input[type=number],
 input[type=date],
 input[type=time],
-select {
+select,
+textarea {
   &.is-tiny {
     width: 3em;
   }
@@ -209,7 +217,8 @@ select {
   input[type=number],
   input[type=date],
   input[type=time],
-  select {
+  select,
+  textarea {
     padding: 1.5em;
   }
 }
@@ -221,7 +230,8 @@ select {
   input[type=number],
   input[type=date],
   input[type=time],
-  select {
+  select,
+  textarea {
     padding: 0.75em;
   }
 }
@@ -270,7 +280,8 @@ label {
   input[type=text],
   input[type=number],
   input[type=date],
-  select {
+  select,
+  textarea {
     border-color: var(--color-danger);
   }
 }
@@ -283,7 +294,8 @@ label {
   input[type=text],
   input[type=number],
   input[type=date],
-  select {
+  select,
+  textarea {
     border-color: var(--color-warning);
   }
 }
