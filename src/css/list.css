@@ -101,12 +101,19 @@ section.list {
       thead {
         border-top: 1px solid var(--color-border-gray);
         border-bottom: 3px double var(--color-border-gray);
-        font-size: var(--font-size-small);
+
+        &.border-bottom-single {
+          border-bottom: 1px solid var(--color-border-gray);
+        }
       }
 
       tbody {
         tr {
           border-bottom: 1px solid var(--color-border-gray);
+
+          &.border-bottom-double {
+            border-bottom: 3px double var(--color-border-gray);
+          }
         }
       }
 
@@ -131,10 +138,6 @@ section.list {
         &.border-right-double {
           border-right: 3px double var(--color-border-gray);
         }
-      }
-
-      th {
-        padding: 0.5rem;
 
         &.is-left {
           text-align: left;
@@ -143,6 +146,19 @@ section.list {
         &.is-right {
           text-align: right;
         }
+
+        &.is-center {
+          text-align: center;
+        }
+
+        &.is-middle {
+          vertical-align: middle;
+        }
+      }
+
+      th {
+        font-size: var(--font-size-small);
+        padding: 0.5rem;
 
         a {
           text-decoration: none;
@@ -161,14 +177,6 @@ section.list {
       td {
         padding: 0.5em 0.75em;
         vertical-align: top;
-
-        &.is-center {
-          text-align: center;
-        }
-
-        &.is-right {
-          text-align: right;
-        }
 
         input.is-large,
         select.is-large,
