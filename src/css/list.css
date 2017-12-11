@@ -123,6 +123,8 @@ section.list {
 
       th,
       td {
+        vertical-align: middle;
+
         &.border-left {
           border-left: 1px solid var(--color-border-gray);
         }
@@ -151,8 +153,16 @@ section.list {
           text-align: center;
         }
 
-        &.is-middle {
-          vertical-align: middle;
+        &.is-top {
+          vertical-align: top;
+        }
+
+        &.is-bottom {
+          vertical-align: bottom;
+        }
+
+        &.is-baseline {
+          vertical-align: baseline;
         }
       }
 
@@ -176,7 +186,6 @@ section.list {
 
       td {
         padding: 0.5em 0.75em;
-        vertical-align: top;
 
         input.is-large,
         select.is-large,
