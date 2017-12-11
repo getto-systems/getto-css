@@ -210,10 +210,10 @@ section.list {
     > section.search {
       > form {
         > section {
-          lost-utility: clearfix;
+          @util clearfix;
 
           > div {
-            lost-column: 1/3;
+            float: left;
           }
         }
       }
