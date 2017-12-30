@@ -42,8 +42,8 @@
     "pump": "^2.0.0",
     "stylelint": "^7.9.0",
     "stylelint-config-standard": "^16.0.0",
-    "ms": "~> 0.6.2",
-    "send": "~> 0.8.5",
-    "serve-index": "~> 1.1.6"
+    "ms": "~> 0.7.1",
+    "send": "~> 0.11.1",
+    "serve-index": "~> 1.6.3"
   }
 }
