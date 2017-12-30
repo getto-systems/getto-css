@@ -1,18 +1,21 @@
-var gulp = require("gulp");
+"use strict";
+const gulp = require("gulp");
+const pump = require("pump");
 
-path = {
+const path = {
   root: "public/",
   dist: "public/dist/",
   src: "src/**/*.css"
 };
 
-gulp.task("build", function(){
+gulp.task("build", function(cb){
   var postcss = require("gulp-postcss");
   var sourcemaps = require("gulp-sourcemaps");
 
-  return gulp.src("src/getto.css")
-    .pipe( sourcemaps.init() )
-    .pipe( postcss([
+  pump([
+    gulp.src("src/getto.css"),
+    sourcemaps.init(),
+    postcss([
       require("postcss-import")({
         "plugins": [
           require("stylelint")({
@@ -46,17 +49,20 @@ gulp.task("build", function(){
       require("autoprefixer"),
       require("postcss-reporter")({"clearMessages": true}),
       require("cssnano")
-    ]) )
-    .pipe( sourcemaps.write(".") )
-    .pipe( gulp.dest(path.dist) )
+    ]),
+    sourcemaps.write("."),
+    gulp.dest(path.dist),
+  ],cb);
 });
 
-gulp.task("livereload", function(){
-  gulp.src(path.root)
-    .pipe( require("gulp-server-livereload")({
+gulp.task("livereload", function(cb){
+  pump([
+    gulp.src(path.root),
+    require("gulp-server-livereload")({
       host: "0.0.0.0",
       livereload: {enable: true, port: process.env.LABO_PORT_PREFIX + "29"},
       open: true
-    }) );
+    }),
+  ],cb);
   gulp.watch(path.src,["build"]);
 });

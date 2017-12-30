@@ -135,6 +135,15 @@
         > li {
           display: block;
 
+          > b > a {
+            color: var(--color-fg-gray);
+
+            &:hover {
+              color: var(--color-danger);
+            }
+          }
+
+          > b > a,
           > a {
             display: block;
           }
