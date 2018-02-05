@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>GETTO Admin CSS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
@@ -22,11 +22,11 @@
         <header>
           <h1>404 Page Not Found</h1>
           <ul>
-            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
+            <li><a href="/"><i class="fas fa-home"></i> ホーム</a></li>
           </ul>
         </header>
         <section class="notfound">
-          <h2><i class="fa fa-exclamation-triangle"></i> ページが見つかりませんでした</h2>
+          <h2><i class="fas fa-2x fa-exclamation-triangle"></i> ページが見つかりませんでした</h2>
           <p>
           指定されたページは存在しません<br>
           前のページに戻るか、メニューから選択してください
@@ -37,7 +37,7 @@
         </section>
         <footer>
           <p>
-          <i class="fa fa-copyright"></i> GETTO systems
+          <i class="far fa-copyright"></i> GETTO systems
           </p>
         </footer>
       </article>
@@ -52,33 +52,37 @@
           </p>
         </header>
         <address>
-          <a href="/profile.html">
-            <ul>
-              <li><i class="fa fa-circle"></i> 管理</li>
-            </ul>
-            <strong><i class="fa fa-exclamation-triangle"></i> アップデートが必要です</strong>
-          </a>
+          <ul>
+            <li><a href="#" class="success"><i class="fas fa-circle"></i> UI１</a></li>
+            <li><a href="#" class="gray"><i class="fas fa-circle"></i> UI２</a></li>
+          </ul>
+          <footer>
+            <a href="/profile.html"><i class="fas fa-user-circle"></i> 管理</a>
+            <a href="/profile.html">
+              <strong><i class="fas fa-exclamation-circle"></i> アップデートが必要です</strong>
+            </a>
+          </footer>
         </address>
         <section>
           <ul>
-            <li>MAIN</li>
-            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
-            <li><a href="/loading.html"><i class="fa fa-spinner"></i> Loading</a></li>
-            <li><a href="/login.html"><i class="fa fa-sign-in"></i> ログイン</a></li>
-            <li><a href="/404.html"><i class="fa fa-exclamation-triangle"></i> 404 Not Found</a></li>
+            <li><b><a href="#">MAIN <i class="fas fa-caret-down"></i></b></li>
+            <li><a href="/"><i class="fas fa-fw fa-home"></i> ホーム</a></li>
+            <li><a href="/loading.html"><i class="fas fa-fw fa-spinner"></i> Loading</a></li>
+            <li><a href="/login.html"><i class="fas fa-fw fa-sign-in-alt"></i> ログイン</a></li>
+            <li class="is-active"><a href="/404.html"><i class="fas fa-fw fa-exclamation-triangle"></i> 404 Not Found</a></li>
           </ul>
           <ul>
             <li>DATA</li>
-            <li><a href="/list.html"><i class="fa fa-file"></i> データ１</a></li>
-            <li><a href="/list-short.html"><i class="fa fa-file"></i> データ-short</a></li>
+            <li><a href="/list.html"><i class="fas fa-fw fa-file"></i> データ１</a></li>
+            <li><a href="/list-short.html"><i class="fas fa-fw fa-file"></i> データ-short</a></li>
           </ul>
           <ul>
             <li>DATA</li>
-            <li><a href="/table.html"><i class="fa fa-folder"></i> データ２</a></li>
+            <li><a href="/table.html"><i class="fas fa-fw fa-folder"></i> データ２</a></li>
           </ul>
           <ul>
             <li>DATA</li>
-            <li><a href="/edit.html"><i class="fa fa-folder-open"></i> データ３</a></li>
+            <li><a href="/edit.html"><i class="fas fa-fw fa-folder-open"></i> データ３</a></li>
           </ul>
         </section>
         <footer>

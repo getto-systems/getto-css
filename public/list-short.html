@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>GETTO Admin CSS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
@@ -20,10 +20,10 @@
       </header>
       <article>
         <header>
-          <h1>ダッシュボード</h1>
+          <h1>データ-short</h1>
           <ul>
-            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
-            <li><a href="/list-short.html"><i class="fa fa-file"></i> データ-short</a></li>
+            <li><a href="/"><i class="fas fa-home"></i> ホーム</a></li>
+            <li><a href="/list-short.html"><i class="fas fa-file"></i> データ-short</a></li>
           </ul>
         </header>
         <section class="list column-double">
@@ -45,31 +45,31 @@
 
           <section class="data" id="empty">
             <p class="data-empty">
-              <i class="fa fa-exclamation-triangle"></i> データがありません
+              <i class="fas fa-exclamation-triangle"></i> データがありません
             </p>
           </section>
 
           <section class="data" id="loading" style="display:none">
             <p class="data-loading">
-              <i class="fa fa-spin fa-spinner"></i> 読み込み中
+              <i class="fas fa-spin fa-pulse fa-spinner"></i> 読み込み中
             </p>
           </section>
 
           <section class="data" id="data" style="display:none">
             <section class="download">
-              <a href="#"><i class="fa fa-download"></i> ダウンロード</a>
+              <a href="#"><i class="fas fa-download"></i> ダウンロード</a>
             </section>
 
             <nav>
               <ul>
                 <li><a href="/list-short.html">1</a></li>
-                <li class="is-ellipsis"><a href="/list-short.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                <li class="is-ellipsis"><a href="/list-short.html"><i class="fas fa-ellipsis-h"></i></a></li>
                 <li><a href="/list-short.html">5</a></li>
                 <li><a href="/list-short.html">6</a></li>
                 <li class="is-active"><a href="/list-short.html">7</a></li>
                 <li><a href="/list-short.html">8</a></li>
                 <li><a href="/list-short.html">9</a></li>
-                <li class="is-ellipsis"><a href="/list-short.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                <li class="is-ellipsis"><a href="/list-short.html"><i class="fas fa-ellipsis-h"></i></a></li>
                 <li><a href="/list-short.html">20</a></li>
               </ul>
             </nav>
@@ -77,13 +77,13 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th><a class="is-active" href="/list-short.html">名前 <i class="fa fa-sort-down"></i></a></th>
-                  <th><a href="/list-short.html">状態 <i class="fa fa-sort"></i></a></th>
+                  <th><a class="is-active" href="/list-short.html">名前 <i class="fas fa-sort-down"></i></a></th>
+                  <th><a href="/list-short.html">状態 <i class="fas fa-sort"></i></a></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><a href="/edit.html"><i class="fa fa-edit"></i> 詳細</a></td>
+                  <td><a href="/edit.html"><i class="fas fa-edit"></i> 詳細</a></td>
                   <td>データ1 </td>
                   <td class="is-right">作業済</td>
                 </tr>
@@ -100,13 +100,13 @@
             <nav>
               <ul>
                 <li><a href="/list-short.html">1</a></li>
-                <li class="is-ellipsis"><a href="/list-short.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                <li class="is-ellipsis"><a href="/list-short.html"><i class="fas fa-ellipsis-h"></i></a></li>
                 <li><a href="/list-short.html">5</a></li>
                 <li><a href="/list-short.html">6</a></li>
                 <li class="is-active"><a href="/list-short.html">7</a></li>
                 <li><a href="/list-short.html">8</a></li>
                 <li><a href="/list-short.html">9</a></li>
-                <li class="is-ellipsis"><a href="/list-short.html"><i class="fa fa-ellipsis-h"></i></a></li>
+                <li class="is-ellipsis"><a href="/list-short.html"><i class="fas fa-ellipsis-h"></i></a></li>
                 <li><a href="/list-short.html">20</a></li>
               </ul>
             </nav>
@@ -114,7 +114,7 @@
         </section>
         <footer>
           <p>
-          <i class="fa fa-copyright"></i> GETTO systems
+          <i class="far fa-copyright"></i> GETTO systems
           </p>
         </footer>
       </article>
@@ -129,33 +129,37 @@
           </p>
         </header>
         <address>
-          <a href="/profile.html">
-            <ul>
-              <li><i class="fa fa-circle"></i> 管理</li>
-            </ul>
-            <strong><i class="fa fa-exclamation-triangle"></i> アップデートが必要です</strong>
-          </a>
+          <ul>
+            <li><a href="#" class="success"><i class="fas fa-circle"></i> UI１</a></li>
+            <li><a href="#" class="gray"><i class="fas fa-circle"></i> UI２</a></li>
+          </ul>
+          <footer>
+            <a href="/profile.html"><i class="fas fa-user-circle"></i> 管理</a>
+            <a href="/profile.html">
+              <strong><i class="fas fa-exclamation-circle"></i> アップデートが必要です</strong>
+            </a>
+          </footer>
         </address>
         <section>
           <ul>
-            <li>MAIN</li>
-            <li><a href="/"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
-            <li><a href="/loading.html"><i class="fa fa-spinner"></i> Loading</a></li>
-            <li><a href="/login.html"><i class="fa fa-sign-in"></i> ログイン</a></li>
-            <li><a href="/404.html"><i class="fa fa-exclamation-triangle"></i> 404 Not Found</a></li>
+            <li><b><a href="#">MAIN <i class="fas fa-caret-down"></i></b></li>
+            <li><a href="/"><i class="fas fa-fw fa-home"></i> ホーム</a></li>
+            <li><a href="/loading.html"><i class="fas fa-fw fa-spinner"></i> Loading</a></li>
+            <li><a href="/login.html"><i class="fas fa-fw fa-sign-in-alt"></i> ログイン</a></li>
+            <li><a href="/404.html"><i class="fas fa-fw fa-exclamation-triangle"></i> 404 Not Found</a></li>
           </ul>
           <ul>
             <li>DATA</li>
-            <li><a href="/list.html"><i class="fa fa-file"></i> データ１</a></li>
-            <li class="is-active"><a href="/list-short.html"><i class="fa fa-file"></i> データ-short</a></li>
+            <li><a href="/list.html"><i class="fas fa-fw fa-file"></i> データ１</a></li>
+            <li class="is-active"><a href="/list-short.html"><i class="fas fa-fw fa-file"></i> データ-short</a></li>
           </ul>
           <ul>
             <li>DATA</li>
-            <li><a href="/table.html"><i class="fa fa-folder"></i> データ２</a></li>
+            <li><a href="/table.html"><i class="fas fa-fw fa-folder"></i> データ２</a></li>
           </ul>
           <ul>
             <li>DATA</li>
-            <li><a href="/edit.html"><i class="fa fa-folder-open"></i> データ３</a></li>
+            <li><a href="/edit.html"><i class="fas fa-fw fa-folder-open"></i> データ３</a></li>
           </ul>
         </section>
         <footer>

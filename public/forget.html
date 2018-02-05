@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>GETTO Admin CSS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
@@ -24,7 +24,7 @@
           <form method="get" action="/forget-success.html">
             <p><label>ログインID：<input type="text"></label></p>
             <button>メール送信</button>
-            <p><a href="/login.html"><i class="fa fa-sign-in"></i> ログイン画面へ</a></p>
+            <p><a href="/login.html"><i class="fas fa-sign-in-alt"></i> ログイン画面へ</a></p>
           </form>
           <p class="is-gray">登録されたメールアドレスにメールを送信します</p>
         </section>
@@ -38,7 +38,7 @@
         var connectingClass = "is-connecting";
         if(this.className != connectingClass) {
           this.className = connectingClass;
-          this.innerHTML = '<i class="fa fa-spin fa-spinner"></i>';
+          this.innerHTML = '<i class="fas fa-spin fa-pulse fa-spinner"></i>';
           e.preventDefault();
         }
       });

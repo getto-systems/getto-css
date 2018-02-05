@@ -1,13 +1,8 @@
 section.notfound {
   > h2 {
     font-size: var(--font-size-xlarge);
+    color: var(--color-warning);
     margin: 0.5rem 0 1rem 1rem;
-
-    > i {
-      color: var(--color-warning);
-      font-size: var(--font-size-xxlarge);
-      vertical-align: middle;
-    }
   }
 
   > p {
