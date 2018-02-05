@@ -1,19 +1,10 @@
 section.dashboard {
   > dl {
     > dd {
-      > a {
+      > section {
         display: block;
         color: var(--color-fg-gray);
         @apply --bordered-box;
-
-        &:hover {
-          color: var(--color-danger);
-          border-color: var(--color-danger);
-
-          > h2 {
-            border-color: var(--color-danger);
-          }
-        }
 
         > h2 {
           font-size: var(--font-size-large);
@@ -42,6 +33,11 @@ section.dashboard {
           display: block;
           width: 100%;
         }
+
+        > footer {
+          text-align: right;
+          @apply --footer-action;
+        }
       }
     }
   }
@@ -57,11 +53,11 @@ section.dashboard {
       }
 
       > dd.double {
-        lost-column: 2/3 3 0;
+        lost-column: 2/3 0 0;
       }
 
       > dd.triple {
-        lost-column: 3/3 3 0;
+        lost-column: 3/3 0 0;
       }
     }
   }

@@ -27,11 +27,6 @@ body {
   font-family: 'Hind', sans-serif;
 }
 
-i.fa {
-  width: 1em;
-  text-align: center;
-}
-
 a {
   color: var(--color-primary);
   text-decoration: none;
