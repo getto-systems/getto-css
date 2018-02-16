@@ -55,7 +55,8 @@
                   </tr>
                 </table>
                 <footer>
-                  <button>保存</button>
+                  <button class="is-save">保存</button>
+                  <button class="is-cancel">キャンセル</button>
                 </footer>
               </form>
             </section>
@@ -145,7 +146,7 @@
     <script>
       document.forms[0].elements[4].addEventListener("click", function(e){
         var connectingClass = "is-connecting";
-        if(!this.className) {
+        if(this.className == "is-save") {
           this.className = connectingClass;
           this.innerHTML = '<i class="fa fa-spin fa-spinner"></i>';
           e.preventDefault();

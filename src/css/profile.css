@@ -21,9 +21,16 @@ section.profile {
           font-size: var(--font-size-small);
 
           > button {
-            padding: 0.25em 1em;
             @apply --button;
-            @apply --button-primary;
+            @apply --button-gray-primary;
+
+            &.is-save {
+              @apply --button-primary;
+            }
+
+            &.is-cancel {
+              @apply --button-gray;
+            }
           }
         }
       }
