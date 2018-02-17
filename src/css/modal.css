@@ -65,7 +65,7 @@ section.modal {
     @apply --button;
     @apply --button-primary;
 
-    &.is-gray {
+    &.is-cancel {
       @apply --button-gray;
     }
 
