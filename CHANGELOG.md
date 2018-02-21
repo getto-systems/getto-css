@@ -1,3 +1,7 @@
+# Version : 0.1.43
+
+fix: button class #modal
+
 # Version : 0.1.42
 
 fix: is-cancel #modal
