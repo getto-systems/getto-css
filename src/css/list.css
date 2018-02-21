@@ -35,7 +35,7 @@ section.list {
             @apply --button-gray-danger;
           }
 
-          &.is-primary {
+          &.is-save {
             @apply --button-primary;
           }
 
