@@ -39,6 +39,10 @@ section.list {
             @apply --button-primary;
           }
 
+          &.is-send {
+            @apply --button-white-primary;
+          }
+
           &.is-cancel {
             @apply --button-gray;
           }
