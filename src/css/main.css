@@ -90,7 +90,8 @@
       background-color: var(--color-bg-white);
       @apply --bordered-box;
 
-      > ul {
+      > ul,
+      > a > ul {
         list-style: none;
         padding: 0 0.5em;
 
