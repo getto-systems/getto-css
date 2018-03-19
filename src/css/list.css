@@ -231,11 +231,7 @@ section.list {
     > section.search {
       > form {
         > section {
-          @util clearfix;
-
-          > div {
-            float: left;
-          }
+          display: flex;
         }
       }
     }
