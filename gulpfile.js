@@ -29,7 +29,6 @@ gulp.task("build", function(cb){
           })
         ]
       }),
-      require("postcss-bem"),
       require("postcss-utilities"),
       require("postcss-custom-properties"),
       require("postcss-apply"),
