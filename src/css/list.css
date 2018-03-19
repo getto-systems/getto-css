@@ -1,4 +1,170 @@
+:root {
+  --cell-classes: {
+    &.border-left {
+      border-left: 1px solid var(--color-border-gray);
+    }
+
+    &.border-right {
+      border-right: 1px solid var(--color-border-gray);
+    }
+
+    &.border-left-double {
+      border-left: 3px double var(--color-border-gray);
+    }
+
+    &.border-right-double {
+      border-right: 3px double var(--color-border-gray);
+    }
+
+    &.is-left {
+      text-align: left;
+    }
+
+    &.is-right {
+      text-align: right;
+    }
+
+    &.is-center {
+      text-align: center;
+    }
+
+    &.is-top {
+      vertical-align: top;
+    }
+
+    &.is-middle {
+      vertical-align: middle;
+    }
+
+    &.is-bottom {
+      vertical-align: bottom;
+    }
+
+    &.is-baseline {
+      vertical-align: baseline;
+    }
+  }
+}
+
 section.list {
+  > section.data {
+    > table,
+    > form > table {
+      margin: 0.5em 0;
+
+      thead {
+        border-top: 1px solid var(--color-border-gray);
+        border-bottom: 3px double var(--color-border-gray);
+
+        &.border-bottom-single {
+          border-bottom: 1px solid var(--color-border-gray);
+        }
+      }
+
+      tbody {
+        tr {
+          border-bottom: 1px solid var(--color-border-gray);
+
+          &.border-bottom-double {
+            border-bottom: 3px double var(--color-border-gray);
+          }
+        }
+      }
+
+      tfoot {
+        border-bottom: 3px double var(--color-border-gray);
+      }
+
+      th {
+        @apply --cell-classes;
+
+        font-size: var(--font-size-small);
+        padding: 0.5rem;
+        vertical-align: middle;
+
+        a {
+          text-decoration: none;
+          cursor: pointer;
+
+          &.is-active {
+            color: var(--color-danger);
+          }
+        }
+      }
+
+      td {
+        @apply --cell-classes;
+
+        padding: 0.5em 0.75em;
+        vertical-align: top;
+
+        input.is-large,
+        select.is-large,
+        textarea.is-large {
+          width: 20em;
+        }
+
+        .is-tall {
+          margin: 0.4em 0;
+        }
+      }
+
+      button {
+        @apply --button;
+        @apply --button-primary;
+
+        &.is-delete {
+          @apply --button-gray-danger;
+        }
+
+        &.is-cancel {
+          @apply --button-gray;
+        }
+
+        &.is-edit {
+          @apply --button-gray-primary;
+        }
+      }
+    }
+
+    > nav {
+      > ul {
+        text-align: right;
+
+        > li {
+          display: inline-block;
+
+          > a {
+            display: inline-block;
+            color: var(--color-fg-gray);
+            border: 1px solid var(--color-border-gray);
+            margin: 0.1em;
+            padding: 0.5em 0.8em;
+
+            &:hover {
+              color: var(--color-danger);
+              border-color: var(--color-danger);
+            }
+          }
+
+          &.is-ellipsis {
+            > a {
+              border: none;
+              padding: 0.5em 0.1em;
+            }
+          }
+
+          &.is-active {
+            > a {
+              color: var(--color-danger);
+              border-color: var(--color-danger);
+            }
+          }
+        }
+      }
+    }
+  }
+
   > section.search {
     @apply --bordered-box;
 
@@ -50,180 +216,6 @@ section.list {
           &.is-cancel {
             @apply --button-gray;
           }
-        }
-      }
-    }
-  }
-
-  > section.data {
-    > section.download {
-      float: left;
-
-      > a {
-        display: inline-block;
-        margin: 0.5em;
-      }
-    }
-
-    > nav {
-      > ul {
-        text-align: right;
-
-        > li {
-          display: inline-block;
-
-          > a {
-            display: inline-block;
-            color: var(--color-fg-gray);
-            border: 1px solid var(--color-border-gray);
-            margin: 0.1em;
-            padding: 0.5em 0.8em;
-
-            &:hover {
-              color: var(--color-danger);
-              border-color: var(--color-danger);
-            }
-          }
-
-          &.is-ellipsis {
-            > a {
-              border: none;
-              padding: 0.5em 0.1em;
-            }
-          }
-
-          &.is-active {
-            > a {
-              color: var(--color-danger);
-              border-color: var(--color-danger);
-            }
-          }
-        }
-      }
-    }
-
-    > form > table,
-    > table {
-      margin: 0.5em 0;
-
-      thead {
-        border-top: 1px solid var(--color-border-gray);
-        border-bottom: 3px double var(--color-border-gray);
-
-        &.border-bottom-single {
-          border-bottom: 1px solid var(--color-border-gray);
-        }
-      }
-
-      tbody {
-        tr {
-          border-bottom: 1px solid var(--color-border-gray);
-
-          &.border-bottom-double {
-            border-bottom: 3px double var(--color-border-gray);
-          }
-        }
-      }
-
-      tfoot {
-        border-bottom: 3px double var(--color-border-gray);
-      }
-
-      th,
-      td {
-        &.border-left {
-          border-left: 1px solid var(--color-border-gray);
-        }
-
-        &.border-right {
-          border-right: 1px solid var(--color-border-gray);
-        }
-
-        &.border-left-double {
-          border-left: 3px double var(--color-border-gray);
-        }
-
-        &.border-right-double {
-          border-right: 3px double var(--color-border-gray);
-        }
-
-        &.is-left {
-          text-align: left;
-        }
-
-        &.is-right {
-          text-align: right;
-        }
-
-        &.is-center {
-          text-align: center;
-        }
-
-        &.is-top {
-          vertical-align: top;
-        }
-
-        &.is-middle {
-          vertical-align: middle;
-        }
-
-        &.is-bottom {
-          vertical-align: bottom;
-        }
-
-        &.is-baseline {
-          vertical-align: baseline;
-        }
-      }
-
-      th {
-        font-size: var(--font-size-small);
-        padding: 0.5rem;
-        vertical-align: middle;
-
-        a {
-          text-decoration: none;
-          cursor: pointer;
-
-          &:hover {
-            color: var(--color-danger);
-          }
-
-          &.is-active {
-            color: var(--color-danger);
-          }
-        }
-      }
-
-      td {
-        padding: 0.5em 0.75em;
-        vertical-align: top;
-
-        input.is-large,
-        select.is-large,
-        textarea.is-large {
-          width: 20em;
-        }
-
-        .is-tall {
-          margin: 0.4em 0;
-        }
-      }
-
-      button {
-        @apply --button;
-        @apply --button-primary;
-
-        &.is-delete {
-          @apply --button-gray-danger;
-        }
-
-        &.is-cancel {
-          @apply --button-gray;
-        }
-
-        &.is-edit {
-          @apply --button-gray-primary;
         }
       }
     }
