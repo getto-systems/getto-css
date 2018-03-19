@@ -1,82 +1,77 @@
 section.profile {
-  > section {
-    > section {
-      @apply --bordered-box;
+  > section > section,
+  > aside > section {
+    @apply --bordered-box;
 
-      button {
-        @apply --button;
-        @apply --button-gray-primary;
+    h2 {
+      @apply --header-title;
+    }
 
-        &.is-save {
-          @apply --button-primary;
+    footer {
+      @apply --footer-action;
+    }
+  }
+
+  > section > section {
+    button {
+      @apply --button;
+      @apply --button-gray-primary;
+
+      &.is-save {
+        @apply --button-primary;
+      }
+
+      &.is-cancel {
+        @apply --button-gray;
+      }
+    }
+
+    > form {
+      > table {
+        th {
+          @apply --form-table-th;
         }
 
-        &.is-cancel {
-          @apply --button-gray;
+        td {
+          @apply --form-table-td;
         }
       }
 
-      > form {
-        > h2 {
-          @apply --header-title;
-        }
-
-        > table {
-          th {
-            @apply --form-table-th;
-          }
-
-          td {
-            @apply --form-table-td;
-          }
-
-          input {
-            width: 18em;
-          }
-        }
-
-        > footer {
-          @apply --footer-action;
-          font-size: var(--font-size-small);
-        }
+      > footer {
+        font-size: var(--font-size-small);
       }
     }
   }
 
-  > aside {
-    > section {
-      @apply --bordered-box;
+  > aside > section {
+    > h2 {
+      font-size: var(--font-size-large);
+    }
 
-      > h2 {
-        font-size: var(--font-size-large);
-        @apply --header-title;
+    > dl {
+      margin: 0.5em;
+
+      > dt {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+
+        > b {
+          font-size: var(--font-size-large);
+          color: var(--color-primary);
+        }
       }
 
-      > dl {
-        margin: 0.5em;
+      > dd {
+        margin-bottom: 1em;
 
-        > dt {
-          margin-top: 1em;
-          margin-bottom: 0.5em;
-
-          > b {
-            font-size: var(--font-size-large);
-            color: var(--color-primary);
-          }
+        > b {
+          font-size: var(--font-size-large);
+          color: var(--color-danger);
         }
 
-        > dd {
-          margin-bottom: 1em;
-
-          > b {
-            font-size: var(--font-size-large);
-            color: var(--color-danger);
-          }
-
-          > p {
-            margin-left: 0.5em;
-            line-height: 1.25em;
-          }
+        > p {
+          margin-left: 0.5em;
+          line-height: 1.25em;
         }
       }
     }
@@ -88,6 +83,6 @@ section.profile {
     display: grid;
     grid:
       "form  faq" 1fr
-     / var(--box-size) 1fr;
+      / var(--box-size) 1fr;
   }
 }
