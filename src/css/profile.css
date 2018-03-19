@@ -22,7 +22,13 @@ section.profile {
         }
 
         > table {
-          @apply --form-table;
+          th {
+            @apply --form-table-th;
+          }
+
+          td {
+            @apply --form-table-td;
+          }
 
           input {
             width: 18em;

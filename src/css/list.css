@@ -6,9 +6,9 @@ section.list {
       > section {
         > table,
         > div > table {
-          @apply --form-table;
-
           th {
+            @apply --form-table-th;
+
             &.is-left {
               text-align: left;
             }
@@ -16,6 +16,10 @@ section.list {
             &.is-right {
               text-align: right;
             }
+          }
+
+          td {
+            @apply --form-table-td;
           }
         }
       }

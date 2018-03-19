@@ -2,6 +2,29 @@ section.modal {
   display: none;
   background-color: var(--color-bg-gray-transparent);
 
+  button {
+    padding: 0.5em 1em;
+
+    @apply --button;
+    @apply --button-primary;
+
+    &.is-cancel {
+      @apply --button-gray;
+    }
+
+    &.is-delete {
+      @apply --button-gray-danger;
+    }
+
+    &.is-save {
+      @apply --button-primary;
+    }
+
+    &.is-complete {
+      @apply --button-success;
+    }
+  }
+
   &.is-active {
     display: block;
     position: fixed;
@@ -56,29 +79,6 @@ section.modal {
       button {
         font-size: var(--font-size-large);
       }
-    }
-  }
-
-  button {
-    padding: 0.5em 1em;
-
-    @apply --button;
-    @apply --button-primary;
-
-    &.is-cancel {
-      @apply --button-gray;
-    }
-
-    &.is-delete {
-      @apply --button-gray-danger;
-    }
-
-    &.is-save {
-      @apply --button-primary;
-    }
-
-    &.is-complete {
-      @apply --button-success;
     }
   }
 }
