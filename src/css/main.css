@@ -8,113 +8,21 @@
 }
 
 .MainLayout {
-  > header {
+  > header,
+  > nav > header {
     @apply --main-logo;
-
-    > p {
-      font-size: var(--font-size-xlarge);
-
-      > small {
-        font-size: var(--font-size-large);
-
-        > small {
-          font-size: var(--font-size-medium);
-        }
-      }
-    }
   }
 
-  > nav {
-    background-color: var(--color-bg-gray);
+  > header > p,
+  > nav > header > p,
+  > article > header > h1 {
+    font-size: var(--font-size-xlarge);
 
-    > header {
-      @apply --main-logo;
+    > small {
+      font-size: var(--font-size-large);
 
-      > p {
-        font-size: var(--font-size-xlarge);
-
-        > small {
-          font-size: var(--font-size-large);
-
-          > small {
-            font-size: var(--font-size-medium);
-          }
-        }
-      }
-    }
-
-    > address {
-      font-style: normal;
-
-      background-color: var(--color-bg-white);
-      @apply --bordered-box;
-
-      > ul,
-      > a > ul {
-        list-style: none;
-        padding: 0 0.5em;
-
-        .success {
-          color: var(--color-success);
-        }
-
-        .primary {
-          color: var(--color-primary);
-        }
-
-        .gray {
-          color: var(--color-fg-lightgray);
-        }
-
-        > li {
-          margin: 0.25em 0;
-        }
-      }
-
-      > footer {
-        text-align: right;
-        @apply --footer-action;
-      }
-    }
-
-    > section {
-      > ul {
-        list-style: none;
-        margin: 0.5em;
-        padding: 0.5em;
-        border-top: 3px double var(--color-border-gray);
-        line-height: 1.5em;
-
-        > li {
-          display: block;
-
-          > b > a {
-            color: var(--color-fg-gray);
-
-            &:hover {
-              color: var(--color-danger);
-            }
-          }
-
-          > b > a,
-          > a {
-            display: block;
-          }
-
-          &.is-active {
-            > a {
-              color: var(--color-danger);
-            }
-          }
-        }
-      }
-    }
-
-    > footer {
-      font-size: var(--font-size-xsmall);
-
-      > p {
-        margin: 1em;
+      > small {
+        font-size: var(--font-size-medium);
       }
     }
   }
@@ -124,16 +32,7 @@
       margin: 0.5em;
 
       > h1 {
-        font-size: var(--font-size-xlarge);
         @apply --header-title;
-
-        > small {
-          font-size: var(--font-size-large);
-
-          > small {
-            font-size: var(--font-size-medium);
-          }
-        }
       }
 
       > ul {
@@ -171,6 +70,79 @@
       }
     }
   }
+
+  > nav {
+    background-color: var(--color-bg-gray);
+
+    > section {
+      > ul {
+        list-style: none;
+        margin: 0.5em;
+        padding: 0.5em;
+        border-top: 3px double var(--color-border-gray);
+        line-height: 1.5em;
+
+        > li {
+          display: block;
+
+          a {
+            display: block;
+          }
+
+          > b > a {
+            color: var(--color-fg-gray);
+          }
+
+          &.is-active > a,
+          &:hover > b > a {
+            color: var(--color-danger);
+          }
+        }
+      }
+    }
+
+    > footer {
+      font-size: var(--font-size-xsmall);
+
+      > p {
+        margin: 1em;
+      }
+    }
+
+    > address {
+      font-style: normal;
+
+      background-color: var(--color-bg-white);
+      @apply --bordered-box;
+
+      > ul,
+      > a > ul {
+        list-style: none;
+        padding: 0 0.5em;
+
+        .success {
+          color: var(--color-success);
+        }
+
+        .primary {
+          color: var(--color-primary);
+        }
+
+        .gray {
+          color: var(--color-fg-lightgray);
+        }
+
+        > li {
+          margin: 0.25em 0;
+        }
+      }
+
+      > footer {
+        text-align: right;
+        @apply --footer-action;
+      }
+    }
+  }
 }
 
 @media (--all-desktop) {
@@ -178,7 +150,7 @@
     display: grid;
     grid:
       "menu  content"
-     / 18rem 1fr;
+      / 18rem 1fr;
 
     > article {
       grid-row: 1;
@@ -216,7 +188,7 @@
     display: grid;
     grid:
       "address nav"
-     / 16rem 1fr;
+      / 16rem 1fr;
 
     > address {
       grid-row: 1;
