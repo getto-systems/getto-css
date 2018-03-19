@@ -6,6 +6,7 @@
     white-space: nowrap;
     margin: 0.1em;
     text-decoration: none;
+    vertical-align: 0.125em;
 
     &:hover {
       &.is-connecting {
