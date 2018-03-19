@@ -46,19 +46,20 @@ section.dashboard {
 @media (--over-tablet) {
   section.dashboard {
     > dl {
-      lost-utility: clearfix;
-
-      > dd {
-        lost-column: 1/3 3 0;
-      }
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 20rem);
+      grid-auto-flow: dense;
 
       > dd.double {
-        lost-column: 2/3 0 0;
+        grid-column: span 2;
       }
-
-      > dd.triple {
-        lost-column: 3/3 0 0;
-      }
+    }
+  }
+}
+@media (--tablet) {
+  section.dashboard {
+    > dl {
+      justify-content: center;
     }
   }
 }
