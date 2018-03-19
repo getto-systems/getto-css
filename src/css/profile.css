@@ -3,11 +3,24 @@ section.profile {
     > section {
       @apply --bordered-box;
 
-      > a {
-        display: block;
+      button {
+        @apply --button;
+        @apply --button-gray-primary;
+
+        &.is-save {
+          @apply --button-primary;
+        }
+
+        &.is-cancel {
+          @apply --button-gray;
+        }
       }
 
       > form {
+        > h2 {
+          @apply --header-title;
+        }
+
         > table {
           @apply --form-table;
 
@@ -19,19 +32,6 @@ section.profile {
         > footer {
           @apply --footer-action;
           font-size: var(--font-size-small);
-
-          > button {
-            @apply --button;
-            @apply --button-gray-primary;
-
-            &.is-save {
-              @apply --button-primary;
-            }
-
-            &.is-cancel {
-              @apply --button-gray;
-            }
-          }
         }
       }
     }
