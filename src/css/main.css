@@ -4,6 +4,12 @@
     color: var(--color-fg-white);
     text-align: center;
     padding: 1rem;
+  }
+}
+
+.MainLayout {
+  > header {
+    @apply --main-logo;
 
     > p {
       font-size: var(--font-size-xlarge);
@@ -16,12 +22,6 @@
         }
       }
     }
-  }
-}
-
-.MainLayout {
-  > header {
-    @apply --main-logo;
   }
 
   > article {
@@ -82,6 +82,18 @@
 
     > header {
       @apply --main-logo;
+
+      > p {
+        font-size: var(--font-size-xlarge);
+
+        > small {
+          font-size: var(--font-size-large);
+
+          > small {
+            font-size: var(--font-size-medium);
+          }
+        }
+      }
     }
 
     > address {
