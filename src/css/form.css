@@ -166,10 +166,12 @@ input[type=text],
 input[type=number],
 input[type=date],
 input[type=time],
-textarea {
+textarea,
+select {
   appearance: none;
   border-radius: 0;
   border: 1px solid var(--color-border-gray);
+  margin: 1px;
 }
 
 textarea {
@@ -180,9 +182,7 @@ textarea {
 
 select {
   cursor: pointer;
-  appearance: none;
   background-color: white;
-  border-radius: 0;
 }
 
 input[type=email],
