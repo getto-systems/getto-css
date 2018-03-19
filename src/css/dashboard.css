@@ -48,7 +48,6 @@ section.dashboard {
     > dl {
       display: grid;
       grid-template-columns: repeat(auto-fill, var(--box-size));
-      grid-auto-flow: dense;
 
       > dd.double {
         grid-column: span 2;
