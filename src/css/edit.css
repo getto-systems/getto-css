@@ -8,7 +8,13 @@ section.edit {
       }
 
       > table {
-        @apply --form-table;
+        th {
+          @apply --form-table-th;
+        }
+
+        td {
+          @apply --form-table-td;
+        }
       }
 
       > footer {
