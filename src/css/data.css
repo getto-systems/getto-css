@@ -8,20 +8,20 @@
   }
 }
 
-@component data {
-  @descendent loading {
-    @apply --data-load-message;
-    background-color: var(--color-warning);
-    color: var(--color-fg-white);
-  }
-  @descendent empty {
-    @apply --data-load-message;
-    background-color: var(--color-bg-gray);
-    color: var(--color-fg-gray);
-  }
-  @descendent load-error {
-    @apply --data-load-message;
-    background-color: var(--color-danger);
-    color: var(--color-fg-white);
-  }
+.data-loading {
+  @apply --data-load-message;
+  background-color: var(--color-warning);
+  color: var(--color-fg-white);
+}
+
+.data-empty {
+  @apply --data-load-message;
+  background-color: var(--color-bg-gray);
+  color: var(--color-fg-gray);
+}
+
+.data-load-error {
+  @apply --data-load-message;
+  background-color: var(--color-danger);
+  color: var(--color-fg-white);
 }

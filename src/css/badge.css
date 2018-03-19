@@ -1,4 +1,4 @@
-@component badge {
+.badge {
   display: inline-block;
   margin: 0.1em;
   padding: 0.5em 0.8em;
@@ -6,26 +6,30 @@
   font-weight: normal;
   font-style: normal;
 
-  @when small {
+  &.is-small {
     font-size: var(--font-size-small);
   }
 
-  @when gray {
+  &.is-gray {
     background-color: var(--color-bg-gray);
   }
-  @when warning {
+
+  &.is-warning {
     color: var(--color-fg-white);
     background-color: var(--color-warning);
   }
-  @when primary {
+
+  &.is-primary {
     color: var(--color-fg-white);
     background-color: var(--color-primary);
   }
-  @when success {
+
+  &.is-success {
     color: var(--color-fg-white);
     background-color: var(--color-success);
   }
-  @when danger {
+
+  &.is-danger {
     color: var(--color-fg-white);
     background-color: var(--color-danger);
   }
