@@ -149,7 +149,7 @@
   .MainLayout {
     display: grid;
     grid:
-      "menu  content"
+      "menu   content"
       / 18rem 1fr;
 
     > article {
@@ -188,7 +188,7 @@
     display: grid;
     grid:
       "address nav"
-      / 16rem 1fr;
+      /  16rem 1fr;
 
     > address {
       grid-row: 1;
