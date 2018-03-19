@@ -47,7 +47,7 @@ section.dashboard {
   section.dashboard {
     > dl {
       display: grid;
-      grid-template-columns: repeat(auto-fill, 20rem);
+      grid-template-columns: repeat(auto-fill, 22rem);
       grid-auto-flow: dense;
 
       > dd.double {
