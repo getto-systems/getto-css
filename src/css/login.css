@@ -79,16 +79,16 @@
 @media (--medium) {
   .LoginLayout {
     grid:
-      "... ..... ..." 1fr
-      "... login ..." 2fr
-     / 1fr 3fr   1fr;
+      ".... ..... ..." 1fr
+      ".... login ..." 2fr
+      / 1fr   3fr 1fr;
   }
 }
 @media (--large-desktop) {
   .LoginLayout {
     grid:
-      "... ..... ..." 1fr
-      "... login ..." 2fr
-     / 1fr 2fr   1fr;
+      ".... ..... ..." 1fr
+      ".... login ..." 2fr
+      / 1fr   2fr 1fr;
   }
 }
