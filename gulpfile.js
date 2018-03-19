@@ -9,12 +9,10 @@ const path = {
 };
 
 gulp.task("build", function(cb){
-  var postcss = require("gulp-postcss");
-  var sourcemaps = require("gulp-sourcemaps");
+  const postcss = require("gulp-postcss");
 
   pump([
     gulp.src("src/getto.css"),
-    sourcemaps.init(),
     postcss([
       require("postcss-import")({
         "plugins": [
@@ -32,25 +30,19 @@ gulp.task("build", function(cb){
         ]
       }),
       require("postcss-bem"),
-      require("lost"),
       require("postcss-utilities"),
       require("postcss-custom-properties"),
       require("postcss-apply"),
       require("postcss-calc"),
       require("postcss-custom-media"),
       require("postcss-nested"),
-      require("postcss-color-function"),
       require("postcss-color-gray"),
-      require("postcss-initial"),
       require("pixrem"),
-      require("postcss-selector-matches"),
-      require("postcss-selector-not"),
 
       require("autoprefixer"),
       require("postcss-reporter")({"clearMessages": true}),
-      require("cssnano")
+      require("cssnano"),
     ]),
-    sourcemaps.write("."),
     gulp.dest(path.dist),
   ],cb);
 });
