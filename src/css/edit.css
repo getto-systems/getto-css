@@ -51,17 +51,12 @@ section.edit {
 
 @media (--over-tablet) {
   section.edit {
-    lost-utility: clearfix;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--box-size));
 
     > section {
-      lost-column: 1/3 0 0;
-
       &.double {
-        lost-column: 2/3 0 0;
-      }
-
-      &.triple {
-        lost-column: 3/3 0 0;
+        grid-column: span 2;
       }
     }
   }
