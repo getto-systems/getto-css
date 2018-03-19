@@ -7,4 +7,6 @@
   --font-size-xxlarge: calc(var(--font-size-xlarge) * var(--base-ratio) * var(--base-ratio));
   --font-size-small: calc(var(--font-size-medium) / var(--base-ratio));
   --font-size-xsmall: calc(var(--font-size-small) / var(--base-ratio));
+
+  --box-size: 22rem;
 }
