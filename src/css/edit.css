@@ -59,6 +59,7 @@ section.edit {
   section.edit {
     display: grid;
     grid-template-columns: repeat(auto-fill, var(--box-size));
+    grid-auto-flow: dense;
 
     > section {
       &.double {

@@ -80,7 +80,7 @@
   .LoginLayout {
     grid:
       ".... ..... ..." 1fr
-      ".... login ..." 2fr
+      ".... login ..." 3fr
       / 1fr   3fr 1fr;
   }
 }
@@ -88,7 +88,7 @@
   .LoginLayout {
     grid:
       ".... ..... ..." 1fr
-      ".... login ..." 2fr
+      ".... login ..." 3fr
       / 1fr   2fr 1fr;
   }
 }
