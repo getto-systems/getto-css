@@ -18,7 +18,7 @@
   "homepage": "https://github.com/getto-systems/getto-css#readme",
   "devDependencies": {
     "autoprefixer": "^8.1.0",
-    "cssnano": "^3.10.0",
+    "csswring": "^6.0.3",
     "gulp": "^3.9.1",
     "gulp-postcss": "^7.0.1",
     "gulp-server-livereload": "^1.9.2",

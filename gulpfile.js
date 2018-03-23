@@ -15,15 +15,15 @@ gulp.task("build", function(cb){
     gulp.src("src/getto.css"),
     postcss([
       require("postcss-import")({
-        "plugins": [
+        plugins: [
           require("stylelint")({
-            "config": {
-              "extends": "stylelint-config-standard",
-              "rules": {
+            config: {
+              extends: "stylelint-config-standard",
+              rules: {
                 "at-rule-empty-line-before": null,
                 "property-no-unknown": null,
                 "declaration-empty-line-before": null,
-                "custom-property-empty-line-before": null
+                "custom-property-empty-line-before": null,
               }
             }
           })
@@ -39,8 +39,9 @@ gulp.task("build", function(cb){
       require("pixrem"),
 
       require("autoprefixer"),
+      require("csswring"),
+
       require("postcss-reporter")({"clearMessages": true}),
-      require("cssnano"),
     ]),
     gulp.dest(path.dist),
   ],cb);
