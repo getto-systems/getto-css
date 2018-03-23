@@ -20,10 +20,10 @@
       </header>
       <article>
         <header>
-          <h1>データ３</h1>
+          <h1>編集</h1>
           <ul>
             <li>DATA</li>
-            <li><a href="/edit.html"><i class="fas fa-file"></i> データ３</a></li>
+            <li><a href="/edit.html"><i class="fas fa-file"></i> 編集</a></li>
           </ul>
         </header>
         <section class="edit">
@@ -166,35 +166,43 @@
           <section class="double">
             <form action="/edit.html" method="get">
               <h2>カテゴリ名</h2>
-              <table>
-                <tr>
-                  <th>名前</th>
-                  <td><input type="text" value=""></td>
-                  <th>メール</th>
-                  <td><input type="email" value="example"></td>
-                </tr>
-                <tr>
-                  <th>更新日</th>
-                  <td><input type="date" value="2017-03-03"> <input type="time" value="10:00"></td>
-                  <th>確認</th>
-                  <td>
-                    <ul class="is-inline">
-                      <li><label><input type="radio"> 未</label></li>
-                      <li><label><input type="radio"> 済</label></li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>作業</th>
-                  <td>
-                    <ul>
-                      <li><label><input type="radio"> 編集中</label></li>
-                      <li><label><input type="radio"> チェック中</label></li>
-                      <li><label><input type="radio"> 完了</label></li>
-                    </ul>
-                  </td>
-                </tr>
-              </table>
+              <section>
+                <table>
+                  <tr>
+                    <th>名前</th>
+                    <td><input type="text" value=""></td>
+                  </tr>
+                  <tr>
+                    <th>メール</th>
+                    <td><input type="email" value="example"></td>
+                  </tr>
+                  <tr>
+                    <th>更新日</th>
+                    <td><input type="date" value="2017-03-03"> <input type="time" value="10:00"></td>
+                  </tr>
+                </table>
+                <table>
+                  <tr>
+                    <th>確認</th>
+                    <td>
+                      <ul class="is-inline">
+                        <li><label><input type="radio"> 未</label></li>
+                        <li><label><input type="radio"> 済</label></li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>作業</th>
+                    <td>
+                      <ul>
+                        <li><label><input type="radio"> 編集中</label></li>
+                        <li><label><input type="radio"> チェック中</label></li>
+                        <li><label><input type="radio"> 完了</label></li>
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+              </section>
               <footer>
                 <button class="is-save">保存</button>
               </footer>
@@ -250,7 +258,7 @@
           </ul>
           <ul>
             <li>DATA</li>
-            <li class="is-active"><a href="/edit.html"><i class="fas fa-fw fa-folder-open"></i> データ３</a></li>
+            <li class="is-active"><a href="/edit.html"><i class="fas fa-fw fa-folder-open"></i> 編集</a></li>
           </ul>
         </section>
         <footer>
