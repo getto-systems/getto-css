@@ -8,5 +8,6 @@
   --font-size-small: calc(var(--font-size-medium) / var(--base-ratio));
   --font-size-xsmall: calc(var(--font-size-small) / var(--base-ratio));
 
+  --menu-size: 16rem;
   --box-size: 22rem;
 }
