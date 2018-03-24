@@ -150,7 +150,7 @@
     display: grid;
     grid:
       "menu   content"
-      / 18rem 1fr;
+      / var(--menu-size) 1fr;
 
     > article {
       grid-row: 1;
@@ -188,7 +188,7 @@
     display: grid;
     grid:
       "address nav"
-      /  16rem 1fr;
+      /  var(--menu-size) 1fr;
 
     > address {
       grid-row: 1;
@@ -200,7 +200,7 @@
       grid-column: 2;
 
       display: grid;
-      grid-template-columns: repeat(auto-fill, 16rem);
+      grid-template-columns: repeat(auto-fill, var(--menu-size));
     }
   }
 }
