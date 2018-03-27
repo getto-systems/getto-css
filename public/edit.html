@@ -208,6 +208,13 @@
               </footer>
             </form>
           </section>
+
+          <section>
+            <form action="/edit.html" method="get">
+              <h2>DELETE</h2>
+              <button id="delete-open-button" class="is-delete">削除</button>
+            </form>
+          </section>
         </section>
         <footer>
           <p>
@@ -268,6 +275,41 @@
           </p>
         </footer>
       </nav>
+      <section class="dialog" id="delete-dialog" style="display:none;">
+        <section>
+          <h3>項目の削除</h3>
+          <p>
+          この項目を削除すると、関連するデータも全て削除されます
+          </p>
+          <p id="delete-dialog-error" class="is-error" style="display:none;">
+          既に削除されています
+          </p>
+          <footer class="is-center">
+            <button class="is-delete" id="delete-button">削除</button>
+            <button class="is-cancel" id="delete-close-button">キャンセル</button>
+          </footer>
+        </section>
+      </section>
     </div>
+    <script>
+      document.getElementById("delete-open-button").addEventListener("click", function(e){
+        var dialog = document.getElementById("delete-dialog");
+        dialog.style.display = "flex";
+        e.preventDefault();
+      });
+      document.getElementById("delete-button").addEventListener("click", function(e){
+        document.getElementById("delete-dialog-error").style.display = "block";
+        document.getElementById("delete-button").className = "is-error";
+        document.getElementById("delete-button").innerHTML = "削除エラー";
+        e.preventDefault();
+      });
+      document.getElementById("delete-close-button").addEventListener("click", function(e){
+        document.getElementById("delete-dialog").style.display = "none";
+        document.getElementById("delete-dialog-error").style.display = "none";
+        document.getElementById("delete-button").className = "is-delete";
+        document.getElementById("delete-button").innerHTML = "削除";
+        e.preventDefault();
+      });
+    </script>
   </body>
 </html>

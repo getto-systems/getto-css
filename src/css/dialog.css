@@ -1,0 +1,80 @@
+section.dialog {
+  background-color: var(--color-bg-gray-transparent);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    padding: 0.5em 1em;
+
+    @apply --button;
+    @apply --button-primary;
+
+    &.is-cancel {
+      @apply --button-gray;
+    }
+
+    &.is-delete {
+      @apply --button-gray-danger;
+    }
+
+    &.is-save {
+      @apply --button-primary;
+    }
+
+    &.is-complete {
+      @apply --button-success;
+    }
+  }
+
+  > section {
+    @apply --bordered-box;
+
+    background-color: white;
+    overflow: auto;
+    padding: 1em;
+
+    max-height: 95%;
+
+    > h3 {
+      font-size: var(--font-size-large);
+      margin: 1em 0;
+    }
+
+    > p {
+      line-height: 1.25em;
+
+      &.is-error {
+        text-align: center;
+        margin: 1em 0;
+        padding: 0.75em;
+
+        @apply --alert;
+        @apply --alert-danger;
+      }
+    }
+
+    > footer {
+      margin: 1em 0;
+
+      &.is-right {
+        text-align: right;
+      }
+
+      &.is-center {
+        text-align: center;
+      }
+
+      button {
+        font-size: var(--font-size-large);
+      }
+    }
+  }
+}
