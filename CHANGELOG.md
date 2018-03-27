@@ -1,3 +1,7 @@
+# Version : 0.2.4
+
+add dialog
+
 # Version : 0.2.3
 
 fix: box size
