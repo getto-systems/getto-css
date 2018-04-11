@@ -20,13 +20,26 @@
           </p>
         </header>
         <section>
-          <p>メールかパスワードが違います</p>
           <form method="get" action="/">
-            <p><label>ログインID：<input type="text"></label></p>
-            <p><label>パスワード：<input type="password"></label></p>
-            <p><label><input type="checkbox"> ログイン情報を２週間記憶する</label></p>
-            <button>ログイン</button>
-            <p><a href="/forget.html"><i class="fas fa-question-circle"></i> パスワードがわかりません</a></p>
+            <table>
+              <tr>
+                <th>ログインID : </th>
+                <td><input type="text"></td>
+              </tr>
+              <tr>
+                <th>パスワード : </th>
+                <td><input type="password"></td>
+              </tr>
+              <tr>
+                <th></th>
+                <td><label><input type="checkbox"> ログイン情報を２週間記憶</label></td>
+              </tr>
+            </table>
+            <footer>
+              <button>ログイン</button>
+              <em class="badge is-danger is-small">メールかパスワードが違います</em>
+              <p><a href="/forget.html"><i class="fas fa-question-circle"></i> パスワードがわかりません</a></p>
+            </footer>
           </form>
         </section>
       </article>

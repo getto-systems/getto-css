@@ -16,44 +16,51 @@
     > section {
       text-align: center;
 
-      > p {
-        text-align: center;
-        margin: 1em 2em;
-        padding: 1.5em;
-
-        @apply --alert;
-        @apply --alert-danger;
-
-        &.is-gray {
-          @apply --alert-gray;
-        }
-
-        &.is-success {
-          @apply --alert-success;
-        }
-      }
-
       > form {
-        > p {
-          text-align: right;
-          margin: 1em 2em;
+        > table {
+          width: 100%;
+
+          th {
+            text-align: right;
+            padding: 0.5em;
+          }
+
+          td {
+            text-align: left;
+            padding: 0.5em;
+            width: 32em;
+          }
         }
 
         input[type=text],
         input[type=email],
         input[type=password] {
-          width: 60%;
+          width: 80%;
           font-size: var(--font-size-medium);
         }
 
-        button {
-          font-size: var(--font-size-medium);
-          display: block;
-          width: 30%;
-          height: 3em;
+        > footer {
+          margin-top: 1em;
 
-          @apply --button;
-          @apply --button-primary;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          > p {
+            margin: 0.5em;
+            line-height: 2em;
+          }
+
+          button {
+            font-size: var(--font-size-medium);
+            display: block;
+            width: 16em;
+            height: 3em;
+
+            @apply --button;
+            @apply --button-primary;
+          }
         }
       }
     }
@@ -61,9 +68,25 @@
 
   > footer {
     font-size: var(--font-size-small);
+    text-align: center;
   }
 }
 
+@media (--phone) {
+  .LoginLayout {
+    > article {
+      > section {
+        > form {
+          > table {
+            td {
+              width: 70%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 @media (--over-tablet) {
   .LoginLayout {
     display: flex;
