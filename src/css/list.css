@@ -49,6 +49,7 @@
 section.list {
   > section.data {
     > table,
+    > div > table,
     > form > table {
       margin: 0.5em 0;
 
@@ -56,8 +57,8 @@ section.list {
         border-top: 1px solid var(--color-border-gray);
         border-bottom: 3px double var(--color-border-gray);
 
-        &.border-bottom-single {
-          border-bottom: 1px solid var(--color-border-gray);
+        tr.border-top-single {
+          border-top: 1px solid var(--color-border-gray);
         }
       }
 
@@ -128,6 +129,8 @@ section.list {
     }
 
     > nav {
+      white-space: nowrap;
+
       > ul {
         text-align: right;
 
@@ -222,6 +225,13 @@ section.list {
   }
 }
 
+@media (--all-mobile) {
+  section.list {
+    > section.data {
+      overflow: auto;
+    }
+  }
+}
 @media (--over-tablet) {
   section.list {
     > section.search {

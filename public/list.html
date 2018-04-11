@@ -20,10 +20,10 @@
       </header>
       <article>
         <header>
-          <h1>データ１</h1>
+          <h1>リスト</h1>
           <ul>
             <li>DATA</li>
-            <li><a href="/list.html"><i class="fas fa-file"></i> データ１</a></li>
+            <li><a href="/list.html"><i class="fas fa-file"></i> リスト</a></li>
           </ul>
         </header>
         <section class="list">
@@ -50,6 +50,8 @@
               </section>
               <footer>
                 <button>絞り込み</button>
+                <em class="badge is-small is-danger">許可されていない操作です</em>
+                <button class="is-connecting"><i class="fas fa-spinner fa-spin"></i> 検索中</button>
                 <button class="is-send">登録</button>
                 <button class="is-save">保存</button>
                 <button class="is-cancel">キャンセル</button>
@@ -59,19 +61,7 @@
             </form>
           </section>
 
-          <section class="data" id="empty">
-            <p class="data-empty">
-              <i class="fas fa-exclamation-triangle"></i> データがありません
-            </p>
-          </section>
-
-          <section class="data" id="loading" style="display:none">
-            <p class="data-loading">
-              <i class="fas fa-spin fa-pulse fa-spinner"></i> 読み込み中
-            </p>
-          </section>
-
-          <section class="data" id="data" style="display:none">
+          <section class="data">
             <nav>
               <ul>
                 <li><a href="/list.html">1</a></li>
@@ -86,7 +76,7 @@
               </ul>
             </nav>
             <table>
-              <thead class="border-bottom-single">
+              <thead>
                 <tr>
                   <th class="border-right-double"></th>
                   <th><a class="is-active" href="/list.html">名前 <i class="fas fa-sort-down"></i></a></th>
@@ -96,15 +86,15 @@
                   <th><a href="/list.html">状態 <i class="fas fa-sort"></i></a></th>
                   <th class="border-left"><a href="/list.html">内容 <i class="fas fa-sort"></i></a></th>
                 </tr>
-              </thead>
-              <tbody>
-                <tr class="border-bottom-double">
+                <tr class="border-top-single">
                   <td class="border-right-double"></td>
                   <th class="is-right is-middle" colspan="2">合計</th>
                   <td>20</td>
                   <td colspan="2" class="border-right"></td>
                   <td></td>
                 </tr>
+              </thead>
+              <tbody>
                 <tr>
                   <td class="border-right-double">
                     <a href="/edit.html"><i class="fas fa-edit"></i> 詳細</a>
@@ -326,7 +316,7 @@
           </ul>
           <ul>
             <li>DATA</li>
-            <li class="is-active"><a href="/list.html"><i class="fas fa-fw fa-file"></i> データ１</a></li>
+            <li class="is-active"><a href="/list.html"><i class="fas fa-fw fa-file"></i> リスト</a></li>
           </ul>
           <ul>
             <li>DATA</li>
@@ -346,28 +336,6 @@
       </nav>
     </div>
     <script>
-      document.forms[0].elements[7].addEventListener("click", function(e){
-        var connectingClass = "is-connecting";
-        if(!this.className) {
-          this.className = connectingClass;
-          this.innerHTML = '<i class="fas fa-spin fa-pluse fa-spinner"></i>';
-
-          document.getElementById("empty").style.display = "none";
-          document.getElementById("loading").style.display = "block";
-
-          e.preventDefault();
-        } else {
-          if(this.className == connectingClass) {
-            this.className = " ";
-            this.innerHTML = '絞り込み';
-
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("data").style.display = "block";
-
-            e.preventDefault();
-          }
-        }
-      });
       document.getElementById("delete").addEventListener("click", function(e){
         document.getElementById("delete-modal").className = "modal is-active"
         e.preventDefault();
