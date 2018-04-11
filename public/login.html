@@ -21,11 +21,24 @@
         </header>
         <section>
           <form method="get" action="/login-error.html">
-            <p><label>ログインID：<input type="text"></label></p>
-            <p><label>パスワード：<input type="password"></label></p>
-            <p><label><input type="checkbox"> ログイン情報を２週間記憶する</label></p>
-            <button>ログイン</button>
-            <p><a href="/forget.html"><i class="fas fa-question-circle"></i> パスワードがわかりません</a></p>
+            <table>
+              <tr>
+                <th>ログインID : </th>
+                <td><input type="text"></td>
+              </tr>
+              <tr>
+                <th>パスワード : </th>
+                <td><input type="password"></td>
+              </tr>
+              <tr>
+                <th></th>
+                <td><label><input type="checkbox"> ログイン情報を２週間記憶</label></td>
+              </tr>
+            </table>
+            <footer>
+              <button>ログイン</button>
+              <p><a href="/forget.html"><i class="fas fa-question-circle"></i> パスワードがわかりません</a></p>
+            </footer>
           </form>
         </section>
       </article>
@@ -33,15 +46,5 @@
         version : 0.2.7
       </footer>
     </div>
-    <script>
-      document.forms[0].elements[3].addEventListener("click", function(e){
-        var connectingClass = "is-connecting";
-        if(this.className != connectingClass) {
-          this.className = connectingClass;
-          this.innerHTML = '<i class="fas fa-spin fa-pulse fa-spinner"></i>';
-          e.preventDefault();
-        }
-      });
-    </script>
   </body>
 </html>

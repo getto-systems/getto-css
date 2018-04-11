@@ -20,28 +20,24 @@
           </p>
         </header>
         <section>
-          <p class="is-gray">パスワードリセットのためのメールを送信します</p>
           <form method="get" action="/forget-success.html">
-            <p><label>ログインID：<input type="text"></label></p>
-            <button>メール送信</button>
-            <p><a href="/login.html"><i class="fas fa-sign-in-alt"></i> ログイン画面へ</a></p>
+            <table>
+              <tr>
+                <th>ログインID : </th>
+                <td><input type="text"></td>
+              </tr>
+            </table>
+            <footer>
+              <button>メール送信</button>
+              <p>パスワードリセットのためにメールを送信</p>
+              <p><a href="/login.html"><i class="fas fa-sign-in-alt"></i> ログイン画面へ</a></p>
+            </footer>
           </form>
-          <p class="is-gray">登録されたメールアドレスにメールを送信します</p>
         </section>
       </article>
       <footer>
         version : 0.2.7
       </footer>
     </div>
-    <script>
-      document.forms[0].elements[1].addEventListener("click", function(e){
-        var connectingClass = "is-connecting";
-        if(this.className != connectingClass) {
-          this.className = connectingClass;
-          this.innerHTML = '<i class="fas fa-spin fa-pulse fa-spinner"></i>';
-          e.preventDefault();
-        }
-      });
-    </script>
   </body>
 </html>
