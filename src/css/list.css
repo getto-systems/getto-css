@@ -52,6 +52,15 @@ section.list {
     > form > table {
       margin: 0.5em 0;
 
+      p.alert {
+        text-align: center;
+        margin: 0;
+        padding: 1.5em;
+
+        @apply --alert;
+        @apply --alert-gray;
+      }
+
       thead {
         border-top: 1px solid var(--color-border-gray);
         border-bottom: 3px double var(--color-border-gray);
