@@ -1,3 +1,7 @@
+# Version : 0.2.6
+
+fix: list
+
 # Version : 0.2.5
 
 fix: login
