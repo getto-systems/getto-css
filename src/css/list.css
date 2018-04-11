@@ -49,7 +49,6 @@
 section.list {
   > section.data {
     > table,
-    > div > table,
     > form > table {
       margin: 0.5em 0;
 
