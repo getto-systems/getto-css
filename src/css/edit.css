@@ -45,6 +45,7 @@ section.edit {
 
       ul {
         list-style: none;
+        margin: 0.5em 0;
 
         &.is-inline {
           > li {
