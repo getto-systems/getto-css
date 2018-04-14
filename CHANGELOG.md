@@ -1,3 +1,7 @@
+# Version : 0.2.10
+
+fix: input size
+
 # Version : 0.2.9
 
 feat: add ul margin #edit
