@@ -183,11 +183,11 @@ select {
   }
 
   &.is-large {
-    width: 12em;
+    width: 20em;
   }
 
   &.is-xlarge {
-    width: 20em;
+    width: 32em;
   }
 }
 
