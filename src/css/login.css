@@ -1,4 +1,9 @@
 .LoginLayout {
+  > footer {
+    font-size: var(--font-size-small);
+    text-align: center;
+  }
+
   > article {
     > header {
       text-align: center;
@@ -64,11 +69,6 @@
         }
       }
     }
-  }
-
-  > footer {
-    font-size: var(--font-size-small);
-    text-align: center;
   }
 }
 
