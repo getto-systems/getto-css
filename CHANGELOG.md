@@ -1,3 +1,7 @@
+# Version : 0.2.12
+
+fix: mobile button padding
+
 # Version : 0.2.11
 
 fix: dashboard
