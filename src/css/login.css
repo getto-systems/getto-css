@@ -61,7 +61,6 @@
             font-size: var(--font-size-medium);
             display: block;
             width: 16em;
-            height: 3em;
 
             @apply --button;
             @apply --button-primary;
@@ -103,6 +102,21 @@
     > article {
       @apply --bordered-box;
       min-width: var(--login-size);
+    }
+  }
+}
+@media (--all-desktop) {
+  .LoginLayout {
+    > article {
+      > section {
+        > form {
+          > footer {
+            button {
+              height: 3em;
+            }
+          }
+        }
+      }
     }
   }
 }
