@@ -60,7 +60,6 @@
           button {
             font-size: var(--font-size-medium);
             display: block;
-            width: 16em;
 
             @apply --button;
             @apply --button-primary;
@@ -112,6 +111,7 @@
         > form {
           > footer {
             button {
+              width: 16em;
               height: 3em;
             }
           }
