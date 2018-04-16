@@ -1,3 +1,7 @@
+# Version : 0.2.11
+
+fix: dashboard
+
 # Version : 0.2.10
 
 fix: input size
