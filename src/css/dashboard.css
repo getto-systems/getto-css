@@ -18,6 +18,7 @@ section.dashboard {
           > em {
             font-style: normal;
             font-size: var(--font-size-xxlarge);
+            white-space: nowrap;
 
             small {
               font-size: var(--font-size-xlarge);
