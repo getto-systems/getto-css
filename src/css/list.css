@@ -199,6 +199,15 @@ section.list {
             @apply --form-table-td;
           }
         }
+
+        ul {
+          list-style: none;
+          margin: 0.5em 0;
+
+          > li {
+            display: inline-block;
+          }
+        }
       }
 
       > footer {
