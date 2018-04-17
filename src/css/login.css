@@ -63,6 +63,10 @@
 
             @apply --button;
             @apply --button-primary;
+
+            &.is-connecting {
+              @apply --button-primary-white;
+            }
           }
         }
       }

@@ -217,6 +217,10 @@ section.list {
           @apply --button;
           @apply --button-white-success;
 
+          &.is-connecting {
+            @apply --button-success-white;
+          }
+
           &.is-error {
             @apply --button-danger;
           }
