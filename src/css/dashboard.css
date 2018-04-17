@@ -28,6 +28,14 @@ section.dashboard {
               }
             }
           }
+
+          &.alert {
+            @apply --alert;
+
+            &.is-danger {
+              @apply --alert-danger;
+            }
+          }
         }
 
         > meter {
