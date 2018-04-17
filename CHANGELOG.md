@@ -1,3 +1,7 @@
+# Version : 0.2.17
+
+fix: connecting button
+
 # Version : 0.2.16
 
 fix: search ul
