@@ -26,6 +26,10 @@ section.edit {
         @apply --button;
         @apply --button-gray-primary;
 
+        &.is-connecting {
+          @apply --button-primary-white;
+        }
+
         &.is-save {
           @apply --button-primary;
         }
