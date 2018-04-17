@@ -1,3 +1,7 @@
+# Version : 0.2.15
+
+feat: dashboard alert
+
 # Version : 0.2.14
 
 fix: login button
