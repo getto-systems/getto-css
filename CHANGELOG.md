@@ -1,3 +1,7 @@
+# Version : 0.2.18
+
+fix: edit form message
+
 # Version : 0.2.17
 
 fix: connecting button
