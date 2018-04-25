@@ -1,3 +1,7 @@
+# Version : 0.2.21
+
+fix: textarea style
+
 # Version : 0.2.20
 
 fix: edit ul
