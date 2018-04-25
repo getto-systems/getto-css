@@ -202,9 +202,7 @@ select {
 }
 
 textarea {
-  &.is-middle {
-    vertical-align: middle;
-  }
+  vertical-align: middle;
 }
 
 select {
