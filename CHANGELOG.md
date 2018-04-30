@@ -1,3 +1,7 @@
+# Version : 0.2.23
+
+feat: is-fill #list
+
 # Version : 0.2.22
 
 feat: sub button #edit
