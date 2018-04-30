@@ -30,6 +30,10 @@ section.edit {
         @apply --button;
         @apply --button-gray-primary;
 
+        &.is-sub {
+          margin-left: 1em;
+        }
+
         &.is-connecting {
           @apply --button-primary-white;
         }
@@ -55,14 +59,14 @@ section.edit {
         list-style: none;
         margin: 0;
 
+        > li {
+          margin: 0.5em;
+        }
+
         &.is-inline {
           > li {
             display: inline-block;
           }
-        }
-
-        > li {
-          margin: 0.5em;
         }
       }
     }
