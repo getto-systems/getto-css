@@ -1,3 +1,7 @@
+# Version : 0.2.22
+
+feat: sub button #edit
+
 # Version : 0.2.21
 
 fix: textarea style
