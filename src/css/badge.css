@@ -6,6 +6,7 @@
   font-weight: normal;
   font-style: normal;
   vertical-align: 0.25em;
+  white-space: nowrap;
 
   &.is-small {
     font-size: var(--font-size-small);

@@ -43,6 +43,10 @@
     &.is-baseline {
       vertical-align: baseline;
     }
+
+    &.is-fill {
+      padding: 0.25em;
+    }
   }
 }
 
