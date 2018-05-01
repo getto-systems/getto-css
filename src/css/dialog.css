@@ -12,10 +12,10 @@ section.dialog {
   align-items: center;
 
   button {
-    padding: 0.5em 1em;
-
     @apply --button;
     @apply --button-primary;
+
+    padding: 0.5em 1em;
 
     &.is-connecting {
       @apply --button-primary-white;

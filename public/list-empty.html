@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>GETTO Admin CSS</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="/dist/getto.css">
+  </head>
+  <body>
+    <div class="MainLayout">
+      <header>
+        <p>
+        <small>GETTO</small>
+        <wbr>
+        Admin CSS
+        <br>
+        <small><small>Simple Admin Theme</small></small>
+        </p>
+      </header>
+      <article>
+        <header>
+          <h1>リスト</h1>
+          <ul>
+            <li>DATA</li>
+            <li><a href="/list-empty.html"><i class="fas fa-file"></i> リスト</a></li>
+          </ul>
+        </header>
+        <section class="list">
+          <section class="search">
+            <form method="get" action="/list-empty.html">
+              <section>
+                <div>
+                  <table>
+                    <tr class="form-search"><th class="is-left">名前</th><td><input type="text" value="データ１"></td></tr>
+                    <tr class="form-search-disabled"><th>メール</th><td><input type="text" disabled></td></tr>
+                  </table>
+                </div>
+                <div>
+                  <table>
+                    <tr><th>日時</th><td><input type="date"> ～ <input type="date"> <input type="time"></td></tr>
+                  </table>
+                </div>
+                <div>
+                  <table>
+                    <tr>
+                      <th>状態</th>
+                      <td>
+                        <ul>
+                          <li><label><input type="checkbox"> 作業済</label></li>
+                          <li><label><input type="checkbox"> 作業1</label></li>
+                          <li><label><input type="checkbox"> 作業2</label></li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr><th>状態</th><td><select><option>作業済</option><option>その他の状態</option></select></td></tr>
+                  </table>
+                </div>
+                <div>
+                  <table>
+                    <tr>
+                      <th>状態</th>
+                      <td>
+                        <ul class="is-block">
+                          <li><label><input type="checkbox"> 作業済</label></li>
+                          <li><label><input type="checkbox"> 作業1</label></li>
+                          <li><label><input type="checkbox"> 作業2</label></li>
+                          <li><label><input type="checkbox"> 作業3</label></li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </section>
+              <footer>
+                <button>絞り込み</button>
+                <em class="badge is-small is-danger">許可されていない操作です</em>
+                <button class="is-connecting"><i class="fas fa-spinner fa-spin fa-pulse"></i> 検索中</button>
+                <button class="is-send">登録</button>
+                <button class="is-save">保存</button>
+                <button class="is-cancel">キャンセル</button>
+                <button class="is-error">エラー</button>
+                <button class="is-delete">削除</button>
+              </footer>
+            </form>
+          </section>
+
+          <section class="data">
+            <nav>
+              <ul>
+                <li><a href="/list-empty.html">1</a></li>
+              </ul>
+            </nav>
+            <table>
+              <thead>
+                <tr>
+                  <th class="border-right-double"></th>
+                  <th><a class="is-active" href="/list-empty.html">名前 <i class="fas fa-sort-down"></i></a></th>
+                  <th><a href="/list-empty.html">日時 <i class="fas fa-sort"></i></a></th>
+                  <th><a href="/list-empty.html">メール <i class="fas fa-sort"></i></a></th>
+                  <th><a href="/list-empty.html">状態 <i class="fas fa-sort"></i></a></th>
+                  <th><a href="/list-empty.html">状態 <i class="fas fa-sort"></i></a></th>
+                  <th class="border-left"><a href="/list-empty.html">内容 <i class="fas fa-sort"></i></a></th>
+                </tr>
+                <tr class="border-top-single">
+                  <td class="border-right-double"></td>
+                  <th class="is-right is-middle" colspan="2">合計</th>
+                  <td>20</td>
+                  <td colspan="2" class="border-right"></td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="7">
+                    <p class="alert">
+                    データがありません
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <nav>
+              <ul>
+                <li><a href="/list-empty.html">1</a></li>
+              </ul>
+            </nav>
+          </section>
+        </section>
+        <footer>
+          <p>
+          <i class="far fa-copyright"></i> GETTO systems
+          </p>
+        </footer>
+      </article>
+      <section class="modal" id="delete-modal">
+        <section>
+          <h3>この項目を削除しますか？</h3>
+          <p>
+          この項目を削除すると、関連するデータも全て削除されます
+          </p>
+          <footer class="is-center">
+            <button class="is-delete" id="close-button1">削除</button>
+            <button class="is-cancel" id="close-button2">キャンセル</button>
+          </footer>
+        </section>
+      </section>
+      <section class="modal" id="complete-modal">
+        <section>
+          <h3>この項目を完了しますか？</h3>
+          <p>
+          この項目を完了すると、関連するデータも全て完了になります
+          </p>
+          <footer class="is-center">
+            <button class="is-save" id="close-button4">完了</button>
+            <button class="is-complete" id="close-button4">完了</button>
+            <button class="is-cancel" id="close-button5">キャンセル</button>
+          </footer>
+        </section>
+      </section>
+      <section class="modal" id="table-modal">
+        <section class="is-large is-tall">
+          <h3>データを入力してください</h3>
+          <section class="list">
+            <section class="data">
+              <table class="text-no-wrap">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>データ１</th>
+                    <th>データ２</th>
+                    <th>データ３</th>
+                    <th>データ４</th>
+                    <th>データ５</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th>10/08</th><td colspan="6">
+                    <input type="text" class="is-tiny">
+                    <button id="close-button3">保存</button>
+                  </td></tr>
+                  <tr><th>10/07</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>10/06</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>10/05</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>10/04</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>10/03</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>10/02</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/30</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/29</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/28</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/27</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/26</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/25</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                </tbody>
+              </table>
+            </section>
+          </section>
+        </section>
+      </section>
+      <nav>
+        <header>
+          <p>
+          <small>GETTO</small>
+          <br>
+          Admin CSS
+          <br>
+          <small><small>Simple Admin Theme</small></small>
+          </p>
+        </header>
+        <address>
+          <ul>
+            <li><span class="success"><i class="fas fa-circle"></i> UI１</span></li>
+            <li><span class="gray"><i class="fas fa-circle"></i> UI２</span></li>
+          </ul>
+          <footer>
+            <a href="/profile.html">
+              <em class="badge is-small is-danger">
+                <i class="fas fa-exclamation-circle"></i>
+                アップデートが必要です
+              </em>
+            </a>
+            <a href="/profile.html"><i class="fas fa-user-circle"></i> 管理</a>
+          </footer>
+        </address>
+        <section>
+          <ul>
+            <li><b><a href="#">MAIN <i class="fas fa-caret-down"></i></b></li>
+            <li><a href="/"><i class="fas fa-fw fa-home"></i> ホーム</a></li>
+            <li><a href="/loading.html"><i class="fas fa-fw fa-spinner"></i> Loading</a></li>
+            <li><a href="/login.html"><i class="fas fa-fw fa-sign-in-alt"></i> ログイン</a></li>
+            <li><a href="/404.html"><i class="fas fa-fw fa-exclamation-triangle"></i> 404 Not Found</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="/list.html"><i class="fas fa-fw fa-file"></i> リスト</a></li>
+            <li class="is-active"><a href="/list-empty.html"><i class="fas fa-fw fa-file"></i> データがありません</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="/table.html"><i class="fas fa-fw fa-folder"></i> データ２</a></li>
+          </ul>
+          <ul>
+            <li>DATA</li>
+            <li><a href="/edit.html"><i class="fas fa-fw fa-folder-open"></i> 編集</a></li>
+            <li><a href="/edit-loading.html"><i class="fas fa-fw fa-folder-open"></i> 読み込み中</a></li>
+          </ul>
+        </section>
+        <footer>
+          <p>
+          version : 0.2.23
+          </p>
+        </footer>
+      </nav>
+    </div>
+    <script>
+      document.getElementById("delete").addEventListener("click", function(e){
+        document.getElementById("delete-modal").className = "modal is-active"
+        e.preventDefault();
+      });
+      document.getElementById("close-button1").addEventListener("click", function(e){
+        document.getElementById("delete-modal").className = "modal"
+        e.preventDefault();
+      });
+      document.getElementById("close-button2").addEventListener("click", function(e){
+        document.getElementById("delete-modal").className = "modal"
+        e.preventDefault();
+      });
+      document.getElementById("modal").addEventListener("click", function(e){
+        document.getElementById("table-modal").className = "modal is-active"
+        e.preventDefault();
+      });
+      document.getElementById("close-button3").addEventListener("click", function(e){
+        document.getElementById("table-modal").className = "modal"
+        e.preventDefault();
+      });
+      document.getElementById("modal2").addEventListener("click", function(e){
+        document.getElementById("complete-modal").className = "modal is-active"
+        e.preventDefault();
+      });
+      document.getElementById("close-button4").addEventListener("click", function(e){
+        document.getElementById("complete-modal").className = "modal"
+        e.preventDefault();
+      });
+      document.getElementById("close-button5").addEventListener("click", function(e){
+        document.getElementById("complete-modal").className = "modal"
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
