@@ -1,3 +1,7 @@
+# Version : 0.2.24
+
+fix: button padding
+
 # Version : 0.2.23
 
 feat: is-fill #list
