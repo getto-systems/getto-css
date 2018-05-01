@@ -1,6 +1,6 @@
 {
   "name": "getto-css",
-  "version": "0.2.23",
+  "version": "0.2.24",
   "description": "simple admin css theme",
   "scripts": {
     "livereload": "gulp livereload",
