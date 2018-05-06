@@ -124,6 +124,7 @@
                   <td class="border-right-double">
                     <a href="/edit.html"><i class="fas fa-edit"></i> 詳細</a>
                     <button type="button" class="is-edit" id="edit-button"> 編集</button>
+                    <button type="button" class="is-edit" id="edit-list-button"> リスト編集</button>
                   </td>
                   <td class="text-no-wrap">
                     <div>
@@ -358,6 +359,84 @@
           </section>
         </section>
       </section>
+      <section class="dialog" id="edit-list-dialog" style="display:none">
+        <section>
+          <section class="edit">
+            <section>
+              <form action="/list.html" method="get">
+                <h2>カテゴリ名</h2>
+                <table>
+                  <tr>
+                    <th>名前</th>
+                    <td><input type="text" value="GETTO Admin CSS"></td>
+                  </tr>
+                  <tr>
+                    <th>メール</th>
+                    <td><input type="email" value="shun@getto.systems"></td>
+                  </tr>
+                  <tr>
+                    <th>更新日</th>
+                    <td><input type="date" value="2017-03-03"> <input type="time" value="10:00"></td>
+                  </tr>
+                  <tr>
+                    <th>確認</th>
+                    <td>
+                      <ul class="is-inline">
+                        <li><label><input type="radio"> 未</label></li>
+                        <li><label><input type="radio"> 済</label></li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>作業</th>
+                    <td>
+                      <ul>
+                        <li><label><input type="radio"> 編集中</label></li>
+                        <li><label><input type="radio"> チェック中</label></li>
+                        <li><label><input type="radio"> 完了</label></li>
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+                <footer>
+                  <button class="is-save" id="save-list">保存</button>
+                  <em class="badge is-small is-danger">保存できない項目があります</em>
+                </footer>
+              </form>
+            </section>
+          </section>
+          <section class="list">
+            <section class="data">
+              <table class="text-no-wrap">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>データ１</th>
+                    <th>データ２</th>
+                    <th>データ３</th>
+                    <th>データ４</th>
+                    <th>データ５</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th>10/07</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>10/06</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>10/05</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>10/04</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>10/03</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>10/02</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/30</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/29</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/28</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/27</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/26</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                  <tr><th>09/25</th><td>10</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+                </tbody>
+              </table>
+            </section>
+          </section>
+        </section>
+      </section>
       <nav>
         <header>
           <p>
@@ -455,6 +534,15 @@
       });
       document.getElementById("save").addEventListener("click", function(e){
         document.getElementById("edit-dialog").style.display = "none"
+        e.preventDefault();
+      });
+
+      document.getElementById("edit-list-button").addEventListener("click", function(e){
+        document.getElementById("edit-list-dialog").style.display = "flex"
+        e.preventDefault();
+      });
+      document.getElementById("save-list").addEventListener("click", function(e){
+        document.getElementById("edit-list-dialog").style.display = "none"
         e.preventDefault();
       });
     </script>
