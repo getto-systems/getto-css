@@ -1,3 +1,7 @@
+# Version : 0.2.25
+
+fix: dialog
+
 # Version : 0.2.24
 
 fix: button padding
