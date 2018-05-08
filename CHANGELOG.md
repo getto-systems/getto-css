@@ -1,3 +1,7 @@
+# Version : 0.2.26
+
+fix: remove is-tall #list
+
 # Version : 0.2.25
 
 fix: dialog
