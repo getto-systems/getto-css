@@ -110,16 +110,6 @@ section.list {
 
         padding: 0.5em 0.75em;
         vertical-align: top;
-
-        input.is-large,
-        select.is-large,
-        textarea.is-large {
-          width: 20em;
-        }
-
-        .is-tall {
-          margin: 0.4em 0;
-        }
       }
 
       button {
