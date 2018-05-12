@@ -102,6 +102,10 @@
           &:hover > b > a {
             color: var(--color-danger);
           }
+
+          em.badge {
+            line-height: 1em;
+          }
         }
       }
     }
