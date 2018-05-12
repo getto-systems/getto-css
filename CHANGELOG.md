@@ -1,3 +1,7 @@
+# Version : 0.2.28
+
+fix: collapsed menu
+
 # Version : 0.2.27
 
 feat: collapsed menu style
