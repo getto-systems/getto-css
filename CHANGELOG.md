@@ -1,3 +1,7 @@
+# Version : 0.2.27
+
+feat: collapsed menu style
+
 # Version : 0.2.26
 
 fix: remove is-tall #list
