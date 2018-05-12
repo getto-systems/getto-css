@@ -148,7 +148,7 @@
       }
     }
 
-    > section > ul.is-collapsed + ul {
+    > section > ul.is-collapsed + ul.is-collapsed {
       border-top: none;
       margin-top: 0;
       padding-top: 0;
