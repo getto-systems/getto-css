@@ -1,3 +1,7 @@
+# Version : 0.2.29
+
+fix: menu badge
+
 # Version : 0.2.28
 
 fix: collapsed menu
