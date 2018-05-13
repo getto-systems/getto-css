@@ -48,12 +48,82 @@
       padding: 0.25em;
     }
   }
+
+  --list-nav-link: {
+    display: inline-block;
+    color: var(--color-fg-gray);
+    border: 1px solid var(--color-border-gray);
+    margin: 0.1em;
+    padding: 0.5em 0.8em;
+  }
+
+  --list-nav-link-hover: {
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+  }
+
+  --list-sort-link: {
+    text-decoration: none;
+    cursor: pointer;
+
+    &.is-active {
+      color: var(--color-danger);
+    }
+  }
+
+  --list-data-button: {
+    @apply --button;
+    @apply --button-primary;
+
+    &.is-delete {
+      @apply --button-gray-danger;
+    }
+
+    &.is-cancel {
+      @apply --button-gray;
+    }
+
+    &.is-edit {
+      @apply --button-gray-primary;
+    }
+  }
+
+  --list-search-button: {
+    @apply --button;
+    @apply --button-white-success;
+
+    &.is-connecting {
+      @apply --button-success-white;
+    }
+
+    &.is-error {
+      @apply --button-danger;
+    }
+
+    &.is-delete {
+      @apply --button-gray-danger;
+    }
+
+    &.is-save {
+      @apply --button-primary;
+    }
+
+    &.is-send {
+      @apply --button-white-primary;
+    }
+
+    &.is-cancel {
+      @apply --button-gray;
+    }
+  }
 }
 
 section.list {
   > section.data {
     > table,
-    > form > table {
+    > form > table,
+    > div > table,
+    > div > form > table {
       margin: 0.5em 0;
 
       p.alert {
@@ -94,15 +164,6 @@ section.list {
         font-size: var(--font-size-small);
         padding: 0.5rem;
         vertical-align: middle;
-
-        a {
-          text-decoration: none;
-          cursor: pointer;
-
-          &.is-active {
-            color: var(--color-danger);
-          }
-        }
       }
 
       td {
@@ -111,23 +172,24 @@ section.list {
         padding: 0.5em 0.75em;
         vertical-align: top;
       }
+    }
 
-      button {
-        @apply --button;
-        @apply --button-primary;
+    > table th a,
+    > form > table th a {
+      @apply --list-sort-link;
+    }
 
-        &.is-delete {
-          @apply --button-gray-danger;
-        }
+    > nav > ul > li > a {
+      @apply --list-nav-link;
+    }
 
-        &.is-cancel {
-          @apply --button-gray;
-        }
+    > div > table th a,
+    > div > form > table th a {
+      @apply --list-sort-link;
+    }
 
-        &.is-edit {
-          @apply --button-gray-primary;
-        }
-      }
+    > nav > ul > li > a:hover {
+      @apply --list-nav-link-hover;
     }
 
     > nav {
@@ -138,19 +200,6 @@ section.list {
 
         > li {
           display: inline-block;
-
-          > a {
-            display: inline-block;
-            color: var(--color-fg-gray);
-            border: 1px solid var(--color-border-gray);
-            margin: 0.1em;
-            padding: 0.5em 0.8em;
-
-            &:hover {
-              color: var(--color-danger);
-              border-color: var(--color-danger);
-            }
-          }
 
           &.is-ellipsis {
             > a {
@@ -213,43 +262,28 @@ section.list {
 
       > footer {
         @apply --footer-action;
-
-        > button {
-          @apply --button;
-          @apply --button-white-success;
-
-          &.is-connecting {
-            @apply --button-success-white;
-          }
-
-          &.is-error {
-            @apply --button-danger;
-          }
-
-          &.is-delete {
-            @apply --button-gray-danger;
-          }
-
-          &.is-save {
-            @apply --button-primary;
-          }
-
-          &.is-send {
-            @apply --button-white-primary;
-          }
-
-          &.is-cancel {
-            @apply --button-gray;
-          }
-        }
       }
     }
+  }
+
+  > section.data > table button,
+  > section.data > form > table button {
+    @apply --list-data-button;
+  }
+
+  > section.search > form > footer > button {
+    @apply --list-search-button;
+  }
+
+  > section.data > div > table button,
+  > section.data > div > form > table button {
+    @apply --list-data-button;
   }
 }
 
 @media (--all-mobile) {
   section.list {
-    > section.data {
+    > section.data > div {
       overflow: auto;
     }
   }
