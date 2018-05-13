@@ -1,3 +1,7 @@
+# Version : 0.2.30
+
+fix: list table style
+
 # Version : 0.2.29
 
 fix: menu badge
