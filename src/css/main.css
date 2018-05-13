@@ -162,19 +162,14 @@
 
 @media (--all-desktop) {
   .MainLayout {
-    display: grid;
-    grid:
-      "menu   content"
-      / var(--menu-size) 1fr;
-
     > article {
-      grid-row: 1;
-      grid-column: 2;
+      float: right;
+      width: calc(100vw - var(--menu-size));
     }
 
     > nav {
-      grid-row: 1;
-      grid-column: 1;
+      width: var(--menu-size);
+      padding-bottom: 0.5em;
     }
   }
 }
