@@ -1,3 +1,7 @@
+# Version : 0.2.31
+
+fix: main layout
+
 # Version : 0.2.30
 
 fix: list table style
