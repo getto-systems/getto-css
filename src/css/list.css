@@ -292,7 +292,8 @@ section.list {
   section.list {
     > section.search {
       > form {
-        > section > div {
+        > section > div,
+        > section > table {
           float: left;
         }
 
