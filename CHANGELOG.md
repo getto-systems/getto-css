@@ -1,3 +1,7 @@
+# Version : 0.2.36
+
+fix: search form style
+
 # Version : 0.2.35
 
 fix: address header
