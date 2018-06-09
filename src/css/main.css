@@ -80,7 +80,7 @@
           margin: 0 0.25em 0 0;
 
           &::before {
-            content: ">>\00a0\00a0";
+            content: ">>\00a0";
           }
 
           &:first-child::before {
