@@ -1,3 +1,7 @@
+# Version : 0.2.34
+
+fix: breadcrumb mark
+
 # Version : 0.2.33
 
 fix: margin
