@@ -1,3 +1,7 @@
+# Version : 0.2.32
+
+fix: address, breadcrumb, search form
+
 # Version : 0.2.31
 
 fix: main layout
