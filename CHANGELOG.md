@@ -1,3 +1,7 @@
+# Version : 0.2.33
+
+fix: margin
+
 # Version : 0.2.32
 
 fix: address, breadcrumb, search form

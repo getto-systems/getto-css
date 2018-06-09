@@ -7,7 +7,7 @@ simple admin css theme
 ## Usage
 
 ```
-<link rel="stylesheet" href="https://css.getto.systems/0.2.32/getto.css">
+<link rel="stylesheet" href="https://css.getto.systems/0.2.33/getto.css">
 ```
 
 * imported: reset.css : [http://html5doctor.com/html-5-reset-stylesheet/]
