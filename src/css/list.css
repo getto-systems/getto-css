@@ -292,8 +292,12 @@ section.list {
   section.list {
     > section.search {
       > form {
-        > section {
-          display: flex;
+        > section > div {
+          float: left;
+        }
+
+        > footer {
+          clear: both;
         }
       }
     }
