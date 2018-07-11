@@ -43,10 +43,6 @@
     &.is-baseline {
       vertical-align: baseline;
     }
-
-    &.is-fill {
-      padding: 0.25em;
-    }
   }
 
   --list-nav-link: {
@@ -154,7 +150,7 @@ section.list {
         }
 
         p {
-          line-height: 1.25em;
+          line-height: 1.5em;
         }
       }
 
@@ -173,7 +169,7 @@ section.list {
       td {
         @apply --cell-classes;
 
-        padding: 0.5em 0.75em;
+        padding: 0.25em;
         vertical-align: top;
       }
     }
