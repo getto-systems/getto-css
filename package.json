@@ -4,7 +4,7 @@
   "description": "simple admin css theme",
   "scripts": {
     "livereload": "npm run reload & npm run watch",
-    "reload": "reload -d ./public -w ./public/dist -p 8000",
+    "reload": "reload -d ./public -p 8000",
     "watch": "watch 'npm run build' src",
     "build": "postcss src/getto.css --dir public/dist"
   },
