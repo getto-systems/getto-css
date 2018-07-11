@@ -1,3 +1,7 @@
+# Version : 0.2.38
+
+fix: td padding
+
 # Version : 0.2.37
 
 fix: line-height
