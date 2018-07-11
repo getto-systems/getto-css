@@ -27,6 +27,6 @@ module.exports = () => ({
     require("autoprefixer")({}),
     require("csswring")({}),
 
-    require("postcss-reporter")({"clearMessages": true})
-  ]
+    require("postcss-reporter")({"clearMessages": true}),
+  ],
 })
