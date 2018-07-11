@@ -152,6 +152,10 @@ section.list {
             border-bottom: 3px double var(--color-border-gray);
           }
         }
+
+        p {
+          line-height: 1.25em;
+        }
       }
 
       tfoot {
