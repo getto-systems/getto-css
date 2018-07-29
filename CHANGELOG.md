@@ -1,3 +1,7 @@
+# Version : 0.2.41
+
+fix: main nav width
+
 # Version : 0.2.40
 
 fix: table paragraph
