@@ -209,7 +209,7 @@
   .MainLayout {
     > article {
       float: right;
-      width: calc(100vw - var(--menu-size));
+      width: calc(100% - var(--menu-size));
     }
 
     > nav {
