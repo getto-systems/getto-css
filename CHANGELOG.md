@@ -1,3 +1,7 @@
+# Version : 0.3.0
+
+fix: for csp headers
+
 # Version : 0.2.41
 
 fix: main nav width
