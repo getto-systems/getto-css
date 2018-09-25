@@ -11,6 +11,10 @@ section.dialog {
   justify-content: center;
   align-items: center;
 
+  &.display-none {
+    display: none;
+  }
+
   button {
     @apply --button;
     @apply --button-primary;

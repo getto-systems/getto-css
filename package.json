@@ -3,8 +3,8 @@
   "version": "0.2.41",
   "description": "simple admin css theme",
   "scripts": {
-    "livereload": "npm run reload & npm run watch",
-    "reload": "reload -d ./public -p 8000",
+    "start": "npm run reload & npm run watch",
+    "reload": "reload-wrapper -d ./public",
     "watch": "watch 'npm run build' src",
     "build": "postcss src/getto.css --dir public/dist"
   },
@@ -32,7 +32,7 @@
     "postcss-nested": "^1.0.0",
     "postcss-reporter": "^5.0.0",
     "postcss-utilities": "^0.6.1",
-    "reload": "^2.3.0",
+    "reload-wrapper": "^0.1.1",
     "stylelint": "^9.3.0",
     "stylelint-config-standard": "^18.2.0",
     "watch": "^1.0.2"

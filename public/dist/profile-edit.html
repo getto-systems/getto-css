@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>GETTO Admin CSS</title>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
@@ -19,7 +19,7 @@
         </p>
       </header>
       <address>
-        <a href="/profile.html">
+        <a href="/dist/profile.html">
           <ul>
             <li class="header"><span>HEADER</span></li>
             <li><span class="success"><i class="fas fa-circle"></i> UI１</span></li>
@@ -27,13 +27,13 @@
           </ul>
         </a>
         <footer>
-          <a href="/profile.html">
+          <a href="/dist/profile.html">
             <em class="badge is-small is-danger">
               <i class="fas fa-exclamation-circle"></i>
               アップデートが必要です
             </em>
           </a>
-          <a href="/profile.html"><i class="fas fa-user-circle"></i> 管理</a>
+          <a href="/dist/profile.html"><i class="fas fa-user-circle"></i> 管理</a>
         </footer>
       </address>
       <article>
@@ -41,7 +41,7 @@
           <h1>プロフィール</h1>
           <ul>
             <li>SYSTEM</li>
-            <li><a href="/profile.html"><i class="fas fa-user"></i> プロフィール</a></li>
+            <li><a href="/dist/profile.html"><i class="fas fa-user"></i> プロフィール</a></li>
           </ul>
         </header>
         <section class="profile">
@@ -56,14 +56,31 @@
             </section>
 
             <section>
-              <form method="get" action="/profile-edit.html">
+              <form method="get" action="/dist/profile.html">
                 <h2>認証情報</h2>
-                <table>
-                  <tr><th>メール</th><td>shun@getto.systems</td></tr>
-                  <tr><th>パスワード</th><td>（非表示）</td></tr>
+                <table id="normal">
+                  <tr><th>メール</th><td><input type="email" value="shun@getto.systems"></td></tr>
+                  <tr><th>パスワード</th><td><input type="password"></td></tr>
+                </table>
+                <table id="error" class="display-none">
+                  <tr class="form-error">
+                    <th>メール</th>
+                    <td>
+                      <input type="email" value="shun@getto.systems">
+                      <p class="help">入力してください</p>
+                    </td>
+                  </tr>
+                  <tr class="form-warning">
+                    <th>パスワード</th>
+                    <td>
+                      <input type="password">
+                      <p class="help">短すぎます</p>
+                    </td>
+                  </tr>
                 </table>
                 <footer>
-                  <button>編集</button>
+                  <button class="is-save">保存</button>
+                  <button class="is-cancel">キャンセル</button>
                 </footer>
               </form>
             </section>
@@ -110,7 +127,7 @@
           </p>
         </header>
         <address>
-          <a href="/profile.html">
+          <a href="/dist/profile.html">
             <ul>
               <li class="header"><span>HEADER</span></li>
               <li><span class="success"><i class="fas fa-circle"></i> UI１</span></li>
@@ -118,36 +135,33 @@
             </ul>
           </a>
           <footer>
-            <a href="/profile.html">
+            <a href="/dist/profile.html">
               <em class="badge is-small is-danger">
                 <i class="fas fa-exclamation-circle"></i>
                 アップデートが必要です
               </em>
             </a>
-            <a href="/profile.html"><i class="fas fa-user-circle"></i> 管理</a>
+            <a href="/dist/profile.html"><i class="fas fa-user-circle"></i> 管理</a>
           </footer>
         </address>
         <section>
           <ul>
             <li><b><a href="#">MAIN <em class="badge is-danger is-small">4</em> <i class="fas fa-caret-down"></i></b></li>
-            <li><a href="/"><i class="fas fa-fw fa-home"></i> ホーム</a></li>
-            <li><a href="/loading.html"><i class="fas fa-fw fa-spinner"></i> Loading</a></li>
-            <li><a href="/login.html"><i class="fas fa-fw fa-sign-in-alt"></i> ログイン</a></li>
-            <li><a href="/404.html"><i class="fas fa-fw fa-exclamation-triangle"></i> 404 Not Found</a></li>
+            <li><a href="/dist/"><i class="fas fa-fw fa-home"></i> ホーム</a></li>
+            <li class="is-active"><a href="/dist/profile.html"><i class="fas fa-fw fa-user"></i> プロフィール</a></li>
+            <li><a href="/dist/loading.html"><i class="fas fa-fw fa-spinner"></i> Loading</a></li>
+            <li><a href="/dist/login.html"><i class="fas fa-fw fa-sign-in-alt"></i> ログイン</a></li>
+            <li><a href="/dist/404.html"><i class="fas fa-fw fa-exclamation-triangle"></i> 404 Not Found</a></li>
           </ul>
           <ul>
             <li>DATA</li>
-            <li><a href="/list.html"><i class="fas fa-fw fa-file"></i> リスト</a></li>
-            <li><a href="/list-empty.html"><i class="fas fa-fw fa-file"></i> データがありません</a></li>
+            <li><a href="/dist/list.html"><i class="fas fa-fw fa-file"></i> リスト</a></li>
+            <li><a href="/dist/list-empty.html"><i class="fas fa-fw fa-file"></i> データがありません</a></li>
           </ul>
           <ul>
             <li>DATA</li>
-            <li><a href="/table.html"><i class="fas fa-fw fa-folder"></i> データ２</a></li>
-          </ul>
-          <ul>
-            <li>DATA</li>
-            <li><a href="/edit.html"><i class="fas fa-fw fa-folder-open"></i> 編集</a></li>
-            <li><a href="/edit-loading.html"><i class="fas fa-fw fa-folder-open"></i> 読み込み中</a></li>
+            <li><a href="/dist/edit.html"><i class="fas fa-fw fa-folder-open"></i> 編集</a></li>
+            <li><a href="/dist/edit-loading.html"><i class="fas fa-fw fa-folder-open"></i> 読み込み中</a></li>
           </ul>
           <ul class="is-collapsed">
             <li><b><a href="#">COLLAPSED <i class="fas fa-caret-left"></i></a></b></li>
@@ -161,10 +175,13 @@
         </section>
         <footer>
           <p>
-          version : DEV
+          <span id="version">version : DEV</span>
           </p>
         </footer>
       </nav>
     </div>
+    <script defer src="/dist/js/profile-edit.js"></script>
+    <script defer src="/dist/js/redirect.js"></script>
+    <script src="/reload/reload.js"></script>
   </body>
 </html>
