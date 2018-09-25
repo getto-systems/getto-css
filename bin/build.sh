@@ -6,7 +6,7 @@ build_main(){
 
   version=$(grep '"version":' package.json | cut -d'"' -f4)
 
-  for file in public/*.html; do
+  for file in public/dist/*.html; do
     sed -i -e "s|/dist/|/$version/|g" -e 's|version : DEV|version : '$version'|' $file
   done
 
