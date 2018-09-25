@@ -10,7 +10,7 @@ build_main(){
     sed -i -e "s|/dist/|/$version/|g" -e 's|version : DEV|version : '$version'|' $file
   done
 
-  if [ "$(curl -sI -o /dev/null -w "%{http_code}" $AWS_URL/$version/getto.css)" == "404" ]; then
+  if [ "$(curl -sI -o /dev/null -w "%{http_code}" https://css.getto.systems/$version/getto.css)" == "404" ]; then
     npm run build
     mv public/dist public/$version
     curl -X POST --data-urlencode 'payload={"channel": "#getto-css", "username": "build", "text": "css: '$version'", "icon_emoji": ":thumbsup:"}' $SLACK_URL
