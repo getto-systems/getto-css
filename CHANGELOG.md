@@ -1,3 +1,7 @@
+# Version : 0.3.2
+
+fix: redirect
+
 # Version : 0.3.1
 
 fix: release
