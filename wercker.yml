@@ -1,5 +1,5 @@
 build:
-  box: node:7.8.0
+  box: node:10.11.0-stretch
   steps:
     - npm-install
     - script:
