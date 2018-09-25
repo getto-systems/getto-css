@@ -34,9 +34,9 @@ var check_versions = function(current) {
 
   var info = current.split(".");
 
-  versions.push(next_patch(info, i));
-  versions.push(next_minor(info, i));
-  versions.push(next_major(info, i));
+  versions.push(next_patch(info));
+  versions.push(next_minor(info));
+  versions.push(next_major(info));
 
   return versions;
 }
