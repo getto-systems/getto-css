@@ -1,3 +1,7 @@
+# Version : 0.3.1
+
+fix: release
+
 # Version : 0.3.0
 
 fix: for csp headers
