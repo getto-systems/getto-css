@@ -20,6 +20,6 @@ var _redirect = function(paths){
   xhr.send();
 };
 _redirect([
-  "/0.3.0/index.html",
+  "/0.3.2/index.html",
   "/dist/index.html"
 ]);
