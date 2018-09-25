@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>GETTO Admin CSS</title>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
@@ -20,15 +20,17 @@
           </p>
         </header>
         <section>
-          <p><i class="fas fa-spin fa-pulse fa-spinner"></i> Loading...</p>
-          <form method="get" action="/">
-            <p><a href="/load-error.html"><i class="fas fa-sync"></i> 再読み込み</a></p>
+          <p><i class="fas fa-exclamation-triangle"></i> 読み込みエラー</p>
+          <form method="get" action="/dist/">
+            <p><a href="/dist/"><i class="fas fa-sync"></i> 再読み込み</a></p>
           </form>
         </section>
       </article>
       <footer>
-        version : DEV
+        <span id="version">version : DEV</span>
       </footer>
     </div>
+    <script defer src="/dist/js/redirect.js"></script>
+    <script src="/dist/js/reload.js"></script>
   </body>
 </html>

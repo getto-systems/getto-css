@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>GETTO Admin CSS</title>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
@@ -20,31 +20,26 @@
           </p>
         </header>
         <section>
-          <form method="get" action="/login-error.html">
+          <form method="get" action="/dist/forget-success.html">
             <table>
               <tr>
                 <th>ログインID : </th>
                 <td><input type="text"></td>
               </tr>
-              <tr>
-                <th>パスワード : </th>
-                <td><input type="password"></td>
-              </tr>
-              <tr>
-                <th></th>
-                <td><label><input type="checkbox"> ログイン情報を２週間記憶</label></td>
-              </tr>
             </table>
             <footer>
-              <button>ログイン</button>
-              <p><a href="/forget.html"><i class="fas fa-question-circle"></i> パスワードがわかりません</a></p>
+              <button>メール送信</button>
+              <p>パスワードリセットのためにメールを送信</p>
+              <p><a href="/dist/login.html"><i class="fas fa-sign-in-alt"></i> ログイン画面へ</a></p>
             </footer>
           </form>
         </section>
       </article>
       <footer>
-        version : DEV
+        <span id="version">version : DEV</span>
       </footer>
     </div>
+    <script defer src="/dist/js/redirect.js"></script>
+    <script src="/dist/js/reload.js"></script>
   </body>
 </html>
