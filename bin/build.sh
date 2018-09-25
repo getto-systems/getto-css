@@ -14,6 +14,8 @@ build_main(){
     npm run build
     mv public/dist public/$version
     curl -X POST --data-urlencode 'payload={"channel": "#getto-css", "username": "build", "text": "css: '$version'", "icon_emoji": ":thumbsup:"}' $SLACK_URL
+  else
+    rm public/dist
   fi
 }
 
