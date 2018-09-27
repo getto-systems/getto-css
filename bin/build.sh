@@ -15,7 +15,8 @@ build_main(){
     mv public/dist public/$version
     curl -X POST --data-urlencode 'payload={"channel": "#getto-css", "username": "build", "text": "css: '$version'", "icon_emoji": ":thumbsup:"}' $SLACK_URL
   else
-    rm -rf public/dist
+    rm -rf public
+    mkdir public
   fi
 }
 
