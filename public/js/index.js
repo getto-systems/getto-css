@@ -1,25 +1,9 @@
-var _redirect = function(paths){
-  var path = paths.shift();
-  if (!path) {
-    return;
+GettoDetect().from_current_version(
+  "0.3.3",
+  function(path) {
+    location.href = path;
+  },
+  function() {
+    location.href = "/dist/index.html";
   }
-
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function(){
-    if(xhr.readyState == 4) {
-      if(xhr.status == 200) {
-        location.href = path;
-      } else {
-        if(paths) {
-          _redirect(paths);
-        }
-      }
-    }
-  };
-  xhr.open("GET", path, true);
-  xhr.send();
-};
-_redirect([
-  "/0.3.3/index.html",
-  "/dist/index.html"
-]);
+);
