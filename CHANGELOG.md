@@ -1,3 +1,7 @@
+# Version : 0.3.7
+
+fix: index.html link #index.html
+
 # Version : 0.3.6
 
 fix: redirect
