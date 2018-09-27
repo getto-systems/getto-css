@@ -1,3 +1,7 @@
+# Version : 0.3.6
+
+fix: redirect
+
 # Version : 0.3.5
 
 fix: build
