@@ -32,6 +32,13 @@
           padding: 1em;
         }
 
+        > ol {
+          text-align: left;
+          line-height: 1.5em;
+          padding-left: 15%;
+          padding-right: 15%;
+        }
+
         > table {
           width: 100%;
 
