@@ -1,3 +1,7 @@
+# Version : 0.3.8
+
+add: login note
+
 # Version : 0.3.7
 
 fix: index.html link #index.html
