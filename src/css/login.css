@@ -22,6 +22,16 @@
       text-align: center;
 
       > form {
+        > p.note {
+          @apply --alert;
+          @apply --alert-gray;
+
+          line-height: 1.25em;
+
+          margin: 1em;
+          padding: 1em;
+        }
+
         > table {
           width: 100%;
 
