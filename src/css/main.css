@@ -193,6 +193,13 @@
 
       > footer {
         text-align: right;
+      }
+
+      > ul + footer {
+        @apply --footer-action;
+      }
+
+      > a + footer {
         @apply --footer-action;
       }
     }
