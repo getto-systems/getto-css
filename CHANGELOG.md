@@ -1,3 +1,7 @@
+# Version : 0.3.10
+
+fix: menu footer style
+
 # Version : 0.3.9
 
 add: login-note
