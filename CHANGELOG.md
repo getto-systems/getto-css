@@ -1,3 +1,7 @@
+# Version : 0.3.11
+
+add: login.note is-primary
+
 # Version : 0.3.10
 
 fix: menu footer style
