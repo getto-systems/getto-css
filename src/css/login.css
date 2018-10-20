@@ -26,6 +26,10 @@
           @apply --alert;
           @apply --alert-gray;
 
+          &.is-primary {
+            @apply --alert-primary;
+          }
+
           line-height: 1.25em;
 
           margin: 1em;
