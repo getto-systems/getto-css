@@ -1,3 +1,7 @@
+# Version : 0.3.12
+
+add: input type=tel style
+
 # Version : 0.3.11
 
 add: login.note is-primary
