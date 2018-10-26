@@ -1,3 +1,7 @@
+# Version : 0.3.14
+
+fix: line-height form.edit p
+
 # Version : 0.3.13
 
 add: line-height to edit.form p
