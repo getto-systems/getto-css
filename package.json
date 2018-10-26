@@ -1,6 +1,6 @@
 {
   "name": "getto-css",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "description": "simple admin css theme",
   "scripts": {
     "start": "npm run reload & npm run watch",
