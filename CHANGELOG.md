@@ -1,3 +1,7 @@
+# Version : 0.4.0
+
+fix: set max-height to login-box
+
 # Version : 0.3.14
 
 fix: line-height form.edit p
