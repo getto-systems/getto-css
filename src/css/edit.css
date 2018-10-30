@@ -7,6 +7,10 @@ section.edit {
         @apply --header-title;
       }
 
+      > p {
+        margin: 1em 0.5em;
+      }
+
       > table,
       > section > table {
         th {
@@ -20,10 +24,6 @@ section.edit {
             line-height: 1.25em;
           }
         }
-      }
-
-      > p {
-        margin: 1em 0.5em;
       }
 
       > footer {

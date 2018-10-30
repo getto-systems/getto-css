@@ -127,6 +127,8 @@
     > article {
       @apply --bordered-box;
       min-width: var(--login-size);
+      max-height: 90%;
+      overflow: auto;
     }
   }
 }
