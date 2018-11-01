@@ -3,7 +3,7 @@
 simple admin css theme
 
 ```
-<link rel="stylesheet" href="https://css.getto.systems/0.4.1/getto.css">
+<link rel="stylesheet" href="https://css.getto.systems/0.4.2/getto.css">
 ```
 
 
