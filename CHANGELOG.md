@@ -1,3 +1,7 @@
+# Version : 0.5.0
+
+fix: mobile button size for login
+
 # Version : 0.4.3
 
 fix: build.sh
