@@ -1,3 +1,7 @@
+# Version : 0.4.1
+
+fix: gitlab-ci
+
 # Version : 0.4.0
 
 fix: set max-height to login-box

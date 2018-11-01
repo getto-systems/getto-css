@@ -1,0 +1,8 @@
+image: getto/base:7WcItF2l
+
+release:
+  only:
+    - release@getto-systems-labo/css
+  script:
+    - ./bin/build.sh
+    - ./bin/push_tags.sh
