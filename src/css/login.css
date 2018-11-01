@@ -132,6 +132,22 @@
     }
   }
 }
+@media (--mobile) {
+  .LoginLayout {
+    > article {
+      > section {
+        > form {
+          > footer {
+            button {
+              width: 20em;
+              height: 4em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 @media (--all-desktop) {
   .LoginLayout {
     > article {
