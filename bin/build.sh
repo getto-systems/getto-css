@@ -4,7 +4,7 @@ build_main(){
   local version
   local file
 
-  version=$(grep '"version":' package.json | cut -d'"' -f4)
+  version=$(cato .release-version)
 
   for file in public/dist/*.html; do
     sed -i -e "s|/dist/|/$version/|g" -e 's|version : DEV|version : '$version'|' $file
