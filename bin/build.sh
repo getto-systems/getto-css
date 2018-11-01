@@ -4,7 +4,7 @@ build_main(){
   local version
   local file
 
-  version=$(cato .release-version)
+  version=$(cat .release-version)
 
   for file in public/dist/*.html; do
     sed -i -e "s|/dist/|/$version/|g" -e 's|version : DEV|version : '$version'|' $file
@@ -21,6 +21,9 @@ build_main(){
 
   if [ -d public/dist ]; then
     mv public/dist public/$version
+  else
+    rm -rf public
+    mkdir public
   fi
 
   build_sync
