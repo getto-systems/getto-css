@@ -1,3 +1,7 @@
+# Version : 0.6.0
+
+fix: list checkbox style
+
 # Version : 0.5.0
 
 fix: mobile button size for login
