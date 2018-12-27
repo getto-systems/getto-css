@@ -118,8 +118,3 @@
     page-break-after: always;
   }
 }
-
-@page {
-  size: A4;
-  margin: 0;
-}
