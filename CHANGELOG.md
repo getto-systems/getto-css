@@ -1,3 +1,7 @@
+# Version : 0.7.0
+
+add: document
+
 # Version : 0.6.0
 
 fix: list checkbox style
