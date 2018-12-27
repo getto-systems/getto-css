@@ -1,3 +1,7 @@
+# Version : 0.7.1
+
+fix: remove page
+
 # Version : 0.7.0
 
 add: document
