@@ -245,3 +245,15 @@
     }
   }
 }
+
+@media print {
+  .MainLayout {
+    > header,
+    > address,
+    > nav,
+    > article > header,
+    > article > footer {
+      display: none;
+    }
+  }
+}
