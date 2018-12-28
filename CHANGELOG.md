@@ -1,3 +1,7 @@
+# Version : 0.7.2
+
+fix: document table style
+
 # Version : 0.7.1
 
 fix: remove page
