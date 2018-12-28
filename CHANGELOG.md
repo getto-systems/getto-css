@@ -1,3 +1,7 @@
+# Version : 0.7.3
+
+fix: line-height #document
+
 # Version : 0.7.2
 
 fix: document table style
