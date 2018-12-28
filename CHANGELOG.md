@@ -1,3 +1,7 @@
+# Version : 0.7.4
+
+fix: document stamp
+
 # Version : 0.7.3
 
 fix: line-height #document

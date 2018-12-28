@@ -8,33 +8,6 @@
 
   padding: 20mm;
 
-  > header {
-    > h2 {
-      font-size: var(--font-size-xlarge);
-      text-align: center;
-      margin-bottom: 0.5em;
-    }
-
-    > .stamps {
-      text-align: right;
-
-      > .vertical {
-        display: inline-block;
-        vertical-align: middle;
-        writing-mode: vertical-rl;
-      }
-
-      > .stamp {
-        display: inline-block;
-        vertical-align: middle;
-        height: 20mm;
-        width: 20mm;
-        border: 1px solid var(--color-border-gray);
-        margin: 1mm;
-      }
-    }
-  }
-
   > section {
     > table,
     > div > table {
@@ -97,6 +70,53 @@
       &.is-right {
         right: 20mm;
         text-align: right;
+      }
+    }
+  }
+
+  > header {
+    > h2 {
+      font-size: var(--font-size-xlarge);
+      text-align: center;
+      margin-bottom: 0.5em;
+    }
+
+    > .stamps {
+      text-align: right;
+
+      > .vertical {
+        display: inline-block;
+        vertical-align: middle;
+        writing-mode: vertical-rl;
+      }
+
+      > address {
+        display: inline-block;
+        vertical-align: middle;
+        font-style: normal;
+
+        > table {
+          border-collapse: collapse;
+          border: 1px solid var(--color-border-gray);
+
+          th {
+            font-size: var(--font-size-small);
+            border: 1px solid var(--color-border-gray);
+            text-align: center;
+            line-height: 1.5em;
+          }
+
+          td {
+            border: 1px solid var(--color-border-gray);
+
+            .stamp {
+              display: inline-block;
+              vertical-align: middle;
+              height: 20mm;
+              width: 20mm;
+            }
+          }
+        }
       }
     }
   }
