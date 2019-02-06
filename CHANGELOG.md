@@ -1,3 +1,7 @@
+# Version : 0.8.0
+
+fix: font, badge
+
 # Version : 0.7.4
 
 fix: document stamp
