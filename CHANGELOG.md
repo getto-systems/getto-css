@@ -1,3 +1,7 @@
+# Version : 0.10.0
+
+add: copyright
+
 # Version : 0.9.0
 
 add: file, progress
