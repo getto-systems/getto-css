@@ -1,3 +1,7 @@
+# Version : 0.9.0
+
+add: file, progress
+
 # Version : 0.8.0
 
 fix: font, badge

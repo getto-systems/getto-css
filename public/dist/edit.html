@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>GETTO Admin CSS</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="/dist/getto.css">
   </head>
   <body>
@@ -130,7 +130,6 @@
               </table>
               <footer>
                 <button class="is-save">保存</button>
-                <em class="badge is-small is-danger">保存できない項目があります</em>
               </footer>
             </form>
           </section>
@@ -153,31 +152,44 @@
                     <p class="help">正しくありません</p>
                   </td>
                 </tr>
+              </table>
+              <footer>
+                <button class="is-save">保存</button>
+                <em class="badge is-small is-danger">保存できない項目があります</em>
+              </footer>
+            </form>
+          </section>
+
+          <section>
+            <form action="/dist/edit.html" method="get">
+              <h2>カテゴリ名</h2>
+              <table>
                 <tr>
-                  <th>更新日</th>
-                  <td><input type="date" value="2017-03-03"> <input type="time" value="10:00"></td>
+                  <th>ファイル</th>
+                  <td><button type="button">ファイルを選択</button></td>
                 </tr>
                 <tr>
-                  <th>確認</th>
+                  <th>ファイル</th>
                   <td>
-                    <ul class="is-inline">
-                      <li><label><input type="radio"> 未</label></li>
-                      <li><label><input type="radio"> 済</label></li>
+                    <button type="button">ファイルを選択</button>
+                    <ul>
+                      <li><i class="far fa-file"></i> 選択中のファイル名</li>
                     </ul>
                   </td>
                 </tr>
                 <tr>
-                  <th>作業</th>
+                  <th>ファイル</th>
                   <td>
+                    <button type="button">ファイルを選択</button>
                     <ul>
-                      <li><label><input type="radio"> 編集中</label></li>
-                      <li><label><input type="radio"> チェック中</label></li>
-                      <li><label><input type="radio"> 完了</label></li>
+                      <li><i class="far fa-file"></i> 選択中のファイル名</li>
+                      <li><i class="far fa-file"></i> 選択中の長い長い長い長い長い長い長い長い長い長い長い長いファイル名</li>
                     </ul>
                   </td>
                 </tr>
               </table>
               <footer>
+                <mark class="progress is-30"><i class="fas fa-arrow-circle-right"></i></mark>
                 <button class="is-save">保存</button>
               </footer>
             </form>
@@ -248,6 +260,7 @@
                 </table>
               </section>
               <footer>
+                <mark class="progress is-80"><i class="fas fa-arrow-circle-left"></i></mark>
                 <button class="is-save">保存</button>
               </footer>
             </form>
