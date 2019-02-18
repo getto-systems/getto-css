@@ -210,6 +210,7 @@ section.list {
 
     > nav {
       white-space: nowrap;
+      text-align: right;
 
       > ul {
         text-align: right;
