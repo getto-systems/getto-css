@@ -256,34 +256,6 @@ label {
   font-size: var(--font-size-small);
 }
 
-.form-search {
-  color: var(--color-success);
-
-  input[type=email],
-  input[type=password],
-  input[type=text],
-  input[type=tel],
-  input[type=number],
-  input[type=date],
-  select {
-    border-color: var(--color-success);
-  }
-}
-
-.form-search-disabled {
-  color: var(--color-fg-lightgray);
-
-  input[type=email],
-  input[type=password],
-  input[type=text],
-  input[type=tel],
-  input[type=number],
-  input[type=date],
-  select {
-    border-color: var(--color-border-white);
-  }
-}
-
 .form-error {
   color: var(--color-danger);
 
