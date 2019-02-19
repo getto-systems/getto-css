@@ -256,6 +256,13 @@ section.list {
             }
           }
 
+          tr.is-present {
+            th {
+              color: var(--color-success);
+              font-weight: bold;
+            }
+          }
+
           td {
             @apply --form-table-td;
           }
