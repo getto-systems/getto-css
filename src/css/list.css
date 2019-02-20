@@ -136,7 +136,7 @@ section.list {
     > form > table,
     > div > table,
     > div > form > table {
-      margin: 0.5em 0;
+      margin: 0.25rem;
 
       p.alert {
         text-align: center;
@@ -212,8 +212,13 @@ section.list {
       white-space: nowrap;
       text-align: right;
 
+      > select {
+        margin: 0 0.25rem;
+      }
+
       > ul {
         text-align: right;
+        margin: 0 0.25rem;
 
         > li {
           margin: 0;

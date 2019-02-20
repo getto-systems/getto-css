@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
 :root {
-  --border-radius-box: 0.3em;
+  --border-radius-box: 0.3rem;
 
   --header-title: {
     margin-bottom: 0.3em;
@@ -11,14 +11,14 @@
 
   --bordered-box: {
     border: 1px solid var(--color-border-gray);
-    border-radius: 0.2em;
-    margin: 0.25em;
-    padding: 0.5em;
+    border-radius: 0.2rem;
+    margin: 0.25rem;
+    padding: 0.5rem;
   }
 
   --footer-action: {
-    margin-top: 0.5em;
-    padding-top: 0.5em;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
     border-top: 1px solid var(--color-border-gray);
   }
 }
