@@ -1,3 +1,7 @@
+# Version : 1.3.0
+
+fix: label style
+
 # Version : 1.2.0
 
 fix: padding
