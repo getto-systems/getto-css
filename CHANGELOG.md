@@ -1,3 +1,7 @@
+# Version : 1.1.0
+
+fix: padding
+
 # Version : 1.0.0
 
 fix: page header, breadcrumb
