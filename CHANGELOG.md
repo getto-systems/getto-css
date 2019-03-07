@@ -1,3 +1,7 @@
+# Version : 1.2.0
+
+fix: padding
+
 # Version : 1.1.0
 
 fix: padding
