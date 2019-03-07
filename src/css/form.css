@@ -251,6 +251,18 @@ label {
   cursor: pointer;
 }
 
+li > label {
+  margin-right: 0.5em;
+}
+
+li:last-of-type > label {
+  margin-right: 0;
+}
+
+ul.is-block li > label {
+  margin-right: 0;
+}
+
 .help {
   margin: 0.5em;
   line-height: 1.25em;
