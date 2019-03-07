@@ -97,7 +97,7 @@
     > footer {
       > p {
         margin: 0.5rem;
-        padding: 0.5rem;
+        padding: 0.5rem 0;
         text-align: right;
         border-top: 1px solid var(--color-border-gray);
         font-size: var(--font-size-xsmall);
@@ -145,8 +145,9 @@
 
       > p {
         margin: 0.5rem;
-        padding: 0.5rem;
+        padding: 0.5rem 0;
         border-top: 1px solid var(--color-border-gray);
+        text-align: right;
       }
     }
 
