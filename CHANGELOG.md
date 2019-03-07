@@ -1,3 +1,7 @@
+# Version : 1.0.0
+
+fix: page header, breadcrumb
+
 # Version : 0.14.0
 
 fix: table header align
