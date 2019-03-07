@@ -1,3 +1,7 @@
+# Version : 0.14.0
+
+fix: table header align
+
 # Version : 0.13.0
 
 fix: box-margin
