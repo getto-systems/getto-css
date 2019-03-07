@@ -59,6 +59,7 @@
   }
 
   --list-sort-link: {
+    display: block;
     text-decoration: none;
     cursor: pointer;
 
@@ -180,6 +181,7 @@ section.list {
         font-size: var(--font-size-small);
         padding: 0.5rem;
         vertical-align: middle;
+        text-align: left;
       }
 
       td {
@@ -251,14 +253,6 @@ section.list {
         > div > table {
           th {
             @apply --form-table-th;
-
-            &.is-left {
-              text-align: left;
-            }
-
-            &.is-right {
-              text-align: right;
-            }
           }
 
           tr.is-present {
