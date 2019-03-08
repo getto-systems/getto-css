@@ -1,3 +1,7 @@
+# Version : 1.5.0
+
+fix: dialog form
+
 # Version : 1.4.0
 
 fix: line-height
