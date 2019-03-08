@@ -312,7 +312,7 @@
         </footer>
       </article>
       <section class="dialog display-none" id="delete-dialog">
-        <section>
+        <form>
           <h3>この項目を削除しますか？</h3>
           <p>
           この項目を削除すると、関連するデータも全て削除されます
@@ -321,10 +321,10 @@
             <button class="is-delete" id="close-button1">削除</button>
             <button class="is-cancel" id="close-button2">キャンセル</button>
           </footer>
-        </section>
+        </form>
       </section>
       <section class="dialog display-none" id="complete-dialog">
-        <section>
+        <form>
           <h3>この項目を完了しますか？</h3>
           <p>
           この項目を完了すると、関連するデータも全て完了になります
@@ -334,10 +334,10 @@
             <button class="is-complete" id="close-button4">完了</button>
             <button class="is-cancel" id="close-button5">キャンセル</button>
           </footer>
-        </section>
+        </form>
       </section>
       <section class="dialog display-none" id="table-dialog">
-        <section>
+        <form>
           <h3>データを入力してください</h3>
           <section class="list">
             <section class="data">
@@ -373,53 +373,51 @@
               </table>
             </section>
           </section>
-        </section>
+        </form>
       </section>
       <section class="dialog display-none" id="edit-dialog">
-        <section>
-          <section class="edit">
-            <section>
-              <form action="/dist/list.html" method="get">
-                <h2>カテゴリ名</h2>
-                <table>
-                  <tr>
-                    <th>名前</th>
-                    <td><input type="text" value="GETTO Admin CSS"></td>
-                  </tr>
-                  <tr>
-                    <th>メール</th>
-                    <td><input type="email" value="shun@getto.systems"></td>
-                  </tr>
-                  <tr>
-                    <th>更新日</th>
-                    <td><input type="date" value="2017-03-03"> <input type="time" value="10:00"></td>
-                  </tr>
-                  <tr>
-                    <th>確認</th>
-                    <td>
-                      <ul class="is-inline">
-                        <li><label><input type="radio"> 未</label></li>
-                        <li><label><input type="radio"> 済</label></li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>作業</th>
-                    <td>
-                      <ul>
-                        <li><label><input type="radio"> 編集中</label></li>
-                        <li><label><input type="radio"> チェック中</label></li>
-                        <li><label><input type="radio"> 完了</label></li>
-                      </ul>
-                    </td>
-                  </tr>
-                </table>
-                <footer>
-                  <button class="is-save" id="save">保存</button>
-                  <em class="badge is-small is-danger">保存できない項目があります</em>
-                </footer>
-              </form>
-            </section>
+        <section class="edit">
+          <section>
+            <form action="/dist/list.html" method="get">
+              <h2>カテゴリ名</h2>
+              <table>
+                <tr>
+                  <th>名前</th>
+                  <td><input type="text" value="GETTO Admin CSS"></td>
+                </tr>
+                <tr>
+                  <th>メール</th>
+                  <td><input type="email" value="shun@getto.systems"></td>
+                </tr>
+                <tr>
+                  <th>更新日</th>
+                  <td><input type="date" value="2017-03-03"> <input type="time" value="10:00"></td>
+                </tr>
+                <tr>
+                  <th>確認</th>
+                  <td>
+                    <ul class="is-inline">
+                      <li><label><input type="radio"> 未</label></li>
+                      <li><label><input type="radio"> 済</label></li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <th>作業</th>
+                  <td>
+                    <ul>
+                      <li><label><input type="radio"> 編集中</label></li>
+                      <li><label><input type="radio"> チェック中</label></li>
+                      <li><label><input type="radio"> 完了</label></li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+              <footer>
+                <button class="is-save" id="save">保存</button>
+                <em class="badge is-small is-danger">保存できない項目があります</em>
+              </footer>
+            </form>
           </section>
         </section>
       </section>
