@@ -265,8 +265,7 @@ ul.is-block li > label {
 }
 
 .help {
-  margin: 0.5em;
-  line-height: 1.25em;
+  margin: 0.25em;
   font-size: var(--font-size-small);
 }
 
