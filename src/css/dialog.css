@@ -42,7 +42,8 @@ section.dialog {
     }
   }
 
-  > section {
+  > section,
+  > form {
     @apply --bordered-box;
 
     background-color: white;
