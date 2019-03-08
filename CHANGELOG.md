@@ -1,3 +1,7 @@
+# Version : 1.4.0
+
+fix: line-height
+
 # Version : 1.3.0
 
 fix: label style
