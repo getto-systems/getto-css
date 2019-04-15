@@ -1,3 +1,7 @@
+# Version : 1.6.0
+
+add: button : dashboard
+
 # Version : 1.5.0
 
 fix: dialog form

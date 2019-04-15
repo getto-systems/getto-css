@@ -36,6 +36,15 @@ section.dashboard {
               @apply --alert-danger;
             }
           }
+
+          button {
+            @apply --button;
+            @apply --button-gray-primary;
+
+            &.is-delete {
+              @apply --button-gray-danger;
+            }
+          }
         }
 
         > meter {
