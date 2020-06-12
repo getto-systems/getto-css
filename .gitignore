@@ -1,2 +1,3 @@
-/public/dist/getto.css
+/node_modules/
+/dist/
 /tmp/
