@@ -1,8 +1,11 @@
 const fs = require("fs");
 const path = require("path");
+const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
-  entry: { main: path.join(__dirname, "src/main") },
+  entry: {
+    main: path.join(__dirname, "src/main.ts"),
+  },
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].js",
@@ -16,8 +19,27 @@ module.exports = {
           "postcss-loader",
         ],
       },
+      {
+        test: /\.vue$/,
+        loader: "vue-loader",
+      },
+      {
+        test: /\.ts$/,
+        loader: "ts-loader",
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+      },
     ],
   },
+  resolve: {
+    alias: {
+      'vue': 'vue/dist/vue.esm-bundler.js',
+    }
+  },
+  plugins: [
+    new VueLoaderPlugin(),
+  ],
   devServer: devServer(),
 };
 
