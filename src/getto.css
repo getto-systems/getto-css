@@ -1,4 +1,4 @@
-@import "reset.css";
+@import "./css/reset.css";
 
 /*! GETTO Admin CSS : copyright GETTO systems since 2017 */
-@import "example.css";
+@import "./css/example.css";

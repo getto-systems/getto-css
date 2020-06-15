@@ -1,1 +1,0 @@
-import "./getto.css";
