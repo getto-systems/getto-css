@@ -121,14 +121,9 @@ export default {
       menu.isExpand = !menu.isExpand;
     };
 
-    const clicked = (item: Item) => {
-      console.log(item);
-    };
-
     return {
       state,
       toggleMenu,
-      clicked,
     };
   }
 };
