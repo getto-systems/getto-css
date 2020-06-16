@@ -1,7 +1,7 @@
 <template>
 
 <section class="layout__menu menu">
-  <header class="menu__header">
+  <header class="layout__menu__header menu__header">
     <cite class="menu__brand">GETTO</cite>
     <strong class="menu__title">CSS</strong>
     <cite class="menu__subTitle">simple admin theme</cite>
@@ -19,7 +19,7 @@
           </span>
         </a>
       </li>
-      <ul v-if="menu.isExpand" class="menu__nav__items">
+      <ul class="menu__nav__items" :class="{ menu__nav__items_expand: menu.isExpand }">
         <li v-for="item in menu.items" class="menu__nav__item">
           <a :href="item.href" class="menu__nav__link" :class="{ menu__nav__item_active: item.isActive }">
             <i :class="item.icon"></i>
@@ -104,6 +104,11 @@ export default {
             item("lnir lnir-home", "/dist/data.html", "作業・稼働実績統計", 0),
           ]),
           menu("MASTER", [
+            item("lnir lnir-package", "/dist/setting.html", "入荷予定", 1),
+            item("lnir lnir-file-name", "/dist/setting.html", "看板・入荷予定表", 10),
+            item("lnir lnir-cog", "/dist/setting.html", "設定", 0),
+          ]),
+          menu("USER", [
             item("lnir lnir-package", "/dist/setting.html", "入荷予定", 1),
             item("lnir lnir-file-name", "/dist/setting.html", "看板・入荷予定表", 10),
             item("lnir lnir-cog", "/dist/setting.html", "設定", 0),

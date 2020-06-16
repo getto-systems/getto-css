@@ -1,15 +1,38 @@
-.layout__main {
-  position: absolute;
+@media screen and (--media-desktop) {
+  .layout__main {
+    position: absolute;
 
-  left: var(--menu-width);
-  right: 0;
+    left: var(--width-menu);
+    right: 0;
+  }
+
+  .layout__menu {
+    position: absolute;
+
+    left: 0;
+    right: var(--width-menu);
+
+    width: var(--width-menu);
+  }
 }
 
-.layout__menu {
-  position: absolute;
+@media screen and (--media-mobile) {
+  .layout__menu__header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
 
-  left: 0;
-  right: var(--menu-width);
+@media screen and (--media-tablet) {
+  .layout__main {
+    margin-top: 7rem;
+  }
+}
 
-  width: var(--menu-width);
+@media screen and (--media-phone) {
+  .layout__main {
+    margin-top: 8.5rem;
+  }
 }
