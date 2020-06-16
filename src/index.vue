@@ -32,12 +32,6 @@
             GETTO CSS
           </dd>
         </dl>
-        <dl class="form">
-          <dt class="form__header">メール</dt>
-          <dd class="form__field">
-            shun@getto.systems
-          </dd>
-        </dl>
       </section>
       <footer class="box__footer">
         <button type="button" class="button button_edit">編集</button>
@@ -61,35 +55,10 @@
             <p class="form__help">識別のための作業名</p>
           </dd>
         </dl>
-        <dl class="form">
+        <dl class="form form_error">
           <dt class="form__header"><label for="email">メール</label></dt>
           <dd class="form__field">
-            <input type="email" value="shun@getto.systems" id="email">
-            <p class="form__help">連絡先のメールアドレス</p>
-          </dd>
-        </dl>
-      </section>
-      <footer class="box__footer">
-        <button class="button button_edit">編集</button>
-      </footer>
-    </form>
-    <form class="box">
-      <header class="box__header">
-        <h2 class="box__title">作業</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form form_error">
-          <dt class="form__header">名前</dt>
-          <dd class="form__field">
-            <input type="text" value="">
-            <p class="form__message">作業名は必須です</p>
-            <p class="form__help">識別のための作業名</p>
-          </dd>
-        </dl>
-        <dl class="form form_error">
-          <dt class="form__header">メール</dt>
-          <dd class="form__field">
-            <input type="email" value="">
+            <input type="email" value="" id="email">
             <p class="form__message">メールアドレスは必須です</p>
             <p class="form__help">連絡先のメールアドレス</p>
           </dd>
@@ -99,20 +68,7 @@
         <button class="button button_edit">編集</button>
       </footer>
     </form>
-    <section class="box">
-      <header class="box__header">
-        <h2 class="box__title">コンテンツ</h2>
-      </header>
-      <section class="box__body">
-        <p>TODO: 読み込み中にしたい</p>
-      </section>
-      <footer class="box__footer">
-        <p class="box__message box__message_right">
-          <a href="#"><i class="lnir lnir-cog"></i> 設定</a>
-        </p>
-      </footer>
-    </section>
-    <form class="box box_double">
+    <form class="box">
       <header class="box__header">
         <h2 class="box__title">フォーム</h2>
       </header>
@@ -168,9 +124,16 @@
             <input type="search" value="" class="input_large">
           </dd>
         </dl>
-
-        <hr>
-
+      </section>
+      <footer class="box__footer">
+        <button class="button button_edit">編集</button>
+      </footer>
+    </form>
+    <form class="box">
+      <header class="box__header">
+        <h2 class="box__title">フォーム</h2>
+      </header>
+      <section class="box__body">
         <dl class="form">
           <dt class="form__header">number small</dt>
           <dd class="form__field">
@@ -216,62 +179,16 @@
             <input type="email" value="" class="input_medium">
           </dd>
         </dl>
-        <dl class="form">
-          <dt class="form__header">email large</dt>
-          <dd class="form__field">
-            <input type="email" value="" class="input_large">
-          </dd>
-        </dl>
-
-        <hr>
-
-        <dl class="form">
-          <dt class="form__header">tel</dt>
-          <dd class="form__field">
-            <input type="tel" value="">
-          </dd>
-        </dl>
-
-        <hr>
-
-        <dl class="form">
-          <dt class="form__header">select</dt>
-          <dd class="form__field">
-            <select>
-              <option>仮</option>
-              <option>作業中</option>
-              <option>保留</option>
-              <option>完了</option>
-            </select>
-          </dd>
-        </dl>
-
-        <hr>
-
-        <dl class="form">
-          <dt class="form__header">date</dt>
-          <dd class="form__field">
-            <input type="date" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">time</dt>
-          <dd class="form__field">
-            <input type="time" value="">
-          </dd>
-        </dl>
-
-        <hr>
-
-        <dl class="form">
-          <dt class="form__header">file</dt>
-          <dd class="form__field">
-            <input type="file">
-          </dd>
-        </dl>
-
-        <hr>
-
+      </section>
+      <footer class="box__footer">
+        <button class="button button_edit">編集</button>
+      </footer>
+    </form>
+    <form class="box box_double">
+      <header class="box__header">
+        <h2 class="box__title">フォーム</h2>
+      </header>
+      <section class="box__body">
         <dl class="form">
           <dt class="form__header">textarea small</dt>
           <dd class="form__field">
@@ -312,12 +229,59 @@
         <h2 class="box__title">フォーム</h2>
       </header>
       <section class="box__body">
-        <p>コンテンツ</p>
+        <dl class="form">
+          <dt class="form__header">tel</dt>
+          <dd class="form__field">
+            <input type="tel" value="">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">select</dt>
+          <dd class="form__field">
+            <select>
+              <option>仮</option>
+              <option>作業中</option>
+              <option>保留</option>
+              <option>完了</option>
+            </select>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">date</dt>
+          <dd class="form__field">
+            <input type="date" value="">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">time</dt>
+          <dd class="form__field">
+            <input type="time" value="">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">file</dt>
+          <dd class="form__field">
+            <input type="file">
+          </dd>
+        </dl>
       </section>
       <footer class="box__footer">
         <button class="button button_edit">編集</button>
       </footer>
     </form>
+    <section class="box">
+      <header class="box__header">
+        <h2 class="box__title">コンテンツ</h2>
+      </header>
+      <section class="box__body">
+        <p>TODO: 読み込み中にしたい</p>
+      </section>
+      <footer class="box__footer">
+        <p class="box__message box__message_right">
+          <a href="#"><i class="lnir lnir-cog"></i> 設定</a>
+        </p>
+      </footer>
+    </section>
   </section>
   <footer class="main__footer">
     <p class="main__footer__message">powered by LineIcons / copyright GETTO.systems</p>
