@@ -1,6 +1,4 @@
 .menu {
-  background-color: var(--color-black-off);
-
   min-height: 100%;
 }
 
@@ -29,24 +27,23 @@
 }
 
 .menu__body {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
   margin-top: 0.25rem;
 }
 
 .menu__nav {
-  border-top: 1px solid var(--color-black);
-
   margin-top: 0.5rem;
   padding-top: 0.5rem;
   padding-left: 0.25rem;
 }
 
-.menu__nav_collapsed + .menu__nav_collapsed {
-  border-top: none;
+.menu__nav__items {
+  display: none;
+}
 
-  margin-top: 0.25rem;
-  padding-top: 0;
+.menu__nav__items_expand {
+  display: block;
+  margin-top: 0.4rem;
+  margin-left: 1rem;
 }
 
 .menu__nav__handle {
@@ -64,11 +61,6 @@
   display: block;
 }
 
-.menu__nav__items {
-  margin-top: 0.4rem;
-  margin-left: 1rem;
-}
-
 .menu__nav__item {
   margin-top: 0.1rem;
   margin-bottom: 0.1rem;
@@ -79,16 +71,111 @@
 }
 
 .menu__footer {
-  border-top: 1px solid var(--color-black);
+  border-top: 1px dotted var(--color-black);
 
   padding-top: 0.25rem;
-
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
   margin-top: 0.5rem;
 }
 
 .menu__footer__message {
   text-align: right;
   font-size: var(--font-size-small);
+}
+
+@media (--media-desktop) {
+  .menu {
+    background-color: var(--color-black-off);
+  }
+
+  .menu__brand,
+  .menu__title,
+  .menu__subTitle {
+    display: block;
+  }
+
+  .menu__body {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  .menu__nav {
+    border-top: 1px solid var(--color-black);
+  }
+
+  .menu__nav_collapsed + .menu__nav_collapsed {
+    border-top: none;
+
+    margin-top: 0.25rem;
+    padding-top: 0;
+  }
+
+  .menu__footer {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+}
+
+@media (--media-mobile) {
+  .menu {
+    background-color: var(--color-white);
+  }
+
+  .menu__brand,
+  .menu__title,
+  .menu__subTitle {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+
+  .menu__body {
+    border-top: 1px solid var(--color-black);
+
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .menu__nav__items {
+    margin-top: 0.4rem;
+    margin-left: 1rem;
+  }
+
+  .menu__footer {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (--media-tablet) {
+  .menu__brand,
+  .menu__title,
+  .menu__subTitle {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+
+  .menu__body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .menu__nav {
+    width: var(--width-menu);
+  }
+}
+
+@media (--media-phone) {
+  .menu__header {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .menu__brand,
+  .menu__title {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+
+  .menu__subTitle {
+    display: block;
+  }
 }
