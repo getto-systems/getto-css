@@ -1,0 +1,82 @@
+@custom-selector :--input :--input-text, textarea, input[type=number], input[type=tel], input[type=email], input[type=date], input[type=time], input[type=file], select;
+@custom-selector :--input-text input[type=text], input[type=search];
+
+:--input {
+  border: 1px solid var(--color-base);
+
+  padding: 0.5em 0.6em;
+}
+
+input[type=file] {
+  background-color: var(--color-white);
+  font-size: var(--font-size-smaller);
+}
+
+:--input-text,
+input[type=tel] {
+  width: var(--width-input-normal);
+}
+
+:--input-text.input_small {
+  width: var(--width-input-small);
+}
+
+:--input-text.input_medium {
+  width: var(--width-input-medium);
+}
+
+:--input-text.input_large {
+  width: var(--width-input-large);
+}
+
+input[type=number] {
+  width: var(--width-input-small);
+}
+
+input[type=number].input_small {
+  width: var(--width-input-tiny);
+}
+
+input[type=number].input_medium {
+  width: var(--width-input-normal);
+}
+
+input[type=number].input_large {
+  width: var(--width-input-medium);
+}
+
+input[type=email] {
+  width: var(--width-input-medium);
+}
+
+input[type=email].input_small {
+  width: var(--width-input-normal);
+}
+
+input[type=email].input_medium {
+  width: var(--width-input-large);
+}
+
+input[type=email].input_large {
+  width: var(--width-input-xlarge);
+}
+
+textarea {
+  width: var(--width-input-large);
+}
+
+textarea.input_small {
+  width: var(--width-input-medium);
+}
+
+textarea.input_medium {
+  width: var(--width-input-xlarge);
+}
+
+textarea.input_large {
+  width: var(--width-input-xxlarge);
+}
+
+textarea.input_fill {
+  width: calc(100% - 1.5rem);
+}

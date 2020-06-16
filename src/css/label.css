@@ -1,6 +1,5 @@
-.badge {
+.label {
   border: 1px solid transparent;
-  border-radius: 0.3em;
   padding: 0.2em 0.3em;
 
   margin-right: 0.25rem;
@@ -11,37 +10,37 @@
   white-space: nowrap;
 }
 
-.badge_gray {
+.label_gray {
   color: var(--color-black);
   border-color: var(--color-black);
   background-color: var(--color-black-off);
 }
 
-.badge_alert {
+.label_alert {
   color: var(--color-alert);
   border-color: var(--color-alert);
   background-color: var(--color-alert-off);
 }
 
-.badge_success {
+.label_success {
   color: var(--color-success);
   border-color: var(--color-success);
   background-color: var(--color-success-off);
 }
 
-.badge_warning {
+.label_warning {
   color: var(--color-warning);
   border-color: var(--color-warning);
   background-color: var(--color-warning-off);
 }
 
-.badge_pending {
+.label_pending {
   color: var(--color-pending);
   border-color: var(--color-pending);
   background-color: var(--color-pending-off);
 }
 
-.badge_info {
+.label_info {
   color: var(--color-info);
   border-color: var(--color-info);
   background-color: var(--color-info-off);

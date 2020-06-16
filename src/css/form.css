@@ -1,0 +1,26 @@
+.form__header {
+  font-size: var(--font-size-small);
+  margin-bottom: 0.25rem;
+}
+
+.form__field {
+  margin-left: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.form__message,
+.form__help {
+  font-size: var(--font-size-small);
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+.form_error .form__header,
+.form_error .form__message {
+  color: var(--color-alert);
+}
+
+.form_error :--input {
+  border-color: var(--color-alert);
+  background-color: var(--color-alert-off);
+}
