@@ -78,5 +78,5 @@ textarea.input_large {
 }
 
 textarea.input_fill {
-  width: calc(100% - 1.5rem);
+  width: calc(100% - 1.35rem);
 }
