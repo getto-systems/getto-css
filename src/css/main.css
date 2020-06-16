@@ -16,7 +16,15 @@
 }
 
 .main__breadcrumb {
+  font-size: var(--font-size-small);
   text-align: right;
+}
+
+.main__breadcrumb__separator {
+  display: inline-block;
+
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .main__body {
