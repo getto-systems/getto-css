@@ -1,0 +1,5 @@
+@font-face {
+  font-family: minmoji;
+  src: url('https://minmoji.ucda.jp/fontseot/https%3A__css.getto.systems');
+  src: local('minmoji'), url('https://minmoji.ucda.jp/fontswoff/https%3A__css.getto.systems') format('woff'), url('https://minmoji.ucda.jp/fonts/https%3A__css.getto.systems') format('opentype');
+}

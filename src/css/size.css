@@ -1,0 +1,11 @@
+:root {
+  --font-size-large: calc(var(--font-size-medium) * 1.616);
+  --font-size-medium: calc(var(--font-size-normal) * 1.616);
+  --font-size-normal: 23px;
+  --font-size-small: calc(var(--font-size-normal) / 1.616);
+
+  --font-size-larger: 161.6%;
+  --font-size-smaller: 61.8%;
+
+  --menu-width: 22rem;
+}
