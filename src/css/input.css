@@ -57,10 +57,6 @@ input[type=email].input_medium {
   width: var(--width-input-large);
 }
 
-input[type=email].input_large {
-  width: var(--width-input-xlarge);
-}
-
 textarea {
   width: var(--width-input-large);
 }
