@@ -9,4 +9,5 @@
 
   --width-menu: 20rem;
   --width-box: 18rem;
+  --width-box-double: calc(37.5rem + 2px);
 }
