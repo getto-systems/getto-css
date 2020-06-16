@@ -1,0 +1,23 @@
+:root {
+  --color-base: #2266af;
+
+  --color-black: #1c1c1c;
+  --color-black-off: #e3e3e3;
+
+  --color-white: #fff;
+
+  --color-base: #2266af;
+  --color-base-off: #d1e1f2;
+
+  --color-alert: #bc1c5f;
+  --color-alert-off: #f4d0df;
+
+  --color-success: #4bb413;
+  --color-success-off: #dcf3ce;
+
+  --color-warning: #694a9a;
+  --color-warning-off: #e1daee;
+
+  --color-info: #0083af;
+  --color-info-off: #cae8f2;
+}

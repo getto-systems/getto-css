@@ -1,0 +1,15 @@
+.layout__main {
+  position: absolute;
+
+  left: var(--menu-width);
+  right: 0;
+}
+
+.layout__menu {
+  position: absolute;
+
+  left: 0;
+  right: var(--menu-width);
+
+  width: var(--menu-width);
+}

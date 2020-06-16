@@ -1,0 +1,94 @@
+.menu {
+  background-color: var(--color-black-off);
+
+  min-height: 100%;
+}
+
+.menu__header {
+  background-color: var(--color-base);
+  color: var(--color-base-off);
+
+  padding: 0.5rem;
+}
+
+.menu__brand {
+  display: block;
+  font-size: var(--font-size-medium);
+}
+
+.menu__title {
+  display: block;
+  font-size: var(--font-size-large);
+
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.menu__subTitle {
+  display: block;
+}
+
+.menu__body {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.menu__nav {
+  border-top: 1px solid var(--color-black);
+
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.menu__nav_collapsed + .menu__nav_collapsed {
+  border-top: none;
+
+  margin-top: 0.25rem;
+  padding-top: 0;
+}
+
+.menu__nav__handle {
+  display: inline-block;
+
+  font-size: var(--font-size-small);
+  vertical-align: 25%;
+}
+
+.badge + .menu__nav__handle {
+  margin-left: 0.75rem;
+}
+
+.menu__nav__link {
+  display: block;
+}
+
+.menu__nav__items {
+  margin-top: 0.4rem;
+  margin-left: 1rem;
+}
+
+.menu__nav__item {
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.menu__nav__item_active {
+  color: var(--color-alert);
+}
+
+.menu__footer {
+  border-top: 1px solid var(--color-black);
+
+  padding-top: 0.25rem;
+
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.menu__footer__message {
+  text-align: right;
+  font-size: var(--font-size-small);
+}
