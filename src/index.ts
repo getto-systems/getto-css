@@ -1,12 +1,12 @@
 import { createApp } from 'vue';
-import Menu from "./menu.vue";
 import Index from "./index.vue";
+import Menu from "./menu.vue";
 import "./getto.css";
 
 createApp({
   components: {
-    Menu,
     Index,
+    Menu,
   },
   template: "<Index/><Menu/>",
 }).mount('#main');

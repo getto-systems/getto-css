@@ -1,4 +1,5 @@
 @custom-media --media-phone screen and (width < 41.5rem);
+@custom-media --media-wide screen and (width >= 41.5rem);
 @custom-media --media-tablet screen and (41.5rem <= width < 1100px);
 @custom-media --media-mobile screen and (width < 1100px);
 @custom-media --media-desktop screen and (width >= 1100px);
