@@ -31,3 +31,10 @@ small._middle {
 big {
   font-size: var(--font-size-larger);
 }
+
+hr {
+  border-top: 1px solid var(--color-black);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}

@@ -1,17 +1,14 @@
 @media screen and (--media-desktop) {
-  .layout__main {
-    position: absolute;
+  .layout {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 
-    left: var(--width-menu);
-    right: 0;
+  .layout__main {
+    width: calc(100% - var(--width-menu));
   }
 
   .layout__menu {
-    position: absolute;
-
-    left: 0;
-    right: var(--width-menu);
-
     width: var(--width-menu);
   }
 }

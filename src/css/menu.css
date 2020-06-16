@@ -54,7 +54,7 @@
 }
 
 .badge + .menu__nav__handle {
-  margin-left: 0.75rem;
+  margin-left: 0.5rem;
 }
 
 .menu__nav__link {
@@ -75,6 +75,7 @@
 
   padding-top: 0.25rem;
   margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .menu__footer__message {
