@@ -24,12 +24,12 @@
 
 @media screen and (--media-tablet) {
   .layout__main {
-    margin-top: 7rem;
+    margin-top: 6rem;
   }
 }
 
 @media screen and (--media-phone) {
   .layout__main {
-    margin-top: 8.5rem;
+    margin-top: 7rem;
   }
 }
