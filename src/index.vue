@@ -43,7 +43,7 @@
         <button type="button" class="button button_edit">編集</button>
       </footer>
     </section>
-    <form class="box box_editing" @submit.prevent="submit">
+    <form class="box box_editing">
       <header class="box__header">
         <h2 class="box__title">作業</h2>
       </header>
@@ -333,13 +333,8 @@ export default {
     const state = reactive<State>({
     });
 
-    const submit = () => {
-      alert("submit!");
-    };
-
     return {
       state,
-      submit,
     };
   }
 };
