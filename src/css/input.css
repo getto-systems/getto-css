@@ -85,3 +85,34 @@ input[type=search].input_fill,
 input[type=email].input_fill {
   width: calc(100% - 1.5rem);
 }
+
+.input__radio,
+.input__checkbox {
+  display: inline-block;
+
+  padding-top: 0.1rem;
+  padding-left: 0.1rem;
+  padding-bottom: 0.1rem;
+  padding-right: 0.5rem;
+
+  border: 1px dotted transparent;
+  cursor: pointer;
+}
+
+.input__radio:hover,
+.input__radio:focus,
+.input__checkbox:hover,
+.input__checkbox:focus {
+  border-color: var(--color-base);
+}
+
+.input__radio input[type=radio],
+.input__checkbox input[type=checkbox] {
+  margin-right: 0.4rem;
+}
+
+.input__radio.input__radio_block,
+.input__checkbox.input__checkbox_block {
+  display: block;
+  margin-bottom: 0.25rem;
+}
