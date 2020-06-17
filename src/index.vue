@@ -1,3 +1,84 @@
+<script lang="ts">
+import { reactive } from "vue";
+
+type State = {
+  "complete": Modal,
+  "delete": Modal,
+};
+
+type Modal = {
+  active: boolean,
+  connecting: boolean,
+};
+
+export default {
+  setup() {
+    const state = reactive<State>({
+      complete: {
+        active: false,
+        connecting: false,
+      },
+      delete: {
+        active: false,
+        connecting: false,
+      },
+    });
+
+    const delay = 2.5 * 1000;
+
+    function setComplete() {
+      state.complete.active = true;
+      state.complete.connecting = false;
+    }
+
+    function doComplete() {
+      state.complete.connecting = true;
+      setTimeout(() => {
+        state.complete.active = false;
+        state.complete.connecting = false;
+      }, delay);
+    }
+
+    function resetComplete() {
+      state.complete.active = false;
+    }
+
+    function setDelete() {
+      state.delete.active = true;
+      state.delete.connecting = false;
+    }
+
+    function doDelete() {
+      state.delete.connecting = true;
+      setTimeout(() => {
+        state.delete.active = false;
+        state.delete.connecting = false;
+      }, delay);
+    }
+
+    function resetDelete() {
+      state.delete.active = false;
+    }
+
+    function resetAll() {
+      resetComplete();
+      resetDelete();
+    }
+
+    return {
+      state,
+      setComplete,
+      doComplete,
+      resetComplete,
+      setDelete,
+      doDelete,
+      resetDelete,
+      resetAll,
+    };
+  }
+};
+</script>
+
 <template>
 
 <article class="layout__main">
@@ -37,7 +118,7 @@
         <dl class="form">
           <dt class="form__header">状態</dt>
           <dd class="form__field">
-            <button type="button" class="button button_complete">完了</button>
+            <button type="button" class="button button_complete" @click="setComplete">完了</button>
           </dd>
         </dl>
         <dl class="form">
@@ -50,7 +131,7 @@
       <footer class="box__footer">
         <section class="button__container">
           <button type="button" class="button button_edit"><i class="lnir lnir-pencil"></i> 編集</button>
-          <button type="button" class="button button_delete button_right"><i class="lnir lnir-close"></i> 削除</button>
+          <button type="button" class="button button_delete button_right" @click="setDelete"><i class="lnir lnir-close"></i> 削除</button>
         </section>
       </footer>
     </section>
@@ -382,27 +463,75 @@
   <footer class="main__footer">
     <p class="main__footer__message">powered by LineIcons / copyright GETTO.systems</p>
   </footer>
+
+  <aside v-if="state.complete.active || state.complete.connecting" class="modal" @click.self="resetAll">
+    <section v-if="!state.complete.connecting" class="modal__box">
+      <header class="modal__header">
+        <h3 class="modal__title">完了確認</h3>
+      </header>
+      <section class="modal__body">
+        この作業を完了します
+        <br>
+        よろしいですか？
+      </section>
+      <big>
+        <footer class="modal__footer button__container">
+          <button type="button" class="button button_completeConfirm" @click="doComplete">完了</button>
+          <button type="button" class="button button_cancel button_right" @click="resetComplete">キャンセル</button>
+        </footer>
+      </big>
+    </section>
+    <section v-else class="modal__box">
+      <header class="modal__header">
+        <h3 class="modal__title">完了処理中</h3>
+      </header>
+      <section class="modal__body">
+        この作業を完了しています
+      </section>
+      <big>
+        <footer class="modal__footer button__container">
+          <button type="button" class="button button_completeConfirm button_completing"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 完了中</button>
+        </footer>
+      </big>
+    </section>
+  </aside>
+
+  <aside v-if="state.delete.active || state.delete.connecting" class="modal" @click.self="resetAll">
+    <section v-if="!state.delete.connecting" class="modal__box">
+      <header class="modal__header">
+        <h3 class="modal__title">削除確認</h3>
+      </header>
+      <section class="modal__body">
+        この作業を削除します
+        <br>
+        削除すると復元することはできません
+        <br>
+        よろしいですか？
+      </section>
+      <big>
+        <footer class="modal__footer button__container">
+          <button type="button" class="button button_deleteConfirm" @click="doDelete">削除</button>
+          <button type="button" class="button button_cancel button_right" @click="resetDelete">キャンセル</button>
+        </footer>
+      </big>
+    </section>
+    <section v-else class="modal__box">
+      <header class="modal__header">
+        <h3 class="modal__title">削除処理中</h3>
+      </header>
+      <section class="modal__body">
+        この作業を削除しています
+      </section>
+      <big>
+        <footer class="modal__footer button__container">
+          <button type="button" class="button button_deleteConfirm button_deleting"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 削除中</button>
+        </footer>
+      </big>
+    </section>
+  </aside>
 </article>
 
 </template>
-
-<script lang="ts">
-import { reactive } from "vue";
-
-type State = {
-};
-
-export default {
-  setup() {
-    const state = reactive<State>({
-    });
-
-    return {
-      state,
-    };
-  }
-};
-</script>
 
 <style>
 </style>
