@@ -37,7 +37,7 @@
         <button type="button" class="button button_edit">編集</button>
       </footer>
     </section>
-    <form class="box" @submit.prevent="submit">
+    <form class="box box_editing" @submit.prevent="submit">
       <header class="box__header">
         <h2 class="box__title">作業</h2>
       </header>
@@ -68,163 +68,7 @@
         <button class="button button_edit">編集</button>
       </footer>
     </form>
-    <form class="box">
-      <header class="box__header">
-        <h2 class="box__title">フォーム</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">text small</dt>
-          <dd class="form__field">
-            <input type="text" value="" class="input_small">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">text</dt>
-          <dd class="form__field">
-            <input type="text" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">text medium</dt>
-          <dd class="form__field">
-            <input type="text" value="" class="input_medium">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">text large</dt>
-          <dd class="form__field">
-            <input type="text" value="" class="input_large">
-          </dd>
-        </dl>
-
-        <hr>
-
-        <dl class="form">
-          <dt class="form__header">search small</dt>
-          <dd class="form__field">
-            <input type="search" value="" class="input_small">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">search</dt>
-          <dd class="form__field">
-            <input type="search" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">search medium</dt>
-          <dd class="form__field">
-            <input type="search" value="" class="input_medium">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">search large</dt>
-          <dd class="form__field">
-            <input type="search" value="" class="input_large">
-          </dd>
-        </dl>
-      </section>
-      <footer class="box__footer">
-        <button class="button button_edit">編集</button>
-      </footer>
-    </form>
-    <form class="box">
-      <header class="box__header">
-        <h2 class="box__title">フォーム</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">number small</dt>
-          <dd class="form__field">
-            <input type="number" value="" class="input_small">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">number</dt>
-          <dd class="form__field">
-            <input type="number" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">number medium</dt>
-          <dd class="form__field">
-            <input type="number" value="" class="input_medium">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">number large</dt>
-          <dd class="form__field">
-            <input type="number" value="" class="input_large">
-          </dd>
-        </dl>
-
-        <hr>
-
-        <dl class="form">
-          <dt class="form__header">email small</dt>
-          <dd class="form__field">
-            <input type="email" value="" class="input_small">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">email</dt>
-          <dd class="form__field">
-            <input type="email" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">email medium</dt>
-          <dd class="form__field">
-            <input type="email" value="" class="input_medium">
-          </dd>
-        </dl>
-      </section>
-      <footer class="box__footer">
-        <button class="button button_edit">編集</button>
-      </footer>
-    </form>
-    <form class="box box_double">
-      <header class="box__header">
-        <h2 class="box__title">フォーム</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">textarea small</dt>
-          <dd class="form__field">
-            <textarea class="input_small"></textarea>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">textarea</dt>
-          <dd class="form__field">
-            <textarea></textarea>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">textarea medium</dt>
-          <dd class="form__field">
-            <textarea class="input_medium"></textarea>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">textarea large</dt>
-          <dd class="form__field">
-            <textarea class="input_large"></textarea>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">textarea fill</dt>
-          <dd class="form__field">
-            <textarea class="input_fill"></textarea>
-          </dd>
-        </dl>
-      </section>
-      <footer class="box__footer">
-        <button class="button button_edit">編集</button>
-      </footer>
-    </form>
-    <form class="box">
+    <form class="box box_editing">
       <header class="box__header">
         <h2 class="box__title">フォーム</h2>
       </header>
@@ -282,6 +126,188 @@
         </p>
       </footer>
     </section>
+    <form class="box box_editing">
+      <header class="box__header">
+        <h2 class="box__title">フォーム</h2>
+      </header>
+      <section class="box__body">
+        <dl class="form">
+          <dt class="form__header">text small</dt>
+          <dd class="form__field">
+            <input type="text" value="" class="input_small">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">text</dt>
+          <dd class="form__field">
+            <input type="text" value="">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">text medium</dt>
+          <dd class="form__field">
+            <input type="text" value="" class="input_medium">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">text large</dt>
+          <dd class="form__field">
+            <input type="text" value="" class="input_large">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">text fill</dt>
+          <dd class="form__field">
+            <input type="text" value="" class="input_fill">
+          </dd>
+        </dl>
+      </section>
+      <footer class="box__footer">
+        <button class="button button_edit">編集</button>
+      </footer>
+    </form>
+    <form class="box box_editing">
+      <header class="box__header">
+        <h2 class="box__title">フォーム</h2>
+      </header>
+      <section class="box__body">
+        <dl class="form">
+          <dt class="form__header">search small</dt>
+          <dd class="form__field">
+            <input type="search" value="" class="input_small">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">search</dt>
+          <dd class="form__field">
+            <input type="search" value="">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">search medium</dt>
+          <dd class="form__field">
+            <input type="search" value="" class="input_medium">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">search large</dt>
+          <dd class="form__field">
+            <input type="search" value="" class="input_large">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">search fill</dt>
+          <dd class="form__field">
+            <input type="search" value="" class="input_fill">
+          </dd>
+        </dl>
+      </section>
+      <footer class="box__footer">
+        <button class="button button_edit">編集</button>
+      </footer>
+    </form>
+    <form class="box box_editing">
+      <header class="box__header">
+        <h2 class="box__title">フォーム</h2>
+      </header>
+      <section class="box__body">
+        <dl class="form">
+          <dt class="form__header">number small</dt>
+          <dd class="form__field">
+            <input type="number" value="" class="input_small">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">number</dt>
+          <dd class="form__field">
+            <input type="number" value="">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">number medium</dt>
+          <dd class="form__field">
+            <input type="number" value="" class="input_medium">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">number large</dt>
+          <dd class="form__field">
+            <input type="number" value="" class="input_large">
+          </dd>
+        </dl>
+      </section>
+      <footer class="box__footer">
+        <button class="button button_edit">編集</button>
+      </footer>
+    </form>
+    <form class="box box_editing">
+      <header class="box__header">
+        <h2 class="box__title">フォーム</h2>
+      </header>
+      <section class="box__body">
+        <dl class="form">
+          <dt class="form__header">email small</dt>
+          <dd class="form__field">
+            <input type="email" value="" class="input_small">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">email</dt>
+          <dd class="form__field">
+            <input type="email" value="">
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">email medium</dt>
+          <dd class="form__field">
+            <input type="email" value="" class="input_medium">
+          </dd>
+        </dl>
+      </section>
+      <footer class="box__footer">
+        <button class="button button_edit">編集</button>
+      </footer>
+    </form>
+    <form class="box box_double box_editing">
+      <header class="box__header">
+        <h2 class="box__title">フォーム</h2>
+      </header>
+      <section class="box__body">
+        <dl class="form">
+          <dt class="form__header">textarea small</dt>
+          <dd class="form__field">
+            <textarea class="input_small"></textarea>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">textarea</dt>
+          <dd class="form__field">
+            <textarea></textarea>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">textarea medium</dt>
+          <dd class="form__field">
+            <textarea class="input_medium"></textarea>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">textarea large</dt>
+          <dd class="form__field">
+            <textarea class="input_large"></textarea>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">textarea fill</dt>
+          <dd class="form__field">
+            <textarea class="input_fill"></textarea>
+          </dd>
+        </dl>
+      </section>
+      <footer class="box__footer">
+        <button class="button button_edit">編集</button>
+      </footer>
+    </form>
   </section>
   <footer class="main__footer">
     <p class="main__footer__message">powered by LineIcons / copyright GETTO.systems</p>
