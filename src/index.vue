@@ -4,6 +4,7 @@ import { reactive } from "vue";
 type State = {
   "complete": Modal,
   "delete": Modal,
+  "generate": Modal,
 };
 
 type Modal = {
@@ -19,6 +20,10 @@ export default {
         connecting: false,
       },
       delete: {
+        active: false,
+        connecting: false,
+      },
+      generate: {
         active: false,
         connecting: false,
       },
@@ -60,6 +65,19 @@ export default {
       state.delete.active = false;
     }
 
+    function setGenerate() {
+      state.generate.active = true;
+      state.generate.connecting = true;
+
+      setTimeout(() => {
+        state.generate.connecting = false;
+      }, delay);
+    }
+
+    function resetGenerate() {
+      state.generate.active = false;
+    }
+
     function resetAll() {
       resetComplete();
       resetDelete();
@@ -73,6 +91,8 @@ export default {
       setDelete,
       doDelete,
       resetDelete,
+      setGenerate,
+      resetGenerate,
       resetAll,
     };
   }
@@ -125,6 +145,13 @@ export default {
           <dt class="form__header">名前</dt>
           <dd class="form__field">
             GETTO CSS
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">レポート</dt>
+          <dd class="form__field">
+            <button v-if="!state.generate.connecting" type="button" class="button button_generate" @click="setGenerate">帳票を作成する</button>
+            <button v-else type="button" class="button button_generate button_generating"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 作成中</button>
           </dd>
         </dl>
       </section>
@@ -525,6 +552,42 @@ export default {
       <big>
         <footer class="modal__footer button__container">
           <button type="button" class="button button_deleteConfirm button_deleting"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 削除中</button>
+        </footer>
+      </big>
+    </section>
+  </aside>
+
+  <aside v-if="state.generate.active || state.generate.connecting" class="modal" @click.self="resetAll">
+    <section v-if="state.generate.connecting" class="modal__box">
+      <header class="modal__header">
+        <h3 class="modal__title">帳票作成中</h3>
+      </header>
+      <section class="modal__body">
+        <div class="loading">
+          <i class="lnir lnir-spinner-11 lnir-is-spinning"></i>
+          <p class="loading__message">読み込み中です</p>
+        </div>
+      </section>
+    </section>
+    <section v-else class="modal__box">
+      <header class="modal__header">
+        <h3 class="modal__title">帳票ダウンロード</h3>
+      </header>
+      <section class="modal__body">
+        必要な書類をダウンロードしてください
+
+        <ul class="list">
+          <li class="list__item"><a href="#"><i class="lnir lnir-files"></i> 作業申請書</a></li>
+          <li class="list__item"><a href="#"><i class="lnir lnir-files"></i> 作業申請書</a></li>
+          <li class="list__item"><a href="#"><i class="lnir lnir-files"></i> 作業申請書</a></li>
+          <li class="list__item"><a href="#"><i class="lnir lnir-files"></i> 作業申請書</a></li>
+          <li class="list__item"><a href="#"><i class="lnir lnir-files"></i> 作業申請書</a></li>
+        </ul>
+      </section>
+      <big>
+        <footer class="modal__footer button__container">
+        <span></span>
+          <button type="button" class="button button_cancel button_right" @click="resetGenerate"><i class="lnir lnir-close"></i> 閉じる</button>
         </footer>
       </big>
     </section>

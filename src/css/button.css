@@ -62,12 +62,15 @@
   background-color: var(--color-white);
 }
 
+.button.button_generate,
 .button.button_save.button_modified {
   color: var(--color-white);
   border-color: var(--color-base);
   background-color: var(--color-base);
 }
 
+.button.button_generate:hover,
+.button.button_generate:focus,
 .button.button_save.button_modified:hover,
 .button.button_save.button_modified:focus {
   color: var(--color-black);
