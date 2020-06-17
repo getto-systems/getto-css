@@ -12,6 +12,13 @@ input[type=file] {
   font-size: var(--font-size-smaller);
 }
 
+select,
+input[type=date],
+input[type=time],
+input[type=file] {
+  cursor: pointer;
+}
+
 :--input-text,
 input[type=tel] {
   width: var(--width-input-normal);
