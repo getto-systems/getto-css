@@ -40,7 +40,7 @@
         </dl>
       </section>
       <footer class="box__footer">
-        <button type="button" class="button button_edit">編集</button>
+        <button type="button" class="button button_edit"><i class="lnir lnir-pencil"></i> 編集</button>
       </footer>
     </section>
     <form class="box box_editing">
@@ -64,8 +64,12 @@
           </dd>
         </dl>
       </section>
-      <footer class="box__footer">
-        <button class="button button_edit">編集</button>
+      <footer class="box__footer form_error">
+        <section class="button__container">
+          <button type="button" class="button button_save button_modified"><i class="lnir lnir-pencil"></i> 保存</button>
+          <button type="button" class="button button_cancel button_right">キャンセル</button>
+        </section>
+        <p class="form__message">保存できない項目があります</p>
       </footer>
     </form>
     <form class="box box_editing">
@@ -110,7 +114,10 @@
         </dl>
       </section>
       <footer class="box__footer">
-        <button class="button button_edit">編集</button>
+        <section class="button__container">
+          <button type="button" class="button button_save button_modified"><i class="lnir lnir-pencil"></i> 保存</button>
+          <button type="button" class="button button_cancel button_right">キャンセル</button>
+        </section>
       </footer>
     </form>
     <form class="box box_editing">
@@ -152,9 +159,10 @@
         </dl>
       </section>
       <footer class="box__footer">
-        <p class="box__message box__message_right">
-          <a href="#"><i class="lnir lnir-cog"></i> 設定</a>
-        </p>
+        <section class="button__container">
+          <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
+          <button type="button" class="button button_cancel button_right">キャンセル</button>
+        </section>
       </footer>
     </form>
     <form class="box box_editing">
@@ -194,7 +202,10 @@
         </dl>
       </section>
       <footer class="box__footer">
-        <button class="button button_edit">編集</button>
+        <section class="button__container">
+          <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
+          <button type="button" class="button button_cancel button_right">キャンセル</button>
+        </section>
       </footer>
     </form>
     <form class="box box_editing">
@@ -234,7 +245,10 @@
         </dl>
       </section>
       <footer class="box__footer">
-        <button class="button button_edit">編集</button>
+        <section class="button__container">
+          <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
+          <button type="button" class="button button_cancel button_right">キャンセル</button>
+        </section>
       </footer>
     </form>
     <form class="box box_editing">
@@ -268,7 +282,10 @@
         </dl>
       </section>
       <footer class="box__footer">
-        <button class="button button_edit">編集</button>
+        <section class="button__container">
+          <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
+          <button type="button" class="button button_cancel button_right">キャンセル</button>
+        </section>
       </footer>
     </form>
     <form class="box box_editing">
@@ -302,7 +319,10 @@
         </dl>
       </section>
       <footer class="box__footer">
-        <button class="button button_edit">編集</button>
+        <section class="button__container">
+          <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
+          <button type="button" class="button button_cancel button_right">キャンセル</button>
+        </section>
       </footer>
     </form>
     <form class="box box_double box_editing">
@@ -342,7 +362,10 @@
         </dl>
       </section>
       <footer class="box__footer">
-        <button class="button button_edit">編集</button>
+        <section class="button__container">
+          <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
+          <button type="button" class="button button_cancel button_right">キャンセル</button>
+        </section>
       </footer>
     </form>
   </section>
