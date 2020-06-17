@@ -138,7 +138,9 @@ export default {
         <dl class="form">
           <dt class="form__header">状態</dt>
           <dd class="form__field">
-            <button type="button" class="button button_complete" @click="setComplete">完了</button>
+            <big>
+              <button type="button" class="button button_complete" @click="setComplete">完了</button>
+            </big>
           </dd>
         </dl>
         <dl class="form">
