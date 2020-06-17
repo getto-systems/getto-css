@@ -22,6 +22,14 @@
   vertical-align: 20%;
 }
 
+.button_left .button {
+  margin-right: 0.25rem;
+}
+
+.button_right .button {
+  margin-left: 0.25rem;
+}
+
 .button.button_edit {
   color: var(--color-black);
   border-color: var(--color-black);
@@ -98,7 +106,7 @@
 
 .button.button_complete:hover,
 .button.button_complete:focus {
-  color: var(--color-success);
+  color: var(--color-white);
   border-color: var(--color-success);
-  background-color: var(--color-white);
+  background-color: var(--color-success);
 }
