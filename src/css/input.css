@@ -30,7 +30,13 @@ input[type=tel] {
 }
 
 input[type=number] {
+  appearance: textfield;
   width: var(--width-input-small);
+}
+
+input[type=number]::-webkit-innter-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  appearance: none;
 }
 
 input[type=number].input_small {
@@ -73,6 +79,8 @@ textarea.input_large {
   width: var(--width-input-xxlarge);
 }
 
-textarea.input_fill {
+textarea.input_fill,
+input[type=text].input_fill,
+input[type=search].input_fill {
   width: calc(100% - 1.35rem);
 }
