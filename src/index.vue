@@ -113,19 +113,50 @@
         <button class="button button_edit">編集</button>
       </footer>
     </form>
-    <section class="box">
+    <form class="box box_editing">
       <header class="box__header">
-        <h2 class="box__title">コンテンツ</h2>
+        <h2 class="box__title">フォーム</h2>
       </header>
       <section class="box__body">
-        <p>TODO: 読み込み中にしたい</p>
+        <dl class="form">
+          <dt class="form__header">radio</dt>
+          <dd class="form__field">
+            <label class="input__radio"><input type="radio" name="radio" checked>仮</label>
+            <label class="input__radio"><input type="radio" name="radio">作業中</label>
+            <label class="input__radio"><input type="radio" name="radio">完了</label>
+            <label class="input__radio"><input type="radio" name="radio">審査申請中</label>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">radio block</dt>
+          <dd class="form__field">
+            <label class="input__radio input__radio_block"><input type="radio" name="radio-block" checked>作業中</label>
+            <label class="input__radio input__radio_block"><input type="radio" name="radio-block">審査申請中</label>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">checkbox</dt>
+          <dd class="form__field">
+            <label class="input__checkbox"><input type="checkbox">仮</label>
+            <label class="input__checkbox"><input type="checkbox">作業中</label>
+            <label class="input__checkbox"><input type="checkbox">完了</label>
+            <label class="input__checkbox"><input type="checkbox">審査申請中</label>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">checkbox block</dt>
+          <dd class="form__field">
+            <label class="input__checkbox input__checkbox_block"><input type="checkbox">作業中</label>
+            <label class="input__checkbox input__checkbox_block"><input type="checkbox">審査申請中</label>
+          </dd>
+        </dl>
       </section>
       <footer class="box__footer">
         <p class="box__message box__message_right">
           <a href="#"><i class="lnir lnir-cog"></i> 設定</a>
         </p>
       </footer>
-    </section>
+    </form>
     <form class="box box_editing">
       <header class="box__header">
         <h2 class="box__title">フォーム</h2>
