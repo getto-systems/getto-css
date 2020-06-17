@@ -1,0 +1,17 @@
+.loading {
+  display: block;
+  width: var(--width-box);
+  padding: 5em;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  text-align: center;
+}
+
+.loading__message {
+  font-size: var(--font-size-smaller);
+
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
