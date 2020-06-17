@@ -10,6 +10,12 @@
 
   .layout__menu {
     width: var(--width-menu);
+
+    position: fixed;
+    left: 0;
+
+    height: 100%;
+    overflow-y: auto;
   }
 }
 
