@@ -81,6 +81,7 @@ textarea.input_large {
 
 textarea.input_fill,
 input[type=text].input_fill,
-input[type=search].input_fill {
+input[type=search].input_fill,
+input[type=email].input_fill {
   width: calc(100% - 1.5rem);
 }

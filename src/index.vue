@@ -263,6 +263,12 @@
             <input type="email" value="" class="input_medium">
           </dd>
         </dl>
+        <dl class="form">
+          <dt class="form__header">email fill</dt>
+          <dd class="form__field">
+            <input type="email" value="" class="input_fill">
+          </dd>
+        </dl>
       </section>
       <footer class="box__footer">
         <button class="button button_edit">編集</button>
