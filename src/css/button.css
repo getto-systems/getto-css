@@ -16,8 +16,10 @@
   cursor: pointer;
   border: 1px solid var(--color-black);
 
-  font-size: var(--font-size-small);
-  padding: 0.15rem 0.5rem;
+  font-size: var(--font-size-smaller);
+  padding: 0.1em 0.8em;
+
+  vertical-align: 20%;
 }
 
 .button.button_edit {
@@ -61,9 +63,42 @@
   background-color: var(--color-white);
 }
 
+.button.button_save.button_saving {
+  color: var(--color-white);
+  border-color: var(--color-base);
+  background-color: var(--color-base);
+  cursor: wait;
+}
+
 .form_error .button.button_save.button_modified {
   color: var(--color-white);
   border-color: var(--color-alert);
   background-color: var(--color-alert);
-  cursor: not-allowed;
+  cursor: no-drop;
+}
+
+.button.button_delete {
+  color: var(--color-black);
+  border-color: var(--color-black);
+  background-color: var(--color-black-off);
+}
+
+.button.button_delete:hover,
+.button.button_delete:focus {
+  color: var(--color-alert);
+  border-color: var(--color-alert);
+  background-color: var(--color-white);
+}
+
+.button.button_complete {
+  color: var(--color-black);
+  border-color: var(--color-black);
+  background-color: var(--color-black-off);
+}
+
+.button.button_complete:hover,
+.button.button_complete:focus {
+  color: var(--color-success);
+  border-color: var(--color-success);
+  background-color: var(--color-white);
 }
