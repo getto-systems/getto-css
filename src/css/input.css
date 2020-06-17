@@ -122,5 +122,4 @@ input[type=email].input_fill {
 .input__radio.input__radio_block,
 .input__checkbox.input__checkbox_block {
   display: block;
-  margin-bottom: 0.25rem;
 }
