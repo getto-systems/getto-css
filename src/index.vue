@@ -27,6 +27,12 @@
           </dd>
         </dl>
         <dl class="form">
+          <dt class="form__header">状態</dt>
+          <dd class="form__field">
+            <big><span class="label label_gray">仮</span></big>
+          </dd>
+        </dl>
+        <dl class="form">
           <dt class="form__header">名前</dt>
           <dd class="form__field">
             GETTO CSS
@@ -42,12 +48,6 @@
         <h2 class="box__title">作業</h2>
       </header>
       <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">状態</dt>
-          <dd class="form__field">
-            <big><span class="label label_gray">仮</span></big>
-          </dd>
-        </dl>
         <dl class="form">
           <dt class="form__header"><label for="work-name">名前</label></dt>
           <dd class="form__field">
