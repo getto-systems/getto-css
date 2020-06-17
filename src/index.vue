@@ -29,7 +29,15 @@
         <dl class="form">
           <dt class="form__header">状態</dt>
           <dd class="form__field">
-            <big><span class="label label_gray">仮</span></big>
+            <big>
+              <span class="label label_gray">仮</span>
+            </big>
+          </dd>
+        </dl>
+        <dl class="form">
+          <dt class="form__header">状態</dt>
+          <dd class="form__field">
+            <button type="button" class="button button_complete">完了</button>
           </dd>
         </dl>
         <dl class="form">
@@ -40,7 +48,10 @@
         </dl>
       </section>
       <footer class="box__footer">
-        <button type="button" class="button button_edit"><i class="lnir lnir-pencil"></i> 編集</button>
+        <section class="button__container">
+          <button type="button" class="button button_edit"><i class="lnir lnir-pencil"></i> 編集</button>
+          <button type="button" class="button button_delete button_right"><i class="lnir lnir-close"></i> 削除</button>
+        </section>
       </footer>
     </section>
     <form class="box box_editing">
@@ -160,8 +171,7 @@
       </section>
       <footer class="box__footer">
         <section class="button__container">
-          <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
-          <button type="button" class="button button_cancel button_right">キャンセル</button>
+          <button type="button" class="button button_save button_saving"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 保存中</button>
         </section>
       </footer>
     </form>
