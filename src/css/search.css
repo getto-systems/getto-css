@@ -17,8 +17,25 @@
   margin-left: 1rem;
 }
 
-.search__help {
+.search__help,
+.search__message {
   font-size: var(--font-size-small);
   margin-top: 0.25rem;
   margin-left: 0.25rem;
 }
+
+.search_use .search__header {
+  font-weight: bold;
+  color: var(--color-info);
+}
+
+.search_use :--input,
+.search_use .input__radio.search_checked,
+.search_use .input__checkbox.search_checked {
+  border-color: var(--color-info);
+}
+
+.search_error .search__message {
+  color: var(--color-alert);
+}
+

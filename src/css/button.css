@@ -48,6 +48,7 @@
 }
 
 .button.button_save,
+.button.button_search,
 .button.button_cancel {
   color: var(--color-black);
   border-color: var(--color-black);
@@ -56,6 +57,8 @@
 
 .button.button_save:hover,
 .button.button_save:focus,
+.button.button_search:hover,
+.button.button_search:focus,
 .button.button_cancel:hover,
 .button.button_cancel:focus {
   color: var(--color-black);
@@ -78,10 +81,30 @@
   background-color: var(--color-white);
 }
 
-.button.button_save.button_saving {
+.button.button_search.button_modified {
+  color: var(--color-white);
+  border-color: var(--color-info);
+  background-color: var(--color-info);
+}
+
+.button.button_search.button_modified:hover,
+.button.button_search.button_modified:focus {
+  color: var(--color-black);
+  border-color: var(--color-info);
+  background-color: var(--color-white);
+}
+
+.button.button_saving {
   color: var(--color-white);
   border-color: var(--color-base);
   background-color: var(--color-base);
+  cursor: wait;
+}
+
+.button.button_searching {
+  color: var(--color-white);
+  border-color: var(--color-info);
+  background-color: var(--color-info);
   cursor: wait;
 }
 
