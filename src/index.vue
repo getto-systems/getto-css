@@ -105,7 +105,7 @@ export default {
   <header class="main__header">
     <h1 class="main__title">ホーム</h1>
     <p class="main__breadcrumb">
-      <span>MAIN</span>
+      <a href="#menu">MAIN</a>
       <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
       <a href="/dist/index.html"><i class="lnir lnir-home"></i> ホーム</a>
     </p>
@@ -471,12 +471,6 @@ export default {
             <dt class="form__header">textarea medium</dt>
             <dd class="form__field">
               <textarea class="input_medium"></textarea>
-            </dd>
-          </dl>
-          <dl class="form">
-            <dt class="form__header">textarea large</dt>
-            <dd class="form__field">
-              <textarea class="input_large"></textarea>
             </dd>
           </dl>
           <dl class="form">
