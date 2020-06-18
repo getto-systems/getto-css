@@ -289,7 +289,7 @@ export default {
       </div>
       <footer class="box__footer">
         <section class="button__container">
-          <button type="button" class="button button_save button_saving"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 保存中</button>
+          <button type="button" class="button button_saving"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 保存中</button>
         </section>
       </footer>
     </form>
