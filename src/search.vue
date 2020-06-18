@@ -41,15 +41,10 @@ export default {
       }, delay);
     }
 
-    function radio(value: string): boolean {
-      return data.radio.value === value;
-    }
-
     return {
       data,
       state,
       search,
-      radio,
     };
   }
 };
@@ -86,10 +81,10 @@ export default {
           <dt class="search__header">radio</dt>
           <dd class="search__field">
             <small>
-              <label class="input__radio" :class="{ search_checked: radio('仮') }"><input type="radio" name="radio" value="仮" v-model="data.radio">仮</label>
-              <label class="input__radio" :class="{ search_checked: radio('作業中') }"><input type="radio" name="radio" value="作業中" v-model="data.radio">作業中</label>
-              <label class="input__radio" :class="{ search_checked: radio('完了') }"><input type="radio" name="radio" value="完了" v-model="data.radio">完了</label>
-              <label class="input__radio" :class="{ search_checked: radio('審査申請中') }"><input type="radio" name="radio" value="審査申請中" v-model="data.radio">審査申請中</label>
+              <label class="input__radio search_checked"><input type="radio" name="radio" value="仮" v-model="data.radio">仮</label>
+              <label class="input__radio"><input type="radio" name="radio" value="作業中" v-model="data.radio">作業中</label>
+              <label class="input__radio"><input type="radio" name="radio" value="完了" v-model="data.radio">完了</label>
+              <label class="input__radio"><input type="radio" name="radio" value="審査申請中" v-model="data.radio">審査申請中</label>
             </small>
           </dd>
         </dl>
