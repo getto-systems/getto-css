@@ -55,14 +55,6 @@ input[type=number].input_small {
   width: var(--width-input-tiny);
 }
 
-input[type=number].input_medium {
-  width: var(--width-input-normal);
-}
-
-input[type=number].input_large {
-  width: var(--width-input-medium);
-}
-
 input[type=email] {
   width: var(--width-input-medium);
 }

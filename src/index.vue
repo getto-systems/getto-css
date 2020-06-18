@@ -401,18 +401,6 @@ export default {
               <input type="number" value="">
             </dd>
           </dl>
-          <dl class="form">
-            <dt class="form__header">number medium</dt>
-            <dd class="form__field">
-              <input type="number" value="" class="input_medium">
-            </dd>
-          </dl>
-          <dl class="form">
-            <dt class="form__header">number large</dt>
-            <dd class="form__field">
-              <input type="number" value="" class="input_large">
-            </dd>
-          </dl>
         </section>
       </div>
       <footer class="box__footer">

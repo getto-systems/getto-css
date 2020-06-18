@@ -10,6 +10,8 @@
   --width-menu: 16rem;
   --width-box: 20rem;
   --width-box-double: calc(41.5rem + 2px);
+  --width-search: 12rem;
+  --width-search-double: calc(24.25rem);
 
   --width-input-tiny: 2em;
   --width-input-small: 6em;

@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import Page from "./index.vue";
+import Page from "./search.vue";
 import Menu from "./menu.vue";
 import "./getto.css";
 
