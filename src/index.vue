@@ -112,51 +112,53 @@ export default {
   </header>
   <section class="main__body container">
     <section class="box">
-      <header class="box__header">
-        <h2 class="box__title">作業</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">状態</dt>
-          <dd class="form__field">
-            <span class="label label_gray">仮</span>
-            <span class="label label_alert">エラー</span>
-            <span class="label label_warning">作業中</span>
-            <span class="label label_success">完了</span>
-            <span class="label label_pending">保留</span>
-            <span class="label label_info">情報</span>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">状態</dt>
-          <dd class="form__field">
-            <big>
+      <div>
+        <header class="box__header">
+          <h2 class="box__title">作業</h2>
+        </header>
+        <section class="box__body">
+          <dl class="form">
+            <dt class="form__header">状態</dt>
+            <dd class="form__field">
               <span class="label label_gray">仮</span>
-            </big>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">状態</dt>
-          <dd class="form__field">
-            <big>
-              <button type="button" class="button button_complete" @click="setComplete">完了</button>
-            </big>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">名前</dt>
-          <dd class="form__field">
-            GETTO CSS
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">レポート</dt>
-          <dd class="form__field">
-            <button v-if="!state.generate.connecting" type="button" class="button button_generate" @click="setGenerate">帳票を作成する</button>
-            <button v-else type="button" class="button button_generate button_generating"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 作成中</button>
-          </dd>
-        </dl>
-      </section>
+              <span class="label label_alert">エラー</span>
+              <span class="label label_warning">作業中</span>
+              <span class="label label_success">完了</span>
+              <span class="label label_pending">保留</span>
+              <span class="label label_info">情報</span>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">状態</dt>
+            <dd class="form__field">
+              <big>
+                <span class="label label_gray">仮</span>
+              </big>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">状態</dt>
+            <dd class="form__field">
+              <big>
+                <button type="button" class="button button_complete" @click="setComplete">完了</button>
+              </big>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">名前</dt>
+            <dd class="form__field">
+              GETTO CSS
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">レポート</dt>
+            <dd class="form__field">
+              <button v-if="!state.generate.connecting" type="button" class="button button_generate" @click="setGenerate">帳票を作成する</button>
+              <button v-else type="button" class="button button_generate button_generating"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 作成中</button>
+            </dd>
+          </dl>
+        </section>
+      </div>
       <footer class="box__footer">
         <section class="button__container">
           <button type="button" class="button button_edit"><i class="lnir lnir-pencil"></i> 編集</button>
@@ -165,26 +167,28 @@ export default {
       </footer>
     </section>
     <form class="box box_editing">
-      <header class="box__header">
-        <h2 class="box__title">作業</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header"><label for="work-name">名前</label></dt>
-          <dd class="form__field">
-            <input type="text" value="GETTO CSS" id="work-name">
-            <p class="form__help">識別のための作業名</p>
-          </dd>
-        </dl>
-        <dl class="form form_error">
-          <dt class="form__header"><label for="email">メール</label></dt>
-          <dd class="form__field">
-            <input type="email" value="" id="email">
-            <p class="form__message">メールアドレスは必須です</p>
-            <p class="form__help">連絡先のメールアドレス</p>
-          </dd>
-        </dl>
-      </section>
+      <div>
+        <header class="box__header">
+          <h2 class="box__title">作業</h2>
+        </header>
+        <section class="box__body">
+          <dl class="form">
+            <dt class="form__header"><label for="work-name">名前</label></dt>
+            <dd class="form__field">
+              <input type="text" value="GETTO CSS" id="work-name">
+              <p class="form__help">識別のための作業名</p>
+            </dd>
+          </dl>
+          <dl class="form form_error">
+            <dt class="form__header"><label for="email">メール</label></dt>
+            <dd class="form__field">
+              <input type="email" value="" id="email">
+              <p class="form__message">メールアドレスは必須です</p>
+              <p class="form__help">連絡先のメールアドレス</p>
+            </dd>
+          </dl>
+        </section>
+      </div>
       <footer class="box__footer form_error">
         <section class="button__container">
           <button type="button" class="button button_save button_modified"><i class="lnir lnir-pencil"></i> 保存</button>
@@ -194,46 +198,48 @@ export default {
       </footer>
     </form>
     <form class="box box_editing">
-      <header class="box__header">
-        <h2 class="box__title">フォーム</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">tel</dt>
-          <dd class="form__field">
-            <input type="tel" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">select</dt>
-          <dd class="form__field">
-            <select>
-              <option>仮</option>
-              <option>作業中</option>
-              <option>保留</option>
-              <option>完了</option>
-            </select>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">date</dt>
-          <dd class="form__field">
-            <input type="date" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">time</dt>
-          <dd class="form__field">
-            <input type="time" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">file</dt>
-          <dd class="form__field">
-            <input type="file">
-          </dd>
-        </dl>
-      </section>
+      <div>
+        <header class="box__header">
+          <h2 class="box__title">フォーム</h2>
+        </header>
+        <section class="box__body">
+          <dl class="form">
+            <dt class="form__header">tel</dt>
+            <dd class="form__field">
+              <input type="tel" value="">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">select</dt>
+            <dd class="form__field">
+              <select>
+                <option>仮</option>
+                <option>作業中</option>
+                <option>保留</option>
+                <option>完了</option>
+              </select>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">date</dt>
+            <dd class="form__field">
+              <input type="date" value="">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">time</dt>
+            <dd class="form__field">
+              <input type="time" value="">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">file</dt>
+            <dd class="form__field">
+              <input type="file">
+            </dd>
+          </dl>
+        </section>
+      </div>
       <footer class="box__footer">
         <section class="button__container">
           <button type="button" class="button button_save button_modified"><i class="lnir lnir-pencil"></i> 保存</button>
@@ -242,43 +248,45 @@ export default {
       </footer>
     </form>
     <form class="box box_editing">
-      <header class="box__header">
-        <h2 class="box__title">フォーム</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">radio</dt>
-          <dd class="form__field">
-            <label class="input__radio"><input type="radio" name="radio" checked>仮</label>
-            <label class="input__radio"><input type="radio" name="radio">作業中</label>
-            <label class="input__radio"><input type="radio" name="radio">完了</label>
-            <label class="input__radio"><input type="radio" name="radio">審査申請中</label>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">radio block</dt>
-          <dd class="form__field">
-            <label class="input__radio input__radio_block"><input type="radio" name="radio-block" checked>作業中</label>
-            <label class="input__radio input__radio_block"><input type="radio" name="radio-block">審査申請中</label>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">checkbox</dt>
-          <dd class="form__field">
-            <label class="input__checkbox"><input type="checkbox">仮</label>
-            <label class="input__checkbox"><input type="checkbox">作業中</label>
-            <label class="input__checkbox"><input type="checkbox">完了</label>
-            <label class="input__checkbox"><input type="checkbox">審査申請中</label>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">checkbox block</dt>
-          <dd class="form__field">
-            <label class="input__checkbox input__checkbox_block"><input type="checkbox">作業中</label>
-            <label class="input__checkbox input__checkbox_block"><input type="checkbox">審査申請中</label>
-          </dd>
-        </dl>
-      </section>
+      <div>
+        <header class="box__header">
+          <h2 class="box__title">フォーム</h2>
+        </header>
+        <section class="box__body">
+          <dl class="form">
+            <dt class="form__header">radio</dt>
+            <dd class="form__field">
+              <label class="input__radio"><input type="radio" name="radio" checked>仮</label>
+              <label class="input__radio"><input type="radio" name="radio">作業中</label>
+              <label class="input__radio"><input type="radio" name="radio">完了</label>
+              <label class="input__radio"><input type="radio" name="radio">審査申請中</label>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">radio block</dt>
+            <dd class="form__field">
+              <label class="input__radio input__radio_block"><input type="radio" name="radio-block" checked>作業中</label>
+              <label class="input__radio input__radio_block"><input type="radio" name="radio-block">審査申請中</label>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">checkbox</dt>
+            <dd class="form__field">
+              <label class="input__checkbox"><input type="checkbox">仮</label>
+              <label class="input__checkbox"><input type="checkbox">作業中</label>
+              <label class="input__checkbox"><input type="checkbox">完了</label>
+              <label class="input__checkbox"><input type="checkbox">審査申請中</label>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">checkbox block</dt>
+            <dd class="form__field">
+              <label class="input__checkbox input__checkbox_block"><input type="checkbox">作業中</label>
+              <label class="input__checkbox input__checkbox_block"><input type="checkbox">審査申請中</label>
+            </dd>
+          </dl>
+        </section>
+      </div>
       <footer class="box__footer">
         <section class="button__container">
           <button type="button" class="button button_save button_saving"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 保存中</button>
@@ -286,41 +294,43 @@ export default {
       </footer>
     </form>
     <form class="box box_editing">
-      <header class="box__header">
-        <h2 class="box__title">フォーム</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">text small</dt>
-          <dd class="form__field">
-            <input type="text" value="" class="input_small">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">text</dt>
-          <dd class="form__field">
-            <input type="text" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">text medium</dt>
-          <dd class="form__field">
-            <input type="text" value="" class="input_medium">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">text large</dt>
-          <dd class="form__field">
-            <input type="text" value="" class="input_large">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">text fill</dt>
-          <dd class="form__field">
-            <input type="text" value="" class="input_fill">
-          </dd>
-        </dl>
-      </section>
+      <div>
+        <header class="box__header">
+          <h2 class="box__title">フォーム</h2>
+        </header>
+        <section class="box__body">
+          <dl class="form">
+            <dt class="form__header">text small</dt>
+            <dd class="form__field">
+              <input type="text" value="" class="input_small">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">text</dt>
+            <dd class="form__field">
+              <input type="text" value="">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">text medium</dt>
+            <dd class="form__field">
+              <input type="text" value="" class="input_medium">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">text large</dt>
+            <dd class="form__field">
+              <input type="text" value="" class="input_large">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">text fill</dt>
+            <dd class="form__field">
+              <input type="text" value="" class="input_fill">
+            </dd>
+          </dl>
+        </section>
+      </div>
       <footer class="box__footer">
         <section class="button__container">
           <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
@@ -329,41 +339,43 @@ export default {
       </footer>
     </form>
     <form class="box box_editing">
-      <header class="box__header">
-        <h2 class="box__title">フォーム</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">search small</dt>
-          <dd class="form__field">
-            <input type="search" value="" class="input_small">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">search</dt>
-          <dd class="form__field">
-            <input type="search" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">search medium</dt>
-          <dd class="form__field">
-            <input type="search" value="" class="input_medium">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">search large</dt>
-          <dd class="form__field">
-            <input type="search" value="" class="input_large">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">search fill</dt>
-          <dd class="form__field">
-            <input type="search" value="" class="input_fill">
-          </dd>
-        </dl>
-      </section>
+      <div>
+        <header class="box__header">
+          <h2 class="box__title">フォーム</h2>
+        </header>
+        <section class="box__body">
+          <dl class="form">
+            <dt class="form__header">search small</dt>
+            <dd class="form__field">
+              <input type="search" value="" class="input_small">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">search</dt>
+            <dd class="form__field">
+              <input type="search" value="">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">search medium</dt>
+            <dd class="form__field">
+              <input type="search" value="" class="input_medium">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">search large</dt>
+            <dd class="form__field">
+              <input type="search" value="" class="input_large">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">search fill</dt>
+            <dd class="form__field">
+              <input type="search" value="" class="input_fill">
+            </dd>
+          </dl>
+        </section>
+      </div>
       <footer class="box__footer">
         <section class="button__container">
           <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
@@ -372,35 +384,37 @@ export default {
       </footer>
     </form>
     <form class="box box_editing">
-      <header class="box__header">
-        <h2 class="box__title">フォーム</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">number small</dt>
-          <dd class="form__field">
-            <input type="number" value="" class="input_small">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">number</dt>
-          <dd class="form__field">
-            <input type="number" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">number medium</dt>
-          <dd class="form__field">
-            <input type="number" value="" class="input_medium">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">number large</dt>
-          <dd class="form__field">
-            <input type="number" value="" class="input_large">
-          </dd>
-        </dl>
-      </section>
+      <div>
+        <header class="box__header">
+          <h2 class="box__title">フォーム</h2>
+        </header>
+        <section class="box__body">
+          <dl class="form">
+            <dt class="form__header">number small</dt>
+            <dd class="form__field">
+              <input type="number" value="" class="input_small">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">number</dt>
+            <dd class="form__field">
+              <input type="number" value="">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">number medium</dt>
+            <dd class="form__field">
+              <input type="number" value="" class="input_medium">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">number large</dt>
+            <dd class="form__field">
+              <input type="number" value="" class="input_large">
+            </dd>
+          </dl>
+        </section>
+      </div>
       <footer class="box__footer">
         <section class="button__container">
           <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
@@ -409,35 +423,37 @@ export default {
       </footer>
     </form>
     <form class="box box_editing">
-      <header class="box__header">
-        <h2 class="box__title">フォーム</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">email small</dt>
-          <dd class="form__field">
-            <input type="email" value="" class="input_small">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">email</dt>
-          <dd class="form__field">
-            <input type="email" value="">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">email medium</dt>
-          <dd class="form__field">
-            <input type="email" value="" class="input_medium">
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">email fill</dt>
-          <dd class="form__field">
-            <input type="email" value="" class="input_fill">
-          </dd>
-        </dl>
-      </section>
+      <div>
+        <header class="box__header">
+          <h2 class="box__title">フォーム</h2>
+        </header>
+        <section class="box__body">
+          <dl class="form">
+            <dt class="form__header">email small</dt>
+            <dd class="form__field">
+              <input type="email" value="" class="input_small">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">email</dt>
+            <dd class="form__field">
+              <input type="email" value="">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">email medium</dt>
+            <dd class="form__field">
+              <input type="email" value="" class="input_medium">
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">email fill</dt>
+            <dd class="form__field">
+              <input type="email" value="" class="input_fill">
+            </dd>
+          </dl>
+        </section>
+      </div>
       <footer class="box__footer">
         <section class="button__container">
           <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
@@ -446,41 +462,43 @@ export default {
       </footer>
     </form>
     <form class="box box_double box_editing">
-      <header class="box__header">
-        <h2 class="box__title">フォーム</h2>
-      </header>
-      <section class="box__body">
-        <dl class="form">
-          <dt class="form__header">textarea small</dt>
-          <dd class="form__field">
-            <textarea class="input_small"></textarea>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">textarea</dt>
-          <dd class="form__field">
-            <textarea></textarea>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">textarea medium</dt>
-          <dd class="form__field">
-            <textarea class="input_medium"></textarea>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">textarea large</dt>
-          <dd class="form__field">
-            <textarea class="input_large"></textarea>
-          </dd>
-        </dl>
-        <dl class="form">
-          <dt class="form__header">textarea fill</dt>
-          <dd class="form__field">
-            <textarea class="input_fill"></textarea>
-          </dd>
-        </dl>
-      </section>
+      <div>
+        <header class="box__header">
+          <h2 class="box__title">フォーム</h2>
+        </header>
+        <section class="box__body">
+          <dl class="form">
+            <dt class="form__header">textarea small</dt>
+            <dd class="form__field">
+              <textarea class="input_small"></textarea>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">textarea</dt>
+            <dd class="form__field">
+              <textarea></textarea>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">textarea medium</dt>
+            <dd class="form__field">
+              <textarea class="input_medium"></textarea>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">textarea large</dt>
+            <dd class="form__field">
+              <textarea class="input_large"></textarea>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">textarea fill</dt>
+            <dd class="form__field">
+              <textarea class="input_fill"></textarea>
+            </dd>
+          </dl>
+        </section>
+      </div>
       <footer class="box__footer">
         <section class="button__container">
           <button type="button" class="button button_save"><i class="lnir lnir-pencil"></i> 保存</button>
