@@ -79,10 +79,6 @@ textarea.input_medium {
   width: var(--width-input-xlarge);
 }
 
-textarea.input_large {
-  width: var(--width-input-xxlarge);
-}
-
 textarea.input_fill,
 input[type=text].input_fill,
 input[type=search].input_fill,

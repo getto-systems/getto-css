@@ -99,7 +99,7 @@ export default {
     <strong class="menu__title">CSS</strong>
     <cite class="menu__subTitle">simple admin theme</cite>
   </header>
-  <nav class="menu__body">
+  <nav class="menu__body" id="menu">
     <ul v-for="menu in state.data.menus" class="menu__nav" :class="{ menu__nav_collapsed: !menu.isExpand }">
       <li>
         <a href="#" class="menu__nav__header menu__nav__link" @click.prevent="toggleMenu(menu)">

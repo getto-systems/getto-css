@@ -22,7 +22,7 @@ export default {
   <header class="main__header">
     <h1 class="main__title">検索</h1>
     <p class="main__breadcrumb">
-      <span>MAIN</span>
+      <a href="#menu">MAIN</a>
       <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
       <a href="/dist/search.html"><i class="lnir lnir-home"></i> 検索</a>
     </p>
