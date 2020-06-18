@@ -57,6 +57,7 @@ export default {
         menus: [
           menu("MAIN", [
             item("lnir lnir-home", "/dist/index.html", "ホーム", 1),
+            item("lnir lnir-search", "/dist/search.html", "検索", 0),
           ]),
           menu("DATA", [
             item("lnir lnir-cog", "/dist/data.html", "商品", 0),

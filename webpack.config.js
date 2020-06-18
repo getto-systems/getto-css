@@ -5,6 +5,7 @@ const { VueLoaderPlugin } = require("vue-loader");
 module.exports = {
   entry: {
     index: path.join(__dirname, "src/index.ts"),
+    search: path.join(__dirname, "src/search.ts"),
   },
   output: {
     path: path.join(__dirname, "dist"),

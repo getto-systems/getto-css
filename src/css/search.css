@@ -1,0 +1,24 @@
+.search {
+  width: var(--width-search);
+  margin-right: 0.25rem;
+}
+
+.search.search_double {
+  width: var(--width-search-double);
+  margin-right: 0.25rem;
+}
+
+.search__header {
+  font-size: var(--font-size-small);
+  margin-bottom: 0.25rem;
+}
+
+.search__field {
+  margin-left: 1rem;
+}
+
+.search__help {
+  font-size: var(--font-size-small);
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
+}
