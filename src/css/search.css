@@ -29,13 +29,16 @@
   color: var(--color-info);
 }
 
-.search_use :--input,
+.search_use :--input {
+  border-color: var(--color-info);
+}
+
 .search_use .input__radio.search_checked,
 .search_use .input__checkbox.search_checked {
-  border-color: var(--color-info);
+  font-weight: bold;
+  color: var(--color-info);
 }
 
 .search_error .search__message {
   color: var(--color-alert);
 }
-

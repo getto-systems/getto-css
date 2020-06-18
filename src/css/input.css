@@ -111,6 +111,11 @@ input[type=email].input_fill {
   margin-right: 0.4rem;
 }
 
+small .input__radio input[type=radio],
+small .input__checkbox input[type=checkbox] {
+  vertical-align: text-bottom;
+}
+
 .input__radio.input__radio_block,
 .input__checkbox.input__checkbox_block {
   display: block;
