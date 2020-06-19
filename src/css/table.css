@@ -63,14 +63,17 @@ td.cell_center {
   border-right: 3px double var(--color-black);
 }
 
-.table__header.table__header_sticky {
+.table.table_sticky {
   position: relative;
 }
 
-.table__header.table__header_sticky th {
+.cell_sticky {
   position: sticky;
-  top: 0;
   background-color: var(--color-white);
+}
+
+.cell_sticky.sticky_top {
+  top: 0;
 }
 
 .table__sort {
