@@ -4,6 +4,10 @@
   border-collapse: separate;
 }
 
+.table.table_fill {
+  width: 100%;
+}
+
 .table th {
   font-size: var(--font-size-small);
   padding: 0.15rem 0.3rem;

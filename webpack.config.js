@@ -7,6 +7,7 @@ module.exports = {
     index: path.join(__dirname, "src/index.ts"),
     search: path.join(__dirname, "src/search.ts"),
     list: path.join(__dirname, "src/list.ts"),
+    document: path.join(__dirname, "src/document.ts"),
   },
   output: {
     path: path.join(__dirname, "dist"),
