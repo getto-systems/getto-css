@@ -73,7 +73,7 @@ td.cell_center {
 }
 
 .cell_sticky.sticky_top {
-  top: 0;
+  top: -1px;
 }
 
 .table__sort {
