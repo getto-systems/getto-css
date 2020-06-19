@@ -62,6 +62,7 @@ export default {
             item("lnir lnir-home", "/dist/index.html", "ホーム", 1),
             item("lnir lnir-search", "/dist/search.html", "検索", 0),
             item("lnir lnir-list", "/dist/list.html", "一覧", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
           ]),
           menu("DATA", [
             item("lnir lnir-cog", "/dist/data.html", "商品", 0),
