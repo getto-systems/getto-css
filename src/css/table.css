@@ -80,3 +80,7 @@ td.cell_center {
   display: block;
   font-weight: bold;
 }
+
+.row.row_hoverable:hover td {
+  background-color: var(--color-black-off);
+}
