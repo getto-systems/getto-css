@@ -449,7 +449,7 @@ export default {
     </section>
   </section>
   <footer class="main__footer">
-    <p class="main__footer__message">powered by LineIcons / copyright GETTO.systems</p>
+    <p class="main__footer__message">powered by : LineIcons / みんなの文字</p>
   </footer>
 </article>
 
