@@ -3,10 +3,6 @@
   margin-right: 0.25rem;
 }
 
-.search.search_static {
-  width: var(--width-white);
-}
-
 .search.search_double {
   width: var(--width-search-double);
   margin-right: 0.25rem;

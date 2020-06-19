@@ -81,6 +81,10 @@ td.cell_center {
   font-weight: bold;
 }
 
+.row.row_edit td {
+  background-color: var(--color-base-off);
+}
+
 .row.row_hoverable:hover td {
   background-color: var(--color-black-off);
 }
