@@ -490,7 +490,7 @@ export default {
     </form>
   </section>
   <footer class="main__footer">
-    <p class="main__footer__message">powered by LineIcons / copyright GETTO.systems</p>
+    <p class="main__footer__message">powered by : LineIcons / みんなの文字</p>
   </footer>
 
   <aside v-if="state.complete.active || state.complete.connecting" class="modal" @click.self="resetAll">

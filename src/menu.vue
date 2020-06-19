@@ -31,6 +31,9 @@ export default {
     const version = (() => {
       const info = location.pathname.split("/");
       if (info.length > 2) {
+        if (info[1] === "dist") {
+          return "xxx.xxx.xxx";
+        }
         return info[1];
       }
       return "-";
@@ -124,6 +127,7 @@ export default {
     </ul>
   </nav>
   <footer class="menu__footer">
+    <p class="menu__footer__message">copyright GETTO.systems</p>
     <p class="menu__footer__message">version: {{ state.data.version }}</p>
   </footer>
 </section>
