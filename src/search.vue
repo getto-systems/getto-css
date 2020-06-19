@@ -124,7 +124,7 @@ export default {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -134,7 +134,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -144,7 +144,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -154,7 +154,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -164,7 +164,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -174,7 +174,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -184,7 +184,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -194,7 +194,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -204,7 +204,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -214,7 +214,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -224,7 +224,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -234,7 +234,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -244,7 +244,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -254,7 +254,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -264,7 +264,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -274,7 +274,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -284,7 +284,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -294,7 +294,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -304,7 +304,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -314,7 +314,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -324,7 +324,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -334,7 +334,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -344,7 +344,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -354,7 +354,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -364,7 +364,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -374,7 +374,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -384,7 +384,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -394,7 +394,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -404,7 +404,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -414,7 +414,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
@@ -424,7 +424,7 @@ export default {
             <td class="cell_border_b">simple css theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">1234</td>
             <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
@@ -434,7 +434,7 @@ export default {
             <td class="cell_border_b">simple admin theme</td>
             <td class="cell_border_b cell_border_l"><a href="#"><i class="lnir lnir-pencil-alt"></i> 編集</a></td>
           </tr>
-          <tr>
+          <tr class="row row_hoverable">
             <td class="cell_border_b">123</td>
             <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
