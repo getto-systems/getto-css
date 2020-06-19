@@ -95,7 +95,7 @@ export default {
         <p v-if="state.is_error" class="search__message">通信エラーが発生しました。もう一度試してください</p>
       </footer>
     </form>
-    <section class="pager">
+    <section class="content">
       <select>
         <option>1 / 10 ページ</option>
         <option>2 / 10 ページ</option>
@@ -109,24 +109,24 @@ export default {
         <option>10 / 10 ページ</option>
       </select>
     </section>
-    <section>
-      <table class="table">
-        <thead class="table__header table__header_sticky">
+    <section class="content content_overflow">
+      <table class="table table_sticky">
+        <thead class="table__header">
           <tr>
-            <th class="cell_border_t cell_border_bb"><a href="#" class="table__sort">ID <i class="lnir lnir-chevron-down"></i></a></th>
-            <th class="cell_border_t cell_border_bb"><a href="#" class="table__sort">名前</a></th>
-            <th class="cell_border_t cell_border_bb"><a href="#" class="table__sort">状態</a></th>
-            <th class="cell_border_t cell_border_bb"><a href="#" class="table__sort">メールアドレス</a></th>
-            <th class="cell_border_t cell_border_bb"><a href="#" class="table__sort">価格</a></th>
-            <th class="cell_border_t cell_border_bb"><a href="#" class="table__sort">更新日時</a></th>
-            <th class="cell_border_t cell_border_bb">メモ</th>
-            <th class="cell_border_t cell_border_bb cell_border_l"></th>
+            <th class="cell_sticky sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">ID <i class="lnir lnir-chevron-down"></i></a></th>
+            <th class="cell_sticky sticky_top sticky_left cell_border_t cell_border_bb cell_border_rr"><a href="#" class="table__sort">名前</a></th>
+            <th class="cell_sticky sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">状態</a></th>
+            <th class="cell_sticky sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">メールアドレス</a></th>
+            <th class="cell_sticky sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">価格</a></th>
+            <th class="cell_sticky sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">更新日時</a></th>
+            <th class="cell_sticky sticky_top cell_border_t cell_border_bb">メモ</th>
+            <th class="cell_sticky sticky_top cell_border_t cell_border_bb cell_border_l"></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="cell_border_b">1234</td>
-            <td class="cell_border_b">GETTO CSS</td>
+            <td class="cell_border_b cell_border_rr">GETTO CSS</td>
             <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
             <td class="cell_border_b">admin@example.com</td>
             <td class="cell_border_b cell_nokern cell_right">1,200</td>
@@ -136,7 +136,7 @@ export default {
           </tr>
           <tr>
             <td class="cell_border_b">123</td>
-            <td class="cell_border_b">GETTO</td>
+            <td class="cell_border_b cell_border_rr">GETTO</td>
             <td class="cell_border_b cell_center"><span class="label label_warning">作業中</span></td>
             <td class="cell_border_b">user@example.com</td>
             <td class="cell_border_b cell_nokern cell_right">13,500</td>
