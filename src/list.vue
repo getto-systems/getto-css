@@ -83,14 +83,14 @@ export default {
       <table class="table table_sticky">
         <thead class="table__header">
           <tr>
-            <th class="cell_sticky sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">ID <i class="lnir lnir-chevron-down"></i></a></th>
-            <th class="cell_sticky sticky_top cell_border_t cell_border_bb cell_border_rr"><a href="#" class="table__sort">名前</a></th>
-            <th class="cell_sticky sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">状態</a></th>
-            <th class="cell_sticky sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">メールアドレス</a></th>
-            <th class="cell_sticky sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">価格</a></th>
-            <th class="cell_sticky sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">更新日時</a></th>
-            <th class="cell_sticky sticky_top cell_border_t cell_border_bb">メモ</th>
-            <th class="cell_sticky sticky_top cell_border_t cell_border_bb cell_border_l"></th>
+            <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">ID <i class="lnir lnir-chevron-down"></i></a></th>
+            <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb cell_border_rr"><a href="#" class="table__sort">名前</a></th>
+            <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">状態</a></th>
+            <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">メールアドレス</a></th>
+            <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">価格</a></th>
+            <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">更新日時</a></th>
+            <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">メモ</th>
+            <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb cell_border_l"></th>
           </tr>
         </thead>
         <tbody>
