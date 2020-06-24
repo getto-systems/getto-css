@@ -1,0 +1,12 @@
+@media print {
+  .layout__menu,
+  .main__header,
+  .main__footer,
+  .paper_hide {
+    display: none;
+  }
+
+  @page {
+    margin: 0;
+  }
+}

@@ -41,7 +41,7 @@ export default {
     </p>
   </header>
   <section class="main__body">
-    <form class="box box_fill">
+    <form class="box box_fill paper_hide">
       <section class="box__body">
         <button v-if="!state.is_searching" class="button button_search" :class="{ button_modified: state.is_modified }" @click.prevent="search"><i class="lnir lnir-reload"></i> 再読み込み</button>
         <button v-else class="button button_searching" @click.prevent="search"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 読み込み中</button>
@@ -65,48 +65,6 @@ export default {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="cell_border_b cell_border_l">1234</td>
-                <td class="cell_border_b cell_border_rr">GETTO CSS</td>
-                <td class="cell_border_b">admin@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">1,200</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/06/19 08:03</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">123</td>
-                <td class="cell_border_b cell_border_rr">GETTO</td>
-                <td class="cell_border_b">user@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">13,500</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/01/10</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">1234</td>
-                <td class="cell_border_b cell_border_rr">GETTO CSS</td>
-                <td class="cell_border_b">admin@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">1,200</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/06/19 08:03</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">123</td>
-                <td class="cell_border_b cell_border_rr">GETTO</td>
-                <td class="cell_border_b">user@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">13,500</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/01/10</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">1234</td>
-                <td class="cell_border_b cell_border_rr">GETTO CSS</td>
-                <td class="cell_border_b">admin@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">1,200</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/06/19 08:03</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">123</td>
-                <td class="cell_border_b cell_border_rr">GETTO</td>
-                <td class="cell_border_b">user@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">13,500</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/01/10</small></td>
-              </tr>
               <tr>
                 <td class="cell_border_b cell_border_l">1234</td>
                 <td class="cell_border_b cell_border_rr">GETTO CSS</td>
@@ -343,62 +301,6 @@ export default {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="cell_border_b cell_border_l">1234</td>
-                <td class="cell_border_b cell_border_rr">GETTO CSS</td>
-                <td class="cell_border_b">admin@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">1,200</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/06/19 08:03</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">123</td>
-                <td class="cell_border_b cell_border_rr">GETTO</td>
-                <td class="cell_border_b">user@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">13,500</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/01/10</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">1234</td>
-                <td class="cell_border_b cell_border_rr">GETTO CSS</td>
-                <td class="cell_border_b">admin@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">1,200</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/06/19 08:03</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">123</td>
-                <td class="cell_border_b cell_border_rr">GETTO</td>
-                <td class="cell_border_b">user@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">13,500</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/01/10</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">1234</td>
-                <td class="cell_border_b cell_border_rr">GETTO CSS</td>
-                <td class="cell_border_b">admin@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">1,200</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/06/19 08:03</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">123</td>
-                <td class="cell_border_b cell_border_rr">GETTO</td>
-                <td class="cell_border_b">user@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">13,500</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/01/10</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">1234</td>
-                <td class="cell_border_b cell_border_rr">GETTO CSS</td>
-                <td class="cell_border_b">admin@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">1,200</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/06/19 08:03</small></td>
-              </tr>
-              <tr>
-                <td class="cell_border_b cell_border_l">123</td>
-                <td class="cell_border_b cell_border_rr">GETTO</td>
-                <td class="cell_border_b">user@example.com</td>
-                <td class="cell_border_b cell_nokern cell_right">13,500</td>
-                <td class="cell_border_b cell_border_r cell_nokern"><small>2020/01/10</small></td>
-              </tr>
               <tr>
                 <td class="cell_border_b cell_border_l">1234</td>
                 <td class="cell_border_b cell_border_rr">GETTO CSS</td>
