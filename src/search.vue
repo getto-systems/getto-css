@@ -95,13 +95,13 @@ export default {
         <p v-if="state.is_error" class="search__message">通信エラーが発生しました。もう一度試してください</p>
       </footer>
     </form>
-    <section class="search__columns">
-      <div><label class="input__checkbox"><input type="checkbox" checked>ID</label></div>
-      <div><label class="input__checkbox"><input type="checkbox" checked>名前</label></div>
-      <div><label class="input__checkbox"><input type="checkbox" checked>状態</label></div>
-      <div><label class="input__checkbox"><input type="checkbox" checked>メールアドレス</label></div>
-      <div><label class="input__checkbox"><input type="checkbox" checked>更新日時</label></div>
-      <div><label class="input__checkbox"><input type="checkbox" checked>メモ</label></div>
+    <section class="search__column">
+      <div><label class="input__checkbox search__column_active"><input type="checkbox" checked>ID</label></div>
+      <div><label class="input__checkbox search__column_active"><input type="checkbox" checked>名前</label></div>
+      <div><label class="input__checkbox search__column_active"><input type="checkbox" checked>状態</label></div>
+      <div><label class="input__checkbox search__column_active"><input type="checkbox" checked>メールアドレス</label></div>
+      <div><label class="input__checkbox search__column_active"><input type="checkbox" checked>更新日時</label></div>
+      <div><label class="input__checkbox search__column_active"><input type="checkbox" checked>メモ</label></div>
     </section>
     <section class="content">
       <select class="pager">

@@ -26,26 +26,26 @@
 
 .search_use .search__header {
   font-weight: bold;
-  color: var(--color-info);
-}
-
-.search_use :--input {
-  border-color: var(--color-info);
+  color: var(--color-base);
 }
 
 .search_use .input__radio.search_checked,
 .search_use .input__checkbox.search_checked {
   font-weight: bold;
-  color: var(--color-info);
+  color: var(--color-base);
 }
 
 .search_error .search__message {
   color: var(--color-alert);
 }
 
-.search__columns {
+.search__column {
   display: flex;
   flex-wrap: wrap;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.search__column .input__checkbox.search__column_active {
+  font-weight: bold;
 }
