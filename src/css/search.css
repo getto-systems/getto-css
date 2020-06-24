@@ -42,3 +42,7 @@
 .search_error .search__message {
   color: var(--color-alert);
 }
+
+.search__columns {
+  margin-bottom: 0.5rem;
+}

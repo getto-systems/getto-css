@@ -111,6 +111,16 @@ export default {
       <span>1 ～ 1000 件 / 全 5000 件中</span>
     </section>
     <section class="content content_overflow">
+      <table class="search__columns">
+        <tr>
+          <td><label class="input__checkbox"><input type="checkbox" checked>ID</label></td>
+          <td><label class="input__checkbox"><input type="checkbox" checked>名前</label></td>
+          <td><label class="input__checkbox"><input type="checkbox" checked>状態</label></td>
+          <td><label class="input__checkbox"><input type="checkbox" checked>メールアドレス</label></td>
+          <td><label class="input__checkbox"><input type="checkbox" checked>更新日時</label></td>
+          <td><label class="input__checkbox"><input type="checkbox" checked>メモ</label></td>
+        </tr>
+      </table>
       <table class="table table_sticky">
         <thead class="table__header">
           <tr>
