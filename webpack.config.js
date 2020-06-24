@@ -5,6 +5,7 @@ const { VueLoaderPlugin } = require("vue-loader");
 module.exports = {
   entry: {
     index: path.join(__dirname, "src/index.ts"),
+    form: path.join(__dirname, "src/form.ts"),
     search: path.join(__dirname, "src/search.ts"),
     list: path.join(__dirname, "src/list.ts"),
     document: path.join(__dirname, "src/document.ts"),
