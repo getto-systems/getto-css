@@ -60,6 +60,7 @@ export default {
         menus: [
           menu("MAIN", [
             item("lnir lnir-home", "/dist/index.html", "ホーム", 1),
+            item("lnir lnir-pencil", "/dist/form.html", "フォーム", 1),
             item("lnir lnir-search", "/dist/search.html", "検索", 0),
             item("lnir lnir-list", "/dist/list.html", "一覧", 0),
             item("lnir lnir-folder", "/dist/document.html", "書類", 0),
