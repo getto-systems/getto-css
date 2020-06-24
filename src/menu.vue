@@ -65,21 +65,29 @@ export default {
             item("lnir lnir-folder", "/dist/document.html", "書類", 0),
             item("lnir lnir-enter", "/dist/login.html", "ログイン", 0),
           ]),
-          menu("DATA", [
-            item("lnir lnir-cog", "/dist/data.html", "商品", 0),
-            item("lnir lnir-home", "/dist/data.html", "売上", 0),
-            item("lnir lnir-home", "/dist/data.html", "原価", 0),
-            item("lnir lnir-home", "/dist/data.html", "作業・稼働実績統計", 0),
+          menu("DOCUMENT", [
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
           ]),
-          menu("MASTER", [
-            item("lnir lnir-package", "/dist/setting.html", "入荷予定", 1),
-            item("lnir lnir-file-name", "/dist/setting.html", "看板・入荷予定表", 10),
-            item("lnir lnir-cog", "/dist/setting.html", "設定", 0),
+          menu("DOCUMENT", [
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
           ]),
-          menu("USER", [
-            item("lnir lnir-package", "/dist/setting.html", "入荷予定", 1),
-            item("lnir lnir-file-name", "/dist/setting.html", "看板・入荷予定表", 10),
-            item("lnir lnir-cog", "/dist/setting.html", "設定", 0),
+          menu("DOCUMENT", [
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+          ]),
+          menu("DOCUMENT", [
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
+            item("lnir lnir-folder", "/dist/document.html", "書類", 0),
           ]),
         ],
       },
