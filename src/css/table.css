@@ -74,30 +74,6 @@ td.cell_center {
 .cell_sticky {
   position: sticky;
   background-color: var(--color-white);
-  background-clip: padding-box;
-}
-
-.cell_sticky.cell_border_b,
-.cell_sticky.cell_border_bb {
-  border-bottom-color: transparent;
-}
-
-.cell_sticky.cell_border_b::after,
-.cell_sticky.cell_border_bb::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 2em;
-  width: 100%;
-}
-
-.cell_sticky.cell_border_b::after {
-  border-bottom: 1px solid var(--color-black);
-}
-
-.cell_sticky.cell_border_bb::after {
-  border-bottom: 3px double var(--color-black);
 }
 
 .cell_sticky.cell_sticky_top {
