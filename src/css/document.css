@@ -2,17 +2,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  border: 1px solid var(--color-black);
-  box-shadow: 0 0.5mm 2mm var(--color-black-off);
   padding: 20mm;
-
-  margin-bottom: 0.5rem;
 }
 
 .document.document_a4_portrait {
-  width: 210mm;
-  height: 297mm;
+  width: 165mm;
+  height: 254mm;
 }
 
 .document__header {
@@ -39,4 +34,20 @@
 
 .document__folio {
   font-size: var(--font-size-small);
+}
+
+@media screen {
+  .document {
+    border: 1px solid var(--color-black);
+    box-shadow: 0 0.5mm 2mm var(--color-black-off);
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media print {
+  .document {
+    break-after: always;
+    border: 1px solid var(--color-black);
+    margin: 0;
+  }
 }
