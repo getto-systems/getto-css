@@ -96,7 +96,7 @@ export default {
       </footer>
     </form>
     <section class="content">
-      <select>
+      <select class="pager">
         <option>1 / 10 ページ</option>
         <option>2 / 10 ページ</option>
         <option>3 / 10 ページ</option>
@@ -108,6 +108,7 @@ export default {
         <option>9 / 10 ページ</option>
         <option>10 / 10 ページ</option>
       </select>
+      <span>1 ～ 1000 件 / 全 5000 件中</span>
     </section>
     <section class="content content_overflow">
       <table class="table table_sticky">

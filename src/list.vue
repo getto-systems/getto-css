@@ -6,28 +6,13 @@ type State = {
   is_searching: boolean,
 };
 
-type Data = {
-  id: Ref<string>,
-  name: Ref<string>,
-  radio: Ref<string>,
-};
-
 export default {
   setup() {
     const delay = 2.5 * 1000;
 
-    const data: Data = {
-      id: ref(""),
-      name: ref("GETTO CSS"),
-      radio: ref("仮"),
-    };
     const state = reactive<State>({
       is_modified: false,
       is_searching: false,
-    });
-
-    watch([data.id, data.name, data.radio], (current,prev) => {
-      state.is_modified = true;
     });
 
     function search() {
@@ -39,7 +24,6 @@ export default {
     }
 
     return {
-      data,
       state,
       search,
     };
@@ -66,7 +50,7 @@ export default {
       </section>
     </form>
     <section class="content">
-      <select>
+      <select class="pager">
         <option>1 / 10 ページ</option>
         <option>2 / 10 ページ</option>
         <option>3 / 10 ページ</option>
@@ -78,6 +62,7 @@ export default {
         <option>9 / 10 ページ</option>
         <option>10 / 10 ページ</option>
       </select>
+      <span>1 ～ 1000 件 / 全 5000 件中</span>
     </section>
     <section class="content content_overflow">
       <table class="table table_sticky">
