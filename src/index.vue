@@ -565,7 +565,7 @@ export default {
         <h3 class="modal__title">帳票作成中</h3>
       </header>
       <section class="modal__body">
-        <div class="loading">
+        <div class="loading loading_box">
           <i class="lnir lnir-spinner-11 lnir-is-spinning"></i>
           <p class="loading__message">読み込み中です</p>
         </div>
