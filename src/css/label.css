@@ -42,7 +42,7 @@
 }
 
 .label_info {
-  color: var(--color-info);
-  border-color: var(--color-info);
-  background-color: var(--color-info-off);
+  color: var(--color-base);
+  border-color: var(--color-base);
+  background-color: var(--color-base-off);
 }
