@@ -83,14 +83,14 @@
 
 .button.button_search.button_modified {
   color: var(--color-white);
-  border-color: var(--color-info);
-  background-color: var(--color-info);
+  border-color: var(--color-base);
+  background-color: var(--color-base);
 }
 
 .button.button_search.button_modified:hover,
 .button.button_search.button_modified:focus {
   color: var(--color-black);
-  border-color: var(--color-info);
+  border-color: var(--color-base);
   background-color: var(--color-white);
 }
 
@@ -103,8 +103,8 @@
 
 .button.button_searching {
   color: var(--color-white);
-  border-color: var(--color-info);
-  background-color: var(--color-info);
+  border-color: var(--color-base);
+  background-color: var(--color-base);
   cursor: wait;
 }
 

@@ -10,12 +10,9 @@
   margin-bottom: 0.5rem;
 }
 
-.box.box_editing {
-  background-color: var(--color-base-off);
-}
-
+.box.box_editing,
 .box.box_search {
-  background-color: var(--color-info-off);
+  background-color: var(--color-base-off);
 }
 
 .box__header {
