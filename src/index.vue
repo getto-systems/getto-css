@@ -63,6 +63,42 @@ export default {
         </section>
       </footer>
     </section>
+    <section class="box">
+      <div>
+        <header class="box__header">
+          <h2 class="box__title">badge / notice</h2>
+        </header>
+        <section class="box__body">
+          <dl class="form">
+            <dt class="form__header">badge</dt>
+            <dd class="form__field">
+              <span class="badge badge_gray">10</span>
+              <span class="badge badge_alert">10</span>
+              <span class="badge badge_success">10</span>
+              <span class="badge badge_warning">10</span>
+              <span class="badge badge_pending">10</span>
+              <span class="badge badge_info">10</span>
+            </dd>
+          </dl>
+          <dl class="form">
+            <dt class="form__header">notice</dt>
+            <dd class="form__field">
+              <p class="notice notice_gray">データを登録してください</p>
+              <p class="notice notice_alert">データを登録してください</p>
+              <p class="notice notice_success">データを登録してください</p>
+              <p class="notice notice_warning">データを登録してください</p>
+              <p class="notice notice_pending">データを登録してください</p>
+              <p class="notice notice_info">データを登録してください</p>
+            </dd>
+          </dl>
+        </section>
+      </div>
+      <footer class="box__footer">
+        <section class="button__container">
+          <button type="button" class="button button_edit"><i class="lnir lnir-pointer-up"></i> 選択</button>
+        </section>
+      </footer>
+    </section>
   </section>
   <footer class="main__footer">
     <p class="main__footer__message">powered by : LineIcons / みんなの文字</p>
