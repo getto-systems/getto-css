@@ -47,7 +47,6 @@
 @media print {
   .document {
     break-after: always;
-    border: 1px solid var(--color-black);
     margin: 0;
   }
 }
