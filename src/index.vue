@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Ref, reactive, ref } from "vue";
+import { config } from "./config.js";
 
 type State = {
   versions: Array<string>,
@@ -11,19 +12,30 @@ type Data = {
 
 export default {
   setup() {
+    const version = config.version;
+
     const state = reactive<State>({
-      versions: [
-        "xxx.xxx.xxx",
-      ],
+      versions: version.all,
     });
 
     const data: Data = {
-      version: ref(state.versions[0]),
+      version: ref(version.current),
     };
+
+    function redirect() {
+      if (!config.isProduction) {
+        return;
+      }
+
+      const path = location.pathname;
+      const redirect_to = path.replace(config.version.current, data.version.value);
+      location.href = redirect_to;
+    }
 
     return {
       state,
       data,
+      redirect,
     };
   }
 };
@@ -59,7 +71,7 @@ export default {
       </div>
       <footer class="box__footer">
         <section class="button__container">
-          <button type="button" class="button button_edit"><i class="lnir lnir-pointer-up"></i> 選択</button>
+          <button type="button" class="button button_edit" @click.prevent="redirect"><i class="lnir lnir-pointer-up"></i> 選択</button>
         </section>
       </footer>
     </section>
@@ -93,11 +105,6 @@ export default {
           </dl>
         </section>
       </div>
-      <footer class="box__footer">
-        <section class="button__container">
-          <button type="button" class="button button_edit"><i class="lnir lnir-pointer-up"></i> 選択</button>
-        </section>
-      </footer>
     </section>
   </section>
   <footer class="main__footer">

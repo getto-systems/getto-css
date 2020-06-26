@@ -1,5 +1,6 @@
 <script lang="ts">
 import { reactive } from "vue";
+import { config } from "./config.js";
 
 type State = {
   data: Data,
@@ -28,16 +29,7 @@ type Item = {
 export default {
   setup() {
     const path = location.pathname;
-    const version = (() => {
-      const info = location.pathname.split("/");
-      if (info.length > 2) {
-        if (info[1] === "dist") {
-          return "xxx.xxx.xxx";
-        }
-        return info[1];
-      }
-      return "-";
-    })();
+    const version = config.version.current;
 
     function menu(label: string, items: Array<Item>) {
       const badge = items.reduce((acc, item) => acc + item.badge, 0);
