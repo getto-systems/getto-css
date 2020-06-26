@@ -18,31 +18,31 @@
 }
 
 .badge_alert {
-  color: var(--color-alert);
+  color: var(--color-black);
   border-color: var(--color-alert);
   background-color: var(--color-alert-off);
 }
 
 .badge_success {
-  color: var(--color-success);
+  color: var(--color-black);
   border-color: var(--color-success);
   background-color: var(--color-success-off);
 }
 
 .badge_warning {
-  color: var(--color-warning);
+  color: var(--color-black);
   border-color: var(--color-warning);
   background-color: var(--color-warning-off);
 }
 
 .badge_pending {
-  color: var(--color-pending);
+  color: var(--color-black);
   border-color: var(--color-pending);
   background-color: var(--color-pending-off);
 }
 
 .badge_info {
-  color: var(--color-base);
+  color: var(--color-black);
   border-color: var(--color-base);
   background-color: var(--color-base-off);
 }
