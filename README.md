@@ -3,7 +3,7 @@
 simple admin css theme
 
 ```
-<link rel="stylesheet" href="https://css.getto.systems/1.6.0/getto.css">
+<link rel="stylesheet" href="https://trellis.getto.systems/css/1.6.0/getto.css">
 ```
 
 
@@ -16,7 +16,6 @@ simple admin css theme
 <a id="Requirements"></a>
 ## Requirements
 
-- font-awesome : 5.x
 - imported: reset.css : [http://html5doctor.com/html-5-reset-stylesheet/]
 
 

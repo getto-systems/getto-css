@@ -20,13 +20,13 @@ const version = (() => {
   })();
 
   const all = (() => {
-    const file = path.join(__dirname, "./versions.txt");
+    const file = path.join(__dirname, "../.versions.txt");
     const content = fs.readFileSync(file, "utf8");
     const versions = content.split("\n").filter((version) => version != "");
     if (versions.length === 0) {
       return [current];
     };
-    return versions;
+    return versions.reverse();
   })();
 
   return {

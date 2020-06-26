@@ -63,7 +63,7 @@ release_deploy:
   before_script:
     - npm clean-install
   script:
-    - npm run deploy
+    - ./scripts/deploy.sh
 
 release_success:
   stage: release_notify
