@@ -14,7 +14,11 @@ deploy_main(){
 
   if [ ! -d dist ]; then
     echo "build failed! : dist directory not exists"
-    ls -al
+    exit 1
+  fi
+
+  if [ ! -d css ]; then
+    echo "build failed! : css directory not exists"
     exit 1
   fi
 
