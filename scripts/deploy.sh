@@ -11,6 +11,13 @@ deploy_main(){
   done
 
   npm run build
+
+  if [ ! -d dist ]; then
+    echo "build failed! : dist directory not exists"
+    ls -al
+    exit 1
+  fi
+
   cp -a public/dist/* dist
 
   deploy_trellis
