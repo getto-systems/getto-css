@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.0.10
+
+- fix: CSP : See merge request getto-systems-base/projects/css!140
+- add: preact : See merge request getto-systems-base/projects/css!139
+
+
 ## Version : 2.0.9
 
 - fix: CSP : See merge request getto-systems-base/projects/css!137
