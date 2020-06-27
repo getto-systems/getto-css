@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.0.3
+
+- fix: deploy.sh : See merge request getto-systems-base/projects/css!125
+
+
 ## Version : 2.0.2
 
 - fix: gitlab-ci : See merge request getto-systems-base/projects/css!123
