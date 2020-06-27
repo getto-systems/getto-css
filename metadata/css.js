@@ -15,9 +15,13 @@ const headers = {
     ].join(" "),
     "style-src " + [
       "'self'",
-      "https://trellis.getto.systems/css",
+      "'filesystem:'",
       "'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='",
       "'sha256-2A5Wtu5POsS6Hj3CQs8vKYei6omWRq7MzlUZF7VwmHs='",
+    ].join(" "),
+    "style-src-elem " + [
+      "'self'",
+      "https://trellis.getto.systems/css",
     ].join(" "),
   ].join(";"),
   "x-content-type-options": "nosniff",
