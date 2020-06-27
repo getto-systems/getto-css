@@ -6,7 +6,7 @@
     "start": "npm run prepare:development && npm run start:webpack",
     "start:webpack": "webpack-dev-server --config ./webpack.config.js",
     "build": "npm run prepare:production && npm run build:all",
-    "build:all": "npm run build:webpack & npm run build:postcss",
+    "build:all": "npm run build:webpack && npm run build:postcss",
     "build:webpack": "webpack --config ./webpack.config.js --mode production",
     "build:postcss": "postcss --config ./postcss.config.js --output css/getto.css src/getto.css",
     "prepare:development": "node scripts/prepare.js --development",
