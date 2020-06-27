@@ -15,6 +15,7 @@ const headers = {
     ].join(" "),
     "style-src " + [
       "'self'",
+      "https://trellis.getto.systems/css/2.0.5/getto.css",
     ].join(" "),
   ].join(";"),
   "x-content-type-options": "nosniff",
