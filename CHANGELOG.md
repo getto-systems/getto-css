@@ -1,3 +1,70 @@
+# CHANGELOG
+
+## Version : 2.0.0
+
+- major version up! : See merge request getto-systems-base/projects/css!119
+- add: message : See merge request getto-systems-base/projects/css!117
+- fix: gitlab-ci : See merge request getto-systems-base/projects/css!116
+- remove: line-icons : See merge request getto-systems-base/projects/css!115
+- add: deploy.sh : See merge request getto-systems-base/projects/css!114
+- add: prepare : See merge request getto-systems-base/projects/css!113
+- fix: home : See merge request getto-systems-base/projects/css!112
+- remove: color info : See merge request getto-systems-base/projects/css!111
+- fix: home : See merge request getto-systems-base/projects/css!110
+- fix: menu : See merge request getto-systems-base/projects/css!109
+- fix: sticky : See merge request getto-systems-base/projects/css!108
+- add: login : See merge request getto-systems-base/projects/css!107
+- fix: search columns : See merge request getto-systems-base/projects/css!106
+- fix: search columns : See merge request getto-systems-base/projects/css!104
+- add: search columns : See merge request getto-systems-base/projects/css!103
+- fix: document printign : See merge request getto-systems-base/projects/css!102
+- fix: form message : See merge request getto-systems-base/projects/css!101
+- add: pager : See merge request getto-systems-base/projects/css!100
+- remove: core : See merge request getto-systems-base/projects/css!99
+- fix: sticky : See merge request getto-systems-base/projects/css!98
+- fix: sticky border : See merge request getto-systems-base/projects/css!97
+- add: document : See merge request getto-systems-base/projects/css!96
+- add: list : See merge request getto-systems-base/projects/css!95
+- fix: footer : See merge request getto-systems-base/projects/css!94
+- add: hover : See merge request getto-systems-base/projects/css!93
+- fix: search : See merge request getto-systems-base/projects/css!92
+- fix: table : See merge request getto-systems-base/projects/css!91
+- fix: table : See merge request getto-systems-base/projects/css!90
+- fix: check : See merge request getto-systems-base/projects/css!89
+- fix: search : See merge request getto-systems-base/projects/css!88
+- fix: search : See merge request getto-systems-base/projects/css!87
+- fix: size : See merge request getto-systems-base/projects/css!86
+- add: search : See merge request getto-systems-base/projects/css!85
+- fix: box flex : See merge request getto-systems-base/projects/css!84
+- fix: button style : See merge request getto-systems-base/projects/css!83
+- add: list : See merge request getto-systems-base/projects/css!82
+- add: modal : See merge request getto-systems-base/projects/css!81
+- fix: select max-width : See merge request getto-systems-base/projects/css!80
+- fix: block check margin : See merge request getto-systems-base/projects/css!79
+- fix: label cursor : See merge request getto-systems-base/projects/css!78
+- fix: button : See merge request getto-systems-base/projects/css!77
+- add: success button : See merge request getto-systems-base/projects/css!76
+- fix: file input width : See merge request getto-systems-base/projects/css!75
+- add: button : See merge request getto-systems-base/projects/css!74
+- add: check inputs : See merge request getto-systems-base/projects/css!73
+- fix: index : See merge request getto-systems-base/projects/css!72
+- fix: form : See merge request getto-systems-base/projects/css!71
+- fix: box : See merge request getto-systems-base/projects/css!70
+- fix: menu fixed layout : See merge request getto-systems-base/projects/css!69
+- fix: input fill : See merge request getto-systems-base/projects/css!68
+- fix: box : See merge request getto-systems-base/projects/css!67
+- fix: comment : See merge request getto-systems-base/projects/css!66
+- fix :input : See merge request getto-systems-base/projects/css!65
+- fix: layout : See merge request getto-systems-base/projects/css!64
+- add: form : See merge request getto-systems-base/projects/css!63
+- add: box : See merge request getto-systems-base/projects/css!62
+- fix: vue : See merge request getto-systems-base/projects/css!61
+- fix: responsive : See merge request getto-systems-base/projects/css!60
+- add: menu style : See merge request getto-systems-base/projects/css!59
+- setup: vue : See merge request getto-systems-base/projects/css!58
+- update: package-lock : See merge request getto-systems-base/projects/css!57
+- re-initialize: use webpack : See merge request getto-systems-base/projects/css!56
+
 # Version : 1.6.0
 
 add: button : dashboard
