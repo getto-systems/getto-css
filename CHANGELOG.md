@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.0.9
+
+- fix: CSP : See merge request getto-systems-base/projects/css!137
+
+
 ## Version : 2.0.8
 
 - fix: CSP : See merge request getto-systems-base/projects/css!135
