@@ -1,1 +1,1 @@
-location.href = "/2.0.6/index.html";
+location.href = "/2.0.7/index.html";
