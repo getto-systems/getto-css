@@ -40,6 +40,33 @@ function Page() {
 
   const delay = 2.5 * 1000;
 
+  return html`
+    <article class="layout__main">
+      <header class="main__header">
+        <h1 class="main__title">フォーム</h1>
+        <p class="main__breadcrumb">
+          <a href="#menu">MAIN</a>
+          <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
+          <a href="/dist/form.html"><i class="lnir lnir-pencil"></i> フォーム</a>
+        </p>
+      </header>
+      <section class="main__body container">
+        ${work()}
+        ${workForm()}
+        ${miscForm()}
+        ${checkForm()}
+        ${textForm()}
+        ${searchForm()}
+        ${numberForm()}
+        ${emailForm()}
+        ${textareaForm()}
+      </section>
+      <footer class="main__footer">
+        <p class="main__footer__message">powered by : LineIcons / みんなの文字</p>
+      </footer>
+    </article>
+  `
+
   function setComplete() {
     state.complete.active = true;
     state.complete.connecting = false;
@@ -154,33 +181,6 @@ function Page() {
       }
     }
   }
-
-  return html`
-    <article class="layout__main">
-      <header class="main__header">
-        <h1 class="main__title">フォーム</h1>
-        <p class="main__breadcrumb">
-          <a href="#menu">MAIN</a>
-          <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
-          <a href="/dist/form.html"><i class="lnir lnir-pencil"></i> フォーム</a>
-        </p>
-      </header>
-      <section class="main__body container">
-        ${work()}
-        ${workForm()}
-        ${miscForm()}
-        ${checkForm()}
-        ${textForm()}
-        ${searchForm()}
-        ${numberForm()}
-        ${emailForm()}
-        ${textareaForm()}
-      </section>
-      <footer class="main__footer">
-        <p class="main__footer__message">powered by : LineIcons / みんなの文字</p>
-      </footer>
-    </article>
-  `
 
   function work() {
     return html`
