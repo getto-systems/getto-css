@@ -146,9 +146,12 @@ function Page() {
   }
 
   function resetAll(e: MouseEvent) {
-    if ((<HTMLElement>e.target).dataset.modal === "true") {
-      resetComplete();
-      resetDelete();
+    if (e.target instanceof HTMLElement) {
+      const target = e.target as HTMLElement;
+      if (target.dataset.modal === "true") {
+        resetComplete();
+        resetDelete();
+      }
     }
   }
 
