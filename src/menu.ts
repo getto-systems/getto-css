@@ -4,19 +4,19 @@ import { config } from "./config.js";
 
 type State = {
   data: Data,
-};
+}
 
 type Data = {
   version: string,
   menus: Array<Menu>,
-};
+}
 
 type Menu = {
   label: string,
   badge: number,
   isExpand: boolean,
   items: Array<Item>,
-};
+}
 
 type Item = {
   icon: string,
@@ -24,7 +24,7 @@ type Item = {
   isActive: boolean,
   label: string,
   badge: number,
-};
+}
 
 export function Menu() {
   const path = location.pathname;

@@ -8,7 +8,6 @@ const app = h("main", { class: "layout" }, [
 ]);
 render(app, document.body);
 
-
 import { useState } from "preact/hooks";
 import { html } from "htm/preact";
 import { config } from "./config.js";
