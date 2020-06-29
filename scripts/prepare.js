@@ -8,8 +8,8 @@ const isProduction = (() => {
 const version = (() => {
   if (!isProduction) {
     return {
-      all: ["xxx.xxx.xxx"],
-      current: "xxx.xxx.xxx",
+      all: ["000.000.000"],
+      current: "000.000.000",
     };
   }
 

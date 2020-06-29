@@ -81,6 +81,7 @@
 .menu__footer__message {
   text-align: right;
   font-size: var(--font-size-small);
+  margin-bottom: 0.2rem;
 }
 
 @media (--media-desktop) {
