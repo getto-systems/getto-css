@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
   entry: {
@@ -25,26 +24,11 @@ module.exports = {
         ],
       },
       {
-        test: /\.vue$/,
-        loader: "vue-loader",
-      },
-      {
         test: /\.ts$/,
         loader: "ts-loader",
-        options: {
-          appendTsSuffixTo: [/\.vue$/],
-        },
       },
     ],
   },
-  resolve: {
-    alias: {
-      'vue': 'vue/dist/vue.esm-bundler.js',
-    }
-  },
-  plugins: [
-    new VueLoaderPlugin(),
-  ],
   devServer: devServer(),
 };
 
