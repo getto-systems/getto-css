@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version : 2.0.13
+
+- fix: bump version script : See merge request getto-systems-base/projects/css!157
+- remove: unused : See merge request getto-systems-base/projects/css!156
+- fix: CSP : See merge request getto-systems-base/projects/css!154
+
+
 ## Version : 2.0.12
 
 - remove: vue : See merge request getto-systems-base/projects/css!152
