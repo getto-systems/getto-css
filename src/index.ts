@@ -3,8 +3,8 @@ import { Menu } from "./menu.ts";
 import "./getto.css";
 
 const app = h("main", { class: "layout" }, [
-  h(Menu, null, null),
   h(Page, null, null),
+  h(Menu, null, null),
 ]);
 render(app, document.body);
 
