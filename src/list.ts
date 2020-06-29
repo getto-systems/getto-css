@@ -13,7 +13,7 @@ import { html } from "htm/preact";
 
 type State = {
   is_searching: boolean,
-};
+}
 
 function Page() {
   const [state, setState] = useState<State>({

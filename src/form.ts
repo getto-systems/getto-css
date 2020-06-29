@@ -15,12 +15,12 @@ type State = {
   "complete": Modal,
   "delete": Modal,
   "generate": Modal,
-};
+}
 
 type Modal = {
   active: boolean,
   connecting: boolean,
-};
+}
 
 function Page() {
   const [state, setState] = useState<State>({

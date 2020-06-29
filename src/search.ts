@@ -17,16 +17,16 @@ type State = {
   is_error: boolean,
 
   data: Data,
-};
+}
 
 type Data = {
   radio: string,
-};
+}
 
 type Text = {
   id: string,
   name: string,
-};
+}
 
 function Page() {
   const [state, setState] = useState<State>({
