@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## Version : 2.0.12
+
+- remove: vue : See merge request getto-systems-base/projects/css!152
+- remove: vue : See merge request getto-systems-base/projects/css!151
+- rewrite: login : See merge request getto-systems-base/projects/css!150
+- rewrite: document : See merge request getto-systems-base/projects/css!149
+- rewrite: list : See merge request getto-systems-base/projects/css!148
+- rewrite: search : See merge request getto-systems-base/projects/css!147
+- fix: form : See merge request getto-systems-base/projects/css!146
+- rewrite: form : See merge request getto-systems-base/projects/css!145
+- rewrite: index : See merge request getto-systems-base/projects/css!144
+
+
 ## Version : 2.0.11
 
 - fix: CSP : See merge request getto-systems-base/projects/css!142
