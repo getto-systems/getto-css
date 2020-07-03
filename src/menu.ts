@@ -28,7 +28,7 @@ type Item = {
 
 export function Menu() {
   const path = location.pathname;
-  const version = config.version.current;
+  const version = config.version;
 
   const [state, setState] = useState<State>({
     data: {
@@ -41,6 +41,7 @@ export function Menu() {
           createItem("lnir lnir-list", "/dist/list.html", "一覧", 0),
           createItem("lnir lnir-folder", "/dist/document.html", "書類", 0),
           createItem("lnir lnir-enter", "/dist/login.html", "ログイン", 0),
+          createItem("lnir lnir-question-circle", "/dist/docs/index.html", "ドキュメント", 0),
         ]),
         createMenu("DOCUMENT", [
           createItem("lnir lnir-folder", "/dist/document.html?", "書類", 0),
