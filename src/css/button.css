@@ -62,7 +62,7 @@
 .button.button_cancel:hover,
 .button.button_cancel:focus {
   color: var(--color-black);
-  background-color: var(--color-white);
+  background-color: var(--color-white-transparent);
 }
 
 .button.button_generate,
@@ -78,7 +78,7 @@
 .button.button_save.button_modified:focus {
   color: var(--color-black);
   border-color: var(--color-base);
-  background-color: var(--color-white);
+  background-color: var(--color-white-transparent);
 }
 
 .button.button_search.button_modified {
@@ -91,7 +91,7 @@
 .button.button_search.button_modified:focus {
   color: var(--color-black);
   border-color: var(--color-base);
-  background-color: var(--color-white);
+  background-color: var(--color-white-transparent);
 }
 
 .button.button_saving {
@@ -125,13 +125,13 @@
 .button.button_delete:focus {
   color: var(--color-alert);
   border-color: var(--color-alert);
-  background-color: var(--color-white);
+  background-color: var(--color-white-transparent);
 }
 
 .button.button_deleteConfirm {
   color: var(--color-alert);
   border-color: var(--color-alert);
-  background-color: var(--color-white);
+  background-color: var(--color-white-transparent);
 }
 
 .button.button_deleteConfirm:hover,
@@ -164,5 +164,5 @@
 .button.button_completeConfirm:focus {
   color: var(--color-success);
   border-color: var(--color-success);
-  background-color: var(--color-white);
+  background-color: var(--color-white-transparent);
 }
