@@ -8,7 +8,7 @@
 }
 
 input[type=file] {
-  background-color: var(--color-white);
+  background-color: var(--color-white-transparent);
   font-size: var(--font-size-smaller);
   width: calc(100% - 1.5rem);
 }
