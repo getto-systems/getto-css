@@ -78,7 +78,7 @@ function Page() {
         </p>
       </header>
       <section class="main__body container">
-        <section class="box">
+        <section class="box box_double">
           <div>
             <header class="box__header">
               <h2 class="box__title">GETTO CSS</h2>
@@ -90,6 +90,12 @@ function Page() {
                   <select value="${state.version}">
                     ${state.versions.map((version) => html`<option value="${version}">${version}</option>`)}
                   </select>
+                </dd>
+              </dl>
+              <dl class="form">
+                <dt class="form__header">Link</dt>
+                <dd class="form__field">
+                  <pre>${'<link rel="stylesheet"\n href="https://trellis.getto.systems/css/'}${version}${'/getto.css">'}</pre>
                 </dd>
               </dl>
             </section>
