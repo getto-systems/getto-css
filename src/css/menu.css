@@ -59,6 +59,7 @@
 
 .menu__nav__link {
   display: block;
+  color: var(--color-black);
 }
 
 .menu__nav__item {
