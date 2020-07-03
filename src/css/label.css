@@ -18,31 +18,31 @@
 }
 
 .label_alert {
-  color: var(--color-black);
+  color: var(--color-alert);
   border-color: var(--color-alert);
   background-color: var(--color-alert-off);
 }
 
 .label_success {
-  color: var(--color-black);
+  color: var(--color-success);
   border-color: var(--color-success);
   background-color: var(--color-success-off);
 }
 
 .label_warning {
-  color: var(--color-black);
+  color: var(--color-warning);
   border-color: var(--color-warning);
   background-color: var(--color-warning-off);
 }
 
 .label_pending {
-  color: var(--color-black);
+  color: var(--color-pending);
   border-color: var(--color-pending);
   background-color: var(--color-pending-off);
 }
 
 .label_info {
-  color: var(--color-black);
+  color: var(--color-base);
   border-color: var(--color-base);
   background-color: var(--color-base-off);
 }
