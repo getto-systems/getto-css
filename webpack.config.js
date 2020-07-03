@@ -9,6 +9,8 @@ module.exports = {
     list: path.join(__dirname, "src/list.ts"),
     document: path.join(__dirname, "src/document.ts"),
     login: path.join(__dirname, "src/login.ts"),
+
+    "docs/index": path.join(__dirname, "src/docs/index.ts"),
   },
   output: {
     path: path.join(__dirname, "dist"),

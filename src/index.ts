@@ -8,22 +8,53 @@ const app = h("main", { class: "layout" }, [
 ]);
 render(app, document.body);
 
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import { html } from "htm/preact";
 import { config } from "./config.js";
 
 type State = {
   versions: Array<string>,
   version: string,
+  loaded: boolean,
 }
 
 function Page() {
   const version = config.version;
 
   const [state, setState] = useState<State>({
-    versions: version.all,
-    version: version.current,
+    versions: [version],
+    version,
+    loaded: false,
   });
+
+  function onLoad(){
+    if (state.loaded) {
+      return;
+    }
+
+    (async () => {
+      const response = await fetch("/versions.txt");
+      if (!response.ok) {
+        return [config.version];
+      }
+
+      const content = await response.text();
+      const versions = content.split("\n").filter((version) => version != "");
+      if (versions.length === 0) {
+        return [config.version];
+      }
+
+      setState({
+        versions: versions.reverse(),
+        version: state.version,
+        loaded: true,
+      });
+    })();
+  }
+
+  useEffect(() => {
+    onLoad();
+  }, []);
 
   function redirect() {
     if (!config.isProduction) {
@@ -32,7 +63,7 @@ function Page() {
     }
 
     const path = location.pathname;
-    const redirect_to = path.replace(config.version.current, state.version);
+    const redirect_to = path.replace(config.version, state.version);
     location.href = redirect_to;
   }
 
@@ -72,7 +103,7 @@ function Page() {
         <section class="box">
           <div>
             <header class="box__header">
-              <h2 class="box__title">badge / notice</h2>
+              <h2 class="box__title">label / badge / notice</h2>
             </header>
             <section class="box__body">
               <dl class="form">
@@ -84,6 +115,17 @@ function Page() {
                   <span class="badge badge_warning">10</span>
                   <span class="badge badge_pending">10</span>
                   <span class="badge badge_info">10</span>
+                </dd>
+              </dl>
+              <dl class="form">
+                <dt class="form__header">label</dt>
+                <dd class="form__field">
+                  <span class="label label_gray">仮</span>
+                  <span class="label label_alert">エラー</span>
+                  <span class="label label_warning">作業中</span>
+                  <span class="label label_success">完了</span>
+                  <span class="label label_pending">保留</span>
+                  <span class="label label_info">情報</span>
                 </dd>
               </dl>
               <dl class="form">
@@ -107,110 +149,3 @@ function Page() {
     </article>
   `;
 };
-
-/*
-import { useState, useRef, useEffect } from "preact/hooks";
-import { html } from "htm/preact";
-
-type Data = {
-  message: string,
-  show: boolean,
-  value: string,
-  input: string,
-  date: Date,
-};
-
-function HelloWorld() {
-  const [data, setData] = useState<Data>({
-    message: "Hello, preact World!",
-    show: false,
-    value: "default",
-    input: "",
-    date: new Date(),
-  });
-
-  const form = useRef<HTMLFormElement>(null);
-
-  const valueChanged = (e: { target: { value: string } }) => {
-    setData({
-      message: data.message,
-      show: data.show,
-      value: e.target.value,
-      input: data.input,
-      date: data.date,
-    });
-  };
-
-  const inputChanged = (e: { target: { value: string } }) => {
-    setData({
-      message: data.message,
-      show: data.show,
-      value: data.value,
-      input: e.target.value,
-      date: data.date,
-    });
-  };
-
-  const toggleForm = () => {
-    setData({
-      message: data.message,
-      show: !data.show,
-      value: data.value,
-      input: data.value,
-      date: data.date,
-    });
-  };
-
-  useEffect(() => {
-    const current = form.current;
-
-    if (current) {
-      if (data.show) {
-        const input = current.input;
-        input.focus();
-
-        const val = input.value;
-        input.setSelectionRange(val.length, val.length);
-      }
-    }
-  }, [data.show]);
-
-  const reset = () => {
-    const current = form.current;
-    if (current) {
-      current.input.value = data.value;
-    }
-  };
-
-  const showDate = (date: Date) => {
-    return `${date}`;
-  }
-
-  setTimeout(() => {
-    setData({
-      message: data.message,
-      show: data.show,
-      value: data.value,
-      input: data.value,
-      date: new Date(),
-    });
-  }, 10000);
-
-  return html`
-    <h1>${data.message}(${data.value} / ${showDate(data.date)})</h1>
-    <button type="button" onClick="${toggleForm}">Toggle</button>
-    <input type="text" value="${data.value}" onInput="${valueChanged}"/>
-    ${data.show ?
-      html`
-        <form ref="${form}">
-          <input type="text" name="input" defaultValue="${data.input}" onInput="${inputChanged}"/>
-          (${data.input})
-          <button type="button" onClick="${reset}">reset</button>
-        </form>
-      ` :
-      html``
-    }
-  `;
-}
-
-*/

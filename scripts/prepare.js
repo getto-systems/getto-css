@@ -6,33 +6,9 @@ const isProduction = (() => {
 })();
 
 const version = (() => {
-  if (!isProduction) {
-    return {
-      all: ["000.000.000"],
-      current: "000.000.000",
-    };
-  }
-
-  const current = (() => {
-    const file = path.join(__dirname, "../.release-version");
-    const content = fs.readFileSync(file, "utf8");
-    return content.replace(/\s/, "");
-  })();
-
-  const all = (() => {
-    const file = path.join(__dirname, "../.versions.txt");
-    const content = fs.readFileSync(file, "utf8");
-    const versions = content.split("\n").filter((version) => version != "");
-    if (versions.length === 0) {
-      return [current];
-    };
-    return versions.reverse();
-  })();
-
-  return {
-    all,
-    current,
-  };
+  const file = path.join(__dirname, "../.release-version");
+  const content = fs.readFileSync(file, "utf8");
+  return content.replace(/\s/, "");
 })();
 
 const config = {
