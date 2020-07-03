@@ -36,3 +36,8 @@ hr {
   border-right: none;
   border-bottom: none;
 }
+
+pre {
+  font-family: monospace;
+  line-height: 1.1;
+}
