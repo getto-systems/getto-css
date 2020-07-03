@@ -6,7 +6,7 @@ deploy_main(){
 
   version=$(cat .release-version)
 
-  for file in public/dist/*.html; do
+  for file in $(find public/dist -name '*.html'); do
     sed -i -e "s|/dist/|/$version/|g" $file
   done
 
