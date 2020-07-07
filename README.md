@@ -18,7 +18,7 @@ status : production ready : version 2
 <a id="Imported-Styles"></a>
 ## Imported Styles
 
-- reset.css : [html-5-reset-stylesheet](http://html5doctor.com/html-5-reset-stylesheet/)
+- reset.css : [CSS Tools: Reset CSS | meyerweb.com](http://meyerweb.com/eric/tools/css/reset/) v2.0 | 20110126 License: none (public domain)
 
 
 <a id="Example"></a>
