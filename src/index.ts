@@ -93,9 +93,15 @@ function Page() {
                 </dd>
               </dl>
               <dl class="form">
-                <dt class="form__header">Link</dt>
+                <dt class="form__header">状態</dt>
                 <dd class="form__field">
-                  <pre>${'<link rel="stylesheet"\n href="https://trellis.getto.systems/css/'}${version}${'/getto.css">'}</pre>
+                  <big>${stateLabel()}</big>
+                </dd>
+              </dl>
+              <dl class="form">
+                <dt class="form__header">リンクタグ</dt>
+                <dd class="form__field">
+                  <pre>${linkTagExample()}</pre>
                 </dd>
               </dl>
             </section>
@@ -154,4 +160,16 @@ function Page() {
       </footer>
     </article>
   `;
+
+  function stateLabel() {
+    if (state.version == version) {
+      return html`<span class="label label_info">最新</span>`
+    } else {
+      return html`<span class="label label_alert">新しいバージョンがあります</span>`
+    }
+  }
+
+  function linkTagExample() {
+      return `<link rel="stylesheet"\n href="https://trellis.getto.systems/css/${version}/getto.css">`
+  }
 };
