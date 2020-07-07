@@ -40,4 +40,5 @@ hr {
 pre {
   font-family: monospace;
   line-height: 1.1;
+  overflow-x: auto;
 }
