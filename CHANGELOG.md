@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version : 2.1.0
+
+- fix: bump ignore : See merge request getto-systems-base/projects/css!180
+- fix: css : See merge request getto-systems-base/projects/css!178
+- fix: bump ignore : See merge request getto-systems-base/projects/css!177
+
+
 ## Version : 2.0.14
 
 - add: docs : See merge request getto-systems-base/projects/css!175

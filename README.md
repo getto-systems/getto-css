@@ -5,7 +5,7 @@ simple admin css theme
 status : production ready : version 2
 
 ```
-<link rel="stylesheet" href="https://trellis.getto.systems/css/2.0.14/getto.css">
+<link rel="stylesheet" href="https://trellis.getto.systems/css/2.1.0/getto.css">
 ```
 
 
