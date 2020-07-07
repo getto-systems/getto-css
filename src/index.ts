@@ -172,7 +172,7 @@ function Page() {
   `;
 
   function stateLabel() {
-    if (state.versions[state.versions.length - 1] === config.version) {
+    if (state.versions[0] === config.version) {
       return html`<span class="label label_info">最新</span>`
     } else {
       return html`<span class="label label_alert">新しいバージョンがあります</span>`
