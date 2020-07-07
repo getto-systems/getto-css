@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.1.1
+
+- fix: state label : See merge request getto-systems-base/projects/css!183
+
+
 ## Version : 2.1.0
 
 - fix: bump ignore : See merge request getto-systems-base/projects/css!180
