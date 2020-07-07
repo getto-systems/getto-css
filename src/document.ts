@@ -10,6 +10,7 @@ render(app, document.body);
 
 import { useState } from "preact/hooks";
 import { html } from "htm/preact";
+import { config } from "./config.js";
 
 type State = {
   is_searching: boolean,
@@ -29,7 +30,7 @@ function Page() {
         <p class="main__breadcrumb">
           <a href="#menu">MAIN</a>
           <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
-          <a href="/dist/document.html"><i class="lnir lnir-folder"></i> 書類</a>
+          <a href="/${config.version}/document.html"><i class="lnir lnir-folder"></i> 書類</a>
         </p>
       </header>
       <section class="main__body">

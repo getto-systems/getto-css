@@ -10,6 +10,7 @@ render(app, document.body);
 
 import { useState } from "preact/hooks";
 import { html } from "htm/preact";
+import { config } from "./config.js";
 
 type State = {
   "complete": Modal,
@@ -47,7 +48,7 @@ function Page() {
         <p class="main__breadcrumb">
           <a href="#menu">MAIN</a>
           <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
-          <a href="/dist/form.html"><i class="lnir lnir-pencil"></i> フォーム</a>
+          <a href="/${config.version}/form.html"><i class="lnir lnir-pencil"></i> フォーム</a>
         </p>
       </header>
       <section class="main__body container">

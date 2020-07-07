@@ -10,6 +10,7 @@ render(app, document.body);
 
 import { useState } from "preact/hooks";
 import { html } from "htm/preact";
+import { config } from "../config.js";
 
 function Page() {
   return html`
@@ -19,7 +20,7 @@ function Page() {
         <p class="main__breadcrumb">
           <a href="#menu">MAIN</a>
           <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
-          <a href="/dist/docs/index.html"><i class="lnir lnir-question-circle"></i> ドキュメント</a>
+          <a href="/${config.version}/docs/index.html"><i class="lnir lnir-question-circle"></i> ドキュメント</a>
         </p>
       </header>
       <section class="main__body container">
