@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.1.3
+
+- fix: state label : See merge request getto-systems-base/projects/css!187
+- fix: metadata : See merge request getto-systems-base/projects/css!186
+
+
 ## Version : 2.1.2
 
 - fix: versions.txt : See merge request getto-systems-base/projects/css!182
