@@ -84,7 +84,7 @@ function Page() {
         <p class="main__breadcrumb">
           <a href="#menu">MAIN</a>
           <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
-          <a href="/dist/index.html"><i class="lnir lnir-home"></i> ホーム</a>
+          <a href="/${config.version}/index.html"><i class="lnir lnir-home"></i> ホーム</a>
         </p>
       </header>
       <section class="main__body container">

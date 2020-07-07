@@ -6,9 +6,13 @@ const isProduction = (() => {
 })();
 
 const version = (() => {
-  const file = path.join(__dirname, "../.release-version");
-  const content = fs.readFileSync(file, "utf8");
-  return content.replace(/\s/, "");
+  if (isProduction) {
+    const file = path.join(__dirname, "../.release-version");
+    const content = fs.readFileSync(file, "utf8");
+    return content.replace(/\s/, "");
+  } else {
+    return "dist";
+  }
 })();
 
 const config = {
