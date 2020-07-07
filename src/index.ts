@@ -19,11 +19,9 @@ type State = {
 }
 
 function Page() {
-  const version = config.version;
-
   const [state, setState] = useState<State>({
-    versions: [version],
-    version,
+    versions: [config.version],
+    version: config.version,
     loaded: false,
   });
 
@@ -50,6 +48,18 @@ function Page() {
         loaded: true,
       });
     })();
+  }
+
+  function versionChanged(e: InputEvent) {
+    if (e.target instanceof HTMLSelectElement) {
+      const target = e.target as HTMLSelectElement;
+      const version = target.value;
+      setState({
+        versions: state.versions,
+        version,
+        loaded: state.loaded,
+      });
+    }
   }
 
   useEffect(() => {
@@ -87,7 +97,7 @@ function Page() {
               <dl class="form">
                 <dt class="form__header">バージョン</dt>
                 <dd class="form__field">
-                  <select value="${state.version}">
+                  <select value="${state.version}" onChange="${versionChanged}">
                     ${state.versions.map((version) => html`<option value="${version}">${version}</option>`)}
                   </select>
                 </dd>
@@ -162,7 +172,7 @@ function Page() {
   `;
 
   function stateLabel() {
-    if (state.version == version) {
+    if (state.versions[state.versions.length - 1] === config.version) {
       return html`<span class="label label_info">最新</span>`
     } else {
       return html`<span class="label label_alert">新しいバージョンがあります</span>`
@@ -170,6 +180,6 @@ function Page() {
   }
 
   function linkTagExample() {
-      return `<link rel="stylesheet"\n href="https://trellis.getto.systems/css/${version}/getto.css">`
+      return `<link rel="stylesheet"\n href="https://trellis.getto.systems/css/${config.version}/getto.css">`
   }
 };
