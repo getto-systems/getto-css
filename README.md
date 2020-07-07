@@ -11,20 +11,20 @@ status : production ready : version 2
 
 ###### Table of Contents
 
-- [Requirements](#Requirements)
+- [Imported Styles](#Imported-Styles)
 - [Example](#Example)
 - [License](#License)
 
-<a id="Requirements"></a>
-## Requirements
+<a id="Imported-Styles"></a>
+## Imported Styles
 
-- imported: reset.css : [http://html5doctor.com/html-5-reset-stylesheet/]
+- reset.css : [html-5-reset-stylesheet](http://html5doctor.com/html-5-reset-stylesheet/)
 
 
 <a id="Example"></a>
 ## Example
 
-* Example : [https://css.getto.systems](https://css.getto.systems)
+* Style Guide : [https://css.getto.systems](https://css.getto.systems)
 
 
 <a id="License"></a>
