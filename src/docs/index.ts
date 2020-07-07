@@ -43,8 +43,8 @@ function Page() {
               <h2 class="box__title">コンポーネント定義について</h2>
             </header>
             <section class="box__body paragraph">
+              <p>コンポーネント定義は提供しない</p>
               <p>この CSS を使用するためのコンポーネント定義(React とか Vue とか)が必要</p>
-              <p>(コンポーネント定義は提供しない)</p>
               <br/>
               <p>コンポーネント定義は CSS と密結合</p>
               <strong><p>各プロジェクトでは、この結合部分は分離しておくこと</p></strong>
