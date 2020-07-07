@@ -30,6 +30,10 @@ big {
   font-size: var(--font-size-larger);
 }
 
+strong {
+  font-weight: bold;
+}
+
 hr {
   border-top: 1px solid var(--color-black);
   border-left: none;

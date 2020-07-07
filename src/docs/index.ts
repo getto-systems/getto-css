@@ -26,6 +26,35 @@ function Page() {
         <section class="box">
           <div>
             <header class="box__header">
+              <h2 class="box__title">GETTO CSS のゴール</h2>
+            </header>
+            <section class="box__body paragraph">
+              <p>業務アプリケーションで使用可能な、汎用の管理画面用 CSS を提供する</p>
+              <br/>
+              <p>この CSS を読み込むだけで、ある程度体裁が整うようにしたい</p>
+              <br/>
+              <p>各プロジェクト固有のスタイルは分離</p>
+              <br/>
+              <p>この CSS を使用するためのコンポーネント定義(React とか Vue とか)が必要</p>
+              <p>コンポーネント定義がこの CSS に密結合することになる</p>
+              <strong><p>各プロジェクトでは、この結合部分は分離しておくこと</p></strong>
+            </section>
+          </div>
+        </section>
+        <section class="box">
+          <div>
+            <header class="box__header">
+              <h2 class="box__title">色テーマ</h2>
+            </header>
+            <section class="box__body paragraph">
+              <p>color.css にまとめて定義してある</p>
+              <p>差し替えは想定していない</p>
+            </section>
+          </div>
+        </section>
+        <section class="box">
+          <div>
+            <header class="box__header">
               <h2 class="box__title">フォントとアイコン</h2>
             </header>
             <section class="box__body paragraph">
