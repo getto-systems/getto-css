@@ -10,6 +10,7 @@ const headers = {
     "frame-ancestors 'none'",
     "img-src 'self'",
     "font-src 'self'",
+    "manifest-src 'self'",
     "script-src " + [
       "'self'",
     ].join(" "),
@@ -18,6 +19,7 @@ const headers = {
       "https://trellis.getto.systems/css/",
       "'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='",
       "'sha256-2A5Wtu5POsS6Hj3CQs8vKYei6omWRq7MzlUZF7VwmHs='",
+      "'sha256-Kl5TPuPmD3V7lmkkqKpr4k4tv8W2usltLakrTv+ZfU4='",
     ].join(" "),
   ].join(";"),
   "x-content-type-options": "nosniff",
