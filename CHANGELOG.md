@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.1.5
+
+- fix: version directory : See merge request getto-systems-base/projects/css!191
+
+
 ## Version : 2.1.4
 
 - fix: metadata : See merge request getto-systems-base/projects/css!189
