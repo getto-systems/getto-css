@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## Version : 2.0.14
+
+- add: docs : See merge request getto-systems-base/projects/css!175
+- add: docs : See merge request getto-systems-base/projects/css!174
+- add: docs : See merge request getto-systems-base/projects/css!173
+- add: docs : See merge request getto-systems-base/projects/css!172
+- fix: index info : See merge request getto-systems-base/projects/css!171
+- add: stylesheet link guide : See merge request getto-systems-base/projects/css!170
+- fix: versions detection : See merge request getto-systems-base/projects/css!169
+- fix: background : See merge request getto-systems-base/projects/css!168
+- fix: button background : See merge request getto-systems-base/projects/css!167
+- fix: color : See merge request getto-systems-base/projects/css!166
+- fix: base color : See merge request getto-systems-base/projects/css!165
+- fix: menu : See merge request getto-systems-base/projects/css!164
+- fix: menu color : See merge request getto-systems-base/projects/css!163
+- fix: color : See merge request getto-systems-base/projects/css!162
+- add: favicon : See merge request getto-systems-base/projects/css!161
+- fix: element order : See merge request getto-systems-base/projects/css!160
+- fix: menu footer : See merge request getto-systems-base/projects/css!159
+
+
 ## Version : 2.0.13
 
 - fix: bump version script : See merge request getto-systems-base/projects/css!157
