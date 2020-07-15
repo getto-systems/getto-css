@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version : 2.1.6
+
+- fix: gitlab-ci : See merge request getto-systems-base/projects/css!195
+- fix: readme : See merge request getto-systems-base/projects/css!194
+- fix: readme : See merge request getto-systems-base/projects/css!193
+
+
 ## Version : 2.1.5
 
 - fix: version directory : See merge request getto-systems-base/projects/css!191
