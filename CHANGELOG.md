@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.2.0
+
+- add: vertical : See merge request getto-systems-base/projects/css!197
+
+
 ## Version : 2.1.6
 
 - fix: gitlab-ci : See merge request getto-systems-base/projects/css!195
