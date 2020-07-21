@@ -164,6 +164,53 @@ function Page() {
             </section>
           </div>
         </section>
+        <section class="box">
+          <div>
+            <header class="box__header">
+              <h2 class="box__title">paragraph</h2>
+            </header>
+            <section class="box__body">
+              <dl class="form">
+                <dt class="form__header">クラスなし</dt>
+                <dd class="form__field">
+                  <p>コンテンツ</p>
+                  <p>コンテンツ</p>
+                  <p>コンテンツ</p>
+                  <p>コンテンツ</p>
+                </dd>
+              </dl>
+              <dl class="form">
+                <dt class="form__header">paragraph クラス</dt>
+                <dd class="form__field">
+                  <p class="paragraph">コンテンツ</p>
+                  <p class="paragraph">コンテンツ</p>
+                  <p class="paragraph">コンテンツ</p>
+                  <p class="paragraph">コンテンツ</p>
+                </dd>
+              </dl>
+            </section>
+          </div>
+        </section>
+        <section class="box">
+          <div>
+            <header class="box__header">
+              <h2 class="box__title">vertical</h2>
+            </header>
+            <section class="box__body">
+              <p>コンテンツ</p>
+              <p>コンテンツ</p>
+              <div class="vertical vertical_small"></div>
+              <p>コンテンツ</p>
+              <p>コンテンツ</p>
+              <div class="vertical vertical_medium"></div>
+              <p>コンテンツ</p>
+              <p>コンテンツ</p>
+              <div class="vertical vertical_large"></div>
+              <p>コンテンツ</p>
+              <p>コンテンツ</p>
+            </section>
+          </div>
+        </section>
       </section>
       <footer class="main__footer">
         <p class="main__footer__message">powered by : LineIcons / みんなの文字</p>

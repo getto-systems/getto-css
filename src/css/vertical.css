@@ -1,0 +1,16 @@
+.vertical {
+  display: block;
+  content: "";
+}
+
+.vertical_small {
+  height: 0.5rem;
+}
+
+.vertical_medium {
+  height: 1rem;
+}
+
+.vertical_large {
+  height: 2rem;
+}
