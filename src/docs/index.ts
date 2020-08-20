@@ -1,10 +1,10 @@
 import { h, render } from "preact";
-import { Menu } from "../menu.ts";
+import { Menu } from "../menu";
 import "../getto.css";
 
 const app = h("main", { class: "layout" }, [
-  h(Page, null, null),
-  h(Menu, null, null),
+    h(Page, null, null),
+    h(Menu, null, null),
 ]);
 render(app, document.body);
 
@@ -13,7 +13,7 @@ import { html } from "htm/preact";
 import { config } from "../config.js";
 
 function Page() {
-  return html`
+    return html`
     <article class="layout__main">
       <header class="main__header">
         <h1 class="main__title">ドキュメント</h1>

@@ -1,10 +1,10 @@
 import { h, render } from "preact";
-import { Menu } from "./menu.ts";
+import { Menu } from "./menu";
 import "./getto.css";
 
 const app = h("main", { class: "layout" }, [
-  h(Page, null, null),
-  h(Menu, null, null),
+    h(Page, null, null),
+    h(Menu, null, null),
 ]);
 render(app, document.body);
 
@@ -13,67 +13,67 @@ import { html } from "htm/preact";
 import { config } from "./config.js";
 
 type State = {
-  login: Modal,
+    login: Modal,
 }
 
 type Modal = {
-  active: boolean,
-  connecting: boolean,
-  fill: boolean,
+    active: boolean,
+    connecting: boolean,
+    fill: boolean,
 
-  forget: Forget,
+    forget: Forget,
 }
 
 type Forget = {
-  active: boolean,
-  connecting: boolean,
-  fill: boolean,
-  complete: boolean,
+    active: boolean,
+    connecting: boolean,
+    fill: boolean,
+    complete: boolean,
 }
 
 type Text = {
-  login: LoginText,
-  forget: ForgetText,
+    login: LoginText,
+    forget: ForgetText,
 }
 
 type LoginText = {
-  loginID: string,
-  password: string,
+    loginID: string,
+    password: string,
 }
 
 type ForgetText = {
-  email: string,
+    email: string,
 }
 
 function Page() {
-  const [state, setState] = useState<State>({
-    login: {
-      active: false,
-      connecting: false,
-      fill: false,
+    const [state, setState] = useState<State>({
+        login: {
+            active: false,
+            connecting: false,
+            fill: false,
 
-      forget: {
-        active: false,
-        connecting: false,
-        fill: false,
-        complete: false,
-      },
-    },
-  });
+            forget: {
+                active: false,
+                connecting: false,
+                fill: false,
+                complete: false,
+            },
+        },
+    });
 
-  const text = {
-    login: {
-      loginID: "",
-      password: "",
-    },
-    forget: {
-      email: "",
-    },
-  };
+    const text = {
+        login: {
+            loginID: "",
+            password: "",
+        },
+        forget: {
+            email: "",
+        },
+    };
 
-  const delay = 2.5 * 1000;
+    const delay = 2.5 * 1000;
 
-  return html`
+    return html`
     <article class="layout__main">
       <header class="main__header">
         <h1 class="main__title">ログイン</h1>
@@ -92,121 +92,121 @@ function Page() {
     </article>
   `
 
-  function setLogin() {
-    state.login.active = true;
-    state.login.connecting = false;
-    setState({
-      login: state.login,
-    });
-  }
-
-  function doLogin() {
-    state.login.connecting = true;
-    setState({
-      login: state.login,
-    });
-
-    setTimeout(() => {
-      state.login.active = false;
-      state.login.connecting = false;
-      setState({
-        login: state.login,
-      });
-    }, delay);
-  }
-
-  function resetLogin(e: MouseEvent) {
-    e.preventDefault();
-
-    state.login.active = false;
-    setState({
-      login: state.login,
-    });
-  }
-
-  function setForget(e: MouseEvent) {
-    e.preventDefault();
-
-    state.login.forget.active = true;
-    state.login.forget.connecting = false;
-    state.login.forget.complete = false;
-    setState({
-      login: state.login,
-    });
-  }
-
-  function doForget() {
-    state.login.forget.connecting = true;
-    setState({
-      login: state.login,
-    });
-
-    setTimeout(() => {
-      state.login.forget.connecting = false;
-      state.login.forget.complete = true;
-      setState({
-        login: state.login,
-      });
-    }, delay);
-  }
-
-  function resetForget(e: MouseEvent) {
-    e.preventDefault();
-
-    state.login.forget.active = false;
-    setState({
-      login: state.login,
-    });
-  }
-
-  function resetAll(e: MouseEvent) {
-    if (e.target instanceof HTMLElement) {
-      const target = e.target as HTMLElement;
-      if (target.dataset.modal === "true") {
-        resetLogin(e);
-        resetForget(e);
-      }
+    function setLogin() {
+        state.login.active = true;
+        state.login.connecting = false;
+        setState({
+            login: state.login,
+        });
     }
-  }
 
-  function loginIDInput(e: InputEvent) {
-    if (e.target instanceof HTMLInputElement) {
-      const target = e.target as HTMLInputElement;
-      text.login.loginID = target.value;
+    function doLogin() {
+        state.login.connecting = true;
+        setState({
+            login: state.login,
+        });
 
-      state.login.fill = true;
-      setState({
-        login: state.login,
-      });
+        setTimeout(() => {
+            state.login.active = false;
+            state.login.connecting = false;
+            setState({
+                login: state.login,
+            });
+        }, delay);
     }
-  }
 
-  function passwordInput(e: InputEvent) {
-    if (e.target instanceof HTMLInputElement) {
-      const target = e.target as HTMLInputElement;
-      text.login.password = target.value;
+    function resetLogin(e: MouseEvent) {
+        e.preventDefault();
 
-      state.login.fill = true;
-      setState({
-        login: state.login,
-      });
+        state.login.active = false;
+        setState({
+            login: state.login,
+        });
     }
-  }
 
-  function emailInput(e: InputEvent) {
-    if (e.target instanceof HTMLInputElement) {
-      const target = e.target as HTMLInputElement;
-      text.forget.email = target.value;
+    function setForget(e: MouseEvent) {
+        e.preventDefault();
 
-      state.login.forget.fill = true;
-      setState({
-        login: state.login,
-      });
+        state.login.forget.active = true;
+        state.login.forget.connecting = false;
+        state.login.forget.complete = false;
+        setState({
+            login: state.login,
+        });
     }
-  }
 
-  function logout() {
-    return html`
+    function doForget() {
+        state.login.forget.connecting = true;
+        setState({
+            login: state.login,
+        });
+
+        setTimeout(() => {
+            state.login.forget.connecting = false;
+            state.login.forget.complete = true;
+            setState({
+                login: state.login,
+            });
+        }, delay);
+    }
+
+    function resetForget(e: MouseEvent) {
+        e.preventDefault();
+
+        state.login.forget.active = false;
+        setState({
+            login: state.login,
+        });
+    }
+
+    function resetAll(e: MouseEvent) {
+        if (e.target instanceof HTMLElement) {
+            const target = e.target as HTMLElement;
+            if (target.dataset.modal === "true") {
+                resetLogin(e);
+                resetForget(e);
+            }
+        }
+    }
+
+    function loginIDInput(e: InputEvent) {
+        if (e.target instanceof HTMLInputElement) {
+            const target = e.target as HTMLInputElement;
+            text.login.loginID = target.value;
+
+            state.login.fill = true;
+            setState({
+                login: state.login,
+            });
+        }
+    }
+
+    function passwordInput(e: InputEvent) {
+        if (e.target instanceof HTMLInputElement) {
+            const target = e.target as HTMLInputElement;
+            text.login.password = target.value;
+
+            state.login.fill = true;
+            setState({
+                login: state.login,
+            });
+        }
+    }
+
+    function emailInput(e: InputEvent) {
+        if (e.target instanceof HTMLInputElement) {
+            const target = e.target as HTMLInputElement;
+            text.forget.email = target.value;
+
+            state.login.forget.fill = true;
+            setState({
+                login: state.login,
+            });
+        }
+    }
+
+    function logout() {
+        return html`
       <section class="box">
         <header class="box__header">
           <h2 class="box__title">ログアウト</h2>
@@ -218,22 +218,22 @@ function Page() {
       ${modal()}
     `
 
-    function modal() {
-      if (!state.login.active && !state.login.connecting) {
-        return html``
-      }
+        function modal() {
+            if (!state.login.active && !state.login.connecting) {
+                return html``
+            }
 
-      return html`
+            return html`
         <aside class="login" onClick="${resetAll}" data-modal="true">
           ${state.login.forget.active ?
-            forget() :
-            login()}
+                    forget() :
+                    login()}
         </aside>
       `
-    }
+        }
 
-    function login() {
-      return html`
+        function login() {
+            return html`
         <section class="login__box">
           <header class="login__header">
             <cite class="login__brand">GETTO</cite>
@@ -251,7 +251,7 @@ function Page() {
               <dl class="form form_error">
                 <dt class="form__header"><label for="password">パスワード</label></dt>
                 <dd class="form__field">
-                  <input type="text" class="input_fill" id="password" onInput="${passwordInput}"/>
+                  <input type="password" class="input_fill" id="password" onInput="${passwordInput}"/>
                   <p class="form__message">パスワードを入力してください</p>
                 </dd>
               </dl>
@@ -268,25 +268,25 @@ function Page() {
         </section>
       `
 
-      function loginButton() {
-        if (state.login.connecting) {
-          return html`
+            function loginButton() {
+                if (state.login.connecting) {
+                    return html`
             <button type="button" class="button button_saving">
               <i class="lnir lnir-spinner-11 lnir-is-spinning"></i> ログイン中
             </button>
           `
-        } else {
-          return html`
+                } else {
+                    return html`
             <button type="button" class="button button_save ${state.login.fill ? "button_modified" : ""}" onClick="${doLogin}">
               ログイン
             </button>
           `
+                }
+            }
         }
-      }
-    }
 
-    function forget() {
-      return html`
+        function forget() {
+            return html`
         <section class="login__box">
           <header class="login__header">
             <cite class="login__brand">GETTO</cite>
@@ -309,31 +309,31 @@ function Page() {
         </section>
       `
 
-      function forgetButton() {
-        if (state.login.forget.complete || state.login.forget.connecting) {
-          return html`<span></span>` // リンクを右寄せにするため
-        }
+            function forgetButton() {
+                if (state.login.forget.complete || state.login.forget.connecting) {
+                    return html`<span></span>` // リンクを右寄せにするため
+                }
 
-        return html`
+                return html`
           <button type="button" class="button button_save ${state.login.forget.fill ? "button_modified" : ""}" onClick="${doForget}">
             メール送信
           </button>
         `
-      }
+            }
 
-      function forgetContent() {
-        if (state.login.forget.complete) {
-          return forgetComplete();
-        }
+            function forgetContent() {
+                if (state.login.forget.complete) {
+                    return forgetComplete();
+                }
 
-        if (state.login.forget.connecting) {
-          return forgetConnecting();
-        }
+                if (state.login.forget.connecting) {
+                    return forgetConnecting();
+                }
 
-        return forgetInput();
+                return forgetInput();
 
-        function forgetComplete() {
-          return html`
+                function forgetComplete() {
+                    return html`
             <div class="loading loading_login">
               <p class="loading__message">
                 送信した URL にアクセスして
@@ -342,19 +342,19 @@ function Page() {
               </p>
             </div>
           `
-        }
+                }
 
-        function forgetConnecting() {
-          return html`
+                function forgetConnecting() {
+                    return html`
             <div class="loading loading_login">
               <i class="lnir lnir-spinner-11 lnir-is-spinning"></i>
               <p class="loading__message">送信中です</p>
             </div>
           `
-        }
+                }
 
-        function forgetInput() {
-          return html`
+                function forgetInput() {
+                    return html`
             <dl class="form">
               <dt class="form__header"><label for="forget-email">メールアドレス</label></dt>
               <dd class="form__field">
@@ -363,8 +363,8 @@ function Page() {
               </dd>
             </dl>
           `
+                }
+            }
         }
-      }
     }
-  }
 }

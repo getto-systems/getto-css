@@ -1,10 +1,10 @@
 import { h, render } from "preact";
-import { Menu } from "./menu.ts";
+import { Menu } from "./menu";
 import "./getto.css";
 
 const app = h("main", { class: "layout" }, [
-  h(Page, null, null),
-  h(Menu, null, null),
+    h(Page, null, null),
+    h(Menu, null, null),
 ]);
 render(app, document.body);
 
@@ -13,17 +13,17 @@ import { html } from "htm/preact";
 import { config } from "./config.js";
 
 type State = {
-  is_searching: boolean,
+    is_searching: boolean,
 }
 
 function Page() {
-  const [state, setState] = useState<State>({
-    is_searching: false,
-  });
+    const [state, setState] = useState<State>({
+        is_searching: false,
+    });
 
-  const delay = 2.5 * 1000;
+    const delay = 2.5 * 1000;
 
-  return html`
+    return html`
     <article class="layout__main">
       <header class="main__header">
         <h1 class="main__title">一覧</h1>
@@ -44,22 +44,22 @@ function Page() {
     </article>
   `
 
-  function search(e: MouseEvent) {
-    e.preventDefault();
+    function search(e: MouseEvent) {
+        e.preventDefault();
 
-    setState({
-      is_searching: true,
-    });
+        setState({
+            is_searching: true,
+        });
 
-    setTimeout(() => {
-      setState({
-        is_searching: false,
-      });
-    }, delay);
-  }
+        setTimeout(() => {
+            setState({
+                is_searching: false,
+            });
+        }, delay);
+    }
 
-  function searchForm() {
-    return html`
+    function searchForm() {
+        return html`
       <form class="box box_fill">
         <section class="box__body">
           ${searchButton()}
@@ -67,23 +67,23 @@ function Page() {
       </form>
     `
 
-    function searchButton() {
-      if (state.is_searching) {
-        return html`
+        function searchButton() {
+            if (state.is_searching) {
+                return html`
           <button class="button button_searching"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 読み込み中</button>
         `
-      } else {
-        return html`
+            } else {
+                return html`
           <button class="button button_search" onClick="${search}">
             <i class="lnir lnir-reload"></i> 再読み込み
           </button>
         `
-      }
+            }
+        }
     }
-  }
 
-  function pager() {
-    return html`
+    function pager() {
+        return html`
       <section class="content">
         <select class="pager">
           <option>1 / 10 ページ</option>
@@ -100,10 +100,10 @@ function Page() {
         <span>1 ～ 1000 件 / 全 5000 件中</span>
       </section>
     `
-  }
+    }
 
-  function table() {
-    return html`
+    function table() {
+        return html`
       <section class="content content_overflow">
         <table class="table table_sticky">
           <thead class="table__header">
@@ -154,5 +154,5 @@ function Page() {
         </table>
       </section>
     `
-  }
+    }
 }

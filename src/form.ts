@@ -1,10 +1,10 @@
 import { h, render } from "preact";
-import { Menu } from "./menu.ts";
+import { Menu } from "./menu";
 import "./getto.css";
 
 const app = h("main", { class: "layout" }, [
-  h(Page, null, null),
-  h(Menu, null, null),
+    h(Page, null, null),
+    h(Menu, null, null),
 ]);
 render(app, document.body);
 
@@ -13,35 +13,35 @@ import { html } from "htm/preact";
 import { config } from "./config.js";
 
 type State = {
-  "complete": Modal,
-  "delete": Modal,
-  "generate": Modal,
+    "complete": Modal,
+    "delete": Modal,
+    "generate": Modal,
 }
 
 type Modal = {
-  active: boolean,
-  connecting: boolean,
+    active: boolean,
+    connecting: boolean,
 }
 
 function Page() {
-  const [state, setState] = useState<State>({
-    complete: {
-      active: false,
-      connecting: false,
-    },
-    delete: {
-      active: false,
-      connecting: false,
-    },
-    generate: {
-      active: false,
-      connecting: false,
-    },
-  });
+    const [state, setState] = useState<State>({
+        complete: {
+            active: false,
+            connecting: false,
+        },
+        delete: {
+            active: false,
+            connecting: false,
+        },
+        generate: {
+            active: false,
+            connecting: false,
+        },
+    });
 
-  const delay = 2.5 * 1000;
+    const delay = 2.5 * 1000;
 
-  return html`
+    return html`
     <article class="layout__main">
       <header class="main__header">
         <h1 class="main__title">フォーム</h1>
@@ -68,123 +68,123 @@ function Page() {
     </article>
   `
 
-  function setComplete() {
-    state.complete.active = true;
-    state.complete.connecting = false;
+    function setComplete() {
+        state.complete.active = true;
+        state.complete.connecting = false;
 
-    setState({
-      complete: state.complete,
-      delete: state.delete,
-      generate: state.generate,
-    });
-  }
-
-  function doComplete() {
-    state.complete.connecting = true;
-    setState({
-      complete: state.complete,
-      delete: state.delete,
-      generate: state.generate,
-    });
-
-    setTimeout(() => {
-      state.complete.active = false;
-      state.complete.connecting = false;
-      setState({
-        complete: state.complete,
-        delete: state.delete,
-        generate: state.generate,
-      });
-    }, delay);
-  }
-
-  function resetComplete() {
-    state.complete.active = false;
-    setState({
-      complete: state.complete,
-      delete: state.delete,
-      generate: state.generate,
-    });
-  }
-
-  function setDelete() {
-    state.delete.active = true;
-    state.delete.connecting = false;
-    setState({
-      complete: state.complete,
-      delete: state.delete,
-      generate: state.generate,
-    });
-  }
-
-  function doDelete() {
-    state.delete.connecting = true;
-    setState({
-      complete: state.complete,
-      delete: state.delete,
-      generate: state.generate,
-    });
-
-    setTimeout(() => {
-      state.delete.active = false;
-      state.delete.connecting = false;
-      setState({
-        complete: state.complete,
-        delete: state.delete,
-        generate: state.generate,
-      });
-    }, delay);
-  }
-
-  function resetDelete() {
-    state.delete.active = false;
-    setState({
-      complete: state.complete,
-      delete: state.delete,
-      generate: state.generate,
-    });
-  }
-
-  function setGenerate() {
-    state.generate.active = true;
-    state.generate.connecting = true;
-    setState({
-      complete: state.complete,
-      delete: state.delete,
-      generate: state.generate,
-    });
-
-    setTimeout(() => {
-      state.generate.connecting = false;
-      setState({
-        complete: state.complete,
-        delete: state.delete,
-        generate: state.generate,
-      });
-    }, delay);
-  }
-
-  function resetGenerate() {
-    state.generate.active = false;
-    setState({
-      complete: state.complete,
-      delete: state.delete,
-      generate: state.generate,
-    });
-  }
-
-  function resetAll(e: MouseEvent) {
-    if (e.target instanceof HTMLElement) {
-      const target = e.target as HTMLElement;
-      if (target.dataset.modal === "true") {
-        resetComplete();
-        resetDelete();
-      }
+        setState({
+            complete: state.complete,
+            delete: state.delete,
+            generate: state.generate,
+        });
     }
-  }
 
-  function work() {
-    return html`
+    function doComplete() {
+        state.complete.connecting = true;
+        setState({
+            complete: state.complete,
+            delete: state.delete,
+            generate: state.generate,
+        });
+
+        setTimeout(() => {
+            state.complete.active = false;
+            state.complete.connecting = false;
+            setState({
+                complete: state.complete,
+                delete: state.delete,
+                generate: state.generate,
+            });
+        }, delay);
+    }
+
+    function resetComplete() {
+        state.complete.active = false;
+        setState({
+            complete: state.complete,
+            delete: state.delete,
+            generate: state.generate,
+        });
+    }
+
+    function setDelete() {
+        state.delete.active = true;
+        state.delete.connecting = false;
+        setState({
+            complete: state.complete,
+            delete: state.delete,
+            generate: state.generate,
+        });
+    }
+
+    function doDelete() {
+        state.delete.connecting = true;
+        setState({
+            complete: state.complete,
+            delete: state.delete,
+            generate: state.generate,
+        });
+
+        setTimeout(() => {
+            state.delete.active = false;
+            state.delete.connecting = false;
+            setState({
+                complete: state.complete,
+                delete: state.delete,
+                generate: state.generate,
+            });
+        }, delay);
+    }
+
+    function resetDelete() {
+        state.delete.active = false;
+        setState({
+            complete: state.complete,
+            delete: state.delete,
+            generate: state.generate,
+        });
+    }
+
+    function setGenerate() {
+        state.generate.active = true;
+        state.generate.connecting = true;
+        setState({
+            complete: state.complete,
+            delete: state.delete,
+            generate: state.generate,
+        });
+
+        setTimeout(() => {
+            state.generate.connecting = false;
+            setState({
+                complete: state.complete,
+                delete: state.delete,
+                generate: state.generate,
+            });
+        }, delay);
+    }
+
+    function resetGenerate() {
+        state.generate.active = false;
+        setState({
+            complete: state.complete,
+            delete: state.delete,
+            generate: state.generate,
+        });
+    }
+
+    function resetAll(e: MouseEvent) {
+        if (e.target instanceof HTMLElement) {
+            const target = e.target as HTMLElement;
+            if (target.dataset.modal === "true") {
+                resetComplete();
+                resetDelete();
+            }
+        }
+    }
+
+    function work() {
+        return html`
       <section class="box">
         <div>
           <header class="box__header">
@@ -246,13 +246,13 @@ function Page() {
       ${generateModal()}
     `
 
-    function completeModal() {
-      if (!state.complete.active && !state.complete.connecting) {
-        return html``
-      }
+        function completeModal() {
+            if (!state.complete.active && !state.complete.connecting) {
+                return html``
+            }
 
-      if (state.complete.connecting) {
-        return html`
+            if (state.complete.connecting) {
+                return html`
           <aside class="modal" onClick="${resetAll}" data-modal="true">
             <section class="modal__box">
               <header class="modal__header">
@@ -269,9 +269,9 @@ function Page() {
             </section>
           </aside>
         `
-      }
+            }
 
-      return html`
+            return html`
         <aside class="modal" onClick="${resetAll}" data-modal="true">
           <section class="modal__box">
             <header class="modal__header">
@@ -291,15 +291,15 @@ function Page() {
           </section>
         </aside>
       `
-    }
+        }
 
-    function deleteModal() {
-      if (!state.delete.active && !state.delete.connecting) {
-        return html``
-      }
+        function deleteModal() {
+            if (!state.delete.active && !state.delete.connecting) {
+                return html``
+            }
 
-      if (state.delete.connecting) {
-        return html`
+            if (state.delete.connecting) {
+                return html`
           <aside class="modal" onClick="${resetAll}" data-modal="true">
             <section class="modal__box">
               <header class="modal__header">
@@ -316,9 +316,9 @@ function Page() {
             </section>
           </aside>
         `
-      }
+            }
 
-      return html`
+            return html`
         <aside class="modal" onClick="${resetAll}" data-modal="true">
           <section class="modal__box">
             <header class="modal__header">
@@ -340,15 +340,15 @@ function Page() {
           </section>
         </aside>
       `
-    }
+        }
 
-    function generateModal() {
-      if (!state.generate.active && !state.generate.connecting) {
-        return html``
-      }
+        function generateModal() {
+            if (!state.generate.active && !state.generate.connecting) {
+                return html``
+            }
 
-      if (state.generate.connecting) {
-        return html`
+            if (state.generate.connecting) {
+                return html`
           <aside class="modal" onClick="${resetAll}" data-modal="true">
             <section class="modal__box">
               <header class="modal__header">
@@ -363,9 +363,9 @@ function Page() {
             </section>
           </aside>
         `
-      }
+            }
 
-      return html`
+            return html`
         <aside class="modal" onClick="${resetAll}" data-modal="true">
           <section class="modal__box">
             <header class="modal__header">
@@ -391,11 +391,11 @@ function Page() {
           </section>
         </aside>
       `
+        }
     }
-  }
 
-  function workForm() {
-    return html`
+    function workForm() {
+        return html`
       <form class="box box_editing">
         <div>
           <header class="box__header">
@@ -428,10 +428,10 @@ function Page() {
         </footer>
       </form>
     `
-  }
+    }
 
-  function miscForm() {
-    return html`
+    function miscForm() {
+        return html`
       <form class="box box_editing">
         <div>
           <header class="box__header">
@@ -483,10 +483,10 @@ function Page() {
         </footer>
       </form>
     `
-  }
+    }
 
-  function checkForm() {
-    return html`
+    function checkForm() {
+        return html`
       <form class="box box_editing">
         <div>
           <header class="box__header">
@@ -534,10 +534,10 @@ function Page() {
         </footer>
       </form>
     `
-  }
+    }
 
-  function textForm() {
-    return html`
+    function textForm() {
+        return html`
       <form class="box box_editing">
         <div>
           <header class="box__header">
@@ -584,10 +584,10 @@ function Page() {
         </footer>
       </form>
     `
-  }
+    }
 
-  function searchForm() {
-    return html`
+    function searchForm() {
+        return html`
       <form class="box box_editing">
         <div>
           <header class="box__header">
@@ -634,10 +634,10 @@ function Page() {
         </footer>
       </form>
     `
-  }
+    }
 
-  function numberForm() {
-    return html`
+    function numberForm() {
+        return html`
       <form class="box box_editing">
         <div>
           <header class="box__header">
@@ -666,10 +666,10 @@ function Page() {
         </footer>
       </form>
     `
-  }
+    }
 
-  function emailForm() {
-    return html`
+    function emailForm() {
+        return html`
       <form class="box box_editing">
         <div>
           <header class="box__header">
@@ -710,10 +710,10 @@ function Page() {
         </footer>
       </form>
     `
-  }
+    }
 
-  function textareaForm() {
-    return html`
+    function textareaForm() {
+        return html`
       <form class="box box_double box_editing">
         <div>
           <header class="box__header">
@@ -754,5 +754,5 @@ function Page() {
         </footer>
       </form>
     `
-  }
+    }
 };

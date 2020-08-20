@@ -1,10 +1,10 @@
 import { h, render } from "preact";
-import { Menu } from "./menu.ts";
+import { Menu } from "./menu";
 import "./getto.css";
 
 const app = h("main", { class: "layout" }, [
-  h(Page, null, null),
-  h(Menu, null, null),
+    h(Page, null, null),
+    h(Menu, null, null),
 ]);
 render(app, document.body);
 
@@ -13,71 +13,71 @@ import { html } from "htm/preact";
 import { config } from "./config.js";
 
 type State = {
-  versions: Array<string>,
-  version: string,
-  loaded: boolean,
+    versions: Array<string>,
+    version: string,
+    loaded: boolean,
 }
 
 function Page() {
-  const [state, setState] = useState<State>({
-    versions: [config.version],
-    version: config.version,
-    loaded: false,
-  });
+    const [state, setState] = useState<State>({
+        versions: [config.version],
+        version: config.version,
+        loaded: false,
+    });
 
-  function onLoad(){
-    if (state.loaded) {
-      return;
+    function onLoad() {
+        if (state.loaded) {
+            return;
+        }
+
+        (async () => {
+            const response = await fetch("/versions.txt");
+            if (!response.ok) {
+                return [config.version];
+            }
+
+            const content = await response.text();
+            const versions = content.split("\n").filter((version) => version != "");
+            if (versions.length === 0) {
+                return [config.version];
+            }
+
+            setState({
+                versions: versions.reverse(),
+                version: state.version,
+                loaded: true,
+            });
+        })();
     }
 
-    (async () => {
-      const response = await fetch("/versions.txt");
-      if (!response.ok) {
-        return [config.version];
-      }
-
-      const content = await response.text();
-      const versions = content.split("\n").filter((version) => version != "");
-      if (versions.length === 0) {
-        return [config.version];
-      }
-
-      setState({
-        versions: versions.reverse(),
-        version: state.version,
-        loaded: true,
-      });
-    })();
-  }
-
-  function versionChanged(e: InputEvent) {
-    if (e.target instanceof HTMLSelectElement) {
-      const target = e.target as HTMLSelectElement;
-      const version = target.value;
-      setState({
-        versions: state.versions,
-        version,
-        loaded: state.loaded,
-      });
-    }
-  }
-
-  useEffect(() => {
-    onLoad();
-  }, []);
-
-  function redirect() {
-    if (!config.isProduction) {
-      alert(`redirect to: ${state.version}`);
-      return;
+    function versionChanged(e: InputEvent) {
+        if (e.target instanceof HTMLSelectElement) {
+            const target = e.target as HTMLSelectElement;
+            const version = target.value;
+            setState({
+                versions: state.versions,
+                version,
+                loaded: state.loaded,
+            });
+        }
     }
 
-    const path = location.pathname;
-    const redirect_to = path.replace(config.version, state.version);
-    location.href = redirect_to;
-  }
+    useEffect(() => {
+        onLoad();
+    }, []);
 
-  return html`
+    function redirect() {
+        if (!config.isProduction) {
+            alert(`redirect to: ${state.version}`);
+            return;
+        }
+
+        const path = location.pathname;
+        const redirect_to = path.replace(config.version, state.version);
+        location.href = redirect_to;
+    }
+
+    return html`
     <article class="layout__main">
       <header class="main__header">
         <h1 class="main__title">ホーム</h1>
@@ -218,15 +218,15 @@ function Page() {
     </article>
   `;
 
-  function stateLabel() {
-    if (state.versions[0] === config.version) {
-      return html`<span class="label label_info">最新</span>`
-    } else {
-      return html`<span class="label label_alert">新しいバージョンがあります</span>`
+    function stateLabel() {
+        if (state.versions[0] === config.version) {
+            return html`<span class="label label_info">最新</span>`
+        } else {
+            return html`<span class="label label_alert">新しいバージョンがあります</span>`
+        }
     }
-  }
 
-  function linkTagExample() {
-      return `<link rel="stylesheet"\n href="https://trellis.getto.systems/css/${config.version}/getto.css">`
-  }
+    function linkTagExample() {
+        return `<link rel="stylesheet"\n href="https://trellis.getto.systems/css/${config.version}/getto.css">`
+    }
 };

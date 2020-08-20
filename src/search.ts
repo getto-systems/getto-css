@@ -1,10 +1,10 @@
 import { h, render } from "preact";
-import { Menu } from "./menu.ts";
+import { Menu } from "./menu";
 import "./getto.css";
 
 const app = h("main", { class: "layout" }, [
-  h(Page, null, null),
-  h(Menu, null, null),
+    h(Page, null, null),
+    h(Menu, null, null),
 ]);
 render(app, document.body);
 
@@ -13,41 +13,41 @@ import { html } from "htm/preact";
 import { config } from "./config.js";
 
 type State = {
-  is_modified: boolean,
-  is_searching: boolean,
-  is_error: boolean,
+    is_modified: boolean,
+    is_searching: boolean,
+    is_error: boolean,
 
-  data: Data,
+    data: Data,
 }
 
 type Data = {
-  radio: string,
+    radio: string,
 }
 
 type Text = {
-  id: string,
-  name: string,
+    id: string,
+    name: string,
 }
 
 function Page() {
-  const [state, setState] = useState<State>({
-    is_modified: false,
-    is_searching: false,
-    is_error: false,
+    const [state, setState] = useState<State>({
+        is_modified: false,
+        is_searching: false,
+        is_error: false,
 
-    data: {
-      radio: "仮",
-    },
-  });
+        data: {
+            radio: "仮",
+        },
+    });
 
-  const text: Text = {
-    id: "",
-    name: "GETTO CSS",
-  };
+    const text: Text = {
+        id: "",
+        name: "GETTO CSS",
+    };
 
-  const delay = 2.5 * 1000;
+    const delay = 2.5 * 1000;
 
-  return html`
+    return html`
     <article class="layout__main">
       <header class="main__header">
         <h1 class="main__title">検索</h1>
@@ -69,75 +69,75 @@ function Page() {
     </article>
   `;
 
-  function idInput(e: InputEvent) {
-    if (e.target instanceof HTMLInputElement) {
-      const target = e.target as HTMLInputElement;
-      text.id = target.value;
+    function idInput(e: InputEvent) {
+        if (e.target instanceof HTMLInputElement) {
+            const target = e.target as HTMLInputElement;
+            text.id = target.value;
 
-      setState({
-        is_modified: true,
-        is_searching: state.is_searching,
-        is_error: state.is_error,
+            setState({
+                is_modified: true,
+                is_searching: state.is_searching,
+                is_error: state.is_error,
 
-        data: state.data,
-      });
+                data: state.data,
+            });
+        }
     }
-  }
 
-  function nameInput(e: InputEvent) {
-    if (e.target instanceof HTMLInputElement) {
-      const target = e.target as HTMLInputElement;
-      text.name = target.value;
+    function nameInput(e: InputEvent) {
+        if (e.target instanceof HTMLInputElement) {
+            const target = e.target as HTMLInputElement;
+            text.name = target.value;
 
-      setState({
-        is_modified: true,
-        is_searching: state.is_searching,
-        is_error: state.is_error,
+            setState({
+                is_modified: true,
+                is_searching: state.is_searching,
+                is_error: state.is_error,
 
-        data: state.data,
-      });
+                data: state.data,
+            });
+        }
     }
-  }
 
-  function radioClicked(e: MouseEvent) {
-    if (e.target instanceof HTMLInputElement) {
-      const target = e.target as HTMLInputElement;
-      state.data.radio = target.value;
+    function radioClicked(e: MouseEvent) {
+        if (e.target instanceof HTMLInputElement) {
+            const target = e.target as HTMLInputElement;
+            state.data.radio = target.value;
 
-      setState({
-        is_modified: true,
-        is_searching: state.is_searching,
-        is_error: state.is_error,
+            setState({
+                is_modified: true,
+                is_searching: state.is_searching,
+                is_error: state.is_error,
 
-        data: state.data,
-      });
+                data: state.data,
+            });
+        }
     }
-  }
 
-  function search(e: MouseEvent) {
-    e.preventDefault();
+    function search(e: MouseEvent) {
+        e.preventDefault();
 
-    setState({
-      is_modified: state.is_modified,
-      is_searching: true,
-      is_error: state.is_error,
+        setState({
+            is_modified: state.is_modified,
+            is_searching: true,
+            is_error: state.is_error,
 
-      data: state.data,
-    });
+            data: state.data,
+        });
 
-    setTimeout(() => {
-      setState({
-        is_modified: false,
-        is_searching: false,
-        is_error: true,
+        setTimeout(() => {
+            setState({
+                is_modified: false,
+                is_searching: false,
+                is_error: true,
 
-        data: state.data,
-      });
-    }, delay);
-  }
+                data: state.data,
+            });
+        }, delay);
+    }
 
-  function searchForm() {
-    return html`
+    function searchForm() {
+        return html`
       <form class="box box_fill box_search">
         <section class="box__body container">
           <dl class="search">
@@ -180,39 +180,39 @@ function Page() {
       </form>
     `
 
-    function searchButton() {
-      if (state.is_searching) {
-        return html`
+        function searchButton() {
+            if (state.is_searching) {
+                return html`
           <button class="button button_searching" type="button">
             <i class="lnir lnir-spinner-11 lnir-is-spinning"></i>
             ${" "}
             検索中
           </button>
         `
-      } else {
-        return html`
+            } else {
+                return html`
           <button class="button button_search ${state.is_modified ? "button_modified" : ""}" onClick="${search}">
             <i class="lnir lnir-search-alt"></i>
             ${" "}
             検索
           </button>
         `
-      }
-    }
+            }
+        }
 
-    function searchError() {
-      if (!state.is_error) {
-        return html``
-      }
+        function searchError() {
+            if (!state.is_error) {
+                return html``
+            }
 
-      return html`
+            return html`
         <p class="search__message">通信エラーが発生しました。もう一度試してください</p>
       `
+        }
     }
-  }
 
-  function searchColumn() {
-    return html`
+    function searchColumn() {
+        return html`
       <section class="search__column">
         <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>ID</label></div>
         <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>名前</label></div>
@@ -222,10 +222,10 @@ function Page() {
         <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>メモ</label></div>
       </section>
     `
-  }
+    }
 
-  function pager() {
-    return html`
+    function pager() {
+        return html`
       <section class="content">
         <select class="pager">
           <option>1 / 10 ページ</option>
@@ -242,10 +242,10 @@ function Page() {
         <span>1 ～ 1000 件 / 全 5000 件中</span>
       </section>
     `
-  }
+    }
 
-  function table() {
-    return html`
+    function table() {
+        return html`
       <section class="content content_overflow">
         <table class="table table_sticky">
           <thead class="table__header">
@@ -585,5 +585,5 @@ function Page() {
         </table>
       </section>
     `
-  }
+    }
 }

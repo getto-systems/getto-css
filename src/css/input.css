@@ -1,5 +1,5 @@
 @custom-selector :--input :--input-text, textarea, input[type=number], input[type=tel], input[type=email], input[type=date], input[type=time], input[type=file], select;
-@custom-selector :--input-text input[type=text], input[type=search];
+@custom-selector :--input-text input[type=text], input[type=password], input[type=search];
 
 :--input {
   border: 1px solid var(--color-base);
@@ -83,6 +83,7 @@ textarea.input_medium {
 
 textarea.input_fill,
 input[type=text].input_fill,
+input[type=password].input_fill,
 input[type=search].input_fill,
 input[type=email].input_fill {
   width: calc(100% - 1.5rem);
