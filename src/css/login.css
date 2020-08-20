@@ -10,7 +10,7 @@
   left: 0;
   right: 0;
 
-  background-color: var(--color-white);
+  background-color: var(--color-black-off);
 
   z-index: 1000;
 }
@@ -23,6 +23,8 @@
   border: 1px solid var(--color-black);
 
   min-height: var(--width-box);
+
+  background-color: var(--color-white);
 }
 
 .login__header {
