@@ -1,10 +1,10 @@
 import { h, render } from "preact";
-import { Menu } from "./menu.ts";
+import { Menu } from "./menu";
 import "./getto.css";
 
 const app = h("main", { class: "layout" }, [
-  h(Page, null, null),
-  h(Menu, null, null),
+    h(Page, null, null),
+    h(Menu, null, null),
 ]);
 render(app, document.body);
 
@@ -13,17 +13,17 @@ import { html } from "htm/preact";
 import { config } from "./config.js";
 
 type State = {
-  is_searching: boolean,
+    is_searching: boolean,
 }
 
 function Page() {
-  const [state, setState] = useState<State>({
-    is_searching: false,
-  });
+    const [state, setState] = useState<State>({
+        is_searching: false,
+    });
 
-  const delay = 2.5 * 1000;
+    const delay = 2.5 * 1000;
 
-  return html`
+    return html`
     <article class="layout__main">
       <header class="main__header">
         <h1 class="main__title">書類</h1>
@@ -49,22 +49,22 @@ function Page() {
     </article>
   `
 
-  function search(e: MouseEvent) {
-    e.preventDefault();
+    function search(e: MouseEvent) {
+        e.preventDefault();
 
-    setState({
-      is_searching: true,
-    });
+        setState({
+            is_searching: true,
+        });
 
-    setTimeout(() => {
-      setState({
-        is_searching: false,
-      });
-    }, delay);
-  }
+        setTimeout(() => {
+            setState({
+                is_searching: false,
+            });
+        }, delay);
+    }
 
-  function searchForm() {
-    return html`
+    function searchForm() {
+        return html`
       <form class="box box_fill paper_hide">
         <section class="box__body">
           ${searchButton()}
@@ -72,28 +72,28 @@ function Page() {
       </form>
     `
 
-    function searchButton() {
-      if (state.is_searching) {
-        return html`
+        function searchButton() {
+            if (state.is_searching) {
+                return html`
           <button class="button button_searching"><i class="lnir lnir-spinner-11 lnir-is-spinning"></i> 読み込み中</button>
         `
-      } else {
-        return html`
+            } else {
+                return html`
           <button class="button button_search" onClick="${search}"><i class="lnir lnir-reload"></i> 再読み込み</button>
         `
-      }
-    }
-  }
-
-  function page(number: number) {
-    if (number === 1) {
-      return firstPage();
-    } else {
-      return secondPage(number);
+            }
+        }
     }
 
-    function firstPage() {
-      return html`
+    function page(number: number) {
+        if (number === 1) {
+            return firstPage();
+        } else {
+            return secondPage(number);
+        }
+
+        function firstPage() {
+            return html`
         <section class="document document_a4_portrait">
           <div>
             <header class="document__header">
@@ -330,10 +330,10 @@ function Page() {
           </footer>
         </section>
       `
-    }
+        }
 
-    function secondPage(number: number) {
-      return html`
+        function secondPage(number: number) {
+            return html`
         <section class="document document_a4_portrait">
           <div>
             <header class="document__header">
@@ -584,6 +584,6 @@ function Page() {
           </footer>
         </section>
       `
+        }
     }
-  }
 }
