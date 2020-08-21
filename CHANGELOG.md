@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.4.0
+
+- add: form warning : See merge request getto-systems-base/projects/css!207
+
+
 ## Version : 2.3.1
 
 - fix: css : See merge request getto-systems-base/projects/css!205
