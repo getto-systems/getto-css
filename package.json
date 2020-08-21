@@ -11,7 +11,7 @@
     "build:postcss": "postcss --config ./postcss.config.js --output css/getto.css src/getto.css",
     "prepare:development": "node scripts/prepare.js --development",
     "prepare:production": "node scripts/prepare.js --production",
-    "postcss": "npm run postcss:lnil & npm run postcss:lnir & npm run postcss:font",
+    "postcss": "npm run postcss:lnil && npm run postcss:lnir && npm run postcss:font",
     "postcss:lnil": "postcss --config postcss.config.js --output public/dist/css/lnil.min.css public/dist/css/lnil.css",
     "postcss:lnir": "postcss --config postcss.config.js --output public/dist/css/lnir.min.css public/dist/css/lnir.css",
     "postcss:font": "postcss --config postcss.config.js --output public/dist/css/font.min.css public/dist/css/font.css",
