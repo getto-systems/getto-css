@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## Version : 2.3.0
+
+- fix: password input : See merge request getto-systems-base/projects/css!203
+- fix: login background : See merge request getto-systems-base/projects/css!202
+- update: package : See merge request getto-systems-base/projects/css!201
+- fix: line-icons filename : See merge request getto-systems-base/projects/css!200
+
+
 ## Version : 2.2.0
 
 - add: vertical : See merge request getto-systems-base/projects/css!197
