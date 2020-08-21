@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.3.1
+
+- fix: css : See merge request getto-systems-base/projects/css!205
+
+
+
 ## Version : 2.3.0
 
 - fix: password input : See merge request getto-systems-base/projects/css!203
