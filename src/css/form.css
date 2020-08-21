@@ -24,3 +24,13 @@
   border-color: var(--color-alert);
   background-color: var(--color-alert-off);
 }
+
+.form_warning .form__header,
+.form_warning .form__message {
+  color: var(--color-warning);
+}
+
+.form_warning :--input {
+  border-color: var(--color-warning);
+  background-color: var(--color-warning-off);
+}

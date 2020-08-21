@@ -417,6 +417,14 @@ function Page() {
                 <p class="form__help">連絡先のメールアドレス</p>
               </dd>
             </dl>
+            <dl class="form form_warning">
+              <dt class="form__header"><label for="tel">電話番号</label></dt>
+              <dd class="form__field">
+                <input type="email" value="" id="tel"/>
+                <p class="form__message">電話番号が空です</p>
+                <p class="form__help">連絡先の電話番号</p>
+              </dd>
+            </dl>
           </section>
         </div>
         <footer class="box__footer form_error">
