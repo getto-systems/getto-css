@@ -12,11 +12,22 @@
   padding-left: 0.5rem;
   border-bottom: 1px solid var(--color-black);
 
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .main__breadcrumb {
   text-align: right;
+}
+
+.main__breadcrumb__item {
+  display: inline-block;
+
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+.main__breadcrumb__item:hover {
+  background-color: var(--color-white);
 }
 
 .main__breadcrumb__separator {
@@ -26,7 +37,7 @@
   margin-right: 0.25rem;
 
   font-size: var(--font-size-smaller);
-  vertical-align: 25%;
+  vertical-align: middle;
 }
 
 .main__body {
