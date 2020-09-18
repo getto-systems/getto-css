@@ -4,10 +4,11 @@
   justify-content: space-between;
 
   border: 1px solid var(--color-black);
-  border-radius: 0.3rem;
   padding: 0.5rem;
 
   margin-bottom: 0.5rem;
+
+  background-color: var(--color-white);
 }
 
 .box.box_editing,
