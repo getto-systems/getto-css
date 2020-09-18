@@ -14,8 +14,8 @@ a {
 
 a:hover,
 a:focus {
-  color: var(--color-alert);
-  border: 1px dotted var(--color-alert);
+  color: var(--color-base);
+  border: 1px dotted var(--color-base);
 }
 
 small {
