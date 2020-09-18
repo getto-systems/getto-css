@@ -48,26 +48,26 @@ function Page() {
     const delay = 2.5 * 1000;
 
     return html`
-    <article class="layout__main">
-      <header class="main__header">
-        <h1 class="main__title">検索</h1>
-        <p class="main__breadcrumb">
-          <a href="#menu">MAIN</a>
-          <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
-          <a href="/${config.version}/search.html"><i class="lnir lnir-search-alt"></i> 検索</a>
-        </p>
-      </header>
-      <section class="main__body">
-        ${searchForm()}
-        ${searchColumn()}
-        ${pager()}
-        ${table()}
-      </section>
-      <footer class="main__footer">
-        <p class="main__footer__message">powered by : LineIcons / みんなの文字</p>
-      </footer>
-    </article>
-  `;
+        <article class="layout__main">
+            <header class="main__header">
+                <h1 class="main__title">検索</h1>
+                <p class="main__breadcrumb">
+                    <a href="#menu" class="main__breadcrumb__item">MAIN</a>
+                    <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
+                    <a href="/${config.version}/search.html" class="main__breadcrumb__item"><i class="lnir lnir-search-alt"></i> 検索</a>
+                </p>
+            </header>
+            <section class="main__body">
+                ${searchForm()}
+                ${searchColumn()}
+                ${pager()}
+                ${table()}
+            </section>
+            <footer class="main__footer">
+                <p class="main__footer__message">powered by : LineIcons / みんなの文字</p>
+            </footer>
+        </article>
+    `;
 
     function idInput(e: InputEvent) {
         if (e.target instanceof HTMLInputElement) {
@@ -213,15 +213,15 @@ function Page() {
 
     function searchColumn() {
         return html`
-      <section class="search__column">
-        <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>ID</label></div>
-        <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>名前</label></div>
-        <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>状態</label></div>
-        <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>メールアドレス</label></div>
-        <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>更新日時</label></div>
-        <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>メモ</label></div>
-      </section>
-    `
+            <section class="search__column">
+                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>ID</label></div>
+                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>名前</label></div>
+                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>状態</label></div>
+                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>メールアドレス</label></div>
+                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>更新日時</label></div>
+                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>メモ</label></div>
+            </section>
+        `
     }
 
     function pager() {
