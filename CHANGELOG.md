@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## Version : 2.5.0
+
+- add: menu box : See merge request getto-systems-base/projects/css!217
+- add: not found : See merge request getto-systems-base/projects/css!216
+- fix: login : See merge request getto-systems-base/projects/css!215
+- fix: style : See merge request getto-systems-base/projects/css!214
+- fix: search_column and pager : See merge request getto-systems-base/projects/css!213
+- fix: search_column : See merge request getto-systems-base/projects/css!212
+- fix: breadcrumb : See merge request getto-systems-base/projects/css!211
+- fix: form style : See merge request getto-systems-base/projects/css!210
+- fix: style : See merge request getto-systems-base/projects/css!209
+
+
 ## Version : 2.4.0
 
 - add: form warning : See merge request getto-systems-base/projects/css!207
