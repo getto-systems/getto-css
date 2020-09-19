@@ -60,13 +60,6 @@
 .menu__nav__link {
   display: block;
   color: var(--color-black);
-
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  padding-left: 0.5em;
-
-  border: 1px dotted transparent;
-  border-radius: 0.5em;
 }
 
 .menu__nav__item_active {

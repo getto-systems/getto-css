@@ -2,6 +2,7 @@
 
 .table {
   border-collapse: separate;
+  background-color: var(--color-white);
 }
 
 .table.table_fill {
@@ -85,12 +86,16 @@ td.cell_center {
   font-weight: bold;
 }
 
+.row td {
+  padding: 0.75em;
+}
+
 .row.row_edit td {
   background-color: var(--color-base-off);
 }
 
 .row.row_hoverable:hover td {
-  background-color: var(--color-black-off);
+  background-color: var(--color-white-transparent);
 }
 
 .document :--cell.cell_border_t {

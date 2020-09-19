@@ -8,14 +8,16 @@ a {
   color: var(--color-base);
   text-decoration: none;
 
-  padding: 0.1rem;
+  padding: 0.5em;
   border: 1px dotted transparent;
+  border-radius: 0.5em;
 }
 
 a:hover,
 a:focus {
   color: var(--color-base);
-  border: 1px dotted var(--color-base);
+  border-color: var(--color-base);
+  background-color: var(--color-white-transparent);
 }
 
 small {
