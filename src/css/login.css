@@ -42,6 +42,20 @@
   margin-bottom: 1rem;
 }
 
+.login__message {
+  min-height: var(--height-login-message);
+}
+
+.login__message__header {
+  font-size: var(--font-size-medium);
+  margin-bottom: 1em;
+}
+
+.login__message__body {
+  padding-left: 1em;
+  line-height: 1.3;
+}
+
 .login__footer {
   padding-top: 0.25rem;
 }
@@ -57,7 +71,7 @@
 
 .login__link {
   display: block;
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-normal);
 }
 
 .login :--input {
