@@ -59,8 +59,10 @@ function Page() {
             </header>
             <section class="main__body">
                 ${searchForm()}
-                ${searchColumn()}
-                ${pager()}
+                <section class="container">
+                    ${searchColumn()}
+                    ${pager()}
+                </section>
                 ${table()}
             </section>
             <footer class="main__footer">
@@ -174,8 +176,8 @@ function Page() {
                     </dl>
                 </section>
                 <footer class="box__footer search_error">
-                ${searchButton()}
-                ${searchError()}
+                    ${searchButton()}
+                    ${searchError()}
                 </footer>
             </form>
         `
@@ -213,7 +215,7 @@ function Page() {
 
     function searchColumn() {
         return html`
-            <section class="box box_fill">
+            <section class="box box_double">
                 <section class="box__body">
                     <dl>
                         <dt class="search__header">表示する列</dt>
@@ -225,6 +227,8 @@ function Page() {
                                 <label class="search__column__item input__checkbox input_checked"><input type="checkbox" checked/>メールアドレス</label>
                                 <label class="search__column__item input__checkbox input_checked"><input type="checkbox" checked/>更新日時</label>
                                 <label class="search__column__item input__checkbox input_checked"><input type="checkbox" checked/>メモ</label>
+                                <label class="search__column__item input__checkbox"><input type="checkbox"/>正式名称</label>
+                                <label class="search__column__item input__checkbox"><input type="checkbox"/>問い合わせ電話番号</label>
                             </section>
                         </dd>
                     </dl>
@@ -236,22 +240,27 @@ function Page() {
 
     function pager() {
         return html`
-      <section class="content">
-        <select class="pager">
-          <option>1 / 10 ページ</option>
-          <option>2 / 10 ページ</option>
-          <option>3 / 10 ページ</option>
-          <option>4 / 10 ページ</option>
-          <option>5 / 10 ページ</option>
-          <option>6 / 10 ページ</option>
-          <option>7 / 10 ページ</option>
-          <option>8 / 10 ページ</option>
-          <option>9 / 10 ページ</option>
-          <option>10 / 10 ページ</option>
-        </select>
-        <span>1 ～ 1000 件 / 全 5000 件中</span>
-      </section>
-    `
+            <form class="box">
+                <section class="box__body">
+                    <dl>
+                        <dt class="search__header">全 5532 件中</dt>
+                        <dd class="search__field">
+                            <select class="pager__select">
+                                <option>1 ～ 1000 件</option>
+                                <option>1001 ～ 2000 件</option>
+                                <option>2001 ～ 3000 件</option>
+                                <option>3001 ～ 4000 件</option>
+                                <option>4001 ～ 5000 件</option>
+                                <option>5001 ～ 5532 件</option>
+                            </select>
+                        </dd>
+                    </dl>
+                </section>
+                <footer class="box__footer search_error">
+                    <button class="button button_pager">移動</button>
+                </footer>
+            </form>
+        `
     }
 
     function table() {

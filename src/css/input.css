@@ -106,7 +106,7 @@ input[type=email].input_fill {
 .input__checkbox:focus,
 .input__checkbox.input_checked {
   border-color: var(--color-base);
-  background-color: var(--color-white-true);
+  background-color: var(--color-white-transparent);
 }
 
 .input__radio input[type=radio],
