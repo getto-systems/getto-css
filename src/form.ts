@@ -258,7 +258,7 @@ function Page() {
                             <header class="modal__header">
                                 <h3 class="modal__title">完了処理中</h3>
                             </header>
-                            <section class="modal__body">
+                            <section class="modal__body paragraph">
                                 この作業を完了しています
                             </section>
                             <big>
@@ -277,7 +277,7 @@ function Page() {
                         <header class="modal__header">
                             <h3 class="modal__title">完了確認</h3>
                         </header>
-                        <section class="modal__body">
+                        <section class="modal__body paragraph">
                             この作業を完了します
                             <br/>
                             よろしいですか？
@@ -305,7 +305,7 @@ function Page() {
                         <header class="modal__header">
                             <h3 class="modal__title">削除処理中</h3>
                         </header>
-                        <section class="modal__body">
+                        <section class="modal__body paragraph">
                             この作業を削除しています
                         </section>
                         <big>
@@ -324,7 +324,7 @@ function Page() {
                         <header class="modal__header">
                             <h3 class="modal__title">削除確認</h3>
                         </header>
-                        <section class="modal__body">
+                        <section class="modal__body paragraph">
                             この作業を削除します
                             <br/>
                             削除すると復元することはできません
@@ -354,7 +354,7 @@ function Page() {
                             <header class="modal__header">
                                 <h3 class="modal__title">帳票作成中</h3>
                             </header>
-                            <section class="modal__body">
+                            <section class="modal__body paragraph">
                                 <div class="loading loading_box">
                                 <i class="lnir lnir-spinner-11 lnir-is-spinning"></i>
                                 <p class="loading__message">読み込み中です</p>
@@ -371,7 +371,7 @@ function Page() {
                         <header class="modal__header">
                             <h3 class="modal__title">帳票ダウンロード</h3>
                         </header>
-                        <section class="modal__body">
+                        <section class="modal__body paragraph">
                             必要な書類をダウンロードしてください
 
                             <ul class="list">

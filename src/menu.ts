@@ -109,7 +109,7 @@ export function Menu() {
                     <dl class="form">
                         <dt class="form__header">シーズン</dt>
                         <dd class="form__field">
-                            2020年
+                            ${new Date().getFullYear()}年
                         </dd>
                     </dl>
                 </aside>
