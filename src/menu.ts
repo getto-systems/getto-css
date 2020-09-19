@@ -41,6 +41,7 @@ export function Menu() {
                     createItem("lnir lnir-list", `/${config.version}/list.html`, "一覧", 0),
                     createItem("lnir lnir-folder", `/${config.version}/document.html`, "書類", 0),
                     createItem("lnir lnir-enter", `/${config.version}/login.html`, "ログイン", 0),
+                    createItem("lnir lnir-close", `/${config.version}/not_found.html`, "NotFound", 0),
                     createItem("lnir lnir-question-circle", `/${config.version}/docs/index.html`, "ドキュメント", 0),
                 ]),
                 createMenu("DOCUMENT", [
