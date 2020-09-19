@@ -21,13 +21,6 @@
 
 .main__breadcrumb__item {
   display: inline-block;
-
-  padding: 0.5em;
-  border-radius: 0.5em;
-}
-
-.main__breadcrumb__item:hover {
-  background-color: var(--color-white);
 }
 
 .main__breadcrumb__separator {

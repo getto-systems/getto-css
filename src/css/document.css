@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 20mm;
+
+  background-color: var(--color-white);
 }
 
 .document.document_a4_portrait {
