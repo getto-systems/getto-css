@@ -105,6 +105,14 @@ export function Menu() {
                 <cite class="menu__subTitle">simple admin theme</cite>
             </header>
             <nav class="menu__body" id="menu">
+                <aside class="menu__box">
+                    <dl class="form">
+                        <dt class="form__header">シーズン</dt>
+                        <dd class="form__field">
+                            2020年
+                        </dd>
+                    </dl>
+                </aside>
                 ${state.data.menus.map(menu)}
             </nav>
             <footer class="menu__footer">
