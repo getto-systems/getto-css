@@ -52,9 +52,9 @@ function Page() {
             <header class="main__header">
                 <h1 class="main__title">検索</h1>
                 <p class="main__breadcrumb">
-                    <a href="#menu" class="main__breadcrumb__item">MAIN</a>
+                    <a class="main__breadcrumb__item" href="#menu" class="main__breadcrumb__item">MAIN</a>
                     <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
-                    <a href="/${config.version}/search.html" class="main__breadcrumb__item"><i class="lnir lnir-search-alt"></i> 検索</a>
+                    <a class="main__breadcrumb__item" href="/${config.version}/search.html" class="main__breadcrumb__item"><i class="lnir lnir-search-alt"></i> 検索</a>
                 </p>
             </header>
             <section class="main__body">

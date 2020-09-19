@@ -7,6 +7,8 @@
   --font-size-larger: 161.6%;
   --font-size-smaller: 61.8%;
 
+  --height-login: 30rem;
+
   --width-menu: 16rem;
   --width-box: 20rem;
   --width-box-double: calc(41.5rem + 2px);
