@@ -97,40 +97,40 @@ export function Menu() {
     }
 
     return html`
-    <section class="layout__menu menu">
-      <header class="layout__menu__header menu__header">
-        <cite class="menu__brand">GETTO</cite>
-        <strong class="menu__title">CSS</strong>
-        <cite class="menu__subTitle">simple admin theme</cite>
-      </header>
-      <nav class="menu__body" id="menu">
-        ${state.data.menus.map(menu)}
-      </nav>
-      <footer class="menu__footer">
-        <p class="menu__footer__message">copyright GETTO.systems</p>
-        <p class="menu__footer__message">version: ${state.data.version}</p>
-      </footer>
-    </section>
-  `;
+        <section class="layout__menu menu">
+            <header class="layout__menu__header menu__header">
+                <cite class="menu__brand">GETTO</cite>
+                <strong class="menu__title">CSS</strong>
+                <cite class="menu__subTitle">simple admin theme</cite>
+            </header>
+            <nav class="menu__body" id="menu">
+                ${state.data.menus.map(menu)}
+            </nav>
+            <footer class="menu__footer">
+                <p class="menu__footer__message">copyright GETTO.systems</p>
+                <p class="menu__footer__message">version: ${state.data.version}</p>
+            </footer>
+        </section>
+    `;
 
     function menu(menu: Menu) {
         return html`
-      <ul class="menu__nav ${menu.isExpand ? "" : "menu__nav_collapsed"}">
-        <li>
-          <a href="#" class="menu__nav__header menu__nav__link" onClick="${toggleMenu(menu)}">
-            ${menu.label}
-            ${" "}
-            ${badge(menu)}
-            <span class="menu__nav__handle">
-              ${handle(menu)}
-            </span>
-          </a>
-        </li>
-        <ul class="menu__nav__items ${menu.isExpand ? "menu__nav__items_expand" : ""}">
-          ${menu.items.map(item)}
-        </ul>
-      </ul>
-    `;
+            <ul class="menu__nav ${menu.isExpand ? "" : "menu__nav_collapsed"}">
+                <li>
+                    <a href="#" class="menu__nav__header menu__nav__link" onClick="${toggleMenu(menu)}">
+                        ${menu.label}
+                        ${" "}
+                        ${badge(menu)}
+                        <span class="menu__nav__handle">
+                        ${handle(menu)}
+                        </span>
+                    </a>
+                </li>
+                <ul class="menu__nav__items ${menu.isExpand ? "menu__nav__items_expand" : ""}">
+                    ${menu.items.map(item)}
+                </ul>
+            </ul>
+        `;
     }
 
     function badge(item: { badge: number }) {
@@ -151,15 +151,15 @@ export function Menu() {
 
     function item(item: Item) {
         return html`
-      <li class="menu__nav__item">
-        <a href="${item.href}" class="menu__nav__link ${item.isActive ? "menu__nav__item_active" : ""}">
-          <i class="${item.icon}"></i>
-          ${" "}
-          ${item.label}
-          ${" "}
-          ${badge(item)}
-        </a>
-      </li>
-    `;
+            <li class="menu__nav__item">
+                <a href="${item.href}" class="menu__nav__link ${item.isActive ? "menu__nav__item_active" : ""}">
+                <i class="${item.icon}"></i>
+                ${" "}
+                ${item.label}
+                ${" "}
+                ${badge(item)}
+                </a>
+            </li>
+        `;
     }
 }
