@@ -5,10 +5,6 @@
   margin-bottom: 0.25rem;
 }
 
-.notice__message {
-  line-height: 1.1em;
-}
-
 .notice_gray {
   color: var(--color-black);
   border-color: var(--color-black);
