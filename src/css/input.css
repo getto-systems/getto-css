@@ -93,20 +93,20 @@ input[type=email].input_fill {
 .input__checkbox {
   display: inline-block;
 
-  padding-top: 0.1rem;
-  padding-left: 0.1rem;
-  padding-bottom: 0.1rem;
-  padding-right: 0.5rem;
+  padding: 0.5em;
 
-  border: 1px dotted transparent;
+  border: 1px dashed transparent;
   cursor: pointer;
 }
 
 .input__radio:hover,
 .input__radio:focus,
+.input__radio.input_checked,
 .input__checkbox:hover,
-.input__checkbox:focus {
+.input__checkbox:focus,
+.input__checkbox.input_checked {
   border-color: var(--color-base);
+  background-color: var(--color-white-true);
 }
 
 .input__radio input[type=radio],

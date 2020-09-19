@@ -24,17 +24,6 @@
   margin-left: 0.25rem;
 }
 
-.search_use .search__header {
-  font-weight: bold;
-  color: var(--color-base);
-}
-
-.search_use .input__radio.search_checked,
-.search_use .input__checkbox.search_checked {
-  font-weight: bold;
-  color: var(--color-base);
-}
-
 .search_error .search__message {
   color: var(--color-alert);
 }
@@ -42,10 +31,8 @@
 .search__column {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
-.search__column .input__checkbox.search__column_active {
-  font-weight: bold;
+.search__column__item {
+  margin: 0.25rem;
 }
