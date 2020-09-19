@@ -138,65 +138,65 @@ function Page() {
 
     function searchForm() {
         return html`
-      <form class="box box_fill box_search">
-        <section class="box__body container">
-          <dl class="search">
-            <dt class="search__header">ID</dt>
-            <dd class="search__field">
-              <input type="text" class="input_fill" defaultValue="${text.id}" onInput="${idInput}"/>
-              <p class="search__help">完全一致検索</p>
-            </dd>
-          </dl>
-          <dl class="search search_double search_use">
-            <dt class="search__header">名前</dt>
-            <dd class="search__field">
-              <input type="text" class="input_fill" defaultValue="${text.name}" onInput="${nameInput}"/>
-            </dd>
-          </dl>
-          <dl class="search search_use">
-            <dt class="search__header">radio</dt>
-            <dd class="search__field">
-              <small>
-                <label class="input__radio search_checked">
-                  <input type="radio" name="radio" value="仮" checked="${state.data.radio === "仮"}" onClick="${radioClicked}"/>仮
-                </label>
-                <label class="input__radio">
-                  <input type="radio" name="radio" value="作業中" checked="${state.data.radio === "作業中"}" onClick="${radioClicked}"/>作業中
-                </label>
-                <label class="input__radio">
-                  <input type="radio" name="radio" value="完了" checked="${state.data.radio === "完了"}" onClick="${radioClicked}"/>完了
-                </label>
-                <label class="input__radio">
-                  <input type="radio" name="radio" value="審査申請中" checked="${state.data.radio === "審査申請中"}" onClick="${radioClicked}"/>審査申請中
-                </label>
-              </small>
-            </dd>
-          </dl>
-        </section>
-        <footer class="box__footer search_error">
-          ${searchButton()}
-          ${searchError()}
-        </footer>
-      </form>
-    `
+            <form class="box box_fill">
+                <section class="box__body container">
+                    <dl class="search">
+                        <dt class="search__header">ID</dt>
+                        <dd class="search__field">
+                            <input type="text" class="input_fill" defaultValue="${text.id}" onInput="${idInput}"/>
+                            <p class="search__help">完全一致検索</p>
+                        </dd>
+                    </dl>
+                    <dl class="search search_double">
+                        <dt class="search__header">名前</dt>
+                        <dd class="search__field">
+                            <input type="text" class="input_fill" defaultValue="${text.name}" onInput="${nameInput}"/>
+                        </dd>
+                    </dl>
+                    <dl class="search">
+                        <dt class="search__header">radio</dt>
+                        <dd class="search__field">
+                        <small>
+                            <label class="input__radio input_checked">
+                                <input type="radio" name="radio" value="仮" checked="${state.data.radio === "仮"}" onClick="${radioClicked}"/>仮
+                            </label>
+                            <label class="input__radio">
+                                <input type="radio" name="radio" value="作業中" checked="${state.data.radio === "作業中"}" onClick="${radioClicked}"/>作業中
+                            </label>
+                            <label class="input__radio">
+                                <input type="radio" name="radio" value="完了" checked="${state.data.radio === "完了"}" onClick="${radioClicked}"/>完了
+                            </label>
+                            <label class="input__radio">
+                                <input type="radio" name="radio" value="審査申請中" checked="${state.data.radio === "審査申請中"}" onClick="${radioClicked}"/>審査申請中
+                            </label>
+                        </small>
+                        </dd>
+                    </dl>
+                </section>
+                <footer class="box__footer search_error">
+                ${searchButton()}
+                ${searchError()}
+                </footer>
+            </form>
+        `
 
         function searchButton() {
             if (state.is_searching) {
                 return html`
-          <button class="button button_searching" type="button">
-            <i class="lnir lnir-spinner-11 lnir-is-spinning"></i>
-            ${" "}
-            検索中
-          </button>
-        `
+                    <button class="button button_searching" type="button">
+                        <i class="lnir lnir-spinner-11 lnir-is-spinning"></i>
+                        ${" "}
+                        検索中
+                    </button>
+                `
             } else {
                 return html`
-          <button class="button button_search ${state.is_modified ? "button_modified" : ""}" onClick="${search}">
-            <i class="lnir lnir-search-alt"></i>
-            ${" "}
-            検索
-          </button>
-        `
+                    <button class="button button_search ${state.is_modified ? "button_modified" : ""}" onClick="${search}">
+                        <i class="lnir lnir-search-alt"></i>
+                        ${" "}
+                        検索
+                    </button>
+                `
             }
         }
 
@@ -206,20 +206,30 @@ function Page() {
             }
 
             return html`
-        <p class="search__message">通信エラーが発生しました。もう一度試してください</p>
-      `
+                <p class="search__message">通信エラーが発生しました。もう一度試してください</p>
+            `
         }
     }
 
     function searchColumn() {
         return html`
-            <section class="search__column">
-                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>ID</label></div>
-                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>名前</label></div>
-                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>状態</label></div>
-                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>メールアドレス</label></div>
-                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>更新日時</label></div>
-                <div><label class="input__checkbox search__column_active"><input type="checkbox" checked/>メモ</label></div>
+            <section class="box box_fill">
+                <section class="box__body">
+                    <dl>
+                        <dt class="search__header">表示する列</dt>
+                        <dd class="search__field">
+                            <section class="search__column">
+                                <label class="search__column__item input__checkbox input_checked"><input type="checkbox" checked/>ID</label>
+                                <label class="search__column__item input__checkbox input_checked"><input type="checkbox" checked/>名前</label>
+                                <label class="search__column__item input__checkbox input_checked"><input type="checkbox" checked/>状態</label>
+                                <label class="search__column__item input__checkbox input_checked"><input type="checkbox" checked/>メールアドレス</label>
+                                <label class="search__column__item input__checkbox input_checked"><input type="checkbox" checked/>更新日時</label>
+                                <label class="search__column__item input__checkbox input_checked"><input type="checkbox" checked/>メモ</label>
+                            </section>
+                        </dd>
+                    </dl>
+
+                </section>
             </section>
         `
     }
