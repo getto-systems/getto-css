@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.6.0
+
+- fix: paragraph : See merge request getto-systems-base/projects/css!219
+
+
+
 ## Version : 2.5.0
 
 - add: menu box : See merge request getto-systems-base/projects/css!217
