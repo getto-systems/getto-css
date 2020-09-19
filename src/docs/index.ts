@@ -30,11 +30,24 @@ function Page() {
                             <h2 class="box__title">GETTO CSS のゴール</h2>
                         </header>
                         <section class="box__body paragraph">
-                            <p>業務アプリケーションで使用可能な、汎用の管理画面用 CSS を提供する</p>
-                            <br/>
-                            <p>この CSS を読み込むだけで、ある程度体裁が整うようにしたい</p>
-                            <br/>
-                            <p>各プロジェクト固有のスタイルは分離</p>
+                            <dl class="form">
+                                <dt class="form__header">ゴール</dt>
+                                <dd class="form__field">
+                                    <p>業務アプリケーションで使用する、汎用の管理画面用 CSS を提供</p>
+                                </dd>
+                            </dl>
+                            <dl class="form">
+                                <dt class="form__header">目標</dt>
+                                <dd class="form__field">
+                                    <p>CSS を読み込むだけで、ある程度の体裁が整うようにしたい</p>
+                                </dd>
+                            </dl>
+                            <dl class="form">
+                                <dt class="form__header">使用方法</dt>
+                                <dd class="form__field">
+                                    <p>各プロジェクト固有のスタイルは、それぞれ別途定義</p>
+                                </dd>
+                            </dl>
                         </section>
                     </div>
                 </section>
@@ -45,11 +58,25 @@ function Page() {
                             <h2 class="box__title">コンポーネント定義について</h2>
                         </header>
                         <section class="box__body paragraph">
-                            <p>コンポーネント定義は提供しない</p>
-                            <p>この CSS を使用するためのコンポーネント定義(React とか Vue とか)が必要</p>
-                            <br/>
-                            <p>コンポーネント定義は CSS と密結合</p>
-                            <strong><p>各プロジェクトでは、この結合部分は分離しておくこと</p></strong>
+                            <dl class="form">
+                                <dt class="form__header">やらないこと</dt>
+                                <dd class="form__field">
+                                    <p>コンポーネント定義は提供しない</p>
+                                </dd>
+                            </dl>
+                            <dl class="form">
+                                <dt class="form__header">各プロジェクトで必要なこと</dt>
+                                <dd class="form__field">
+                                    <p>React や Vue によるコンポーネント定義が必要</p>
+                                </dd>
+                            </dl>
+                            <dl class="form">
+                                <dt class="form__header">注意点</dt>
+                                <dd class="form__field">
+                                    <p>コンポーネント定義は CSS と密結合</p>
+                                    <strong><p>この結合部分は分離しておくこと</p></strong>
+                                </dd>
+                            </dl>
                         </section>
                     </div>
                 </section>
@@ -60,8 +87,13 @@ function Page() {
                             <h2 class="box__title">色テーマ</h2>
                         </header>
                         <section class="box__body paragraph">
-                            <p>color.css にまとめて定義してある</p>
-                            <p>差し替えは想定していない</p>
+                            <dl class="form">
+                                <dt class="form__header">color</dt>
+                                <dd class="form__field">
+                                    <p>color.css にまとめて定義してある</p>
+                                    <p>差し替えは想定していない</p>
+                                </dd>
+                            </dl>
                         </section>
                     </div>
                 </section>
@@ -72,11 +104,19 @@ function Page() {
                             <h2 class="box__title">フォントとアイコン</h2>
                         </header>
                         <section class="box__body paragraph">
-                            <section class="content">
-                                <p>フォントとアイコンはバンドルしない</p>
-                                <p>各プロジェクトで選択可能</p>
-                                <p>最適化は以下のリソースを使用</p>
-                            </section>
+                            <dl class="form">
+                                <dt class="form__header">やらないこと</dt>
+                                <dd class="form__field">
+                                    <p>バンドルしない</p>
+                                    <p>各プロジェクトで選択するべき</p>
+                                </dd>
+                            </dl>
+                            <dl class="form">
+                                <dt class="form__header">最適化に使用したリソース</dt>
+                                <dd class="form__field">
+                                    <p>最適化は以下のリソースを使用</p>
+                                </dd>
+                            </dl>
                             <dl class="form">
                                 <dt class="form__header">フォント</dt>
                                 <dd class="form__field">
