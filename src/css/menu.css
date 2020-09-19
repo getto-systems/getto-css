@@ -30,6 +30,15 @@
   margin-top: 0.25rem;
 }
 
+.menu__box {
+  padding: 0.5em;
+
+  border: 1px dotted var(--color-black);
+  border-radius: 0.5em;
+
+  background-color: var(--color-white);
+}
+
 .menu__nav {
   margin-top: 0.25em;
   padding-top: 0.5em;
