@@ -1,6 +1,6 @@
 {
   "name": "getto-css",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "description": "simple admin css theme",
   "scripts": {
     "start": "npm run prepare:development && npm run start:webpack",
