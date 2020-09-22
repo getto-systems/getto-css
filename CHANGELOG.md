@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.8.0
+
+- fix: login_link : See merge request getto-systems-base/projects/css!225
+
+
 ## Version : 2.7.0
 
 - fix: layout : See merge request getto-systems-base/projects/css!223
