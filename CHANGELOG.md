@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version : 2.7.0
+
+- fix: layout : See merge request getto-systems-base/projects/css!223
+- fix: docs : See merge request getto-systems-base/projects/css!222
+- fix: docs : See merge request getto-systems-base/projects/css!221
+
+
 ## Version : 2.6.0
 
 - fix: paragraph : See merge request getto-systems-base/projects/css!219
