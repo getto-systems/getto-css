@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.9.0
+
+- fix: link align : See merge request getto-systems-base/projects/css!227
+
+
 ## Version : 2.8.0
 
 - fix: login_link : See merge request getto-systems-base/projects/css!225
