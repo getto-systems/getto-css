@@ -20,6 +20,11 @@
   white-space: nowrap;
 }
 
+.table.table_thin td {
+  padding: 0 0.5rem;
+  white-space: nowrap;
+}
+
 th.cell_left {
   text-align: left;
 }
@@ -84,10 +89,6 @@ td.cell_center {
 .table__sort {
   display: block;
   font-weight: bold;
-}
-
-.row td {
-  padding: 0.75em;
 }
 
 .row.row_edit td {

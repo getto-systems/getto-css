@@ -1,6 +1,8 @@
 .button__container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
 
 .button__container.button__container_center {
@@ -24,6 +26,8 @@
   padding: 0.1em 0.8em;
 
   vertical-align: 20%;
+
+  white-space: nowrap;
 }
 
 .button_left .button {
