@@ -6,6 +6,7 @@ body {
 
 a {
   display: inline-block;
+  text-align: left;
 
   color: var(--color-base);
   text-decoration: none;
