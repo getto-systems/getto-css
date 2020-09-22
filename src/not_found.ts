@@ -22,7 +22,7 @@ function Page() {
                     <cite class="login__subTitle">simple admin theme</cite>
                 </header>
                 <section class="login__message">
-                    <h3 class="login__message__header">見つかりませんでした</h3>
+                    <h3 class="login__message__title">見つかりませんでした</h3>
                     <section class="login__message__body paragraph">
                         <p>リンクされたページは存在しません</p>
                         <p>お手数ですが、管理者にクリックしたリンクをお伝えください</p>

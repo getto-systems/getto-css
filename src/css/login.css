@@ -9,6 +9,8 @@
   z-index: 1000;
 
   background-color: var(--color-black-off);
+
+  overflow: auto;
 }
 
 .login__box {
@@ -46,7 +48,7 @@
   min-height: var(--height-login-message);
 }
 
-.login__message__header {
+.login__message__title {
   font-size: var(--font-size-medium);
   margin-bottom: 1em;
 }
@@ -71,6 +73,11 @@
 .login__link {
   display: block;
   font-size: var(--font-size-normal);
+
+  min-width: var(--width-box);
+
+  margin-top: 1em;
+  margin-left: 1em;
 }
 
 .login :--input {
@@ -81,7 +88,7 @@
   .login {
     justify-content: center;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .login__box {
@@ -89,6 +96,8 @@
     padding: 5rem;
 
     border: 1px solid var(--color-black);
+
+    margin-top: 10vh;
   }
 }
 

@@ -1,4 +1,6 @@
 .notice {
+  display: block;
+
   border: 1px solid transparent;
   border-radius: 0.5em;
   padding: 0.5em 0.75em;

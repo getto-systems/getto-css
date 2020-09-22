@@ -266,7 +266,7 @@ function Page() {
     function table() {
         return html`
             <section class="content content_overflow">
-                <table class="table table_sticky">
+                <table class="table table_thin table_sticky">
                 <thead class="table__header">
                     <tr>
                     <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb"><a href="#" class="table__sort">ID <i class="lnir lnir-chevron-down"></i></a></th>
