@@ -11,7 +11,8 @@
   background-color: var(--color-white);
 }
 
-.box.box_editing {
+.box.box_editing,
+.box.box_search {
   background-color: var(--color-base-off);
 }
 
