@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.12.0
+
+- fix: box grow : See merge request getto-systems-base/projects/css!234
+- fix: table th align : See merge request getto-systems-base/projects/css!233
+
+
 ## Version : 2.11.0
 
 - fix: menu : See merge request getto-systems-base/projects/css!231
