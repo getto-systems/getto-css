@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.11.0
+
+- fix: menu : See merge request getto-systems-base/projects/css!231
+
+
+
 ## Version : 2.10.0
 
 - fix: menu : See merge request getto-systems-base/projects/css!229
