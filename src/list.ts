@@ -36,8 +36,8 @@ function Page() {
             <section class="main__body">
                 ${searchForm()}
                 <section class="container">
-                    ${searchColumn()}
                     ${pager()}
+                    ${searchColumn()}
                 </section>
                 ${table()}
             </section>
@@ -87,7 +87,7 @@ function Page() {
 
     function searchColumn() {
         return html`
-            <section class="box box_double">
+            <section class="box box_grow">
                 <section class="box__body">
                     <dl>
                         <dt class="search__header">表示する列</dt>
