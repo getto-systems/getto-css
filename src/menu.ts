@@ -34,8 +34,8 @@ export function Menu() {
         data: {
             version,
             menus: [
-                createMenu("MENU", [
-                    createItem("lnir lnir-home", `/${config.version}/index.html`, "ホーム", 1),
+                createMenu("MAIN", [
+                    createItem("lnir lnir-home", `/${config.version}/index.html`, "ホーム", 98),
                     createItem("lnir lnir-pencil", `/${config.version}/form.html`, "フォーム", 1),
                     createItem("lnir lnir-search", `/${config.version}/search.html`, "検索", 0),
                     createItem("lnir lnir-list", `/${config.version}/list.html`, "一覧", 0),
