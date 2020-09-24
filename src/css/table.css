@@ -13,6 +13,7 @@
   font-size: var(--font-size-small);
   padding: 0.15rem 0.3rem;
   white-space: nowrap;
+  text-align: left;
 }
 
 .table td {
