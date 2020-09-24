@@ -140,7 +140,7 @@ function Page() {
 
     function searchForm() {
         return html`
-            <form class="box box_fill">
+            <form class="box box_fill box_search">
                 <section class="box__body container">
                     <dl class="search">
                         <dt class="search__header">ID</dt>
