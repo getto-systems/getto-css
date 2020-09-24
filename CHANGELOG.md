@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.10.0
+
+- fix: menu : See merge request getto-systems-base/projects/css!229
+
+
 ## Version : 2.9.0
 
 - fix: link align : See merge request getto-systems-base/projects/css!227
