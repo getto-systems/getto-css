@@ -63,7 +63,7 @@
 .menu__nav__summary__label {
   display: inline-block;
 
-  max-width: var(--width-menu-summary);
+  max-width: 72%;
   vertical-align: middle;
 }
 
@@ -88,7 +88,7 @@
 .menu__nav__item__label {
   display: inline-block;
 
-  max-width: var(--width-menu-item);
+  max-width: 82%;
 }
 
 .menu__nav__item__badge {
