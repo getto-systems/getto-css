@@ -34,7 +34,7 @@ export function Menu() {
         data: {
             version,
             menus: [
-                createMenu("MAIN", [
+                createMenu("MENU", [
                     createItem("lnir lnir-home", `/${config.version}/index.html`, "ホーム", 1),
                     createItem("lnir lnir-pencil", `/${config.version}/form.html`, "フォーム", 1),
                     createItem("lnir lnir-search", `/${config.version}/search.html`, "検索", 0),
@@ -72,19 +72,10 @@ export function Menu() {
         },
     });
 
-    const toggleMenu = (menu: Menu) => {
-        return (e: MouseEvent) => {
-            e.preventDefault();
-            menu.isExpand = !menu.isExpand;
-            setState({
-                data: state.data,
-            });
-        };
-    };
-
     function createMenu(label: string, items: Array<Item>) {
         const badge = items.reduce((acc, item) => acc + item.badge, 0);
-        return { label, badge, isExpand: true, items };
+        const isExpand = items.some((item) => item.isActive)
+        return { label, badge, isExpand, items };
     }
 
     function createItem(icon: string, href: string, label: string, badge: number) {
@@ -113,6 +104,7 @@ export function Menu() {
                         </dd>
                     </dl>
                 </aside>
+
                 ${state.data.menus.map(menu)}
             </nav>
             <footer class="menu__footer">
@@ -124,22 +116,20 @@ export function Menu() {
 
     function menu(menu: Menu) {
         return html`
-            <ul class="menu__nav ${menu.isExpand ? "" : "menu__nav_collapsed"}">
-                <li>
-                    <a href="#" class="menu__nav__header menu__nav__link" onClick="${toggleMenu(menu)}">
+            <details class="menu__nav" open="${menu.isExpand ? true : false}">
+                <summary class="menu__nav__summary">
+                    <span class="menu__nav__summary__label">
                         ${menu.label}
-                        ${" "}
+                    </span>
+                    <span class="menu__nav__summary__badge">
                         ${badge(menu)}
-                        <span class="menu__nav__handle">
-                        ${handle(menu)}
-                        </span>
-                    </a>
-                </li>
-                <ul class="menu__nav__items ${menu.isExpand ? "menu__nav__items_expand" : ""}">
+                    </span>
+                </summary>
+                <ul class="menu__nav__items">
                     ${menu.items.map(item)}
                 </ul>
-            </ul>
-        `;
+            </details>
+        `
     }
 
     function badge(item: { badge: number }) {
@@ -150,23 +140,18 @@ export function Menu() {
         }
     }
 
-    function handle(menu: Menu) {
-        if (menu.isExpand) {
-            return html`<i class="lnir lnir-chevron-down"></i>`;
-        } else {
-            return html`<i class="lnir lnir-chevron-left"></i>`;
-        }
-    }
-
     function item(item: Item) {
         return html`
             <li class="menu__nav__item">
                 <a href="${item.href}" class="menu__nav__link ${item.isActive ? "menu__nav__item_active" : ""}">
-                <i class="${item.icon}"></i>
-                ${" "}
-                ${item.label}
-                ${" "}
-                ${badge(item)}
+                    <span class="menu__nav__item__label">
+                        <i class="${item.icon}"></i>
+                        ${" "}
+                        ${item.label}
+                    </span>
+                    <span class="menu__nav__item__badge">
+                        ${badge(item)}
+                    </span>
                 </a>
             </li>
         `;

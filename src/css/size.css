@@ -11,6 +11,8 @@
   --height-login-message: 15rem;
 
   --width-menu: 16rem;
+  --width-menu-summary: 10.5rem;
+  --width-menu-item: 11rem;
   --width-box: 20rem;
   --width-box-double: calc(41.5rem + 2px);
   --width-search: 12rem;
