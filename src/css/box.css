@@ -11,6 +11,10 @@
   background-color: var(--color-white);
 }
 
+.box_grow {
+  flex-grow: 2;
+}
+
 .box.box_editing,
 .box.box_search {
   background-color: var(--color-base-off);
@@ -46,7 +50,7 @@
   }
 
   .box.box_fill {
-    width: calc(100% - 1.2rem);
+    width: calc(100% - 1.6rem);
   }
 }
 
@@ -56,6 +60,6 @@
   }
 
   .box.box_fill {
-    width: calc(100% - 1.2rem);
+    width: calc(100% - 1.1rem);
   }
 }
