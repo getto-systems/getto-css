@@ -95,16 +95,17 @@ export function Menu() {
                 <strong class="menu__title">CSS</strong>
                 <cite class="menu__subTitle">simple admin theme</cite>
             </header>
-            <nav class="menu__body" id="menu">
-                <aside class="menu__box">
-                    <dl class="form">
-                        <dt class="form__header">シーズン</dt>
-                        <dd class="form__field">
-                            ${new Date().getFullYear()}年
-                        </dd>
-                    </dl>
-                </aside>
 
+            <aside class="menu__box">
+                <dl class="form">
+                    <dt class="form__header">シーズン</dt>
+                    <dd class="form__field">
+                        ${new Date().getFullYear()}年
+                    </dd>
+                </dl>
+            </aside>
+
+            <nav class="menu__body" id="menu">
                 ${state.data.menus.map(menu)}
             </nav>
             <footer class="menu__footer">

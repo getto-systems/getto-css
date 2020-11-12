@@ -33,7 +33,7 @@
 .menu__box {
   padding: 0.5em;
 
-  border: 1px solid var(--color-black);
+  border-bottom: 1px dotted var(--color-black);
 
   background-color: var(--color-white);
 }
