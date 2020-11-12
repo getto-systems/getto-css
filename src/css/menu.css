@@ -33,8 +33,7 @@
 .menu__box {
   padding: 0.5em;
 
-  border: 1px dotted var(--color-black);
-  border-radius: 0.5em;
+  border: 1px solid var(--color-black);
 
   background-color: var(--color-white);
 }
@@ -50,7 +49,6 @@
 }
 
 .menu__nav__summary {
-  color: var(--color-black);
   cursor: pointer;
 
   padding: 0.5em;
@@ -101,7 +99,6 @@
 
 .menu__nav__link {
   display: block;
-  color: var(--color-black);
 }
 
 .menu__nav__item_active {
