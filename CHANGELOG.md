@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.13.0
+
+- fix: menu : See merge request getto-systems-base/projects/css!236
+
+
 ## Version : 2.12.0
 
 - fix: box grow : See merge request getto-systems-base/projects/css!234
