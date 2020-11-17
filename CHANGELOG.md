@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.14.0
+
+- fix: css : See merge request getto-systems-base/projects/css!240
+
+
 ## Version : 2.13.1
 
 
