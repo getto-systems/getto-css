@@ -7,7 +7,6 @@ type State = {
 }
 
 type Data = {
-    version: string,
     menus: Array<Menu>,
 }
 
@@ -30,9 +29,15 @@ export function Menu() {
     const path = location.pathname;
     const version = config.version;
 
+    const documentItems = [
+        createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
+        createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
+        createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
+        createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
+    ]
+
     const [state, setState] = useState<State>({
         data: {
-            version,
             menus: [
                 createMenu("MAIN", [
                     createItem("lnir lnir-home", `/${config.version}/index.html`, "ホーム", 98),
@@ -44,30 +49,10 @@ export function Menu() {
                     createItem("lnir lnir-close", `/${config.version}/not_found.html`, "NotFound", 0),
                     createItem("lnir lnir-question-circle", `/${config.version}/docs/index.html`, "ドキュメント", 0),
                 ]),
-                createMenu("DOCUMENT", [
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                ]),
-                createMenu("DOCUMENT", [
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                ]),
-                createMenu("DOCUMENT", [
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                ]),
-                createMenu("DOCUMENT", [
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                    createItem("lnir lnir-folder", `/${config.version}/document.html?`, "書類", 0),
-                ]),
+                createMenu("DOCUMENT", documentItems),
+                createMenu("DOCUMENT", documentItems),
+                createMenu("DOCUMENT", documentItems),
+                createMenu("DOCUMENT", documentItems),
             ],
         },
     });
@@ -105,12 +90,49 @@ export function Menu() {
                 </dl>
             </aside>
 
+            <aside class="menu__box">
+                <p class="notice notice_stack notice_gray">
+                    NOTICE MESSAGE
+                </p>
+                <small>
+                    <p class="notice notice_gray">
+                        詳細: MESSAGE
+                    </p>
+                </small>
+            </aside>
+
             <nav class="menu__body" id="menu">
                 ${state.data.menus.map(menu)}
+                <details class="menu__nav" open="${false}">
+                    <summary class="menu__nav__summary">
+                        <span class="menu__nav__summary__label">
+                            DOCUMENT
+                        </span>
+                        <span class="menu__nav__summary__badge">
+                            ${badge({ badge: 100 })}
+                        </span>
+                    </summary>
+                    <ul class="menu__nav__items">
+                        ${documentItems.map(item)}
+
+                        <details class="menu__nav" open="${false}">
+                            <summary class="menu__nav__summary">
+                                <span class="menu__nav__summary__label">
+                                    NESTED DOCUMENT
+                                </span>
+                                <span class="menu__nav__summary__badge">
+                                    ${badge({ badge: 100 })}
+                                </span>
+                            </summary>
+                            <ul class="menu__nav__items">
+                                ${documentItems.map(item)}
+                            </ul>
+                        </details>
+                    </ul>
+                </details>
             </nav>
             <footer class="menu__footer">
                 <p class="menu__footer__message">copyright GETTO.systems</p>
-                <p class="menu__footer__message">version: ${state.data.version}</p>
             </footer>
         </section>
     `;

@@ -154,12 +154,12 @@ function Page() {
                             <dl class="form">
                                 <dt class="form__header">notice</dt>
                                 <dd class="form__field">
-                                    <p class="notice notice_gray">データを登録してください</p>
-                                    <p class="notice notice_alert">データを登録してください</p>
-                                    <p class="notice notice_success">データを登録してください</p>
-                                    <p class="notice notice_warning">データを登録してください</p>
-                                    <p class="notice notice_pending">データを登録してください</p>
-                                    <p class="notice notice_info">データを登録してください</p>
+                                    <p class="notice notice_stack notice_gray">データを登録してください</p>
+                                    <p class="notice notice_stack notice_alert">データを登録してください</p>
+                                    <p class="notice notice_stack notice_success">データを登録してください</p>
+                                    <p class="notice notice_stack notice_warning">データを登録してください</p>
+                                    <p class="notice notice_stack notice_pending">データを登録してください</p>
+                                    <p class="notice notice_stack notice_info">データを登録してください</p>
                                 </dd>
                             </dl>
                         </section>
