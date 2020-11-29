@@ -6,8 +6,8 @@
   padding: 0.5em 0.75em;
 }
 
-.notice_stack {
-  margin-bottom: 0.25em;
+.notice ~ .notice {
+  margin-top: 0.25em;
 }
 
 .notice_gray {
