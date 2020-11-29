@@ -214,6 +214,27 @@ function Page() {
                         </section>
                     </div>
                 </section>
+
+                <section class="box">
+                    <div>
+                        <header class="box__header">
+                            <h2 class="box__title">visibility</h2>
+                        </header>
+                        <section class="box__body">
+                            <p>
+                                <span class="label label_gray">コンテンツ</span>
+                                <span class="label label_gray">コンテンツ</span>
+                                <span class="label label_gray">コンテンツ</span>
+                            </p>
+                            <div class="vertical vertical_small"></div>
+                            <p>
+                                <span class="label label_gray">コンテンツ</span>
+                                <span class="label label_gray"><span class="visibility_hidden">コンテンツ</span></span>
+                                <span class="label label_gray">コンテンツ</span>
+                            </p>
+                        </section>
+                    </div>
+                </section>
             </section>
             <footer class="main__footer">
                 <p class="main__footer__message">powered by : LineIcons / みんなの文字</p>
