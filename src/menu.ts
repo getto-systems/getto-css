@@ -91,13 +91,12 @@ export function Menu() {
             </aside>
 
             <aside class="menu__box">
-                <p class="notice notice_stack notice_gray">
+                <p class="notice notice_gray">
                     NOTICE MESSAGE
                 </p>
+                <div class="vertical vertical_small"></div>
                 <small>
-                    <p class="notice notice_gray">
-                        詳細: MESSAGE
-                    </p>
+                    <p>詳細: MESSAGE</p>
                 </small>
             </aside>
 
