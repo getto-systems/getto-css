@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.16.0
+
+- add: visibility : See merge request getto-systems-base/projects/css!244
+
+
 ## Version : 2.15.0
 
 - fix: box margin : See merge request getto-systems-base/projects/css!242
