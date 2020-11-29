@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.15.0
+
+- fix: box margin : See merge request getto-systems-base/projects/css!242
+
+
 ## Version : 2.14.0
 
 - fix: css : See merge request getto-systems-base/projects/css!240
