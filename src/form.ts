@@ -195,10 +195,15 @@ function Page() {
                             <dt class="form__header">状態</dt>
                             <dd class="form__field">
                                 <span class="label label_gray">仮</span>
+                                ${" "}
                                 <span class="label label_alert">エラー</span>
+                                ${" "}
                                 <span class="label label_warning">作業中</span>
+                                ${" "}
                                 <span class="label label_success">完了</span>
+                                ${" "}
                                 <span class="label label_pending">保留</span>
+                                ${" "}
                                 <span class="label label_info">情報</span>
                             </dd>
                         </dl>
@@ -214,7 +219,11 @@ function Page() {
                             <dt class="form__header">状態</dt>
                             <dd class="form__field">
                                 <big>
-                                    <button type="button" class="button button_complete" onClick="${setComplete}">完了</button>
+                                    <button type="button" class="button button_complete" onClick="${setComplete}">
+                                        <i class="lnir lnir-checkmark"></i>
+                                        ${" "}
+                                        完了にする
+                                    </button>
                                 </big>
                             </dd>
                         </dl>
@@ -258,7 +267,7 @@ function Page() {
                             <header class="modal__header">
                                 <h3 class="modal__title">完了処理中</h3>
                             </header>
-                            <section class="modal__body paragraph">
+                            <section class="modal__body">
                                 この作業を完了しています
                             </section>
                             <big>
@@ -277,7 +286,7 @@ function Page() {
                         <header class="modal__header">
                             <h3 class="modal__title">完了確認</h3>
                         </header>
-                        <section class="modal__body paragraph">
+                        <section class="modal__body">
                             この作業を完了します
                             <br/>
                             よろしいですか？
@@ -305,7 +314,7 @@ function Page() {
                         <header class="modal__header">
                             <h3 class="modal__title">削除処理中</h3>
                         </header>
-                        <section class="modal__body paragraph">
+                        <section class="modal__body">
                             この作業を削除しています
                         </section>
                         <big>
@@ -324,7 +333,7 @@ function Page() {
                         <header class="modal__header">
                             <h3 class="modal__title">削除確認</h3>
                         </header>
-                        <section class="modal__body paragraph">
+                        <section class="modal__body">
                             この作業を削除します
                             <br/>
                             削除すると復元することはできません
@@ -354,7 +363,7 @@ function Page() {
                             <header class="modal__header">
                                 <h3 class="modal__title">帳票作成中</h3>
                             </header>
-                            <section class="modal__body paragraph">
+                            <section class="modal__body">
                                 <div class="loading loading_box">
                                 <i class="lnir lnir-spinner-11 lnir-is-spinning"></i>
                                 <p class="loading__message">読み込み中です</p>
@@ -371,7 +380,7 @@ function Page() {
                         <header class="modal__header">
                             <h3 class="modal__title">帳票ダウンロード</h3>
                         </header>
-                        <section class="modal__body paragraph">
+                        <section class="modal__body">
                             必要な書類をダウンロードしてください
 
                             <ul class="list">
@@ -505,8 +514,11 @@ function Page() {
                             <dt class="form__header">radio</dt>
                             <dd class="form__field">
                                 <label class="input__radio input_checked"><input type="radio" name="radio" checked/>仮</label>
+                                ${" "}
                                 <label class="input__radio"><input type="radio" name="radio"/>作業中</label>
+                                ${" "}
                                 <label class="input__radio"><input type="radio" name="radio"/>完了</label>
+                                ${" "}
                                 <label class="input__radio"><input type="radio" name="radio"/>審査申請中</label>
                             </dd>
                         </dl>
@@ -521,8 +533,11 @@ function Page() {
                             <dt class="form__header">checkbox</dt>
                             <dd class="form__field">
                                 <label class="input__checkbox input_checked"><input type="checkbox" checked/>仮</label>
+                                ${" "}
                                 <label class="input__checkbox"><input type="checkbox"/>作業中</label>
+                                ${" "}
                                 <label class="input__checkbox"><input type="checkbox"/>完了</label>
+                                ${" "}
                                 <label class="input__checkbox"><input type="checkbox"/>審査申請中</label>
                             </dd>
                         </dl>

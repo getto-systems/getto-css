@@ -6,7 +6,7 @@
   padding: 0.5em 0.75em;
 }
 
-.notice ~ .notice {
+.notice + .notice {
   margin-top: 0.25em;
 }
 

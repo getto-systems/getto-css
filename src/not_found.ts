@@ -23,7 +23,7 @@ function Page() {
                 </header>
                 <section class="login__message">
                     <h3 class="login__message__title">見つかりませんでした</h3>
-                    <section class="login__message__body paragraph">
+                    <section class="login__message__body">
                         <p>リンクされたページは存在しません</p>
                         <p>お手数ですが、管理者にクリックしたリンクをお伝えください</p>
                     </section>

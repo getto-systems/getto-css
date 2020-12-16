@@ -1,18 +1,18 @@
 .form__header {
   font-size: var(--font-size-small);
-  margin-bottom: 1.25em;
+  margin-bottom: 1em;
 }
 
 .form__field {
   margin-left: 1em;
-  margin-bottom: 1.25em;
+  margin-bottom: 1em;
 }
 
 .form__message,
 .form__help {
   font-size: var(--font-size-small);
-  margin-top: 0.25rem;
-  margin-left: 0.25rem;
+  margin-left: 0.5em;
+  line-height: 1.7;
 }
 
 .form_error .form__header,
