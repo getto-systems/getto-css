@@ -132,23 +132,49 @@ function Page() {
                             <dl class="form">
                                 <dt class="form__header">badge</dt>
                                 <dd class="form__field">
-                                    <span class="badge badge_gray">10</span>
-                                    <span class="badge badge_alert">10</span>
-                                    <span class="badge badge_success">10</span>
-                                    <span class="badge badge_warning">10</span>
-                                    <span class="badge badge_pending">10</span>
-                                    <span class="badge badge_info">10</span>
+                                    <p>
+                                        <span class="badge badge_gray">10</span>
+                                        ${" "}
+                                        <span class="badge badge_alert">10</span>
+                                        ${" "}
+                                        <span class="badge badge_success">10</span>
+                                        ${" "}
+                                        <span class="badge badge_warning">10</span>
+                                        ${" "}
+                                        <span class="badge badge_pending">10</span>
+                                        ${" "}
+                                        <span class="badge badge_info">10</span>
+                                    </p>
+                                    <p>
+                                        <span class="badge badge_gray">10</span> テキスト
+                                    </p>
+                                    <p>
+                                        <span class="badge badge_gray">10</span> テキスト
+                                    </p>
                                 </dd>
                             </dl>
                             <dl class="form">
                                 <dt class="form__header">label</dt>
                                 <dd class="form__field">
-                                    <span class="label label_gray">仮</span>
-                                    <span class="label label_alert">エラー</span>
-                                    <span class="label label_warning">作業中</span>
-                                    <span class="label label_success">完了</span>
-                                    <span class="label label_pending">保留</span>
-                                    <span class="label label_info">情報</span>
+                                    <p>
+                                        <span class="label label_gray">仮</span>
+                                        ${" "}
+                                        <span class="label label_alert">エラー</span>
+                                        ${" "}
+                                        <span class="label label_warning">作業中</span>
+                                        ${" "}
+                                        <span class="label label_success">完了</span>
+                                        ${" "}
+                                        <span class="label label_pending">保留</span>
+                                        ${" "}
+                                        <span class="label label_info">情報</span>
+                                    </p>
+                                    <p>
+                                        <span class="label label_gray"><i class="lnir lnir-checkmark"></i></span> テキスト
+                                    </p>
+                                    <p>
+                                        <span class="label label_gray">仮</span> テキスト
+                                    </p>
                                 </dd>
                             </dl>
                             <dl class="form">
@@ -160,34 +186,6 @@ function Page() {
                                     <p class="notice notice_warning">データを登録してください</p>
                                     <p class="notice notice_pending">データを登録してください</p>
                                     <p class="notice notice_info">データを登録してください</p>
-                                </dd>
-                            </dl>
-                        </section>
-                    </div>
-                </section>
-
-                <section class="box">
-                    <div>
-                        <header class="box__header">
-                            <h2 class="box__title">paragraph</h2>
-                        </header>
-                        <section class="box__body">
-                            <dl class="form">
-                                <dt class="form__header">クラスなし</dt>
-                                <dd class="form__field">
-                                    <p>コンテンツ</p>
-                                    <p>コンテンツ</p>
-                                    <p>コンテンツ</p>
-                                    <p>コンテンツ</p>
-                                </dd>
-                            </dl>
-                            <dl class="form">
-                                <dt class="form__header">paragraph クラス</dt>
-                                <dd class="form__field">
-                                    <p class="paragraph">コンテンツ</p>
-                                    <p class="paragraph">コンテンツ</p>
-                                    <p class="paragraph">コンテンツ</p>
-                                    <p class="paragraph">コンテンツ</p>
                                 </dd>
                             </dl>
                         </section>

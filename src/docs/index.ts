@@ -29,7 +29,7 @@ function Page() {
                         <header class="box__header">
                             <h2 class="box__title">GETTO CSS のゴール</h2>
                         </header>
-                        <section class="box__body paragraph">
+                        <section class="box__body">
                             <dl class="form">
                                 <dt class="form__header">ゴール</dt>
                                 <dd class="form__field">
@@ -57,7 +57,7 @@ function Page() {
                         <header class="box__header">
                             <h2 class="box__title">コンポーネント定義について</h2>
                         </header>
-                        <section class="box__body paragraph">
+                        <section class="box__body">
                             <dl class="form">
                                 <dt class="form__header">やらないこと</dt>
                                 <dd class="form__field">
@@ -86,7 +86,7 @@ function Page() {
                         <header class="box__header">
                             <h2 class="box__title">色テーマ</h2>
                         </header>
-                        <section class="box__body paragraph">
+                        <section class="box__body">
                             <dl class="form">
                                 <dt class="form__header">color</dt>
                                 <dd class="form__field">
@@ -103,7 +103,7 @@ function Page() {
                         <header class="box__header">
                             <h2 class="box__title">フォントとアイコン</h2>
                         </header>
-                        <section class="box__body paragraph">
+                        <section class="box__body">
                             <dl class="form">
                                 <dt class="form__header">やらないこと</dt>
                                 <dd class="form__field">
@@ -138,7 +138,7 @@ function Page() {
                         <header class="box__header">
                             <h2 class="box__title">フォントサイズ</h2>
                         </header>
-                        <section class="box__body paragraph">
+                        <section class="box__body">
                             <dl class="form">
                                 <dt class="form__header">相対指定</dt>
                                 <dd class="form__field">

@@ -17,17 +17,10 @@
 .menu__title {
   display: block;
   font-size: var(--font-size-large);
-
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .menu__subTitle {
   display: block;
-}
-
-.menu__body {
-  margin-top: 0.25rem;
 }
 
 .menu__box {
@@ -39,7 +32,6 @@
 }
 
 .menu__nav {
-  margin-top: 0.25em;
   padding-top: 0.5em;
   padding-left: 0.25em;
 }
@@ -69,8 +61,8 @@
   display: inline-block;
 
   position: absolute;
-  top: 0.3em;
-  right: 0.2em;
+  top: 0.45em;
+  right: 0.5em;
 }
 
 .menu__nav__summary:hover {
@@ -93,8 +85,8 @@
   display: inline-block;
 
   position: absolute;
-  top: 0.4em;
-  right: 0.2em;
+  top: 0.5em;
+  right: 0.5em;
 }
 
 .menu__nav__link {
@@ -112,14 +104,12 @@
   border-top: 1px dotted var(--color-black);
 
   padding-top: 0.25rem;
-  margin-top: 0.5rem;
   margin-bottom: 0.25rem;
 }
 
 .menu__footer__message {
   text-align: right;
   font-size: var(--font-size-small);
-  margin-bottom: 0.2rem;
 }
 
 @media (--media-desktop) {
@@ -134,18 +124,12 @@
   }
 
   .menu__body {
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-  }
-
-  .menu__nav_collapsed + .menu__nav_collapsed {
-    margin-top: 0.25rem;
-    padding-top: 0;
+    margin-right: 0.4rem;
   }
 
   .menu__footer {
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
   }
 }
 
@@ -158,8 +142,15 @@
   }
 
   .menu__body {
-    margin-left: 0.5rem;
     margin-right: 0.5rem;
+  }
+
+  .menu__box {
+    border-top: 1px dotted var(--color-black);
+  }
+
+  .menu__box + .menu__box {
+    border-top: none;
   }
 
   .menu__nav__items {
