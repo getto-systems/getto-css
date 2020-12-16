@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.17.0
+
+- fix: line-height : See merge request getto-systems-base/projects/css!246
+
+
 ## Version : 2.16.0
 
 - add: visibility : See merge request getto-systems-base/projects/css!244
