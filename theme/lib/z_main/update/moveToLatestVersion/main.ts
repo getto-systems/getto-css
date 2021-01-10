@@ -4,4 +4,6 @@ import { newMoveToNextVersionAsSingle } from "../../../update/Update/MoveToNextV
 
 import { MoveToLatestVersion } from "../../../x_preact/Update/MoveToLatestVersion"
 
+import "../../../../css/getto.css"
+
 render(h(MoveToLatestVersion, { moveToNextVersion: newMoveToNextVersionAsSingle() }), document.body)
