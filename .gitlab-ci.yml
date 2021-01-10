@@ -28,7 +28,7 @@ bump_version:
     - export PATH=$PATH:./vendor/getto-systems/git-post/bin
   script:
     - curl $TRELLIS_CI_BUMP_VERSION/bump_version.sh | bash
-    - curl $TRELLIS_CI_BUMP_VERSION/request.sh | bash -s -- ./.message/bump.sh
+    - curl $TRELLIS_CI_BUMP_VERSION/request.sh | bash -s -- ./.ci/message/bump.sh
 
 release:
   stage: release
@@ -66,7 +66,7 @@ release_deploy:
     - pip3 install awscli
     - npm clean-install
   script:
-    - ./scripts/deploy.sh
+    - ./.ci/deploy.sh
 
 release_success:
   stage: release_notify
