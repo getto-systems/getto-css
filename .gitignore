@@ -3,6 +3,7 @@
 
 /storybook/node_modules/
 /storybook/lib/
+/storybook/css/
 
 /theme/public/dist/coverage/
 

@@ -3,9 +3,9 @@
   "version": "2.17.0",
   "description": "simple admin css theme",
   "scripts": {
-    "setup": "node theme/setup.js",
     "start": "npm run setup && npm run serve",
     "build": "npm run setup && npm run postcss && npm run webpack",
+    "setup": "node theme/setup.js",
     "serve": "webpack serve --config theme/public/webpack.config.js --mode development",
     "webpack": "webpack --config theme/public/webpack.config.js --mode production",
     "postcss": "postcss --config theme/postcss.config.js --output theme/artifact/dist/css/getto.css theme/css/getto.css",
@@ -15,7 +15,8 @@
     "postcss:font": "postcss --config theme/postcss.config.js --output theme/public/dist/css/font.min.css theme/css/resources/font.css",
     "test": "npm run setup && npm run test:eslint && npm run test:jest",
     "test:eslint": "eslint --ext .ts theme/lib/",
-    "test:jest": "jest -c theme/jest.config.js"
+    "test:jest": "jest -c theme/jest.config.js",
+    "storybook": "cd storybook && npm start"
   },
   "repository": {
     "type": "git",
