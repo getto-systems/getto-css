@@ -24,7 +24,7 @@ export const content_index = (): VNode[] => [
     ]),
 ]
 export function content_index_component(): VNode {
-    return box("コンポーネント定義", [
+    return box("コンポーネント", [
         form(
             "やらないこと",
             html`
