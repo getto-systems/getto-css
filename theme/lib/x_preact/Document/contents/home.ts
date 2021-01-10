@@ -1,81 +1,92 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { container, v_small, v_medium, notice_info } from "../../common/layout"
-import { box, items } from "../box"
+import { container, v_small } from "../../common/layout"
+import { box, box_double, form } from "../box"
 
 export const content_index = (): VNode[] => [
     container([
-        box(
-            "GETTO Example",
+        box_double(
+            "GETTO CSS",
             html`
-                <p>業務アプリケーションのひな型</p>
-                <p>このコードをコピーして始める</p>
+                <p>業務アプリケーションで使用する、汎用の管理画面用 CSS を提供</p>
+                <p>CSS を読み込むだけで、ある程度の体裁が整うようにしたい</p>
+                <p>各プロジェクト固有のスタイルは、それぞれ別途定義</p>
             `
         ),
-        box("業務アプリケーション", [
-            notice_info("業務の目標を達成する"),
-            notice_info("業務で必要な時に使用できる"),
-            notice_info("業務に合ったコストで運用できる"),
-            notice_info("業務内容をプライベートに保つ"),
-        ]),
     ]),
     v_small(),
     container([
-        content_index_document(),
-        content_index_deployment(),
-        content_index_auth(),
-        content_index_update(),
+        content_index_component(),
+        content_index_resources(),
+        content_index_color(),
+        content_index_size(),
     ]),
 ]
-export function content_index_document(): VNode {
-    return box("ドキュメント", [
-        notice_info("業務の目標を達成する"),
-        v_medium(),
-        html`
-            <p>重要な点を明文化する</p>
-            <p>重要な指標を見える化する</p>
-        `,
-        v_medium(),
-        items([
-            "重要な点が推測できる",
-            "重要でない点が推測できる",
-            "可能な限り多くの関係者が読める",
-            "書きやすい",
-        ]),
+export function content_index_component(): VNode {
+    return box("コンポーネント定義", [
+        form(
+            "やらないこと",
+            html`
+                <p>コンポーネント定義は提供しない</p>
+                <p>React や Vue によるコンポーネント定義は各プロジェクトで必要</p>
+            `
+        ),
     ])
 }
-export function content_index_deployment(): VNode {
-    return box("配備構成", [
-        notice_info("業務で必要な時に使用できる"),
-        notice_info("業務に合ったコストで運用できる"),
-        v_medium(),
-        html`
-            <p>業務時間内は常にアクセス可能</p>
-            <p>コストがかかりすぎない構成</p>
-        `,
+export function content_index_resources(): VNode {
+    return box("フォントとアイコン", [
+        form(
+            "やらないこと",
+            html`
+                <p>バンドルしない</p>
+                <p>どのフォントとアイコンを使用するかは各プロジェクトで決める</p>
+            `
+        ),
+        form(
+            "最適化に使用したリソース",
+            html`
+                <p>みんなの文字</p>
+                <p>LineIcons</p>
+            `
+        ),
     ])
 }
-export function content_index_auth(): VNode {
-    return box("認証・認可", [
-        notice_info("業務で必要な時に使用できる"),
-        notice_info("業務内容をプライベートに保つ"),
-        v_medium(),
+export function content_index_color(): VNode {
+    return box("色テーマ", [
         html`
-            <p>適切なログイン</p>
-            <p>適切なアクセス制限</p>
-            <p>適切なユーザー管理</p>
-            <p>適切な認証情報管理</p>
+            <p>color.css にまとめて定義してある</p>
+            <p>差し替えは想定していない</p>
         `,
     ])
 }
-export function content_index_update(): VNode {
-    return box("最新版の使用", [
-        notice_info("業務で必要な時に使用できる"),
-        v_medium(),
-        html`
-            <p>新しいバージョンの配備を検知</p>
-            <p>自動的に最新版を使用する</p>
-        `,
+export function content_index_size(): VNode {
+    return box("フォントサイズ", [
+        form(
+            "相対指定",
+            html`
+                <ul>
+                    <li>big / small</li>
+                    <li>badge / label / notice</li>
+                    <li>button / input</li>
+                    <li>loading</li>
+                </ul>
+            `
+        ),
+        form(
+            "絶対指定",
+            html`
+                <ul>
+                    <li>main : title / footer</li>
+                    <li>menu : title / brand / footer</li>
+                    <li>modal : title</li>
+                    <li>search : header / help</li>
+                    <li>form : header / help / message</li>
+                    <li>table : th</li>
+                    <li>document : title / folio</li>
+                    <li>login : 各構成要素</li>
+                </ul>
+            `
+        ),
     ])
 }
