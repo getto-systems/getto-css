@@ -21,7 +21,6 @@ function dumpEnv() {
         storageKey: {
             menuExpand: {
                 main: process.env.STORAGE_KEY_MENU_EXPAND_MAIN,
-                document: process.env.STORAGE_KEY_MENU_EXPAND_DOCUMENT,
             },
         },
     }

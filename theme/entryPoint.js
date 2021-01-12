@@ -46,6 +46,7 @@ function findHtmlEntries() {
             const target = path.join(dir, name).replace(root, "")
             switch (target) {
                 case "/coverage":
+                case "/storybook":
                 case "/css":
                 case "/fonts":
                     return false

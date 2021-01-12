@@ -19,10 +19,3 @@ export const mainMenuTree = (): MenuTree => [
         item("ドキュメント", lnir("files-alt"), "/docs/index.html"),
     ]),
 ]
-
-export const documentMenuTree = (): MenuTree => [
-    category("MAIN", any, [
-        item("ホーム", lnir("home"), "/index.html"),
-        item("ドキュメント", lnir("files-alt"), "/docs/index.html"),
-    ]),
-]
