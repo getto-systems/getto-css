@@ -2,7 +2,7 @@
 
 module.exports = {
     findEntries,
-    findHtmlEntries,
+    findHtmlFiles,
     toEntryName,
     toEntryPath,
 }
@@ -10,14 +10,14 @@ module.exports = {
 function findEntries() {
     return [
         ...findUpdateEntries().map((entry) => `/update${entry}`),
-        ...findHtmlEntries().map((entry) => `/theme${entry}`),
+        ...findHtmlFiles().map((entry) => `/theme${entry}`),
     ]
 }
 
 function findUpdateEntries() {
     return ["/moveToLatestVersion"]
 }
-function findHtmlEntries() {
+function findHtmlFiles() {
     const fs = require("fs")
     const path = require("path")
 

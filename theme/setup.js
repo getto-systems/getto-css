@@ -21,6 +21,7 @@ function dumpEnv() {
         storageKey: {
             menuExpand: {
                 main: process.env.STORAGE_KEY_MENU_EXPAND_MAIN,
+                document: process.env.STORAGE_KEY_MENU_EXPAND_DOCUMENT,
             },
         },
     }
@@ -32,7 +33,7 @@ function dumpEnv() {
 }
 
 function dumpEntryPoint() {
-    const files = entryPoint.findHtmlEntries()
+    const files = ["/storybook/index.html"].concat(entryPoint.findHtmlFiles())
     const docs = files.filter(isDocs)
     dump(
         path.join(__dirname, "./lib/y_static/path.ts"),

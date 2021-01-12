@@ -9,7 +9,7 @@ import { initContentComponent } from "../../content/impl"
 
 import { loadApiNonce, loadApiRoles } from "../../../../auth/common/credential/impl/core"
 import { loadBreadcrumb, loadMenu, toggleMenuExpand } from "../../../../auth/permission/menu/impl/core"
-import { mainMenuTree } from "../../../../auth/Outline/Menu/main/menuTree"
+import { documentMenuTree } from "../../../../auth/Outline/Menu/main/menuTree"
 import { loadContent } from "../../../content/impl/core"
 import { DocumentCollector, DocumentFactory, initDocumentResource } from "../impl/core"
 
@@ -69,11 +69,11 @@ function initCredentialAction(): CredentialAction {
     }
 }
 function initMenuAction(menuExpandStorage: Storage): MenuAction {
-    const menuTree = mainMenuTree()
+    const menuTree = documentMenuTree()
     const menuBadge = initNoopBadgeClient()
     const menuExpands = initStorageMenuExpandRepository(
         menuExpandStorage,
-        env.storageKey.menuExpand.main
+        env.storageKey.menuExpand.document
     )
 
     return {

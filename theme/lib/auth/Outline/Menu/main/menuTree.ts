@@ -18,4 +18,17 @@ export const mainMenuTree = (): MenuTree => [
         item("ホーム", lnir("home"), "/index.html"),
         item("ドキュメント", lnir("files-alt"), "/docs/index.html"),
     ]),
+    category("EXAMPLES", any, [
+        item("misc", lnir("book"), "/examples/misc.html"),
+    ]),
+]
+
+export const documentMenuTree = (): MenuTree => [
+    category("MAIN", any, [
+        item("ホーム", lnir("home"), "/index.html"),
+        item("ドキュメント", lnir("files-alt"), "/docs/index.html"),
+    ]),
+    category("開発用", any, [
+        item("Storybook", lnir("files-alt"), "/storybook/index.html"),
+    ]),
 ]
