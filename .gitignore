@@ -6,6 +6,7 @@
 /storybook/css/
 
 /theme/public/dist/coverage/
+/theme/public/dist/storybook/
 
 /theme/artifact/dist/**/*.css
 /theme/public/dist/**/*.js
