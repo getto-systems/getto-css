@@ -1,5 +1,5 @@
 import { MockComponent } from "../../../z_external/mock/component"
-import { markVersion } from "../../allVersions/data"
+import { AllVersions, markVersion } from "../../allVersions/data"
 
 import { HowToUseComponent, HowToUseState } from "./component"
 
@@ -18,7 +18,7 @@ export function mapHowToUseMockProps(props: HowToUseMockProps): HowToUseState {
         case "success":
             return {
                 type: "succeed-to-find",
-                versions: [markVersion("0.0.1"), markVersion("1.0.0"), markVersion("1.1.0")],
+                versions: allVersions(),
                 currentVersion: markVersion("1.1.0"),
             }
 
@@ -35,6 +35,14 @@ export function mapHowToUseMockProps(props: HowToUseMockProps): HowToUseState {
                 currentVersion: markVersion("1.1.0"),
             }
     }
+}
+
+function allVersions(): AllVersions {
+    return [
+        { version: markVersion("0.0.1"), isCurrent: false },
+        { version: markVersion("1.0.0"), isCurrent: false },
+        { version: markVersion("1.1.0"), isCurrent: true },
+    ]
 }
 
 class HowToUseMockComponent extends MockComponent<HowToUseState> implements HowToUseComponent {

@@ -37,6 +37,11 @@ export const find = (infra: FindInfra): FindPod => () => async (post) => {
             versions.push(currentVersion)
         }
 
-        return versions.map(markVersion)
+        return versions.map((version) => {
+            return {
+                version: markVersion(version),
+                isCurrent: version === currentVersion,
+            }
+        })
     }
 }

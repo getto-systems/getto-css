@@ -41,7 +41,10 @@ describe("HowToUse", () => {
                             {
                                 type: "succeed-to-find",
                                 currentVersion: "1.0.0",
-                                versions: ["0.0.1", "1.0.0"],
+                                versions: [
+                                    { version: "0.0.1", isCurrent: false },
+                                    { version: "1.0.0", isCurrent: true },
+                                ],
                             },
                         ])
                         done()
@@ -83,7 +86,10 @@ describe("HowToUse", () => {
                             {
                                 type: "succeed-to-find",
                                 currentVersion: "1.0.0",
-                                versions: ["0.0.1", "1.0.0"],
+                                versions: [
+                                    { version: "0.0.1", isCurrent: false },
+                                    { version: "1.0.0", isCurrent: true },
+                                ],
                             },
                         ])
                         done()
@@ -126,7 +132,10 @@ describe("HowToUse", () => {
                             {
                                 type: "succeed-to-find",
                                 currentVersion: "1.0.0",
-                                versions: ["0.0.1", "1.0.0"],
+                                versions: [
+                                    { version: "0.0.1", isCurrent: false },
+                                    { version: "1.0.0", isCurrent: true },
+                                ],
                             },
                         ])
                         done()

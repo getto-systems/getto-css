@@ -2,7 +2,11 @@ export type Version = string & { Version: never }
 export function markVersion(version: string): Version {
     return version as Version
 }
-export type AllVersions = Version[]
+export type AllVersions = VersionInfo[]
+export type VersionInfo = Readonly<{
+    version: Version
+    isCurrent: boolean
+}>
 
 export type FindEvent =
     | Readonly<{ type: "try-to-find"; currentVersion: Version }>

@@ -5,7 +5,7 @@ import { html } from "htm/preact"
 import { notice_alert } from "../../common/layout"
 
 import { HowToUseComponent, initialHowToUseState } from "../../../theme/Home/howToUse/component"
-import { AllVersions, FindError, Version } from "../../../theme/allVersions/data"
+import { AllVersions, FindError, Version, VersionInfo } from "../../../theme/allVersions/data"
 
 type Props = Readonly<{
     howToUse: HowToUseComponent
@@ -50,7 +50,7 @@ export function HowToUse({ howToUse }: Props): VNode {
                 return delayed()
 
             case "succeed-to-find":
-                return versions(state.currentVersion, state.versions)
+                return versions(state.versions)
 
             case "failed-to-find":
                 return error(state.err)
@@ -72,16 +72,18 @@ export function HowToUse({ howToUse }: Props): VNode {
     }
 }
 
-function versions(currentVersion: Version, versions: AllVersions): VNode {
+function versions(versions: AllVersions): VNode {
     return html`<ul>
         ${list()}
     </ul>`
 
     function list() {
-        return versions.map((version) => html`<li>${version}${currentVersionMark(version)}</li>`)
+        return versions.map(
+            (versionInfo) => html`<li>${versionInfo.version}${currentVersionMark(versionInfo)}</li>`
+        )
 
-        function currentVersionMark(version: Version) {
-            if (version !== currentVersion) {
+        function currentVersionMark(versionInfo: VersionInfo) {
+            if (!versionInfo.isCurrent) {
                 return EMPTY_CONTENT
             }
             return html` <span class="label label_info">current</span>`
