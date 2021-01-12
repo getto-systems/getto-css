@@ -19,6 +19,7 @@ export const mainMenuTree = (): MenuTree => [
         item("ドキュメント", lnir("files-alt"), "/docs/index.html"),
     ]),
     category("EXAMPLES", any, [
+        item("form", lnir("book"), "/examples/form.html"),
         item("misc", lnir("book"), "/examples/misc.html"),
     ]),
 ]
