@@ -17,7 +17,7 @@ type Props = Readonly<{
 }>
 export function Dashboard({ dashboard: { resource, terminate } }: Props): VNode {
     const [err] = useErrorBoundary((err) => {
-        // TODO ここでエラーをどこかに投げたい。apiCredential が有効なはずなので、api にエラーを投げられるはず
+        // 認証していないのでエラーはどうしようもない
         console.log(err)
     })
 

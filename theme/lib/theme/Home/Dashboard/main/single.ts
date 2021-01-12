@@ -1,13 +1,18 @@
 import { env } from "../../../../y_static/env"
 
+import { delayed } from "../../../../z_infra/delayed/core"
+
 import { initMenuListComponent } from "../../../../auth/Outline/menuList/impl"
 import { initBreadcrumbListComponent } from "../../../../auth/Outline/breadcrumbList/impl"
 import { initHowToUseComponent } from "../../howToUse/impl"
 import { detectMenuTarget } from "../../../../auth/Outline/Menu/impl/location"
+import { initFetchFindClient } from "../../../allVersions/impl/client/find/fetch"
 
 import { loadApiNonce, loadApiRoles } from "../../../../auth/common/credential/impl/core"
 import { loadBreadcrumb, loadMenu, toggleMenuExpand } from "../../../../auth/permission/menu/impl/core"
 import { mainMenuTree } from "../../../../auth/Outline/Menu/main/menuTree"
+import { find } from "../../../allVersions/impl/core"
+
 import { DashboardCollector, DashboardFactory, initDashboardResource } from "../impl/core"
 
 import { initMemoryApiCredentialRepository } from "../../../../auth/common/credential/impl/repository/apiCredential/memory"
@@ -17,9 +22,6 @@ import { initStorageMenuExpandRepository } from "../../../../auth/permission/men
 import { DashboardEntryPoint } from "../view"
 
 import { markApiNonce, markApiRoles } from "../../../../auth/common/credential/data"
-import { find } from "../../../allVersions/impl/core"
-import { delayed } from "../../../../z_infra/delayed/core"
-import { initFetchFindClient } from "../../../allVersions/impl/client/find/fetch"
 
 export function newDashboardAsSingle(): DashboardEntryPoint {
     const menuExpandStorage = localStorage
