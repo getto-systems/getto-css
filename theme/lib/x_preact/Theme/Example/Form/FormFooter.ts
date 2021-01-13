@@ -1,38 +1,35 @@
 import { html } from "htm/preact"
 import { VNode } from "preact"
 
-export type FormFooterProps = Readonly<{
-    saving: boolean
-    modified: boolean
-    invalid: boolean
-    undoEnabled: boolean
-    redoEnabled: boolean
-    onSave: Post<null>
-    onUndo: Post<null>
-    onRedo: Post<null>
-    onClose: Post<null>
-}>
-export function FormFooter({
-    saving,
-    modified,
-    invalid,
-    undoEnabled,
-    redoEnabled,
-    onSave,
-    onUndo,
-    onRedo,
-    onClose,
-}: FormFooterProps): VNode {
-    if (saving) {
-        return html`${savingButton()}`
-    } else {
-        return html`
-            <section class="button__container">
-                ${saveButton()}
-                <div class="button_right">${redoButton()} ${undoButton()} ${closeButton()}</div>
-            </section>
-            ${invalidMessage()}
-        `
+import { EditState, FormProps } from "./Container"
+
+type Props = FormProps
+export function FormFooter({ state, component }: Props): VNode {
+    switch (state.type) {
+        case "static":
+            return html`
+                <section class="button__container">
+                    <button class="button button_edit" onClick=${component.edit}>編集</button>
+                    <button class="button button_delete button_right" onClick=${component.delete}>
+                        削除
+                    </button>
+                </section>
+            `
+
+        case "try-to-save":
+            return html`${savingButton()}`
+
+        case "editing":
+            return html`
+                <section class="button__container">
+                    ${saveButton(state.state)}
+                    <div class="button_right">
+                        ${redoButton(state.state)} ${undoButton(state.state)}
+                        ${closeButton(state.state)}
+                    </div>
+                </section>
+                ${invalidMessage(state.state)}
+            `
     }
 
     function savingButton() {
@@ -40,39 +37,39 @@ export function FormFooter({
             <i class="lnir lnir-spinner lnir-is-spinning"></i> 保存中
         </button>`
     }
-    function saveButton() {
-        if (invalid) {
+    function saveButton(state: EditState) {
+        if (state.invalid) {
             return html`<button class="button button_save button_invalid">保存できません</button>`
         }
-        if (modified) {
-            return html`<button class="button button_save button_modified" onClick=${onSave}>
+        if (state.modified) {
+            return html`<button class="button button_save button_modified" onClick=${component.save}>
                 保存
             </button>`
         } else {
-            return html`<button class="button button_save" onClick=${onSave}>保存</button>`
+            return html`<button class="button button_save" onClick=${component.save}>保存</button>`
         }
     }
-    function redoButton() {
-        if (!redoEnabled) {
+    function redoButton(state: EditState) {
+        if (!state.redoEnabled) {
             return html``
         }
-        return html`<button class="button button_cancel" onClick=${onRedo}>やり直す</button>`
+        return html`<button class="button button_cancel" onClick=${component.redo}>やり直す</button>`
     }
-    function undoButton() {
-        if (!undoEnabled) {
+    function undoButton(state: EditState) {
+        if (!state.undoEnabled) {
             return html``
         }
-        return html`<button class="button button_cancel" onClick=${onUndo}>元に戻す</button>`
+        return html`<button class="button button_cancel" onClick=${component.undo}>元に戻す</button>`
     }
-    function closeButton() {
-        if (undoEnabled) {
+    function closeButton(state: EditState) {
+        if (state.undoEnabled) {
             return html``
         }
-        return html`<button class="button button_cancel" onClick=${onClose}>閉じる</button>`
+        return html`<button class="button button_cancel" onClick=${component.close}>閉じる</button>`
     }
 
-    function invalidMessage() {
-        if (!invalid) {
+    function invalidMessage(state: EditState) {
+        if (!state.invalid) {
             return html``
         }
         return html`
@@ -81,8 +78,4 @@ export function FormFooter({
             </section>
         `
     }
-}
-
-interface Post<T> {
-    (event: T): void
 }

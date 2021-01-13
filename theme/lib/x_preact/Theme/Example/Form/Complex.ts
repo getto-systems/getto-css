@@ -15,35 +15,43 @@ import {
     modal,
 } from "../box"
 
-import { FormFooter, FormFooterProps } from "./FormFooter"
+import { CompleteComponent, DeleteComponent, EditState, FormProps, GenerateComponent } from "./Container"
+import { FormFooter } from "./FormFooter"
 import { Modal, ModalContentProps, ModalProps } from "./Modal"
 
-type Props = FormFooterProps &
+type Props = FormProps &
     Readonly<{
-        onInput: Post<null>
-        onInputAsInvalid: Post<null>
-        onEdit: Post<null>
-        editing: boolean
-        complete: ModalProps
-        delete: ModalProps
-        generate: ModalProps
+        modal: Readonly<{
+            complete: ModalProps<CompleteComponent>
+            delete: ModalProps<DeleteComponent>
+            generate: ModalProps<GenerateComponent>
+        }>
     }>
 export function Complex(props: Props): VNode {
-    const { editing, invalid, onInput, onInputAsInvalid, onEdit } = props
+    const { state, component, modal } = props
 
-    const completeProps = { ...props.complete, content: CompleteModal }
-    const deleteProps = { ...props.delete, content: DeleteModal }
-    const generateProps = { ...props.generate, content: GenerateModal }
+    switch (state.type) {
+        case "static":
+            return html`
+                ${staticBox()} ${h(Modal(CompleteModal), modal.complete)}
+                ${h(Modal(DeleteModal), modal.delete)} ${h(Modal(GenerateModal), modal.generate)}
+            `
 
-    if (editing) {
-        return editingBox()
-    } else {
-        return html`
-            ${staticBox()} ${h(Modal, completeProps)} ${h(Modal, deleteProps)} ${h(Modal, generateProps)}
-        `
+        case "editing":
+        case "try-to-save":
+            return editingBox(state.state)
     }
 
     function staticBox() {
+        function onCompleteClick() {
+            modal.complete.component.open(null)
+        }
+        function onGenerateClick() {
+            modal.generate.component.generate(null)
+        }
+        function onDeleteClick() {
+            modal.delete.component.open(null)
+        }
         return fullBox(
             "complex",
             [
@@ -52,7 +60,7 @@ export function Complex(props: Props): VNode {
                 form("transition", [
                     html`
                         <big>
-                            <button class="button button_complete" onClick=${props.complete.onOpen}>
+                            <button class="button button_complete" onClick=${onCompleteClick}>
                                 ${i("checkmark")} 完了にする
                             </button>
                         </big>
@@ -61,7 +69,7 @@ export function Complex(props: Props): VNode {
                 form("report", [
                     html`
                         <big>
-                            <button class="button button_generate" onClick=${props.generate.onOpen}>
+                            <button class="button button_generate" onClick=${onGenerateClick}>
                                 ${i("file")} レポートを作成
                             </button>
                         </big>
@@ -70,16 +78,23 @@ export function Complex(props: Props): VNode {
             ],
             html`
                 <section class="button__container">
-                    <button class="button button_edit" onClick=${onEdit}>編集</button>
-                    <button class="button button_delete button_right" onClick=${props.delete.onOpen}>
+                    <button class="button button_edit" onClick=${component.edit}>編集</button>
+                    <button class="button button_delete button_right" onClick=${onDeleteClick}>
                         削除
                     </button>
                 </section>
             `
         )
     }
-    function editingBox() {
-        if (invalid) {
+    function editingBox(state: EditState) {
+        function onInput() {
+            component.inputValidValue(null)
+        }
+        function onInputAsInvalid() {
+            component.inputInvalidValue(null)
+        }
+
+        if (state.invalid) {
             return fullBox_editing(
                 "complex",
                 [
@@ -123,8 +138,15 @@ export function Complex(props: Props): VNode {
     }
 }
 
-function CompleteModal({ connecting, onConnect, onClose }: ModalContentProps): VNode {
-    if (connecting) {
+function CompleteModal({ state, component }: ModalContentProps<CompleteComponent>): VNode {
+    function onCompleteClick() {
+        component.complete(null)
+    }
+    function onCloseClick() {
+        component.close(null)
+    }
+
+    if (state.connecting) {
         return fullModal("完了処理中", "作業を完了しています", [
             html`<button type="button" class="button button_completeConfirm button_completing">
                 <i class="lnir lnir-spinner lnir-is-spinning"></i> 完了中
@@ -138,10 +160,18 @@ function CompleteModal({ connecting, onConnect, onClose }: ModalContentProps): V
                 よろしいですか？`,
             [
                 html`<div class="button__container">
-                    <button type="button" class="button button_completeConfirm" onClick="${onConnect}">
+                    <button
+                        type="button"
+                        class="button button_completeConfirm"
+                        onClick="${onCompleteClick}"
+                    >
                         完了
                     </button>
-                    <button type="button" class="button button_cancel button_right" onClick="${onClose}">
+                    <button
+                        type="button"
+                        class="button button_cancel button_right"
+                        onClick="${onCloseClick}"
+                    >
                         キャンセル
                     </button>
                 </div>`,
@@ -149,8 +179,15 @@ function CompleteModal({ connecting, onConnect, onClose }: ModalContentProps): V
         )
     }
 }
-function DeleteModal({ connecting, onConnect, onClose }: ModalContentProps): VNode {
-    if (connecting) {
+function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): VNode {
+    function onDeleteClick() {
+        component.delete(null)
+    }
+    function onCloseClick() {
+        component.close(null)
+    }
+
+    if (state.connecting) {
         return fullModal("削除処理中", "削除しています", [
             html`<button type="button" class="button button_deleteConfirm button_deleting">
                 <i class="lnir lnir-spinner lnir-is-spinning"></i> 削除中
@@ -166,10 +203,14 @@ function DeleteModal({ connecting, onConnect, onClose }: ModalContentProps): VNo
                 よろしいですか？`,
             [
                 html`<div class="button__container">
-                    <button type="button" class="button button_deleteConfirm" onClick="${onConnect}">
+                    <button type="button" class="button button_deleteConfirm" onClick="${onDeleteClick}">
                         削除
                     </button>
-                    <button type="button" class="button button_cancel button_right" onClick="${onClose}">
+                    <button
+                        type="button"
+                        class="button button_cancel button_right"
+                        onClick="${onCloseClick}"
+                    >
                         キャンセル
                     </button>
                 </div>`,
@@ -177,8 +218,12 @@ function DeleteModal({ connecting, onConnect, onClose }: ModalContentProps): VNo
         )
     }
 }
-function GenerateModal({ connecting, onClose }: ModalContentProps): VNode {
-    if (connecting) {
+function GenerateModal({ state, component }: ModalContentProps<GenerateComponent>): VNode {
+    function onCloseClick() {
+        component.close(null)
+    }
+
+    if (state.connecting) {
         return modal(
             "レポート作成中",
             html`<div class="loading loading_box">
@@ -210,7 +255,11 @@ function GenerateModal({ connecting, onClose }: ModalContentProps): VNode {
             [
                 html`<div class="button__container">
                     <span></span>
-                    <button type="button" class="button button_cancel button_right" onClick="${onClose}">
+                    <button
+                        type="button"
+                        class="button button_cancel button_right"
+                        onClick="${onCloseClick}"
+                    >
                         閉じる
                     </button>
                 </div>`,
@@ -221,8 +270,4 @@ function GenerateModal({ connecting, onClose }: ModalContentProps): VNode {
 
 function i(iconName: string) {
     return icon(iconClass(lnir(iconName)))
-}
-
-interface Post<T> {
-    (event: T): void
 }

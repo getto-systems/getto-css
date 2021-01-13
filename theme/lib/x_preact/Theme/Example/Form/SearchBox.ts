@@ -3,14 +3,16 @@ import { html } from "htm/preact"
 
 import { form, fullBox_editing } from "../box"
 
-import { FormFooter, FormFooterProps } from "./FormFooter"
+import { FormProps } from "./Container"
+import { FormFooter } from "./FormFooter"
 
-type Props = FormFooterProps &
-    Readonly<{
-        onInput: Post<null>
-    }>
+type Props = FormProps
 export function SearchBox(props: Props): VNode {
-    const { onInput } = props
+    const { component } = props
+
+    function onInput() {
+        component.inputValidValue(null)
+    }
 
     return fullBox_editing(
         "search box",
@@ -23,8 +25,4 @@ export function SearchBox(props: Props): VNode {
         ],
         h(FormFooter, props)
     )
-}
-
-interface Post<T> {
-    (event: T): void
 }
