@@ -2,17 +2,14 @@ import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { useTerminate } from "../../common/hooks"
-
 import { ApplicationError } from "../../common/System/ApplicationError"
 
-import { ExampleEntryPoint } from "../../../theme/Example/view"
 import { fullScreenError } from "../../common/layout"
 
 type Props = Readonly<{
-    example: ExampleEntryPoint
+    // no props
 }>
-export function NotFound({ example: { terminate } }: Props): VNode {
+export function NotFound(_: Props): VNode {
     const [err] = useErrorBoundary((err) => {
         // 認証していないのでエラーはどうしようもない
         console.log(err)
@@ -21,8 +18,6 @@ export function NotFound({ example: { terminate } }: Props): VNode {
     if (err) {
         return h(ApplicationError, { err: `${err}` })
     }
-
-    useTerminate(terminate)
 
     useEffect(() => {
         document.title = `Not Found | ${document.title}`
