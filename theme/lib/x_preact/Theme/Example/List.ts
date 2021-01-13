@@ -8,7 +8,7 @@ import { footer, menuHeader, menuFooter } from "../../layout"
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MenuList } from "../../Outline/MenuList"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
-import { Container } from "./Search/Container"
+import { Container } from "./List/Container"
 
 import { ExampleEntryPoint } from "../../../theme/Example/view"
 

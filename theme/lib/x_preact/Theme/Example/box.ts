@@ -9,6 +9,9 @@ export function simpleBox(content: VNodeContent): VNode {
 export function simpleBox_grow(content: VNodeContent): VNode {
     return simpleBoxContent("box_grow", content)
 }
+export function simpleBox_fill(content: VNodeContent): VNode {
+    return simpleBoxContent("box_fill", content)
+}
 function simpleBoxContent(boxClass: string, content: VNodeContent): VNode {
     return html`<section class="box ${boxClass}">${boxBody(content)}</section>`
 }
