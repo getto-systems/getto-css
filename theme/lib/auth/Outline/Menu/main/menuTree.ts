@@ -24,6 +24,7 @@ export const mainMenuTree = (): MenuTree => [
         item("list", lnir("book"), "/examples/list.html"),
         item("document", lnir("book"), "/examples/document.html"),
         item("misc", lnir("book"), "/examples/misc.html"),
+        item("not found", lnir("book"), "/examples/not_found.html"),
     ]),
 ]
 
