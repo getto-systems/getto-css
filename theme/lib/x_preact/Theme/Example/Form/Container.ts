@@ -36,16 +36,16 @@ export function Container(_: ContainerProps): VNode {
     `
 
     function useStaticFormProps(action: { delete: Post<null> }): FormProps {
-        return useForm({ type: "static" }, action)
+        return useFormProps({ type: "static" }, action)
     }
     function useEditingFormProps(): FormProps {
-        return useForm(initialFormEditing, {
+        return useFormProps(initialFormEditing, {
             delete: () => {
                 // なにもしない
             },
         })
     }
-    function useForm(initialState: FormState, action: { delete: Post<null> }): FormProps {
+    function useFormProps(initialState: FormState, action: { delete: Post<null> }): FormProps {
         const [state, setState] = useState<FormState>(initialState)
         const component: FormComponent = {
             edit: () => {

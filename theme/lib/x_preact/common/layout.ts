@@ -48,8 +48,15 @@ export function fullScreenError(
     `
 }
 
-export function container(contents: VNodeContent): VNode {
-    return html`<section class="container">${contents}</section>`
+export function container(content: VNodeContent): VNode {
+    return html`<section class="container">${content}</section>`
+}
+
+export function small(content: VNodeContent): VNode {
+    return html`<small>${content}</small>`
+}
+export function big(content: VNodeContent): VNode {
+    return html`<big>${content}</big>`
 }
 
 export function icon(iconClass: string): VNode {
