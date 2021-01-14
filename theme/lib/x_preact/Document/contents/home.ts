@@ -36,7 +36,6 @@ export const content_home = (): VNode[] => [
     container([
         content_home_component(),
         content_home_resources(),
-        content_home_color(),
         content_home_size(),
     ]),
 ]
@@ -232,14 +231,6 @@ export function content_home_resources(): VNode {
                 <p>LineIcons</p>
             `
         ),
-    ])
-}
-export function content_home_color(): VNode {
-    return box("色テーマ", [
-        html`
-            <p>color.css にまとめて定義してある</p>
-            <p>差し替えは想定していない</p>
-        `,
     ])
 }
 export function content_home_size(): VNode {

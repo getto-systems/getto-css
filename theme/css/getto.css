@@ -11,27 +11,27 @@
 @import "./modules/layout/main.css";
 @import "./modules/layout/login.css";
 
-@import "./modules/box/container.css";
-@import "./modules/box/modal.css";
-@import "./modules/box/box.css";
+@import "./modules/design/box/container.css";
+@import "./modules/design/box/modal.css";
+@import "./modules/design/box/box.css";
 
-@import "./modules/highlight/notice.css";
-@import "./modules/highlight/badge.css";
-@import "./modules/highlight/label.css";
+@import "./modules/design/highlight/notice.css";
+@import "./modules/design/highlight/badge.css";
+@import "./modules/design/highlight/label.css";
 
-@import "./modules/form/input.css";
-@import "./modules/form/button.css";
-@import "./modules/form/form.css";
+@import "./modules/design/form/input.css";
+@import "./modules/design/form/button.css";
+@import "./modules/design/form/form.css";
 
-@import "./modules/data/search.css";
-@import "./modules/data/pager.css";
-@import "./modules/data/table.css";
+@import "./modules/design/data/search.css";
+@import "./modules/design/data/pager.css";
+@import "./modules/design/data/table.css";
 
-@import "./modules/print/document.css";
-@import "./modules/print/paper.css";
+@import "./modules/design/print/document.css";
+@import "./modules/design/print/paper.css";
 
-@import "./modules/loading/loading.css";
+@import "./modules/design/loading/loading.css";
 
-@import "./modules/alignment/list.css";
-@import "./modules/alignment/vertical.css";
-@import "./modules/alignment/visibility.css";
+@import "./modules/design/alignment/list.css";
+@import "./modules/design/alignment/vertical.css";
+@import "./modules/design/alignment/visibility.css";
