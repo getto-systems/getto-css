@@ -76,7 +76,7 @@ function entry(title: string, content: ContentFactory<VNodeContent>): ContentEnt
 }
 
 const indexEntry: ContentEntry = entry("ドキュメント", async () =>
-    (await import("./contents/home")).content_index()
+    (await import("./contents/home")).content_home()
 )
 const contentMap: Record<ContentPath, ContentEntry> = {
     "/docs/index.html": indexEntry,
