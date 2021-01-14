@@ -24,9 +24,11 @@ export const mainMenuTree = (): MenuTree => [
         item("list", lnir("book"), "/examples/list.html"),
         item("document", lnir("book"), "/examples/document.html"),
         item("misc", lnir("book"), "/examples/misc.html"),
-        item("not found", lnir("book"), "/examples/not_found.html"),
-        item("login", lnir("book"), "/examples/login.html"),
-        item("forget", lnir("book"), "/examples/forget.html"),
+        category("LOGIN", any, [
+            item("not found", lnir("book"), "/examples/login/not_found.html"),
+            item("login", lnir("book"), "/examples/login/login.html"),
+            item("forget", lnir("book"), "/examples/login/forget.html"),
+        ]),
     ]),
 ]
 
@@ -35,7 +37,5 @@ export const documentMenuTree = (): MenuTree => [
         item("ホーム", lnir("home"), "/index.html"),
         item("ドキュメント", lnir("files-alt"), "/docs/index.html"),
     ]),
-    category("開発用", any, [
-        item("Storybook", lnir("files-alt"), "/storybook/index.html"),
-    ]),
+    category("開発用", any, [item("Storybook", lnir("files-alt"), "/storybook/index.html")]),
 ]

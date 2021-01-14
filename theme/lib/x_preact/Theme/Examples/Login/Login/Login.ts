@@ -1,8 +1,8 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { big, loginHeader, VNodeContent } from "../../../common/layout"
-import { form, formWithHelp_error } from "../box"
+import { big, loginHeader, VNodeContent } from "../../../../common/layout"
+import { form, formWithHelp_error } from "../../box"
 
 import { EditState, LoginProps } from "./Container"
 

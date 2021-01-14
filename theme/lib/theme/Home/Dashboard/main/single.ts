@@ -10,7 +10,7 @@ import { initFetchFindClient } from "../../../allVersions/impl/client/find/fetch
 
 import { loadApiNonce, loadApiRoles } from "../../../../auth/common/credential/impl/core"
 import { loadBreadcrumb, loadMenu, toggleMenuExpand } from "../../../../auth/permission/menu/impl/core"
-import { mainMenuTree } from "../../../../auth/Outline/Menu/main/menuTree"
+import { mainMenuTree } from "../../../../auth/Outline/Menu/impl/menuTree"
 import { find } from "../../../allVersions/impl/core"
 
 import { DashboardCollector, DashboardFactory, initDashboardResource } from "../impl/core"

@@ -6,7 +6,7 @@ import { detectMenuTarget } from "../../../auth/Outline/Menu/impl/location"
 
 import { loadApiNonce, loadApiRoles } from "../../../auth/common/credential/impl/core"
 import { loadBreadcrumb, loadMenu, toggleMenuExpand } from "../../../auth/permission/menu/impl/core"
-import { mainMenuTree } from "../../../auth/Outline/Menu/main/menuTree"
+import { mainMenuTree } from "../../../auth/Outline/Menu/impl/menuTree"
 import { ExampleCollector, ExampleFactory, initExampleResource } from "../impl/core"
 
 import { initMemoryApiCredentialRepository } from "../../../auth/common/credential/impl/repository/apiCredential/memory"

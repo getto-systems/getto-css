@@ -23,7 +23,9 @@ export function box_double(title: VNodeContent, content: VNodeContent): VNode {
     return boxContent("", title, content)
 }
 function boxContent(boxClass: string, title: VNodeContent, content: VNodeContent): VNode {
-    return html`<section class="box ${boxClass}">${boxHeader(title)} ${boxBody(content)}</section>`
+    return html`<section class="box ${boxClass}">
+        <div>${boxHeader(title)} ${boxBody(content)}</div>
+    </section>`
 }
 
 export function fullBox(title: VNodeContent, content: VNodeContent, footer: VNodeContent): VNode {

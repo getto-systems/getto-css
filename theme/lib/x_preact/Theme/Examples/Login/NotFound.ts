@@ -2,9 +2,9 @@ import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { ApplicationError } from "../../common/System/ApplicationError"
+import { ApplicationError } from "../../../common/System/ApplicationError"
 
-import { fullScreenError } from "../../common/layout"
+import { fullScreenError } from "../../../common/layout"
 
 type Props = Readonly<{
     // no props
