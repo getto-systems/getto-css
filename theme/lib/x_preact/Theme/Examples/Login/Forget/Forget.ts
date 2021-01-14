@@ -4,9 +4,9 @@ import { html } from "htm/preact"
 import { big, loginHeader, VNodeContent } from "../../../../common/layout"
 import { formWithHelp, formWithHelp_error } from "../../box"
 
-import { EditState, ResetProps } from "./Container"
+import { EditState, ForgetProps } from "./Container"
 
-type Props = ResetProps
+type Props = ForgetProps
 export function Forget({ state, component }: Props): VNode {
     function onInput() {
         component.inputValidValue(null)

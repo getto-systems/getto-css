@@ -9,9 +9,9 @@ type ContainerProps = {
 export function Container(_: ContainerProps): VNode {
     return h(Forget, useResetProps())
 
-    function useResetProps(): ResetProps {
-        const [state, setState] = useState<ResetState>({ type: "reset", state: initialEditState })
-        const component: ResetComponent = {
+    function useResetProps(): ForgetProps {
+        const [state, setState] = useState<ForgetState>({ type: "reset", state: initialEditState })
+        const component: ForgetComponent = {
             inputValidValue: () => {
                 setState({
                     type: "reset",
@@ -44,16 +44,16 @@ export function Container(_: ContainerProps): VNode {
     }
 }
 
-export type ResetProps = Readonly<{
-    state: ResetState
-    component: ResetComponent
+export type ForgetProps = Readonly<{
+    state: ForgetState
+    component: ForgetComponent
 }>
-export interface ResetComponent {
+export interface ForgetComponent {
     inputValidValue: Post<null>
     inputInvalidValue: Post<null>
     reset: Post<null>
 }
-export type ResetState =
+export type ForgetState =
     | Readonly<{ type: "reset"; state: EditState }>
     | Readonly<{ type: "try-to-reset" }>
     | Readonly<{ type: "succeed-to-send-token" }>
