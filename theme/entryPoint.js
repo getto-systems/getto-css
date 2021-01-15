@@ -22,7 +22,7 @@ function findHtmlFiles() {
     const path = require("path")
 
     const root = path.join(__dirname, "./public/dist")
-    return gatherFiles(root).map((file) => file.replace(root, ""))
+    return ["/not_found.html"].concat(gatherFiles(root).map((file) => file.replace(root, "")))
 
     function gatherFiles(dir) {
         const files = []
