@@ -63,10 +63,10 @@ export function HowToUse({ howToUse }: Props): VNode {
                 return ""
 
             default:
-                return `<link rel="stylesheet"\n href="${href(state.currentVersion)}">`
+                return `<link rel="stylesheet"\n href="${productionCSS(state.currentVersion)}">`
         }
 
-        function href(version: Version) {
+        function productionCSS(version: Version) {
             return `https://trellis.getto.systems/css/${version}/getto.css`
         }
     }
@@ -79,14 +79,21 @@ function versions(versions: AllVersions): VNode {
 
     function list() {
         return versions.map(
-            (versionInfo) => html`<li>${versionInfo.version}${currentVersionMark(versionInfo)}</li>`
+            (versionInfo) => html`<li>${link(versionInfo)}${currentVersionMark(versionInfo)}</li>`
         )
 
+        function link({ version }: VersionInfo) {
+            return html`<a href="${differentVersionIndex(version)}">${version}</a>`
+
+            function differentVersionIndex(version: Version) {
+                return `/${version}/index.html`
+            }
+        }
         function currentVersionMark(versionInfo: VersionInfo) {
             if (!versionInfo.isCurrent) {
                 return EMPTY_CONTENT
             }
-            return html` <span class="label label_info">current</span>`
+            return html`<span class="label label_info">current</span>`
         }
     }
 }
