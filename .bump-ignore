@@ -1,5 +1,7 @@
 /*
-!/src/
-/src/*
-!/src/getto.css
-!/src/css/
+!/theme/
+/theme/*
+!/theme/css/
+/theme/css/*
+!/theme/css/getto.css
+!/theme/css/modules/
