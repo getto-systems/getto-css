@@ -1,42 +1,32 @@
 import { MockComponent } from "../../../z_external/mock/component"
 
-import { initBreadcrumbListComponent } from "../../../auth/Outline/breadcrumbList/mock"
-import { initMenuListComponent } from "../../../auth/Outline/menuList/mock"
-import { initHowToUseComponent } from "../howToUse/mock"
+import { initCurrentVersionComponent } from "../currentVersion/mock"
 
-import { DashboardEntryPoint } from "./view"
+import { NotFoundEntryPoint } from "./view"
 
-import { BreadcrumbListState, initialBreadcrumbListState } from "../../../auth/Outline/breadcrumbList/component"
-import { initialMenuListState, MenuListState } from "../../../auth/Outline/menuList/component"
-import { HowToUseState, initialHowToUseState } from "../howToUse/component"
+import { CurrentVersionState, initialCurrentVersionState } from "../currentVersion/component"
 
-export function newDashboard(): DashboardMockEntryPoint {
+export function newNotFound(): NotFoundMockEntryPoint {
     const resource = {
-        menuList: initMenuListComponent(initialMenuListState),
-        breadcrumbList: initBreadcrumbListComponent(initialBreadcrumbListState),
-        howToUse: initHowToUseComponent(initialHowToUseState),
+        currentVersion: initCurrentVersionComponent(initialCurrentVersionState),
     }
     return {
-        dashboard: {
+        notFound: {
             resource,
             terminate: () => {
                 // mock では特に何もしない
             },
         },
         update: {
-            menuList: update(resource.menuList),
-            breadcrumbList: update(resource.breadcrumbList),
-            howToUse: update(resource.howToUse),
+            currentVersion: update(resource.currentVersion),
         },
     }
 }
 
-export type DashboardMockEntryPoint = Readonly<{
-    dashboard: DashboardEntryPoint
+export type NotFoundMockEntryPoint = Readonly<{
+    notFound: NotFoundEntryPoint
     update: Readonly<{
-        menuList: Post<MenuListState>
-        breadcrumbList: Post<BreadcrumbListState>
-        howToUse: Post<HowToUseState>
+        currentVersion: Post<CurrentVersionState>
     }>
 }>
 
