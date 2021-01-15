@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.18.5
+
+- fix: bump_version.sh : See merge request getto-systems-base/projects/css!260
+
+
 ## Version : 2.18.4
 
 - fix: gitlab-ci : See merge request getto-systems-base/projects/css!258
