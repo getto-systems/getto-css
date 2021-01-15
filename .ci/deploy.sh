@@ -12,24 +12,25 @@ deploy_main(){
 
   npm run build
 
-  if [ ! -d dist ]; then
-    echo "build failed! : dist directory not exists"
+  if [ ! -d theme/artifact/dist ]; then
+    echo "build failed! : theme/artifact/dist directory not exists"
     exit 1
   fi
 
-  if [ ! -d css ]; then
-    echo "build failed! : css directory not exists"
-    exit 1
-  fi
-
-  cp -a public/dist/* dist
-
+  deploy_rewrite_version
   deploy_trellis
   deploy_css
 }
+deploy_rewrite_version(){
+  for file in $(find theme/public/dist theme/public/root -name '*.html'); do
+    if [ -f "$file" ]; then
+      sed -i -e "s|/dist/|/$version/|g" "$file"
+    fi
+  done
+}
 deploy_trellis(){
   local metadata
-  metadata=$(node metadata/trellis.js)
+  metadata=$(node theme/artifact/metadata.js)
 
   aws s3 cp \
     --acl private \
@@ -41,7 +42,7 @@ deploy_trellis(){
 deploy_css(){
   local metadata
   local file
-  metadata=$(node metadata/css.js)
+  metadata=$(node theme/public/metadata.js)
 
   aws s3 cp \
     --acl private \
