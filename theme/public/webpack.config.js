@@ -27,7 +27,11 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: ["style-loader", "postcss-loader"],
+                use: [
+                    { loader: "style-loader", options: { injectType: "linkTag" } },
+                    "file-loader",
+                    "postcss-loader",
+                ],
             },
             {
                 test: /\.ts$/,
