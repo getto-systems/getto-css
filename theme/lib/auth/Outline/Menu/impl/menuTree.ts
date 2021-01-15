@@ -23,7 +23,8 @@ export const mainMenuTree = (): MenuTree => [
         item("search", lnir("book"), "/examples/search.html"),
         item("list", lnir("book"), "/examples/list.html"),
         item("document", lnir("book"), "/examples/document.html"),
-        item("misc", lnir("book"), "/examples/misc.html"),
+        item("highlight", lnir("book"), "/examples/highlight.html"),
+        item("alignment", lnir("book"), "/examples/alignment.html"),
         category("LOGIN", any, [
             item("not found", lnir("book"), "/examples/login/not_found.html"),
             item("login", lnir("book"), "/examples/login/login.html"),
