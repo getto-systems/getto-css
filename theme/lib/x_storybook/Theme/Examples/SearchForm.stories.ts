@@ -1,12 +1,12 @@
 import { h, VNode } from "preact"
 
-import { SearchForm } from "../../../../x_preact/Theme/Examples/Search/SearchForm"
-import { SearchComponent, SearchState } from "../../../../x_preact/Theme/Examples/Search/Container"
+import { SearchForm } from "../../../x_preact/Theme/Examples/Search/SearchForm"
+import { SearchComponent, SearchState } from "../../../x_preact/Theme/Examples/Search/Container"
 
-import "../../../../../css/getto.css"
+import "../../../../css/getto.css"
 
 export default {
-    title: "Theme/Examples/Search/SearchForm",
+    title: "Theme/Examples/SearchForm",
     argTypes: {
         type: {
             table: { disable: true },
@@ -62,16 +62,13 @@ const Template: Story<MockProps> = (args) => {
 
 function initMockComponent(): SearchComponent {
     return {
-        inputInvalidValue: () => {
-            // 何もしない
-        },
-        inputValidValue: () => {
-            // 何もしない
-        },
-        search: () => {
-            // 何もしない
-        },
+        inputInvalidValue: noop,
+        inputValidValue: noop,
+        search: noop,
     }
+}
+function noop() {
+    // 何もしない
 }
 
 interface Story<T> {

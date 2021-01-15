@@ -62,16 +62,13 @@ const Template: Story<MockProps> = (args) => {
 
 function initMockComponent(): LoginComponent {
     return {
-        inputInvalidValue: () => {
-            // 何もしない
-        },
-        inputValidValue: () => {
-            // 何もしない
-        },
-        login: () => {
-            // 何もしない
-        },
+        inputInvalidValue: noop,
+        inputValidValue: noop,
+        login: noop,
     }
+}
+function noop() {
+    // 何もしない
 }
 
 interface Story<T> {
