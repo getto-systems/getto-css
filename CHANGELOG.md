@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.18.4
+
+- fix: gitlab-ci : See merge request getto-systems-base/projects/css!258
+- fix: bump ignore : See merge request getto-systems-base/projects/css!257
+
+
 ## Version : 2.18.3
 
 - fix: style-loader config : See merge request getto-systems-base/projects/css!255
