@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version : 2.18.1
+
+
+
 ## Version : 2.18.0
 
 - fix: deploy.sh : See merge request getto-systems-base/projects/css!250
