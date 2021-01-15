@@ -37,11 +37,13 @@ export const find = (infra: FindInfra): FindPod => () => async (post) => {
             versions.push(currentVersion)
         }
 
-        return versions.map((version) => {
-            return {
-                version: markVersion(version),
-                isCurrent: version === currentVersion,
-            }
-        })
+        return versions
+            .map((version) => {
+                return {
+                    version: markVersion(version),
+                    isCurrent: version === currentVersion,
+                }
+            })
+            .reverse() // 最新順で返す
     }
 }
