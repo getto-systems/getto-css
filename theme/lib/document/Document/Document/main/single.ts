@@ -9,7 +9,7 @@ import { initContentComponent } from "../../content/impl"
 
 import { loadApiNonce, loadApiRoles } from "../../../../auth/common/credential/impl/core"
 import { loadBreadcrumb, loadMenu, toggleMenuExpand } from "../../../../auth/permission/menu/impl/core"
-import { documentMenuTree } from "../../../../auth/Outline/Menu/impl/menuTree"
+import { documentMenuTree } from "../../../../auth/Outline/Menu/impl/menu/menuTree"
 import { loadContent } from "../../../content/impl/core"
 import { DocumentCollector, DocumentFactory, initDocumentResource } from "../impl/core"
 

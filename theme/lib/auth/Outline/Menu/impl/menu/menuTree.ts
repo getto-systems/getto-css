@@ -1,8 +1,8 @@
-import { StaticMenuPath } from "../../../../y_static/path"
+import { StaticMenuPath } from "../../../../../y_static/path"
 
-import { Icon, iconClass, lnir } from "../../../../z_external/icon"
+import { Icon, iconClass, lnir } from "../../../../../z_external/icon"
 
-import { MenuPermission, MenuTree, MenuTreeNode } from "../../../permission/menu/infra"
+import { MenuPermission, MenuTree, MenuTreeNode } from "../../../../permission/menu/infra"
 
 function category(label: string, permission: MenuPermission, children: MenuTree): MenuTreeNode {
     return { type: "category", category: { label, permission }, children }
@@ -17,6 +17,7 @@ export const mainMenuTree = (): MenuTree => [
     category("MAIN", any, [
         item("ホーム", lnir("home"), "/index.html"),
         item("ドキュメント", lnir("files-alt"), "/docs/index.html"),
+        item("Storybook", lnir("files-alt"), "/storybook/index.html"),
     ]),
     category("EXAMPLES", any, [
         item("form", lnir("book"), "/examples/form.html"),
@@ -37,6 +38,6 @@ export const documentMenuTree = (): MenuTree => [
     category("MAIN", any, [
         item("ホーム", lnir("home"), "/index.html"),
         item("ドキュメント", lnir("files-alt"), "/docs/index.html"),
+        item("Storybook", lnir("files-alt"), "/storybook/index.html"),
     ]),
-    category("開発用", any, [item("Storybook", lnir("files-alt"), "/storybook/index.html")]),
 ]
