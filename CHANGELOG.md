@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.18.2
+
+- fix: not found mock : See merge request getto-systems-base/projects/css!253
+
+
 ## Version : 2.18.1
 
 
