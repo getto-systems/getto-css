@@ -1,0 +1,37 @@
+@import "./reset.css";
+
+/*! GETTO CSS : MIT LICENSE copyright GETTO systems since 2017 */
+@import "./modules/base/color.css";
+@import "./modules/base/size.css";
+@import "./modules/base/media.css";
+@import "./modules/base/base.css";
+
+@import "./modules/layout/layout.css";
+@import "./modules/layout/menu.css";
+@import "./modules/layout/main.css";
+@import "./modules/layout/login.css";
+
+@import "./modules/design/box/container.css";
+@import "./modules/design/box/modal.css";
+@import "./modules/design/box/box.css";
+
+@import "./modules/design/highlight/notice.css";
+@import "./modules/design/highlight/badge.css";
+@import "./modules/design/highlight/label.css";
+
+@import "./modules/design/form/input.css";
+@import "./modules/design/form/button.css";
+@import "./modules/design/form/form.css";
+
+@import "./modules/design/data/search.css";
+@import "./modules/design/data/pager.css";
+@import "./modules/design/data/table.css";
+
+@import "./modules/design/print/document.css";
+@import "./modules/design/print/paper.css";
+
+@import "./modules/design/loading/loading.css";
+
+@import "./modules/design/alignment/list.css";
+@import "./modules/design/alignment/vertical.css";
+@import "./modules/design/alignment/visibility.css";

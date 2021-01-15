@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "npm run setup && npm run build-storybook",
+    "setup": "npm run setup:lib && npm run setup:css",
+    "setup:lib": "rm -rf lib && cp -a ../theme/lib .",
+    "setup:css": "rm -rf css && cp -a ../theme/css .",
+    "build-storybook": "build-storybook -o ../theme/public/dist/storybook/"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@rollup/plugin-typescript": "^8.1.0",
+    "@storybook/addon-actions": "^6.1.14",
+    "@storybook/addon-essentials": "^6.1.14",
+    "@storybook/addon-links": "^6.1.14",
+    "@storybook/preact": "^6.1.14",
+    "babel-loader": "^8.2.2",
+    "htm": "^3.0.4",
+    "preact": "^10.5.7",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "rollup": "^2.35.1",
+    "typescript": "^4.1.3"
+  }
+}
