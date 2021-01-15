@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.18.6
+
+- add: not_found.html to entry point list : See merge request getto-systems-base/projects/css!263
+- fix: all version order : See merge request getto-systems-base/projects/css!262
+
+
 ## Version : 2.18.5
 
 - fix: bump_version.sh : See merge request getto-systems-base/projects/css!260
