@@ -13,7 +13,7 @@ export function simpleBox_fill(content: VNodeContent): VNode {
     return simpleBoxContent("box_fill", content)
 }
 function simpleBoxContent(boxClass: string, content: VNodeContent): VNode {
-    return html`<section class="box ${boxClass}">${boxBody(content)}</section>`
+    return html`<article class="box ${boxClass}">${boxBody(content)}</article>`
 }
 
 export function box(title: VNodeContent, content: VNodeContent): VNode {
@@ -23,9 +23,9 @@ export function box_double(title: VNodeContent, content: VNodeContent): VNode {
     return boxContent("", title, content)
 }
 function boxContent(boxClass: string, title: VNodeContent, content: VNodeContent): VNode {
-    return html`<section class="box ${boxClass}">
-        <div>${boxHeader(title)} ${boxBody(content)}</div>
-    </section>`
+    return html`<article class="box ${boxClass}">
+        <main>${boxHeader(title)} ${boxBody(content)}</main>
+    </article>`
 }
 
 export function fullBox(title: VNodeContent, content: VNodeContent, footer: VNodeContent): VNode {
@@ -54,10 +54,10 @@ function fullBoxContent(
     content: VNodeContent,
     footer: VNodeContent
 ): VNode {
-    return html`<section class="box ${boxClass}">
-        <div>${boxHeader(title)} ${boxBody(content)}</div>
+    return html`<article class="box ${boxClass}">
+        <main>${boxHeader(title)} ${boxBody(content)}</main>
         ${boxFooter(footer)}
-    </section>`
+    </article>`
 }
 
 export function noTitleBox(content: VNodeContent, footer: VNodeContent): VNode {
@@ -67,10 +67,7 @@ export function searchBox_fill(content: VNodeContent, footer: VNodeContent): VNo
     return noTitleBoxContent("box_fill box_search", content, footer)
 }
 export function noTitleBoxContent(boxClass: string, content: VNodeContent, footer: VNodeContent): VNode {
-    return html`<section class="box ${boxClass}">
-        <section class="box__body container">${content}</section>
-        ${footer}
-    </section>`
+    return html`<article class="box ${boxClass}">${boxBody(content)} ${footer}</article>`
 }
 
 function boxHeader(title: VNodeContent) {

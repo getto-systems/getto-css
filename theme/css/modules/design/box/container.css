@@ -2,11 +2,3 @@
     display: flex;
     flex-wrap: wrap;
 }
-
-.content {
-    margin-bottom: 0.5rem;
-}
-
-.content_overflow {
-    overflow-x: auto;
-}
