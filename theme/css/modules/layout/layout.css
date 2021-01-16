@@ -1,4 +1,4 @@
-@media screen and (--media-desktop) {
+@media (--media-desktop) {
     .layout {
         display: flex;
         flex-direction: row-reverse;
@@ -19,7 +19,7 @@
     }
 }
 
-@media screen and (--media-mobile) {
+@media (--media-mobile) {
     .layout__menu__header {
         position: absolute;
         top: 0;
@@ -28,13 +28,13 @@
     }
 }
 
-@media screen and (--media-tablet) {
+@media (--media-tablet) {
     .layout__main {
-        margin-top: 6rem;
+        margin-top: 5.5rem;
     }
 }
 
-@media screen and (--media-phone) {
+@media (--media-shallow) {
     .layout__main {
         margin-top: 7rem;
     }
