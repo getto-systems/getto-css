@@ -1,7 +1,7 @@
 .button__container {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
     align-items: flex-end;
 }
 
@@ -9,24 +9,17 @@
     justify-content: center;
 }
 
-.button_left {
-    order: 1;
-}
-
-.button_right {
-    order: 100;
-}
-
 .button {
     display: inline-block;
     cursor: pointer;
-    border: 1px solid var(--color-black);
 
     font-size: var(--font-size-smaller);
-    padding: 0.1em 0.8em;
 
-    vertical-align: 20%;
+    padding: 0.06em 1.5em;
+    border: 1px solid transparent;
+    border-radius: 0.3em;
 
+    vertical-align: middle;
     white-space: nowrap;
 }
 
