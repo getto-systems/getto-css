@@ -2,14 +2,14 @@ import { h, VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { fullScreenError, v_medium } from "../common/layout"
+import { fullScreenError, v_medium } from "../../common/layout"
 
-import { ApplicationError } from "../common/System/ApplicationError"
+import { ApplicationError } from "../../common/System/ApplicationError"
 
-import { NextVersionResource } from "../../update/Update/MoveToNextVersion/view"
-import { initialNextVersionState } from "../../update/Update/nextVersion/component"
+import { NextVersionResource } from "../../../update/Update/MoveToNextVersion/view"
+import { initialNextVersionState } from "../../../update/Update/nextVersion/component"
 
-import { appTargetToPath, FindError } from "../../update/nextVersion/data"
+import { appTargetToPath, FindError } from "../../../update/nextVersion/data"
 
 type Props = NextVersionResource
 export function NextVersion({ nextVersion }: Props): VNode {
