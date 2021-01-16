@@ -2,16 +2,16 @@ import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary, useState } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { useTerminate } from "../../common/hooks"
-import { fullScreenError } from "../../common/layout"
+import { useTerminate } from "../common/hooks"
+import { fullScreenError } from "../common/layout"
 
-import { ApplicationError } from "../../common/System/ApplicationError"
+import { ApplicationError } from "../common/System/ApplicationError"
 
-import { NotFoundEntryPoint } from "../../../theme/Home/NotFound/view"
+import { NotFoundEntryPoint } from "../../auth/NotFound/NotFound/view"
 import {
     CurrentVersionComponent,
     initialCurrentVersionState,
-} from "../../../theme/Home/currentVersion/component"
+} from "../../auth/NotFound/currentVersion/component"
 
 type Props = Readonly<{
     notFound: NotFoundEntryPoint

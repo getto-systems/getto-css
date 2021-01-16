@@ -1,15 +1,15 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { NotFound } from "../../../x_preact/Theme/Home/NotFound"
+import { NotFound } from "../../x_preact/Auth/NotFound"
 
-import { newNotFound } from "../../../theme/Home/NotFound/mock"
-import { mapCurrentVersionMockProps } from "../../../theme/Home/currentVersion/mock"
+import { newNotFound } from "../../auth/NotFound/NotFound/mock"
+import { mapCurrentVersionMockProps } from "../../auth/NotFound/currentVersion/mock"
 
 import "../../../../css/getto.css"
 
 export default {
-    title: "Theme/Home/NotFound",
+    title: "Auth/NotFound",
     argTypes: {
         type: {
             table: { disable: true },

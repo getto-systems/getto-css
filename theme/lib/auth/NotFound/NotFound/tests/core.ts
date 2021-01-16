@@ -1,12 +1,12 @@
 import { NotFoundFactory, initNotFoundResource } from "../impl/core"
 
-import { find } from "../../../currentVersion/impl/core"
+import { find } from "../../../permission/currentVersion/impl/core"
 
 import { initCurrentVersionComponent } from "../../currentVersion/impl"
 
 import { NotFoundResource } from "../view"
 
-import { CurrentVersionAction } from "../../../currentVersion/action"
+import { CurrentVersionAction } from "../../../permission/currentVersion/action"
 
 export function newNotFoundResource(version: string): NotFoundResource {
     const factory: NotFoundFactory = {

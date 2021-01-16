@@ -9,20 +9,18 @@ module.exports = {
 
 function findEntries() {
     return [
-        ...findUpdateEntries().map((entry) => `/update${entry}`),
+        "/update/moveToLatestVersion",
+        "/auth/notFound",
         ...findHtmlFiles().map((entry) => `/theme${entry}`),
     ]
 }
 
-function findUpdateEntries() {
-    return ["/moveToLatestVersion"]
-}
 function findHtmlFiles() {
     const fs = require("fs")
     const path = require("path")
 
     const root = path.join(__dirname, "./public/dist")
-    return ["/not_found.html"].concat(gatherFiles(root).map((file) => file.replace(root, "")))
+    return gatherFiles(root).map((file) => file.replace(root, ""))
 
     function gatherFiles(dir) {
         const files = []

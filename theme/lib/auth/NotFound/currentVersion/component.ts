@@ -1,5 +1,5 @@
-import { Find } from "../../currentVersion/action"
-import { Version } from "../../currentVersion/data"
+import { Find } from "../../permission/currentVersion/action"
+import { Version } from "../../permission/currentVersion/data"
 
 export interface CurrentVersionComponentFactory {
     (material: CurrentVersionMaterial): CurrentVersionComponent
