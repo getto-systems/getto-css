@@ -27,7 +27,9 @@ export const mainMenuTree = (): MenuTree => [
         item("highlight", lnir("book"), "/examples/highlight.html"),
         item("alignment", lnir("book"), "/examples/alignment.html"),
         category("LOGIN", any, [
-            item("not found", lnir("book"), "/examples/login/not_found.html"),
+            item("not found", lnir("book"), "/examples/login/notFound.html"),
+            item("error", lnir("book"), "/examples/login/error.html"),
+            item("loading", lnir("book"), "/examples/login/loading.html"),
             item("login", lnir("book"), "/examples/login/login.html"),
             item("forget", lnir("book"), "/examples/login/forget.html"),
         ]),
