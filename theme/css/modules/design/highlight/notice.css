@@ -1,9 +1,9 @@
 .notice {
     display: block;
 
+    padding: 0.65em 0.75em;
     border: 1px solid transparent;
     border-radius: 0.5rem;
-    padding: 0.5em 0.75em;
 }
 
 .notice + .notice {
