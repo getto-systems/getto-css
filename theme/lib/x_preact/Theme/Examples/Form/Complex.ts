@@ -79,9 +79,7 @@ export function Complex(props: Props): VNode {
             html`
                 <section class="button__container">
                     <button class="button button_edit" onClick=${component.edit}>編集</button>
-                    <button class="button button_delete button_right" onClick=${onDeleteClick}>
-                        削除
-                    </button>
+                    <button class="button button_delete" onClick=${onDeleteClick}>削除</button>
                 </section>
             `
         )
@@ -167,11 +165,7 @@ function CompleteModal({ state, component }: ModalContentProps<CompleteComponent
                     >
                         完了
                     </button>
-                    <button
-                        type="button"
-                        class="button button_cancel button_right"
-                        onClick="${onCloseClick}"
-                    >
+                    <button type="button" class="button button_cancel" onClick="${onCloseClick}">
                         キャンセル
                     </button>
                 </div>`,
@@ -206,11 +200,7 @@ function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): 
                     <button type="button" class="button button_deleteConfirm" onClick="${onDeleteClick}">
                         削除
                     </button>
-                    <button
-                        type="button"
-                        class="button button_cancel button_right"
-                        onClick="${onCloseClick}"
-                    >
+                    <button type="button" class="button button_cancel" onClick="${onCloseClick}">
                         キャンセル
                     </button>
                 </div>`,
@@ -255,11 +245,7 @@ function GenerateModal({ state, component }: ModalContentProps<GenerateComponent
             [
                 html`<div class="button__container">
                     <span></span>
-                    <button
-                        type="button"
-                        class="button button_cancel button_right"
-                        onClick="${onCloseClick}"
-                    >
+                    <button type="button" class="button button_cancel" onClick="${onCloseClick}">
                         閉じる
                     </button>
                 </div>`,

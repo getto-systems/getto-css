@@ -10,9 +10,7 @@ export function FormFooter({ state, component }: Props): VNode {
             return html`
                 <section class="button__container">
                     <button class="button button_edit" onClick=${component.edit}>編集</button>
-                    <button class="button button_delete button_right" onClick=${component.delete}>
-                        削除
-                    </button>
+                    <button class="button button_delete" onClick=${component.delete}>削除</button>
                 </section>
             `
 
@@ -24,8 +22,7 @@ export function FormFooter({ state, component }: Props): VNode {
                 <section class="button__container">
                     ${saveButton(state.state)}
                     <div class="button_right">
-                        ${redoButton(state.state)} ${undoButton(state.state)}
-                        ${closeButton(state.state)}
+                        ${redoButton(state.state)} ${undoButton(state.state)} ${closeButton(state.state)}
                     </div>
                 </section>
                 ${invalidMessage(state.state)}
