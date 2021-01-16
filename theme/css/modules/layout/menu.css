@@ -73,6 +73,7 @@
 
 .menu__nav__item {
     position: relative;
+    font-size: var(--font-size-larger);
 }
 
 .menu__nav__item__label {
@@ -91,6 +92,8 @@
 
 .menu__nav__link {
     display: block;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
 .menu__nav__item_active {

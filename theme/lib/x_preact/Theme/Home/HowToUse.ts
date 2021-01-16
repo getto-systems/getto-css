@@ -30,6 +30,21 @@ export function HowToUse({ howToUse }: Props): VNode {
                     </dl>
                     <dl class="form">
                         <dt class="form__header">バージョン</dt>
+                        <dd class="form__field">
+                            <p>
+                                テキスト
+                            </p>
+                            <p>
+                                テキスト <a>リンク</a>
+                            </p>
+                            <p>
+                                テキスト <span class="label label_alert">ラベル</span>
+                            </p>
+                            <p>
+                                テキスト <span class="badge badge_alert">10</span>
+                            </p>
+                            <p class="notice notice_alert">notice</a>
+                        </dd>
                         <dd class="form__field">${content()}</dd>
                     </dl>
                 </section>

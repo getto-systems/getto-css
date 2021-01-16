@@ -1,11 +1,11 @@
 :root {
-    --font-size-x-large: calc(var(--font-size-large) * 1.96);
-    --font-size-large: calc(var(--font-size-normal) * 1.4);
+    --font-size-x-large: calc(var(--font-size-large) * 1.5625);
+    --font-size-large: calc(var(--font-size-normal) * 1.25);
     --font-size-normal: 20px;
-    --font-size-small: calc(var(--font-size-normal) / 1.4);
+    --font-size-small: calc(var(--font-size-normal) / 1.25);
 
-    --font-size-larger: 140%;
-    --font-size-smaller: 71.4%;
+    --font-size-larger: 125%;
+    --font-size-smaller: 80%;
 
     --height-login: 30rem;
     --height-login-message: 15rem;
