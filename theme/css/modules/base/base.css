@@ -2,19 +2,27 @@ body {
     color: var(--color-black);
     background-color: var(--color-black-off);
     font-size: var(--font-size-normal);
-    line-height: 1.35;
+    line-height: 1.4;
+}
+
+p + p {
+    margin-top: 1em;
 }
 
 a {
     display: inline-block;
     text-align: left;
 
+    font-size: var(--font-size-smaller);
+
     color: var(--color-base);
     text-decoration: none;
 
-    padding: 0.5em;
+    padding: 0.07em 0.75em;
     border: 1px dotted transparent;
     border-radius: 0.5rem;
+
+    vertical-align: middle;
 }
 
 a:hover,
