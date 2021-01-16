@@ -10,14 +10,14 @@ export function box_double(title: VNodeContent, content: VNodeContent): VNode {
     return box_content("box_double", title, content)
 }
 function box_content(boxClass: string, title: VNodeContent, content: VNodeContent): VNode {
-    return html`<section class="box ${boxClass}">
-        <div>
+    return html`<article class="box ${boxClass}">
+        <main>
             <header class="box__header">
                 <h2 class="box__title">${title}</h2>
             </header>
             <section class="box__body paragraph">${content}</section>
-        </div>
-    </section>`
+        </main>
+    </article>`
 }
 
 export function itemsSection(title: VNodeContent, list: VNodeContent[]): VNode {

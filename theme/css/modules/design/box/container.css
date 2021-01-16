@@ -2,13 +2,3 @@
     display: flex;
     flex-wrap: wrap;
 }
-
-.content {
-    margin-bottom: 0.5rem;
-}
-
-@media (--media-mobile) {
-    .content.content_overflow {
-        overflow-x: auto;
-    }
-}

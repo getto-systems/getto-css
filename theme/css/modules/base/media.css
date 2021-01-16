@@ -1,4 +1,6 @@
-@custom-media --media-phone screen and (width < 50rem);
+@custom-media --media-minimum screen and (width < 24rem);
+@custom-media --media-phone screen and (24rem <= width < 50rem);
+@custom-media --media-shallow screen and (width < 50rem);
 @custom-media --media-wide screen and (width >= 50rem);
 @custom-media --media-tablet screen and (50rem <= width < 92.5rem);
 @custom-media --media-mobile screen and (width < 92.5rem);
