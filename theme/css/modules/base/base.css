@@ -1,49 +1,49 @@
 body {
-  color: var(--color-black);
-  background-color: var(--color-black-off);
-  font-size: var(--font-size-normal);
-  line-height: 1.35;
+    color: var(--color-black);
+    background-color: var(--color-black-off);
+    font-size: var(--font-size-normal);
+    line-height: 1.35;
 }
 
 a {
-  display: inline-block;
-  text-align: left;
+    display: inline-block;
+    text-align: left;
 
-  color: var(--color-base);
-  text-decoration: none;
+    color: var(--color-base);
+    text-decoration: none;
 
-  padding: 0.5em;
-  border: 1px dotted transparent;
-  border-radius: 0.5rem;
+    padding: 0.5em;
+    border: 1px dotted transparent;
+    border-radius: 0.5rem;
 }
 
 a:hover,
 a:focus {
-  color: var(--color-base);
-  border-color: var(--color-base);
-  background-color: var(--color-white-transparent);
+    color: var(--color-base);
+    border-color: var(--color-base);
+    background-color: var(--color-white-pure);
 }
 
 small {
-  font-size: var(--font-size-smaller);
+    font-size: var(--font-size-smaller);
 }
 
 big {
-  font-size: var(--font-size-larger);
+    font-size: var(--font-size-larger);
 }
 
 strong {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 hr {
-  border-top: 1px solid var(--color-black);
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
+    border-top: 1px solid var(--color-black);
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
 }
 
 pre {
-  font-family: monospace;
-  overflow-x: auto;
+    font-family: monospace;
+    overflow-x: auto;
 }

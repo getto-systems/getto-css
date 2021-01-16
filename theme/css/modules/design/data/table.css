@@ -1,133 +1,133 @@
 @custom-selector :--cell th, td;
 
 .table {
-  border-collapse: separate;
-  background-color: var(--color-white);
+    border-collapse: separate;
+    background-color: var(--color-white);
 }
 
 .table.table_fill {
-  width: 100%;
+    width: 100%;
 }
 
 .table th {
-  font-size: var(--font-size-small);
-  padding: 0.15rem 0.3rem;
-  white-space: nowrap;
-  text-align: left;
+    font-size: var(--font-size-small);
+    padding: 0.15rem 0.3rem;
+    white-space: nowrap;
+    text-align: left;
 }
 
 .table td {
-  padding: 0.25rem 0.5rem;
-  white-space: nowrap;
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
 }
 
 .table.table_thin td {
-  padding: 0 0.5rem;
-  white-space: nowrap;
+    padding: 0 0.5rem;
+    white-space: nowrap;
 }
 
 th.cell_left {
-  text-align: left;
+    text-align: left;
 }
 
 td.cell_center {
-  text-align: center;
+    text-align: center;
 }
 
 :--cell.cell_right {
-  text-align: right;
+    text-align: right;
 }
 
 :--cell.cell_nokern {
-  font-kerning: none;
+    font-kerning: none;
 }
 
 :--cell.cell_border_t {
-  border-top: 1px solid var(--color-black);
+    border-top: 1px solid var(--color-black);
 }
 
 :--cell.cell_border_tt {
-  border-top: 3px double var(--color-black);
+    border-top: 3px double var(--color-black);
 }
 
 :--cell.cell_border_b {
-  border-bottom: 1px solid var(--color-black);
+    border-bottom: 1px solid var(--color-black);
 }
 
 :--cell.cell_border_bb {
-  border-bottom: 3px double var(--color-black);
+    border-bottom: 3px double var(--color-black);
 }
 
 :--cell.cell_border_l {
-  border-left: 1px solid var(--color-black);
+    border-left: 1px solid var(--color-black);
 }
 
 :--cell.cell_border_ll {
-  border-left: 3px double var(--color-black);
+    border-left: 3px double var(--color-black);
 }
 
 :--cell.cell_border_r {
-  border-right: 1px solid var(--color-black);
+    border-right: 1px solid var(--color-black);
 }
 
 :--cell.cell_border_rr {
-  border-right: 3px double var(--color-black);
+    border-right: 3px double var(--color-black);
 }
 
 .table.table_sticky {
-  position: relative;
+    position: relative;
 }
 
 .cell_sticky {
-  position: sticky;
-  background-color: var(--color-white);
+    position: sticky;
+    background-color: var(--color-white);
 }
 
 .cell_sticky.cell_sticky_top {
-  top: -1px;
+    top: -1px;
 }
 
 .table__sort {
-  display: block;
-  font-weight: bold;
+    display: block;
+    font-weight: bold;
 }
 
 .row.row_edit td {
-  background-color: var(--color-base-off);
+    background-color: var(--color-base-off);
 }
 
 .row.row_hoverable:hover td {
-  background-color: var(--color-white-transparent);
+    background-color: var(--color-white-pure);
 }
 
 .document :--cell.cell_border_t {
-  border-top: 1pt solid var(--color-black);
+    border-top: 1pt solid var(--color-black);
 }
 
 .document :--cell.cell_border_tt {
-  border-top: 2pt solid var(--color-black);
+    border-top: 2pt solid var(--color-black);
 }
 
 .document :--cell.cell_border_b {
-  border-bottom: 1pt solid var(--color-black);
+    border-bottom: 1pt solid var(--color-black);
 }
 
 .document :--cell.cell_border_bb {
-  border-bottom: 2pt solid var(--color-black);
+    border-bottom: 2pt solid var(--color-black);
 }
 
 .document :--cell.cell_border_l {
-  border-left: 1pt solid var(--color-black);
+    border-left: 1pt solid var(--color-black);
 }
 
 .document :--cell.cell_border_ll {
-  border-left: 2pt solid var(--color-black);
+    border-left: 2pt solid var(--color-black);
 }
 
 .document :--cell.cell_border_r {
-  border-right: 1pt solid var(--color-black);
+    border-right: 1pt solid var(--color-black);
 }
 
 .document :--cell.cell_border_rr {
-  border-right: 2pt solid var(--color-black);
+    border-right: 2pt solid var(--color-black);
 }

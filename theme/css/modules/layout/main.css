@@ -1,48 +1,48 @@
 .main__header {
-  margin: 0.5em;
+    margin: 0.5em;
 }
 
 .main__title {
-  font-size: var(--font-size-large);
+    font-size: var(--font-size-x-large);
 
-  padding-left: 0.25em;
-  border-bottom: 1px solid var(--color-black);
+    padding-left: 0.25em;
+    border-bottom: 1px solid var(--color-black);
 }
 
 .main__breadcrumb {
-  text-align: right;
+    text-align: right;
 }
 
 .main__breadcrumb__item {
-  display: inline-block;
+    display: inline-block;
 }
 
 .main__breadcrumb__separator {
-  display: inline-block;
+    display: inline-block;
 
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
 
-  font-size: var(--font-size-smaller);
-  vertical-align: middle;
+    font-size: var(--font-size-smaller);
+    vertical-align: middle;
 }
 
 .main__body {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .main__footer {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
 
-  padding-top: 0.25rem;
-  border-top: 1px dotted var(--color-black);
+    padding-top: 0.25rem;
+    border-top: 1px dotted var(--color-black);
 }
 
 .main__footer__message {
-  font-size: var(--font-size-small);
-  text-align: right;
+    font-size: var(--font-size-small);
+    text-align: right;
 }

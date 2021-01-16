@@ -1,54 +1,54 @@
 .document {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20mm;
 
-  background-color: var(--color-white);
+    background-color: var(--color-white);
 }
 
 .document.document_a4_portrait {
-  width: 165mm;
-  height: 254mm;
+    width: 165mm;
+    height: 254mm;
 }
 
 .document__header {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .document__title {
-  font-size: var(--font-size-large);
-  margin-bottom: 1em;
+    font-size: var(--font-size-x-large);
+    margin-bottom: 1em;
 }
 
 .document__title.document__title_center {
-  text-align: center;
+    text-align: center;
 }
 
 .document__footer {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 
-  border-top: 1px dotted var(--color-black);
-  padding-top: 2.5mm;
-  margin-top: 2.5mm;
+    border-top: 1px dotted var(--color-black);
+    padding-top: 2.5mm;
+    margin-top: 2.5mm;
 }
 
 .document__folio {
-  font-size: var(--font-size-small);
+    font-size: var(--font-size-small);
 }
 
 @media screen {
-  .document {
-    border: 1px solid var(--color-black);
-    box-shadow: 0 0.5mm 2mm var(--color-black-off);
-    margin-bottom: 0.5rem;
-  }
+    .document {
+        border: 1px solid var(--color-black);
+        box-shadow: 0 0.5mm 2mm var(--color-black-off);
+        margin-bottom: 0.5rem;
+    }
 }
 
 @media print {
-  .document {
-    break-after: always;
-    margin: 0;
-  }
+    .document {
+        break-after: always;
+        margin: 0;
+    }
 }
