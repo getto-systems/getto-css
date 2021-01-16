@@ -1,12 +1,12 @@
 @media print {
-  .layout__menu,
-  .main__header,
-  .main__footer,
-  .paper_hide {
-    display: none;
-  }
+    .layout__menu,
+    .main__header,
+    .main__footer,
+    .paper_hide {
+        display: none;
+    }
 
-  @page {
-    margin: 0;
-  }
+    @page {
+        margin: 0;
+    }
 }

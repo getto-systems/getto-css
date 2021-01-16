@@ -1,25 +1,25 @@
 :root {
-  --font-size-large: calc(var(--font-size-medium) * 1.616);
-  --font-size-medium: calc(var(--font-size-normal) * 1.616);
-  --font-size-normal: 18px;
-  --font-size-small: calc(var(--font-size-normal) / 1.616);
+    --font-size-x-large: calc(var(--font-size-large) * 1.96);
+    --font-size-large: calc(var(--font-size-normal) * 1.4);
+    --font-size-normal: 20px;
+    --font-size-small: calc(var(--font-size-normal) / 1.4);
 
-  --font-size-larger: 161.6%;
-  --font-size-smaller: 61.8%;
+    --font-size-larger: 140%;
+    --font-size-smaller: 71.4%;
 
-  --height-login: 30rem;
-  --height-login-message: 15rem;
+    --height-login: 30rem;
+    --height-login-message: 15rem;
 
-  --width-menu: 16rem;
-  --width-box: 20rem;
-  --width-box-double: calc(41.5rem + 2px);
-  --width-search: 12rem;
-  --width-search-double: calc(24.25rem);
+    --width-menu: 16rem;
+    --width-box: 20rem;
+    --width-box-double: calc(41.5rem + 2px);
+    --width-search: 12rem;
+    --width-search-double: calc(24.25rem);
 
-  --width-input-tiny: 2em;
-  --width-input-small: 6em;
-  --width-input-normal: 10em;
-  --width-input-medium: 14em;
-  --width-input-large: 18em;
-  --width-input-xlarge: 22em;
+    --width-input-tiny: 2em;
+    --width-input-small: 6em;
+    --width-input-normal: 10em;
+    --width-input-medium: 14em;
+    --width-input-large: 18em;
+    --width-input-x-large: 22em;
 }

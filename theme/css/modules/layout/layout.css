@@ -1,41 +1,41 @@
 @media screen and (--media-desktop) {
-  .layout {
-    display: flex;
-    flex-direction: row-reverse;
-  }
+    .layout {
+        display: flex;
+        flex-direction: row-reverse;
+    }
 
-  .layout__main {
-    width: calc(100% - var(--width-menu));
-  }
+    .layout__main {
+        width: calc(100% - var(--width-menu));
+    }
 
-  .layout__menu {
-    width: var(--width-menu);
+    .layout__menu {
+        width: var(--width-menu);
 
-    position: fixed;
-    left: 0;
+        position: fixed;
+        left: 0;
 
-    height: 100%;
-    overflow-y: auto;
-  }
+        height: 100%;
+        overflow-y: auto;
+    }
 }
 
 @media screen and (--media-mobile) {
-  .layout__menu__header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
+    .layout__menu__header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
 }
 
 @media screen and (--media-tablet) {
-  .layout__main {
-    margin-top: 6rem;
-  }
+    .layout__main {
+        margin-top: 6rem;
+    }
 }
 
 @media screen and (--media-phone) {
-  .layout__main {
-    margin-top: 7rem;
-  }
+    .layout__main {
+        margin-top: 7rem;
+    }
 }

@@ -1,48 +1,48 @@
 .badge {
-  display: inline-block;
+    display: inline-block;
 
-  border: 1px solid transparent;
-  border-radius: 0.5rem;
-  padding: 0.25em 0.75em;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    padding: 0.25em 0.75em;
 
-  font-size: var(--font-size-smaller);
-  vertical-align: 10%;
+    font-size: var(--font-size-smaller);
+    vertical-align: 10%;
 
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 .badge_gray {
-  color: var(--color-black);
-  border-color: var(--color-black);
-  background-color: var(--color-black-off);
+    color: var(--color-black);
+    border-color: var(--color-black);
+    background-color: var(--color-black-off);
 }
 
 .badge_alert {
-  color: var(--color-alert);
-  border-color: var(--color-alert);
-  background-color: var(--color-alert-off);
+    color: var(--color-alert);
+    border-color: var(--color-alert);
+    background-color: var(--color-alert-off);
 }
 
 .badge_success {
-  color: var(--color-success);
-  border-color: var(--color-success);
-  background-color: var(--color-success-off);
+    color: var(--color-success);
+    border-color: var(--color-success);
+    background-color: var(--color-success-off);
 }
 
 .badge_warning {
-  color: var(--color-warning);
-  border-color: var(--color-warning);
-  background-color: var(--color-warning-off);
+    color: var(--color-warning);
+    border-color: var(--color-warning);
+    background-color: var(--color-warning-off);
 }
 
 .badge_pending {
-  color: var(--color-pending);
-  border-color: var(--color-pending);
-  background-color: var(--color-pending-off);
+    color: var(--color-pending);
+    border-color: var(--color-pending);
+    background-color: var(--color-pending-off);
 }
 
 .badge_info {
-  color: var(--color-base);
-  border-color: var(--color-base);
-  background-color: var(--color-base-off);
+    color: var(--color-base);
+    border-color: var(--color-base);
+    background-color: var(--color-base-off);
 }

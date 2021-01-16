@@ -1,15 +1,15 @@
 .vertical {
-  display: block;
+    display: block;
 }
 
 .vertical_small {
-  height: 0.5rem;
+    height: 0.5rem;
 }
 
 .vertical_medium {
-  height: 1rem;
+    height: 1rem;
 }
 
 .vertical_large {
-  height: 2rem;
+    height: 2rem;
 }

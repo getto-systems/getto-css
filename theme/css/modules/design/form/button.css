@@ -1,62 +1,62 @@
 .button__container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-end;
 }
 
 .button__container.button__container_center {
-  justify-content: center;
+    justify-content: center;
 }
 
 .button_left {
-  order: 1;
+    order: 1;
 }
 
 .button_right {
-  order: 100;
+    order: 100;
 }
 
 .button {
-  display: inline-block;
-  cursor: pointer;
-  border: 1px solid var(--color-black);
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid var(--color-black);
 
-  font-size: var(--font-size-smaller);
-  padding: 0.1em 0.8em;
+    font-size: var(--font-size-smaller);
+    padding: 0.1em 0.8em;
 
-  vertical-align: 20%;
+    vertical-align: 20%;
 
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 .button_left .button {
-  margin-right: 0.25rem;
+    margin-right: 0.25rem;
 }
 
 .button_right .button {
-  margin-left: 0.25rem;
+    margin-left: 0.25rem;
 }
 
 .button.button_edit {
-  color: var(--color-black);
-  border-color: var(--color-black);
-  background-color: var(--color-black-off);
+    color: var(--color-black);
+    border-color: var(--color-black);
+    background-color: var(--color-black-off);
 }
 
 .button.button_edit:hover,
 .button.button_edit:focus {
-  color: var(--color-white);
-  border-color: var(--color-base);
-  background-color: var(--color-base);
+    color: var(--color-white);
+    border-color: var(--color-base);
+    background-color: var(--color-base);
 }
 
 .button.button_save,
 .button.button_search,
 .button.button_cancel {
-  color: var(--color-black);
-  border-color: var(--color-black);
-  background-color: var(--color-black-off);
+    color: var(--color-black);
+    border-color: var(--color-black);
+    background-color: var(--color-black-off);
 }
 
 .button.button_save:hover,
@@ -65,108 +65,108 @@
 .button.button_search:focus,
 .button.button_cancel:hover,
 .button.button_cancel:focus {
-  color: var(--color-black);
-  background-color: var(--color-white-transparent);
+    color: var(--color-black);
+    background-color: var(--color-white-pure);
 }
 
 .button.button_generate,
 .button.button_save.button_modified {
-  color: var(--color-white);
-  border-color: var(--color-base);
-  background-color: var(--color-base);
+    color: var(--color-white);
+    border-color: var(--color-base);
+    background-color: var(--color-base);
 }
 
 .button.button_generate:hover,
 .button.button_generate:focus,
 .button.button_save.button_modified:hover,
 .button.button_save.button_modified:focus {
-  color: var(--color-black);
-  border-color: var(--color-base);
-  background-color: var(--color-white-transparent);
+    color: var(--color-black);
+    border-color: var(--color-base);
+    background-color: var(--color-white-pure);
 }
 
 .button.button_search.button_modified {
-  color: var(--color-white);
-  border-color: var(--color-base);
-  background-color: var(--color-base);
+    color: var(--color-white);
+    border-color: var(--color-base);
+    background-color: var(--color-base);
 }
 
 .button.button_search.button_modified:hover,
 .button.button_search.button_modified:focus {
-  color: var(--color-black);
-  border-color: var(--color-base);
-  background-color: var(--color-white-transparent);
+    color: var(--color-black);
+    border-color: var(--color-base);
+    background-color: var(--color-white-pure);
 }
 
 .button.button_saving {
-  color: var(--color-white);
-  border-color: var(--color-base);
-  background-color: var(--color-base);
-  cursor: wait;
+    color: var(--color-white);
+    border-color: var(--color-base);
+    background-color: var(--color-base);
+    cursor: wait;
 }
 
 .button.button_searching {
-  color: var(--color-white);
-  border-color: var(--color-base);
-  background-color: var(--color-base);
-  cursor: wait;
+    color: var(--color-white);
+    border-color: var(--color-base);
+    background-color: var(--color-base);
+    cursor: wait;
 }
 
 .form_error .button.button_save.button_modified {
-  color: var(--color-white);
-  border-color: var(--color-alert);
-  background-color: var(--color-alert);
-  cursor: no-drop;
+    color: var(--color-white);
+    border-color: var(--color-alert);
+    background-color: var(--color-alert);
+    cursor: no-drop;
 }
 
 .button.button_delete {
-  color: var(--color-black);
-  border-color: var(--color-black);
-  background-color: var(--color-black-off);
+    color: var(--color-black);
+    border-color: var(--color-black);
+    background-color: var(--color-black-off);
 }
 
 .button.button_delete:hover,
 .button.button_delete:focus {
-  color: var(--color-alert);
-  border-color: var(--color-alert);
-  background-color: var(--color-white-transparent);
+    color: var(--color-alert);
+    border-color: var(--color-alert);
+    background-color: var(--color-white-pure);
 }
 
 .button.button_deleteConfirm {
-  color: var(--color-alert);
-  border-color: var(--color-alert);
-  background-color: var(--color-white-transparent);
+    color: var(--color-alert);
+    border-color: var(--color-alert);
+    background-color: var(--color-white-pure);
 }
 
 .button.button_deleteConfirm:hover,
 .button.button_deleteConfirm:focus {
-  color: var(--color-white);
-  border-color: var(--color-alert);
-  background-color: var(--color-alert);
+    color: var(--color-white);
+    border-color: var(--color-alert);
+    background-color: var(--color-alert);
 }
 
 .button.button_complete {
-  color: var(--color-black);
-  border-color: var(--color-black);
-  background-color: var(--color-black-off);
+    color: var(--color-black);
+    border-color: var(--color-black);
+    background-color: var(--color-black-off);
 }
 
 .button.button_complete:hover,
 .button.button_complete:focus {
-  color: var(--color-white);
-  border-color: var(--color-success);
-  background-color: var(--color-success);
+    color: var(--color-white);
+    border-color: var(--color-success);
+    background-color: var(--color-success);
 }
 
 .button.button_completeConfirm {
-  color: var(--color-white);
-  border-color: var(--color-success);
-  background-color: var(--color-success);
+    color: var(--color-white);
+    border-color: var(--color-success);
+    background-color: var(--color-success);
 }
 
 .button.button_completeConfirm:hover,
 .button.button_completeConfirm:focus {
-  color: var(--color-success);
-  border-color: var(--color-success);
-  background-color: var(--color-white-transparent);
+    color: var(--color-success);
+    border-color: var(--color-success);
+    background-color: var(--color-white-pure);
 }

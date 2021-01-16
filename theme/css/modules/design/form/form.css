@@ -1,36 +1,36 @@
 .form__header {
-  font-size: var(--font-size-small);
-  margin-bottom: 1em;
+    font-size: var(--font-size-small);
+    margin-bottom: 1em;
 }
 
 .form__field {
-  margin-left: 1em;
-  margin-bottom: 1em;
+    margin-left: 1em;
+    margin-bottom: 1em;
 }
 
 .form__message,
 .form__help {
-  font-size: var(--font-size-small);
-  margin-left: 0.5em;
-  line-height: 1.7;
+    font-size: var(--font-size-small);
+    margin-left: 0.5em;
+    line-height: 1.7;
 }
 
 .form_error .form__header,
 .form_error .form__message {
-  color: var(--color-alert);
+    color: var(--color-alert);
 }
 
 .form_error :--input {
-  border-color: var(--color-alert);
-  background-color: var(--color-alert-off);
+    border-color: var(--color-alert);
+    background-color: var(--color-alert-off);
 }
 
 .form_warning .form__header,
 .form_warning .form__message {
-  color: var(--color-warning);
+    color: var(--color-warning);
 }
 
 .form_warning :--input {
-  border-color: var(--color-warning);
-  background-color: var(--color-warning-off);
+    border-color: var(--color-warning);
+    background-color: var(--color-warning-off);
 }

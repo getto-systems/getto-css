@@ -1,48 +1,48 @@
 .label {
-  display: inline-block;
+    display: inline-block;
 
-  border: 1px solid transparent;
-  padding: 0.2em 0.75em;
-  cursor: default;
+    border: 1px solid transparent;
+    padding: 0.2em 0.75em;
+    cursor: default;
 
-  font-size: var(--font-size-smaller);
-  vertical-align: 10%;
+    font-size: var(--font-size-smaller);
+    vertical-align: 10%;
 
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 .label_gray {
-  color: var(--color-black);
-  border-color: var(--color-black);
-  background-color: var(--color-black-off);
+    color: var(--color-black);
+    border-color: var(--color-black);
+    background-color: var(--color-black-off);
 }
 
 .label_alert {
-  color: var(--color-alert);
-  border-color: var(--color-alert);
-  background-color: var(--color-alert-off);
+    color: var(--color-alert);
+    border-color: var(--color-alert);
+    background-color: var(--color-alert-off);
 }
 
 .label_success {
-  color: var(--color-success);
-  border-color: var(--color-success);
-  background-color: var(--color-success-off);
+    color: var(--color-success);
+    border-color: var(--color-success);
+    background-color: var(--color-success-off);
 }
 
 .label_warning {
-  color: var(--color-warning);
-  border-color: var(--color-warning);
-  background-color: var(--color-warning-off);
+    color: var(--color-warning);
+    border-color: var(--color-warning);
+    background-color: var(--color-warning-off);
 }
 
 .label_pending {
-  color: var(--color-pending);
-  border-color: var(--color-pending);
-  background-color: var(--color-pending-off);
+    color: var(--color-pending);
+    border-color: var(--color-pending);
+    background-color: var(--color-pending-off);
 }
 
 .label_info {
-  color: var(--color-base);
-  border-color: var(--color-base);
-  background-color: var(--color-base-off);
+    color: var(--color-base);
+    border-color: var(--color-base);
+    background-color: var(--color-base-off);
 }
