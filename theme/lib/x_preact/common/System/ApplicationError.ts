@@ -9,13 +9,21 @@ type Props = Readonly<{
 
 export function ApplicationError({ err }: Props): VNode {
     return fullScreenError(
-        html`アプリケーション実行中にエラーが発生しました`,
-        html`
-            <p>エラーが発生したため、アプリケーションは動作を停止しました</p>
-            <p>(詳細: ${err})</p>
-            ${v_medium()}
-            <p>お手数ですが、管理者にご連絡お願いします</p>
-        `,
-        html``
+        html`システムエラーが発生しました`,
+        [
+            html`<p>エラーが発生したため、処理を中断しました</p>`,
+            html`<p>詳細: ${err}</p>`,
+            v_medium(),
+            html`<p>お手数ですが、管理者にご連絡お願いします</p>`,
+        ],
+        html`<section class="button__container">
+            <div></div>
+            <div class="login__link">${reloadLink()}</div>
+        </section>`
     )
+
+    function reloadLink() {
+        // search param をリセットしてやり直してみる
+        return html`<a href="?"><i class="lnir lnir-reload"></i> 再読み込み</a>`
+    }
 }
