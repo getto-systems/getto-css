@@ -1,13 +1,13 @@
 .label {
     display: inline-block;
-
-    border: 1px solid transparent;
-    padding: 0.2em 0.75em;
     cursor: default;
 
     font-size: var(--font-size-smaller);
-    vertical-align: 10%;
 
+    padding: 0.07em 0.75em;
+    border: 1px solid transparent;
+
+    vertical-align: middle;
     white-space: nowrap;
 }
 
