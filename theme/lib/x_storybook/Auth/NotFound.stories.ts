@@ -6,7 +6,7 @@ import { NotFound } from "../../x_preact/Auth/NotFound"
 import { newNotFound } from "../../auth/NotFound/NotFound/mock"
 import { mapCurrentVersionMockProps } from "../../auth/NotFound/currentVersion/mock"
 
-import "../../../../css/getto.css"
+import "../../../css/getto.css"
 
 export default {
     title: "Auth/NotFound",

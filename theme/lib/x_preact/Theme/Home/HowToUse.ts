@@ -24,7 +24,7 @@ export function HowToUse({ howToUse }: Props): VNode {
                 <section class="box__body">
                     <dl class="form">
                         <dt class="form__header">リンクタグ</dt>
-                        <dd class="form__field">
+                        <dd class="form__field content_overflow">
                             <pre>${linkTag()}</pre>
                         </dd>
                     </dl>
