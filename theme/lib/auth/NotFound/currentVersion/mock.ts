@@ -1,5 +1,5 @@
 import { MockComponent } from "../../../z_external/mock/component"
-import { markVersion } from "../../currentVersion/data"
+import { markVersion } from "../../permission/currentVersion/data"
 
 import { CurrentVersionComponent, CurrentVersionState } from "./component"
 

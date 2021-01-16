@@ -2,7 +2,7 @@ import { NotFoundResource } from "../view"
 
 import { CurrentVersionComponentFactory } from "../../currentVersion/component"
 
-import { CurrentVersionAction } from "../../../currentVersion/action"
+import { CurrentVersionAction } from "../../../permission/currentVersion/action"
 
 export type NotFoundFactory = Readonly<{
     actions: Readonly<{
