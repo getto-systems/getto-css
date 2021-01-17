@@ -19,8 +19,8 @@ export function PasswordBox(props: Props): VNode {
         [
             form("small", [html`<input type="password" class="input_small" onInput=${onInput} />`]),
             form("default", [html`<input type="password" onInput=${onInput} />`]),
-            form("medium", [html`<input type="password" class="input_medium" onInput=${onInput} />`]),
             form("large", [html`<input type="password" class="input_large" onInput=${onInput} />`]),
+            form("extra large", [html`<input type="password" class="input_xLarge" onInput=${onInput} />`]),
             form("fill", [html`<input type="password" class="input_fill" onInput=${onInput} />`]),
         ],
         h(FormFooter, props)

@@ -58,7 +58,7 @@ export function noTitleBoxContent(boxClass: string, content: VNodeContent, foote
 
 function boxHeader(title: VNodeContent) {
     return html`<header class="box__header">
-        <h2 class="box__title">${title}</h2>
+        <h2>${title}</h2>
     </header>`
 }
 function boxBody(content: VNodeContent) {
@@ -118,6 +118,13 @@ function toFormMessage(message: VNodeContent) {
 }
 function toFormHelp(message: VNodeContent) {
     return html`<p>${message}</p>`
+}
+
+export function buttons(left: VNodeContent, right: VNodeContent): VNode {
+    return html`<aside class="button__container">
+        <section class="button_left">${left}</section>
+        <section class="button_right">${right}</section>
+    </aside>`
 }
 
 export function search(title: VNodeContent, content: VNodeContent): VNode {

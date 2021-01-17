@@ -5,8 +5,25 @@
     align-items: flex-end;
 }
 
-.button__container.button__container_center {
+.button__container + .button__container {
+    margin-top: var(--content-vertical-space-small);
+}
+
+.button__container_center {
     justify-content: center;
+}
+
+.button_left .button {
+    margin-right: 0.25rem;
+}
+
+.button_right {
+    align-self: stretch;
+    text-align: right;
+}
+
+.button_right .button {
+    margin-left: 0.25rem;
 }
 
 .button {
@@ -23,143 +40,152 @@
     white-space: nowrap;
 }
 
-.button_left .button {
-    margin-right: 0.25rem;
-}
-
-.button_right .button {
-    margin-left: 0.25rem;
-}
-
-.button.button_edit {
+.button_edit,
+.button_delete,
+.button_complete,
+.button_warning,
+.button_pending,
+.button_undo,
+.button_redo,
+.button_cancel {
     color: var(--color-black);
     border-color: var(--color-black);
     background-color: var(--color-black-off);
 }
 
-.button.button_edit:hover,
-.button.button_edit:focus {
-    color: var(--color-white);
-    border-color: var(--color-base);
-    background-color: var(--color-base);
-}
-
-.button.button_save,
-.button.button_search,
-.button.button_cancel {
+.button_disabled {
+    cursor: not-allowed;
     color: var(--color-black);
     border-color: var(--color-black);
-    background-color: var(--color-black-off);
+    background-color: var(--color-black-alpha);
 }
 
-.button.button_save:hover,
-.button.button_save:focus,
-.button.button_search:hover,
-.button.button_search:focus,
-.button.button_cancel:hover,
-.button.button_cancel:focus {
-    color: var(--color-black);
-    background-color: var(--color-white-pure);
-}
-
-.button.button_generate,
-.button.button_save.button_modified {
-    color: var(--color-white);
-    border-color: var(--color-base);
-    background-color: var(--color-base);
-}
-
-.button.button_generate:hover,
-.button.button_generate:focus,
-.button.button_save.button_modified:hover,
-.button.button_save.button_modified:focus {
-    color: var(--color-black);
-    border-color: var(--color-base);
-    background-color: var(--color-white-pure);
-}
-
-.button.button_search.button_modified {
-    color: var(--color-white);
-    border-color: var(--color-base);
-    background-color: var(--color-base);
-}
-
-.button.button_search.button_modified:hover,
-.button.button_search.button_modified:focus {
-    color: var(--color-black);
-    border-color: var(--color-base);
-    background-color: var(--color-white-pure);
-}
-
-.button.button_saving {
-    color: var(--color-white);
-    border-color: var(--color-base);
-    background-color: var(--color-base);
+.button_connect {
     cursor: wait;
 }
 
-.button.button_searching {
+.button_edit:hover,
+.button_edit:focus {
     color: var(--color-white);
     border-color: var(--color-base);
     background-color: var(--color-base);
-    cursor: wait;
 }
 
-.form_error .button.button_save.button_modified {
+.button_edit.button_confirm,
+.button_edit.button_connect {
     color: var(--color-white);
-    border-color: var(--color-alert);
-    background-color: var(--color-alert);
-    cursor: no-drop;
+    border-color: var(--color-base);
+    background-color: var(--color-base);
 }
 
-.button.button_delete {
-    color: var(--color-black);
-    border-color: var(--color-black);
-    background-color: var(--color-black-off);
-}
-
-.button.button_delete:hover,
-.button.button_delete:focus {
-    color: var(--color-alert);
-    border-color: var(--color-alert);
+.button_edit.button_confirm:hover,
+.button_edit.button_confirm:focus {
+    color: var(--color-base);
+    border-color: var(--color-base);
     background-color: var(--color-white-pure);
 }
 
-.button.button_deleteConfirm {
-    color: var(--color-alert);
-    border-color: var(--color-alert);
-    background-color: var(--color-white-pure);
-}
-
-.button.button_deleteConfirm:hover,
-.button.button_deleteConfirm:focus {
+.button_delete:hover,
+.button_delete:focus {
     color: var(--color-white);
     border-color: var(--color-alert);
     background-color: var(--color-alert);
 }
 
-.button.button_complete {
-    color: var(--color-black);
-    border-color: var(--color-black);
-    background-color: var(--color-black-off);
+.button_delete.button_confirm,
+.button_delete.button_connect {
+    color: var(--color-white);
+    border-color: var(--color-alert);
+    background-color: var(--color-alert);
 }
 
-.button.button_complete:hover,
-.button.button_complete:focus {
+.button_delete.button_confirm:hover,
+.button_delete.button_confirm:focus {
+    color: var(--color-alert);
+    border-color: var(--color-alert);
+    background-color: var(--color-white-pure);
+}
+
+.button_complete:hover,
+.button_complete:focus {
     color: var(--color-white);
     border-color: var(--color-success);
     background-color: var(--color-success);
 }
 
-.button.button_completeConfirm {
+.button_complete.button_confirm,
+.button_complete.button_connect {
     color: var(--color-white);
     border-color: var(--color-success);
     background-color: var(--color-success);
 }
 
-.button.button_completeConfirm:hover,
-.button.button_completeConfirm:focus {
+.button_complete.button_confirm:hover,
+.button_complete.button_confirm:focus {
     color: var(--color-success);
     border-color: var(--color-success);
+    background-color: var(--color-white-pure);
+}
+
+.button_warning:hover,
+.button_warning:focus {
+    color: var(--color-white);
+    border-color: var(--color-warning);
+    background-color: var(--color-warning);
+}
+
+.button_warning.button_confirm,
+.button_warning.button_connect {
+    color: var(--color-white);
+    border-color: var(--color-warning);
+    background-color: var(--color-warning);
+}
+
+.button_warning.button_confirm:hover,
+.button_warning.button_confirm:focus {
+    color: var(--color-warning);
+    border-color: var(--color-warning);
+    background-color: var(--color-white-pure);
+}
+
+.button_pending:hover,
+.button_pending:focus {
+    color: var(--color-white);
+    border-color: var(--color-pending);
+    background-color: var(--color-pending);
+}
+
+.button_pending.button_confirm,
+.button_pending.button_connect {
+    color: var(--color-white);
+    border-color: var(--color-pending);
+    background-color: var(--color-pending);
+}
+
+.button_pending.button_confirm:hover,
+.button_pending.button_confirm:focus {
+    color: var(--color-pending);
+    border-color: var(--color-pending);
+    background-color: var(--color-white-pure);
+}
+
+.button_cancel:hover,
+.button_cancel:focus {
+    color: var(--color-black);
+    border-color: var(--color-black);
+    background-color: var(--color-white-pure);
+}
+
+.button_undo:hover,
+.button_undo:focus {
+    color: var(--color-alert);
+    border-color: var(--color-alert);
+    background-color: var(--color-white-pure);
+}
+
+.button_redo:hover,
+.button_redo:focus {
+    color: var(--color-base);
+    border-color: var(--color-base);
     background-color: var(--color-white-pure);
 }

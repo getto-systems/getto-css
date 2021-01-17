@@ -17,11 +17,8 @@
 
 .box__header {
     border-bottom: 1px solid var(--color-black);
-    padding-top: 0.25rem;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+    padding: calc(0.2em - 1px) 0.25rem;
+    margin-bottom: var(--content-vertical-space-small);
 }
 
 .box__footer {
