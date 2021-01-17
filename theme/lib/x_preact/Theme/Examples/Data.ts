@@ -8,14 +8,14 @@ import { footer, menuHeader, menuFooter } from "../../layout"
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MenuList } from "../../Outline/MenuList"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
-import { Container } from "./List/Container"
+import { Container } from "./Data/Container"
 
 import { ExampleEntryPoint } from "../../../theme/Example/view"
 
 type Props = Readonly<{
     example: ExampleEntryPoint
 }>
-export function List({ example: { resource, terminate } }: Props): VNode {
+export function Data({ example: { resource, terminate } }: Props): VNode {
     const [err] = useErrorBoundary((err) => {
         // 認証していないのでエラーはどうしようもない
         console.log(err)
@@ -28,10 +28,10 @@ export function List({ example: { resource, terminate } }: Props): VNode {
     useTerminate(terminate)
 
     useEffect(() => {
-        document.title = `List | ${document.title}`
+        document.title = `Data | ${document.title}`
     }, [])
 
-    const title = html`List`
+    const title = html`Data`
 
     return html`
         <main class="layout">

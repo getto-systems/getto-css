@@ -2,8 +2,8 @@ import { render, h } from "preact"
 
 import { newExampleAsSingle } from "../../../../theme/Example/main/single"
 
-import { List } from "../../../../x_preact/Theme/Examples/List"
+import { Data } from "../../../../x_preact/Theme/Examples/Data"
 
 import "../../../../../css/getto.css"
 
-render(h(List, { example: newExampleAsSingle() }), document.body)
+render(h(Data, { example: newExampleAsSingle() }), document.body)
