@@ -19,7 +19,10 @@ export function TextArea(props: Props): VNode {
         [
             form("small", [html`<textarea class="input_small" rows="1" onInput=${onInput}></textarea>`]),
             form("default", [html`<textarea rows="2" onInput=${onInput}></textarea>`]),
-            form("medium", [html`<textarea class="input_medium" rows="2" onInput=${onInput}></textarea>`]),
+            form("large", [html`<textarea class="input_large" rows="2" onInput=${onInput}></textarea>`]),
+            form("extra large", [
+                html`<textarea class="input_xLarge" rows="2" onInput=${onInput}></textarea>`,
+            ]),
             form("fill", [html`<textarea class="input_fill" rows="2" onInput=${onInput}></textarea>`]),
         ],
         h(FormFooter, props)

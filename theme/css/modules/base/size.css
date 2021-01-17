@@ -19,9 +19,9 @@
     --width-input-tiny: 2em;
     --width-input-small: 6em;
     --width-input-normal: 10em;
-    --width-input-medium: 14em;
-    --width-input-large: 18em;
-    --width-input-x-large: 22em;
+    --width-input-large: 14em;
+    --width-input-x-large: 20em;
+    --width-input-xx-large: 28em;
 
     --content-vertical-space-tiny: calc(var(--content-vertical-space-small) / 2);
     --content-vertical-space-small: 0.7em;
