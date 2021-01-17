@@ -41,12 +41,14 @@
 }
 
 .button_edit,
+.button_search,
 .button_delete,
 .button_complete,
 .button_warning,
 .button_pending,
 .button_undo,
 .button_redo,
+.button_close,
 .button_cancel {
     color: var(--color-black);
     border-color: var(--color-black);
@@ -65,21 +67,27 @@
 }
 
 .button_edit:hover,
-.button_edit:focus {
+.button_edit:focus,
+.button_search:hover,
+.button_search:focus {
     color: var(--color-white);
     border-color: var(--color-base);
     background-color: var(--color-base);
 }
 
 .button_edit.button_confirm,
-.button_edit.button_connect {
+.button_edit.button_connect,
+.button_search.button_confirm,
+.button_search.button_connect {
     color: var(--color-white);
     border-color: var(--color-base);
     background-color: var(--color-base);
 }
 
 .button_edit.button_confirm:hover,
-.button_edit.button_confirm:focus {
+.button_edit.button_confirm:focus,
+.button_search.button_confirm:hover,
+.button_search.button_confirm:focus {
     color: var(--color-base);
     border-color: var(--color-base);
     background-color: var(--color-white-pure);
@@ -169,6 +177,8 @@
     background-color: var(--color-white-pure);
 }
 
+.button_close:hover,
+.button_close:focus,
 .button_cancel:hover,
 .button_cancel:focus {
     color: var(--color-black);

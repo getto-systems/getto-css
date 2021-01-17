@@ -101,7 +101,7 @@ export function formWithHelp_error(
 ): VNode {
     return form_error(
         title,
-        html`${content} ${formHelp([...help.map(toFormHelp), ...notices.map(toFormMessage)])}`
+        html`${content} ${formHelp([...help.map(toFormHelp), ...notices.map(toFormNotice)])}`
     )
 }
 export function formWithHelp_warning(
@@ -112,7 +112,7 @@ export function formWithHelp_warning(
 ): VNode {
     return form_warning(
         title,
-        html`${content} ${formHelp([...help.map(toFormHelp), ...notices.map(toFormMessage)])}`
+        html`${content} ${formHelp([...help.map(toFormHelp), ...notices.map(toFormNotice)])}`
     )
 }
 export function searchWithHelp(title: VNodeContent, content: VNodeContent, help: VNodeContent[]): VNode {
@@ -122,7 +122,7 @@ export function searchWithHelp(title: VNodeContent, content: VNodeContent, help:
 function formHelp(content: VNodeContent) {
     return html`<aside class="form__help">${content}</aside>`
 }
-function toFormMessage(message: VNodeContent) {
+function toFormNotice(message: VNodeContent) {
     return html`<p class="form__notice">${message}</p>`
 }
 function toFormHelp(message: VNodeContent) {

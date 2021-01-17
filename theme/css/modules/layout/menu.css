@@ -1,5 +1,6 @@
 .menu {
     min-height: 100%;
+    background-color: var(--color-black-off);
 }
 
 .menu__header {

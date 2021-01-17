@@ -47,7 +47,7 @@ export function FormFooter({ state, component }: Props): VNode {
         if (state.undoEnabled) {
             return html`<button class="button button_disabled">閉じる</button>`
         } else {
-            return html`<button class="button button_cancel" onClick=${component.close}>閉じる</button>`
+            return html`<button class="button button_close" onClick=${component.close}>閉じる</button>`
         }
     }
     function redoButton(state: EditState) {
