@@ -59,17 +59,17 @@ function SearchFooter({ state, component }: SearchFooterProps) {
     }
 
     function searchingButton() {
-        return html`<button class="button button_edit button_connect" type="button">
+        return html`<button class="button button_search button_connect" type="button">
             <i class="lnir lnir-spinner lnir-is-spinning"></i> 検索中
         </button>`
     }
     function searchButton(state: EditState) {
         if (state.modified) {
-            return html`<button class="button button_edit button_confirm" onClick="${onSearchClick}">
+            return html`<button class="button button_search button_confirm" onClick="${onSearchClick}">
                 検索
             </button>`
         } else {
-            return html`<button class="button button_edit" onClick="${onSearchClick}">検索</button>`
+            return html`<button class="button button_search" onClick="${onSearchClick}">検索</button>`
         }
     }
 

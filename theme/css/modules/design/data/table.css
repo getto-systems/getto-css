@@ -113,35 +113,3 @@
 .row_hover:hover td {
     background-color: var(--color-base-off);
 }
-
-.document .cell_border_t {
-    border-top: 1pt solid var(--color-black);
-}
-
-.document .cell_border_tt {
-    border-top: 2pt solid var(--color-black);
-}
-
-.document .cell_border_b {
-    border-bottom: 1pt solid var(--color-black);
-}
-
-.document .cell_border_bb {
-    border-bottom: 2pt solid var(--color-black);
-}
-
-.document .cell_border_l {
-    border-left: 1pt solid var(--color-black);
-}
-
-.document .cell_border_ll {
-    border-left: 2pt solid var(--color-black);
-}
-
-.document .cell_border_r {
-    border-right: 1pt solid var(--color-black);
-}
-
-.document .cell_border_rr {
-    border-right: 2pt solid var(--color-black);
-}
