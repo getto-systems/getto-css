@@ -17,10 +17,10 @@ export function TextArea(props: Props): VNode {
     return fullBox_double(
         "text area",
         [
-            form("small", [html`<textarea class="input_small" onInput=${onInput}></textarea>`]),
-            form("default", [html`<textarea onInput=${onInput}></textarea>`]),
-            form("medium", [html`<textarea class="input_medium" onInput=${onInput}></textarea>`]),
-            form("fill", [html`<textarea class="input_fill" onInput=${onInput}></textarea>`]),
+            form("small", [html`<textarea class="input_small" rows="1" onInput=${onInput}></textarea>`]),
+            form("default", [html`<textarea rows="2" onInput=${onInput}></textarea>`]),
+            form("medium", [html`<textarea class="input_medium" rows="2" onInput=${onInput}></textarea>`]),
+            form("fill", [html`<textarea class="input_fill" rows="2" onInput=${onInput}></textarea>`]),
         ],
         h(FormFooter, props)
     )

@@ -26,6 +26,11 @@ export function Misc(props: Props): VNode {
                     <option>完了</option>
                 </select>`,
             ]),
+            form("long select", [
+                html`<select onChange=${onInput}>
+                    <option>長い選択肢。さらに長い選択肢。より長い選択肢。</option>
+                </select>`,
+            ]),
             form("date", [html`<input type="date" onInput=${onInput} />`]),
             form("time", [html`<input type="time" onInput=${onInput} />`]),
             form("file", [html`<input type="file" onInput=${onInput} />`]),
