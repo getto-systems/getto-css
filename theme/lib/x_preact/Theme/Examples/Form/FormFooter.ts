@@ -69,8 +69,8 @@ export function FormFooter({ state, component }: Props): VNode {
         if (!state.invalid) {
             return html``
         }
-        return html`<section class="form_error">
-            <p class="form__help form__notice">保存できない項目があります</p>
-        </section>`
+        return html`<aside class="form__help form_error">
+            <p class="form__notice">保存できない項目があります</p>
+        </aside>`
     }
 }

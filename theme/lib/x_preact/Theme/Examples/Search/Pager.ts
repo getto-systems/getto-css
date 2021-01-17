@@ -20,6 +20,6 @@ export function Pager(_: Props): VNode {
         </select>`
     }
     function button() {
-        return html`<button class="button button_search">移動</button>`
+        return html`<button class="button button_edit">移動</button>`
     }
 }

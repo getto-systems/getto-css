@@ -62,7 +62,6 @@ const Template: Story<MockProps> = (args) => {
 
 function initMockComponent(): SearchComponent {
     return {
-        inputInvalidValue: noop,
         inputValidValue: noop,
         search: noop,
     }
