@@ -98,14 +98,14 @@ export function Complex(props: Props): VNode {
                     formWithHelp_error(
                         "名前",
                         html`<input type="text" value="GETTO CSS" onInput=${onInput} />`,
-                        ["名前は必須です"],
-                        ["プロジェクト名"]
+                        ["プロジェクトの識別に使用します"],
+                        ["名前は必須です"]
                     ),
                     formWithHelp_warning(
                         "メールアドレス",
                         html`<input type="email" value="admin@example.com" onInput=${onInput} />`,
-                        ["メールアドレスが初期値のままです"],
-                        ["連絡先メールアドレス"]
+                        ["重要なメッセージの通知先として使用します"],
+                        ["メールアドレスが初期値のままです"]
                     ),
                 ],
                 h(FormFooter, props)
@@ -117,7 +117,7 @@ export function Complex(props: Props): VNode {
                     formWithHelp(
                         "名前",
                         html`<input type="text" value="GETTO CSS" onInput=${onInputAsInvalid} />`,
-                        ["プロジェクト名"]
+                        ["プロジェクトの識別に使用します"]
                     ),
                     formWithHelp(
                         "メールアドレス",
@@ -126,7 +126,7 @@ export function Complex(props: Props): VNode {
                             value="admin@example.com"
                             onInput=${onInputAsInvalid}
                         />`,
-                        ["連絡先メールアドレス"]
+                        ["重要なメッセージの通知先として使用します"]
                     ),
                 ],
                 h(FormFooter, props)

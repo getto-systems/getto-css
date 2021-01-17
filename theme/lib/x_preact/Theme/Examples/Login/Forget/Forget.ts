@@ -67,8 +67,8 @@ export function Forget({ state, component }: Props): VNode {
                     formWithHelp_error(
                         "ログインID",
                         html`<input type="text" class="input_fill" onInput=${onInput} />`,
-                        ["ログインIDを入力してください"],
-                        ["登録されたメールアドレスにリセットトークンを送信します"]
+                        ["登録されたメールアドレスにリセットトークンを送信します"],
+                        ["ログインIDを入力してください"]
                     ),
                 ])
             )

@@ -72,8 +72,8 @@
 
 .menu__nav__link {
     display: flex;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: calc(0.7em - 1px);
+    padding-bottom: calc(0.7em - 1px);
     padding-right: 0.5em;
 }
 

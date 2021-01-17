@@ -53,14 +53,14 @@ export function Login({ state, component }: Props): VNode {
                     formWithHelp_error(
                         "ログインID",
                         html`<input type="text" class="input_fill" onInput=${onInput} />`,
-                        ["ログインIDを入力してください"],
-                        []
+                        [],
+                        ["ログインIDを入力してください"]
                     ),
                     formWithHelp_error(
                         "パスワード",
                         html`<input type="password" class="input_fill" onInput=${onInput} />`,
-                        ["パスワードを入力してください"],
-                        []
+                        [],
+                        ["パスワードを入力してください"]
                     ),
                 ])
             )

@@ -7,7 +7,7 @@ body {
 
 .content + .content,
 p + p {
-    margin-top: 0.7em;
+    margin-top: var(--content-vertical-space-small);
 }
 
 .content_overflow {
