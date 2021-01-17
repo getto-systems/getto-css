@@ -11,10 +11,9 @@ import {
     formWithHelp_warning,
     fullBox,
     fullModal,
-    modal,
 } from "../box"
 
-import { CompleteComponent, DeleteComponent, EditState, FormProps, GenerateComponent } from "./Container"
+import { CompleteComponent, DeleteComponent, EditState, FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
 import { Modal, ModalContentProps, ModalProps } from "./Modal"
 
@@ -23,7 +22,6 @@ type Props = FormProps &
         modal: Readonly<{
             complete: ModalProps<CompleteComponent>
             delete: ModalProps<DeleteComponent>
-            generate: ModalProps<GenerateComponent>
         }>
     }>
 export function Complex(props: Props): VNode {
@@ -33,7 +31,7 @@ export function Complex(props: Props): VNode {
         case "static":
             return html`
                 ${staticBox()} ${h(Modal(CompleteModal), modal.complete)}
-                ${h(Modal(DeleteModal), modal.delete)} ${h(Modal(GenerateModal), modal.generate)}
+                ${h(Modal(DeleteModal), modal.delete)}
             `
 
         case "editing":
@@ -44,9 +42,6 @@ export function Complex(props: Props): VNode {
     function staticBox() {
         function onCompleteClick() {
             modal.complete.component.open(null)
-        }
-        function onGenerateClick() {
-            modal.generate.component.generate(null)
         }
         function onDeleteClick() {
             modal.delete.component.open(null)
@@ -61,15 +56,6 @@ export function Complex(props: Props): VNode {
                         <big>
                             <button class="button button_complete" onClick=${onCompleteClick}>
                                 ${i("checkmark")} 完了にする
-                            </button>
-                        </big>
-                    `,
-                ]),
-                form("report", [
-                    html`
-                        <big>
-                            <button class="button button_generate" onClick=${onGenerateClick}>
-                                ${i("file")} レポートを作成
                             </button>
                         </big>
                     `,
@@ -201,51 +187,6 @@ function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): 
                     </button>
                     <button type="button" class="button button_cancel" onClick="${onCloseClick}">
                         キャンセル
-                    </button>
-                </div>`,
-            ]
-        )
-    }
-}
-function GenerateModal({ state, component }: ModalContentProps<GenerateComponent>): VNode {
-    function onCloseClick() {
-        component.close(null)
-    }
-
-    if (state.connecting) {
-        return modal(
-            "レポート作成中",
-            html`<div class="loading loading_box">
-                <i class="lnir lnir-spinner lnir-is-spinning"></i>
-                <p class="loading__message">読み込み中です</p>
-            </div>`
-        )
-    } else {
-        return fullModal(
-            "レポートダウンロード",
-            html`必要な書類をダウンロードしてください
-                <ul class="list">
-                    <li class="list__item">
-                        <a href="#"><i class="lnir lnir-files"></i> 作業申請書</a>
-                    </li>
-                    <li class="list__item">
-                        <a href="#"><i class="lnir lnir-files"></i> 作業申請書</a>
-                    </li>
-                    <li class="list__item">
-                        <a href="#"><i class="lnir lnir-files"></i> 作業申請書</a>
-                    </li>
-                    <li class="list__item">
-                        <a href="#"><i class="lnir lnir-files"></i> 作業申請書</a>
-                    </li>
-                    <li class="list__item">
-                        <a href="#"><i class="lnir lnir-files"></i> 作業申請書</a>
-                    </li>
-                </ul>`,
-            [
-                html`<div class="button__container">
-                    <span></span>
-                    <button type="button" class="button button_cancel" onClick="${onCloseClick}">
-                        閉じる
                     </button>
                 </div>`,
             ]

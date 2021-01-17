@@ -6,7 +6,6 @@ import {
     DeleteComponent,
     FormComponent,
     FormState,
-    GenerateComponent,
 } from "../../../x_preact/Theme/Examples/Form/Container"
 import { ModalState } from "../../../x_preact/Theme/Examples/Form/Modal"
 
@@ -42,7 +41,6 @@ const Template: Story<MockProps> = (args) => {
         modal: {
             complete: { state: modal.complete, component: initMockCompleteComponent() },
             delete: { state: modal.delete, component: initMockDeleteComponent() },
-            generate: { state: modal.generate, component: initMockGenerateComponent() },
         },
     })
 
@@ -251,12 +249,6 @@ function initMockDeleteComponent(): DeleteComponent {
         open: noop,
         close: noop,
         delete: noop,
-    }
-}
-function initMockGenerateComponent(): GenerateComponent {
-    return {
-        generate: noop,
-        close: noop,
     }
 }
 function noop() {

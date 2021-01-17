@@ -115,7 +115,6 @@ export function Container(_: ContainerProps): VNode {
         const modal = {
             complete: useCompleteModal(),
             delete: useDeleteModal(),
-            generate: useGenerateModal(),
         }
         return {
             ...useStaticFormProps({
@@ -157,22 +156,6 @@ export function Container(_: ContainerProps): VNode {
 
                 setTimeout(() => {
                     setState({ active: false })
-                }, 3000)
-            },
-            close: () => {
-                setState({ active: false })
-            },
-        }
-        return { state, component }
-    }
-    function useGenerateModal(): ModalProps<GenerateComponent> {
-        const [state, setState] = useState<ModalState>({ active: false })
-        const component: GenerateComponent = {
-            generate: () => {
-                setState({ active: true, state: { connecting: true } })
-
-                setTimeout(() => {
-                    setState({ active: true, state: { connecting: false } })
                 }, 3000)
             },
             close: () => {
@@ -229,11 +212,6 @@ export interface CompleteComponent {
 export interface DeleteComponent {
     open: Post<null>
     delete: Post<null>
-    close: Post<null>
-}
-
-export interface GenerateComponent {
-    generate: Post<null>
     close: Post<null>
 }
 
