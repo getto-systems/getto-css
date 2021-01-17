@@ -32,6 +32,6 @@
 
 @import "./modules/design/loading/loading.css";
 
-@import "./modules/design/alignment/list.css";
+@import "./modules/design/alignment/no-wrap.css";
 @import "./modules/design/alignment/vertical.css";
 @import "./modules/design/alignment/visibility.css";

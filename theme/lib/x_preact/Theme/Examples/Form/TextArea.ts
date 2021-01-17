@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { form, fullBox_double_editing } from "../box"
+import { form, fullBox_double } from "../box"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -14,7 +14,7 @@ export function TextArea(props: Props): VNode {
         component.inputValidValue(null)
     }
 
-    return fullBox_double_editing(
+    return fullBox_double(
         "text area",
         [
             form("small", [html`<textarea class="input_small" onInput=${onInput}></textarea>`]),

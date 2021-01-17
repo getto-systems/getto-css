@@ -10,7 +10,6 @@ import {
     formWithHelp_error,
     formWithHelp_warning,
     fullBox,
-    fullBox_editing,
     fullModal,
     modal,
 } from "../box"
@@ -93,7 +92,7 @@ export function Complex(props: Props): VNode {
         }
 
         if (state.invalid) {
-            return fullBox_editing(
+            return fullBox(
                 "complex",
                 [
                     formWithHelp_error(
@@ -112,7 +111,7 @@ export function Complex(props: Props): VNode {
                 h(FormFooter, props)
             )
         } else {
-            return fullBox_editing(
+            return fullBox(
                 "complex",
                 [
                     formWithHelp(

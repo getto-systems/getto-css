@@ -34,20 +34,6 @@ export function fullBox(title: VNodeContent, content: VNodeContent, footer: VNod
 export function fullBox_double(title: VNodeContent, content: VNodeContent, footer: VNodeContent): VNode {
     return fullBoxContent("box_double", title, content, footer)
 }
-export function fullBox_editing(
-    title: VNodeContent,
-    content: VNodeContent,
-    footer: VNodeContent
-): VNode {
-    return fullBoxContent("box_editing", title, content, footer)
-}
-export function fullBox_double_editing(
-    title: VNodeContent,
-    content: VNodeContent,
-    footer: VNodeContent
-): VNode {
-    return fullBoxContent("box_double box_editing", title, content, footer)
-}
 function fullBoxContent(
     boxClass: string,
     title: VNodeContent,
@@ -63,8 +49,8 @@ function fullBoxContent(
 export function noTitleBox(content: VNodeContent, footer: VNodeContent): VNode {
     return noTitleBoxContent("", content, footer)
 }
-export function searchBox_fill(content: VNodeContent, footer: VNodeContent): VNode {
-    return noTitleBoxContent("box_fill box_search", content, footer)
+export function noTitleBox_fill(content: VNodeContent, footer: VNodeContent): VNode {
+    return noTitleBoxContent("box_fill", content, footer)
 }
 export function noTitleBoxContent(boxClass: string, content: VNodeContent, footer: VNodeContent): VNode {
     return html`<article class="box ${boxClass}">${boxBody(content)} ${footer}</article>`

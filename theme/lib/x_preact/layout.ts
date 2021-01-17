@@ -25,7 +25,9 @@ export function menuFooter(): VNode {
 export function footer(): VNode {
     return html`
         <footer class="main__footer">
-            <p class="main__footer__message">powered by : LineIcons / みんなの文字</p>
+            <p class="main__footer__message">
+                powered by : LineIcons <span class="noWrap">/ みんなの文字</span>
+            </p>
         </footer>
     `
 }

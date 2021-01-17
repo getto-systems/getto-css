@@ -20,9 +20,8 @@ export default {
 }
 
 type MockProps = Readonly<{
-    seasonYear: number
+    menuLabel: string
     menuBadgeCount: number
-    breadcrumbLabel: string
     breadcrumbIcon: string
 }>
 const Template: Story<MockProps> = (args) => {
@@ -30,11 +29,17 @@ const Template: Story<MockProps> = (args) => {
     return h(Preview, { args })
 
     function Preview(props: { args: MockProps }) {
-        update.menuList(mapMenuMockProps({ type: "success", badgeCount: props.args.menuBadgeCount }))
+        update.menuList(
+            mapMenuMockProps({
+                type: "success",
+                label: props.args.menuLabel,
+                badgeCount: props.args.menuBadgeCount,
+            })
+        )
         update.breadcrumbList(
             mapBreadcrumbMockProps({
                 type: "success",
-                label: props.args.breadcrumbLabel,
+                label: props.args.menuLabel,
                 icon: props.args.breadcrumbIcon,
             })
         )
@@ -57,8 +62,7 @@ interface Story<T> {
 
 export const Initial = Template.bind({})
 Initial.args = {
-    seasonYear: new Date().getFullYear(),
+    menuLabel: "ホーム",
     menuBadgeCount: 99,
-    breadcrumbLabel: "ホーム",
     breadcrumbIcon: "home",
 }

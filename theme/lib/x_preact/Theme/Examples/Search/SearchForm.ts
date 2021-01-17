@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { search, searchBox_fill, searchWithHelp } from "../box"
+import { search, noTitleBox_fill, searchWithHelp } from "../box"
 
 import { EditState, SearchProps } from "./Container"
 import { small } from "../../../common/layout"
@@ -14,7 +14,7 @@ export function SearchForm(props: Props): VNode {
         component.inputValidValue(null)
     }
 
-    return searchBox_fill(
+    return noTitleBox_fill(
         [
             searchWithHelp(
                 "ID",
