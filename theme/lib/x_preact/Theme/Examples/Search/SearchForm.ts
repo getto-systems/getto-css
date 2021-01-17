@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { search, noTitleBox_fill, searchWithHelp, search_double } from "../box"
-import { container, small } from "../../../common/layout"
+import { container } from "../../../common/layout"
 
 import { EditState, SearchProps } from "./Container"
 
