@@ -7,6 +7,7 @@ import { container } from "../../../common/layout"
 import { Complex } from "./Complex"
 import { Misc } from "./Misc"
 import { TextBox } from "./TextBox"
+import { PasswordBox } from "./PasswordBox"
 import { NumberBox } from "./NumberBox"
 import { EmailBox } from "./EmailBox"
 import { SearchBox } from "./SearchBox"
@@ -27,10 +28,11 @@ export function Container(_: ContainerProps): VNode {
             h(Checkbox, useEditingFormProps()),
         ])}
         ${container([
-            h(TextBox, useEditingFormProps()),
-            h(SearchBox, useEditingFormProps()),
             h(NumberBox, useEditingFormProps()),
             h(EmailBox, useEditingFormProps()),
+            h(TextBox, useEditingFormProps()),
+            h(PasswordBox, useEditingFormProps()),
+            h(SearchBox, useEditingFormProps()),
             h(TextArea, useEditingFormProps()),
         ])}
     `

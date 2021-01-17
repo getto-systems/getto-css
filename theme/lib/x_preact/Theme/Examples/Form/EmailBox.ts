@@ -19,7 +19,6 @@ export function EmailBox(props: Props): VNode {
         [
             form("small", [html`<input type="email" class="input_small" onInput=${onInput} />`]),
             form("default", [html`<input type="email" onInput=${onInput} />`]),
-            form("medium", [html`<input type="email" class="input_medium" onInput=${onInput} />`]),
             form("fill", [html`<input type="email" class="input_fill" onInput=${onInput} />`]),
         ],
         h(FormFooter, props)
