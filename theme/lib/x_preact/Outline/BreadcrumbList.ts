@@ -7,13 +7,7 @@ import {
     initialBreadcrumbListState,
 } from "../../auth/Outline/breadcrumbList/component"
 
-import {
-    Breadcrumb,
-    BreadcrumbNode,
-    markMenuCategoryLabel,
-    MenuCategory,
-    MenuItem,
-} from "../../auth/permission/menu/data"
+import { Breadcrumb, BreadcrumbNode, MenuCategory, MenuItem } from "../../auth/permission/menu/data"
 import { siteInfo } from "../common/layout"
 
 type Props = Readonly<{
