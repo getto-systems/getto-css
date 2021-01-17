@@ -23,6 +23,7 @@
     --width-input-large: 18em;
     --width-input-x-large: 22em;
 
+    --content-vertical-space-tiny: calc(var(--content-vertical-space-small) / 2);
     --content-vertical-space-small: 0.7em;
     --content-vertical-space-medium: calc(var(--content-vertical-space-small) * 2);
     --content-vertical-space-large: calc(var(--content-vertical-space-medium) * 2);

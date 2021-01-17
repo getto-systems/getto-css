@@ -119,15 +119,16 @@ input[type="search"].input_fill {
 .input__checkbox {
     display: inline-block;
 
-    padding: 0.2em 0.6em 0.1em 0.4em;
-
     border: 1px dashed transparent;
     cursor: pointer;
+
+    padding: calc(0.15em - 1px) 0.6em calc(0.05em - 1px) 0.4em;
+    margin: 0.05em 0;
 }
 
 .input__radio_block + .input__radio_block,
 .input__checkbox_block + .input__checkbox_block {
-    margin-top: 0.2em;
+    margin-top: var(--content-vertical-space-tiny);
 }
 
 .input__radio:hover,
@@ -143,11 +144,7 @@ input[type="search"].input_fill {
 .input__radio input[type="radio"],
 .input__checkbox input[type="checkbox"] {
     margin-right: 0.4rem;
-}
-
-small .input__radio input[type="radio"],
-small .input__checkbox input[type="checkbox"] {
-    vertical-align: text-bottom;
+    vertical-align: text-top;
 }
 
 .input__radio.input__radio_block,

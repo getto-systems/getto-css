@@ -7,7 +7,7 @@
 }
 
 .notice + .notice {
-    margin-top: 0.25em;
+    margin-top: var(--content-vertical-space-tiny);
 }
 
 .notice_gray {
