@@ -4,14 +4,7 @@ import { html } from "htm/preact"
 import { iconClass, lnir } from "../../../../z_external/icon"
 
 import { icon, label_gray } from "../../../common/layout"
-import {
-    form,
-    formWithHelp,
-    formWithHelp_error,
-    formWithHelp_warning,
-    fullBox,
-    fullModal,
-} from "../box"
+import { buttons, form, formWithHelp, formWithHelp_error, formWithHelp_warning, fullBox, fullModal } from "../box"
 
 import { CompleteComponent, DeleteComponent, EditState, FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -61,12 +54,10 @@ export function Complex(props: Props): VNode {
                     `,
                 ]),
             ],
-            html`
-                <section class="button__container">
-                    <button class="button button_edit" onClick=${component.edit}>編集</button>
-                    <button class="button button_delete" onClick=${onDeleteClick}>削除</button>
-                </section>
-            `
+            buttons(
+                [html`<button class="button button_edit" onClick=${component.edit}>編集</button>`],
+                [html`<button class="button button_delete" onClick=${onDeleteClick}>削除</button>`]
+            )
         )
     }
     function editingBox(state: EditState) {
@@ -131,7 +122,7 @@ function CompleteModal({ state, component }: ModalContentProps<CompleteComponent
 
     if (state.connecting) {
         return fullModal("完了処理中", "作業を完了しています", [
-            html`<button type="button" class="button button_completeConfirm button_completing">
+            html`<button type="button" class="button button_complete button_connect">
                 <i class="lnir lnir-spinner lnir-is-spinning"></i> 完了中
             </button>`,
         ])
@@ -145,7 +136,7 @@ function CompleteModal({ state, component }: ModalContentProps<CompleteComponent
                 html`<div class="button__container">
                     <button
                         type="button"
-                        class="button button_completeConfirm"
+                        class="button button_complete button_confirm"
                         onClick="${onCompleteClick}"
                     >
                         完了
@@ -168,7 +159,7 @@ function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): 
 
     if (state.connecting) {
         return fullModal("削除処理中", "削除しています", [
-            html`<button type="button" class="button button_deleteConfirm button_deleting">
+            html`<button type="button" class="button button_delete button_connect">
                 <i class="lnir lnir-spinner lnir-is-spinning"></i> 削除中
             </button>`,
         ])
@@ -182,7 +173,11 @@ function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): 
                 よろしいですか？`,
             [
                 html`<div class="button__container">
-                    <button type="button" class="button button_deleteConfirm" onClick="${onDeleteClick}">
+                    <button
+                        type="button"
+                        class="button button_delete button_confirm"
+                        onClick="${onDeleteClick}"
+                    >
                         削除
                     </button>
                     <button type="button" class="button button_cancel" onClick="${onCloseClick}">

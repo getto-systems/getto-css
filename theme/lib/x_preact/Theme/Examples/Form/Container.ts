@@ -15,6 +15,7 @@ import { TextArea } from "./TextArea"
 import { Radio } from "./Radio"
 import { Checkbox } from "./Checkbox"
 import { ModalProps, ModalState } from "./Modal"
+import { Button } from "./Button"
 
 type ContainerProps = {
     // no props
@@ -23,6 +24,7 @@ export function Container(_: ContainerProps): VNode {
     return html`
         ${container([h(Complex, useComplexProps())])}
         ${container([
+            h(Button, NO_PROPS),
             h(Misc, useEditingFormProps()),
             h(Radio, useEditingFormProps()),
             h(Checkbox, useEditingFormProps()),
@@ -214,6 +216,8 @@ export interface DeleteComponent {
     delete: Post<null>
     close: Post<null>
 }
+
+const NO_PROPS = {}
 
 interface Post<T> {
     (event: T): void
