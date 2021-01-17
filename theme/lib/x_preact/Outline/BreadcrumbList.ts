@@ -7,7 +7,14 @@ import {
     initialBreadcrumbListState,
 } from "../../auth/Outline/breadcrumbList/component"
 
-import { Breadcrumb, BreadcrumbNode, MenuCategory, MenuItem } from "../../auth/permission/menu/data"
+import {
+    Breadcrumb,
+    BreadcrumbNode,
+    markMenuCategoryLabel,
+    MenuCategory,
+    MenuItem,
+} from "../../auth/permission/menu/data"
+import { siteInfo } from "../common/layout"
 
 type Props = Readonly<{
     breadcrumbList: BreadcrumbListComponent
@@ -32,9 +39,9 @@ function content(breadcrumb: Breadcrumb): VNode {
     return html`<aside class="main__breadcrumb">${breadcrumbNodes(breadcrumb)}</aside>`
 }
 function breadcrumbNodes(breadcrumb: Breadcrumb): VNode[] {
-    return insertSeparator(breadcrumb.map(toNode))
+    return [breadcrumbTop()].concat(breadcrumb.map((node) => withSeparator(map(node))))
 
-    function toNode(node: BreadcrumbNode): VNode {
+    function map(node: BreadcrumbNode): VNode {
         switch (node.type) {
             case "category":
                 return breadcrumbCategory(node.category)
@@ -43,15 +50,9 @@ function breadcrumbNodes(breadcrumb: Breadcrumb): VNode[] {
                 return breadcrumbItem(node.item)
         }
     }
-    function insertSeparator(nodes: VNode[]): VNode[] {
-        return nodes.reduce((acc, item) => {
-            if (acc.length > 0) {
-                acc.push(SEPARATOR)
-            }
-            acc.push(item)
-            return acc
-        }, [] as VNode[])
-    }
+}
+function breadcrumbTop(): VNode {
+    return html`<a class="main__breadcrumb__item" href="#menu" key="__TOP">${siteInfo().title}</a>`
 }
 function breadcrumbCategory(category: MenuCategory): VNode {
     const { label } = category
@@ -64,8 +65,13 @@ function breadcrumbItem(item: MenuItem): VNode {
     const inner = html`<i class="${icon}"></i> ${label}`
     return html`<a class="main__breadcrumb__item" href="${href}" key="${href}">${inner}</a>`
 }
-const SEPARATOR: VNode = html`
-    <span class="main__breadcrumb__separator"><i class="lnir lnir-chevron-right"></i></span>
-`
+
+function withSeparator(content: VNode): VNode {
+    return html`<span class="noWrap">${SEPARATOR}${content}</span>`
+}
+
+const SEPARATOR: VNode = html`<span class="main__breadcrumb__separator"
+    ><i class="lnir lnir-chevron-right"></i
+></span>`
 
 const EMPTY_CONTENT = html``

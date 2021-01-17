@@ -11,7 +11,7 @@
 
 .main__breadcrumb {
     text-align: right;
-    height: 1.75rem;
+    min-height: 1.75rem;
     margin-top: 0.25rem;
 }
 
