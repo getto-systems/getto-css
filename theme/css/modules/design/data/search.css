@@ -16,12 +16,3 @@
 .search__column__item {
     margin: 0.25rem;
 }
-
-.pager__position {
-    display: inline-block;
-    margin: 0.5em;
-}
-
-.pager__select {
-    margin: 0.5em;
-}
