@@ -27,4 +27,6 @@
     --content-vertical-space-small: 0.7em;
     --content-vertical-space-medium: calc(var(--content-vertical-space-small) * 2);
     --content-vertical-space-large: calc(var(--content-vertical-space-medium) * 2);
+
+    --table-header-height: 1.7em;
 }

@@ -14,11 +14,11 @@ p + p {
     overflow-x: auto;
 }
 
+.linky,
 a {
     display: inline-block;
     text-align: left;
 
-    color: var(--color-base);
     text-decoration: none;
 
     font-size: var(--font-size-smaller);
@@ -28,6 +28,10 @@ a {
     border-radius: 0.5rem;
 
     vertical-align: middle;
+}
+
+a {
+    color: var(--color-base);
 }
 
 a:hover,
