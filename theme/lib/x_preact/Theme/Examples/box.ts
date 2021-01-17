@@ -77,6 +77,12 @@ export function form_error(title: VNodeContent, content: VNodeContent): VNode {
 export function form_warning(title: VNodeContent, content: VNodeContent): VNode {
     return formContent("form_warning", title, content)
 }
+export function search(title: VNodeContent, content: VNodeContent): VNode {
+    return formContent("search", title, content)
+}
+export function search_double(title: VNodeContent, content: VNodeContent): VNode {
+    return formContent("search search_double", title, content)
+}
 export function formContent(formClass: string, title: VNodeContent, content: VNodeContent): VNode {
     return html`<dl class="form ${formClass}">
         <dt class="form__header">${title}</dt>
@@ -109,6 +115,9 @@ export function formWithHelp_warning(
         html`${content} ${formHelp([...help.map(toFormHelp), ...notices.map(toFormMessage)])}`
     )
 }
+export function searchWithHelp(title: VNodeContent, content: VNodeContent, help: VNodeContent[]): VNode {
+    return search(title, html`${content} ${formHelp(help.map(toFormHelp))}`)
+}
 
 function formHelp(content: VNodeContent) {
     return html`<aside class="form__help">${content}</aside>`
@@ -125,24 +134,6 @@ export function buttons(left: VNodeContent, right: VNodeContent): VNode {
         <section class="button_left">${left}</section>
         <section class="button_right">${right}</section>
     </aside>`
-}
-
-export function search(title: VNodeContent, content: VNodeContent): VNode {
-    return searchContent("", title, content)
-}
-export function searchContent(searchClass: string, title: VNodeContent, content: VNodeContent): VNode {
-    return html`<dl class="search ${searchClass}">
-        <dt class="search__header">${title}</dt>
-        <dd class="search__field">${content}</dd>
-    </dl>`
-}
-
-export function searchWithHelp(title: VNodeContent, content: VNodeContent, help: VNodeContent[]): VNode {
-    return search(title, html`${content} ${help.map(toSearchHelp)}`)
-}
-
-function toSearchHelp(message: VNodeContent) {
-    return html`<p class="search__help">${message}</p>`
 }
 
 export function modal(title: VNodeContent, content: VNodeContent): VNode {
