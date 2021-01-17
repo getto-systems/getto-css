@@ -15,11 +15,6 @@
     flex-grow: 2;
 }
 
-.box.box_editing,
-.box.box_search {
-    background-color: var(--color-base-off);
-}
-
 .box__header {
     border-bottom: 1px solid var(--color-black);
     padding-top: 0.25rem;
@@ -56,6 +51,6 @@
 
 @media (--media-shallow) {
     .box {
-        width: calc(100% - 1.1rem);
+        width: calc(calc(100% - 1rem) - 2px);
     }
 }

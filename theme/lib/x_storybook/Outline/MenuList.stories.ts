@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { MenuList } from "../../x_preact/Outline/MenuList"
-import { menuHeader } from "../../x_preact/layout"
+import { menuFooter, menuHeader } from "../../x_preact/layout"
 
 import {
     mapMenuMockProps,
@@ -32,7 +32,7 @@ const Template: Story<MockProps> = (args) => {
         menuList.update(mapMenuMockProps(props.args))
         return html`<main class="layout">
             <aside class="layout__menu menu">
-                ${menuHeader()} ${h(MenuList, { menuList })}
+                ${menuHeader()} ${h(MenuList, { menuList })} ${menuFooter()}
             </aside>
         </main>`
     }
@@ -46,6 +46,7 @@ interface Story<T> {
 export const Success = Template.bind({})
 Success.args = {
     type: "success",
+    label: "ホーム",
     badgeCount: 99,
 }
 

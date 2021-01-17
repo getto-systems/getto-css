@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { form, fullBox_editing } from "../box"
+import { form, fullBox } from "../box"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -14,7 +14,7 @@ export function SearchBox(props: Props): VNode {
         component.inputValidValue(null)
     }
 
-    return fullBox_editing(
+    return fullBox(
         "search box",
         [
             form("small", [html`<input type="search" class="input_small" onInput=${onInput} />`]),
