@@ -25,7 +25,13 @@ export function Container(_: ContainerProps): VNode {
                 setState({ type: "try-to-search" })
 
                 setTimeout(() => {
-                    setState(initialSearch)
+                    setState({
+                        type: "search",
+                        state: {
+                            modified: false,
+                            invalid: true,
+                        },
+                    })
                 }, 3000)
             },
             inputValidValue: () => {
@@ -34,15 +40,6 @@ export function Container(_: ContainerProps): VNode {
                     state: {
                         modified: true,
                         invalid: false,
-                    },
-                })
-            },
-            inputInvalidValue: () => {
-                setState({
-                    type: "search",
-                    state: {
-                        modified: true,
-                        invalid: true,
                     },
                 })
             },
@@ -58,7 +55,6 @@ export type SearchProps = Readonly<{
 export interface SearchComponent {
     search: Post<null>
     inputValidValue: Post<null>
-    inputInvalidValue: Post<null>
 }
 export type SearchState =
     | Readonly<{ type: "search"; state: EditState }>
@@ -78,8 +74,8 @@ const initialSearch: SearchState = {
     state: initialEditState,
 }
 
+const NO_PROPS = {}
+
 interface Post<T> {
     (event: T): void
 }
-
-const NO_PROPS = {}

@@ -3,28 +3,32 @@
     margin-right: 0.25rem;
 }
 
-.search.search_double {
+.search_double {
     width: var(--width-search-double);
     margin-right: 0.25rem;
 }
 
 .search__header {
     font-size: var(--font-size-small);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.375em;
 }
 
 .search__field {
     margin-left: 1rem;
 }
 
-.search__help,
-.search__message {
+.search__help {
     font-size: var(--font-size-small);
-    margin-top: 0.25rem;
-    margin-left: 0.25rem;
+    margin-left: 0.5em;
+    margin-top: 0.375em;
 }
 
-.search_error .search__message {
+.search__help p {
+    margin-top: 0;
+}
+
+.search_error .search__header,
+.search_error .search__notice {
     color: var(--color-alert);
 }
 
