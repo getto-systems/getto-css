@@ -3,13 +3,13 @@
 }
 
 .vertical_small {
-    height: 0.7em;
+    height: var(--content-vertical-space-small);
 }
 
 .vertical_medium {
-    height: 1.4em;
+    height: var(--content-vertical-space-medium);
 }
 
 .vertical_large {
-    height: 2.8em;
+    height: var(--content-vertical-space-large);
 }

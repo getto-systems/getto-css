@@ -17,8 +17,8 @@ export function NumberBox(props: Props): VNode {
     return fullBox(
         "number box",
         [
-            form("small", [html`<input type="number" class="input_small" onInput=${onInput} />`]),
-            form("default", [html`<input type="number" onInput=${onInput} />`]),
+            form("small", [html`<input type="number" class="input_small" onInput=${onInput} /> 回`]),
+            form("default", [html`<input type="number" onInput=${onInput} /> 年`]),
         ],
         h(FormFooter, props)
     )

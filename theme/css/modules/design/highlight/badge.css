@@ -4,7 +4,7 @@
 
     font-size: var(--font-size-smaller);
 
-    padding: 0.07em 0.75em;
+    padding: calc(0.1875em - 2px) 0.75em;
     border: 1px solid transparent;
     border-radius: 0.5rem;
 

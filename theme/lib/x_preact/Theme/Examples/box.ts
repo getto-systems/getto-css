@@ -85,30 +85,39 @@ export function formContent(formClass: string, title: VNodeContent, content: VNo
 }
 
 export function formWithHelp(title: VNodeContent, content: VNodeContent, help: VNodeContent[]): VNode {
-    return form(title, html`${content} ${help.map(toFormHelp)}`)
+    return form(title, html`${content} ${formHelp(help.map(toFormHelp))}`)
 }
 export function formWithHelp_error(
     title: VNodeContent,
     content: VNodeContent,
-    messages: VNodeContent[],
-    help: VNodeContent[]
+    help: VNodeContent[],
+    notices: VNodeContent[]
 ): VNode {
-    return form_error(title, html`${content} ${messages.map(toFormMessage)} ${help.map(toFormHelp)}`)
+    return form_error(
+        title,
+        html`${content} ${formHelp([...help.map(toFormHelp), ...notices.map(toFormMessage)])}`
+    )
 }
 export function formWithHelp_warning(
     title: VNodeContent,
     content: VNodeContent,
-    messages: VNodeContent[],
-    help: VNodeContent[]
+    help: VNodeContent[],
+    notices: VNodeContent[]
 ): VNode {
-    return form_warning(title, html`${content} ${messages.map(toFormMessage)} ${help.map(toFormHelp)}`)
+    return form_warning(
+        title,
+        html`${content} ${formHelp([...help.map(toFormHelp), ...notices.map(toFormMessage)])}`
+    )
 }
 
+function formHelp(content: VNodeContent) {
+    return html`<aside class="form__help">${content}</aside>`
+}
 function toFormMessage(message: VNodeContent) {
-    return html`<p class="form__message">${message}</p>`
+    return html`<p class="form__notice">${message}</p>`
 }
 function toFormHelp(message: VNodeContent) {
-    return html`<p class="form__help">${message}</p>`
+    return html`<p>${message}</p>`
 }
 
 export function search(title: VNodeContent, content: VNodeContent): VNode {

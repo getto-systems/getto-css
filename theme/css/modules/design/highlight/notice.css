@@ -1,7 +1,7 @@
 .notice {
     display: block;
 
-    padding: 0.65em 0.75em;
+    padding: calc(0.7em - 1px) 1em;
     border: 1px solid transparent;
     border-radius: 0.5rem;
 }

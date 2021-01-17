@@ -1,22 +1,26 @@
 .form__header {
     font-size: var(--font-size-small);
-    margin-bottom: 1em;
+    margin-bottom: 0.375em;
 }
 
 .form__field {
     margin-left: 1em;
-    margin-bottom: 1em;
+    margin-bottom: var(--content-vertical-space-small);
+    overflow-x: auto;
 }
 
-.form__message,
 .form__help {
     font-size: var(--font-size-small);
     margin-left: 0.5em;
-    line-height: 1.7;
+    margin-top: 0.375em;
+}
+
+.form__help p {
+    margin-top: 0;
 }
 
 .form_error .form__header,
-.form_error .form__message {
+.form_error .form__notice {
     color: var(--color-alert);
 }
 
@@ -26,7 +30,7 @@
 }
 
 .form_warning .form__header,
-.form_warning .form__message {
+.form_warning .form__notice {
     color: var(--color-warning);
 }
 

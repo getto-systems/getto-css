@@ -71,7 +71,7 @@ export function FormFooter({ state, component }: Props): VNode {
         }
         return html`
             <section class="form_error">
-                <p class="form__message">保存できない項目があります</p>
+                <p class="form__help form__notice">保存できない項目があります</p>
             </section>
         `
     }

@@ -15,7 +15,7 @@
 
     font-size: var(--font-size-smaller);
 
-    padding: 0.06em 1.5em;
+    padding: calc(0.1875em - 2px) 1.5em;
     border: 1px solid transparent;
     border-radius: 0.3em;
 
