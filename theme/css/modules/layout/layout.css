@@ -1,4 +1,25 @@
+.layout__login {
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    background-color: var(--color-black-off);
+
+    overflow: auto;
+}
+
 @media (--media-desktop) {
+    .layout__login {
+        justify-content: center;
+        display: flex;
+        align-items: flex-start;
+    }
+
     .layout__app {
         display: flex;
         flex-direction: row-reverse;

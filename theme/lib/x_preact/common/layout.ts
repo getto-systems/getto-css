@@ -21,10 +21,10 @@ export function siteInfo(): SiteInfo {
 export function loginHeader(): VNode {
     const { brand, title, subTitle } = siteInfo()
     return html`
-        <header class="login__header">
-            <cite class="login__brand">${brand}</cite>
-            <strong class="login__title">${title}</strong>
-            <cite class="login__subTitle">${subTitle}</cite>
+        <header class="loginBox__header">
+            <cite class="loginBox__brand">${brand}</cite>
+            <strong class="loginBox__title">${title}</strong>
+            <cite class="loginBox__subTitle">${subTitle}</cite>
         </header>
     `
 }
@@ -36,13 +36,13 @@ export function fullScreenError(
 ): VNode {
     return html`
         <aside class="layout__login">
-            <section class="login__box">
+            <section class="loginBox">
                 ${loginHeader()}
-                <section class="login__message">
-                    <h3 class="login__message__title">${title}</h3>
-                    <section class="login__message__body">${content}</section>
+                <section class="loginBox__message">
+                    <h3 class="loginBox__message__title">${title}</h3>
+                    <section class="loginBox__message__body">${content}</section>
                 </section>
-                <footer class="login__footer">${footer}</footer>
+                <footer class="loginBox__footer">${footer}</footer>
             </section>
         </aside>
     `

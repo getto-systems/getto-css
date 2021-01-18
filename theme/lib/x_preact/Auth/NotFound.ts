@@ -53,7 +53,7 @@ function Content({ currentVersion }: ContentProps): VNode {
         ],
         html`<section class="button__container">
             <div></div>
-            <div class="login__link">
+            <div class="loginBox__link">
                 <a href="${homeHref()}"><i class="lnir lnir-home"></i> ホームへ</a>
             </div>
         </section>`

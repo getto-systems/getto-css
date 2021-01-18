@@ -1,19 +1,4 @@
-.layout__login {
-    position: fixed;
-
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    z-index: 1000;
-
-    background-color: var(--color-black-off);
-
-    overflow: auto;
-}
-
-.login__box {
+.loginBox {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,53 +8,53 @@
     background-color: var(--color-white);
 }
 
-.login__header {
+.loginBox__header {
     margin-bottom: 2.5em;
 }
 
-.login__brand {
+.loginBox__brand {
     font-size: var(--font-size-large);
     display: block;
 }
 
-.login__title {
+.loginBox__title {
     font-size: var(--font-size-x-large);
 }
 
-.login__subTitle {
+.loginBox__subTitle {
     display: block;
 }
 
-.login__body {
+.loginBox__body {
     margin-bottom: 1rem;
 }
 
-.login__message {
+.loginBox__message {
     min-height: var(--height-login-message);
 }
 
-.login__message__title {
+.loginBox__message__title {
     font-size: var(--font-size-large);
     margin-bottom: 1em;
 }
 
-.login__message__body {
+.loginBox__message__body {
     padding-left: 1em;
 }
 
-.login__footer {
+.loginBox__footer {
     padding-top: 0.25rem;
 }
 
-.layout__login .form__header {
+.loginBox .form__header {
     font-size: var(--font-size-normal);
 }
 
-.layout__login .form__help {
+.loginBox .form__help {
     font-size: var(--font-size-small);
 }
 
-.login__link {
+.loginBox__link {
     display: block;
     font-size: var(--font-size-normal);
 
@@ -80,18 +65,12 @@
     margin-left: 1em;
 }
 
-.layout__login :--input {
+.loginBox :--input {
     font-size: var(--font-size-normal);
 }
 
 @media (--media-desktop) {
-    .layout__login {
-        justify-content: center;
-        display: flex;
-        align-items: flex-start;
-    }
-
-    .login__box {
+    .loginBox {
         min-width: var(--width-box-double);
         padding: 5rem;
 
@@ -102,7 +81,7 @@
 }
 
 @media (--media-mobile) {
-    .login__box {
+    .loginBox {
         min-width: var(--width-box);
         padding: 2.5rem;
 

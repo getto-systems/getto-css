@@ -18,7 +18,7 @@ export function ApplicationError({ err }: Props): VNode {
         ],
         html`<section class="button__container">
             <div></div>
-            <div class="login__link">${reloadLink()}</div>
+            <div class="loginBox__link">${reloadLink()}</div>
         </section>`
     )
 
