@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { big, loginBoxHeader, VNodeContent } from "../../../../common/layout"
+import { buttons, loginBox } from "../../../../common/layout"
 import { formWithHelp, formWithHelp_error } from "../../box"
 
 import { EditState, ForgetProps } from "./Container"
@@ -18,88 +18,77 @@ export function Forget({ state, component }: Props): VNode {
         component.reset(null)
     }
 
-    return html`<aside class="layout__login">
-        <section class="loginBox">${loginBoxHeader()}${content()}</section>
-    </aside>`
+    return loginBox("パスワードリセット", content(), footer())
 
     function content() {
         switch (state.type) {
             case "try-to-reset":
-                return html`${resetMessage()}
-                    <div></div>`
+                return resetMessage()
 
             case "succeed-to-send-token":
-                return html`${completeMessage()}
-                    <div></div>`
+                return completeMessage()
 
             case "reset":
-                return html`${resetForm(state.state)}${resetFooter(state.state)}`
+                return resetForm(state.state)
+        }
+    }
+    function footer() {
+        switch (state.type) {
+            case "try-to-reset":
+            case "succeed-to-send-token":
+                return ""
+
+            case "reset":
+                return resetFooter(state.state)
         }
     }
 
     function resetMessage() {
-        return html`<big>
-            <div class="loading loading_login">
-                <p class="loading__message">リセットトークンを送信中です</p>
-                <i class="lnir lnir-spinner lnir-is-spinning"></i>
-                <p class="loading__message">
-                    30秒以上かかる場合は何かがおかしいので、
-                    <br />
-                    お手数ですが管理者に連絡お願いします
-                </p>
-            </div>
-        </big>`
+        return [
+            html`<p><i class="lnir lnir-spinner lnir-is-spinning"></i> リセットトークンを送信中です</p>`,
+            html`<p>
+                30秒以上かかる場合は何かがおかしいので、
+                <br />
+                お手数ですが管理者に連絡お願いします
+            </p>`,
+        ]
     }
     function completeMessage() {
-        return html`<big>
-            <div class="loading loading_login">
-                <p class="loading__message">
-                    リセットトークンを送信しました<br />
-                    記載されている URL から処理を続行してください
-                </p>
-            </div>
-        </big>`
+        return [
+            html`<p>
+                リセットトークンを送信しました<br />
+                記載されている URL から処理を続行してください
+            </p>`,
+        ]
     }
     function resetForm(state: EditState) {
         if (state.invalid) {
-            return big(
-                body([
-                    formWithHelp_error(
-                        "ログインID",
-                        html`<input type="text" class="input_fill" onInput=${onInput} />`,
-                        ["登録されたメールアドレスにリセットトークンを送信します"],
-                        ["ログインIDを入力してください"]
-                    ),
-                ])
-            )
+            return [
+                formWithHelp_error(
+                    "ログインID",
+                    html`<input type="text" class="input_fill" onInput=${onInput} />`,
+                    ["登録されたメールアドレスにリセットトークンを送信します"],
+                    ["ログインIDを入力してください"]
+                ),
+            ]
         } else {
-            return big(
-                body([
-                    formWithHelp(
-                        "ログインID",
-                        html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`,
-                        ["登録されたメールアドレスにリセットトークンを送信します"]
-                    ),
-                ])
-            )
-        }
-
-        function body(content: VNodeContent) {
-            return html`<section class="loginBox__body">${content}</section>`
+            return [
+                formWithHelp(
+                    "ログインID",
+                    html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`,
+                    ["登録されたメールアドレスにリセットトークンを送信します"]
+                ),
+            ]
         }
     }
 
     function resetFooter(state: EditState) {
-        return big(footer([button(), resetLink()]))
-
-        function footer(content: VNodeContent) {
-            return html`<footer class="loginBox__main__footer button__container">${content}</footer>`
-        }
+        return buttons([button()], [loginLink()])
 
         function button() {
             return html`<button
                 type="button"
-                class="button button_save ${modified()}"
+                class="button button_send ${modified()}"
                 onClick="${onResetClick}"
             >
                 リセットトークン送信
@@ -109,13 +98,11 @@ export function Forget({ state, component }: Props): VNode {
                 if (!state.fill) {
                     return ""
                 }
-                return "button_modified"
+                return "button_confirm"
             }
         }
-        function resetLink() {
-            return html`<div class="loginBox__link">
-                <a href="#"><i class="lnir lnir-enter"></i> ログインフォームを表示</a>
-            </div>`
+        function loginLink() {
+            return html`<a href="#"><i class="lnir lnir-enter"></i> ログインフォームを表示</a>`
         }
     }
 }

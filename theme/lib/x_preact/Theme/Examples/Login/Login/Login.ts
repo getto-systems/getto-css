@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { big, buttons, loginBox, VNodeContent } from "../../../../common/layout"
+import { big, buttons, loginBox } from "../../../../common/layout"
 import { form, formWithHelp_error } from "../../box"
 
 import { EditState, LoginProps } from "./Container"
@@ -51,7 +51,7 @@ export function Login({ state, component }: Props): VNode {
     }
     function loginForm(state: EditState) {
         if (state.invalid) {
-            return body([
+            return [
                 formWithHelp_error(
                     "ログインID",
                     html`<input type="text" class="input_fill" onInput=${onInput} />`,
@@ -64,20 +64,16 @@ export function Login({ state, component }: Props): VNode {
                     [],
                     ["パスワードを入力してください"]
                 ),
-            ])
+            ]
         } else {
-            return body([
+            return [
                 form("ログインID", [
                     html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`,
                 ]),
                 form("パスワード", [
                     html`<input type="password" class="input_fill" onInput=${onInputAsInvalid} />`,
                 ]),
-            ])
-        }
-
-        function body(content: VNodeContent) {
-            return html`<section class="loginBox__body">${content}</section>`
+            ]
         }
     }
 
@@ -87,7 +83,7 @@ export function Login({ state, component }: Props): VNode {
         function button() {
             return html`<button
                 type="button"
-                class="button button_edit ${modified()}"
+                class="button button_send ${modified()}"
                 onClick="${onLoginClick}"
             >
                 ログイン
