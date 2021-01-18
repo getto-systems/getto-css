@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { fullScreenError, v_medium } from "../../common/layout"
+import { loginBox, v_medium } from "../../common/layout"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 
@@ -45,7 +45,7 @@ export function NextVersion({ nextVersion }: Props): VNode {
     }
 
     function delayedContent() {
-        return fullScreenError(
+        return loginBox(
             "アプリケーションの読み込みに時間がかかっています",
             html`
                 <p><i class="lnir lnir-spinner lnir-is-spinning"></i> 読み込み中です</p>

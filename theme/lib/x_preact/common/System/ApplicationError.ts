@@ -1,14 +1,14 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { fullScreenError, v_medium } from "../layout"
+import { loginBox, v_medium } from "../layout"
 
 type Props = Readonly<{
     err: string
 }>
 
 export function ApplicationError({ err }: Props): VNode {
-    return fullScreenError(
+    return loginBox(
         html`システムエラーが発生しました`,
         [
             html`<p>エラーが発生したため、処理を中断しました</p>`,

@@ -4,7 +4,7 @@ import { html } from "htm/preact"
 
 import { ApplicationError } from "../../../common/System/ApplicationError"
 
-import { fullScreenError } from "../../../common/layout"
+import { loginBox } from "../../../common/layout"
 
 type Props = Readonly<{
     // no props
@@ -23,7 +23,7 @@ export function NotFound(_: Props): VNode {
         document.title = `Not Found | ${document.title}`
     }, [])
 
-    return fullScreenError(
+    return loginBox(
         "リンクが切れていました",
         [
             html`<p>

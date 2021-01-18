@@ -12,16 +12,16 @@
     margin-bottom: 2.5em;
 }
 
-.loginBox__brand {
+.loginBox__header__brand {
     font-size: var(--font-size-large);
     display: block;
 }
 
-.loginBox__title {
+.loginBox__header__title {
     font-size: var(--font-size-x-large);
 }
 
-.loginBox__subTitle {
+.loginBox__header__subTitle {
     display: block;
 }
 
@@ -29,16 +29,16 @@
     margin-bottom: 1rem;
 }
 
-.loginBox__message {
+.loginBox__main {
     min-height: var(--height-login-message);
 }
 
-.loginBox__message__title {
+.loginBox__main__title {
     font-size: var(--font-size-large);
     margin-bottom: 1em;
 }
 
-.loginBox__message__body {
+.loginBox__main__body {
     padding-left: 1em;
 }
 
