@@ -1,4 +1,4 @@
-.document {
+.report {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -7,71 +7,75 @@
     background-color: var(--color-white);
 }
 
-.document_a4_portrait {
+.report_a4_portrait {
     width: 165mm;
     height: 254mm;
 }
 
-.document__header {
+.report__header {
     margin-bottom: 0.5rem;
 }
 
-.document__title {
+.report__title {
     font-size: var(--font-size-x-large);
-    margin-bottom: 1em;
+    margin-bottom: var(--content-vertical-space-small);
 }
 
-.document__title.document__title_center {
+.report__title_center {
     text-align: center;
 }
 
-.document__footer {
+.report__repeatTitle {
+    font-size: var(--font-size-small);
+}
+
+.report__footer {
     display: flex;
     justify-content: space-between;
 
     border-top: 1px dotted var(--color-black);
-    padding-top: 2.5mm;
-    margin-top: 2.5mm;
+    padding-top: var(--content-vertical-space-tiny);
+    margin-top: var(--content-vertical-space-tiny);
 }
 
-.document__folio {
+.report__folio {
     font-size: var(--font-size-small);
 }
 
-.document .cell_border_t {
+.report .cell_border_t {
     border-top: 1pt solid var(--color-black);
 }
 
-.document .cell_border_tt {
+.report .cell_border_tt {
     border-top: 2pt solid var(--color-black);
 }
 
-.document .cell_border_b {
+.report .cell_border_b {
     border-bottom: 1pt solid var(--color-black);
 }
 
-.document .cell_border_bb {
+.report .cell_border_bb {
     border-bottom: 2pt solid var(--color-black);
 }
 
-.document .cell_border_l {
+.report .cell_border_l {
     border-left: 1pt solid var(--color-black);
 }
 
-.document .cell_border_ll {
+.report .cell_border_ll {
     border-left: 2pt solid var(--color-black);
 }
 
-.document .cell_border_r {
+.report .cell_border_r {
     border-right: 1pt solid var(--color-black);
 }
 
-.document .cell_border_rr {
+.report .cell_border_rr {
     border-right: 2pt solid var(--color-black);
 }
 
 @media screen {
-    .document {
+    .report {
         border: 1px solid var(--color-black);
         box-shadow: 0 0.5mm 2mm var(--color-black-off);
         margin-bottom: 0.5rem;
@@ -79,7 +83,7 @@
 }
 
 @media print {
-    .document {
+    .report {
         break-after: always;
         margin: 0;
     }
