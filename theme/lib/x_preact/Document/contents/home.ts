@@ -190,7 +190,6 @@ export function content_home_size(): VNode {
                     <li>big / small</li>
                     <li>badge / label / notice</li>
                     <li>button / input</li>
-                    <li>loading</li>
                 </ul>
             `
         ),
@@ -200,12 +199,11 @@ export function content_home_size(): VNode {
                 <ul>
                     <li>main : title / footer</li>
                     <li>menu : title / brand / footer</li>
+                    <li>loginBox : title / brand / footer / box title</li>
                     <li>modal : title</li>
-                    <li>search : header / help</li>
-                    <li>form : header / help / message</li>
+                    <li>form : header / help</li>
                     <li>table : th</li>
-                    <li>document : title / folio</li>
-                    <li>login : 各構成要素</li>
+                    <li>report : title / folio</li>
                 </ul>
             `
         ),

@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { big, loginBox, v_medium } from "../../../common/layout"
+import { loginBox } from "../../../common/layout"
 
 import { ApplicationError } from "../../../common/System/ApplicationError"
 
@@ -24,16 +24,15 @@ export function Loading(_: Props): VNode {
     }, [])
 
     return loginBox(
-        "アプリケーションの読み込みに時間がかかっています",
+        "アプリケーション読み込み中",
         [
-            big(html`<div class="loading loading_box">
-                <i class="lnir lnir-spinner lnir-is-spinning"></i>
-                <p class="loading__message">読み込み中です</p>
-            </div>`),
-            v_medium(),
+            html`<p>
+                <i class="lnir lnir-spinner lnir-is-spinning"></i> ${" "}
+                アプリケーションの読み込みに時間がかかっています
+            </p>`,
             html`<p>
                 30秒以上かかるようであれば何かがおかしいので、<br />
-                お手数ですが管理者に連絡してください
+                お手数ですが、管理者にお伝えください
             </p>`,
         ],
         ""

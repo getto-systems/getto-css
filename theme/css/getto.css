@@ -30,8 +30,6 @@
 @import "./modules/design/print/report.css";
 @import "./modules/design/print/paper.css";
 
-@import "./modules/design/loading/loading.css";
-
 @import "./modules/design/alignment/no-wrap.css";
 @import "./modules/design/alignment/vertical.css";
 @import "./modules/design/alignment/visibility.css";
