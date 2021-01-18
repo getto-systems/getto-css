@@ -27,9 +27,9 @@ export function Document({ document: { resource, terminate } }: Props): VNode {
     useTerminate(terminate)
 
     return html`
-        <main class="layout">
-            <article class="layout__main">${h(Content, resource)} ${footer()}</article>
-            <aside class="layout__menu menu">
+        <main class="layout__app">
+            <article class="layout__app__main">${h(Content, resource)} ${footer()}</article>
+            <aside class="layout__app__menu menu">
                 ${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}
             </aside>
         </main>

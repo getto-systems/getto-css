@@ -18,7 +18,7 @@ export function Login({ state, component }: Props): VNode {
         component.login(null)
     }
 
-    return html`<aside class="login">
+    return html`<aside class="layout__login">
         <section class="login__box">${loginHeader()}${content()}</section>
     </aside>`
 

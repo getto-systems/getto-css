@@ -1,14 +1,14 @@
 @media (--media-desktop) {
-    .layout {
+    .layout__app {
         display: flex;
         flex-direction: row-reverse;
     }
 
-    .layout__main {
+    .layout__app__main {
         width: calc(100% - var(--width-menu));
     }
 
-    .layout__menu {
+    .layout__app__menu {
         width: var(--width-menu);
 
         position: fixed;
@@ -19,23 +19,14 @@
     }
 }
 
-@media (--media-mobile) {
-    .layout__menu__header {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-    }
-}
-
 @media (--media-tablet) {
-    .layout__main {
+    .layout__app__main {
         margin-top: 5.5rem;
     }
 }
 
 @media (--media-shallow) {
-    .layout__main {
+    .layout__app__main {
         margin-top: 7rem;
     }
 }

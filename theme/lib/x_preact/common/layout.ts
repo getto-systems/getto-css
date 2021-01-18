@@ -35,7 +35,7 @@ export function fullScreenError(
     footer: VNodeContent
 ): VNode {
     return html`
-        <aside class="login">
+        <aside class="layout__login">
             <section class="login__box">
                 ${loginHeader()}
                 <section class="login__message">

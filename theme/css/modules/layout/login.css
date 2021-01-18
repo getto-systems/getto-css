@@ -1,4 +1,4 @@
-.login {
+.layout__login {
     position: fixed;
 
     top: 0;
@@ -61,11 +61,11 @@
     padding-top: 0.25rem;
 }
 
-.login .form__header {
+.layout__login .form__header {
     font-size: var(--font-size-normal);
 }
 
-.login .form__help {
+.layout__login .form__help {
     font-size: var(--font-size-small);
 }
 
@@ -80,12 +80,12 @@
     margin-left: 1em;
 }
 
-.login :--input {
+.layout__login :--input {
     font-size: var(--font-size-normal);
 }
 
 @media (--media-desktop) {
-    .login {
+    .layout__login {
         justify-content: center;
         display: flex;
         align-items: flex-start;

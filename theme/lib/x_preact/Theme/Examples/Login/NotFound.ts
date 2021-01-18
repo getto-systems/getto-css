@@ -24,10 +24,17 @@ export function NotFound(_: Props): VNode {
     }, [])
 
     return fullScreenError(
-        "見つかりませんでした",
+        "リンクが切れていました",
         [
-            html`<p>リンクされたページは存在しません</p>`,
-            html`<p>お手数ですが、管理者にクリックしたリンクをお伝えください</p>`,
+            html`<p>
+                リンクされたページが見つかりませんでした<br />
+                これはシステム側の不備です
+            </p>`,
+            html`<p>
+                お手数ですが、管理者にクリックしたリンクをお伝えください<br />
+                直前まで行っていた作業も教えていただけると助かります
+            </p>`,
+            html`<p>作業は右下のリンクからホームに戻って続けられます</p>`,
         ],
         html`<section class="button__container">
             <div></div>

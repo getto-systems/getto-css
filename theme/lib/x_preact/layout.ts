@@ -6,7 +6,7 @@ import { siteInfo } from "./common/layout"
 export function menuHeader(): VNode {
     const { brand, title, subTitle } = siteInfo()
     return html`
-        <header class="layout__menu__header menu__header">
+        <header class="menu__header">
             <cite class="menu__brand">${brand}</cite>
             <strong class="menu__title">${title}</strong>
             <cite class="menu__subTitle">${subTitle}</cite>

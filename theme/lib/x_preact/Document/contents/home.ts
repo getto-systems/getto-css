@@ -40,58 +40,6 @@ export const content_home = (): VNode[] => [
     ]),
 ]
 
-/*
-# Base
-base.css
-color.css
-media.css
-size.css
-
-# Layout
-## Login
-## Forget
-## NotFound
-layout.css
-login.css
-main.css
-menu.css
-
-# Box
-container.css
-box.css
-modal.css
-
-# Highlight
-badge.css
-label.css
-notice.css
-
-# Form
-button.css
-form.css
-input.css
-
-# Data
-## Search
-## List
-pager.css
-search.css
-table.css
-
-# Print
-document.css
-paper.css
-
-# Loading
-loading.css
-
-# Alignment
-## Misc
-list.css
-vertical.css
-visibility.css
-*/
-
 export function content_home_policy(): VNode {
     return box("基本方針", [
         notice_info("業務で必要な時に使用できる"),
