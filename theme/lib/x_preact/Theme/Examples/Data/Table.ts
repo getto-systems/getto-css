@@ -65,8 +65,8 @@ export function Table(_: Props): VNode {
                     <section class="form form_error">
                         <input type="text" value="" id="work-name" />
                         <aside class="form__help">
-                            <p class="form__notice">作業名は必須です</p>
                             <p>識別のための作業名</p>
+                            <p class="form__notice">作業名は必須です</p>
                         </aside>
                     </section>
                 </td>
