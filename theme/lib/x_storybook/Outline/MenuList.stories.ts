@@ -2,13 +2,9 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { MenuList } from "../../x_preact/Outline/MenuList"
-import { menuFooter, menuHeader } from "../../x_preact/common/layout"
+import { mainFooter, menuFooter, menuHeader } from "../../x_preact/common/layout"
 
-import {
-    mapMenuMockProps,
-    MenuMockProps,
-    initMenuListComponent,
-} from "../../auth/Outline/menuList/mock"
+import { mapMenuMockProps, MenuMockProps, initMenuListComponent } from "../../auth/Outline/menuList/mock"
 
 import { initialMenuListState } from "../../auth/Outline/menuList/component"
 
@@ -30,11 +26,23 @@ const Template: Story<MockProps> = (args) => {
 
     function Preview(props: { args: MockProps }) {
         menuList.update(mapMenuMockProps(props.args))
-        return html`<main class="layout__app">
-            <aside class="layout__app__menu menu">
-                ${menuHeader()} ${h(MenuList, { menuList })} ${menuFooter()}
-            </aside>
-        </main>`
+        return html`<style>
+                .sb-main-padded {
+                    padding: 0 !important;
+                }
+            </style>
+            <main class="layout__app">
+                <article class="layout__app__main">
+                    <header class="main__header">
+                        <h1 class="main__title">タイトル</h1>
+                    </header>
+                    <section class="main__body">コンテンツ</section>
+                    ${mainFooter()}
+                </article>
+                <aside class="layout__app__menu menu">
+                    ${menuHeader()} ${h(MenuList, { menuList })} ${menuFooter()}
+                </aside>
+            </main>`
     }
 }
 
