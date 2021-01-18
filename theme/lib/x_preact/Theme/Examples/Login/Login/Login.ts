@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { big, loginHeader, VNodeContent } from "../../../../common/layout"
+import { big, loginBoxHeader, VNodeContent } from "../../../../common/layout"
 import { form, formWithHelp_error } from "../../box"
 
 import { EditState, LoginProps } from "./Container"
@@ -19,7 +19,7 @@ export function Login({ state, component }: Props): VNode {
     }
 
     return html`<aside class="layout__login">
-        <section class="loginBox">${loginHeader()}${content()}</section>
+        <section class="loginBox">${loginBoxHeader()}${content()}</section>
     </aside>`
 
     function content() {

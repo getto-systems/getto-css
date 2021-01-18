@@ -3,7 +3,7 @@ import { useEffect, useErrorBoundary, useState } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { useTerminate } from "../common/hooks"
-import { fullScreenError } from "../common/layout"
+import { loginBox } from "../common/layout"
 
 import { ApplicationError } from "../common/System/ApplicationError"
 
@@ -45,7 +45,7 @@ function Content({ currentVersion }: ContentProps): VNode {
         currentVersion.load()
     }, [])
 
-    return fullScreenError(
+    return loginBox(
         "見つかりませんでした",
         [
             html`<p>リンクされたページは存在しません</p>`,

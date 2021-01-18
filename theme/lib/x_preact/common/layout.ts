@@ -18,34 +18,32 @@ export function siteInfo(): SiteInfo {
     }
 }
 
-export function loginHeader(): VNode {
+export function loginBoxHeader(): VNode {
     const { brand, title, subTitle } = siteInfo()
     return html`
         <header class="loginBox__header">
-            <cite class="loginBox__brand">${brand}</cite>
-            <strong class="loginBox__title">${title}</strong>
-            <cite class="loginBox__subTitle">${subTitle}</cite>
+            <cite class="loginBox__header__brand">${brand}</cite>
+            <strong class="loginBox__header__title">${title}</strong>
+            <cite class="loginBox__header__subTitle">${subTitle}</cite>
         </header>
     `
 }
 
-export function fullScreenError(
+export function loginBox(
     title: VNodeContent,
     content: VNodeContent,
     footer: VNodeContent
 ): VNode {
-    return html`
-        <aside class="layout__login">
-            <section class="loginBox">
-                ${loginHeader()}
-                <section class="loginBox__message">
-                    <h3 class="loginBox__message__title">${title}</h3>
-                    <section class="loginBox__message__body">${content}</section>
-                </section>
-                <footer class="loginBox__footer">${footer}</footer>
-            </section>
-        </aside>
-    `
+    return html`<aside class="layout__login">
+        <section class="loginBox">
+            ${loginBoxHeader()}
+            <article class="loginBox__main">
+                <h3 class="loginBox__main__title">${title}</h3>
+                <section class="loginBox__main__body">${content}</section>
+            </article>
+            <footer class="loginBox__footer">${footer}</footer>
+        </section>
+    </aside>`
 }
 
 export function container(content: VNodeContent): VNode {

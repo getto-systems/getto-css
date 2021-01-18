@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { big, fullScreenError, v_medium } from "../../../common/layout"
+import { big, loginBox, v_medium } from "../../../common/layout"
 
 import { ApplicationError } from "../../../common/System/ApplicationError"
 
@@ -23,7 +23,7 @@ export function Loading(_: Props): VNode {
         document.title = `Loading | ${document.title}`
     }, [])
 
-    return fullScreenError(
+    return loginBox(
         "アプリケーションの読み込みに時間がかかっています",
         [
             big(html`<div class="loading loading_box">
