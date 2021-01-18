@@ -19,7 +19,7 @@ export function Login({ state, component }: Props): VNode {
     }
 
     return html`<aside class="layout__login">
-        <section class="login__box">${loginHeader()}${content()}</section>
+        <section class="loginBox">${loginHeader()}${content()}</section>
     </aside>`
 
     function content() {
@@ -78,7 +78,7 @@ export function Login({ state, component }: Props): VNode {
         }
 
         function body(content: VNodeContent) {
-            return html`<section class="login__body">${content}</section>`
+            return html`<section class="loginBox__body">${content}</section>`
         }
     }
 
@@ -86,7 +86,7 @@ export function Login({ state, component }: Props): VNode {
         return big(footer([button(), resetLink()]))
 
         function footer(content: VNodeContent) {
-            return html`<footer class="login__footer button__container">${content}</footer>`
+            return html`<footer class="loginBox__footer button__container">${content}</footer>`
         }
 
         function button() {
@@ -106,7 +106,7 @@ export function Login({ state, component }: Props): VNode {
             }
         }
         function resetLink() {
-            return html`<div class="login__link">
+            return html`<div class="loginBox__link">
                 <a href="#"><i class="lnir lnir-question-circle"></i> パスワードを忘れた方</a>
             </div>`
         }

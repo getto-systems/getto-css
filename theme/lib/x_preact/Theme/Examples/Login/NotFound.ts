@@ -38,7 +38,7 @@ export function NotFound(_: Props): VNode {
         ],
         html`<section class="button__container">
             <div></div>
-            <div class="login__link">
+            <div class="loginBox__link">
                 <a href="#"><i class="lnir lnir-home"></i> ホームへ</a>
             </div>
         </section>`
