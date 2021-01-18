@@ -3,7 +3,7 @@ import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { useTerminate } from "../../common/hooks"
-import { footer, menuHeader, menuFooter } from "../../layout"
+import { footer, menuHeader, menuFooter } from "../../common/layout"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MenuList } from "../../Outline/MenuList"
