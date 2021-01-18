@@ -3,8 +3,8 @@ import { html } from "htm/preact"
 
 import { iconClass, lnir } from "../../../../z_external/icon"
 
-import { icon, label_gray } from "../../../common/layout"
-import { buttons, form, formWithHelp, formWithHelp_error, formWithHelp_warning, fullBox, fullModal } from "../box"
+import { buttons, icon, label_gray } from "../../../common/layout"
+import { form, formWithHelp, formWithHelp_error, formWithHelp_warning, fullBox, fullModal } from "../box"
 
 import { CompleteComponent, DeleteComponent, EditState, FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"

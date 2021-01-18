@@ -93,7 +93,7 @@ export function Forget({ state, component }: Props): VNode {
         return big(footer([button(), resetLink()]))
 
         function footer(content: VNodeContent) {
-            return html`<footer class="loginBox__footer button__container">${content}</footer>`
+            return html`<footer class="loginBox__main__footer button__container">${content}</footer>`
         }
 
         function button() {

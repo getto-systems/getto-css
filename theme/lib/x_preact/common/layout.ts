@@ -29,50 +29,42 @@ export function loginBoxHeader(): VNode {
     `
 }
 
-export function loginBox(
-    title: VNodeContent,
-    content: VNodeContent,
-    footer: VNodeContent
-): VNode {
+export function loginBox(title: VNodeContent, content: VNodeContent, footer: VNodeContent): VNode {
     return html`<aside class="layout__login">
         <section class="loginBox">
             ${loginBoxHeader()}
             <article class="loginBox__main">
-                <h1 class="loginBox__main__title">${title}</h1>
-                <section class="loginBox__main__body">${content}</section>
+                <header class="loginBox__main__header">
+                    <h1 class="loginBox__main__title">${title}</h1>
+                </header>
+                <main class="loginBox__main__body">${content}</main>
+                <footer class="loginBox__main__footer">${footer}</footer>
             </article>
-            <footer class="loginBox__footer">${footer}</footer>
         </section>
     </aside>`
 }
 
 export function menuHeader(): VNode {
     const { brand, title, subTitle } = siteInfo()
-    return html`
-        <header class="menu__header">
-            <cite class="menu__brand">${brand}</cite>
-            <strong class="menu__title">${title}</strong>
-            <cite class="menu__subTitle">${subTitle}</cite>
-        </header>
-    `
+    return html`<header class="menu__header">
+        <cite class="menu__brand">${brand}</cite>
+        <strong class="menu__title">${title}</strong>
+        <cite class="menu__subTitle">${subTitle}</cite>
+    </header>`
 }
 
 export function menuFooter(): VNode {
-    return html`
-        <footer class="menu__footer">
-            <p class="menu__footer__message">copyright : GETTO.systems</p>
-        </footer>
-    `
+    return html`<footer class="menu__footer">
+        <p class="menu__footer__message">copyright : GETTO.systems</p>
+    </footer>`
 }
 
-export function footer(): VNode {
-    return html`
-        <footer class="main__footer">
-            <p class="main__footer__message">
-                powered by : LineIcons <span class="noWrap">/ みんなの文字</span>
-            </p>
-        </footer>
-    `
+export function mainFooter(): VNode {
+    return html`<footer class="main__footer">
+        <p class="main__footer__message">
+            powered by : LineIcons <span class="noWrap">/ みんなの文字</span>
+        </p>
+    </footer>`
 }
 
 export function container(content: VNodeContent): VNode {
@@ -171,4 +163,11 @@ export function badge_info(content: VNodeContent): VNode {
 }
 function badge(color: Color, content: VNodeContent): VNode {
     return html`<span class="badge badge_${color}">${content}</span>`
+}
+
+export function buttons(left: VNodeContent, right: VNodeContent): VNode {
+    return html`<aside class="button__container">
+        <section class="button_left">${left}</section>
+        <section class="button_right">${right}</section>
+    </aside>`
 }

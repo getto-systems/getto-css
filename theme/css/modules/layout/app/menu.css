@@ -11,17 +11,11 @@
 }
 
 .menu__brand {
-    display: block;
     font-size: var(--font-size-large);
 }
 
 .menu__title {
-    display: block;
-    font-size: var(--font-size-x-large);
-}
-
-.menu__subTitle {
-    display: block;
+    font-size: var(--font-size-xx-large);
 }
 
 .menu__box {
@@ -163,13 +157,6 @@
 }
 
 @media (--media-tablet) {
-    .menu__brand,
-    .menu__title,
-    .menu__subTitle {
-        display: inline-block;
-        margin-right: 0.5rem;
-    }
-
     .menu__body {
         display: flex;
         flex-wrap: wrap;
@@ -180,16 +167,10 @@
     }
 }
 
-@media (--media-phone) {
+@media (--media-shallow) {
     .menu__header {
         white-space: nowrap;
         overflow: hidden;
-    }
-
-    .menu__brand,
-    .menu__title {
-        display: inline-block;
-        margin-right: 0.5rem;
     }
 
     .menu__subTitle {

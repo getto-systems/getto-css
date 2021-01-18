@@ -3,7 +3,7 @@ import { useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { useTerminate } from "../common/hooks"
-import { footer, menuHeader, menuFooter } from "../common/layout"
+import { mainFooter, menuHeader, menuFooter } from "../common/layout"
 
 import { ApplicationError } from "../common/System/ApplicationError"
 import { MenuList } from "../Outline/MenuList"
@@ -28,7 +28,7 @@ export function Document({ document: { resource, terminate } }: Props): VNode {
 
     return html`
         <main class="layout__app">
-            <article class="layout__app__main">${h(Content, resource)} ${footer()}</article>
+            <article class="layout__app__main">${h(Content, resource)} ${mainFooter()}</article>
             <aside class="layout__app__menu menu">
                 ${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}
             </aside>

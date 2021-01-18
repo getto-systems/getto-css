@@ -1,7 +1,8 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box, buttons, form } from "../box"
+import { buttons } from "../../../common/layout"
+import { box, form } from "../box"
 
 type Props = {
     // no props
@@ -68,14 +69,7 @@ export function Button(_: Props): VNode {
                 []
             ),
         ]),
-        form("cancel", [
-            buttons(
-                [
-                    html`<button class="button button_cancel">キャンセル</button>`,
-                ],
-                []
-            ),
-        ]),
+        form("cancel", [buttons([html`<button class="button button_cancel">キャンセル</button>`], [])]),
         form("undo / redo", [
             buttons(
                 [
@@ -86,12 +80,7 @@ export function Button(_: Props): VNode {
             ),
         ]),
         form("disabled", [
-            buttons(
-                [
-                    html`<button class="button button_disabled">やり直す</button>`,
-                ],
-                []
-            ),
+            buttons([html`<button class="button button_disabled">やり直す</button>`], []),
         ]),
     ])
 }

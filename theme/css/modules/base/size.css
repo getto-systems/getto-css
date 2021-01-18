@@ -1,5 +1,6 @@
 :root {
-    --font-size-x-large: calc(var(--font-size-large) * 1.5625);
+    --font-size-xx-large: calc(var(--font-size-x-large) * 1.25);
+    --font-size-x-large: calc(var(--font-size-large) * 1.25);
     --font-size-large: calc(var(--font-size-normal) * 1.25);
     --font-size-normal: 20px;
     --font-size-small: calc(var(--font-size-normal) / 1.25);

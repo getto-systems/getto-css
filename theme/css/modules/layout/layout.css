@@ -13,13 +13,15 @@
     overflow: auto;
 }
 
-@media (--media-desktop) {
+@media (--media-wide) {
     .layout__login {
         justify-content: center;
         display: flex;
         align-items: flex-start;
     }
+}
 
+@media (--media-desktop) {
     .layout__app {
         display: flex;
         flex-direction: row-reverse;
