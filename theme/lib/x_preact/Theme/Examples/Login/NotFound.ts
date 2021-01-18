@@ -4,7 +4,7 @@ import { html } from "htm/preact"
 
 import { ApplicationError } from "../../../common/System/ApplicationError"
 
-import { loginBox } from "../../../common/layout"
+import { buttons, loginBox } from "../../../common/layout"
 
 type Props = Readonly<{
     // no props
@@ -36,11 +36,6 @@ export function NotFound(_: Props): VNode {
             </p>`,
             html`<p>作業は右下のリンクからホームに戻って続けられます</p>`,
         ],
-        html`<section class="button__container">
-            <div></div>
-            <div class="loginBox__link">
-                <a href="#"><i class="lnir lnir-home"></i> ホームへ</a>
-            </div>
-        </section>`
+        buttons([], [html`<a href="#"><i class="lnir lnir-home"></i> ホームへ</a>`])
     )
 }

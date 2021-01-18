@@ -3,7 +3,7 @@ import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { useTerminate } from "../../common/hooks"
-import { footer, menuHeader, menuFooter } from "../../common/layout"
+import { mainFooter, menuHeader, menuFooter } from "../../common/layout"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MenuList } from "../../Outline/MenuList"
@@ -41,7 +41,7 @@ export function Report({ example: { resource, terminate } }: Props): VNode {
                     ${h(BreadcrumbList, resource)}
                 </header>
                 <section class="main__body">${h(Container, NO_PROPS)}</section>
-                ${footer()}
+                ${mainFooter()}
             </article>
             <aside class="layout__app__menu menu">
                 ${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}

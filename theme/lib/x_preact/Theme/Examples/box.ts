@@ -129,13 +129,6 @@ function toFormHelp(message: VNodeContent) {
     return html`<p>${message}</p>`
 }
 
-export function buttons(left: VNodeContent, right: VNodeContent): VNode {
-    return html`<aside class="button__container">
-        <section class="button_left">${left}</section>
-        <section class="button_right">${right}</section>
-    </aside>`
-}
-
 export function modal(title: VNodeContent, content: VNodeContent): VNode {
     return html`<section class="modal__box">${modalHeader(title)} ${modalBody(content)}</section>`
 }

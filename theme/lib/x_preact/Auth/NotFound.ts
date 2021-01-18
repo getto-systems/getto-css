@@ -3,7 +3,7 @@ import { useEffect, useErrorBoundary, useState } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { useTerminate } from "../common/hooks"
-import { loginBox } from "../common/layout"
+import { buttons, loginBox } from "../common/layout"
 
 import { ApplicationError } from "../common/System/ApplicationError"
 
@@ -46,17 +46,19 @@ function Content({ currentVersion }: ContentProps): VNode {
     }, [])
 
     return loginBox(
-        "見つかりませんでした",
+        "リンクが切れていました",
         [
-            html`<p>リンクされたページは存在しません</p>`,
-            html`<p>お手数ですが、管理者にクリックしたリンクをお伝えください</p>`,
+            html`<p>
+                リンクされたページが見つかりませんでした<br />
+                これはシステム側の不備です
+            </p>`,
+            html`<p>
+                お手数ですが、管理者にクリックしたリンクをお伝えください<br />
+                直前まで行っていた作業も教えていただけると助かります
+            </p>`,
+            html`<p>作業は右下のリンクからホームに戻って続けられます</p>`,
         ],
-        html`<section class="button__container">
-            <div></div>
-            <div class="loginBox__link">
-                <a href="${homeHref()}"><i class="lnir lnir-home"></i> ホームへ</a>
-            </div>
-        </section>`
+        buttons([], [html`<a href="${homeHref()}"><i class="lnir lnir-home"></i> ホームへ</a>`])
     )
 
     function homeHref() {
