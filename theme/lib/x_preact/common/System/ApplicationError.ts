@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { loginBox, v_medium } from "../layout"
+import { buttons, loginBox } from "../layout"
 
 type Props = Readonly<{
     err: string
@@ -11,17 +11,26 @@ export function ApplicationError({ err }: Props): VNode {
     return loginBox(
         html`システムエラーが発生しました`,
         [
-            html`<p>エラーが発生したため、処理を中断しました</p>`,
+            html`<p>
+                エラーが発生したため、処理を中断しました<br />
+                これはシステム側の不備です
+            </p>`,
             html`<p>詳細: ${err}</p>`,
-            v_medium(),
-            html`<p>お手数ですが、管理者にご連絡お願いします</p>`,
+            html`<p>
+                お手数ですが、管理者に詳細をお伝えください<br />
+                直前まで行っていた作業も教えていただけると助かります
+            </p>`,
+            html`<p>
+                左下のリンクで再読み込みすることで解消するかもしれません<br />
+                繰り返しエラーになる場合は右下のホームから戻ってください
+            </p>`,
         ],
-        html`<section class="button__container">
-            <div></div>
-            <div class="loginBox__link">${reloadLink()}</div>
-        </section>`
+        buttons([reloadLink()], [topLink()])
     )
 
+    function topLink() {
+        return html`<a href="/"><i class="lnir lnir-home"></i> ホーム</a>`
+    }
     function reloadLink() {
         // search param をリセットしてやり直してみる
         return html`<a href="?"><i class="lnir lnir-reload"></i> 再読み込み</a>`
