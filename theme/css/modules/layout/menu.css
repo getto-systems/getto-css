@@ -45,7 +45,7 @@
     display: flex;
     cursor: pointer;
 
-    padding: 0.5em;
+    padding: calc(0.4em - 1px) 0.5em;
     border: 1px dotted transparent;
     border-radius: 0.5rem;
 
@@ -73,9 +73,7 @@
 
 .menu__nav__link {
     display: flex;
-    padding-top: calc(0.7em - 1px);
-    padding-bottom: calc(0.7em - 1px);
-    padding-right: 0.5em;
+    padding: calc(0.4em - 1px) 0.5em;
 }
 
 .menu__nav__item__label {
@@ -97,11 +95,12 @@
 .menu__footer {
     border-top: 1px dotted var(--color-black);
 
-    padding-top: 0.25rem;
+    padding-top: var(--content-vertical-space-tiny);
     padding-left: 0.25rem;
     padding-right: 0.25rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.25rem;
+
+    margin-top: var(--content-vertical-space-tiny);
+    margin-bottom: var(--content-vertical-space-tiny);
 }
 
 .menu__footer__message {

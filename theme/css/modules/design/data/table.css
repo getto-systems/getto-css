@@ -8,6 +8,10 @@
     width: 100%;
 }
 
+.table_small {
+    font-size: var(--font-size-smaller);
+}
+
 .table th {
     font-weight: bold;
     font-size: var(--font-size-small);

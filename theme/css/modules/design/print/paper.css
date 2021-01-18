@@ -2,6 +2,7 @@
     .layout__menu,
     .main__header,
     .main__footer,
+    .box,
     .paper_hide {
         display: none;
     }
