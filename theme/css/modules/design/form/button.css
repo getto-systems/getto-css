@@ -42,6 +42,7 @@
 
 .button_edit,
 .button_search,
+.button_send,
 .button_delete,
 .button_complete,
 .button_warning,
@@ -69,7 +70,9 @@
 .button_edit:hover,
 .button_edit:focus,
 .button_search:hover,
-.button_search:focus {
+.button_search:focus,
+.button_send:hover,
+.button_send:focus {
     color: var(--color-white);
     border-color: var(--color-base);
     background-color: var(--color-base);
@@ -78,7 +81,9 @@
 .button_edit.button_confirm,
 .button_edit.button_connect,
 .button_search.button_confirm,
-.button_search.button_connect {
+.button_search.button_connect,
+.button_send.button_confirm,
+.button_send.button_connect {
     color: var(--color-white);
     border-color: var(--color-base);
     background-color: var(--color-base);
@@ -87,7 +92,9 @@
 .button_edit.button_confirm:hover,
 .button_edit.button_confirm:focus,
 .button_search.button_confirm:hover,
-.button_search.button_confirm:focus {
+.button_search.button_confirm:focus,
+.button_send.button_confirm:hover,
+.button_send.button_confirm:focus {
     color: var(--color-base);
     border-color: var(--color-base);
     background-color: var(--color-white-pure);

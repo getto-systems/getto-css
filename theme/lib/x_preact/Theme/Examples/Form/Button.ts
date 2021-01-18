@@ -21,6 +21,30 @@ export function Button(_: Props): VNode {
                 []
             ),
         ]),
+        form("search", [
+            buttons(
+                [
+                    html`<button class="button button_search">検索</button>`,
+                    html`<button class="button button_search button_confirm">検索</button>`,
+                    html`<button class="button button_search button_connect">
+                        <i class="lnir lnir-spinner lnir-is-spinning"></i> 検索中
+                    </button>`,
+                ],
+                []
+            ),
+        ]),
+        form("send", [
+            buttons(
+                [
+                    html`<button class="button button_send">送信</button>`,
+                    html`<button class="button button_send button_confirm">送信</button>`,
+                    html`<button class="button button_send button_connect">
+                        <i class="lnir lnir-spinner lnir-is-spinning"></i> 送信中
+                    </button>`,
+                ],
+                []
+            ),
+        ]),
         form("delete", [
             buttons(
                 [
@@ -69,7 +93,15 @@ export function Button(_: Props): VNode {
                 []
             ),
         ]),
-        form("cancel", [buttons([html`<button class="button button_cancel">キャンセル</button>`], [])]),
+        form("cancel / close", [
+            buttons(
+                [
+                    html`<button class="button button_cancel">キャンセル</button>`,
+                    html`<button class="button button_close">閉じる</button>`,
+                ],
+                []
+            ),
+        ]),
         form("undo / redo", [
             buttons(
                 [
