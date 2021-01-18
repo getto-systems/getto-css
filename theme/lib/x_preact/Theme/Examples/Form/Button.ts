@@ -11,7 +11,6 @@ export function Button(_: Props): VNode {
         form("edit", [
             buttons(
                 [
-                    html`<button class="button button_edit">編集</button>`,
                     html`<button class="button button_edit">保存</button>`,
                     html`<button class="button button_edit button_confirm">保存</button>`,
                     html`<button class="button button_edit button_connect">

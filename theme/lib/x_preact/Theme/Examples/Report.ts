@@ -34,8 +34,8 @@ export function Report({ example: { resource, terminate } }: Props): VNode {
     const title = html`Report`
 
     return html`
-        <main class="layout">
-            <article class="layout__main">
+        <main class="layout__app">
+            <article class="layout__app__main">
                 <header class="main__header">
                     <h1 class="main__title">${title}</h1>
                     ${h(BreadcrumbList, resource)}
@@ -43,7 +43,7 @@ export function Report({ example: { resource, terminate } }: Props): VNode {
                 <section class="main__body">${h(Container, NO_PROPS)}</section>
                 ${footer()}
             </article>
-            <aside class="layout__menu menu">
+            <aside class="layout__app__menu menu">
                 ${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}
             </aside>
         </main>

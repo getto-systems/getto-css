@@ -18,7 +18,7 @@ export function Forget({ state, component }: Props): VNode {
         component.reset(null)
     }
 
-    return html`<aside class="login">
+    return html`<aside class="layout__login">
         <section class="login__box">${loginHeader()}${content()}</section>
     </aside>`
 

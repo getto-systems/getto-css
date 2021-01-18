@@ -7,9 +7,9 @@
 @import "./modules/base/base.css";
 
 @import "./modules/layout/layout.css";
-@import "./modules/layout/menu.css";
-@import "./modules/layout/main.css";
 @import "./modules/layout/login.css";
+@import "./modules/layout/app/main.css";
+@import "./modules/layout/app/menu.css";
 
 @import "./modules/design/box/container.css";
 @import "./modules/design/box/modal.css";

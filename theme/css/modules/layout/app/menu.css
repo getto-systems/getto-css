@@ -25,7 +25,7 @@
 }
 
 .menu__box {
-    padding: 0.5em;
+    padding: 0.5rem;
 
     border-bottom: 1px dotted var(--color-black);
 
@@ -33,8 +33,8 @@
 }
 
 .menu__nav {
-    padding-top: 0.5em;
     padding-left: 0.25em;
+    margin-top: var(--content-vertical-space-small);
 }
 
 .menu__nav__items {
@@ -125,6 +125,13 @@
 }
 
 @media (--media-mobile) {
+    .layout__app__menu .menu__header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
     .menu__brand,
     .menu__title,
     .menu__subTitle {

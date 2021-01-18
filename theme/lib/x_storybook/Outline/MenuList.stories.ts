@@ -30,8 +30,8 @@ const Template: Story<MockProps> = (args) => {
 
     function Preview(props: { args: MockProps }) {
         menuList.update(mapMenuMockProps(props.args))
-        return html`<main class="layout">
-            <aside class="layout__menu menu">
+        return html`<main class="layout__app">
+            <aside class="layout__app__menu menu">
                 ${menuHeader()} ${h(MenuList, { menuList })} ${menuFooter()}
             </aside>
         </main>`
