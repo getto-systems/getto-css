@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { big, loginBoxHeader, VNodeContent } from "../../../../common/layout"
+import { big, buttons, loginBox, VNodeContent } from "../../../../common/layout"
 import { form, formWithHelp_error } from "../../box"
 
 import { EditState, LoginProps } from "./Container"
@@ -18,63 +18,62 @@ export function Login({ state, component }: Props): VNode {
         component.login(null)
     }
 
-    return html`<aside class="layout__login">
-        <section class="loginBox">${loginBoxHeader()}${content()}</section>
-    </aside>`
+    return loginBox("ログイン", content(), footer())
 
     function content() {
         switch (state.type) {
             case "try-to-login":
-                return html`${loginMessage()}
-                    <div></div>`
+                return loginMessage()
 
             case "login":
-                return html`${loginForm(state.state)}${loginFooter(state.state)}`
+                return loginForm(state.state)
+        }
+    }
+    function footer() {
+        switch (state.type) {
+            case "try-to-login":
+                return ""
+
+            case "login":
+                return loginFooter(state.state)
         }
     }
 
     function loginMessage() {
-        return html`<big>
-            <div class="loading loading_login">
-                <p class="loading__message">認証中です</p>
-                <i class="lnir lnir-spinner lnir-is-spinning"></i>
-                <p class="loading__message">
-                    30秒以上かかる場合は何かがおかしいので、
-                    <br />
-                    お手数ですが管理者に連絡お願いします
-                </p>
-            </div>
-        </big>`
+        return [
+            html`<p><i class="lnir lnir-spinner lnir-is-spinning"></i> 認証中です</p>`,
+            html`<p>
+                30秒以上かかる場合は何かがおかしいので、
+                <br />
+                お手数ですが管理者に連絡お願いします
+            </p>`,
+        ]
     }
     function loginForm(state: EditState) {
         if (state.invalid) {
-            return big(
-                body([
-                    formWithHelp_error(
-                        "ログインID",
-                        html`<input type="text" class="input_fill" onInput=${onInput} />`,
-                        [],
-                        ["ログインIDを入力してください"]
-                    ),
-                    formWithHelp_error(
-                        "パスワード",
-                        html`<input type="password" class="input_fill" onInput=${onInput} />`,
-                        [],
-                        ["パスワードを入力してください"]
-                    ),
-                ])
-            )
+            return body([
+                formWithHelp_error(
+                    "ログインID",
+                    html`<input type="text" class="input_fill" onInput=${onInput} />`,
+                    [],
+                    ["ログインIDを入力してください"]
+                ),
+                formWithHelp_error(
+                    "パスワード",
+                    html`<input type="password" class="input_fill" onInput=${onInput} />`,
+                    [],
+                    ["パスワードを入力してください"]
+                ),
+            ])
         } else {
-            return big(
-                body([
-                    form("ログインID", [
-                        html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`,
-                    ]),
-                    form("パスワード", [
-                        html`<input type="password" class="input_fill" onInput=${onInputAsInvalid} />`,
-                    ]),
-                ])
-            )
+            return body([
+                form("ログインID", [
+                    html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`,
+                ]),
+                form("パスワード", [
+                    html`<input type="password" class="input_fill" onInput=${onInputAsInvalid} />`,
+                ]),
+            ])
         }
 
         function body(content: VNodeContent) {
@@ -83,16 +82,12 @@ export function Login({ state, component }: Props): VNode {
     }
 
     function loginFooter(state: EditState) {
-        return big(footer([button(), resetLink()]))
-
-        function footer(content: VNodeContent) {
-            return html`<footer class="loginBox__main__footer button__container">${content}</footer>`
-        }
+        return buttons([big(button())], [resetLink()])
 
         function button() {
             return html`<button
                 type="button"
-                class="button button_save ${modified()}"
+                class="button button_edit ${modified()}"
                 onClick="${onLoginClick}"
             >
                 ログイン
@@ -102,13 +97,11 @@ export function Login({ state, component }: Props): VNode {
                 if (!state.fill) {
                     return ""
                 }
-                return "button_modified"
+                return "button_confirm"
             }
         }
         function resetLink() {
-            return html`<div class="loginBox__link">
-                <a href="#"><i class="lnir lnir-question-circle"></i> パスワードを忘れた方</a>
-            </div>`
+            return html`<a href="#"><i class="lnir lnir-question-circle"></i> パスワードを忘れた方</a>`
         }
     }
 }

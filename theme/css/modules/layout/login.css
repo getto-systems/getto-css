@@ -39,18 +39,6 @@
     padding: 0.5rem;
 }
 
-.loginBox .form__header {
-    font-size: var(--font-size-normal);
-}
-
-.loginBox .form__help {
-    font-size: var(--font-size-small);
-}
-
-.loginBox :--input {
-    font-size: var(--font-size-normal);
-}
-
 @media (--media-wide) {
     .loginBox {
         min-width: var(--width-box-double);
