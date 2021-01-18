@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { MenuList } from "../../x_preact/Outline/MenuList"
-import { menuFooter, menuHeader } from "../../x_preact/layout"
+import { menuFooter, menuHeader } from "../../x_preact/common/layout"
 
 import {
     mapMenuMockProps,
