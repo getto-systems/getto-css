@@ -53,6 +53,10 @@ export function menuHeader(): VNode {
     </header>`
 }
 
+export function menuBox(content: VNodeContent): VNode {
+    return html`<section class="menu__box">${content}</section>`
+}
+
 export function menuFooter(): VNode {
     return html`<footer class="menu__footer">
         <p class="menu__footer__message">

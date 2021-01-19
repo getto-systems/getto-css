@@ -2,7 +2,7 @@ import { VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { notice_alert, v_small } from "../common/layout"
+import { menuBox, notice_alert, v_small } from "../common/layout"
 
 import { MenuListComponent, initialMenuListState } from "../../auth/Outline/menuList/component"
 
@@ -99,7 +99,7 @@ function badge(badgeCount: number) {
 }
 
 function error(err: LoadMenuError): VNode {
-    return html`<section class="menu__box">${loadMenuError(err)}</section>`
+    return menuBox(loadMenuError(err))
 }
 function loadMenuError(err: LoadMenuError): VNode[] {
     switch (err.type) {
