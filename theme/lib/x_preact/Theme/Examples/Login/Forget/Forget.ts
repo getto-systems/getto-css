@@ -83,7 +83,7 @@ export function Forget({ state, component }: Props): VNode {
     }
 
     function resetFooter(state: EditState) {
-        return buttons([button()], [loginLink()])
+        return buttons({ left: [button()], right: [loginLink()] })
 
         function button() {
             return html`<button

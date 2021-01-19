@@ -58,7 +58,10 @@ function Content({ currentVersion }: ContentProps): VNode {
             </p>`,
             html`<p>作業は右下のリンクからホームに戻って続けられます</p>`,
         ],
-        footer: buttons([], [html`<a href="${homeHref()}"><i class="lnir lnir-home"></i> ホームへ</a>`]),
+        footer: buttons({
+            left: [],
+            right: [html`<a href="${homeHref()}"><i class="lnir lnir-home"></i> ホームへ</a>`],
+        }),
     })
 
     function homeHref() {

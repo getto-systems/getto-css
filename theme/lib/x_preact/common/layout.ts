@@ -249,7 +249,11 @@ function badge(color: Color, content: VNodeContent): VNode {
     return html`<span class="badge badge_${color}">${content}</span>`
 }
 
-export function buttons(left: VNodeContent, right: VNodeContent): VNode {
+export type ButtonsContent = Readonly<{
+    left: VNodeContent
+    right: VNodeContent
+}>
+export function buttons({ left, right }: ButtonsContent): VNode {
     return html`<aside class="button__container">
         <section class="button_left">${left}</section>
         <section class="button_right">${right}</section>

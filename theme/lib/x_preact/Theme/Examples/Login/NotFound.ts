@@ -36,6 +36,9 @@ export function NotFound(_: Props): VNode {
             </p>`,
             html`<p>作業は右下のリンクからホームに戻って続けられます</p>`,
         ],
-        footer: buttons([], [html`<a href="#"><i class="lnir lnir-home"></i> ホームへ</a>`]),
+        footer: buttons({
+            left: [],
+            right: [html`<a href="#"><i class="lnir lnir-home"></i> ホームへ</a>`],
+        }),
     })
 }

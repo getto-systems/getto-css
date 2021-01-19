@@ -54,10 +54,12 @@ export function Complex(props: Props): VNode {
                     `,
                 ]),
             ],
-            buttons(
-                [html`<button class="button button_edit" onClick=${component.edit}>編集</button>`],
-                [html`<button class="button button_delete" onClick=${onDeleteClick}>削除</button>`]
-            )
+            buttons({
+                left: [html`<button class="button button_edit" onClick=${component.edit}>編集</button>`],
+                right: [
+                    html`<button class="button button_delete" onClick=${onDeleteClick}>削除</button>`,
+                ],
+            })
         )
     }
     function editingBox(state: EditState) {

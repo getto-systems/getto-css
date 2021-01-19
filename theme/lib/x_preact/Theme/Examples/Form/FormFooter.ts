@@ -9,19 +9,21 @@ type Props = FormProps
 export function FormFooter({ state, component }: Props): VNode {
     switch (state.type) {
         case "static":
-            return buttons(
-                [html`<button class="button button_edit" onClick=${component.edit}>編集</button>`],
-                [html`<button class="button button_delete" onClick=${component.delete}>削除</button>`]
-            )
+            return buttons({
+                left: [html`<button class="button button_edit" onClick=${component.edit}>編集</button>`],
+                right: [
+                    html`<button class="button button_delete" onClick=${component.delete}>削除</button>`,
+                ],
+            })
 
         case "try-to-save":
-            return buttons([savingButton()], [])
+            return buttons({ left: [savingButton()], right: [] })
 
         case "editing":
-            return html`${buttons([saveButton(state.state)], [])}${buttons(
-                [closeButton(state.state)],
-                [redoButton(state.state), undoButton(state.state)]
-            )}
+            return html`${buttons({ left: [saveButton(state.state)], right: [] })}${buttons({
+                left: [closeButton(state.state)],
+                right: [redoButton(state.state), undoButton(state.state)],
+            })}
             ${invalidMessage(state.state)}`
     }
 
