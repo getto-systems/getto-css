@@ -8,9 +8,9 @@ type Props = Readonly<{
 }>
 
 export function ApplicationError({ err }: Props): VNode {
-    return loginBox(
-        html`システムエラーが発生しました`,
-        [
+    return loginBox({
+        title: html`システムエラーが発生しました`,
+        content: [
             html`<p>
                 エラーが発生したため、処理を中断しました<br />
                 これはシステム側の不備です
@@ -25,8 +25,8 @@ export function ApplicationError({ err }: Props): VNode {
                 繰り返しエラーになる場合は右下のホームから戻ってください
             </p>`,
         ],
-        buttons([reloadLink()], [topLink()])
-    )
+        footer: buttons([reloadLink()], [topLink()]),
+    })
 
     function topLink() {
         return html`<a href="/"><i class="lnir lnir-home"></i> ホーム</a>`

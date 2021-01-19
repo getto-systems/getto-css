@@ -75,7 +75,7 @@ export function content_home_layout(): VNode {
         html`<p>わかりやすい画面</p>`,
         html`<p>メインタイトル</p>`,
         html`<p>パンくずリスト</p>`,
-        html`<p>サイド画面</p>`, // TODO 簡易一覧とかレポートのダウンロードとかするやつを追加
+        html`<p>サイド画面</p>`,
         v_medium(),
         notice_info("業務で必要な時に使用できる"),
         v_small(),

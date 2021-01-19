@@ -18,8 +18,13 @@ export function siteInfo(): SiteInfo {
     }
 }
 
-// TODO 引数を object にする
-export function loginBox(title: VNodeContent, content: VNodeContent, footer: VNodeContent): VNode {
+export type LoginBoxContent = Readonly<{
+    title: VNodeContent
+    content: VNodeContent
+    footer: VNodeContent
+}>
+
+export function loginBox({ title, content, footer }: LoginBoxContent): VNode {
     return html`<aside class="layout__login">
         <section class="loginBox">
             ${loginBoxHeader()}

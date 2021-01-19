@@ -23,9 +23,9 @@ export function NotFound(_: Props): VNode {
         document.title = `Not Found | ${document.title}`
     }, [])
 
-    return loginBox(
-        "リンクが切れていました",
-        [
+    return loginBox({
+        title: "リンクが切れていました",
+        content: [
             html`<p>
                 リンクされたページが見つかりませんでした<br />
                 これはシステム側の不備です
@@ -36,6 +36,6 @@ export function NotFound(_: Props): VNode {
             </p>`,
             html`<p>作業は右下のリンクからホームに戻って続けられます</p>`,
         ],
-        buttons([], [html`<a href="#"><i class="lnir lnir-home"></i> ホームへ</a>`])
-    )
+        footer: buttons([], [html`<a href="#"><i class="lnir lnir-home"></i> ホームへ</a>`]),
+    })
 }

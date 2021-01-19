@@ -18,7 +18,7 @@ export function Forget({ state, component }: Props): VNode {
         component.reset(null)
     }
 
-    return loginBox("パスワードリセット", content(), footer())
+    return loginBox({ title: "パスワードリセット", content: content(), footer: footer() })
 
     function content() {
         switch (state.type) {
