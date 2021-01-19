@@ -32,7 +32,7 @@ export function Form({ example: { resource, terminate } }: Props): VNode {
         document.title = `Sidebar (double size) | ${document.title}`
     }, [])
 
-    const title = html`Sidebar <span class="noWrap">(double size)</span>`
+    const title = html`Sidebar <small><span class="noWrap">(double size)</span></small>`
 
     return html`<main class="layout__app layout__app__sidebar_double">
         <section class="layout__app__container">
@@ -47,7 +47,7 @@ export function Form({ example: { resource, terminate } }: Props): VNode {
             <aside class="layout__app__sidebar">
                 <section class="sidebar">
                     <header class="main__header">
-                        <h1 class="main__title">Sidebar</h1>
+                        <h1 class="main__title">List</h1>
                     </header>
                     <section class="main__body">${h(Pager, NO_PROPS)}</section>
                     <section class="main__body sidebar__main">${h(Table, NO_PROPS)}</section>

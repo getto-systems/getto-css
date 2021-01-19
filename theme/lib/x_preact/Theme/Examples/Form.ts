@@ -3,7 +3,7 @@ import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { useTerminate } from "../../common/hooks"
-import { mainFooter, menuHeader, menuFooter } from "../../common/layout"
+import { mainFooter, menuHeader, menuFooter, menuBox } from "../../common/layout"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MenuList } from "../../Outline/MenuList"
@@ -45,7 +45,9 @@ export function Form({ example: { resource, terminate } }: Props): VNode {
             </article>
         </section>
         <aside class="layout__app__menu">
-            <section class="menu">${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}</section>
+            <section class="menu">
+                ${menuHeader()} ${menuBox("global information")} ${h(MenuList, resource)} ${menuFooter()}
+            </section>
         </aside>
     </main>`
 }
