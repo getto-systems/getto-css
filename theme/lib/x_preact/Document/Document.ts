@@ -2,10 +2,10 @@ import { h, VNode } from "preact"
 import { useErrorBoundary } from "preact/hooks"
 
 import { useTerminate } from "../common/hooks"
-import { menuHeader, menuFooter, appLayout, appMenu } from "../common/layout"
+import { appLayout } from "../common/layout"
 
 import { ApplicationError } from "../common/System/ApplicationError"
-import { MenuList } from "../Outline/MenuList"
+import { DocumentMenu } from "../Outline/Menu/DocumentMenu"
 import { Content } from "./Content"
 
 import { DocumentEntryPoint } from "../../document/Document/Document/view"
@@ -27,6 +27,6 @@ export function Document({ document: { resource, terminate } }: Props): VNode {
 
     return appLayout({
         main: h(Content, resource),
-        menu: appMenu([menuHeader(), h(MenuList, resource), menuFooter()]),
+        menu: DocumentMenu(resource),
     })
 }
