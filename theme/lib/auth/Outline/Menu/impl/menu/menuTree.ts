@@ -21,6 +21,8 @@ export const mainMenuTree = (): MenuTree => [
     ]),
     category("EXAMPLES", any, [
         item("form", lnir("book"), "/examples/form.html"),
+        item("sidebar", lnir("book"), "/examples/sidebar.html"),
+        item("sidebar double", lnir("book"), "/examples/sidebarDouble.html"),
         item("search", lnir("book"), "/examples/search.html"),
         item("data", lnir("book"), "/examples/data.html"),
         item("report", lnir("book"), "/examples/report.html"),

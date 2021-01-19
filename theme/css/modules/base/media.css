@@ -3,7 +3,7 @@
 @custom-media --media-shallow screen and (width < 51.27rem);
 @custom-media --media-wide screen and (width >= 51.27rem);
 @custom-media --media-tablet screen and (51.27rem <= width < 93.88rem);
-@custom-media --media-sidebar-disabled screen and (width < 75rem);
-@custom-media --media-sidebar-enabled screen and (width >= 75rem);
+@custom-media --media-sidebar-disabled screen and (width < 78rem);
+@custom-media --media-sidebar-enabled screen and (width >= 78rem);
 @custom-media --media-mobile screen and (width < 93.88rem);
 @custom-media --media-desktop screen and (width >= 93.88rem);
