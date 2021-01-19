@@ -23,9 +23,9 @@ export function Loading(_: Props): VNode {
         document.title = `Loading | ${document.title}`
     }, [])
 
-    return loginBox(
-        "アプリケーション読み込み中",
-        [
+    return loginBox({
+        title: "アプリケーション読み込み中",
+        content: [
             html`<p>
                 <i class="lnir lnir-spinner lnir-is-spinning"></i> ${" "}
                 アプリケーションの読み込みに時間がかかっています
@@ -35,6 +35,6 @@ export function Loading(_: Props): VNode {
                 お手数ですが、管理者にお伝えください
             </p>`,
         ],
-        ""
-    )
+        footer: "",
+    })
 }

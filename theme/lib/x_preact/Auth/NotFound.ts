@@ -45,9 +45,9 @@ function Content({ currentVersion }: ContentProps): VNode {
         currentVersion.load()
     }, [])
 
-    return loginBox(
-        "リンクが切れていました",
-        [
+    return loginBox({
+        title: "リンクが切れていました",
+        content: [
             html`<p>
                 リンクされたページが見つかりませんでした<br />
                 これはシステム側の不備です
@@ -58,8 +58,8 @@ function Content({ currentVersion }: ContentProps): VNode {
             </p>`,
             html`<p>作業は右下のリンクからホームに戻って続けられます</p>`,
         ],
-        buttons([], [html`<a href="${homeHref()}"><i class="lnir lnir-home"></i> ホームへ</a>`])
-    )
+        footer: buttons([], [html`<a href="${homeHref()}"><i class="lnir lnir-home"></i> ホームへ</a>`]),
+    })
 
     function homeHref() {
         switch (state.type) {

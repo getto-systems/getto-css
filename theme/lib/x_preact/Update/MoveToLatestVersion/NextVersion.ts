@@ -45,9 +45,9 @@ export function NextVersion({ nextVersion }: Props): VNode {
     }
 
     function delayedContent() {
-        return loginBox(
-            "アプリケーション読み込み中",
-            [
+        return loginBox({
+            title: "アプリケーション読み込み中",
+            content: [
                 html`<p>
                     <i class="lnir lnir-spinner lnir-is-spinning"></i> ${" "}
                     アプリケーションの読み込みに時間がかかっています
@@ -57,8 +57,8 @@ export function NextVersion({ nextVersion }: Props): VNode {
                     お手数ですが、管理者にお伝えください
                 </p>`,
             ],
-            ""
-        )
+            footer: "",
+        })
     }
 
     function failedContent(err: FindError) {
