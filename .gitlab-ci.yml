@@ -19,6 +19,7 @@ test:
       - merge_requests
     changes:
       - theme/lib/**/*.ts
+      - package-lock.json
 
   before_script:
     - npm clean-install

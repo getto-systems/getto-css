@@ -18,8 +18,8 @@ deploy_main(){
 
   npm run build
 
-  if [ ! -d $artifact_root/dist ]; then
-    echo "build failed! : $artifact_root/dist directory not exists"
+  if [ ! -f $artifact_root/dist/index.js ]; then
+    echo "build failed! : $artifact_root/dist/index.js not exists"
     exit 1
   fi
 
