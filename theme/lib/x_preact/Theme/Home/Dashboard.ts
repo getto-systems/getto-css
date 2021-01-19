@@ -1,9 +1,18 @@
 import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
-import { html } from "htm/preact"
 
 import { useTerminate } from "../../common/hooks"
-import { mainFooter, menuHeader, menuFooter } from "../../common/layout"
+import {
+    menuHeader,
+    menuFooter,
+    appLayout,
+    appMain,
+    mainHeader,
+    mainTitle,
+    mainBody,
+    appMenu,
+    menuBox,
+} from "../../common/layout"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MenuList } from "../../Outline/MenuList"
@@ -31,19 +40,16 @@ export function Dashboard({ dashboard: { resource, terminate } }: Props): VNode 
         document.title = `ホーム | ${document.title}`
     }, [])
 
-    const title = html`ホーム`
-
-    return html`<main class="layout__app">
-        <article class="layout__app__main">
-            <header class="main__header">
-                <h1 class="main__title">${title}</h1>
-                ${h(BreadcrumbList, resource)}
-            </header>
-            <section class="main__body container">${h(HowToUse, resource)}</section>
-            ${mainFooter()}
-        </article>
-        <aside class="layout__app__menu">
-            <section class="menu">${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}</section>
-        </aside>
-    </main>`
+    return appLayout({
+        main: appMain({
+            header: mainHeader([mainTitle("ホーム"), h(BreadcrumbList, resource)]),
+            body: mainBody(h(HowToUse, resource)),
+        }),
+        menu: appMenu([
+            menuHeader(),
+            menuBox("global information"),
+            h(MenuList, resource),
+            menuFooter(),
+        ]),
+    })
 }

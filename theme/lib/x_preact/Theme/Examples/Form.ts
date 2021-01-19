@@ -1,9 +1,18 @@
 import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
-import { html } from "htm/preact"
 
 import { useTerminate } from "../../common/hooks"
-import { mainFooter, menuHeader, menuFooter, menuBox } from "../../common/layout"
+import {
+    menuHeader,
+    menuFooter,
+    menuBox,
+    appLayout,
+    mainHeader,
+    mainBody,
+    mainTitle,
+    appMain,
+    appMenu,
+} from "../../common/layout"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MenuList } from "../../Outline/MenuList"
@@ -31,25 +40,18 @@ export function Form({ example: { resource, terminate } }: Props): VNode {
         document.title = `Form | ${document.title}`
     }, [])
 
-    const title = html`Form`
-
-    return html`<main class="layout__app">
-        <section class="layout__app__container">
-            <article class="layout__app__main">
-                <header class="main__header">
-                    <h1 class="main__title">${title}</h1>
-                    ${h(BreadcrumbList, resource)}
-                </header>
-                <section class="main__body">${h(Container, NO_PROPS)}</section>
-                ${mainFooter()}
-            </article>
-        </section>
-        <aside class="layout__app__menu">
-            <section class="menu">
-                ${menuHeader()} ${menuBox("global information")} ${h(MenuList, resource)} ${menuFooter()}
-            </section>
-        </aside>
-    </main>`
+    return appLayout({
+        main: appMain({
+            header: mainHeader([mainTitle("Form"), h(BreadcrumbList, resource)]),
+            body: mainBody(h(Container, NO_PROPS)),
+        }),
+        menu: appMenu([
+            menuHeader(),
+            menuBox("global information"),
+            h(MenuList, resource),
+            menuFooter(),
+        ]),
+    })
 }
 
 const NO_PROPS = {}

@@ -3,8 +3,9 @@
     background-color: var(--color-black-off);
 }
 
-.sidebar__main .box {
-    margin: 0;
+.sidebar__body {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 @media (--media-sidebar-enabled) {
@@ -28,7 +29,7 @@
         width: var(--width-sidebar-double);
     }
 
-    .sidebar__main {
+    .sidebar__body_grow {
         flex-grow: 1;
         overflow: auto;
         margin-bottom: 0.5rem;
