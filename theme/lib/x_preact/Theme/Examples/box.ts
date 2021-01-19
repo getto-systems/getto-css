@@ -6,6 +6,9 @@ import { VNodeContent } from "../../common/layout"
 export function simpleBox(content: VNodeContent): VNode {
     return simpleBoxContent("", content)
 }
+export function simpleBox_double(content: VNodeContent): VNode {
+    return simpleBoxContent("box_double", content)
+}
 export function simpleBox_grow(content: VNodeContent): VNode {
     return simpleBoxContent("box_grow", content)
 }
@@ -20,7 +23,7 @@ export function box(title: VNodeContent, content: VNodeContent): VNode {
     return boxContent("", title, content)
 }
 export function box_double(title: VNodeContent, content: VNodeContent): VNode {
-    return boxContent("", title, content)
+    return boxContent("box_double", title, content)
 }
 function boxContent(boxClass: string, title: VNodeContent, content: VNodeContent): VNode {
     return html`<article class="box ${boxClass}">

@@ -67,12 +67,6 @@ export function mainFooter(): VNode {
     </footer>`
 }
 
-export function sidebarFooter(): VNode {
-    return html`<footer class="main__footer">
-        <p class="main__footer__message">GETTO.systems</p>
-    </footer>`
-}
-
 export function container(content: VNodeContent): VNode {
     return html`<section class="container">${content}</section>`
 }

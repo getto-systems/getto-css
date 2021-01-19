@@ -3,17 +3,12 @@
     background-color: var(--color-black-off);
 }
 
-.sidebar .box {
-    width: calc(calc(100% - 1rem) - 2px);
-}
-
 .sidebar__main .box {
     margin: 0;
 }
 
 @media (--media-sidebar-enabled) {
     .sidebar {
-        width: var(--width-box);
         position: fixed;
         right: 0;
         top: 0;
@@ -23,6 +18,14 @@
 
         display: flex;
         flex-direction: column;
+    }
+
+    .layout__app__sidebar_single .sidebar {
+        width: var(--width-sidebar-single);
+    }
+
+    .layout__app__sidebar_double .sidebar {
+        width: var(--width-sidebar-double);
     }
 
     .sidebar__main {
