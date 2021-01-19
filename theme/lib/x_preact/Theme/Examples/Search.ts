@@ -1,9 +1,18 @@
 import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
-import { html } from "htm/preact"
 
 import { useTerminate } from "../../common/hooks"
-import { mainFooter, menuHeader, menuFooter } from "../../common/layout"
+import {
+    menuHeader,
+    menuFooter,
+    appLayout,
+    appMain,
+    mainHeader,
+    mainTitle,
+    mainBody,
+    appMenu,
+    menuBox,
+} from "../../common/layout"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MenuList } from "../../Outline/MenuList"
@@ -31,21 +40,18 @@ export function Search({ example: { resource, terminate } }: Props): VNode {
         document.title = `Search | ${document.title}`
     }, [])
 
-    const title = html`Search`
-
-    return html`<main class="layout__app">
-        <article class="layout__app__main">
-            <header class="main__header">
-                <h1 class="main__title">${title}</h1>
-                ${h(BreadcrumbList, resource)}
-            </header>
-            <section class="main__body">${h(Container, NO_PROPS)}</section>
-            ${mainFooter()}
-        </article>
-        <aside class="layout__app__menu">
-            <section class="menu">${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}</section>
-        </aside>
-    </main>`
+    return appLayout({
+        main: appMain({
+            header: mainHeader([mainTitle("Search"), h(BreadcrumbList, resource)]),
+            body: mainBody(h(Container, NO_PROPS)),
+        }),
+        menu: appMenu([
+            menuHeader(),
+            menuBox("global information"),
+            h(MenuList, resource),
+            menuFooter(),
+        ]),
+    })
 }
 
 const NO_PROPS = {}

@@ -18,17 +18,7 @@ export function siteInfo(): SiteInfo {
     }
 }
 
-export function loginBoxHeader(): VNode {
-    const { brand, title, subTitle } = siteInfo()
-    return html`
-        <header class="loginBox__header">
-            <cite class="loginBox__header__brand">${brand}</cite>
-            <strong class="loginBox__header__title">${title}</strong>
-            <cite class="loginBox__header__subTitle">${subTitle}</cite>
-        </header>
-    `
-}
-
+// TODO 引数を object にする
 export function loginBox(title: VNodeContent, content: VNodeContent, footer: VNodeContent): VNode {
     return html`<aside class="layout__login">
         <section class="loginBox">
@@ -42,6 +32,97 @@ export function loginBox(title: VNodeContent, content: VNodeContent, footer: VNo
             </article>
         </section>
     </aside>`
+}
+
+export function loginBoxHeader(): VNode {
+    const { brand, title, subTitle } = siteInfo()
+    return html`
+        <header class="loginBox__header">
+            <cite class="loginBox__header__brand">${brand}</cite>
+            <strong class="loginBox__header__title">${title}</strong>
+            <cite class="loginBox__header__subTitle">${subTitle}</cite>
+        </header>
+    `
+}
+
+export type MainLayoutContent = Readonly<{
+    header: VNodeContent
+    body: VNodeContent
+}>
+
+export function appLayout({ main, menu }: { main: VNodeContent; menu: VNodeContent }): VNode {
+    return html`<main class="layout__app">${appContainer([main])} ${menu}</main>`
+}
+
+export function appLayout_sidebar({
+    main,
+    sidebar,
+    menu,
+}: {
+    main: VNodeContent
+    sidebar: VNodeContent
+    menu: VNodeContent
+}): VNode {
+    return html`<main class="layout__app layout__app__sidebar_single">
+        ${appContainer([main, sidebar])} ${menu}
+    </main>`
+}
+
+export function appLayout_sidebar_double({
+    main,
+    sidebar,
+    menu,
+}: {
+    main: VNodeContent
+    sidebar: VNodeContent
+    menu: VNodeContent
+}): VNode {
+    return html`<main class="layout__app layout__app__sidebar_double">
+        ${appContainer([main, sidebar])} ${menu}
+    </main>`
+}
+
+function appContainer(content: VNodeContent[]): VNode {
+    return html`<section class="layout__app__container">${content}</section>`
+}
+
+export function appMain({ header, body }: MainLayoutContent): VNode {
+    return html`<article class="layout__app__main">${header} ${body} ${mainFooter()}</article>`
+}
+export function appSidebar({ header, body }: MainLayoutContent): VNode {
+    return html`<aside class="layout__app__sidebar">
+        <section class="sidebar">${header} ${body} ${mainFooter()}</section>
+    </aside>`
+}
+export function appMenu(content: VNodeContent): VNode {
+    return html`<aside class="layout__app__menu">
+        <section class="menu">${content}</section>
+    </aside>`
+}
+
+export function mainHeader(content: VNodeContent): VNode {
+    return html`<header class="main__header">${content}</header>`
+}
+
+export function mainTitle(content: VNodeContent): VNode {
+    return html`<h1 class="main__title">${content}</h1>`
+}
+
+export function mainBody(content: VNodeContent): VNode {
+    return html`<section class="main__body">${content}</section>`
+}
+
+export function sidebarBody(content: VNodeContent): VNode {
+    return html`<section class="sidebar__body">${content}</section>`
+}
+export function sidebarBody_grow(content: VNodeContent): VNode {
+    return html`<section class="sidebar__body sidebar__body_grow">${content}</section>`
+}
+
+export function mainFooter(): VNode {
+    return html`<footer class="main__footer">
+        <p class="main__footer__message">GETTO.systems</p>
+    </footer>`
 }
 
 export function menuHeader(): VNode {
@@ -62,12 +143,6 @@ export function menuFooter(): VNode {
         <p class="menu__footer__message">
             powered by : LineIcons <span class="noWrap">/ みんなの文字</span>
         </p>
-    </footer>`
-}
-
-export function mainFooter(): VNode {
-    return html`<footer class="main__footer">
-        <p class="main__footer__message">GETTO.systems</p>
     </footer>`
 }
 

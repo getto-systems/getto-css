@@ -3,7 +3,20 @@ import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { useTerminate } from "../../common/hooks"
-import { mainFooter, menuHeader, menuFooter } from "../../common/layout"
+import {
+    menuHeader,
+    menuFooter,
+    mainHeader,
+    menuBox,
+    sidebarBody_grow,
+    sidebarBody,
+    mainBody,
+    appLayout_sidebar,
+    mainTitle,
+    appMain,
+    appSidebar,
+    appMenu,
+} from "../../common/layout"
 import { form, simpleBox_fill } from "./box"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
@@ -32,33 +45,17 @@ export function Sidebar({ example: { resource, terminate } }: Props): VNode {
         document.title = `Sidebar | ${document.title}`
     }, [])
 
-    const title = html`Sidebar`
-
-    return html`<main class="layout__app layout__app__sidebar_single">
-        <section class="layout__app__container">
-            <article class="layout__app__main">
-                <header class="main__header">
-                    <h1 class="main__title">${title}</h1>
-                    ${h(BreadcrumbList, resource)}
-                </header>
-                <section class="main__body">${h(Container, NO_PROPS)}</section>
-                ${mainFooter()}
-            </article>
-            <aside class="layout__app__sidebar">
-                <section class="sidebar">
-                    <header class="main__header">
-                        <h1 class="main__title">List</h1>
-                    </header>
-                    <section class="main__body">${h(Pager, NO_PROPS)}</section>
-                    <section class="main__body sidebar__main">${h(Table, NO_PROPS)}</section>
-                    ${mainFooter()}
-                </section>
-            </aside>
-        </section>
-        <aside class="layout__app__menu">
-            <section class="menu">${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}</section>
-        </aside>
-    </main>`
+    return appLayout_sidebar({
+        main: appMain({
+            header: mainHeader([mainTitle("Sidebar"), h(BreadcrumbList, resource)]),
+            body: mainBody(h(Container, NO_PROPS)),
+        }),
+        sidebar: appSidebar({
+            header: mainHeader(html`<h1 class="main__title">List</h1>`),
+            body: [sidebarBody(h(Pager, NO_PROPS)), sidebarBody_grow(h(Table, NO_PROPS))],
+        }),
+        menu: appMenu([menuHeader(), menuBox("global information"), h(MenuList, resource), menuFooter()]),
+    })
 }
 
 type TableProps = {

@@ -1,8 +1,19 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
+import {
+    menuHeader,
+    menuFooter,
+    appLayout,
+    appMain,
+    mainHeader,
+    mainTitle,
+    mainBody,
+    appMenu,
+    menuBox,
+} from "../../x_preact/common/layout"
+
 import { MenuList } from "../../x_preact/Outline/MenuList"
-import { mainFooter, menuFooter, menuHeader } from "../../x_preact/common/layout"
 
 import { mapMenuMockProps, MenuMockProps, initMenuListComponent } from "../../auth/Outline/menuList/mock"
 
@@ -27,25 +38,29 @@ const Template: Story<MockProps> = (args) => {
     function Preview(props: { args: MockProps }) {
         menuList.update(mapMenuMockProps(props.args))
         const menuProps = { menuList }
-        return html`<style>
+        return html`
+            <style>
                 .sb-main-padded {
                     padding: 0 !important;
                 }
             </style>
-            <main class="layout__app">
-                <article class="layout__app__main">
-                    <header class="main__header">
-                        <h1 class="main__title">タイトル</h1>
-                    </header>
-                    <section class="main__body">コンテンツ</section>
-                    ${mainFooter()}
-                </article>
-                <aside class="layout__app__menu">
-                    <section class="menu">
-                        ${menuHeader()} ${h(MenuList, menuProps)} ${menuFooter()}
-                    </section>
-                </aside>
-            </main>`
+            ${app()}
+        `
+
+        function app() {
+            return appLayout({
+                main: appMain({
+                    header: mainHeader([mainTitle("タイトル")]),
+                    body: mainBody("コンテンツ"),
+                }),
+                menu: appMenu([
+                    menuHeader(),
+                    menuBox("global information"),
+                    h(MenuList, menuProps),
+                    menuFooter(),
+                ]),
+            })
+        }
     }
 }
 

@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { VNodeContent } from "../common/layout"
+import { appMain, mainBody, mainHeader, mainTitle, VNodeContent } from "../common/layout"
 import { BreadcrumbList } from "../Outline/BreadcrumbList"
 
 import { ContentComponent, initialContentState } from "../../document/Document/content/component"
@@ -43,13 +43,10 @@ export function Content(resource: Props): VNode {
             if (!loadContentState.loaded) {
                 return EMPTY_CONTENT
             }
-            return html`
-                <header class="main__header">
-                    <h1 class="main__title">${documentTitle(state.path)}</h1>
-                    ${h(BreadcrumbList, resource)}
-                </header>
-                <section class="main__body">${loadContentState.content}</section>
-            `
+            return appMain({
+                header: mainHeader([mainTitle(documentTitle(state.path)), h(BreadcrumbList, resource)]),
+                body: mainBody(loadContentState.content),
+            })
     }
 }
 

@@ -1,9 +1,8 @@
 import { h, VNode } from "preact"
 import { useErrorBoundary } from "preact/hooks"
-import { html } from "htm/preact"
 
 import { useTerminate } from "../common/hooks"
-import { mainFooter, menuHeader, menuFooter } from "../common/layout"
+import { menuHeader, menuFooter, appLayout, appMenu } from "../common/layout"
 
 import { ApplicationError } from "../common/System/ApplicationError"
 import { MenuList } from "../Outline/MenuList"
@@ -26,12 +25,8 @@ export function Document({ document: { resource, terminate } }: Props): VNode {
 
     useTerminate(terminate)
 
-    return html`<main class="layout__app">
-        <section class="layout__app__container">
-            <article class="layout__app__main">${h(Content, resource)} ${mainFooter()}</article>
-        </section>
-        <aside class="layout__app__menu">
-            <section class="menu">${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}</section>
-        </aside>
-    </main>`
+    return appLayout({
+        main: h(Content, resource),
+        menu: appMenu([menuHeader(), h(MenuList, resource), menuFooter()]),
+    })
 }
