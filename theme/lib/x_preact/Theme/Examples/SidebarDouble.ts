@@ -4,23 +4,19 @@ import { html } from "htm/preact"
 
 import { useTerminate } from "../../common/hooks"
 import {
-    menuHeader,
-    menuFooter,
     appLayout_sidebar_double,
     mainHeader,
     mainBody,
     sidebarBody,
     sidebarBody_grow,
-    menuBox,
     mainTitle,
     appMain,
     appSidebar,
-    appMenu,
 } from "../../common/layout"
 import { form, simpleBox_fill } from "./box"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
-import { MenuList } from "../../Outline/MenuList"
+import { MainMenu } from "../../Outline/Menu/MainMenu"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
 import { Container } from "./SidebarDouble/Container"
 
@@ -57,12 +53,7 @@ export function Form({ example: { resource, terminate } }: Props): VNode {
             header: mainHeader(html`<h1 class="main__title">List</h1>`),
             body: [sidebarBody(h(Pager, NO_PROPS)), sidebarBody_grow(h(Table, NO_PROPS))],
         }),
-        menu: appMenu([
-            menuHeader(),
-            menuBox("global information"),
-            h(MenuList, resource),
-            menuFooter(),
-        ]),
+        menu: MainMenu(resource),
     })
 }
 

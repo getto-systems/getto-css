@@ -3,19 +3,15 @@ import { useEffect, useErrorBoundary } from "preact/hooks"
 
 import { useTerminate } from "../../common/hooks"
 import {
-    menuHeader,
-    menuFooter,
     appLayout,
     appMain,
     mainHeader,
     mainTitle,
     mainBody,
-    appMenu,
-    menuBox,
 } from "../../common/layout"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
-import { MenuList } from "../../Outline/MenuList"
+import { MainMenu } from "../../Outline/Menu/MainMenu"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
 import { Container } from "./Highlight/Container"
 
@@ -45,12 +41,7 @@ export function Highlight({ example: { resource, terminate } }: Props): VNode {
             header: mainHeader([mainTitle("Highlight"), h(BreadcrumbList, resource)]),
             body: mainBody(h(Container, NO_PROPS)),
         }),
-        menu: appMenu([
-            menuHeader(),
-            menuBox("global information"),
-            h(MenuList, resource),
-            menuFooter(),
-        ]),
+        menu: MainMenu(resource),
     })
 }
 
