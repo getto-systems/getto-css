@@ -10,6 +10,7 @@
 @import "./modules/layout/login.css";
 @import "./modules/layout/app/main.css";
 @import "./modules/layout/app/menu.css";
+@import "./modules/layout/app/sidebar.css";
 
 @import "./modules/design/box/container.css";
 @import "./modules/design/box/modal.css";

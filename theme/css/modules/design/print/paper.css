@@ -1,7 +1,7 @@
 @media print {
-    .layout__app__menu,
     .main__header,
     .main__footer,
+    .menu,
     .box,
     .paper_hide {
         display: none;

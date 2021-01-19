@@ -1,0 +1,40 @@
+.sidebar {
+    min-height: 100%;
+    background-color: var(--color-black-off);
+}
+
+.sidebar .box {
+    width: calc(calc(100% - 1rem) - 2px);
+}
+
+.sidebar__main .box {
+    margin: 0;
+}
+
+@media (--media-sidebar-enabled) {
+    .sidebar {
+        width: var(--width-box);
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        border-left: 1px dotted var(--color-black);
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar__main {
+        flex-grow: 1;
+        overflow-y: auto;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (--media-sidebar-disabled) {
+    .sidebar .box {
+        max-height: 50vh;
+        overflow-y: auto;
+    }
+}

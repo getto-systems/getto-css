@@ -26,6 +26,7 @@ const Template: Story<MockProps> = (args) => {
 
     function Preview(props: { args: MockProps }) {
         menuList.update(mapMenuMockProps(props.args))
+        const menuProps = { menuList }
         return html`<style>
                 .sb-main-padded {
                     padding: 0 !important;
@@ -39,8 +40,10 @@ const Template: Story<MockProps> = (args) => {
                     <section class="main__body">コンテンツ</section>
                     ${mainFooter()}
                 </article>
-                <aside class="layout__app__menu menu">
-                    ${menuHeader()} ${h(MenuList, { menuList })} ${menuFooter()}
+                <aside class="layout__app__menu">
+                    <section class="menu">
+                        ${menuHeader()} ${h(MenuList, menuProps)} ${menuFooter()}
+                    </section>
                 </aside>
             </main>`
     }
