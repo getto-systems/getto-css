@@ -103,7 +103,7 @@
 }
 
 .cell_sticky_left {
-    left: 0;
+    left: var(--width-menu);
 }
 
 .cell_sticky_top.cell_sticky_left,
