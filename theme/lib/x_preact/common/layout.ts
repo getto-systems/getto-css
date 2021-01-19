@@ -55,15 +55,21 @@ export function menuHeader(): VNode {
 
 export function menuFooter(): VNode {
     return html`<footer class="menu__footer">
-        <p class="menu__footer__message">copyright : GETTO.systems</p>
+        <p class="menu__footer__message">
+            powered by : LineIcons <span class="noWrap">/ みんなの文字</span>
+        </p>
     </footer>`
 }
 
 export function mainFooter(): VNode {
     return html`<footer class="main__footer">
-        <p class="main__footer__message">
-            powered by : LineIcons <span class="noWrap">/ みんなの文字</span>
-        </p>
+        <p class="main__footer__message">GETTO.systems</p>
+    </footer>`
+}
+
+export function sidebarFooter(): VNode {
+    return html`<footer class="main__footer">
+        <p class="main__footer__message">GETTO.systems</p>
     </footer>`
 }
 

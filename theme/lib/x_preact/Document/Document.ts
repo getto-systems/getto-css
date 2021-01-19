@@ -26,12 +26,12 @@ export function Document({ document: { resource, terminate } }: Props): VNode {
 
     useTerminate(terminate)
 
-    return html`
-        <main class="layout__app">
+    return html`<main class="layout__app">
+        <section class="layout__app__container">
             <article class="layout__app__main">${h(Content, resource)} ${mainFooter()}</article>
-            <aside class="layout__app__menu menu">
-                ${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}
-            </aside>
-        </main>
-    `
+        </section>
+        <aside class="layout__app__menu">
+            <section class="menu">${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}</section>
+        </aside>
+    </main>`
 }

@@ -33,19 +33,17 @@ export function Dashboard({ dashboard: { resource, terminate } }: Props): VNode 
 
     const title = html`ホーム`
 
-    return html`
-        <main class="layout__app">
-            <article class="layout__app__main">
-                <header class="main__header">
-                    <h1 class="main__title">${title}</h1>
-                    ${h(BreadcrumbList, resource)}
-                </header>
-                <section class="main__body container">${h(HowToUse, resource)}</section>
-                ${mainFooter()}
-            </article>
-            <aside class="layout__app__menu menu">
-                ${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}
-            </aside>
-        </main>
-    `
+    return html`<main class="layout__app">
+        <article class="layout__app__main">
+            <header class="main__header">
+                <h1 class="main__title">${title}</h1>
+                ${h(BreadcrumbList, resource)}
+            </header>
+            <section class="main__body container">${h(HowToUse, resource)}</section>
+            ${mainFooter()}
+        </article>
+        <aside class="layout__app__menu">
+            <section class="menu">${menuHeader()} ${h(MenuList, resource)} ${menuFooter()}</section>
+        </aside>
+    </main>`
 }

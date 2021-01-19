@@ -1,5 +1,4 @@
 .menu {
-    min-height: 100%;
     background-color: var(--color-black-off);
 }
 
@@ -104,7 +103,24 @@
 
 @media (--media-desktop) {
     .menu {
+        width: var(--width-menu);
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+
+        overflow-y: auto;
+
         border-right: 1px dotted var(--color-black);
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu__body {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding-right: 0.5rem;
     }
 
     .menu__brand,
@@ -112,14 +128,10 @@
     .menu__subTitle {
         display: block;
     }
-
-    .menu__body {
-        margin-right: 0.4rem;
-    }
 }
 
 @media (--media-mobile) {
-    .layout__app__menu .menu__header {
+    .menu__header {
         position: absolute;
         top: 0;
         left: 0;
@@ -175,5 +187,15 @@
 
     .menu__subTitle {
         display: block;
+    }
+}
+
+@media (--media-sidebar-enabled) and (--media-mobile) {
+    .menu__header {
+        right: var(--width-box);
+    }
+
+    .menu__body {
+        margin-right: var(--width-box);
     }
 }
