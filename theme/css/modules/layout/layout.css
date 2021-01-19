@@ -24,30 +24,6 @@
         position: relative;
         margin-left: var(--width-menu);
     }
-
-    .layout__app__sidebar_single .layout__app__container {
-        padding-right: var(--width-sidebar-single);
-    }
-
-    .layout__app__sidebar_double .layout__app__container {
-        padding-right: var(--width-sidebar-double);
-    }
-
-    .layout__app__sidebar_single .layout__app__main .layout__app__sidebar__wide::after {
-        content: "-";
-        position: absolute;
-        left: 100%;
-        width: calc(var(--width-sidebar-single) + 0.5rem);
-        visibility: hidden;
-    }
-
-    .layout__app__sidebar_double .layout__app__main .layout__app__sidebar__wide::after {
-        content: "-";
-        position: absolute;
-        left: 100%;
-        width: calc(var(--width-sidebar-double) + 0.5rem);
-        visibility: hidden;
-    }
 }
 
 @media (--media-tablet) {
@@ -56,18 +32,34 @@
     }
 }
 
-@media (--media-tablet) and (--media-sidebar-enabled) {
-    .layout__app__sidebar_single .layout__app__container {
-        width: calc(100% - var(--width-sidebar-single));
-    }
-
-    .layout__app__sidebar_double .layout__app__container {
-        width: calc(100% - var(--width-sidebar-double));
-    }
-}
-
 @media (--media-shallow) {
     .layout__app__container {
         margin-top: 7rem;
     }
+}
+
+@media (--media-sidebar-enabled) {
+    .layout__app__sidebar_single .layout__app__container {
+        padding-right: var(--width-sidebar-single);
+    }
+
+    .layout__app__sidebar_double .layout__app__container {
+        padding-right: var(--width-sidebar-double);
+    }
+
+    .layout__app__sidebar_single .layout__app__main .layout__app__sidebar__largeElement::after {
+        content: "-";
+        position: absolute;
+        left: 100%;
+        width: calc(var(--width-sidebar-single) + 0.5rem);
+        visibility: hidden;
+    }
+
+    .layout__app__sidebar_double .layout__app__main .layout__app__sidebar__largeElement::after {
+        content: "-";
+        position: absolute;
+        left: 100%;
+        width: calc(var(--width-sidebar-double) + 0.5rem);
+        visibility: hidden;
+    }    
 }

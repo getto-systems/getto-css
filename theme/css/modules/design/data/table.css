@@ -102,10 +102,6 @@
     top: calc(var(--table-header-height) * 4);
 }
 
-.cell_sticky_left {
-    left: var(--width-menu);
-}
-
 .cell_sticky_top.cell_sticky_left,
 .cell_sticky_top2.cell_sticky_left,
 .cell_sticky_top3.cell_sticky_left,
@@ -116,4 +112,16 @@
 
 .row_hover:hover td {
     background-color: var(--color-base-off);
+}
+
+@media (--media-desktop) {
+    .cell_sticky_left {
+        left: var(--width-menu);
+    }
+}
+
+@media (--media-mobile) {
+    .cell_sticky_left {
+        left: 0;
+    }
 }
