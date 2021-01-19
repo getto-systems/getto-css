@@ -78,7 +78,7 @@ export function Login({ state, component }: Props): VNode {
     }
 
     function loginFooter(state: EditState) {
-        return buttons([big(button())], [resetLink()])
+        return buttons({ left: [button()], right: [resetLink()] })
 
         function button() {
             return html`<button

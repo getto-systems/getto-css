@@ -25,7 +25,7 @@ export function ApplicationError({ err }: Props): VNode {
                 繰り返しエラーになる場合は右下のホームから戻ってください
             </p>`,
         ],
-        footer: buttons([reloadLink()], [topLink()]),
+        footer: buttons({ left: [reloadLink()], right: [topLink()] }),
     })
 
     function topLink() {
