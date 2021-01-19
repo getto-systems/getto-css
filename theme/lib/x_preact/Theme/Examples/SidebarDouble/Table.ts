@@ -5,7 +5,7 @@ type Props = {
     // no props
 }
 export function Table(_: Props): VNode {
-    return html`<table class="table table_sticky layout__app__sidebar__wide">
+    return html`<table class="table table_sticky layout__app__sidebar__largeElement">
         <thead class="table__header">
             <tr>
                 <th
