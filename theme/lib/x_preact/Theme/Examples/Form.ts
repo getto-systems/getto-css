@@ -33,7 +33,7 @@ export function Form({ example: { resource, terminate } }: Props): VNode {
 
     const title = html`Form`
 
-    return html`<main class="layout__app layout__app__sidebar_single">
+    return html`<main class="layout__app">
         <section class="layout__app__container">
             <article class="layout__app__main">
                 <header class="main__header">

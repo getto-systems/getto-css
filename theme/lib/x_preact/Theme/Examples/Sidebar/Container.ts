@@ -1,12 +1,14 @@
 import { h, VNode } from "preact"
+import { html } from "htm/preact"
 
 import { Box } from "./Box"
+import { Table } from "./Table"
 
 type ContainerProps = {
     // no props
 }
 export function Container(_: ContainerProps): VNode {
-    return h(Box, NO_PROPS)
+    return html`${h(Box, NO_PROPS)} ${h(Table, NO_PROPS)}`
 }
 
 const NO_PROPS = {}
