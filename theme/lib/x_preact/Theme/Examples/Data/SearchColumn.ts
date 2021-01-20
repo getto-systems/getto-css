@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box_grow, form, VNodeContent } from "../../../common/style"
+import { box_grow, checkbox, form, searchColumn } from "../../../common/style"
 
 type Props = {
     // no props
@@ -12,7 +12,7 @@ export function SearchColumn(_: Props): VNode {
         body: [
             form({
                 title: "表示する列",
-                body: columns([
+                body: searchColumn([
                     column("ID", true),
                     column("名前", true),
                     column("状態", true),
@@ -27,18 +27,11 @@ export function SearchColumn(_: Props): VNode {
         ],
     })
 
-    function columns(content: VNodeContent) {
-        return html`<section class="search__column">${content}</section>`
-    }
-    function column(label: VNodeContent, checked: boolean) {
-        if (checked) {
-            return html`<label class="search__column__item input__checkbox input_checked"
-                ><input type="checkbox" checked />${label}</label
-            >`
-        } else {
-            return html`<label class="search__column__item input__checkbox"
-                ><input type="checkbox" />${label}</label
-            >`
-        }
+    function column(label: string, isChecked: boolean) {
+        return checkbox({
+            isChecked,
+            input: html`<input type="checkbox" checked />${label}`,
+            key: label,
+        })
     }
 }

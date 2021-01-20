@@ -13,20 +13,21 @@
 }
 
 .report__header {
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--content-vertical-space-small);
 }
 
 .report__title {
     font-size: var(--font-size-xx-large);
-    margin-bottom: var(--content-vertical-space-small);
+}
+.report__title_small {
+    font-size: var(--font-size-x-large);
+}
+.report__title_xSmall {
+    font-size: var(--font-size-small);
 }
 
 .report__title_center {
     text-align: center;
-}
-
-.report__repeatTitle {
-    font-size: var(--font-size-small);
 }
 
 .report__footer {
@@ -40,6 +41,14 @@
 
 .report__folio {
     font-size: var(--font-size-small);
+}
+
+.report__footer_left .report__folio {
+    margin-right: 0.25rem;
+}
+
+.report__footer_right .report__folio {
+    margin-left: 0.25rem;
 }
 
 .report .cell_border_t {

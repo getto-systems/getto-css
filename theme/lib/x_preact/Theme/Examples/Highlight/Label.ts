@@ -3,7 +3,6 @@ import { html } from "htm/preact"
 
 import {
     box,
-    icon,
     label_alert,
     label_gray,
     label_info,
@@ -11,6 +10,7 @@ import {
     label_success,
     label_warning,
 } from "../../../common/style"
+import { icon } from "../../../common/icon"
 
 type Props = {
     // no props

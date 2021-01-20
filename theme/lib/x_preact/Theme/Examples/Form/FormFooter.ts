@@ -1,79 +1,107 @@
 import { html } from "htm/preact"
 import { VNode } from "preact"
+import { spinner } from "../../../common/icon"
 
-import { buttons } from "../../../common/style"
+import {
+    buttons,
+    button_close,
+    button_delete,
+    button_disabled,
+    button_edit,
+    button_redo,
+    button_undo,
+    formError,
+} from "../../../common/style"
 
 import { EditState, FormProps } from "./Container"
 
 type Props = FormProps
 export function FormFooter({ state, component }: Props): VNode {
+    function onEditClick() {
+        component.edit(null)
+    }
+    function onDeleteClick() {
+        component.delete(null)
+    }
     switch (state.type) {
         case "static":
             return buttons({
-                left: [html`<button class="button button_edit" onClick=${component.edit}>編集</button>`],
-                right: [
-                    html`<button class="button button_delete" onClick=${component.delete}>削除</button>`,
-                ],
+                left: button_edit({ state: "normal", label: "編集", onClick: onEditClick }),
+                right: button_delete({ state: "normal", label: "削除", onClick: onDeleteClick }),
             })
 
         case "try-to-save":
-            return buttons({ left: [savingButton()], right: [] })
+            return buttons({ left: savingButton(), right: [] })
 
         case "editing":
-            return html`${buttons({ left: [saveButton(state.state)], right: [] })}${buttons({
-                left: [closeButton(state.state)],
+            return html`${buttons({ left: saveButton(state.state), right: [] })}${buttons({
+                left: closeButton(state.state),
                 right: [redoButton(state.state), undoButton(state.state)],
             })}
             ${invalidMessage(state.state)}`
     }
 
     function savingButton() {
-        return html`<button class="button button_edit button_connect">
-            <i class="lnir lnir-spinner lnir-is-spinning"></i> 保存中
-        </button>`
+        return button_edit({ state: "connect", label: html`${spinner} 保存中` })
     }
     function saveButton(state: EditState) {
+        const label = "保存"
+
+        function onClick() {
+            component.save(null)
+        }
+
         if (state.invalid) {
-            return html`<button class="button button_disabled">保存</button>`
+            return button_disabled({ state: "normal", label })
         }
-        if (state.modified) {
-            return html`<button class="button button_edit button_confirm" onClick=${component.save}>
-                保存
-            </button>`
-        } else {
-            return html`<button class="button button_edit button_peek" onClick=${component.save}>
-                保存
-            </button>`
-        }
+
+        const buttonState = state.modified ? "confirm" : "normal"
+        return button_edit({ state: buttonState, label, onClick })
     }
     function closeButton(state: EditState) {
+        const label = "閉じる"
+
+        function onClick() {
+            component.close(null)
+        }
+
         if (state.undoEnabled) {
-            return html`<button class="button button_disabled">閉じる</button>`
+            return button_disabled({ state: "normal", label })
         } else {
-            return html`<button class="button button_close" onClick=${component.close}>閉じる</button>`
+            return button_close({ state: "normal", label, onClick })
         }
     }
     function redoButton(state: EditState) {
+        const label = "元に戻す"
+
+        function onClick() {
+            component.redo(null)
+        }
+
         if (state.redoEnabled) {
-            return html`<button class="button button_redo" onClick=${component.redo}>元に戻す</button>`
+            return button_redo({ state: "normal", label, onClick })
         } else {
-            return html`<button class="button button_disabled">元に戻す</button>`
+            return button_disabled({ state: "normal", label })
         }
     }
     function undoButton(state: EditState) {
+        const label = "取り消す"
+
+        function onClick() {
+            component.undo(null)
+        }
+
         if (state.undoEnabled) {
-            return html`<button class="button button_undo" onClick=${component.undo}>取り消す</button>`
+            return button_undo({ state: "normal", label, onClick })
         } else {
-            return html`<button class="button button_disabled">取り消す</button>`
+            return button_disabled({ state: "normal", label })
         }
     }
 
     function invalidMessage(state: EditState) {
         if (!state.invalid) {
-            return html``
+            return ""
         }
-        return html`<aside class="form__help form_error">
-            <p class="form__notice">保存できない項目があります</p>
-        </aside>`
+        return formError(["保存できない項目があります"])
     }
 }

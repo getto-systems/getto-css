@@ -4,14 +4,18 @@ import { html } from "htm/preact"
 import {
     form,
     box,
-    modal,
+    modalBox,
     form_error,
     form_warning,
     big,
     buttons,
-    icon,
     label_gray,
+    button_complete,
+    button_edit,
+    button_delete,
+    button_cancel,
 } from "../../../common/style"
+import { icon, spinner } from "../../../common/icon"
 
 import { CompleteComponent, DeleteComponent, EditState, FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -43,6 +47,9 @@ export function Complex(props: Props): VNode {
         function onCompleteClick() {
             modal.complete.component.open(null)
         }
+        function onEditClick() {
+            component.edit(null)
+        }
         function onDeleteClick() {
             modal.delete.component.open(null)
         }
@@ -59,18 +66,20 @@ export function Complex(props: Props): VNode {
                 form({
                     title: "transition",
                     body: [
-                        big(html`<button class="button button_complete" onClick=${onCompleteClick}>
-                            ${icon("checkmark")} 完了にする
-                        </button>`),
+                        big(
+                            button_complete({
+                                state: "normal",
+                                label: html`${icon("checkmark")} 完了にする`,
+                                onClick: onCompleteClick,
+                            })
+                        ),
                     ],
                     help: [],
                 }),
             ],
             footer: buttons({
-                left: [html`<button class="button button_edit" onClick=${component.edit}>編集</button>`],
-                right: [
-                    html`<button class="button button_delete" onClick=${onDeleteClick}>削除</button>`,
-                ],
+                left: button_edit({ state: "normal", label: "編集", onClick: onEditClick }),
+                right: button_delete({ state: "normal", label: "削除", onClick: onDeleteClick }),
             }),
         })
     }
@@ -137,32 +146,20 @@ function CompleteModal({ state, component }: ModalContentProps<CompleteComponent
     }
 
     if (state.connecting) {
-        return modal({
+        return modalBox({
             title: "完了処理中",
             body: "作業を完了しています",
-            footer: [
-                html`<button type="button" class="button button_complete button_connect">
-                    <i class="lnir lnir-spinner lnir-is-spinning"></i> 完了中
-                </button>`,
-            ],
+            footer: button_complete({ state: "connect", label: html`${spinner} 完了中` }),
         })
     } else {
-        return modal({
+        return modalBox({
             title: "完了確認",
             body: html`作業を完了します
                 <br />
                 よろしいですか？`,
             footer: buttons({
-                left: html`<button
-                    type="button"
-                    class="button button_complete button_confirm"
-                    onClick="${onCompleteClick}"
-                >
-                    完了
-                </button>`,
-                right: html`<button type="button" class="button button_cancel" onClick="${onCloseClick}">
-                    キャンセル
-                </button>`,
+                left: button_complete({ state: "confirm", label: "完了", onClick: onCompleteClick }),
+                right: button_cancel({ state: "normal", label: "キャンセル", onClick: onCloseClick }),
             }),
         })
     }
@@ -176,17 +173,13 @@ function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): 
     }
 
     if (state.connecting) {
-        return modal({
+        return modalBox({
             title: "削除処理中",
             body: "削除しています",
-            footer: [
-                html`<button type="button" class="button button_delete button_connect">
-                    <i class="lnir lnir-spinner lnir-is-spinning"></i> 削除中
-                </button>`,
-            ],
+            footer: button_delete({ state: "connect", label: html`${spinner} 削除中` }),
         })
     } else {
-        return modal({
+        return modalBox({
             title: "削除確認",
             body: html`削除します
                 <br />
@@ -194,16 +187,8 @@ function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): 
                 <br />
                 よろしいですか？`,
             footer: buttons({
-                left: html`<button
-                    type="button"
-                    class="button button_delete button_confirm"
-                    onClick="${onDeleteClick}"
-                >
-                    削除
-                </button>`,
-                right: html`<button type="button" class="button button_cancel" onClick="${onCloseClick}">
-                    キャンセル
-                </button>`,
+                left: button_delete({ state: "confirm", label: "削除", onClick: onDeleteClick }),
+                right: button_cancel({ state: "normal", label: "キャンセル", onClick: onCloseClick }),
             }),
         })
     }

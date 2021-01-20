@@ -1,8 +1,6 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { iconClass, lnir } from "../../z_external/icon"
-
 import { siteInfo } from "./site"
 
 export type VNodeContent = VNodeEntry | VNodeEntry[]
@@ -133,12 +131,62 @@ export function menuBox(content: VNodeContent): VNode {
     return html`<section class="menu__box">${content}</section>`
 }
 
+export function menuBody(id: string, content: VNodeContent): VNode {
+    return html`<nav id=${id} class="menu__body">${content}</nav>`
+}
+
+export type MenuCategoryContent = Readonly<{
+    isExpand: boolean
+    label: string
+    toggle: Post<Event>
+    badge: VNodeContent
+    children: VNodeContent
+}>
+export function menuCategory({ isExpand, label, toggle, badge, children }: MenuCategoryContent): VNode {
+    return html`<details class="menu__nav" open=${isExpand} key=${label}>
+        <summary class="menu__nav__summary" onClick=${toggle}>
+            <span class="menu__nav__summary__label">${label}</span>
+            <span class="menu__nav__summary__badge">${badge}</span>
+        </summary>
+        <ul class="menu__nav__items">
+            ${children}
+        </ul>
+    </details>`
+}
+
+export type MenuItemContent = Readonly<{
+    isActive: boolean
+    href: string
+    content: VNodeContent
+    badge: VNodeContent
+}>
+export function menuItem({ isActive, href, content, badge }: MenuItemContent): VNode {
+    const activeClass = isActive ? "menu__nav__item_active" : ""
+
+    return html`<li class="menu__nav__item" key=${href}>
+        <a class="menu__nav__link ${activeClass}" href=${href}>
+            <span class="menu__nav__item__label">${content}</span>
+            <span class="menu__nav__item__badge">${badge}</span>
+        </a>
+    </li>`
+}
+
 export function menuFooter(): VNode {
     return html`<footer class="menu__footer">
         <p class="menu__footer__message">
             powered by : LineIcons <span class="noWrap">/ みんなの文字</span>
         </p>
     </footer>`
+}
+
+export function breadcrumbList(content: VNodeContent): VNode {
+    return html`<aside class="main__breadcrumb">${content}</aside>`
+}
+export function breadcrumbLink(href: string, content: VNodeContent): VNode {
+    return html`<a class="main__breadcrumb__item" href="${href}">${content}</a>`
+}
+export function breadcrumbSeparator(content: VNodeContent): VNode {
+    return html`<span class="main__breadcrumb__separator">${content}</span>`
 }
 
 export type BoxContent =
@@ -232,8 +280,8 @@ type NoticeFormContent = Readonly<{
 type FormType = NormalFormType | NoticeFormType
 type NormalFormType = "normal" | "search" | "search_double"
 type NoticeFormType = "error" | "warning"
-function mapFormClass(formClass: FormType): string {
-    switch (formClass) {
+function mapFormType(formType: FormType): string {
+    switch (formType) {
         case "normal":
             return ""
 
@@ -244,7 +292,7 @@ function mapFormClass(formClass: FormType): string {
             return "search search_double"
 
         default:
-            return `form_${formClass}`
+            return `form_${formType}`
     }
 }
 
@@ -265,7 +313,7 @@ export function search_double(content: NormalFormContent): VNode {
 }
 
 function formContent(form: FormContent): VNode {
-    return html`<dl class="form ${mapFormClass(form.type)}">
+    return html`<dl class="form ${mapFormType(form.type)}">
         <dt class="form__title">${form.content.title}</dt>
         <dd class="form__body">${form.content.body} ${help()}</dd>
     </dl>`
@@ -285,6 +333,10 @@ function formContent(form: FormContent): VNode {
     }
 }
 
+export function formError(notice: VNodeContent[]): VNode {
+    return html`<aside class="form__help form_error">${notice.map(toFormNotice)}</aside>`
+}
+
 function formHelp(content: VNodeContent) {
     return html`<aside class="form__help">${content}</aside>`
 }
@@ -301,10 +353,12 @@ export type ModalContent = Readonly<{
     footer: VNodeContent
 }>
 
-export function modal({ title, body, footer }: ModalContent): VNode {
-    return html`<section class="modal__box">
-        ${modalHeader(title)} ${modalBody(body)} ${modalFooter(footer)}
-    </section>`
+export function modalBox({ title, body, footer }: ModalContent): VNode {
+    return html`<aside class="modal">
+        <section class="modal__box">
+            ${modalHeader(title)} ${modalBody(body)} ${modalFooter(footer)}
+        </section>
+    </aside>`
 }
 
 function modalHeader(title: VNodeContent) {
@@ -319,6 +373,87 @@ function modalFooter(footer: VNodeContent) {
     return html`<footer class="modal__footer">${footer}</footer>`
 }
 
+export type ReportContent = Readonly<{
+    header: VNodeContent
+    content: VNodeContent
+    footer: VNodeContent
+}>
+
+export function report_a4_portrait({ header, content, footer }: ReportContent): VNode {
+    return html`<article class="report report_a4_portrait">
+        <section>${header} ${content}</section>
+        ${footer}
+    </article>`
+}
+
+export function reportHeader(content: VNodeContent): VNode {
+    return html`<header class="report__header">${content}</header>`
+}
+
+type ReportTitleTypedContent = Readonly<{
+    type: ReportTitleType
+    content: ReportTitleContent
+}>
+export type ReportTitleContent = Readonly<{
+    style: ReportTitleStyle
+    title: VNodeContent
+}>
+type ReportTitleType = "large" | "small" | "xSmall"
+type ReportTitleStyle = "left" | "center"
+
+function mapReportTitleType(type: ReportTitleType): string {
+    return `report__title_${type}`
+}
+function mapReportTitleStyle(style: ReportTitleStyle): string {
+    switch (style) {
+        case "left":
+            return ""
+
+        default:
+            return `report__title_${style}`
+    }
+}
+
+export function reportTitle(content: ReportTitleContent): VNode {
+    return reportTitleContent({ type: "large", content })
+}
+export function reportTitle_small(content: ReportTitleContent): VNode {
+    return reportTitleContent({ type: "small", content })
+}
+export function reportTitle_xSmall(content: ReportTitleContent): VNode {
+    return reportTitleContent({ type: "xSmall", content })
+}
+function reportTitleContent(report: ReportTitleTypedContent): VNode {
+    return html`<h1 class="${titleClass()}">${report.content.title}</h1>`
+
+    function titleClass(): string {
+        return [
+            "report__title",
+            mapReportTitleType(report.type),
+            mapReportTitleStyle(report.content.style),
+        ].join(" ")
+    }
+}
+
+export function reportBody(content: VNodeContent): VNode {
+    return html`<main>${content}</main>`
+}
+
+export type ReportFooterContent = Readonly<{
+    left: VNodeContent
+    right: VNodeContent
+}>
+export function reportFooter({ left, right }: ReportFooterContent): VNode {
+    return html`<footer class="report__footer">
+        <aside class="report__footer_left">${left}</aside>
+        <aside class="report__footer_right">${right}</aside>
+    </footer>`
+}
+
+export function reportFolio(content: VNodeContent): VNode {
+    return html`<address class="report__folio">${content}</address>`
+}
+
 export function container(content: VNodeContent): VNode {
     return html`<section class="container">${content}</section>`
 }
@@ -328,10 +463,6 @@ export function small(content: VNodeContent): VNode {
 }
 export function big(content: VNodeContent): VNode {
     return html`<big>${content}</big>`
-}
-
-export function icon(name: string): VNode {
-    return html`<i class="${iconClass(lnir(name))}"></i>`
 }
 
 type Size = "small" | "medium" | "large"
@@ -417,6 +548,10 @@ function badge(color: Color, content: VNodeContent): VNode {
     return html`<span class="badge badge_${color}">${content}</span>`
 }
 
+export function searchColumn(content: VNodeContent): VNode {
+    return html`<section class="search__column">${content}</section>`
+}
+
 export type ButtonsContent = Readonly<{
     left: VNodeContent
     right: VNodeContent
@@ -426,4 +561,161 @@ export function buttons({ left, right }: ButtonsContent): VNode {
         <section class="button_left">${left}</section>
         <section class="button_right">${right}</section>
     </aside>`
+}
+
+type ButtonContent =
+    | Readonly<{ type: StatefulButtonType; content: StatefulButtonContent }>
+    | Readonly<{ type: StatelessButtonType; content: StatelessButtonContent }>
+    | Readonly<{ type: DisabledButtonType; content: DisabledButtonContent }>
+
+export type StatefulButtonContent = ClickableButtonContent | ConnectButtonContent
+type ClickableButtonContent = Readonly<{
+    state: ClickableButtonState
+    onClick: Post<Event>
+    label: VNodeContent
+}>
+type ConnectButtonContent = Readonly<{
+    state: ConnectButtonState
+    label: VNodeContent
+}>
+
+export type StatelessButtonContent = Readonly<{
+    state: NormalButtonState
+    onClick: Post<Event>
+    label: VNodeContent
+}>
+export type DisabledButtonContent = Readonly<{
+    state: NormalButtonState
+    label: VNodeContent
+}>
+
+type ButtonType = StatefulButtonType | StatelessButtonType | DisabledButtonType
+type StatefulButtonType = "edit" | "search" | "send" | "delete" | "complete" | "warning" | "pending"
+type StatelessButtonType = "cancel" | "close" | "undo" | "redo"
+type DisabledButtonType = "disabled"
+
+type ButtonState = ClickableButtonState | ConnectButtonState
+type ClickableButtonState = NormalButtonState | "confirm"
+type NormalButtonState = "normal"
+type ConnectButtonState = "connect"
+
+function mapButtonType(type: ButtonType): string {
+    return `button_${type}`
+}
+function mapButtonState(state: ButtonState): string {
+    switch (state) {
+        case "normal":
+            return ""
+
+        default:
+            return `button_${state}`
+    }
+}
+
+export function button_edit(content: StatefulButtonContent): VNode {
+    return buttonContent({ type: "edit", content })
+}
+export function button_search(content: StatefulButtonContent): VNode {
+    return buttonContent({ type: "search", content })
+}
+export function button_send(content: StatefulButtonContent): VNode {
+    return buttonContent({ type: "send", content })
+}
+export function button_delete(content: StatefulButtonContent): VNode {
+    return buttonContent({ type: "delete", content })
+}
+export function button_complete(content: StatefulButtonContent): VNode {
+    return buttonContent({ type: "complete", content })
+}
+export function button_warning(content: StatefulButtonContent): VNode {
+    return buttonContent({ type: "warning", content })
+}
+export function button_pending(content: StatefulButtonContent): VNode {
+    return buttonContent({ type: "pending", content })
+}
+export function button_cancel(content: StatelessButtonContent): VNode {
+    return buttonContent({ type: "cancel", content })
+}
+export function button_close(content: StatelessButtonContent): VNode {
+    return buttonContent({ type: "close", content })
+}
+export function button_undo(content: StatelessButtonContent): VNode {
+    return buttonContent({ type: "undo", content })
+}
+export function button_redo(content: StatelessButtonContent): VNode {
+    return buttonContent({ type: "redo", content })
+}
+export function button_disabled(content: DisabledButtonContent): VNode {
+    return buttonContent({ type: "disabled", content })
+}
+
+function buttonContent(button: ButtonContent): VNode {
+    const info = detect()
+    if (info.clickable) {
+        return html`<button class=${buttonClass()} onClick=${info.onClick}>
+            ${button.content.label}
+        </button>`
+    } else {
+        return html`<button class=${buttonClass()}>${button.content.label}</button>`
+    }
+
+    function buttonClass() {
+        return `button ${mapButtonType(button.type)} ${mapButtonState(button.content.state)}`
+    }
+
+    type Info = Readonly<{ clickable: false }> | Readonly<{ clickable: true; onClick: Post<Event> }>
+    function detect(): Info {
+        if (button.type === "disabled") {
+            return { clickable: false }
+        }
+        switch (button.content.state) {
+            case "connect":
+                return { clickable: false }
+
+            default:
+                return { clickable: true, onClick: button.content.onClick }
+        }
+    }
+}
+
+export type CheckableContent = Readonly<{ isChecked: boolean; input: VNodeContent; key: CheckableKey }>
+type CheckableKey = string | number
+
+type CheckableType = "checkbox" | "radio"
+type CheckableStyle = "inline" | "block"
+function mapCheckableStyle(type: CheckableType, style: CheckableStyle): string {
+    switch (style) {
+        case "inline":
+            return `input__${type}`
+
+        default:
+            return `input__${type} input__${type}_${style}`
+    }
+}
+
+export function checkbox(content: CheckableContent): VNode {
+    return checkableContent("checkbox", "inline", content)
+}
+export function checkbox_block(content: CheckableContent): VNode {
+    return checkableContent("checkbox", "block", content)
+}
+export function radio(content: CheckableContent): VNode {
+    return checkableContent("radio", "inline", content)
+}
+export function radio_block(content: CheckableContent): VNode {
+    return checkableContent("radio", "block", content)
+}
+function checkableContent(
+    type: CheckableType,
+    style: CheckableStyle,
+    { isChecked, input, key }: CheckableContent
+): VNode {
+    const checkClass = isChecked ? "input_checked" : ""
+    return html`<label class="${mapCheckableStyle(type, style)} ${checkClass}" key=${key}
+        >${input}</label
+    >`
+}
+
+interface Post<T> {
+    (event: T): void
 }

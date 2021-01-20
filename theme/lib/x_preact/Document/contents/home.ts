@@ -46,14 +46,18 @@ export function content_home_policy(): VNode {
         body: [
             notice_info("業務で必要な時に使用できる"),
             v_small(),
-            html`<p>読み込み時間を最小限にする</p>`,
-            html`<p>基本のスタイルを提供</p>`,
-            html`<p>特別なものは含まない</p>`,
+            html`<ul>
+                <li>読み込み時間を最小限にする</li>
+                <li>基本のスタイルを提供</li>
+                <li>特別なものは含まない</li>
+            </ul>`,
             v_medium(),
             notice_info("業務に合ったコストで運用できる"),
             v_small(),
-            html`<p>CSS への依存は最小限にする</p>`,
-            html`<p>コンポーネント定義は提供しない</p>`,
+            html`<ul>
+                <li>CSS への依存は最小限にする</li>
+                <li>コンポーネントライブラリは提供しない</li>
+            </ul>`,
         ],
     })
 }
@@ -64,14 +68,21 @@ export function content_home_base(): VNode {
         body: [
             notice_info("業務の目標を達成する"),
             v_small(),
-            html`<p>わかりやすい画面</p>`,
-            html`<p>大きめの字</p>`,
-            html`<p>広めの行間</p>`,
-            html`<p>コントラスト高めの配色</p>`,
+            html`<ul>
+                <li>わかりやすい画面</li>
+                <li>大きめの字</li>
+                <li>広めの行間</li>
+                <li>コントラスト高めの配色</li>
+            </ul>`,
             v_medium(),
             notice_info("業務で必要な時に使用できる"),
             v_small(),
-            html`<p>画面サイズによる出しわけ</p>`,
+            html`<ul>
+                <li>画面サイズによる出しわけ</li>
+                <li>大きめの字</li>
+                <li>広めの行間</li>
+                <li>コントラスト高めの配色</li>
+            </ul>`,
         ],
     })
 }
@@ -82,18 +93,24 @@ export function content_home_layout(): VNode {
         body: [
             notice_info("業務の目標を達成する"),
             v_small(),
-            html`<p>わかりやすい画面</p>`,
-            html`<p>メインタイトル</p>`,
-            html`<p>パンくずリスト</p>`,
-            html`<p>サイド画面</p>`,
+            html`<ul>
+                <li>わかりやすい画面</li>
+                <li>メインタイトル</li>
+                <li>パンくずリスト</li>
+                <li>サイドバー</li>
+            </ul>`,
             v_medium(),
             notice_info("業務で必要な時に使用できる"),
             v_small(),
-            html`<p>メインメニュー</p>`,
+            html`<ul>
+                <li>メインメニュー</li>
+            </ul>`,
             v_medium(),
             notice_info("業務内容をプライベートに保つ"),
             v_small(),
-            html`<p>ログイン画面</p>`,
+            html`<ul>
+                <li>ログイン画面</li>
+            </ul>`,
         ],
     })
 }
@@ -104,10 +121,12 @@ export function content_home_box(): VNode {
         body: [
             notice_info("業務の目標を達成する"),
             v_small(),
-            html`<p>わかりやすい画面</p>`,
-            html`<p>カードスタイルの等幅 box</p>`,
-            html`<p>横方向と縦方向のスタック</p>`,
-            html`<p>取り返しのつかない操作の警告</p>`,
+            html`<ul>
+                <li>わかりやすい画面</li>
+                <li>カードスタイルの等幅 box</li>
+                <li>横方向と縦方向のスタック</li>
+                <li>取り返しのつかない操作の警告</li>
+            </ul>`,
         ],
     })
 }
@@ -118,10 +137,12 @@ export function content_home_highlight(): VNode {
         body: [
             notice_info("業務の目標を達成する"),
             v_small(),
-            html`<p>わかりやすい画面</p>`,
-            html`<p>数字表示用 badge</p>`,
-            html`<p>文字表示用 label</p>`,
-            html`<p>通知表示用 notice</p>`,
+            html`<ul>
+                <li>わかりやすい画面</li>
+                <li>数字表示用 badge</li>
+                <li>文字表示用 label</li>
+                <li>通知表示用 notice</li>
+            </ul>`,
         ],
     })
 }
@@ -132,10 +153,12 @@ export function content_home_form(): VNode {
         body: [
             notice_info("業務の目標を達成する"),
             v_small(),
-            html`<p>わかりやすい画面</p>`,
-            html`<p>押しやすいボタン</p>`,
-            html`<p>わかりやすい見出し</p>`,
-            html`<p>入力しやすい input</p>`,
+            html`<ul>
+                <li>わかりやすい画面</li>
+                <li>押しやすいボタン</li>
+                <li>わかりやすい見出し</li>
+                <li>入力しやすい input</li>
+            </ul>`,
         ],
     })
 }
@@ -146,10 +169,12 @@ export function content_home_data(): VNode {
         body: [
             notice_info("業務の目標を達成する"),
             v_small(),
-            html`<p>わかりやすい画面</p>`,
-            html`<p>使いやすい検索</p>`,
-            html`<p>わかりやすいページャ</p>`,
-            html`<p>データ一覧</p>`,
+            html`<ul>
+                <li>わかりやすい画面</li>
+                <li>使いやすい検索</li>
+                <li>わかりやすいページャ</li>
+                <li>データ一覧</li>
+            </ul>`,
         ],
     })
 }
@@ -160,8 +185,10 @@ export function content_home_print(): VNode {
         body: [
             notice_info("業務の目標を達成する"),
             v_small(),
-            html`<p>わかりやすい画面</p>`,
-            html`<p>見やすい印刷用スタイル</p>`,
+            html`<ul>
+                <li>わかりやすい画面</li>
+                <li>見やすい印刷用スタイル</li>
+            </ul>`,
         ],
     })
 }
@@ -172,8 +199,10 @@ export function content_home_loading(): VNode {
         body: [
             notice_info("業務の目標を達成する"),
             v_small(),
-            html`<p>わかりやすい画面</p>`,
-            html`<p>長い時間待てる読み込み画面</p>`,
+            html`<ul>
+                <li>わかりやすい画面</li>
+                <li>長い時間待てる読み込み画面</li>
+            </ul>`,
         ],
     })
 }
@@ -184,9 +213,11 @@ export function content_home_alignment(): VNode {
         body: [
             notice_info("業務の目標を達成する"),
             v_small(),
-            html`<p>わかりやすい画面</p>`,
-            html`<p>縦方向の空白調整</p>`,
-            html`<p>見えない要素による位置調整</p>`,
+            html`<ul>
+                <li>わかりやすい画面</li>
+                <li>縦方向の空白調整</li>
+                <li>見えない要素による位置調整</li>
+            </ul>`,
         ],
     })
 }
@@ -196,14 +227,9 @@ export function content_home_component(): VNode {
         type: "title",
         title: "コンポーネント",
         body: [
-            form({
-                title: "やらないこと",
-                body: [
-                    html`<p>コンポーネント定義は提供しない</p>`,
-                    html`<p>React や Vue によるコンポーネント定義は各プロジェクトで必要</p>`,
-                ],
-                help: [],
-            }),
+            html`<p>コンポーネントライブラリは提供しない</p>`,
+            html`<p>style.ts に preact 用のスタイル定義があるが、これを直接共有しない</p>`,
+            html`<p>各プロジェクトではこの内容をコピーしたものを持つ形で緩く共有する</p>`,
         ],
     })
 }
@@ -212,17 +238,15 @@ export function content_home_resources(): VNode {
         type: "title",
         title: "フォントとアイコン",
         body: [
-            form({
-                title: "やらないこと",
-                body: [
-                    html`<p>バンドルしない</p>`,
-                    html`<p>どのフォントとアイコンを使用するかは各プロジェクトで決める</p>`,
-                ],
-                help: [],
-            }),
+            html`<p>フォントとアイコンはバンドルしない</p>`,
+            html`<p>どのフォントとアイコンを使用するかは各プロジェクトで決める</p>`,
+            v_medium(),
             form({
                 title: "最適化に使用したリソース",
-                body: [html`<p>みんなの文字</p>`, html`<p>LineIcons</p>`],
+                body: html`<ul>
+                    <li>みんなの文字</li>
+                    <li>LineIcons</li>
+                </ul>`,
                 help: [],
             }),
         ],
@@ -238,7 +262,7 @@ export function content_home_size(): VNode {
                 body: html`<ul>
                     <li>big / small</li>
                     <li>badge / label / notice</li>
-                    <li>button / input</li>
+                    <li>button</li>
                 </ul>`,
                 help: [],
             }),
@@ -247,9 +271,12 @@ export function content_home_size(): VNode {
                 body: html`<ul>
                     <li>main : title / footer</li>
                     <li>menu : title / brand / footer</li>
-                    <li>loginBox : title / brand / footer / box title</li>
+                    <li>loginBox : title / brand / footer</li>
+                    <li>loginBox : box title</li>
+                    <li>box : title</li>
                     <li>modal : title</li>
                     <li>form : header / help</li>
+                    <li>input</li>
                     <li>table : th</li>
                     <li>report : title / folio</li>
                 </ul>`,

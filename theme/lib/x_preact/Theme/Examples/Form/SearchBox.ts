@@ -20,27 +20,27 @@ export function SearchBox(props: Props): VNode {
         body: [
             form({
                 title: "small",
-                body: [html`<input type="search" class="input_small" onInput=${onInput} />`],
+                body: html`<input type="search" class="input_small" onInput=${onInput} />`,
                 help: [],
             }),
             form({
                 title: "default",
-                body: [html`<input type="search" onInput=${onInput} />`],
+                body: html`<input type="search" onInput=${onInput} />`,
                 help: [],
             }),
             form({
                 title: "large",
-                body: [html`<input type="search" class="input_large" onInput=${onInput} />`],
+                body: html`<input type="search" class="input_large" onInput=${onInput} />`,
                 help: [],
             }),
             form({
                 title: "extra large",
-                body: [html`<input type="search" class="input_xLarge" onInput=${onInput} />`],
+                body: html`<input type="search" class="input_xLarge" onInput=${onInput} />`,
                 help: [],
             }),
             form({
                 title: "fill",
-                body: [html`<input type="search" class="input_fill" onInput=${onInput} />`],
+                body: html`<input type="search" class="input_fill" onInput=${onInput} />`,
                 help: [],
             }),
         ],

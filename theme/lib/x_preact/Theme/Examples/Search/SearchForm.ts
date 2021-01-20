@@ -1,9 +1,18 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { container, search, box_fill, search_double } from "../../../common/style"
+import {
+    container,
+    search,
+    box_fill,
+    search_double,
+    button_search,
+    formError,
+    checkbox,
+} from "../../../common/style"
 
 import { EditState, SearchProps } from "./Container"
+import { icon, spinner } from "../../../common/icon"
 
 type Props = SearchProps
 export function SearchForm(props: Props): VNode {
@@ -18,26 +27,32 @@ export function SearchForm(props: Props): VNode {
         body: container([
             search({
                 title: "ID",
-                body: [html`<input type="search" class="input_fill" onInput=${onInput} />`],
+                body: html`<input type="search" class="input_fill" onInput=${onInput} />`,
                 help: ["完全一致検索"],
             }),
             search({
                 title: "名前",
-                body: [html`<input type="search" class="input_fill" onInput=${onInput} />`],
+                body: html`<input type="search" class="input_fill" onInput=${onInput} />`,
                 help: [],
             }),
             search_double({
                 title: "radio",
                 body: [
-                    html`<label class="input__radio input_checked">
-                        <input type="radio" name="radio" checked onClick="${onInput}" />仮
-                    </label>`,
-                    html`<label class="input__radio">
-                        <input type="radio" name="radio" onClick="${onInput}" />作業中
-                    </label>`,
-                    html`<label class="input__radio">
-                        <input type="radio" name="radio" onClick="${onInput}" />完了
-                    </label>`,
+                    checkbox({
+                        isChecked: true,
+                        input: html`<input type="radio" name="radio" checked onClick="${onInput}" />仮`,
+                        key: "仮",
+                    }),
+                    checkbox({
+                        isChecked: false,
+                        input: html`<input type="radio" name="radio" onClick="${onInput}" />作業中`,
+                        key: "作業中",
+                    }),
+                    checkbox({
+                        isChecked: false,
+                        input: html`<input type="radio" name="radio" onClick="${onInput}" />完了`,
+                        key: "完了",
+                    }),
                 ],
                 help: [],
             }),
@@ -54,36 +69,29 @@ function SearchFooter({ state, component }: SearchFooterProps) {
 
     switch (state.type) {
         case "try-to-search":
-            return html`<footer class="box__footer">${searchingButton()}</footer>`
+            return searchingButton()
 
         case "search":
             if (state.state.invalid) {
-                return html`<footer class="box__footer">
-                    ${searchButton(state.state)} ${searchError()}
-                </footer>`
+                return html`${searchButton(state.state)}${searchError()}`
             } else {
-                return html`<footer class="box__footer">${searchButton(state.state)}</footer>`
+                return searchButton(state.state)
             }
     }
 
     function searchingButton() {
-        return html`<button class="button button_search button_connect" type="button">
-            <i class="lnir lnir-spinner lnir-is-spinning"></i> 検索中
-        </button>`
+        return button_search({ state: "connect", label: html`${spinner} 読み込み中` })
     }
     function searchButton(state: EditState) {
-        if (state.modified) {
-            return html`<button class="button button_search button_confirm" onClick="${onSearchClick}">
-                検索
-            </button>`
-        } else {
-            return html`<button class="button button_search" onClick="${onSearchClick}">検索</button>`
-        }
+        const buttonState = state.modified ? "confirm" : "normal"
+        return button_search({
+            state: buttonState,
+            label: html`${icon("reload")} 再読み込み`,
+            onClick: onSearchClick,
+        })
     }
 
     function searchError() {
-        return html`<aside class="form__help form_error">
-            <p class="form__notice">通信エラーが発生しました。もう一度試してください</p>
-        </aside>`
+        return formError(["通信エラーが発生しました。もう一度試してください"])
     }
 }
