@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.20.1
+
+- fix: site info : See merge request getto-systems-base/projects/css!339
+
+
 ## Version : 2.20.0
 
 - fix: menu footer : See merge request getto-systems-base/projects/css!337
