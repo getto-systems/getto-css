@@ -5,7 +5,7 @@
   "scripts": {
     "storybook": "cd storybook && npm run build",
     "start": "npm run setup && npm run serve",
-    "build": "npm run setup && npm run postcss && npm run webpack && npm run storybook",
+    "build": "npm run setup && npm run postcss && npm run webpack",
     "setup": "node theme/setup.js",
     "serve": "webpack serve --config theme/public/webpack.config.js --mode development",
     "webpack": "webpack --config theme/public/webpack.config.js --mode production",
