@@ -9,7 +9,7 @@
     "setup": "node theme/setup.js",
     "serve": "webpack serve --config theme/public/webpack.config.js --mode development",
     "webpack": "webpack --config theme/public/webpack.config.js --mode production",
-    "postcss": "postcss --config theme/postcss.config.js --output theme/artifact/dist/css/getto.css theme/css/getto.css",
+    "postcss": "postcss --config theme/postcss.config.js --output theme/artifact/dist/getto.css theme/css/getto.css",
     "postcss:resources": "npm run postcss:lnil && npm run postcss:lnir && npm run postcss:font",
     "postcss:lnil": "postcss --config theme/postcss.config.js --output theme/public/dist/css/lnil.min.css theme/css/resources/lnil.css",
     "postcss:lnir": "postcss --config theme/postcss.config.js --output theme/public/dist/css/lnir.min.css theme/css/resources/lnir.css",
