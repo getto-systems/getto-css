@@ -12,7 +12,3 @@
     display: flex;
     flex-wrap: wrap;
 }
-
-.search__column__item {
-    margin: 0.25rem;
-}

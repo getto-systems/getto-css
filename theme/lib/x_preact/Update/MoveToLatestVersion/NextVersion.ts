@@ -3,6 +3,7 @@ import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { loginBox } from "../../common/style"
+import { spinner } from "../../common/icon"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 
@@ -48,10 +49,7 @@ export function NextVersion({ nextVersion }: Props): VNode {
         return loginBox({
             title: "アプリケーション読み込み中",
             content: [
-                html`<p>
-                    <i class="lnir lnir-spinner lnir-is-spinning"></i> ${" "}
-                    アプリケーションの読み込みに時間がかかっています
-                </p>`,
+                html`<p>${spinner} ${" "} アプリケーションの読み込みに時間がかかっています</p>`,
                 html`<p>
                     30秒以上かかるようであれば何かがおかしいので、<br />
                     お手数ですが、管理者にお伝えください

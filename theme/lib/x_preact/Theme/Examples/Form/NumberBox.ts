@@ -20,12 +20,12 @@ export function NumberBox(props: Props): VNode {
         body: [
             form({
                 title: "small",
-                body: [html`<input type="number" class="input_small" onInput=${onInput} /> 回`],
+                body: html`<input type="number" class="input_small" onInput=${onInput} /> 回`,
                 help: [],
             }),
             form({
                 title: "default",
-                body: [html`<input type="number" onInput=${onInput} /> 年`],
+                body: html`<input type="number" onInput=${onInput} /> 年`,
                 help: [],
             }),
         ],

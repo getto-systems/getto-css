@@ -1,12 +1,32 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { buttons, box, form } from "../../../common/style"
+import {
+    buttons,
+    box,
+    form,
+    button_edit,
+    button_search,
+    button_send,
+    button_delete,
+    button_complete,
+    button_warning,
+    button_pending,
+    button_cancel,
+    button_close,
+    button_undo,
+    button_redo,
+    button_disabled,
+} from "../../../common/style"
+import { spinner } from "../../../common/icon"
 
 type Props = {
     // no props
 }
 export function Button(_: Props): VNode {
+    function onClick() {
+        // 何もしない
+    }
     return box({
         type: "title",
         title: "button",
@@ -16,11 +36,9 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            html`<button class="button button_edit">保存</button>`,
-                            html`<button class="button button_edit button_confirm">保存</button>`,
-                            html`<button class="button button_edit button_connect">
-                                <i class="lnir lnir-spinner lnir-is-spinning"></i> 保存中
-                            </button>`,
+                            button_edit({ state: "normal", label: "保存", onClick }),
+                            button_edit({ state: "confirm", label: "保存", onClick }),
+                            button_edit({ state: "connect", label: html`${spinner} 保存中` }),
                         ],
                         right: [],
                     }),
@@ -32,11 +50,9 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            html`<button class="button button_search">検索</button>`,
-                            html`<button class="button button_search button_confirm">検索</button>`,
-                            html`<button class="button button_search button_connect">
-                                <i class="lnir lnir-spinner lnir-is-spinning"></i> 検索中
-                            </button>`,
+                            button_search({ state: "normal", label: "検索", onClick }),
+                            button_search({ state: "confirm", label: "検索", onClick }),
+                            button_search({ state: "connect", label: html`${spinner} 検索中` }),
                         ],
                         right: [],
                     }),
@@ -48,11 +64,9 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            html`<button class="button button_send">送信</button>`,
-                            html`<button class="button button_send button_confirm">送信</button>`,
-                            html`<button class="button button_send button_connect">
-                                <i class="lnir lnir-spinner lnir-is-spinning"></i> 送信中
-                            </button>`,
+                            button_send({ state: "normal", label: "送信", onClick }),
+                            button_send({ state: "confirm", label: "送信", onClick }),
+                            button_send({ state: "connect", label: html`${spinner} 送信中` }),
                         ],
                         right: [],
                     }),
@@ -64,11 +78,9 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            html`<button class="button button_delete">削除</button>`,
-                            html`<button class="button button_delete button_confirm">削除</button>`,
-                            html`<button class="button button_delete button_connect">
-                                <i class="lnir lnir-spinner lnir-is-spinning"></i> 削除中
-                            </button>`,
+                            button_delete({ state: "normal", label: "削除", onClick }),
+                            button_delete({ state: "confirm", label: "削除", onClick }),
+                            button_delete({ state: "connect", label: html`${spinner} 削除中` }),
                         ],
                         right: [],
                     }),
@@ -80,11 +92,9 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            html`<button class="button button_complete">完了</button>`,
-                            html`<button class="button button_complete button_confirm">完了</button>`,
-                            html`<button class="button button_complete button_connect">
-                                <i class="lnir lnir-spinner lnir-is-spinning"></i> 完了中
-                            </button>`,
+                            button_complete({ state: "normal", label: "完了", onClick }),
+                            button_complete({ state: "confirm", label: "完了", onClick }),
+                            button_complete({ state: "connect", label: html`${spinner} 完了中` }),
                         ],
                         right: [],
                     }),
@@ -96,11 +106,9 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            html`<button class="button button_warning">ロック</button>`,
-                            html`<button class="button button_warning button_confirm">ロック</button>`,
-                            html`<button class="button button_warning button_connect">
-                                <i class="lnir lnir-spinner lnir-is-spinning"></i> ロック中
-                            </button>`,
+                            button_warning({ state: "normal", label: "ロック", onClick }),
+                            button_warning({ state: "confirm", label: "ロック", onClick }),
+                            button_warning({ state: "connect", label: html`${spinner} ロック中` }),
                         ],
                         right: [],
                     }),
@@ -112,11 +120,9 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            html`<button class="button button_pending">保留</button>`,
-                            html`<button class="button button_pending button_confirm">保留</button>`,
-                            html`<button class="button button_pending button_connect">
-                                <i class="lnir lnir-spinner lnir-is-spinning"></i> 保留中
-                            </button>`,
+                            button_pending({ state: "normal", label: "保留", onClick }),
+                            button_pending({ state: "confirm", label: "保留", onClick }),
+                            button_pending({ state: "connect", label: html`${spinner} 保留` }),
                         ],
                         right: [],
                     }),
@@ -128,8 +134,8 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            html`<button class="button button_cancel">キャンセル</button>`,
-                            html`<button class="button button_close">閉じる</button>`,
+                            button_cancel({ state: "normal", label: "キャンセル", onClick }),
+                            button_close({ state: "normal", label: "閉じる", onClick }),
                         ],
                         right: [],
                     }),
@@ -141,8 +147,8 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            html`<button class="button button_undo">取り消す</button>`,
-                            html`<button class="button button_redo">やり直す</button>`,
+                            button_undo({ state: "normal", label: "キャ取り消すンセル", onClick }),
+                            button_redo({ state: "normal", label: "やり直す", onClick }),
                         ],
                         right: [],
                     }),
@@ -153,7 +159,7 @@ export function Button(_: Props): VNode {
                 title: "disabled",
                 body: [
                     buttons({
-                        left: [html`<button class="button button_disabled">やり直す</button>`],
+                        left: [button_disabled({ state: "normal", label: "やり直す" })],
                         right: [],
                     }),
                 ],

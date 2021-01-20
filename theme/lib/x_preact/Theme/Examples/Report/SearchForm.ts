@@ -1,9 +1,10 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box_fill } from "../../../common/style"
+import { box_fill, button_search } from "../../../common/style"
 
 import { DocumentProps } from "./Container"
+import { icon, spinner } from "../../../common/icon"
 
 type Props = DocumentProps
 export function SearchForm({ state, component }: Props): VNode {
@@ -24,13 +25,13 @@ export function SearchForm({ state, component }: Props): VNode {
     }
 
     function searchingButton() {
-        return html`<button class="button button_search button_connect">
-            <i class="lnir lnir-spinner lnir-is-spinning"></i> 読み込み中
-        </button>`
+        return button_search({ state: "connect", label: html`${spinner} 読み込み中` })
     }
     function searchButton() {
-        return html`<button class="button button_search" onClick="${onSearchClick}">
-            <i class="lnir lnir-reload"></i> 再読み込み
-        </button>`
+        return button_search({
+            state: "normal",
+            label: html`${icon("reload")} 再読み込み`,
+            onClick: onSearchClick,
+        })
     }
 }

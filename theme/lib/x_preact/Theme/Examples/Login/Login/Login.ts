@@ -1,9 +1,10 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { buttons, loginBox, form, form_error } from "../../../../common/style"
+import { buttons, loginBox, form, form_error, button_send } from "../../../../common/style"
 
 import { EditState, LoginProps } from "./Container"
+import { icon, spinner } from "../../../../common/icon"
 
 type Props = LoginProps
 export function Login({ state, component }: Props): VNode {
@@ -40,7 +41,7 @@ export function Login({ state, component }: Props): VNode {
 
     function loginMessage() {
         return [
-            html`<p><i class="lnir lnir-spinner lnir-is-spinning"></i> 認証中です</p>`,
+            html`<p>${spinner} 認証中です</p>`,
             html`<p>
                 30秒以上かかる場合は何かがおかしいので、
                 <br />
@@ -83,26 +84,18 @@ export function Login({ state, component }: Props): VNode {
     }
 
     function loginFooter(state: EditState) {
-        return buttons({ left: [button()], right: [resetLink()] })
+        return buttons({ left: button(), right: resetLink() })
 
         function button() {
-            return html`<button
-                type="button"
-                class="button button_send ${modified()}"
-                onClick="${onLoginClick}"
-            >
-                ログイン
-            </button>`
-
-            function modified() {
-                if (!state.fill) {
-                    return ""
-                }
-                return "button_confirm"
-            }
+            const buttonState = state.fill ? "confirm" : "normal"
+            return button_send({
+                state: buttonState,
+                label: "ログイン",
+                onClick: onLoginClick,
+            })
         }
         function resetLink() {
-            return html`<a href="#"><i class="lnir lnir-question-circle"></i> パスワードを忘れた方</a>`
+            return html`<a href="#">${icon("question-circle")} パスワードを忘れた場合</a>`
         }
     }
 }

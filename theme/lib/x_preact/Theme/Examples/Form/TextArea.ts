@@ -20,27 +20,27 @@ export function TextArea(props: Props): VNode {
         body: [
             form({
                 title: "small",
-                body: [html`<textarea class="input_small" rows="1" onInput=${onInput}></textarea>`],
+                body: html`<textarea class="input_small" rows="1" onInput=${onInput}></textarea>`,
                 help: [],
             }),
             form({
                 title: "default",
-                body: [html`<textarea rows="2" onInput=${onInput}></textarea>`],
+                body: html`<textarea rows="2" onInput=${onInput}></textarea>`,
                 help: [],
             }),
             form({
                 title: "large",
-                body: [html`<textarea class="input_large" rows="2" onInput=${onInput}></textarea>`],
+                body: html`<textarea class="input_large" rows="2" onInput=${onInput}></textarea>`,
                 help: [],
             }),
             form({
                 title: "extra large",
-                body: [html`<textarea class="input_xLarge" rows="2" onInput=${onInput}></textarea>`],
+                body: html`<textarea class="input_xLarge" rows="2" onInput=${onInput}></textarea>`,
                 help: [],
             }),
             form({
                 title: "fill",
-                body: [html`<textarea class="input_fill" rows="2" onInput=${onInput}></textarea>`],
+                body: html`<textarea class="input_fill" rows="2" onInput=${onInput}></textarea>`,
                 help: [],
             }),
         ],

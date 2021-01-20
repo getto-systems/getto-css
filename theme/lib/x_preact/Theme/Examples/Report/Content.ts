@@ -1,37 +1,54 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
+import {
+    reportBody,
+    reportFolio,
+    reportFooter,
+    reportHeader,
+    reportTitle,
+    reportTitle_small,
+    reportTitle_xSmall,
+    report_a4_portrait,
+} from "../../../common/style"
 
 type Props = {
     // no props
 }
 export function Content(_: Props): VNode {
-    return html`${firstPage()} ${secondPage(2)} ${secondPage(3)} ${secondPage(4)} ${secondPage(5)}`
+    return html`${firstPage()} ${secondPage()} ${thirdPage(3)} ${thirdPage(4)} ${thirdPage(5)}`
 
     function firstPage() {
-        return html`<section class="report report_a4_portrait">
-            <main>
-                <header class="report__header">
-                    <h2 class="report__title report__title_center">作業申請書</h2>
-                </header>
-                ${reportTable(13)}
-            </main>
-            ${reportFooter(1)}
-        </section>`
+        return report_a4_portrait({
+            header: reportHeader(reportTitle({ style: "center", title: "作業申請書" })),
+            content: reportBody(content(13)),
+            footer: footer(1),
+        })
     }
 
-    function secondPage(number: number) {
-        return html`<section class="report report_a4_portrait">
-            <main>
-                <header class="report__header">
-                    <h3 class="report__repeatTitle">作業申請書</h3>
-                </header>
-                ${reportTable(14)}
-            </main>
-            ${reportFooter(number)}
-        </section>`
+    function secondPage() {
+        return report_a4_portrait({
+            header: reportHeader(reportTitle_small({ style: "center", title: "作業申請書" })),
+            content: content(14),
+            footer: footer(2),
+        })
     }
 
-    function reportTable(rows: number) {
+    function thirdPage(number: number) {
+        return report_a4_portrait({
+            header: reportHeader(reportTitle_xSmall({ style: "left", title: "作業申請書" })),
+            content: content(14),
+            footer: footer(number),
+        })
+    }
+
+    function footer(pageNumber: number) {
+        return reportFooter({
+            left: reportFolio("作成日: 2020/06/19"),
+            right: reportFolio(`${pageNumber} / 5ページ`),
+        })
+    }
+
+    function content(rows: number) {
         return html`<table class="table table_fill table_small">
             ${tableHeader()}
             <tbody>
@@ -54,13 +71,6 @@ export function Content(_: Props): VNode {
                 </th>
             </tr>
         </thead>`
-    }
-
-    function reportFooter(pageNumber: number) {
-        return html`<footer class="report__footer">
-            <cite class="report__folio">作成日: 2020/06/19</cite>
-            <address class="report__folio">${pageNumber} / 5ページ</address>
-        </footer>`
     }
 
     function repeatedRows(count: number) {

@@ -14,6 +14,7 @@ import {
     appSidebar,
     form,
     box_fill,
+    button_search,
 } from "../../common/style"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
@@ -48,7 +49,7 @@ export function Sidebar({ example: { resource, terminate } }: Props): VNode {
             body: mainBody(h(Container, NO_PROPS)),
         }),
         sidebar: appSidebar({
-            header: mainHeader(html`<h1 class="main__title">List</h1>`),
+            header: mainHeader(mainTitle("List")),
             body: [sidebarBody(h(Pager, NO_PROPS)), sidebarBody_grow(h(Table, NO_PROPS))],
         }),
         menu: MainMenu(resource),
@@ -113,11 +114,11 @@ type PagerProps = {
 function Pager(_: PagerProps): VNode {
     return box_fill({
         type: "simple",
-        body: [form({ title: "全 5532 件中", body: [select(), button()], help: [] })],
+        body: [form({ title: "全 5532 件中", body: html`${select()} ${button()}`, help: [] })],
     })
 
     function select() {
-        return html`<select class="pager__select">
+        return html`<select>
             <option>1 ～ 1000 件</option>
             <option>1001 ～ 2000 件</option>
             <option>2001 ～ 3000 件</option>
@@ -127,7 +128,7 @@ function Pager(_: PagerProps): VNode {
         </select>`
     }
     function button() {
-        return html`<button class="button button_search">移動</button>`
+        return button_search({ state: "normal", label: "移動", onClick: () => null })
     }
 }
 

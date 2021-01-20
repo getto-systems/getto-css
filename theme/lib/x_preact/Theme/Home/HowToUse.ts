@@ -2,7 +2,7 @@ import { VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { notice_alert, box_double, form } from "../../common/style"
+import { notice_alert, box_double, form, label_info } from "../../common/style"
 
 import { HowToUseComponent, initialHowToUseState } from "../../../theme/Home/howToUse/component"
 
@@ -85,7 +85,7 @@ function allVersions(versions: AllVersions): VNode {
             if (!versionInfo.isCurrent) {
                 return EMPTY_CONTENT
             }
-            return html`<span class="label label_info">current</span>`
+            return label_info("current")
         }
     }
 }

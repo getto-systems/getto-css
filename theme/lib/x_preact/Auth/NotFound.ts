@@ -4,6 +4,7 @@ import { html } from "htm/preact"
 
 import { useTerminate } from "../common/hooks"
 import { buttons, loginBox } from "../common/style"
+import { icon } from "../common/icon"
 
 import { ApplicationError } from "../common/System/ApplicationError"
 
@@ -59,7 +60,7 @@ function Content({ currentVersion }: ContentProps): VNode {
             html`<p>作業は左下のリンクからホームに戻って続けられます</p>`,
         ],
         footer: buttons({
-            left: [html`<a href="${homeHref()}"><i class="lnir lnir-home"></i> ホームへ</a>`],
+            left: [html`<a href="${homeHref()}">${icon("home")} ホームへ</a>`],
             right: [],
         }),
     })

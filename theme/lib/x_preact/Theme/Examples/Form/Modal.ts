@@ -23,10 +23,12 @@ export function Modal<C>(content: ModalContent<C>): { (props: ModalProps<C>): VN
     return (props) => {
         const { state, component } = props
         if (!state.active) {
-            return html``
+            return EMPTY_CONTENT
         }
 
         const contentProps = { state: state.state, component }
-        return html`<aside class="modal">${h(content, contentProps)}</aside>`
+        return h(content, contentProps)
     }
 }
+
+const EMPTY_CONTENT = html``

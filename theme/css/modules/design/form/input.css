@@ -127,12 +127,7 @@ input[type="search"].input_fill {
     cursor: pointer;
 
     padding: calc(0.15em - 1px) 0.6em calc(0.05em - 1px) 0.4em;
-    margin: 0.05em 0;
-}
-
-.input__radio_block + .input__radio_block,
-.input__checkbox_block + .input__checkbox_block {
-    margin-top: var(--content-vertical-space-tiny);
+    margin: 0.05em 0.5em 0.05em 0;
 }
 
 .input__radio:hover,
@@ -154,4 +149,10 @@ input[type="search"].input_fill {
 .input__radio.input__radio_block,
 .input__checkbox.input__checkbox_block {
     display: block;
+    margin-right: 0;
+}
+
+.input__radio_block + .input__radio_block,
+.input__checkbox_block + .input__checkbox_block {
+    margin-top: var(--content-vertical-space-tiny);
 }
