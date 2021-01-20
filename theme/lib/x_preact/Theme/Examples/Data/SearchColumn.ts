@@ -1,29 +1,31 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { form, simpleBox_grow } from "../box"
-
-import { VNodeContent } from "../../../common/layout"
+import { box_grow, form, VNodeContent } from "../../../common/style"
 
 type Props = {
     // no props
 }
 export function SearchColumn(_: Props): VNode {
-    return simpleBox_grow([
-        form(
-            "表示する列",
-            columns([
-                column("ID", true),
-                column("名前", true),
-                column("状態", true),
-                column("メールアドレス", true),
-                column("更新日時", true),
-                column("メモ", true),
-                column("正式名称", false),
-                column("問い合わせ電話番号", false),
-            ])
-        ),
-    ])
+    return box_grow({
+        type: "simple",
+        body: [
+            form({
+                title: "表示する列",
+                body: columns([
+                    column("ID", true),
+                    column("名前", true),
+                    column("状態", true),
+                    column("メールアドレス", true),
+                    column("更新日時", true),
+                    column("メモ", true),
+                    column("正式名称", false),
+                    column("問い合わせ電話番号", false),
+                ]),
+                help: [],
+            }),
+        ],
+    })
 
     function columns(content: VNodeContent) {
         return html`<section class="search__column">${content}</section>`

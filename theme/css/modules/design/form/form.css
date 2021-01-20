@@ -1,9 +1,9 @@
-.form__header {
+.form__title {
     font-size: var(--font-size-small);
     margin-bottom: 0.375em;
 }
 
-.form__field {
+.form__body {
     margin-left: 1em;
     margin-bottom: var(--content-vertical-space-small);
     overflow-x: auto;
@@ -19,7 +19,7 @@
     margin-top: 0;
 }
 
-.form_error .form__header,
+.form_error .form__title,
 .form_error .form__notice {
     color: var(--color-alert);
 }
@@ -29,7 +29,7 @@
     background-color: var(--color-alert-off);
 }
 
-.form_warning .form__header,
+.form_warning .form__title,
 .form_warning .form__notice {
     color: var(--color-warning);
 }

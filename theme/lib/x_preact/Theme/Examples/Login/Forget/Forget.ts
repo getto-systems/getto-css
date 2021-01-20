@@ -1,8 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { buttons, loginBox } from "../../../../common/layout"
-import { formWithHelp, formWithHelp_error } from "../../box"
+import { buttons, loginBox, form, form_error } from "../../../../common/style"
 
 import { EditState, ForgetProps } from "./Container"
 
@@ -64,20 +63,20 @@ export function Forget({ state, component }: Props): VNode {
     function resetForm(state: EditState) {
         if (state.invalid) {
             return [
-                formWithHelp_error(
-                    "ログインID",
-                    html`<input type="text" class="input_fill" onInput=${onInput} />`,
-                    ["登録されたメールアドレスにリセットトークンを送信します"],
-                    ["ログインIDを入力してください"]
-                ),
+                form_error({
+                    title: "ログインID",
+                    body: html`<input type="text" class="input_fill" onInput=${onInput} />`,
+                    help: ["登録されたメールアドレスにリセットトークンを送信します"],
+                    notice: ["ログインIDを入力してください"],
+                }),
             ]
         } else {
             return [
-                formWithHelp(
-                    "ログインID",
-                    html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`,
-                    ["登録されたメールアドレスにリセットトークンを送信します"]
-                ),
+                form({
+                    title: "ログインID",
+                    body: html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`,
+                    help: ["登録されたメールアドレスにリセットトークンを送信します"],
+                }),
             ]
         }
     }

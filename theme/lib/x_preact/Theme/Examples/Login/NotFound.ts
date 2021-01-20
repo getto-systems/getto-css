@@ -4,7 +4,7 @@ import { html } from "htm/preact"
 
 import { ApplicationError } from "../../../common/System/ApplicationError"
 
-import { buttons, loginBox } from "../../../common/layout"
+import { buttons, loginBox } from "../../../common/style"
 
 type Props = Readonly<{
     // no props

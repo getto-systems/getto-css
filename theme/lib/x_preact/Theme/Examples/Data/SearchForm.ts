@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { simpleBox_fill } from "../box"
+import { box_fill } from "../../../common/style"
 
 import { ListProps } from "./Container"
 
@@ -11,7 +11,7 @@ export function SearchForm({ state, component }: Props): VNode {
         component.search(null)
     }
 
-    return simpleBox_fill(button())
+    return box_fill({ type: "simple", body: button() })
 
     function button() {
         switch (state.type) {

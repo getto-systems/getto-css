@@ -1,13 +1,16 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { form, simpleBox } from "../box"
+import { form, box } from "../../../common/style"
 
 type Props = {
     // no props
 }
 export function Pager(_: Props): VNode {
-    return simpleBox([form("全 5532 件中", [select(), button()])])
+    return box({
+        type: "simple",
+        body: [form({ title: "全 5532 件中", body: [select(), button()], help: [] })],
+    })
 
     function select() {
         return html`<select class="pager__select">

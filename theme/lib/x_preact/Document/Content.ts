@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { appMain, mainBody, mainHeader, mainTitle, VNodeContent } from "../common/layout"
+import { appMain, mainBody, mainHeader, mainTitle, VNodeContent } from "../common/style"
 import { BreadcrumbList } from "../Outline/BreadcrumbList"
 
 import { ContentComponent, initialContentState } from "../../document/Document/content/component"

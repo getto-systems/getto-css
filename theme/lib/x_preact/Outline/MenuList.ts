@@ -2,7 +2,7 @@ import { VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { menuBox, notice_alert, v_small } from "../common/layout"
+import { menuBox, notice_alert, v_small } from "../common/style"
 
 import { MenuListComponent, initialMenuListState } from "../../auth/Outline/menuList/component"
 

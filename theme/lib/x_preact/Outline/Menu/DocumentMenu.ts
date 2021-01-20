@@ -1,6 +1,6 @@
 import { h, VNode } from "preact"
 
-import { appMenu, menuFooter, menuHeader } from "../../common/layout"
+import { appMenu, menuFooter, menuHeader } from "../../common/style"
 
 import { MenuList } from "../MenuList"
 

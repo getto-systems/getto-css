@@ -3,7 +3,7 @@ import { useEffect, useErrorBoundary, useState } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { useTerminate } from "../common/hooks"
-import { buttons, loginBox } from "../common/layout"
+import { buttons, loginBox } from "../common/style"
 
 import { ApplicationError } from "../common/System/ApplicationError"
 
