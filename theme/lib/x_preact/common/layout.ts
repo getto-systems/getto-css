@@ -1,22 +1,10 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
+import { siteInfo } from "./site"
+
 export type VNodeContent = VNodeEntry | VNodeEntry[]
 type VNodeEntry = string | VNode
-
-export type SiteInfo = Readonly<{
-    brand: string
-    title: string
-    subTitle: string
-}>
-
-export function siteInfo(): SiteInfo {
-    return {
-        brand: "GETTO",
-        title: "CSS",
-        subTitle: "simple admin theme",
-    }
-}
 
 export type LoginBoxContent = Readonly<{
     title: VNodeContent
