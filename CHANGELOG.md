@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.19.7
+
+- fix: deploy : See merge request getto-systems-base/projects/css!333
+- fix: global info : See merge request getto-systems-base/projects/css!332
+
+
 ## Version : 2.19.6
 
 - fix: deploy : See merge request getto-systems-base/projects/css!330
