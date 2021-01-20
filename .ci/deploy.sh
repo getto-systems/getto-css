@@ -27,7 +27,10 @@ deploy_main(){
   deploy_artifact
   deploy_public
 
-  deploy_cp_public_index "2.19.6"
+  npm run storybook
+  deploy_storybook
+
+  # deploy_cp_public_index "2.19.6"
 }
 deploy_rewrite_version(){
   for file in $(find $public_root/dist $public_root/root -name '*.html'); do
@@ -66,6 +69,15 @@ deploy_public(){
       --metadata "$metadata" \
       $file "s3://$AWS_S3_BUCKET_CSS/$(basename $file)"
   done
+}
+deploy_storybook(){
+  local file
+
+  aws s3 cp \
+    --acl private \
+    --cache-control "public, max-age=31536000" \
+    --recursive \
+    $public_root/dist/storybook s3://$AWS_S3_BUCKET_CSS/$version/storybook
 }
 
 deploy_cp_public_index(){
