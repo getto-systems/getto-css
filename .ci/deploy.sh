@@ -26,6 +26,9 @@ deploy_main(){
   deploy_rewrite_version
   deploy_artifact
   deploy_public
+
+  deploy_cp_public_index "2.19.0"
+  deploy_cp_public_index "2.19.1"
 }
 deploy_rewrite_version(){
   for file in $(find $public_root/dist $public_root/root -name '*.html'); do
@@ -64,6 +67,19 @@ deploy_public(){
       --metadata "$metadata" \
       $file "s3://$AWS_S3_BUCKET_CSS/$(basename $file)"
   done
+}
+
+deploy_cp_public_index(){
+  # 歯抜けになってしまったパージョンのために index.html を埋める
+  local metadata
+  local file
+  metadata=$(node $public_root/metadata.js)
+
+  aws s3 cp \
+    --acl private \
+    --cache-control "public, max-age=31536000" \
+    --metadata "$metadata" \
+    example/public/dist/index.html s3://$AWS_S3_PUBLIC_BUCKET/$1/index.html
 }
 
 deploy_main
