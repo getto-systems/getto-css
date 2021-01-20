@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.19.5
+
+- fix: build : See merge request getto-systems-base/projects/css!328
+- fix: ci : See merge request getto-systems-base/projects/css!327
+
+
 ## Version : 2.19.4
 
 - fix: ci : See merge request getto-systems-base/projects/css!325
