@@ -1,5 +1,62 @@
 # CHANGELOG
 
+## Version : 2.19.0
+
+- rename: remote : See merge request getto-systems-base/projects/css!317
+- fix: deploy.sh : See merge request getto-systems-base/projects/css!316
+- update: preact : See merge request getto-systems-base/projects/css!315
+- fix: buttons params : See merge request getto-systems-base/projects/css!314
+- fix: loginBox params : See merge request getto-systems-base/projects/css!313
+- fix: menu : See merge request getto-systems-base/projects/css!312
+- add: layout utility : See merge request getto-systems-base/projects/css!311
+- fix: layout : See merge request getto-systems-base/projects/css!310
+- fix: layout : See merge request getto-systems-base/projects/css!309
+- fix: menu : See merge request getto-systems-base/projects/css!308
+- fix: sidebar layout : See merge request getto-systems-base/projects/css!307
+- add: sidebar layout : See merge request getto-systems-base/projects/css!306
+- fix: loading message : See merge request getto-systems-base/projects/css!305
+- fix: menu story : See merge request getto-systems-base/projects/css!304
+- fix: loading : See merge request getto-systems-base/projects/css!303
+- fix: login : See merge request getto-systems-base/projects/css!302
+- fix: login : See merge request getto-systems-base/projects/css!301
+- fix: error : See merge request getto-systems-base/projects/css!300
+- fix: error : See merge request getto-systems-base/projects/css!299
+- fix: not found : See merge request getto-systems-base/projects/css!298
+- fix: layout method : See merge request getto-systems-base/projects/css!297
+- fix: login class : See merge request getto-systems-base/projects/css!296
+- fix: login class : See merge request getto-systems-base/projects/css!295
+- fix: style : See merge request getto-systems-base/projects/css!294
+- fix: data notice : See merge request getto-systems-base/projects/css!293
+- fix: menu footer : See merge request getto-systems-base/projects/css!292
+- rename: report : See merge request getto-systems-base/projects/css!291
+- fix: list : See merge request getto-systems-base/projects/css!290
+- fix: table : See merge request getto-systems-base/projects/css!289
+- fix: modal : See merge request getto-systems-base/projects/css!288
+- fix: search : See merge request getto-systems-base/projects/css!287
+- fix: button : See merge request getto-systems-base/projects/css!286
+- remove: generate : See merge request getto-systems-base/projects/css!285
+- fix: input : See merge request getto-systems-base/projects/css!284
+- fix: input : See merge request getto-systems-base/projects/css!283
+- fix: form : See merge request getto-systems-base/projects/css!282
+- fix: breadcrumb : See merge request getto-systems-base/projects/css!281
+- fix: media : See merge request getto-systems-base/projects/css!280
+- fix: style : See merge request getto-systems-base/projects/css!279
+- fix: button : See merge request getto-systems-base/projects/css!278
+- fix: layout : See merge request getto-systems-base/projects/css!277
+- fix: box : See merge request getto-systems-base/projects/css!276
+- fix: media size : See merge request getto-systems-base/projects/css!275
+- fix: box size : See merge request getto-systems-base/projects/css!274
+- fix: notice, vertical spacing : See merge request getto-systems-base/projects/css!273
+- fix: menu : See merge request getto-systems-base/projects/css!272
+- fix: label, badge : See merge request getto-systems-base/projects/css!271
+- fix: link : See merge request getto-systems-base/projects/css!270
+- fix: size : See merge request getto-systems-base/projects/css!269
+- fix: load found flag : See merge request getto-systems-base/projects/css!268
+- move: update/moveToLatestVersion : See merge request getto-systems-base/projects/css!267
+- add: login views : See merge request getto-systems-base/projects/css!266
+- move: auth/notFound : See merge request getto-systems-base/projects/css!265
+
+
 ## Version : 2.18.6
 
 - add: not_found.html to entry point list : See merge request getto-systems-base/projects/css!263
