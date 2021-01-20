@@ -8,7 +8,7 @@ import {
 } from "../../auth/Outline/breadcrumbList/component"
 
 import { Breadcrumb, BreadcrumbNode, MenuCategory, MenuItem } from "../../auth/permission/menu/data"
-import { siteInfo } from "../common/layout"
+import { siteInfo } from "../common/site"
 
 type Props = Readonly<{
     breadcrumbList: BreadcrumbListComponent
