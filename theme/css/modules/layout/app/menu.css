@@ -92,7 +92,6 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 
-    margin-top: var(--content-vertical-space-tiny);
     margin-bottom: var(--content-vertical-space-tiny);
 }
 
@@ -163,6 +162,7 @@
     }
 
     .menu__footer {
+        margin-top: var(--content-vertical-space-tiny);
         margin-left: 0.5rem;
         margin-right: 0.5rem;
     }
