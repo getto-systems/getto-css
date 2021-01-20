@@ -1,8 +1,8 @@
 import { initCredentialAction, initMenuAction } from "../../../../auth/Outline/Menu/tests/core"
 
 import { detectMenuTarget } from "../../../../auth/Outline/Menu/impl/location"
-import { MenuBadgeSimulator } from "../../../../auth/permission/menu/impl/client/menuBadge/simulate"
-import { FindSimulator, initSimulateFindClient } from "../../../allVersions/impl/client/find/simulate"
+import { MenuBadgeSimulator } from "../../../../auth/permission/menu/impl/remote/menuBadge/simulate"
+import { FindSimulator, initSimulateFindClient } from "../../../allVersions/impl/remote/find/simulate"
 
 import { DashboardCollector, DashboardFactory, initDashboardResource } from "../impl/core"
 
