@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.19.6
+
+- fix: deploy : See merge request getto-systems-base/projects/css!330
+
+
 ## Version : 2.19.5
 
 - fix: build : See merge request getto-systems-base/projects/css!328
