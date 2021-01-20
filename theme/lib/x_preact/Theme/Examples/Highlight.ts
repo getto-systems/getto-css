@@ -8,7 +8,7 @@ import {
     mainHeader,
     mainTitle,
     mainBody,
-} from "../../common/layout"
+} from "../../common/style"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MainMenu } from "../../Outline/Menu/MainMenu"

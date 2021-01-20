@@ -1,14 +1,22 @@
 import { VNode } from "preact"
-import { container } from "../../../common/layout"
+import { container } from "../../../common/style"
 
-import { box, box_double, form } from "../box"
+import { box, box_double, form } from "../../../common/style"
 
 type Props = {
     // no props
 }
 export function Box(_: Props): VNode {
     return container([
-        box_double("title", [form("content", ["コンテンツ"])]),
-        box("title", [form("content", ["コンテンツ"])]),
+        box_double({
+            type: "title",
+            title: "title",
+            body: [form({ title: "content", body: ["コンテンツ"], help: [] })],
+        }),
+        box({
+            type: "title",
+            title: "title",
+            body: [form({ title: "content", body: ["コンテンツ"], help: [] })],
+        }),
     ])
 }

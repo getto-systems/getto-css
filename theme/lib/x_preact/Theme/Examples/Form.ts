@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
 
 import { useTerminate } from "../../common/hooks"
-import { appLayout, mainHeader, mainBody, mainTitle, appMain } from "../../common/layout"
+import { appLayout, mainHeader, mainBody, mainTitle, appMain } from "../../common/style"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MainMenu } from "../../Outline/Menu/MainMenu"

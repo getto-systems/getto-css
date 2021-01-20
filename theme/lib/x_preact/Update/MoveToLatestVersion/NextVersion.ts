@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { loginBox } from "../../common/layout"
+import { loginBox } from "../../common/style"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 

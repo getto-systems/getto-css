@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { form, fullBox_double } from "../box"
+import { form, box_double } from "../../../common/style"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -14,17 +14,36 @@ export function TextArea(props: Props): VNode {
         component.inputValidValue(null)
     }
 
-    return fullBox_double(
-        "text area",
-        [
-            form("small", [html`<textarea class="input_small" rows="1" onInput=${onInput}></textarea>`]),
-            form("default", [html`<textarea rows="2" onInput=${onInput}></textarea>`]),
-            form("large", [html`<textarea class="input_large" rows="2" onInput=${onInput}></textarea>`]),
-            form("extra large", [
-                html`<textarea class="input_xLarge" rows="2" onInput=${onInput}></textarea>`,
-            ]),
-            form("fill", [html`<textarea class="input_fill" rows="2" onInput=${onInput}></textarea>`]),
+    return box_double({
+        type: "full",
+        title: "text area",
+        body: [
+            form({
+                title: "small",
+                body: [html`<textarea class="input_small" rows="1" onInput=${onInput}></textarea>`],
+                help: [],
+            }),
+            form({
+                title: "default",
+                body: [html`<textarea rows="2" onInput=${onInput}></textarea>`],
+                help: [],
+            }),
+            form({
+                title: "large",
+                body: [html`<textarea class="input_large" rows="2" onInput=${onInput}></textarea>`],
+                help: [],
+            }),
+            form({
+                title: "extra large",
+                body: [html`<textarea class="input_xLarge" rows="2" onInput=${onInput}></textarea>`],
+                help: [],
+            }),
+            form({
+                title: "fill",
+                body: [html`<textarea class="input_fill" rows="2" onInput=${onInput}></textarea>`],
+                help: [],
+            }),
         ],
-        h(FormFooter, props)
-    )
+        footer: h(FormFooter, props),
+    })
 }

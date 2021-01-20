@@ -2,9 +2,10 @@ import { VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { notice_alert } from "../../common/layout"
+import { notice_alert, box_double, form } from "../../common/style"
 
 import { HowToUseComponent, initialHowToUseState } from "../../../theme/Home/howToUse/component"
+
 import { AllVersions, FindError, Version, VersionInfo } from "../../../theme/allVersions/data"
 
 type Props = Readonly<{
@@ -17,27 +18,16 @@ export function HowToUse({ howToUse }: Props): VNode {
         howToUse.load()
     }, [])
 
-    return html`
-        <section class="box box_double">
-            <div>
-                <header class="box__header"><h2 class="box__title">How To Use</h2></header>
-                <section class="box__body">
-                    <dl class="form">
-                        <dt class="form__header">リンクタグ</dt>
-                        <dd class="form__field">
-                            <pre>${linkTag()}</pre>
-                        </dd>
-                    </dl>
-                    <dl class="form">
-                        <dt class="form__header">バージョン</dt>
-                        <dd class="form__field">${content()}</dd>
-                    </dl>
-                </section>
-            </div>
-        </section>
-    `
+    return box_double({
+        type: "title",
+        title: "How To Use",
+        body: [
+            form({ title: "リンクタグ", body: linkTag(), help: [] }),
+            form({ title: "バージョン", body: versions(), help: [] }),
+        ],
+    })
 
-    function content(): VNode {
+    function versions(): VNode {
         switch (state.type) {
             case "initial-how-to-use":
                 return EMPTY_CONTENT
@@ -50,7 +40,7 @@ export function HowToUse({ howToUse }: Props): VNode {
                 return delayed()
 
             case "succeed-to-find":
-                return versions(state.versions)
+                return allVersions(state.versions)
 
             case "failed-to-find":
                 return error(state.err)
@@ -63,7 +53,9 @@ export function HowToUse({ howToUse }: Props): VNode {
                 return ""
 
             default:
-                return `<link rel="stylesheet"\n href="${productionCSS(state.currentVersion)}">`
+                return `<pre><link rel="stylesheet"\n href="${productionCSS(
+                    state.currentVersion
+                )}"></pre>`
         }
 
         function productionCSS(version: Version) {
@@ -72,7 +64,7 @@ export function HowToUse({ howToUse }: Props): VNode {
     }
 }
 
-function versions(versions: AllVersions): VNode {
+function allVersions(versions: AllVersions): VNode {
     return html`<ul>
         ${list()}
     </ul>`

@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useErrorBoundary } from "preact/hooks"
 
 import { useTerminate } from "../common/hooks"
-import { appLayout } from "../common/layout"
+import { appLayout } from "../common/style"
 
 import { ApplicationError } from "../common/System/ApplicationError"
 import { DocumentMenu } from "../Outline/Menu/DocumentMenu"

@@ -1,7 +1,7 @@
 import { html } from "htm/preact"
 import { VNode } from "preact"
 
-import { buttons } from "../../../common/layout"
+import { buttons } from "../../../common/style"
 
 import { EditState, FormProps } from "./Container"
 

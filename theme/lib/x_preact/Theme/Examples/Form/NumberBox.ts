@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { form, fullBox } from "../box"
+import { form, box } from "../../../common/style"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -14,12 +14,21 @@ export function NumberBox(props: Props): VNode {
         component.inputValidValue(null)
     }
 
-    return fullBox(
-        "number box",
-        [
-            form("small", [html`<input type="number" class="input_small" onInput=${onInput} /> 回`]),
-            form("default", [html`<input type="number" onInput=${onInput} /> 年`]),
+    return box({
+        type: "full",
+        title: "number box",
+        body: [
+            form({
+                title: "small",
+                body: [html`<input type="number" class="input_small" onInput=${onInput} /> 回`],
+                help: [],
+            }),
+            form({
+                title: "default",
+                body: [html`<input type="number" onInput=${onInput} /> 年`],
+                help: [],
+            }),
         ],
-        h(FormFooter, props)
-    )
+        footer: h(FormFooter, props),
+    })
 }

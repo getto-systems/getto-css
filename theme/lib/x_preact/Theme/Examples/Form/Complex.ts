@@ -3,8 +3,17 @@ import { html } from "htm/preact"
 
 import { iconClass, lnir } from "../../../../z_external/icon"
 
-import { buttons, icon, label_gray } from "../../../common/layout"
-import { form, formWithHelp, formWithHelp_error, formWithHelp_warning, fullBox, fullModal } from "../box"
+import {
+    form,
+    box,
+    modal,
+    form_error,
+    form_warning,
+    big,
+    buttons,
+    icon,
+    label_gray,
+} from "../../../common/style"
 
 import { CompleteComponent, DeleteComponent, EditState, FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -39,28 +48,33 @@ export function Complex(props: Props): VNode {
         function onDeleteClick() {
             modal.delete.component.open(null)
         }
-        return fullBox(
-            "complex",
-            [
-                form("名前", "GETTO CSS"),
-                form("state", [html`<big>${label_gray("仮")}</big>`]),
-                form("transition", [
-                    html`
-                        <big>
-                            <button class="button button_complete" onClick=${onCompleteClick}>
-                                ${i("checkmark")} 完了にする
-                            </button>
-                        </big>
-                    `,
-                ]),
+        return box({
+            type: "full",
+            title: "complex",
+            body: [
+                form({ title: "名前", body: "GETTO CSS", help: [] }),
+                form({
+                    title: "state",
+                    body: [big(label_gray("仮"))],
+                    help: [],
+                }),
+                form({
+                    title: "transition",
+                    body: [
+                        big(html`<button class="button button_complete" onClick=${onCompleteClick}>
+                            ${i("checkmark")} 完了にする
+                        </button>`),
+                    ],
+                    help: [],
+                }),
             ],
-            buttons({
+            footer: buttons({
                 left: [html`<button class="button button_edit" onClick=${component.edit}>編集</button>`],
                 right: [
                     html`<button class="button button_delete" onClick=${onDeleteClick}>削除</button>`,
                 ],
-            })
-        )
+            }),
+        })
     }
     function editingBox(state: EditState) {
         function onInput() {
@@ -71,45 +85,47 @@ export function Complex(props: Props): VNode {
         }
 
         if (state.invalid) {
-            return fullBox(
-                "complex",
-                [
-                    formWithHelp_error(
-                        "名前",
-                        html`<input type="text" value="GETTO CSS" onInput=${onInput} />`,
-                        ["プロジェクトの識別に使用します"],
-                        ["名前は必須です"]
-                    ),
-                    formWithHelp_warning(
-                        "メールアドレス",
-                        html`<input type="email" value="admin@example.com" onInput=${onInput} />`,
-                        ["重要なメッセージの通知先として使用します"],
-                        ["メールアドレスが初期値のままです"]
-                    ),
+            return box({
+                type: "full",
+                title: "complex",
+                body: [
+                    form_error({
+                        title: "名前",
+                        body: html`<input type="text" value="GETTO CSS" onInput=${onInput} />`,
+                        help: ["プロジェクトの識別に使用します"],
+                        notice: ["名前は必須です"],
+                    }),
+                    form_warning({
+                        title: "メールアドレス",
+                        body: html`<input type="email" value="admin@example.com" onInput=${onInput} />`,
+                        help: ["重要なメッセージの通知先として使用します"],
+                        notice: ["メールアドレスが初期値のままです"],
+                    }),
                 ],
-                h(FormFooter, props)
-            )
+                footer: h(FormFooter, props),
+            })
         } else {
-            return fullBox(
-                "complex",
-                [
-                    formWithHelp(
-                        "名前",
-                        html`<input type="text" value="GETTO CSS" onInput=${onInputAsInvalid} />`,
-                        ["プロジェクトの識別に使用します"]
-                    ),
-                    formWithHelp(
-                        "メールアドレス",
-                        html`<input
+            return box({
+                type: "full",
+                title: "complex",
+                body: [
+                    form({
+                        title: "名前",
+                        body: html`<input type="text" value="GETTO CSS" onInput=${onInputAsInvalid} />`,
+                        help: ["プロジェクトの識別に使用します"],
+                    }),
+                    form({
+                        title: "メールアドレス",
+                        body: html`<input
                             type="email"
                             value="admin@example.com"
                             onInput=${onInputAsInvalid}
                         />`,
-                        ["重要なメッセージの通知先として使用します"]
-                    ),
+                        help: ["重要なメッセージの通知先として使用します"],
+                    }),
                 ],
-                h(FormFooter, props)
-            )
+                footer: h(FormFooter, props),
+            })
         }
     }
 }
@@ -123,32 +139,34 @@ function CompleteModal({ state, component }: ModalContentProps<CompleteComponent
     }
 
     if (state.connecting) {
-        return fullModal("完了処理中", "作業を完了しています", [
-            html`<button type="button" class="button button_complete button_connect">
-                <i class="lnir lnir-spinner lnir-is-spinning"></i> 完了中
-            </button>`,
-        ])
+        return modal({
+            title: "完了処理中",
+            body: "作業を完了しています",
+            footer: [
+                html`<button type="button" class="button button_complete button_connect">
+                    <i class="lnir lnir-spinner lnir-is-spinning"></i> 完了中
+                </button>`,
+            ],
+        })
     } else {
-        return fullModal(
-            "完了確認",
-            html`作業を完了します
+        return modal({
+            title: "完了確認",
+            body: html`作業を完了します
                 <br />
                 よろしいですか？`,
-            [
-                html`<div class="button__container">
-                    <button
-                        type="button"
-                        class="button button_complete button_confirm"
-                        onClick="${onCompleteClick}"
-                    >
-                        完了
-                    </button>
-                    <button type="button" class="button button_cancel" onClick="${onCloseClick}">
-                        キャンセル
-                    </button>
-                </div>`,
-            ]
-        )
+            footer: buttons({
+                left: html`<button
+                    type="button"
+                    class="button button_complete button_confirm"
+                    onClick="${onCompleteClick}"
+                >
+                    完了
+                </button>`,
+                right: html`<button type="button" class="button button_cancel" onClick="${onCloseClick}">
+                    キャンセル
+                </button>`,
+            }),
+        })
     }
 }
 function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): VNode {
@@ -160,34 +178,36 @@ function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): 
     }
 
     if (state.connecting) {
-        return fullModal("削除処理中", "削除しています", [
-            html`<button type="button" class="button button_delete button_connect">
-                <i class="lnir lnir-spinner lnir-is-spinning"></i> 削除中
-            </button>`,
-        ])
+        return modal({
+            title: "削除処理中",
+            body: "削除しています",
+            footer: [
+                html`<button type="button" class="button button_delete button_connect">
+                    <i class="lnir lnir-spinner lnir-is-spinning"></i> 削除中
+                </button>`,
+            ],
+        })
     } else {
-        return fullModal(
-            "削除確認",
-            html`削除します
+        return modal({
+            title: "削除確認",
+            body: html`削除します
                 <br />
                 削除すると復元することはできません
                 <br />
                 よろしいですか？`,
-            [
-                html`<div class="button__container">
-                    <button
-                        type="button"
-                        class="button button_delete button_confirm"
-                        onClick="${onDeleteClick}"
-                    >
-                        削除
-                    </button>
-                    <button type="button" class="button button_cancel" onClick="${onCloseClick}">
-                        キャンセル
-                    </button>
-                </div>`,
-            ]
-        )
+            footer: buttons({
+                left: html`<button
+                    type="button"
+                    class="button button_delete button_confirm"
+                    onClick="${onDeleteClick}"
+                >
+                    削除
+                </button>`,
+                right: html`<button type="button" class="button button_cancel" onClick="${onCloseClick}">
+                    キャンセル
+                </button>`,
+            }),
+        })
     }
 }
 

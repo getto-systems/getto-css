@@ -12,8 +12,9 @@ import {
     mainTitle,
     appMain,
     appSidebar,
-} from "../../common/layout"
-import { form, simpleBox_fill } from "./box"
+    form,
+    box_fill,
+} from "../../common/style"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MainMenu } from "../../Outline/Menu/MainMenu"
@@ -61,24 +62,27 @@ type TableProps = {
     // no props
 }
 function Table(_: TableProps): VNode {
-    return simpleBox_fill(html`<table class="table table_sticky table_fill">
-        <thead class="table__header">
-            <tr>
-                <th class="cell_sticky cell_sticky_top cell_border_bb cell_border_rr">
-                    <a href="#">ID <i class="lnir lnir-chevron-down"></i></a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_bb">
-                    <a href="#">名前</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_bb">
-                    <a href="#">状態</a>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            ${repeatedRows()}
-        </tbody>
-    </table>`)
+    return box_fill({
+        type: "simple",
+        body: html`<table class="table table_sticky table_fill">
+            <thead class="table__header">
+                <tr>
+                    <th class="cell_sticky cell_sticky_top cell_border_bb cell_border_rr">
+                        <a href="#">ID <i class="lnir lnir-chevron-down"></i></a>
+                    </th>
+                    <th class="cell_sticky cell_sticky_top cell_border_bb">
+                        <a href="#">名前</a>
+                    </th>
+                    <th class="cell_sticky cell_sticky_top cell_border_bb">
+                        <a href="#">状態</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                ${repeatedRows()}
+            </tbody>
+        </table>`,
+    })
 
     function repeatedRows() {
         const result = []
@@ -110,7 +114,10 @@ type PagerProps = {
     // no props
 }
 function Pager(_: PagerProps): VNode {
-    return simpleBox_fill([form("全 5532 件中", [select(), button()])])
+    return box_fill({
+        type: "simple",
+        body: [form({ title: "全 5532 件中", body: [select(), button()], help: [] })],
+    })
 
     function select() {
         return html`<select class="pager__select">

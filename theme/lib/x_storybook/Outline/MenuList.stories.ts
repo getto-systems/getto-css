@@ -11,7 +11,7 @@ import {
     mainBody,
     appMenu,
     menuBox,
-} from "../../x_preact/common/layout"
+} from "../../x_preact/common/style"
 
 import { MenuList } from "../../x_preact/Outline/MenuList"
 

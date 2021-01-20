@@ -139,6 +139,184 @@ export function menuFooter(): VNode {
     </footer>`
 }
 
+export type BoxContent =
+    | Readonly<{ type: "simple"; body: VNodeContent }>
+    | Readonly<{ type: "title"; title: VNodeContent; body: VNodeContent }>
+    | Readonly<{ type: "footer"; body: VNodeContent; footer: VNodeContent }>
+    | Readonly<{ type: "full"; title: VNodeContent; body: VNodeContent; footer: VNodeContent }>
+
+type BoxClass = "single" | "double" | "grow" | "fill"
+function mapBoxClass(boxClass: BoxClass): string {
+    switch (boxClass) {
+        case "single":
+            return ""
+
+        default:
+            return `box_${boxClass}`
+    }
+}
+
+export function box(content: BoxContent): VNode {
+    return boxContent("single", content)
+}
+export function box_double(content: BoxContent): VNode {
+    return boxContent("double", content)
+}
+export function box_grow(content: BoxContent): VNode {
+    return boxContent("grow", content)
+}
+export function box_fill(content: BoxContent): VNode {
+    return boxContent("fill", content)
+}
+
+function boxContent(boxClass: BoxClass, content: BoxContent): VNode {
+    return html`<article class="box ${mapBoxClass(boxClass)}">
+        <main>${header()} ${boxBody(content)}</main>
+        ${footer()}
+    </article>`
+
+    function header(): VNodeContent {
+        switch (content.type) {
+            case "simple":
+            case "footer":
+                return ""
+
+            case "title":
+            case "full":
+                return boxHeader(content)
+        }
+    }
+    function footer() {
+        switch (content.type) {
+            case "simple":
+            case "title":
+                return ""
+
+            case "footer":
+            case "full":
+                return boxFooter(content)
+        }
+    }
+}
+
+function boxHeader({ title }: { title: VNodeContent }) {
+    return html`<header class="box__header">
+        <h2>${title}</h2>
+    </header>`
+}
+function boxBody({ body }: { body: VNodeContent }) {
+    return html`<section class="box__body">${body}</section>`
+}
+function boxFooter({ footer }: { footer: VNodeContent }) {
+    return html`<footer class="box__footer">${footer}</footer>`
+}
+
+export type FormContent =
+    | Readonly<{ type: NormalFormType; content: NormalFormContent }>
+    | Readonly<{ type: NoticeFormType; content: NoticeFormContent }>
+
+type NormalFormContent = Readonly<{
+    title: VNodeContent
+    body: VNodeContent
+    help: VNodeContent[]
+}>
+type NoticeFormContent = Readonly<{
+    title: VNodeContent
+    body: VNodeContent
+    help: VNodeContent[]
+    notice: VNodeContent[]
+}>
+
+type FormType = NormalFormType | NoticeFormType
+type NormalFormType = "normal" | "search" | "search_double"
+type NoticeFormType = "error" | "warning"
+function mapFormClass(formClass: FormType): string {
+    switch (formClass) {
+        case "normal":
+            return ""
+
+        case "search":
+            return "search"
+
+        case "search_double":
+            return "search search_double"
+
+        default:
+            return `form_${formClass}`
+    }
+}
+
+export function form(content: NormalFormContent): VNode {
+    return formContent({ type: "normal", content })
+}
+export function form_error(content: NoticeFormContent): VNode {
+    return formContent({ type: "error", content })
+}
+export function form_warning(content: NoticeFormContent): VNode {
+    return formContent({ type: "warning", content })
+}
+export function search(content: NormalFormContent): VNode {
+    return formContent({ type: "search", content })
+}
+export function search_double(content: NormalFormContent): VNode {
+    return formContent({ type: "search_double", content })
+}
+
+function formContent(form: FormContent): VNode {
+    return html`<dl class="form ${mapFormClass(form.type)}">
+        <dt class="form__title">${form.content.title}</dt>
+        <dd class="form__body">${form.content.body} ${help()}</dd>
+    </dl>`
+
+    function help() {
+        switch (form.type) {
+            case "error":
+            case "warning":
+                return formHelp([
+                    ...form.content.help.map(toFormHelp),
+                    ...form.content.notice.map(toFormNotice),
+                ])
+
+            default:
+                return formHelp([...form.content.help.map(toFormHelp)])
+        }
+    }
+}
+
+function formHelp(content: VNodeContent) {
+    return html`<aside class="form__help">${content}</aside>`
+}
+function toFormNotice(message: VNodeContent) {
+    return html`<p class="form__notice">${message}</p>`
+}
+function toFormHelp(message: VNodeContent) {
+    return html`<p>${message}</p>`
+}
+
+export type ModalContent = Readonly<{
+    title: VNodeContent
+    body: VNodeContent
+    footer: VNodeContent
+}>
+
+export function modal({ title, body, footer }: ModalContent): VNode {
+    return html`<section class="modal__box">
+        ${modalHeader(title)} ${modalBody(body)} ${modalFooter(footer)}
+    </section>`
+}
+
+function modalHeader(title: VNodeContent) {
+    return html`<header class="modal__header">
+        <h3 class="modal__title">${title}</h3>
+    </header>`
+}
+function modalBody(content: VNodeContent) {
+    return html`<section class="modal__body">${content}</section>`
+}
+function modalFooter(footer: VNodeContent) {
+    return html`<footer class="modal__footer">${footer}</footer>`
+}
+
 export function container(content: VNodeContent): VNode {
     return html`<section class="container">${content}</section>`
 }

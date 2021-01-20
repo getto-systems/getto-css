@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { form, fullBox } from "../box"
+import { form, box } from "../../../common/style"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -14,13 +14,26 @@ export function EmailBox(props: Props): VNode {
         component.inputValidValue(null)
     }
 
-    return fullBox(
-        "email box",
-        [
-            form("small", [html`<input type="email" class="input_small" onInput=${onInput} />`]),
-            form("default", [html`<input type="email" onInput=${onInput} />`]),
-            form("fill", [html`<input type="email" class="input_fill" onInput=${onInput} />`]),
+    return box({
+        type: "full",
+        title: "email box",
+        body: [
+            form({
+                title: "small",
+                body: [html`<input type="email" class="input_small" onInput=${onInput} />`],
+                help: [],
+            }),
+            form({
+                title: "default",
+                body: [html`<input type="email" onInput=${onInput} />`],
+                help: [],
+            }),
+            form({
+                title: "fill",
+                body: [html`<input type="email" class="input_fill" onInput=${onInput} />`],
+                help: [],
+            }),
         ],
-        h(FormFooter, props)
-    )
+        footer: h(FormFooter, props),
+    })
 }

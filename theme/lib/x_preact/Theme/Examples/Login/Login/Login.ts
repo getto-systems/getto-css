@@ -1,8 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { buttons, loginBox } from "../../../../common/layout"
-import { form, formWithHelp_error } from "../../box"
+import { buttons, loginBox, form, form_error } from "../../../../common/style"
 
 import { EditState, LoginProps } from "./Container"
 
@@ -52,27 +51,33 @@ export function Login({ state, component }: Props): VNode {
     function loginForm(state: EditState) {
         if (state.invalid) {
             return [
-                formWithHelp_error(
-                    "ログインID",
-                    html`<input type="text" class="input_fill" onInput=${onInput} />`,
-                    [],
-                    ["ログインIDを入力してください"]
-                ),
-                formWithHelp_error(
-                    "パスワード",
-                    html`<input type="password" class="input_fill" onInput=${onInput} />`,
-                    [],
-                    ["パスワードを入力してください"]
-                ),
+                form_error({
+                    title: "ログインID",
+                    body: html`<input type="text" class="input_fill" onInput=${onInput} />`,
+                    help: [],
+                    notice: ["ログインIDを入力してください"],
+                }),
+                form_error({
+                    title: "パスワード",
+                    body: html`<input type="password" class="input_fill" onInput=${onInput} />`,
+                    help: [],
+                    notice: ["パスワードを入力してください"],
+                }),
             ]
         } else {
             return [
-                form("ログインID", [
-                    html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`,
-                ]),
-                form("パスワード", [
-                    html`<input type="password" class="input_fill" onInput=${onInputAsInvalid} />`,
-                ]),
+                form({
+                    title: "ログインID",
+                    body: [html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`],
+                    help: [],
+                }),
+                form({
+                    title: "パスワード",
+                    body: [
+                        html`<input type="password" class="input_fill" onInput=${onInputAsInvalid} />`,
+                    ],
+                    help: [],
+                }),
             ]
         }
     }

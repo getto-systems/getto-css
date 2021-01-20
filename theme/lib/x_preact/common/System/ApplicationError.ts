@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { buttons, loginBox } from "../layout"
+import { buttons, loginBox } from "../style"
 
 type Props = Readonly<{
     err: string

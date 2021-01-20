@@ -1,8 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { search, noTitleBox_fill, searchWithHelp, search_double } from "../box"
-import { container } from "../../../common/layout"
+import { container, search, box_fill, search_double } from "../../../common/style"
 
 import { EditState, SearchProps } from "./Container"
 
@@ -14,28 +13,37 @@ export function SearchForm(props: Props): VNode {
         component.inputValidValue(null)
     }
 
-    return noTitleBox_fill(
-        container([
-            searchWithHelp(
-                "ID",
-                [html`<input type="search" class="input_fill" onInput=${onInput} />`],
-                ["完全一致検索"]
-            ),
-            search("名前", [html`<input type="search" class="input_fill" onInput=${onInput} />`]),
-            search_double("radio", [
-                html`<label class="input__radio input_checked">
-                    <input type="radio" name="radio" checked onClick="${onInput}" />仮
-                </label>`,
-                html`<label class="input__radio">
-                    <input type="radio" name="radio" onClick="${onInput}" />作業中
-                </label>`,
-                html`<label class="input__radio">
-                    <input type="radio" name="radio" onClick="${onInput}" />完了
-                </label>`,
-            ]),
+    return box_fill({
+        type: "footer",
+        body: container([
+            search({
+                title: "ID",
+                body: [html`<input type="search" class="input_fill" onInput=${onInput} />`],
+                help: ["完全一致検索"],
+            }),
+            search({
+                title: "名前",
+                body: [html`<input type="search" class="input_fill" onInput=${onInput} />`],
+                help: [],
+            }),
+            search_double({
+                title: "radio",
+                body: [
+                    html`<label class="input__radio input_checked">
+                        <input type="radio" name="radio" checked onClick="${onInput}" />仮
+                    </label>`,
+                    html`<label class="input__radio">
+                        <input type="radio" name="radio" onClick="${onInput}" />作業中
+                    </label>`,
+                    html`<label class="input__radio">
+                        <input type="radio" name="radio" onClick="${onInput}" />完了
+                    </label>`,
+                ],
+                help: [],
+            }),
         ]),
-        h(SearchFooter, props)
-    )
+        footer: h(SearchFooter, props),
+    })
 }
 
 type SearchFooterProps = SearchProps
