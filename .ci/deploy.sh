@@ -27,7 +27,7 @@ deploy_main(){
   deploy_artifact
   deploy_public
 
-  #deploy_cp_public_index "2.19.0"
+  deploy_cp_public_index "2.19.6"
 }
 deploy_rewrite_version(){
   for file in $(find $public_root/dist $public_root/root -name '*.html'); do

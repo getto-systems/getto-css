@@ -84,7 +84,9 @@ release_deploy:
     - apt-get install -y python3-pip
     - pip3 install awscli
     - npm clean-install
-    - cd storybook && npm clean-install
+    - cd storybook
+    - npm clean-install
+    - cd -
   script:
     - ./.ci/deploy.sh
 
