@@ -18,8 +18,8 @@ deploy_main(){
 
   npm run build
 
-  if [ ! -f $artifact_root/dist/index.js ]; then
-    echo "build failed! : $artifact_root/dist/index.js not exists"
+  if [ ! -f $artifact_root/dist/getto.css ]; then
+    echo "build failed! : $artifact_root/dist/getto.css not exists"
     exit 1
   fi
 
