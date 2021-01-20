@@ -1,8 +1,6 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { iconClass, lnir } from "../../../../z_external/icon"
-
 import {
     form,
     box,
@@ -62,7 +60,7 @@ export function Complex(props: Props): VNode {
                     title: "transition",
                     body: [
                         big(html`<button class="button button_complete" onClick=${onCompleteClick}>
-                            ${i("checkmark")} 完了にする
+                            ${icon("checkmark")} 完了にする
                         </button>`),
                     ],
                     help: [],
@@ -209,8 +207,4 @@ function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): 
             }),
         })
     }
-}
-
-function i(iconName: string) {
-    return icon(iconClass(lnir(iconName)))
 }

@@ -1,6 +1,8 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
+import { iconClass, lnir } from "../../z_external/icon"
+
 import { siteInfo } from "./site"
 
 export type VNodeContent = VNodeEntry | VNodeEntry[]
@@ -328,8 +330,8 @@ export function big(content: VNodeContent): VNode {
     return html`<big>${content}</big>`
 }
 
-export function icon(iconClass: string): VNode {
-    return html`<i class="${iconClass}"></i>`
+export function icon(name: string): VNode {
+    return html`<i class="${iconClass(lnir(name))}"></i>`
 }
 
 type Size = "small" | "medium" | "large"
