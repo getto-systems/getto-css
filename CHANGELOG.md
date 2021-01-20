@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.19.1
+
+- fix: ci : See merge request getto-systems-base/projects/css!319
+
+
 ## Version : 2.19.0
 
 - rename: remote : See merge request getto-systems-base/projects/css!317
