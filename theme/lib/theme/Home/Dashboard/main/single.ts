@@ -6,7 +6,7 @@ import { DashboardCollector, DashboardFactory, initDashboardResource } from "../
 
 import { detectMenuTarget } from "../../../../auth/Outline/Menu/impl/location"
 
-import { initFetchFindClient } from "../../../allVersions/impl/client/find/fetch"
+import { initFetchFindClient } from "../../../allVersions/impl/remote/find/fetch"
 
 import { initMenuListComponent } from "../../../../auth/Outline/menuList/impl"
 import { initBreadcrumbListComponent } from "../../../../auth/Outline/breadcrumbList/impl"

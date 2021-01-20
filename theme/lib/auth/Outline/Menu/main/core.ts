@@ -1,7 +1,7 @@
 import { env } from "../../../../y_static/env"
 
 import { initMemoryApiCredentialRepository } from "../../../common/credential/impl/repository/apiCredential/memory"
-import { initStaticMenuBadgeClient } from "../../../permission/menu/impl/client/menuBadge/static"
+import { initStaticMenuBadgeClient } from "../../../permission/menu/impl/remote/menuBadge/static"
 import { initStorageMenuExpandRepository } from "../../../permission/menu/impl/repository/menuExpand/storage"
 import { documentMenuTree, mainMenuTree } from "../impl/menu/menuTree"
 
@@ -12,7 +12,7 @@ import { CredentialAction } from "../../../common/credential/action"
 import { MenuAction } from "../../../permission/menu/action"
 
 import { markApiNonce, markApiRoles } from "../../../common/credential/data"
-import { initNoopMenuBadgeClient } from "../../../permission/menu/impl/client/menuBadge/noop"
+import { initNoopMenuBadgeClient } from "../../../permission/menu/impl/remote/menuBadge/noop"
 import { MenuBadgeClient, MenuTree } from "../../../permission/menu/infra"
 
 export function initCredentialAction(): CredentialAction {
