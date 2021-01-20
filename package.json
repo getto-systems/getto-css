@@ -1,6 +1,6 @@
 {
   "name": "getto-css",
-  "version": "2.19.3",
+  "version": "2.19.4",
   "description": "simple admin css theme",
   "scripts": {
     "storybook": "cd storybook && npm run build",
