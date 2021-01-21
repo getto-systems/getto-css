@@ -49,17 +49,18 @@ export function HowToUse({ howToUse }: Props): VNode {
         }
     }
 
-    function linkTag(): string {
+    function linkTag(): VNode {
         switch (state.type) {
             case "initial-how-to-use":
-                return ""
+                return EMPTY_CONTENT
 
             default:
-                return `<pre><link rel="stylesheet"\n href="${productionCSS(
-                    state.currentVersion
-                )}"></pre>`
+                return html`<pre>${link(state.currentVersion)}</pre>`
         }
 
+        function link(currentVersion: Version) {
+            return `<link rel="stylesheet" \n      href="${productionCSS(currentVersion)}">`
+        }
         function productionCSS(version: Version) {
             return `https://trellis.getto.systems/css/${version}/getto.css`
         }

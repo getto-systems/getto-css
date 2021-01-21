@@ -233,6 +233,11 @@ export function content_home_component(): VNode {
             html`<p>コンポーネントライブラリは提供しない</p>`,
             html`<p>style.ts に preact 用のスタイル定義があるが、これを直接共有しない</p>`,
             html`<p>各プロジェクトではこの内容をコピーしたものを持つ形で緩く共有する</p>`,
+            html`<p>
+                input 要素にはクラスを設定しない<br />
+                value や checked をコントロールする必要があるので、input
+                要素に直接クラスを定義するとうまくいかないため
+            </p>`,
         ],
     })
 }
