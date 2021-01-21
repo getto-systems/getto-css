@@ -219,6 +219,107 @@ function buttonContent(button: ButtonContent): VNode {
     }
 }
 
+type LabelContent = Readonly<{ style: InputStyle; content: VNodeContent }>
+
+type InputStyle = "small" | "normal" | "large" | "xLarge" | "fill"
+function mapInputStyle(style: InputStyle): string {
+    switch (style) {
+        case "normal":
+            return ""
+
+        default:
+            return `input_${style}`
+    }
+}
+
+export function label_number_small(content: VNodeContent): VNode {
+    return labelContent({ style: "small", content })
+}
+export function label_number(content: VNodeContent): VNode {
+    return labelContent({ style: "normal", content })
+}
+export function label_number_fill(content: VNodeContent): VNode {
+    return labelContent({ style: "fill", content })
+}
+
+export function label_email_small(content: VNodeContent): VNode {
+    return labelContent({ style: "small", content })
+}
+export function label_email(content: VNodeContent): VNode {
+    return labelContent({ style: "normal", content })
+}
+export function label_email_fill(content: VNodeContent): VNode {
+    return labelContent({ style: "fill", content })
+}
+
+export function label_text_small(content: VNodeContent): VNode {
+    return labelContent({ style: "small", content })
+}
+export function label_text(content: VNodeContent): VNode {
+    return labelContent({ style: "normal", content })
+}
+export function label_text_large(content: VNodeContent): VNode {
+    return labelContent({ style: "large", content })
+}
+export function label_text_xLarge(content: VNodeContent): VNode {
+    return labelContent({ style: "xLarge", content })
+}
+export function label_text_fill(content: VNodeContent): VNode {
+    return labelContent({ style: "fill", content })
+}
+
+export function label_password_small(content: VNodeContent): VNode {
+    return labelContent({ style: "small", content })
+}
+export function label_password(content: VNodeContent): VNode {
+    return labelContent({ style: "normal", content })
+}
+export function label_password_large(content: VNodeContent): VNode {
+    return labelContent({ style: "large", content })
+}
+export function label_password_xLarge(content: VNodeContent): VNode {
+    return labelContent({ style: "xLarge", content })
+}
+export function label_password_fill(content: VNodeContent): VNode {
+    return labelContent({ style: "fill", content })
+}
+
+export function label_search_small(content: VNodeContent): VNode {
+    return labelContent({ style: "small", content })
+}
+export function label_search(content: VNodeContent): VNode {
+    return labelContent({ style: "normal", content })
+}
+export function label_search_large(content: VNodeContent): VNode {
+    return labelContent({ style: "large", content })
+}
+export function label_search_xLarge(content: VNodeContent): VNode {
+    return labelContent({ style: "xLarge", content })
+}
+export function label_search_fill(content: VNodeContent): VNode {
+    return labelContent({ style: "fill", content })
+}
+
+export function label_textarea_small(content: VNodeContent): VNode {
+    return labelContent({ style: "small", content })
+}
+export function label_textarea(content: VNodeContent): VNode {
+    return labelContent({ style: "normal", content })
+}
+export function label_textarea_large(content: VNodeContent): VNode {
+    return labelContent({ style: "large", content })
+}
+export function label_textarea_xLarge(content: VNodeContent): VNode {
+    return labelContent({ style: "xLarge", content })
+}
+export function label_textarea_fill(content: VNodeContent): VNode {
+    return labelContent({ style: "fill", content })
+}
+
+function labelContent({ style, content }: LabelContent): VNode {
+    return html`<label class=${mapInputStyle(style)}>${content}</label>`
+}
+
 export type CheckableContent = Readonly<{ isChecked: boolean; input: VNodeContent; key: CheckableKey }>
 type CheckableKey = string | number
 

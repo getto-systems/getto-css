@@ -2,7 +2,14 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { box_double } from "../../../../z_external/css/getto/preact/design/box"
-import { form } from "../../../../z_external/css/getto/preact/design/form"
+import {
+    form,
+    label_textarea,
+    label_textarea_fill,
+    label_textarea_large,
+    label_textarea_small,
+    label_textarea_xLarge,
+} from "../../../../z_external/css/getto/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -21,27 +28,27 @@ export function TextArea(props: Props): VNode {
         body: [
             form({
                 title: "small",
-                body: html`<textarea class="input_small" rows="1" onInput=${onInput}></textarea>`,
+                body: label_textarea_small(html`<textarea rows="1" onInput=${onInput}></textarea>`),
                 help: [],
             }),
             form({
                 title: "default",
-                body: html`<textarea rows="2" onInput=${onInput}></textarea>`,
+                body: label_textarea(html`<textarea rows="2" onInput=${onInput}></textarea>`),
                 help: [],
             }),
             form({
                 title: "large",
-                body: html`<textarea class="input_large" rows="2" onInput=${onInput}></textarea>`,
+                body: label_textarea_large(html`<textarea rows="2" onInput=${onInput}></textarea>`),
                 help: [],
             }),
             form({
                 title: "extra large",
-                body: html`<textarea class="input_xLarge" rows="2" onInput=${onInput}></textarea>`,
+                body: label_textarea_xLarge(html`<textarea rows="2" onInput=${onInput}></textarea>`),
                 help: [],
             }),
             form({
                 title: "fill",
-                body: html`<textarea class="input_fill" rows="2" onInput=${onInput}></textarea>`,
+                body: label_textarea_fill(html`<textarea rows="2" onInput=${onInput}></textarea>`),
                 help: [],
             }),
         ],

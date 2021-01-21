@@ -2,7 +2,14 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { box_double } from "../../../../z_external/css/getto/preact/design/box"
-import { form } from "../../../../z_external/css/getto/preact/design/form"
+import {
+    form,
+    label_password,
+    label_password_fill,
+    label_password_large,
+    label_password_small,
+    label_password_xLarge,
+} from "../../../../z_external/css/getto/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -21,27 +28,27 @@ export function PasswordBox(props: Props): VNode {
         body: [
             form({
                 title: "small",
-                body: html`<input type="password" class="input_small" onInput=${onInput} />`,
+                body: label_password_small(html`<input type="password" onInput=${onInput} />`),
                 help: [],
             }),
             form({
                 title: "default",
-                body: html`<input type="password" onInput=${onInput} />`,
+                body: label_password(html`<input type="password" onInput=${onInput} />`),
                 help: [],
             }),
             form({
                 title: "large",
-                body: html`<input type="password" class="input_large" onInput=${onInput} />`,
+                body: label_password_large(html`<input type="password" onInput=${onInput} />`),
                 help: [],
             }),
             form({
                 title: "extra large",
-                body: html`<input type="password" class="input_xLarge" onInput=${onInput} />`,
+                body: label_password_xLarge(html`<input type="password" onInput=${onInput} />`),
                 help: [],
             }),
             form({
                 title: "fill",
-                body: html`<input type="password" class="input_fill" onInput=${onInput} />`,
+                body: label_password_fill(html`<input type="password" onInput=${onInput} />`),
                 help: [],
             }),
         ],

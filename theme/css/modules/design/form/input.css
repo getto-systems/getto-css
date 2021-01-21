@@ -92,6 +92,7 @@ input[type="email"] {
 .input_fill textarea,
 .input_fill input[type="text"],
 .input_fill input[type="password"],
+.input_fill input[type="number"],
 .input_fill input[type="email"] {
     width: calc(100% - 1.5rem);
 }

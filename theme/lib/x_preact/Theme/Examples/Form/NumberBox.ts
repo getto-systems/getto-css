@@ -2,7 +2,12 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { box } from "../../../../z_external/css/getto/preact/design/box"
-import { form } from "../../../../z_external/css/getto/preact/design/form"
+import {
+    form,
+    label_number,
+    label_number_fill,
+    label_number_small,
+} from "../../../../z_external/css/getto/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -21,12 +26,17 @@ export function NumberBox(props: Props): VNode {
         body: [
             form({
                 title: "small",
-                body: html`<input type="number" class="input_small" onInput=${onInput} /> 回`,
+                body: label_number_small(html`<input type="number" onInput=${onInput} /> 回`),
                 help: [],
             }),
             form({
                 title: "default",
-                body: html`<input type="number" onInput=${onInput} /> 年`,
+                body: label_number(html`<input type="number" onInput=${onInput} /> 年`),
+                help: [],
+            }),
+            form({
+                title: "fill",
+                body: label_number_fill(html`<input type="number" onInput=${onInput} />`),
                 help: [],
             }),
         ],
