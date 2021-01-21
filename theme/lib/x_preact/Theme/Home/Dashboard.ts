@@ -1,8 +1,15 @@
 import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
 
+import {
+    appLayout,
+    appMain,
+    mainHeader,
+    mainTitle,
+    mainBody,
+} from "../../../z_external/css/getto/preact/layout/app"
+
 import { useTerminate } from "../../common/hooks"
-import { appLayout, appMain, mainHeader, mainTitle, mainBody } from "../../common/style"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MainMenu } from "../../Outline/Menu/MainMenu"

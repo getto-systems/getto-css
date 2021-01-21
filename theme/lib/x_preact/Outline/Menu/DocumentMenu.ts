@@ -1,6 +1,8 @@
 import { h, VNode } from "preact"
 
-import { appMenu, menuFooter, menuHeader } from "../../common/style"
+import { appMenu, menuFooter, menuHeader } from "../../../z_external/css/getto/preact/layout/app"
+
+import { siteInfo } from "../../common/site"
 
 import { MenuList } from "../MenuList"
 
@@ -10,5 +12,5 @@ type Props = Readonly<{
     menuList: MenuListComponent
 }>
 export function DocumentMenu(props: Props): VNode {
-    return appMenu([menuHeader(), h(MenuList, props), menuFooter()])
+    return appMenu([menuHeader(siteInfo()), h(MenuList, props), menuFooter()])
 }

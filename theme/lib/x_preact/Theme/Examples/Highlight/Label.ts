@@ -1,15 +1,16 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
+import { box } from "../../../../z_external/css/getto/preact/design/box"
 import {
-    box,
     label_alert,
     label_gray,
     label_info,
     label_pending,
     label_success,
     label_warning,
-} from "../../../common/style"
+} from "../../../../z_external/css/getto/preact/design/highlight"
+
 import { icon } from "../../../common/icon"
 
 type Props = {

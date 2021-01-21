@@ -2,8 +2,11 @@ import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary, useState } from "preact/hooks"
 import { html } from "htm/preact"
 
+import { loginBox } from "../../z_external/css/getto/preact/layout/login"
+import { buttons } from "../../z_external/css/getto/preact/design/form"
+
 import { useTerminate } from "../common/hooks"
-import { buttons, loginBox } from "../common/style"
+import { siteInfo } from "../common/site"
 import { icon } from "../common/icon"
 
 import { ApplicationError } from "../common/System/ApplicationError"
@@ -46,7 +49,7 @@ function Content({ currentVersion }: ContentProps): VNode {
         currentVersion.load()
     }, [])
 
-    return loginBox({
+    return loginBox(siteInfo(), {
         title: "リンクが切れていました",
         content: [
             html`<p>

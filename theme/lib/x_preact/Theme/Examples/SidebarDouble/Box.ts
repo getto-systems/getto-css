@@ -1,7 +1,7 @@
 import { VNode } from "preact"
-import { container } from "../../../common/style"
 
-import { box, form } from "../../../common/style"
+import { container, box } from "../../../../z_external/css/getto/preact/design/box"
+import { form } from "../../../../z_external/css/getto/preact/design/form"
 
 type Props = {
     // no props

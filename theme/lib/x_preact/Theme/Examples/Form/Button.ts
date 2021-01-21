@@ -1,10 +1,10 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
+import { box } from "../../../../z_external/css/getto/preact/design/box"
 import {
-    buttons,
-    box,
     form,
+    buttons,
     button_edit,
     button_search,
     button_send,
@@ -17,7 +17,8 @@ import {
     button_undo,
     button_redo,
     button_disabled,
-} from "../../../common/style"
+} from "../../../../z_external/css/getto/preact/design/form"
+
 import { spinner } from "../../../common/icon"
 
 type Props = {

@@ -2,7 +2,9 @@ import { VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { notice_alert, box_double, form, label_info } from "../../common/style"
+import { box_double } from "../../../z_external/css/getto/preact/design/box"
+import { form } from "../../../z_external/css/getto/preact/design/form"
+import { notice_alert, label_info } from "../../../z_external/css/getto/preact/design/highlight"
 
 import { HowToUseComponent, initialHowToUseState } from "../../../theme/Home/howToUse/component"
 

@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { container } from "../../../common/style"
+import { container } from "../../../../z_external/css/getto/preact/design/box"
 
 import { Badge } from "./Badge"
 import { Label } from "./Label"

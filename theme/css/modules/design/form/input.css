@@ -49,29 +49,8 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-:--input-text {
-    width: var(--width-input-normal);
-}
-
-:--input-text.input_small {
-    width: var(--width-input-small);
-}
-
-:--input-text.input_large {
-    width: var(--width-input-large);
-}
-
-:--input-text.input_xLarge {
-    width: var(--width-input-x-large);
-}
-
-input[type="tel"] {
-    width: var(--width-input-normal);
-}
-
 input[type="number"] {
     appearance: textfield;
-    width: var(--width-input-small);
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -79,43 +58,45 @@ input[type="number"]::-webkit-outer-spin-button {
     appearance: none;
 }
 
-input[type="number"].input_small {
+.input_small input[type="number"] {
     width: var(--width-input-tiny);
 }
 
+.input_small :--input-text,
+input[type="number"] {
+    width: var(--width-input-small);
+}
+
+:--input-text,
+.input_small textarea,
+input[type="tel"],
+.input_small input[type="email"] {
+    width: var(--width-input-normal);
+}
+
+.input_large :--input-text,
+textarea,
 input[type="email"] {
     width: var(--width-input-large);
 }
 
-input[type="email"].input_small {
-    width: var(--width-input-normal);
-}
-
-textarea {
-    width: var(--width-input-large);
-}
-
-textarea.input_small {
-    width: var(--width-input-normal);
-}
-
-textarea.input_large {
+.input_xLarge :--input-text,
+.input_large textarea {
     width: var(--width-input-x-large);
 }
 
-textarea.input_xLarge {
+.input_xLarge textarea {
     width: var(--width-input-xx-large);
 }
 
-textarea.input_fill,
-input[type="text"].input_fill,
-input[type="password"].input_fill,
-input[type="search"].input_fill,
-input[type="email"].input_fill {
+.input_fill textarea,
+.input_fill input[type="text"],
+.input_fill input[type="password"],
+.input_fill input[type="email"] {
     width: calc(100% - 1.5rem);
 }
 
-input[type="search"].input_fill {
+.input_fill input[type="search"] {
     width: calc(100% - 0.1rem);
 }
 

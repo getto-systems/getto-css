@@ -5,17 +5,13 @@ body {
     line-height: 1.4;
 }
 
-.content + .content,
-p + p {
+p + p,
+.paragraph + .paragraph {
     margin-top: var(--content-vertical-space-small);
 }
 
-.content_overflow {
-    overflow-x: auto;
-}
-
-.linky,
-a {
+a,
+.linky {
     display: inline-block;
     text-align: left;
 

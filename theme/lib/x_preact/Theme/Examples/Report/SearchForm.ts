@@ -1,7 +1,8 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box_fill, button_search } from "../../../common/style"
+import { box_fill } from "../../../../z_external/css/getto/preact/design/box"
+import { button_search } from "../../../../z_external/css/getto/preact/design/form"
 
 import { DocumentProps } from "./Container"
 import { icon, spinner } from "../../../common/icon"

@@ -1,7 +1,9 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { VNodeContent, label_alert, label_pending, v_medium, v_small } from "../common/style"
+import { VNodeContent } from "../../z_external/css/getto/preact/common"
+import { label_alert, label_pending } from "../../z_external/css/getto/preact/design/highlight"
+import { v_medium, v_small } from "../../z_external/css/getto/preact/design/alignment"
 
 export function itemsSection(title: VNodeContent, list: VNodeContent[]): VNode {
     return html`
