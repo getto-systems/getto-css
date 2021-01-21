@@ -1,7 +1,8 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { form, box_double } from "../../../common/style"
+import { box_double } from "../../../../z_external/css/getto/preact/design/box"
+import { form } from "../../../../z_external/css/getto/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"

@@ -2,7 +2,9 @@ import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { loginBox } from "../../../common/style"
+import { loginBox } from "../../../../z_external/css/getto/preact/layout/login"
+
+import { siteInfo } from "../../../common/site"
 
 import { ApplicationError } from "../../../common/System/ApplicationError"
 
@@ -23,7 +25,7 @@ export function Loading(_: Props): VNode {
         document.title = `Loading | ${document.title}`
     }, [])
 
-    return loginBox({
+    return loginBox(siteInfo(), {
         title: "アプリケーション読み込み中",
         content: [
             html`<p>

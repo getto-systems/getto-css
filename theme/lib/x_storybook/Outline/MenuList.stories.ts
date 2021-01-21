@@ -11,7 +11,9 @@ import {
     mainBody,
     appMenu,
     menuBox,
-} from "../../x_preact/common/style"
+} from "../../z_external/css/getto/preact/layout/app"
+
+import { siteInfo } from "../../x_preact/common/site"
 
 import { MenuList } from "../../x_preact/Outline/MenuList"
 
@@ -54,7 +56,7 @@ const Template: Story<MockProps> = (args) => {
                     body: mainBody("コンテンツ"),
                 }),
                 menu: appMenu([
-                    menuHeader(),
+                    menuHeader(siteInfo()),
                     menuBox("global information"),
                     h(MenuList, menuProps),
                     menuFooter(),

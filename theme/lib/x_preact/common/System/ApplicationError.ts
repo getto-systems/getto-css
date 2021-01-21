@@ -1,14 +1,17 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { buttons, loginBox } from "../style"
+import { loginBox } from "../../../z_external/css/getto/preact/layout/login"
+import { buttons } from "../../../z_external/css/getto/preact/design/form"
+
+import { siteInfo } from "../site"
 
 type Props = Readonly<{
     err: string
 }>
 
 export function ApplicationError({ err }: Props): VNode {
-    return loginBox({
+    return loginBox(siteInfo(), {
         title: html`システムエラーが発生しました`,
         content: [
             html`<p>

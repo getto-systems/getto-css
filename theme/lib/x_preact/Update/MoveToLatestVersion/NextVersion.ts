@@ -2,7 +2,9 @@ import { h, VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { loginBox } from "../../common/style"
+import { loginBox } from "../../../z_external/css/getto/preact/layout/login"
+
+import { siteInfo } from "../../common/site"
 import { spinner } from "../../common/icon"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
@@ -46,7 +48,7 @@ export function NextVersion({ nextVersion }: Props): VNode {
     }
 
     function delayedContent() {
-        return loginBox({
+        return loginBox(siteInfo(), {
             title: "アプリケーション読み込み中",
             content: [
                 html`<p>${spinner} ${" "} アプリケーションの読み込みに時間がかかっています</p>`,

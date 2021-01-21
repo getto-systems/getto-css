@@ -2,15 +2,9 @@ import { VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import {
-    badge_alert,
-    menuBody,
-    menuBox,
-    menuCategory,
-    menuItem,
-    notice_alert,
-    v_small,
-} from "../common/style"
+import { menuBody, menuBox, menuCategory, menuItem } from "../../z_external/css/getto/preact/layout/app"
+import { badge_alert, notice_alert } from "../../z_external/css/getto/preact/design/highlight"
+import { v_small } from "../../z_external/css/getto/preact/design/alignment"
 
 import { MenuListComponent, initialMenuListState } from "../../auth/Outline/menuList/component"
 

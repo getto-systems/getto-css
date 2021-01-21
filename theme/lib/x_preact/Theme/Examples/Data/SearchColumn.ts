@@ -1,7 +1,8 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box_grow, checkbox, form, searchColumn } from "../../../common/style"
+import { box_grow } from "../../../../z_external/css/getto/preact/design/box"
+import { form, searchColumn, checkbox } from "../../../../z_external/css/getto/preact/design/form"
 
 type Props = {
     // no props

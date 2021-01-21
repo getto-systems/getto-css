@@ -1,18 +1,18 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
+import { container, box_fill } from "../../../../z_external/css/getto/preact/design/box"
 import {
-    container,
     search,
-    box_fill,
     search_double,
-    button_search,
     formError,
+    button_search,
     checkbox,
-} from "../../../common/style"
+} from "../../../../z_external/css/getto/preact/design/form"
+
+import { icon, spinner } from "../../../common/icon"
 
 import { EditState, SearchProps } from "./Container"
-import { icon, spinner } from "../../../common/icon"
 
 type Props = SearchProps
 export function SearchForm(props: Props): VNode {

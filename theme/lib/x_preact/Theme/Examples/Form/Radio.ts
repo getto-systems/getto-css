@@ -1,7 +1,8 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { form, box, radio, radio_block } from "../../../common/style"
+import { box } from "../../../../z_external/css/getto/preact/design/box"
+import { form, radio, radio_block } from "../../../../z_external/css/getto/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"

@@ -1,10 +1,18 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { buttons, loginBox, form, form_error, button_send } from "../../../../common/style"
+import { loginBox } from "../../../../../z_external/css/getto/preact/layout/login"
+import {
+    form,
+    form_error,
+    buttons,
+    button_send,
+} from "../../../../../z_external/css/getto/preact/design/form"
+
+import { icon, spinner } from "../../../../common/icon"
+import { siteInfo } from "../../../../common/site"
 
 import { EditState, LoginProps } from "./Container"
-import { icon, spinner } from "../../../../common/icon"
 
 type Props = LoginProps
 export function Login({ state, component }: Props): VNode {
@@ -18,7 +26,7 @@ export function Login({ state, component }: Props): VNode {
         component.login(null)
     }
 
-    return loginBox({ title: "ログイン", content: content(), footer: footer() })
+    return loginBox(siteInfo(), { title: "ログイン", content: content(), footer: footer() })
 
     function content() {
         switch (state.type) {

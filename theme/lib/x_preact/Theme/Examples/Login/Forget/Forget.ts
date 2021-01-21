@@ -1,10 +1,18 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { buttons, loginBox, form, form_error, button_send } from "../../../../common/style"
+import { loginBox } from "../../../../../z_external/css/getto/preact/layout/login"
+import {
+    form,
+    form_error,
+    buttons,
+    button_send,
+} from "../../../../../z_external/css/getto/preact/design/form"
+
+import { icon, spinner } from "../../../../common/icon"
+import { siteInfo } from "../../../../common/site"
 
 import { EditState, ForgetProps } from "./Container"
-import { icon, spinner } from "../../../../common/icon"
 
 type Props = ForgetProps
 export function Forget({ state, component }: Props): VNode {
@@ -18,7 +26,7 @@ export function Forget({ state, component }: Props): VNode {
         component.reset(null)
     }
 
-    return loginBox({ title: "パスワードリセット", content: content(), footer: footer() })
+    return loginBox(siteInfo(), { title: "パスワードリセット", content: content(), footer: footer() })
 
     function content() {
         switch (state.type) {
@@ -86,7 +94,7 @@ export function Forget({ state, component }: Props): VNode {
         return buttons({ left: button(), right: loginLink() })
 
         function button() {
-            const buttonState = state.fill ? "confirm" : "normal"            
+            const buttonState = state.fill ? "confirm" : "normal"
             return button_send({
                 state: buttonState,
                 label: "リセットトークン送信",

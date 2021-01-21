@@ -1,7 +1,8 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { form, box, checkbox, checkbox_block } from "../../../common/style"
+import { box } from "../../../../z_external/css/getto/preact/design/box"
+import { form, checkbox, checkbox_block } from "../../../../z_external/css/getto/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"

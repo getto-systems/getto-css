@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useState } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { container } from "../../../common/style"
+import { container } from "../../../../z_external/css/getto/preact/design/box"
 
 import { SearchForm } from "./SearchForm"
 import { Pager } from "./Pager"

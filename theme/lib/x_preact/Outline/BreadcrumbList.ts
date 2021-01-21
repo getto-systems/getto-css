@@ -3,15 +3,22 @@ import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
 import {
+    breadcrumbLink,
+    breadcrumbList,
+    breadcrumbSeparator,
+} from "../../z_external/css/getto/preact/layout/app"
+
+import { siteInfo } from "../common/site"
+import { icon } from "../common/icon"
+
+import { MENU_ID } from "./MenuList"
+
+import {
     BreadcrumbListComponent,
     initialBreadcrumbListState,
 } from "../../auth/Outline/breadcrumbList/component"
 
 import { Breadcrumb, BreadcrumbNode, MenuCategory, MenuItem } from "../../auth/permission/menu/data"
-import { siteInfo } from "../common/site"
-import { icon } from "../common/icon"
-import { breadcrumbLink, breadcrumbList, breadcrumbSeparator } from "../common/style"
-import { MENU_ID } from "./MenuList"
 
 type Props = Readonly<{
     breadcrumbList: BreadcrumbListComponent

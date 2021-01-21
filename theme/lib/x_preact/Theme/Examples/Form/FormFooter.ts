@@ -1,8 +1,8 @@
 import { html } from "htm/preact"
 import { VNode } from "preact"
-import { spinner } from "../../../common/icon"
 
 import {
+    formError,
     buttons,
     button_close,
     button_delete,
@@ -10,8 +10,9 @@ import {
     button_edit,
     button_redo,
     button_undo,
-    formError,
-} from "../../../common/style"
+} from "../../../../z_external/css/getto/preact/design/form"
+
+import { spinner } from "../../../common/icon"
 
 import { EditState, FormProps } from "./Container"
 

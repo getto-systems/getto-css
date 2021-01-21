@@ -2,7 +2,6 @@ import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { useTerminate } from "../../common/hooks"
 import {
     mainHeader,
     sidebarBody_grow,
@@ -12,10 +11,11 @@ import {
     mainTitle,
     appMain,
     appSidebar,
-    form,
-    box_fill,
-    button_search,
-} from "../../common/style"
+} from "../../../z_external/css/getto/preact/layout/app"
+import { box_fill } from "../../../z_external/css/getto/preact/design/box"
+import { form, button_search } from "../../../z_external/css/getto/preact/design/form"
+
+import { useTerminate } from "../../common/hooks"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MainMenu } from "../../Outline/Menu/MainMenu"
