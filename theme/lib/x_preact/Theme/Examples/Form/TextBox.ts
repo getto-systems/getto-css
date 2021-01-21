@@ -2,7 +2,14 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { box_double } from "../../../../z_external/css/getto/preact/design/box"
-import { form } from "../../../../z_external/css/getto/preact/design/form"
+import {
+    form,
+    label_text,
+    label_text_fill,
+    label_text_large,
+    label_text_small,
+    label_text_xLarge,
+} from "../../../../z_external/css/getto/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -21,27 +28,27 @@ export function TextBox(props: Props): VNode {
         body: [
             form({
                 title: "small",
-                body: html`<input type="text" class="input_small" onInput=${onInput} />`,
+                body: label_text_small(html`<input type="text" onInput=${onInput} />`),
                 help: [],
             }),
             form({
                 title: "default",
-                body: html`<input type="text" onInput=${onInput} />`,
+                body: label_text(html`<input type="text" onInput=${onInput} />`),
                 help: [],
             }),
             form({
                 title: "large",
-                body: html`<input type="text" class="input_large" onInput=${onInput} />`,
+                body: label_text_large(html`<input type="text" onInput=${onInput} />`),
                 help: [],
             }),
             form({
                 title: "extra large",
-                body: html`<input type="text" class="input_xLarge" onInput=${onInput} />`,
+                body: label_text_xLarge(html`<input type="text" onInput=${onInput} />`),
                 help: [],
             }),
             form({
                 title: "fill",
-                body: html`<input type="text" class="input_fill" onInput=${onInput} />`,
+                body: label_text_fill(html`<input type="text" onInput=${onInput} />`),
                 help: [],
             }),
         ],
