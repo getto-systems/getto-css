@@ -87,14 +87,14 @@ export function Content(_: Props): VNode {
                 <td class="cell_border_b cell_border_l cell_border_rr">1234</td>
                 <td class="cell_border_b">GETTO CSS</td>
                 <td class="cell_border_b">admin@example.com</td>
-                <td class="cell_border_b cell_mono cell_right">1,200</td>
+                <td class="cell_border_b cell_numeric">1,200</td>
                 <td class="cell_border_b cell_border_r"><small>2020/06/19 08:03</small></td>
             </tr>
             <tr>
                 <td class="cell_border_b cell_border_l cell_border_rr">123</td>
                 <td class="cell_border_b">GETTO</td>
                 <td class="cell_border_b">user@example.com</td>
-                <td class="cell_border_b cell_mono cell_right">13,500</td>
+                <td class="cell_border_b cell_numeric">13,500</td>
                 <td class="cell_border_b cell_border_r"><small>2020/01/10</small></td>
             </tr>
         `

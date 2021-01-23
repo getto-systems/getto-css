@@ -248,6 +248,10 @@ export function content_home_resources(): VNode {
         body: [
             html`<p>フォントとアイコンはバンドルしない</p>`,
             html`<p>どのフォントとアイコンを使用するかは各プロジェクトで決める</p>`,
+            html`<p>
+                数字が等幅になっているフォントが適当<br />
+                そうでない場合はテーブルのスタイルで等幅指定を追加する必要がある
+            </p>`,
             v_medium(),
             form({
                 title: "最適化に使用したリソース",

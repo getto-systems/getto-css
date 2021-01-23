@@ -37,8 +37,8 @@
     text-align: right;
 }
 
-.cell_mono {
-    font-kerning: none;
+.cell_numeric {
+    text-align: right;
 }
 
 .cell_border_t {
