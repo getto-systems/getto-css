@@ -3,78 +3,108 @@ import { html } from "htm/preact"
 import { VNodeContent, VNodeKey } from "../common"
 import { checkbox } from "./form"
 
-export type TableDataCell<T> =
-    | TableDataSingle<T>
-    | TableDataExtract<T>
-    | TableDataGroup<T>
-    | TableDataTree<T>
+export type TableDataCell<S, R> =
+    | TableDataSingle<R>
+    | TableDataExtract<S, R>
+    | TableDataGroup<S, R>
+    | TableDataMultipart<S, R>
+    | TableDataTree<S, R>
 
 type TableDataCellKey = VNodeKey
 
-export interface TableDataSingle<T> {
+export interface TableDataSingle<R> {
     type: "single"
-
-    isVisible(keys: TableDataCellKey[]): boolean
 
     view(): TableDataView
     header(): TableDataHeaderSingle
     prepend(): TableDataPrependSingle
-    column(row: T): TableDataColumnSingle
+    column(row: R): TableDataColumnSingle
 
-    border(borders: TableDataVerticalBorder[]): TableDataSingle<T>
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataSingle<T>
+    border(borders: TableDataVerticalBorder[]): TableDataSingle<R>
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataSingle<R>
 
-    decorateView(decorator: TableDataViewDecorator): TableDataSingle<T>
-    decorateHeader(decorator: TableDataHeaderDecorator): TableDataSingle<T>
-    setPrepend(content: TableDataPrependProvider): TableDataSingle<T>
-    decoratePrepend(decorator: TableDataPrependDecorator): TableDataSingle<T>
-    decorateColumn(decorator: TableDataColumnDecorator<T>): TableDataSingle<T>
+    decorateView(decorator: TableDataViewDecorator): TableDataSingle<R>
+    decorateHeader(decorator: TableDataHeaderDecorator): TableDataSingle<R>
+    setPrepend(content: TableDataPrependProvider): TableDataSingle<R>
+    decoratePrepend(decorator: TableDataPrependDecorator): TableDataSingle<R>
+    decorateColumn(decorator: TableDataColumnDecorator<R>): TableDataSingle<R>
+
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableDataSingle<R>>
 }
-export interface TableDataExtract<T> {
+export interface TableDataExtract<S, R> {
     type: "extract"
 
-    isVisible(keys: TableDataCellKey[]): boolean
-
     view(): TableDataView
-    header(): TableDataHeaderExtract
-    prepend(): TableDataPrependExtract
-    column(row: T): TableDataColumnExtract
+    header(summary: S): TableDataHeaderExtract
+    prepend(summary: S): TableDataPrependExtract
+    column(row: R, summary: S): TableDataColumnExtract
 
-    border(borders: TableDataVerticalBorder[]): TableDataExtract<T>
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataExtract<T>
+    border(borders: TableDataVerticalBorder[]): TableDataExtract<S, R>
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataExtract<S, R>
 
-    decorateView(decorator: TableDataViewDecorator): TableDataExtract<T>
-    decorateHeader(decorator: TableDataHeaderDecorator): TableDataExtract<T>
-    setPrepend(content: TableDataPrependProvider): TableDataExtract<T>
-    decoratePrepend(decorator: TableDataPrependDecorator): TableDataExtract<T>
-    decorateColumn(decorator: TableDataColumnDecorator<T>): TableDataExtract<T>
+    decorateView(decorator: TableDataViewDecorator): TableDataExtract<S, R>
+    decorateHeader(decorator: TableDataHeaderDecorator): TableDataExtract<S, R>
+    setPrepend(content: TableDataPrependProvider): TableDataExtract<S, R>
+    decoratePrepend(decorator: TableDataPrependDecorator): TableDataExtract<S, R>
+    decorateColumn(decorator: TableDataColumnDecorator<R>): TableDataExtract<S, R>
+
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableDataExtract<S, R>>
 }
-export interface TableDataGroup<T> {
+export interface TableDataGroup<S, R> {
     type: "group"
 
-    view(): TableDataView[]
-    header(): TableDataHeaderGroup
-    prepend(): TableDataPrepend[]
-    column(row: T): TableDataColumn[]
+    view(summary: S): TableDataView[]
+    header(summary: S): TableDataHeaderGroup
+    prepend(summary: S): TableDataPrepend[]
+    column(row: R, summary: S): TableDataColumn[]
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataGroup<T>
-    decorateGroup(decorator: TableDataGroupDecorator): TableDataGroup<T>
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataGroup<S, R>
+    decorateGroup(decorator: TableDataGroupDecorator): TableDataGroup<S, R>
 
-    filterVisibleCells(keys: TableDataCellKey[]): TableDataGroup<T>
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableDataGroup<S, R>>
 }
-export interface TableDataTree<T> {
+export interface TableDataMultipart<S, R> {
+    type: "multipart"
+
+    view(summary: S): TableDataView[]
+    header(summary: S): TableDataHeader[]
+    prepend(summary: S): TableDataPrepend[]
+    column(row: R, summary: S): TableDataColumn[]
+
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataMultipart<S, R>
+
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableDataMultipart<S, R>>
+}
+export interface TableDataTree<S, R> {
     type: "tree"
 
-    view(): TableDataView[]
-    header(): TableDataHeader[]
-    prepend(): TableDataPrepend[]
-    column(row: T): TableDataColumnTree
+    view(summary: S): TableDataView[]
+    header(summary: S): TableDataHeader[]
+    prepend(summary: S): TableDataPrepend[]
+    column(row: R, summary: S): TableDataColumnTree
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataTree<T>
-    decorateRow(decorator: TableDataRowDecorator<T>): TableDataTree<T>
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataTree<S, R>
+    decorateRow(decorator: TableDataRowDecorator<R>): TableDataTree<S, R>
 
-    filterVisibleCells(keys: TableDataCellKey[]): TableDataTree<T>
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableDataTree<S, R>>
 }
+
+export interface TableRowFrozen<S, R> {
+    view(summary: S): TableDataView[]
+    header(summary: S): TableDataHeader[]
+    prepend(summary: S): TableDataPrepend[]
+    column(row: R, summary: S): TableDataColumnCollection
+}
+export interface TableRow<S, R> extends TableRowFrozen<S, R> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableRow<S, R>
+    decorateRow(decorator: TableDataRowDecorator<R>): TableRow<S, R>
+
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableRow<S, R>>
+
+    freeze(): TableRowFrozen<S, R>
+}
+
+type TableDataFilteredCell<T> = Readonly<{ cell: T; isVisible: boolean }>
 
 type TableDataView = Readonly<{
     key: VNodeKey
@@ -146,24 +176,27 @@ type TableDataColumnExtract = Readonly<{
 }>
 type TableDataColumnTree = Readonly<{
     type: "tree"
-    key: VNodeKey
     style: TableDataRowStyle
-    children: TableDataColumn[][]
+    children: TableDataColumnCollection[]
     height: number
 }>
+type TableDataColumnCollection = Readonly<{
+    key: VNodeKey
+    columns: TableDataColumn[]
+}>
 
-export type TableDataSingleContent<T> = Readonly<{
+export type TableDataSingleContent<R> = Readonly<{
     label: TableDataContentProvider
     header: TableDataContentDecorator
-    column: TableDataColumnContentProvider<T>
+    column: TableDataColumnContentProvider<R>
 }>
-export function tableData<T>(
+export function tableData<R>(
     key: TableDataCellKey,
-    content: { (key: TableDataCellKey): TableDataSingleContent<T> }
-): TableDataSingle<T> {
+    content: { (key: TableDataCellKey): TableDataSingleContent<R> }
+): TableDataSingle<R> {
     return new TableDataSingleImpl(key, content(key))
 }
-class TableDataSingleImpl<T> implements TableDataSingle<T> {
+class TableDataSingleImpl<R> implements TableDataSingle<R> {
     readonly type = "single" as const
 
     key: TableDataCellKey
@@ -172,10 +205,10 @@ class TableDataSingleImpl<T> implements TableDataSingle<T> {
         view: TableDataViewContainer
         header: TableDataHeaderContainer
         prepend: TableDataPrependContainer
-        column: TableDataColumnContainer<T>
+        column: TableDataColumnContainer<R>
     }>
 
-    constructor(key: TableDataCellKey, { label, header, column }: TableDataSingleContent<T>) {
+    constructor(key: TableDataCellKey, { label, header, column }: TableDataSingleContent<R>) {
         this.key = key
         this.container = {
             label,
@@ -196,10 +229,6 @@ class TableDataSingleImpl<T> implements TableDataSingle<T> {
                 decorators: [],
             },
         }
-    }
-
-    isVisible(keys: TableDataCellKey[]): boolean {
-        return keys.includes(this.key)
     }
 
     view(): TableDataView {
@@ -233,7 +262,7 @@ class TableDataSingleImpl<T> implements TableDataSingle<T> {
                 }
         }
     }
-    column(row: T): TableDataColumnSingle {
+    column(row: R): TableDataColumnSingle {
         return {
             type: "single",
             key: this.key,
@@ -245,14 +274,14 @@ class TableDataSingleImpl<T> implements TableDataSingle<T> {
         }
     }
 
-    border(borders: TableDataVerticalBorder[]): TableDataSingle<T> {
+    border(borders: TableDataVerticalBorder[]): TableDataSingle<R> {
         const decorator = verticalBorder(borders)
         this.decorateHeader(decorator)
         this.decoratePrepend(decorator)
         this.decorateColumn(() => decorator)
         return this
     }
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataSingle<T> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataSingle<R> {
         const decorator = horizontalBorder(borders)
         this.decorateHeader(decorator)
         this.decoratePrepend(decorator)
@@ -260,69 +289,76 @@ class TableDataSingleImpl<T> implements TableDataSingle<T> {
         return this
     }
 
-    decorateView(decorator: TableDataViewDecorator): TableDataSingle<T> {
+    decorateView(decorator: TableDataViewDecorator): TableDataSingle<R> {
         this.container = {
             ...this.container,
             view: decorateView(this.container.view, decorator),
         }
         return this
     }
-    decorateHeader(decorator: TableDataHeaderDecorator): TableDataSingle<T> {
+    decorateHeader(decorator: TableDataHeaderDecorator): TableDataSingle<R> {
         this.container = {
             ...this.container,
             header: decorateHeader(this.container.header, decorator),
         }
         return this
     }
-    setPrepend(content: TableDataPrependProvider): TableDataSingle<T> {
+    setPrepend(content: TableDataPrependProvider): TableDataSingle<R> {
         this.container = {
             ...this.container,
             prepend: setPrepend(this.container.prepend, content),
         }
         return this
     }
-    decoratePrepend(decorator: TableDataPrependDecorator): TableDataSingle<T> {
+    decoratePrepend(decorator: TableDataPrependDecorator): TableDataSingle<R> {
         this.container = {
             ...this.container,
             prepend: decoratePrepend(this.container.prepend, decorator),
         }
         return this
     }
-    decorateColumn(decorator: TableDataColumnDecorator<T>): TableDataSingle<T> {
+    decorateColumn(decorator: TableDataColumnDecorator<R>): TableDataSingle<R> {
         this.container = {
             ...this.container,
             column: decorateColumn(this.container.column, decorator),
         }
         return this
     }
+
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableDataSingle<R>> {
+        return { cell: this, isVisible: keys.includes(this.key) }
+    }
 }
 
-export type TableDataExtractContent<T> = Readonly<{
+export type TableDataExtractContent<S, R> = Readonly<{
     label: TableDataContentProvider
     header: TableDataContentDecorator
-    column: TableDataColumnContentProvider<T>
-    length: TableDataExtractLengthProvider
+    column: TableDataColumnContentProvider<R>
+    length: TableDataExtractLengthProvider<S>
 }>
-export function tableData_extract<T>(
+export function tableData_extract<S, R>(
     key: TableDataCellKey,
-    content: { (key: TableDataCellKey): TableDataExtractContent<T> }
-): TableDataExtract<T> {
+    content: { (key: TableDataCellKey): TableDataExtractContent<S, R> }
+): TableDataExtract<S, R> {
     return new TableDataExtractImpl(key, content(key))
 }
-class TableDataExtractImpl<T> implements TableDataExtract<T> {
+class TableDataExtractImpl<S, R> implements TableDataExtract<S, R> {
     readonly type = "extract" as const
 
     key: TableDataCellKey
-    length: TableDataExtractLengthProvider
+    length: TableDataExtractLengthProvider<S>
     container: Readonly<{
         label: TableDataContentProvider
         view: TableDataViewContainer
         header: TableDataHeaderContainer
         prepend: TableDataPrependContainer
-        column: TableDataColumnContainer<T>
+        column: TableDataColumnContainer<R>
     }>
 
-    constructor(key: TableDataCellKey, { label, header, column, length }: TableDataExtractContent<T>) {
+    constructor(
+        key: TableDataCellKey,
+        { label, header, column, length }: TableDataExtractContent<S, R>
+    ) {
         this.key = key
         this.length = length
         this.container = {
@@ -346,26 +382,22 @@ class TableDataExtractImpl<T> implements TableDataExtract<T> {
         }
     }
 
-    isVisible(keys: TableDataCellKey[]): boolean {
-        return keys.includes(this.key)
-    }
-
     view(): TableDataView {
         return {
             key: this.key,
             content: decorateContent(this.container.label(), this.container.view.decorator),
         }
     }
-    header(): TableDataHeaderExtract {
+    header(summary: S): TableDataHeaderExtract {
         return {
             type: "extract",
             key: this.key,
             style: this.container.header.style,
             content: this.container.header.content(this.container.label()),
-            length: this.length(),
+            length: this.length(summary),
         }
     }
-    prepend(): TableDataPrependExtract {
+    prepend(summary: S): TableDataPrependExtract {
         const base = {
             key: this.key,
             style: this.container.prepend.style,
@@ -379,11 +411,11 @@ class TableDataExtractImpl<T> implements TableDataExtract<T> {
                     type: "extract",
                     ...base,
                     content: this.container.prepend.content.content(),
-                    length: this.length(),
+                    length: this.length(summary),
                 }
         }
     }
-    column(row: T): TableDataColumnExtract {
+    column(row: R, summary: S): TableDataColumnExtract {
         return {
             type: "extract",
             key: this.key,
@@ -392,18 +424,18 @@ class TableDataExtractImpl<T> implements TableDataExtract<T> {
                 this.container.column.baseStyle
             ),
             content: this.container.column.content(row),
-            length: this.length(),
+            length: this.length(summary),
         }
     }
 
-    border(borders: TableDataVerticalBorder[]): TableDataExtract<T> {
+    border(borders: TableDataVerticalBorder[]): TableDataExtract<S, R> {
         const decorator = verticalBorder(borders)
         this.decorateHeader(decorator)
         this.decoratePrepend(decorator)
         this.decorateColumn(() => decorator)
         return this
     }
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataExtract<T> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataExtract<S, R> {
         const decorator = horizontalBorder(borders)
         this.decorateHeader(decorator)
         this.decoratePrepend(decorator)
@@ -411,62 +443,66 @@ class TableDataExtractImpl<T> implements TableDataExtract<T> {
         return this
     }
 
-    decorateView(decorator: TableDataViewDecorator): TableDataExtract<T> {
+    decorateView(decorator: TableDataViewDecorator): TableDataExtract<S, R> {
         this.container = {
             ...this.container,
             view: decorateView(this.container.view, decorator),
         }
         return this
     }
-    decorateHeader(decorator: TableDataHeaderDecorator): TableDataExtract<T> {
+    decorateHeader(decorator: TableDataHeaderDecorator): TableDataExtract<S, R> {
         this.container = {
             ...this.container,
             header: decorateHeader(this.container.header, decorator),
         }
         return this
     }
-    setPrepend(content: TableDataPrependProvider): TableDataExtract<T> {
+    setPrepend(content: TableDataPrependProvider): TableDataExtract<S, R> {
         this.container = {
             ...this.container,
             prepend: setPrepend(this.container.prepend, content),
         }
         return this
     }
-    decoratePrepend(decorator: TableDataPrependDecorator): TableDataExtract<T> {
+    decoratePrepend(decorator: TableDataPrependDecorator): TableDataExtract<S, R> {
         this.container = {
             ...this.container,
             prepend: decoratePrepend(this.container.prepend, decorator),
         }
         return this
     }
-    decorateColumn(decorator: TableDataColumnDecorator<T>): TableDataExtract<T> {
+    decorateColumn(decorator: TableDataColumnDecorator<R>): TableDataExtract<S, R> {
         this.container = {
             ...this.container,
             column: decorateColumn(this.container.column, decorator),
         }
         return this
     }
+
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableDataExtract<S, R>> {
+        return { cell: this, isVisible: keys.includes(this.key) }
+    }
 }
 
-export type TableDataGroupContent<T> = Readonly<{
+export type TableDataGroupContent<S, R> = Readonly<{
     key: TableDataCellKey
     header: TableDataContentProvider
-    cells: TableDataCell<T>[]
+    cells: TableDataCell<S, R>[]
 }>
-export function tableData_group<T>(content: TableDataGroupContent<T>): TableDataGroup<T> {
+export function tableData_group<S, R>(content: TableDataGroupContent<S, R>): TableDataGroup<S, R> {
     return new TableDataGroupImpl(content)
 }
-class TableDataGroupImpl<T> implements TableDataGroup<T> {
+class TableDataGroupImpl<S, R> implements TableDataGroup<S, R> {
     readonly type = "group" as const
 
     key: TableDataCellKey
 
-    cells: TableDataCell<T>[]
+    cells: TableDataCell<S, R>[]
     container: Readonly<{
         group: TableDataGroupContainer
     }>
 
-    constructor({ key, header, cells }: TableDataGroupContent<T>) {
+    constructor({ key, header, cells }: TableDataGroupContent<S, R>) {
         this.key = key
         this.cells = cells
         this.container = {
@@ -477,11 +513,11 @@ class TableDataGroupImpl<T> implements TableDataGroup<T> {
         }
     }
 
-    view(): TableDataView[] {
-        return this.cells.flatMap((cell) => cell.view())
+    view(summary: S): TableDataView[] {
+        return this.cells.flatMap((cell) => cell.view(summary))
     }
-    header(): TableDataHeaderGroup {
-        const children = this.children()
+    header(summary: S): TableDataHeaderGroup {
+        const children = this.children(summary)
         return {
             type: "group",
             key: this.key,
@@ -500,22 +536,22 @@ class TableDataGroupImpl<T> implements TableDataGroup<T> {
             }
         }
     }
-    children(): TableDataHeader[] {
-        return this.cells.flatMap((cell) => cell.header())
+    children(summary: S): TableDataHeader[] {
+        return this.cells.flatMap((cell) => cell.header(summary))
     }
-    prepend(): TableDataPrepend[] {
-        return this.cells.flatMap((cell) => cell.prepend())
+    prepend(summary: S): TableDataPrepend[] {
+        return this.cells.flatMap((cell) => cell.prepend(summary))
     }
-    column(row: T): TableDataColumn[] {
-        return this.cells.flatMap((cell) => cell.column(row))
+    column(row: R, summary: S): TableDataColumn[] {
+        return this.cells.flatMap((cell) => cell.column(row, summary))
     }
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataGroup<T> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataGroup<S, R> {
         this.cells = this.cells.map((cell) => cell.horizontalBorder(borders))
         return this
     }
 
-    decorateGroup(decorator: TableDataHeaderDecorator): TableDataGroup<T> {
+    decorateGroup(decorator: TableDataHeaderDecorator): TableDataGroup<S, R> {
         this.container = {
             ...this.container,
             group: decorateGroup(this.container.group, decorator),
@@ -523,43 +559,106 @@ class TableDataGroupImpl<T> implements TableDataGroup<T> {
         return this
     }
 
-    filterVisibleCells(keys: TableDataCellKey[]): TableDataGroup<T> {
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableDataGroup<S, R>> {
         const duplicate = new TableDataGroupImpl({
             key: this.key,
             header: this.container.group.content,
             cells: filterVisibleCells(this.cells, keys),
         })
         duplicate.container = this.container
-        return duplicate
+        return { cell: duplicate, isVisible: duplicate.cells.length > 0 }
     }
 }
 
-export type TableDataTreeContent<T, C> = Readonly<{
-    data: TableDataChildrenProvider<T, C>
-    key: TableDataRowKeyProvider<T>
-    cells: TableDataCell<C>[]
+export type TableDataMultipartContent<S, R, P> = Readonly<{
+    data: TableDataChildrenProvider<S, P>
+    cells: TableDataMultipartCellProvider<S, R, P>
 }>
-export function tableData_tree<T, C>(content: TableDataTreeContent<T, C>): TableDataTree<T> {
+export function tableData_multipart<S, R, P>(
+    content: TableDataMultipartContent<S, R, P>
+): TableDataMultipart<S, R> {
+    return new TableDataMultipartImpl(content)
+}
+class TableDataMultipartImpl<S, R, P> implements TableDataMultipart<S, R> {
+    readonly type = "multipart" as const
+
+    data: TableDataChildrenProvider<S, P>
+    cellProvider: TableDataMultipartCellProvider<S, R, P>
+    container: Readonly<{
+        borders: TableDataHorizontalBorder[]
+    }>
+    visibleKeys: Readonly<{ type: "all" }> | Readonly<{ type: "filtered"; keys: TableDataCellKey[] }>
+
+    constructor({ data, cells }: TableDataMultipartContent<S, R, P>) {
+        this.data = data
+        this.cellProvider = cells
+        this.container = {
+            borders: [],
+        }
+        this.visibleKeys = { type: "all" }
+    }
+
+    cells(summary: S): TableDataCell<S, R>[] {
+        return this.data(summary).flatMap((part) =>
+            this.cellProvider(part).map((cell) => cell.horizontalBorder(this.container.borders))
+        )
+    }
+
+    view(summary: S): TableDataView[] {
+        return this.cells(summary).flatMap((cell) => cell.view(summary))
+    }
+    header(summary: S): TableDataHeader[] {
+        return this.cells(summary).flatMap((cell) => cell.header(summary))
+    }
+    prepend(summary: S): TableDataPrepend[] {
+        return this.cells(summary).flatMap((cell) => cell.prepend(summary))
+    }
+    column(row: R, summary: S): TableDataColumn[] {
+        return this.cells(summary).flatMap((cell) => cell.column(row, summary))
+    }
+
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataMultipart<S, R> {
+        this.container = { ...this.container, borders }
+        return this
+    }
+
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableDataMultipart<S, R>> {
+        const duplicate = new TableDataMultipartImpl({
+            data: this.data,
+            cells: this.cellProvider,
+        })
+        duplicate.container = this.container
+        duplicate.visibleKeys = { type: "filtered", keys }
+
+        // multipart は data を呼び出す前にデータが空であることを検証できないので isVisible は常に true
+        return { cell: duplicate, isVisible: true }
+    }
+}
+
+export type TableDataTreeContent<S, R, C> = Readonly<{
+    data: TableDataChildrenProvider<R, C>
+    key: TableDataRowKeyProvider<C>
+    cells: TableDataCell<S, C>[]
+}>
+export function tableData_tree<S, R, C>(content: TableDataTreeContent<S, R, C>): TableDataTree<S, R> {
     return new TableDataTreeImpl(content)
 }
-class TableDataTreeImpl<T, C> implements TableDataTree<T> {
+class TableDataTreeImpl<S, R, C> implements TableDataTree<S, R> {
     readonly type = "tree" as const
 
-    data: TableDataChildrenProvider<T, C>
-    key: TableDataRowKeyProvider<T>
-    cells: TableDataCell<C>[]
+    data: TableDataChildrenProvider<R, C>
+    key: TableDataRowKeyProvider<C>
+    cells: TableDataCell<S, C>[]
 
     container: Readonly<{
-        isVisible: boolean
-        tree: TableDataTreeContainer<T>
+        tree: TableDataTreeContainer<R>
     }>
 
-    constructor({ data, key, cells }: TableDataTreeContent<T, C>) {
+    constructor({ data, key, cells }: TableDataTreeContent<S, R, C>) {
         this.data = data
         this.key = key
         this.cells = cells
         this.container = {
-            isVisible: true,
             tree: {
                 baseStyle: defaultRowStyle(),
                 decorators: [],
@@ -567,20 +666,19 @@ class TableDataTreeImpl<T, C> implements TableDataTree<T> {
         }
     }
 
-    view(): TableDataView[] {
-        return this.cells.flatMap((cell) => cell.view())
+    view(summary: S): TableDataView[] {
+        return this.cells.flatMap((cell) => cell.view(summary))
     }
-    header(): TableDataHeader[] {
-        return this.cells.flatMap((cell) => cell.header())
+    header(summary: S): TableDataHeader[] {
+        return this.cells.flatMap((cell) => cell.header(summary))
     }
-    prepend(): TableDataPrepend[] {
-        return this.cells.flatMap((cell) => cell.prepend())
+    prepend(summary: S): TableDataPrepend[] {
+        return this.cells.flatMap((cell) => cell.prepend(summary))
     }
-    column(row: T): TableDataColumnTree {
-        const children = this.children(row)
+    column(row: R, summary: S): TableDataColumnTree {
+        const children = this.children(row, summary)
         return {
             type: "tree",
-            key: this.key(row),
             style: this.container.tree.decorators.reduce(
                 (acc, decorator) => decorateRowStyle(acc, decorator(row)),
                 this.container.tree.baseStyle
@@ -589,13 +687,13 @@ class TableDataTreeImpl<T, C> implements TableDataTree<T> {
             height: height(children),
         }
 
-        function height(rows: TableDataColumn[][]): number {
+        function height(rows: TableDataColumnCollection[]): number {
             return Math.max(
                 1,
                 rows
-                    .map((row) =>
+                    .map((tree) =>
                         Math.max(
-                            ...row.map((column) => {
+                            ...tree.columns.map((column) => {
                                 switch (column.type) {
                                     case "single":
                                     case "extract":
@@ -611,15 +709,22 @@ class TableDataTreeImpl<T, C> implements TableDataTree<T> {
             )
         }
     }
-    children(row: T): TableDataColumn[][] {
-        return this.data(row).map((childRow) => this.cells.flatMap((cell) => cell.column(childRow)))
+    children(row: R, summary: S): TableDataColumnCollection[] {
+        return this.data(row).map(
+            (child): TableDataColumnCollection => {
+                return {
+                    key: this.key(child),
+                    columns: this.cells.flatMap((cell) => cell.column(child, summary)),
+                }
+            }
+        )
     }
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataTree<T> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataTree<S, R> {
         this.cells = this.cells.map((cell) => cell.horizontalBorder(borders))
         return this
     }
-    decorateRow(decorator: TableDataRowDecorator<T>): TableDataTree<T> {
+    decorateRow(decorator: TableDataRowDecorator<R>): TableDataTree<S, R> {
         this.container = {
             ...this.container,
             tree: decorateRow(this.container.tree, decorator),
@@ -627,14 +732,82 @@ class TableDataTreeImpl<T, C> implements TableDataTree<T> {
         return this
     }
 
-    filterVisibleCells(keys: TableDataCellKey[]): TableDataTree<T> {
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableDataTree<S, R>> {
         const duplicate = new TableDataTreeImpl({
             data: this.data,
             key: this.key,
             cells: filterVisibleCells(this.cells, keys),
         })
         duplicate.container = this.container
-        return duplicate
+        return { cell: duplicate, isVisible: duplicate.cells.length > 0 }
+    }
+}
+
+export type TableRowContent<S, R> = Readonly<{
+    key: TableDataRowKeyProvider<R>
+    cells: TableDataCell<S, R>[]
+}>
+export function tableRow<S, R>(content: TableRowContent<S, R>): TableRow<S, R> {
+    return new TableRowImpl(content)
+}
+class TableRowImpl<S, R> implements TableRow<S, R> {
+    key: TableDataRowKeyProvider<R>
+    cells: TableDataCell<S, R>[]
+
+    container: Readonly<{
+        tree: TableDataTreeContainer<R>
+    }>
+
+    constructor({ key, cells }: TableRowContent<S, R>) {
+        this.key = key
+        this.cells = cells
+        this.container = {
+            tree: {
+                baseStyle: defaultRowStyle(),
+                decorators: [],
+            },
+        }
+    }
+
+    view(summary: S): TableDataView[] {
+        return this.cells.flatMap((cell) => cell.view(summary))
+    }
+    header(summary: S): TableDataHeader[] {
+        return this.cells.flatMap((cell) => cell.header(summary))
+    }
+    prepend(summary: S): TableDataPrepend[] {
+        return this.cells.flatMap((cell) => cell.prepend(summary))
+    }
+    column(row: R, summary: S): TableDataColumnCollection {
+        return {
+            key: this.key(row),
+            columns: this.cells.flatMap((cell) => cell.column(row, summary)),
+        }
+    }
+
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableRow<S, R> {
+        this.cells = this.cells.map((cell) => cell.horizontalBorder(borders))
+        return this
+    }
+    decorateRow(decorator: TableDataRowDecorator<R>): TableRow<S, R> {
+        this.container = {
+            ...this.container,
+            tree: decorateRow(this.container.tree, decorator),
+        }
+        return this
+    }
+
+    filterVisibleCells(keys: TableDataCellKey[]): TableDataFilteredCell<TableRow<S, R>> {
+        const duplicate = new TableRowImpl({
+            key: this.key,
+            cells: filterVisibleCells(this.cells, keys),
+        })
+        duplicate.container = this.container
+        return { cell: duplicate, isVisible: duplicate.cells.length > 0 }
+    }
+
+    freeze(): TableRowFrozen<S, R> {
+        return this
     }
 }
 
@@ -656,10 +829,10 @@ function decorateGroup(
 ): TableDataGroupContainer {
     return { ...container, style: decorateGroupStyle(container.style, decorator) }
 }
-function decorateColumn<T>(
-    container: TableDataColumnContainer<T>,
-    decorator: TableDataColumnDecorator<T>
-): TableDataColumnContainer<T> {
+function decorateColumn<R>(
+    container: TableDataColumnContainer<R>,
+    decorator: TableDataColumnDecorator<R>
+): TableDataColumnContainer<R> {
     return { ...container, decorators: [...container.decorators, decorator] }
 }
 function setPrepend(
@@ -674,10 +847,10 @@ function decoratePrepend(
 ): TableDataPrependContainer {
     return { ...container, style: decorateStyle(container.style, decorator) }
 }
-function decorateRow<T>(
-    container: TableDataTreeContainer<T>,
-    decorator: TableDataRowDecorator<T>
-): TableDataTreeContainer<T> {
+function decorateRow<R>(
+    container: TableDataTreeContainer<R>,
+    decorator: TableDataRowDecorator<R>
+): TableDataTreeContainer<R> {
     return { ...container, decorators: [...container.decorators, decorator] }
 }
 
@@ -718,20 +891,16 @@ function decorateRowStyle(
     }
 }
 
-function filterVisibleCells<T>(cells: TableDataCell<T>[], keys: TableDataCellKey[]): TableDataCell<T>[] {
+function filterVisibleCells<S, R>(
+    cells: TableDataCell<S, R>[],
+    keys: TableDataCellKey[]
+): TableDataCell<S, R>[] {
     return cells.flatMap((cell) => {
-        switch (cell.type) {
-            case "single":
-            case "extract":
-                if (!cell.isVisible(keys)) {
-                    return []
-                }
-                return cell
-
-            case "group":
-            case "tree":
-                return cell.filterVisibleCells(keys)
+        const { cell: filteredCell, isVisible } = cell.filterVisibleCells(keys)
+        if (isVisible) {
+            return []
         }
+        return filteredCell
     })
 }
 
@@ -765,8 +934,8 @@ type TableDataViewDecorator = TableDataContentDecoratorProvider
 type TableDataHeaderDecorator = TableDataStyleDecorator
 type TableDataGroupDecorator = TableDataGroupStyleDecorator
 type TableDataPrependDecorator = TableDataStyleDecorator
-type TableDataColumnDecorator<T> = { (row: T): TableDataStyleDecorator }
-type TableDataRowDecorator<T> = { (row: T): TableDataRowStyleDecorator }
+type TableDataColumnDecorator<R> = { (row: R): TableDataStyleDecorator }
+type TableDataRowDecorator<R> = { (row: R): TableDataRowStyleDecorator }
 
 interface TableDataContentProvider {
     (): VNodeContent
@@ -774,17 +943,20 @@ interface TableDataContentProvider {
 interface TableDataContentDecorator {
     (label: VNodeContent): VNodeContent
 }
-interface TableDataColumnContentProvider<T> {
-    (row: T): VNodeContent
+interface TableDataColumnContentProvider<R> {
+    (row: R): VNodeContent
 }
-interface TableDataExtractLengthProvider {
-    (): number
+interface TableDataExtractLengthProvider<R> {
+    (summary: R): number
 }
-interface TableDataRowKeyProvider<T> {
-    (row: T): VNodeKey
+interface TableDataMultipartCellProvider<S, R, C> {
+    (child: C): TableDataCell<S, R>[]
 }
-interface TableDataChildrenProvider<T, C> {
-    (row: T): C[]
+interface TableDataRowKeyProvider<R> {
+    (row: R): VNodeKey
+}
+interface TableDataChildrenProvider<R, C> {
+    (row: R): C[]
 }
 
 type TableDataContentDecoratorProvider =
@@ -1035,18 +1207,38 @@ function assertNever(_: never): never {
 
 // 以下テストコード
 
-const rows = []
+const rows: Row[] = []
 
 const visibleKeys = ["id", "union"]
 
-const cells = tableData_cells<Summary, Row>({
-    key: (row) => row.id,
-    cell: [
+type Summary = Readonly<{
+    maxEmailCount: number
+    allParts: string[]
+}>
+type Row = Readonly<{
+    type: string
+    id: number
+    logs: Log[]
+    emails: string[]
+    parts: Record<string, Part>
+}>
+type Log = Readonly<{
+    id: number
+    date: string
+}>
+type RowLog = Readonly<{ row: Row; log: Log }>
+type Part = Readonly<{
+    name: string
+}>
+
+const cells = tableRow({
+    key: (row: Row) => row.id,
+    cells: [
         tableData("id", (key) => {
             return {
                 label: () => "ID",
                 header: linky,
-                column: (row) => html`${row.id}`,
+                column: (row: Row) => html`${row.id}`,
             }
         })
             .border(["rightDouble"])
@@ -1069,21 +1261,21 @@ const cells = tableData_cells<Summary, Row>({
                     return {
                         label: () => "extract",
                         header: linky,
-                        column: (row) => row.emails.map((email) => html`${email}`),
-                        length: (summary) => summary.maxEmailCount,
+                        column: (row: Row) => row.emails.map((email) => html`${email}`),
+                        length: (summary: Summary) => summary.maxEmailCount,
                     }
                 })
                     .decorateHeader(decorateBorder(["top", "bottomDouble"]))
                     .border(["left"]),
 
                 tableData_multipart({
-                    data: (summary) => summary.allParts,
-                    cells: (part) => [
+                    data: (summary: Summary): string[] => summary.allParts,
+                    cells: (part: string) => [
                         tableData(`part_${part}`, (key) => {
                             return {
                                 label: () => part,
                                 header: linky,
-                                column: (row) => html`${row.parts[part]}`,
+                                column: (row: Row) => html`${row.parts[part]}`,
                             }
                         }).decorateHeader(decorateBorder(["top", "bottomDouble"])),
                     ],
@@ -1092,24 +1284,24 @@ const cells = tableData_cells<Summary, Row>({
         }).decorateGroup(decorateBorder(["top", "bottomDouble"])),
 
         tableData_tree({
-            data: (row) =>
+            data: (row: Row): RowLog[] =>
                 row.logs.map((log) => {
                     return { log, row }
                 }),
-            key: ({ log }) => log.id,
+            key: ({ log }: RowLog) => log.id,
             cells: [
                 tableData("logDate", (key) => {
                     return {
                         label: () => "log date",
                         header: linky,
-                        column: ({ log, row }) => html`${row.id} / ${log.date}`,
+                        column: ({ log, row }: RowLog) => html`${row.id} / ${log.date}`,
                     }
                 }).border("left"),
             ],
         }),
     ],
 })
-    .rowBorder((row) => "bottom")
+    .horizontalBorder((row) => "bottom")
     .decorateRow((row) => decorateClassName("additional_class"))
 
 viewColumns(
@@ -1129,4 +1321,8 @@ function table(cells, visibleKeys, rows) {
     function tableBody(cells, visibleKeys, rows) {
         html`${tablePrepend(cells, visibleKeys)} ${rows.map((row) => tableRow(cells, visibleKeys, row))}`
     }
+}
+
+function linky(content: VNodeContent): VNodeContent {
+    return html`<span class="linky">${content}</span>`
 }
