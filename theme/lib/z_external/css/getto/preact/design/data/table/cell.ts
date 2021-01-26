@@ -40,6 +40,7 @@ export interface TableDataSingle<M, R>
     header(params: TableDataStyledParams<M>): TableDataHeaderSingle[]
     summary(params: TableDataStyledParams<M>): TableDataSummarySingle[]
     column(params: TableDataRelatedParams<M, R>): TableDataColumnSingle[]
+    footer(params: TableDataStyledParams<M>): TableDataSummarySingle[]
 }
 export interface TableDataExtract<M, R>
     extends TableDataCell_base<TableDataExtract<M, R>, R>,
@@ -50,6 +51,7 @@ export interface TableDataExtract<M, R>
     header(params: TableDataStyledParams<M>): TableDataHeaderExtract[]
     summary(params: TableDataStyledParams<M>): TableDataSummaryExtract[]
     column(params: TableDataRelatedParams<M, R>): TableDataColumnExtract[]
+    footer(params: TableDataStyledParams<M>): TableDataSummaryExtract[]
 }
 export interface TableDataGroup<M, R>
     extends TableDataCell_base<TableDataGroup<M, R>, R>,
@@ -60,6 +62,7 @@ export interface TableDataGroup<M, R>
     header(params: TableDataStyledParams<M>): TableDataHeaderGroup[]
     summary(params: TableDataStyledParams<M>): TableDataSummary[]
     column(params: TableDataRelatedParams<M, R>): TableDataColumn[]
+    footer(params: TableDataStyledParams<M>): TableDataSummary[]
 }
 export interface TableDataMultipart<M, R> extends TableDataCell_base<TableDataMultipart<M, R>, R> {
     type: "multipart"
@@ -68,6 +71,7 @@ export interface TableDataMultipart<M, R> extends TableDataCell_base<TableDataMu
     header(params: TableDataStyledParams<M>): TableDataHeader[]
     summary(params: TableDataStyledParams<M>): TableDataSummary[]
     column(params: TableDataRelatedParams<M, R>): TableDataColumn[]
+    footer(params: TableDataStyledParams<M>): TableDataSummary[]
 }
 export interface TableDataTree<M, R>
     extends TableDataCell_base<TableDataTree<M, R>, R>,
@@ -78,6 +82,7 @@ export interface TableDataTree<M, R>
     header(params: TableDataStyledParams<M>): TableDataHeader[]
     summary(params: TableDataStyledParams<M>): TableDataSummary[]
     column(params: TableDataRelatedParams<M, R>): TableDataColumnTree[]
+    footer(params: TableDataStyledParams<M>): TableDataSummary[]
 }
 
 interface TableDataCell_base<T, R> {
@@ -85,15 +90,18 @@ interface TableDataCell_base<T, R> {
     horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): T
     horizontalBorder_header(borders: TableDataHorizontalBorder[]): T
     horizontalBorder_summary(borders: TableDataHorizontalBorder[]): T
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): T
 
     decorateHeader(decorator: TableDataHeaderDecorator): T
     decorateSummary(decorator: TableDataSummaryDecorator): T
     decorateColumn(decorator: TableDataColumnDecorator): T
     decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): T
+    decorateFooter(decorator: TableDataSummaryDecorator): T
 }
 interface TableDataCell_leaf<T> {
     border(borders: TableDataVerticalBorder[]): T
     setSummary(content: TableDataSummaryProvider): T
+    setFooter(content: TableDataSummaryProvider): T
     decorateView(decorator: TableDataViewDecorator): T
 }
 interface TableDataCell_group<T> {
@@ -105,19 +113,20 @@ interface TableDataCell_tree<T, R> {
     decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): T
 }
 
-export interface TableRow<M, R> {
+export interface TableSpec<M, R> {
     view(params: TableDataParams<M>): TableDataView[]
     header(params: TableDataParams<M>): TableDataHeader[]
     summary(params: TableDataParams<M>): TableDataSummary[]
     column(params: TableDataRowParams<M, R>): TableDataColumnCollection
+    footer(params: TableDataParams<M>): TableDataSummary[]
 }
-export interface TableRowHot<M, R>
-    extends TableDataCell_base<TableRowHot<M, R>, R>,
-        TableDataCell_tree<TableRowHot<M, R>, R> {
-    freeze(): TableRow<M, R>
+export interface TableRow<M, R>
+    extends TableDataCell_base<TableRow<M, R>, R>,
+        TableDataCell_tree<TableRow<M, R>, R> {
+    freeze(): TableSpec<M, R>
 }
 
-export type TableDataParams<M> = Readonly<{ model: M; visibleKeys: TableDataVisibleKeys }>
+export type TableDataParams<M> = Readonly<{ model: M; visibleKeys: TableDataCellKey[] }>
 export type TableDataStyledParams<M> = TableDataParams<M> & Readonly<{ base: TableDataStyle }>
 export type TableDataRelatedParams<M, R> = TableDataStyledParams<M> & Readonly<{ row: R }>
 export type TableDataRowParams<M, R> = TableDataParams<M> & Readonly<{ row: R }>
@@ -238,6 +247,15 @@ export function tableCellSummary<M, R>(
         cell.summary({ ...params, base: extendStyle({ base: params.base, style }) })
     )
 }
+export function tableCellFooter<M, R>(
+    params: TableDataStyledParams<M>,
+    style: TableDataStyle,
+    cells: TableDataCell<M, R>[]
+): TableDataSummary[] {
+    return cells.flatMap((cell) =>
+        cell.footer({ ...params, base: extendStyle({ base: params.base, style }) })
+    )
+}
 export function tableCellColumn<M, R>(
     params: TableDataRelatedParams<M, R>,
     style: TableDataStyle,
@@ -272,15 +290,6 @@ export function tableCellChildColumn<M, R, C>(
     }
 }
 
-export function isVisibleKey(key: TableDataCellKey, visibleKeys: TableDataVisibleKeys): boolean {
-    switch (visibleKeys.type) {
-        case "all":
-            return true
-        case "filtered":
-            return visibleKeys.keys.includes(key)
-    }
+export function isVisibleKey(key: TableDataCellKey, visibleKeys: TableDataCellKey[]): boolean {
+    return visibleKeys.includes(key)
 }
-
-export type TableDataVisibleKeys =
-    | Readonly<{ type: "all" }>
-    | Readonly<{ type: "filtered"; keys: TableDataCellKey[] }>

@@ -13,7 +13,6 @@ import {
     TableDataStyledParams,
     TableDataSummaryExtract,
     TableDataView,
-    TableDataVisibleKeys,
 } from "../cell"
 import {
     decorateContent,
@@ -67,7 +66,7 @@ class Cell<M, R> implements TableDataExtract<M, R> {
         }
     }
 
-    isVisible(visibleKeys: TableDataVisibleKeys): boolean {
+    isVisible(visibleKeys: TableDataCellKey[]): boolean {
         return isVisibleKey(this.key, visibleKeys)
     }
 
@@ -104,6 +103,32 @@ class Cell<M, R> implements TableDataExtract<M, R> {
         }
         const { style } = this.mutable.core.summaryStyleMutable()
         const { content } = this.mutable.leaf.summaryMutable()
+        const shared = {
+            key: this.key,
+            style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
+        }
+        switch (content.type) {
+            case "none":
+                return [{ type: "empty", ...shared }]
+
+            case "content":
+                return [
+                    {
+                        type: "extract",
+                        ...shared,
+                        content: content.content(),
+                        length: this.content.length(model),
+                    },
+                ]
+        }
+    }
+    footer({ visibleKeys, base, model }: TableDataStyledParams<M>): TableDataSummaryExtract[] {
+        // TODO summary と共通化できるかもしれない
+        if (!this.isVisible(visibleKeys)) {
+            return []
+        }
+        const { style } = this.mutable.core.footerStyleMutable()
+        const { content } = this.mutable.leaf.footerMutable()
         const shared = {
             key: this.key,
             style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
@@ -167,9 +192,17 @@ class Cell<M, R> implements TableDataExtract<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
         return this
     }
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataExtract<M, R> {
+        this.mutable.core.horizontalBorder_footer(borders)
+        return this
+    }
 
     setSummary(content: TableDataSummaryProvider): TableDataExtract<M, R> {
         this.mutable.leaf.setSummary(content)
+        return this
+    }
+    setFooter(content: TableDataSummaryProvider): TableDataExtract<M, R> {
+        this.mutable.leaf.setFooter(content)
         return this
     }
 
@@ -191,6 +224,10 @@ class Cell<M, R> implements TableDataExtract<M, R> {
     }
     decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataExtract<M, R> {
         this.mutable.core.decorateColumnRelated(decorator)
+        return this
+    }
+    decorateFooter(decorator: TableDataSummaryDecorator): TableDataExtract<M, R> {
+        this.mutable.core.decorateFooter(decorator)
         return this
     }
 }

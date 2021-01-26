@@ -23,27 +23,33 @@ export interface TableDataMutable_core<R> {
     headerStyleMutable(): TableDataStyleMutable
     summaryStyleMutable(): TableDataStyleMutable
     columnStyleMutable(): TableDataStyleMutable
+    footerStyleMutable(): TableDataStyleMutable
+
     columnMutable(): TableDataColumnMutable<R>
 
     horizontalBorder(borders: TableDataHorizontalBorder[]): void
     horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): void
     horizontalBorder_header(borders: TableDataHorizontalBorder[]): void
     horizontalBorder_summary(borders: TableDataHorizontalBorder[]): void
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): void
 
     decorateHeader(decorator: TableDataHeaderDecorator): void
     decorateSummary(decorator: TableDataSummaryDecorator): void
     decorateColumn(decorator: TableDataColumnDecorator): void
     decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): void
+    decorateFooter(decorator: TableDataSummaryDecorator): void
 }
 export interface TableDataMutable_leaf {
     viewMutable(): TableDataViewMutable
     summaryMutable(): TableDataSummaryMutable
+    footerMutable(): TableDataSummaryMutable
     verticalBorderMutable(): TableDataVerticalBorderMutable
 
     border(borders: TableDataVerticalBorder[]): void
 
     decorateView(decorator: TableDataViewDecorator): void
     setSummary(content: TableDataSummaryProvider): void
+    setFooter(content: TableDataSummaryProvider): void
 }
 export interface TableDataMutable_group {
     viewMutable(): TableDataViewMutable

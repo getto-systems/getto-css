@@ -2,6 +2,7 @@ import { TableDataMutable_core } from "../mutable"
 import { tableDataMutable_core } from "../mutable/core"
 import {
     tableCellColumn,
+    tableCellFooter,
     tableCellHeader,
     tableCellSummary,
     tableCellView,
@@ -69,6 +70,10 @@ class Cell<M, R, P> implements TableDataMultipart<M, R> {
         const { decorators } = this.mutable.core.columnMutable()
         return tableCellColumn(params, style, decorators, this.cells(params.model))
     }
+    footer(params: TableDataStyledParams<M>): TableDataSummary[] {
+        const { style } = this.mutable.core.footerStyleMutable()
+        return tableCellFooter(params, style, this.cells(params.model))
+    }
 
     horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataMultipart<M, R> {
         this.mutable.core.horizontalBorder(borders)
@@ -86,6 +91,10 @@ class Cell<M, R, P> implements TableDataMultipart<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
         return this
     }
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataMultipart<M, R> {
+        this.mutable.core.horizontalBorder_footer(borders)
+        return this
+    }
 
     decorateHeader(decorator: TableDataHeaderDecorator): TableDataMultipart<M, R> {
         this.mutable.core.decorateHeader(decorator)
@@ -101,6 +110,10 @@ class Cell<M, R, P> implements TableDataMultipart<M, R> {
     }
     decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataMultipart<M, R> {
         this.mutable.core.decorateColumnRelated(decorator)
+        return this
+    }
+    decorateFooter(decorator: TableDataSummaryDecorator): TableDataMultipart<M, R> {
+        this.mutable.core.decorateFooter(decorator)
         return this
     }
 }

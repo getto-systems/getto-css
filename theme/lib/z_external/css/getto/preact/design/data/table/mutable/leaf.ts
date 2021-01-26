@@ -14,6 +14,7 @@ export function tableDataMutable_leaf(): TableDataMutable_leaf {
 class Mutable implements TableDataMutable_leaf {
     view: TableDataViewMutable
     summary: TableDataSummaryMutable
+    footer: TableDataSummaryMutable
     verticalBorder: TableDataVerticalBorderMutable
 
     constructor() {
@@ -21,6 +22,9 @@ class Mutable implements TableDataMutable_leaf {
             decorator: { type: "none" },
         }
         this.summary = {
+            content: { type: "none" },
+        }
+        this.footer = {
             content: { type: "none" },
         }
         this.verticalBorder = {
@@ -33,6 +37,9 @@ class Mutable implements TableDataMutable_leaf {
     }
     summaryMutable(): TableDataSummaryMutable {
         return this.summary
+    }
+    footerMutable(): TableDataSummaryMutable {
+        return this.footer
     }
     verticalBorderMutable(): TableDataVerticalBorderMutable {
         return this.verticalBorder
@@ -50,5 +57,8 @@ class Mutable implements TableDataMutable_leaf {
     }
     setSummary(content: TableDataSummaryProvider): void {
         this.summary = { ...this.summary, content }
+    }
+    setFooter(content: TableDataSummaryProvider): void {
+        this.footer = { ...this.footer, content }
     }
 }

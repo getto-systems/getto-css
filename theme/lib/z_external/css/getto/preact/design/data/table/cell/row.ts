@@ -15,8 +15,9 @@ import {
     TableDataStyledParams,
     TableDataSummary,
     TableDataView,
+    TableSpec,
     TableRow,
-    TableRowHot,
+    tableCellFooter,
 } from "../cell"
 import {
     TableDataColumnDecorator,
@@ -29,21 +30,21 @@ import {
 } from "../decorator"
 import { TableDataHorizontalBorder } from "../style"
 
-export type TableRowContent<M, R> = Readonly<{
+export type TableSpecContent<M, R> = Readonly<{
     key: TableDataRowKeyProvider<R>
     cells: TableDataCell<M, R>[]
 }>
-export function tableRow<M, R>(content: TableRowContent<M, R>): TableRowHot<M, R> {
+export function tableSpec<M, R>(content: TableSpecContent<M, R>): TableRow<M, R> {
     return new Row(content)
 }
-class Row<M, R> implements TableRow<M, R>, TableRowHot<M, R> {
-    content: TableRowContent<M, R>
+class Row<M, R> implements TableSpec<M, R>, TableRow<M, R> {
+    content: TableSpecContent<M, R>
     mutable: Readonly<{
         core: TableDataMutable_core<R>
         tree: TableDataMutable_tree<R>
     }>
 
-    constructor(content: TableRowContent<M, R>) {
+    constructor(content: TableSpecContent<M, R>) {
         this.content = content
         this.mutable = {
             core: tableDataMutable_core(),
@@ -70,50 +71,62 @@ class Row<M, R> implements TableRow<M, R>, TableRowHot<M, R> {
             columns: tableCellColumn(params, style, decorators, this.content.cells),
         }
     }
+    footer(params: TableDataStyledParams<M>): TableDataSummary[] {
+        const { style } = this.mutable.core.footerStyleMutable()
+        return tableCellFooter(params, style, this.content.cells)
+    }
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableRowHot<M, R> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableRow<M, R> {
         this.mutable.core.horizontalBorder(borders)
         return this
     }
-    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableRowHot<M, R> {
+    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableRow<M, R> {
         this.mutable.core.horizontalBorderRelated(borders)
         return this
     }
-    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableRowHot<M, R> {
+    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableRow<M, R> {
         this.mutable.core.horizontalBorder_header(borders)
         return this
     }
-    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableRowHot<M, R> {
+    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableRow<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
         return this
     }
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableRow<M, R> {
+        this.mutable.core.horizontalBorder_footer(borders)
+        return this
+    }
 
-    decorateHeader(decorator: TableDataHeaderDecorator): TableRowHot<M, R> {
+    decorateHeader(decorator: TableDataHeaderDecorator): TableRow<M, R> {
         this.mutable.core.decorateHeader(decorator)
         return this
     }
-    decorateSummary(decorator: TableDataSummaryDecorator): TableRowHot<M, R> {
+    decorateSummary(decorator: TableDataSummaryDecorator): TableRow<M, R> {
         this.mutable.core.decorateSummary(decorator)
         return this
     }
-    decorateColumn(decorator: TableDataColumnDecorator): TableRowHot<M, R> {
+    decorateColumn(decorator: TableDataColumnDecorator): TableRow<M, R> {
         this.mutable.core.decorateColumn(decorator)
         return this
     }
-    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableRowHot<M, R> {
+    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableRow<M, R> {
         this.mutable.core.decorateColumnRelated(decorator)
         return this
     }
-    decorateRow(decorator: TableDataRowDecorator): TableRowHot<M, R> {
+    decorateFooter(decorator: TableDataSummaryDecorator): TableRow<M, R> {
+        this.mutable.core.decorateFooter(decorator)
+        return this
+    }
+    decorateRow(decorator: TableDataRowDecorator): TableRow<M, R> {
         this.mutable.tree.decorateRow(decorator)
         return this
     }
-    decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): TableRowHot<M, R> {
+    decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): TableRow<M, R> {
         this.mutable.tree.decorateRowRelated(decorator)
         return this
     }
 
-    freeze(): TableRow<M, R> {
+    freeze(): TableSpec<M, R> {
         return this
     }
 }

@@ -3,6 +3,7 @@ import { tableDataMutable_core } from "../mutable/core"
 import { tableDataMutable_tree } from "../mutable/tree"
 import {
     tableCellChildColumn,
+    tableCellFooter,
     tableCellHeader,
     tableCellSummary,
     tableCellView,
@@ -66,6 +67,10 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
     summary(params: TableDataStyledParams<M>): TableDataSummary[] {
         const { style } = this.mutable.core.summaryStyleMutable()
         return tableCellSummary(params, style, this.content.cells)
+    }
+    footer(params: TableDataStyledParams<M>): TableDataSummary[] {
+        const { style } = this.mutable.core.footerStyleMutable()
+        return tableCellFooter(params, style, this.content.cells)
     }
     column(params: TableDataRelatedParams<M, R>): TableDataColumnTree[] {
         const children = this.children(params)
@@ -150,6 +155,10 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
         return this
     }
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataTree<M, R> {
+        this.mutable.core.horizontalBorder_footer(borders)
+        return this
+    }
 
     decorateHeader(decorator: TableDataHeaderDecorator): TableDataTree<M, R> {
         this.mutable.core.decorateHeader(decorator)
@@ -173,6 +182,10 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
     }
     decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): TableDataTree<M, R> {
         this.mutable.tree.decorateRowRelated(decorator)
+        return this
+    }
+    decorateFooter(decorator: TableDataSummaryDecorator): TableDataTree<M, R> {
+        this.mutable.core.decorateFooter(decorator)
         return this
     }
 }

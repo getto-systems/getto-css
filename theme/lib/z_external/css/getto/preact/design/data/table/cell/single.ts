@@ -13,7 +13,6 @@ import {
     TableDataStyledParams,
     TableDataSummarySingle,
     TableDataView,
-    TableDataVisibleKeys,
 } from "../cell"
 import {
     decorateContent,
@@ -66,7 +65,7 @@ class Cell<M, R> implements TableDataSingle<M, R> {
         }
     }
 
-    isVisible(visibleKeys: TableDataVisibleKeys): boolean {
+    isVisible(visibleKeys: TableDataCellKey[]): boolean {
         return isVisibleKey(this.key, visibleKeys)
     }
 
@@ -102,6 +101,31 @@ class Cell<M, R> implements TableDataSingle<M, R> {
         }
         const { style } = this.mutable.core.summaryStyleMutable()
         const { content } = this.mutable.leaf.summaryMutable()
+        const shared = {
+            key: this.key,
+            style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
+        }
+        switch (content.type) {
+            case "none":
+                return [{ type: "empty", ...shared }]
+
+            case "content":
+                return [
+                    {
+                        type: "single",
+                        ...shared,
+                        content: content.content(),
+                    },
+                ]
+        }
+    }
+    footer({ visibleKeys, base }: TableDataStyledParams<M>): TableDataSummarySingle[] {
+        // TODO summary と共通化できるかもしれない
+        if (!this.isVisible(visibleKeys)) {
+            return []
+        }
+        const { style } = this.mutable.core.footerStyleMutable()
+        const { content } = this.mutable.leaf.footerMutable()
         const shared = {
             key: this.key,
             style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
@@ -163,9 +187,17 @@ class Cell<M, R> implements TableDataSingle<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
         return this
     }
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataSingle<M, R> {
+        this.mutable.core.horizontalBorder_footer(borders)
+        return this
+    }
 
     setSummary(content: TableDataSummaryProvider): TableDataSingle<M, R> {
         this.mutable.leaf.setSummary(content)
+        return this
+    }
+    setFooter(content: TableDataSummaryProvider): TableDataSingle<M, R> {
+        this.mutable.leaf.setFooter(content)
         return this
     }
 
@@ -187,6 +219,10 @@ class Cell<M, R> implements TableDataSingle<M, R> {
     }
     decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataSingle<M, R> {
         this.mutable.core.decorateColumnRelated(decorator)
+        return this
+    }
+    decorateFooter(decorator: TableDataSummaryDecorator): TableDataSingle<M, R> {
+        this.mutable.core.decorateFooter(decorator)
         return this
     }
 }

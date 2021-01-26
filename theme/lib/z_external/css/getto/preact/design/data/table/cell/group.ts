@@ -17,6 +17,7 @@ import {
     tableCellSummary,
     tableCellColumn,
     tableCellHeader,
+    tableCellFooter,
 } from "../cell"
 import {
     TableDataColumnDecorator,
@@ -105,6 +106,10 @@ class Cell<M, R> implements TableDataGroup<M, R> {
         const { style } = this.mutable.core.summaryStyleMutable()
         return tableCellSummary(params, style, this.content.cells)
     }
+    footer(params: TableDataStyledParams<M>): TableDataSummary[] {
+        const { style } = this.mutable.core.footerStyleMutable()
+        return tableCellFooter(params, style, this.content.cells)
+    }
     column(params: TableDataRelatedParams<M, R>): TableDataColumn[] {
         const { style } = this.mutable.core.columnStyleMutable()
         const { decorators } = this.mutable.core.columnMutable()
@@ -125,6 +130,10 @@ class Cell<M, R> implements TableDataGroup<M, R> {
     }
     horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableDataGroup<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
+        return this
+    }
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataGroup<M, R> {
+        this.mutable.core.horizontalBorder_footer(borders)
         return this
     }
 
@@ -150,6 +159,10 @@ class Cell<M, R> implements TableDataGroup<M, R> {
     }
     decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataGroup<M, R> {
         this.mutable.core.decorateColumnRelated(decorator)
+        return this
+    }
+    decorateFooter(decorator: TableDataSummaryDecorator): TableDataGroup<M, R> {
+        this.mutable.core.decorateFooter(decorator)
         return this
     }
 }

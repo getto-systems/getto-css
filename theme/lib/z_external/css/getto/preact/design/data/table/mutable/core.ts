@@ -17,6 +17,7 @@ class Mutable<R> implements TableDataMutable_core<R> {
     headerStyle: TableDataStyleMutable
     summaryStyle: TableDataStyleMutable
     columnStyle: TableDataStyleMutable
+    footerStyle: TableDataStyleMutable
     column: TableDataColumnMutable<R>
 
     constructor() {
@@ -27,6 +28,9 @@ class Mutable<R> implements TableDataMutable_core<R> {
             style: inheritStyle(),
         }
         this.columnStyle = {
+            style: inheritStyle(),
+        }
+        this.footerStyle = {
             style: inheritStyle(),
         }
         this.column = {
@@ -43,6 +47,9 @@ class Mutable<R> implements TableDataMutable_core<R> {
     columnStyleMutable(): TableDataStyleMutable {
         return this.columnStyle
     }
+    footerStyleMutable(): TableDataStyleMutable {
+        return this.footerStyle
+    }
     columnMutable(): TableDataColumnMutable<R> {
         return this.column
     }
@@ -58,6 +65,9 @@ class Mutable<R> implements TableDataMutable_core<R> {
     }
     horizontalBorder_summary(borders: TableDataHorizontalBorder[]): void {
         this.decorateSummary(horizontalBorder(borders))
+    }
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): void {
+        this.decorateFooter(horizontalBorder(borders))
     }
 
     decorateHeader(decorator: TableDataHeaderDecorator): void {
@@ -82,6 +92,12 @@ class Mutable<R> implements TableDataMutable_core<R> {
         this.column = {
             ...this.column,
             decorators: [...this.column.decorators, decorator],
+        }
+    }
+    decorateFooter(decorator: TableDataSummaryDecorator): void {
+        this.footerStyle = {
+            ...this.footerStyle,
+            style: decorateStyle(this.footerStyle.style, decorator),
         }
     }
 }

@@ -1,23 +1,65 @@
+import { VNode } from "preact"
 import { html } from "htm/preact"
 
 import { VNodeContent } from "../common"
 import { checkbox } from "./form"
 
-import { tableRow } from "./data/table/cell/row"
+import { tableSpec } from "./data/table/cell/row"
 import { tableData } from "./data/table/cell/single"
 import { tableData_extract } from "./data/table/cell/extract"
 import { tableData_group } from "./data/table/cell/group"
 import { tableData_multipart } from "./data/table/cell/multipart"
 import { tableData_tree } from "./data/table/cell/tree"
 import { decorateNone, tableAlign, tableClassName } from "./data/table/decorator"
+import { TableDataCellKey, TableDataView, TableSpec } from "./data/table/cell"
 
-// 以下テストコード
+export function linky(content: VNodeContent): VNode {
+    return html`<span class="linky">${content}</span>`
+}
 
-const rows: Row[] = []
+export type TableContent = Readonly<{
+    thead: VNodeContent
+    tbody: VNodeContent
+    tfoot: VNodeContent
+}>
+// TODO table のクラスバリエーションがいろいろある
+export function table({ thead, tbody, tfoot }: TableContent): VNode {
+    return html`<table class="table">
+        ${thead}${tbody}${tfoot}
+    </table>`
+}
+export function thead(content: VNodeContent): VNode {
+    return html`<thead>
+        ${content}
+    </thead>`
+}
+export function tbody(content: VNodeContent): VNode {
+    return html`<tbody>
+        ${content}
+    </tbody>`
+}
+export function tfoot(content: VNodeContent): VNode {
+    return html`<tfoot>
+        ${content}
+    </tfoot>`
+}
 
-const visibleKeys = ["id", "union"]
+export type TableViewContent<M, R> = Readonly<{
+    spec: TableSpec<M, R>
+    model: M
+    visibleKeys: TableDataCellKey[]
+}>
+export function tableViewColumns<M, R>(
+    params: TableViewContent<M, R>,
+    content: { (view: TableDataView): VNodeContent }
+): VNode {
+    // TODO    search__columns を view__columns に変える
+    return html`<section class="search__columns">${params.spec.view(params).map(content)}</section>`
+}
 
-type Summary = Readonly<{
+// TODO 以下テストコードを x_preact に移す
+
+type Model = Readonly<{
     maxEmailCount: number
     allParts: string[]
 }>
@@ -37,7 +79,7 @@ type Part = Readonly<{
     name: string
 }>
 
-const cells = tableRow({
+const spec = tableSpec({
     key: (row: Row) => row.id,
     cells: [
         tableData("id", (_key) => {
@@ -67,12 +109,12 @@ const cells = tableRow({
                         label: () => "extract",
                         header: linky,
                         column: (row: Row) => row.emails.map((email) => html`${email}`),
-                        length: (summary: Summary) => summary.maxEmailCount,
+                        length: (summary: Model) => summary.maxEmailCount,
                     }
                 }).border(["left"]),
 
                 tableData_multipart({
-                    data: (summary: Summary): string[] => summary.allParts,
+                    data: (summary: Model): string[] => summary.allParts,
                     cells: (part: string) => [
                         tableData(`part_${part}`, (_key) => {
                             return {
@@ -104,31 +146,28 @@ const cells = tableRow({
         }),
     ],
 })
-    .horizontalBorderRelated((row: Row) => (row.id > 0 ? ["bottom"] : []))
+    .horizontalBorderRelated((row) => (row.id > 0 ? ["bottom"] : []))
     .decorateRowRelated(() => tableClassName(["additional_class"]))
     .freeze()
 
-viewColumns(
-    tableView(cells, visibleKeys).map(({ isVisible, label, key }) =>
-        checkbox({ isChecked: isVisible, input, key })
-    )
+const model: Model = {
+    maxEmailCount: 0,
+    allParts: ["part1"],
+}
+const rows: Row[] = []
+
+const visibleKeys = ["id", "union"]
+
+const params = { spec, visibleKeys, model, rows }
+
+tableViewColumns(params, ({ isVisible, content, key }) =>
+    checkbox({ isChecked: isVisible, input: html`${input}${content}`, key })
 )
 
-function table(cells, visibleKeys, rows) {
-    return html`<table>
-        <thead>
-            ${tableHeader(cells, visibleKeys)}
-        </thead>
-        <tbody>
-            ${tableBody(cells, visibleKeys, rows)}
-        </tbody>
-    </table>`
+const content = tableContent(params)
 
-    function tableBody(cells, visibleKeys, rows) {
-        html`${tableSummary(cells, visibleKeys)} ${rows.map((row) => tableRow(cells, visibleKeys, row))}`
-    }
-}
-
-function linky(content: VNodeContent): VNodeContent {
-    return html`<span class="linky">${content}</span>`
-}
+table({
+    thead: thead(content.header),
+    tbody: tbody(content.body),
+    tfoot: tfoot(content.footer),
+})
