@@ -31,6 +31,7 @@ import {
     extendStyle,
     mergeVerticalBorder,
     TableDataHorizontalBorder,
+    TableDataStyle,
     TableDataVerticalBorder,
     TableDataVerticalBorderStyle,
 } from "../style"
@@ -95,54 +96,10 @@ class Cell<M, R> implements TableDataSingle<M, R> {
             },
         ]
     }
-    summary({ visibleKeys, base }: TableDataStyledParams<M>): TableDataSummarySingle[] {
-        if (!this.isVisible(visibleKeys)) {
-            return []
-        }
+    summary(params: TableDataStyledParams<M>): TableDataSummarySingle[] {
         const { style } = this.mutable.core.summaryStyleMutable()
         const { content } = this.mutable.leaf.summaryMutable()
-        const shared = {
-            key: this.key,
-            style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
-        }
-        switch (content.type) {
-            case "none":
-                return [{ type: "empty", ...shared }]
-
-            case "content":
-                return [
-                    {
-                        type: "single",
-                        ...shared,
-                        content: content.content(),
-                    },
-                ]
-        }
-    }
-    footer({ visibleKeys, base }: TableDataStyledParams<M>): TableDataSummarySingle[] {
-        // TODO summary と共通化できるかもしれない
-        if (!this.isVisible(visibleKeys)) {
-            return []
-        }
-        const { style } = this.mutable.core.footerStyleMutable()
-        const { content } = this.mutable.leaf.footerMutable()
-        const shared = {
-            key: this.key,
-            style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
-        }
-        switch (content.type) {
-            case "none":
-                return [{ type: "empty", ...shared }]
-
-            case "content":
-                return [
-                    {
-                        type: "single",
-                        ...shared,
-                        content: content.content(),
-                    },
-                ]
-        }
+        return this.summaryContent(params, { style, content })
     }
     column({ visibleKeys, base, row }: TableDataRelatedParams<M, R>): TableDataColumnSingle[] {
         if (!this.isVisible(visibleKeys)) {
@@ -164,6 +121,37 @@ class Cell<M, R> implements TableDataSingle<M, R> {
                 content: this.content.column(row),
             },
         ]
+    }
+    footer(params: TableDataStyledParams<M>): TableDataSummarySingle[] {
+        const { style } = this.mutable.core.footerStyleMutable()
+        const { content } = this.mutable.leaf.footerMutable()
+        return this.summaryContent(params, { style, content })
+    }
+
+    summaryContent(
+        { visibleKeys, base }: TableDataStyledParams<M>,
+        { style, content }: SummaryContentParams
+    ): TableDataSummarySingle[] {
+        if (!this.isVisible(visibleKeys)) {
+            return []
+        }
+        const shared = {
+            key: this.key,
+            style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
+        }
+        switch (content.type) {
+            case "none":
+                return [{ type: "empty", ...shared }]
+
+            case "content":
+                return [
+                    {
+                        type: "single",
+                        ...shared,
+                        content: content.content(),
+                    },
+                ]
+        }
     }
 
     border(borders: TableDataVerticalBorder[]): TableDataSingle<M, R> {
@@ -226,3 +214,8 @@ class Cell<M, R> implements TableDataSingle<M, R> {
         return this
     }
 }
+
+type SummaryContentParams = Readonly<{
+    style: TableDataStyle
+    content: TableDataSummaryProvider
+}>
