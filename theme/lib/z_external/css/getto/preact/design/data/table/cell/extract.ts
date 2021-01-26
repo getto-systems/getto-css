@@ -1,6 +1,6 @@
-import { tableDataMutable } from "../mutable/core"
+import { tableDataMutable_core } from "../mutable/core"
 import { tableDataMutable_leaf } from "../mutable/leaf"
-import { TableDataMutable, TableDataMutable_leaf } from "../mutable"
+import { TableDataMutable_core, TableDataMutable_leaf } from "../mutable"
 import {
     isVisibleKey,
     TableDataCellKey,
@@ -46,15 +46,15 @@ export function tableData_extract<M, R>(
     key: TableDataCellKey,
     content: { (key: TableDataCellKey): TableDataExtractContent<M, R> }
 ): TableDataExtract<M, R> {
-    return new TableDataExtractImpl(key, content(key))
+    return new Cell(key, content(key))
 }
-class TableDataExtractImpl<M, R> implements TableDataExtract<M, R> {
+class Cell<M, R> implements TableDataExtract<M, R> {
     readonly type = "extract" as const
 
     key: TableDataCellKey
     content: TableDataExtractContent<M, R>
     mutable: Readonly<{
-        core: TableDataMutable<R>
+        core: TableDataMutable_core<R>
         leaf: TableDataMutable_leaf
     }>
 
@@ -62,7 +62,7 @@ class TableDataExtractImpl<M, R> implements TableDataExtract<M, R> {
         this.key = key
         this.content = content
         this.mutable = {
-            core: tableDataMutable(),
+            core: tableDataMutable_core(),
             leaf: tableDataMutable_leaf(),
         }
     }

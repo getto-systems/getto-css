@@ -19,7 +19,7 @@ import {
     TableDataVerticalBorderStyle,
 } from "./style"
 
-export interface TableDataMutable<R> {
+export interface TableDataMutable_core<R> {
     headerStyleMutable(): TableDataStyleMutable
     summaryStyleMutable(): TableDataStyleMutable
     columnStyleMutable(): TableDataStyleMutable

@@ -1,6 +1,6 @@
 import { VNodeContent } from "../../../common"
-import { decorateAlign } from "./decorator/align"
 
+import { decorateAlign } from "./decorator/align"
 import { decorateHorizontalBorder } from "./decorator/border"
 import {
     TableDataAlign,

@@ -1,6 +1,6 @@
-import { tableDataMutable } from "../mutable/core"
+import { tableDataMutable_core } from "../mutable/core"
 import { tableDataMutable_group } from "../mutable/group"
-import { TableDataMutable, TableDataMutable_group } from "../mutable"
+import { TableDataMutable_core, TableDataMutable_group } from "../mutable"
 import {
     TableDataCell,
     TableDataCellKey,
@@ -42,21 +42,21 @@ export type TableDataGroupContent<M, R> = Readonly<{
     cells: TableDataCell<M, R>[]
 }>
 export function tableData_group<M, R>(content: TableDataGroupContent<M, R>): TableDataGroup<M, R> {
-    return new TableDataGroupImpl(content)
+    return new Cell(content)
 }
-class TableDataGroupImpl<M, R> implements TableDataGroup<M, R> {
+class Cell<M, R> implements TableDataGroup<M, R> {
     readonly type = "group" as const
 
     content: TableDataGroupContent<M, R>
     mutable: Readonly<{
-        core: TableDataMutable<R>
+        core: TableDataMutable_core<R>
         group: TableDataMutable_group
     }>
 
     constructor(content: TableDataGroupContent<M, R>) {
         this.content = content
         this.mutable = {
-            core: tableDataMutable(),
+            core: tableDataMutable_core(),
             group: tableDataMutable_group(),
         }
     }

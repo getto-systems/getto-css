@@ -3,7 +3,7 @@ import { html } from "htm/preact"
 import { VNodeContent } from "../common"
 import { checkbox } from "./form"
 
-import { tableRow } from "./data/table/row"
+import { tableRow } from "./data/table/cell/row"
 import { tableData } from "./data/table/cell/single"
 import { tableData_extract } from "./data/table/cell/extract"
 import { tableData_group } from "./data/table/cell/group"
@@ -48,10 +48,10 @@ const cells = tableRow({
             }
         })
             .border(["rightDouble"])
-            .decorateColumn((row) => {
+            .decorateColumnRelated((row) => {
                 switch (row.type) {
                     case "summary":
-                        return tableAlign("middle")
+                        return tableAlign(["middle"])
 
                     default:
                         return decorateNone
@@ -104,8 +104,8 @@ const cells = tableRow({
         }),
     ],
 })
-    .horizontalBorder((row: Row) => (row.id > 0 ? ["bottom"] : []))
-    .decorateRow(() => tableClassName(["additional_class"]))
+    .horizontalBorderRelated((row: Row) => (row.id > 0 ? ["bottom"] : []))
+    .decorateRowRelated(() => tableClassName(["additional_class"]))
     .freeze()
 
 viewColumns(

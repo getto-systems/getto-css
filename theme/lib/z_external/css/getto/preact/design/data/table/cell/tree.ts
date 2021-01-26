@@ -1,5 +1,5 @@
-import { TableDataMutable, TableDataMutable_tree } from "../mutable"
-import { tableDataMutable } from "../mutable/core"
+import { TableDataMutable_core, TableDataMutable_tree } from "../mutable"
+import { tableDataMutable_core } from "../mutable/core"
 import { tableDataMutable_tree } from "../mutable/tree"
 import {
     tableCellChildColumn,
@@ -37,21 +37,21 @@ export type TableDataTreeContent<M, R, C> = Readonly<{
     cells: TableDataCell<M, C>[]
 }>
 export function tableData_tree<M, R, C>(content: TableDataTreeContent<M, R, C>): TableDataTree<M, R> {
-    return new TableDataTreeImpl(content)
+    return new Cell(content)
 }
-class TableDataTreeImpl<M, R, C> implements TableDataTree<M, R> {
+class Cell<M, R, C> implements TableDataTree<M, R> {
     readonly type = "tree" as const
 
     content: TableDataTreeContent<M, R, C>
     mutable: Readonly<{
-        core: TableDataMutable<R>
+        core: TableDataMutable_core<R>
         tree: TableDataMutable_tree<R>
     }>
 
     constructor(content: TableDataTreeContent<M, R, C>) {
         this.content = content
         this.mutable = {
-            core: tableDataMutable(),
+            core: tableDataMutable_core(),
             tree: tableDataMutable_tree(),
         }
     }

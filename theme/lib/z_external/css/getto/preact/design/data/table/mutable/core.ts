@@ -1,4 +1,4 @@
-import { TableDataColumnMutable, TableDataStyleMutable, TableDataMutable } from "../mutable"
+import { TableDataColumnMutable, TableDataStyleMutable, TableDataMutable_core } from "../mutable"
 import {
     decorateStyle,
     horizontalBorder,
@@ -10,10 +10,10 @@ import {
 } from "../decorator"
 import { inheritStyle, TableDataHorizontalBorder } from "../style"
 
-export function tableDataMutable<R>(): TableDataMutable<R> {
+export function tableDataMutable_core<R>(): TableDataMutable_core<R> {
     return new Mutable()
 }
-class Mutable<R> implements TableDataMutable<R> {
+class Mutable<R> implements TableDataMutable_core<R> {
     headerStyle: TableDataStyleMutable
     summaryStyle: TableDataStyleMutable
     columnStyle: TableDataStyleMutable

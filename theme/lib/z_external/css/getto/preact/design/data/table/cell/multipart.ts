@@ -1,5 +1,5 @@
-import { TableDataMutable } from "../mutable"
-import { tableDataMutable } from "../mutable/core"
+import { TableDataMutable_core } from "../mutable"
+import { tableDataMutable_core } from "../mutable/core"
 import {
     tableCellColumn,
     tableCellHeader,
@@ -32,20 +32,20 @@ export type TableDataMultipartContent<M, R, P> = Readonly<{
 export function tableData_multipart<M, R, P>(
     content: TableDataMultipartContent<M, R, P>
 ): TableDataMultipart<M, R> {
-    return new TableDataMultipartImpl(content)
+    return new Cell(content)
 }
-class TableDataMultipartImpl<M, R, P> implements TableDataMultipart<M, R> {
+class Cell<M, R, P> implements TableDataMultipart<M, R> {
     readonly type = "multipart" as const
 
     content: TableDataMultipartContent<M, R, P>
     mutable: Readonly<{
-        core: TableDataMutable<R>
+        core: TableDataMutable_core<R>
     }>
 
     constructor(content: TableDataMultipartContent<M, R, P>) {
         this.content = content
         this.mutable = {
-            core: tableDataMutable(),
+            core: tableDataMutable_core(),
         }
     }
 

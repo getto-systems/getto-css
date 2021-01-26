@@ -1,6 +1,6 @@
-import { tableDataMutable } from "../mutable/core"
+import { tableDataMutable_core } from "../mutable/core"
 import { tableDataMutable_leaf } from "../mutable/leaf"
-import { TableDataMutable, TableDataMutable_leaf } from "../mutable"
+import { TableDataMutable_core, TableDataMutable_leaf } from "../mutable"
 import {
     isVisibleKey,
     TableDataCellKey,
@@ -45,15 +45,15 @@ export function tableData<M, R>(
     key: TableDataCellKey,
     content: { (key: TableDataCellKey): TableDataSingleContent<R> }
 ): TableDataSingle<M, R> {
-    return new TableDataSingleImpl(key, content(key))
+    return new Cell(key, content(key))
 }
-class TableDataSingleImpl<M, R> implements TableDataSingle<M, R> {
+class Cell<M, R> implements TableDataSingle<M, R> {
     readonly type = "single" as const
 
     key: TableDataCellKey
     content: TableDataSingleContent<R>
     mutable: Readonly<{
-        core: TableDataMutable<R>
+        core: TableDataMutable_core<R>
         leaf: TableDataMutable_leaf
     }>
 
@@ -61,7 +61,7 @@ class TableDataSingleImpl<M, R> implements TableDataSingle<M, R> {
         this.key = key
         this.content = content
         this.mutable = {
-            core: tableDataMutable(),
+            core: tableDataMutable_core(),
             leaf: tableDataMutable_leaf(),
         }
     }
