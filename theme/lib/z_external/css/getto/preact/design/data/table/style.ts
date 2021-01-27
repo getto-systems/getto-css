@@ -55,6 +55,13 @@ export function defaultColumnStyle(): TableDataStyle {
         className: [],
     }
 }
+export function defaultFooterStyle(): TableDataStyle {
+    return {
+        horizontalBorder: { top: "double", bottom: "single" },
+        align: { vertical: "top", horizontal: "left" },
+        className: [],
+    }
+}
 export function defaultVerticalBorderStyle(): TableDataVerticalBorderStyle {
     return { left: "none", right: "none" }
 }

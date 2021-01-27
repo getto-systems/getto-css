@@ -147,7 +147,7 @@ export interface TableSpec<M, R> {
     view(params: TableDataParams<M>): TableDataView[]
     header(params: TableDataParams<M>): TableDataRowSpec<TableDataHeaderRow>
     summary(params: TableDataParams<M>): TableDataRowSpec<TableDataSummaryRow>
-    column(params: TableDataColumnParams<M, R>): TableDataRowSpec<TableDataColumnRow>
+    column(params: TableDataParams<M>, row: R): TableDataRowSpec<TableDataColumnRow>
     footer(params: TableDataParams<M>): TableDataRowSpec<TableDataFooterRow>
 
     // sticky 情報
@@ -165,7 +165,6 @@ export interface TableSpec_hot<M, R>
 export type TableDataParams<M> = Readonly<{ model: M; visibleKeys: TableDataCellKey[] }>
 export type TableDataStyledParams<M> = TableDataParams<M> & Readonly<{ base: TableDataStyle }>
 export type TableDataRelatedParams<M, R> = TableDataStyledParams<M> & Readonly<{ row: R }>
-export type TableDataColumnParams<M, R> = TableDataParams<M> & Readonly<{ row: R }>
 
 export interface TableDataColumnContentProvider<R> {
     (row: R): VNodeContent
@@ -189,27 +188,28 @@ export function tableCellHeader<M, R>(
     style: TableDataStyle,
     cells: TableDataCell<M, R>[]
 ): TableDataHeader[] {
-    return cells.flatMap((cell) =>
-        cell.header({ ...params, base: extendStyle({ base: params.base, style }) })
-    )
+    return tableCellBaseHeader(params, extendStyle({ base: params.base, style }), cells)
+}
+export function tableCellBaseHeader<M, R>(
+    params: TableDataParams<M>,
+    base: TableDataStyle,
+    cells: TableDataCell<M, R>[]
+): TableDataHeader[] {
+    return cells.flatMap((cell) => cell.header({ ...params, base }))
 }
 export function tableCellSummary<M, R>(
     params: TableDataStyledParams<M>,
     style: TableDataStyle,
     cells: TableDataCell<M, R>[]
 ): TableDataSummary[] {
-    return cells.flatMap((cell) =>
-        cell.summary({ ...params, base: extendStyle({ base: params.base, style }) })
-    )
+    return tableCellBaseSummary(params, extendStyle({ base: params.base, style }), cells)
 }
-export function tableCellFooter<M, R>(
-    params: TableDataStyledParams<M>,
-    style: TableDataStyle,
+export function tableCellBaseSummary<M, R>(
+    params: TableDataParams<M>,
+    base: TableDataStyle,
     cells: TableDataCell<M, R>[]
 ): TableDataSummary[] {
-    return cells.flatMap((cell) =>
-        cell.footer({ ...params, base: extendStyle({ base: params.base, style }) })
-    )
+    return cells.flatMap((cell) => cell.summary({ ...params, base }))
 }
 export function tableCellColumn<M, R>(
     params: TableDataRelatedParams<M, R>,
@@ -217,12 +217,26 @@ export function tableCellColumn<M, R>(
     decorators: TableDataColumnRelatedDecorator<R>[],
     cells: TableDataCell<M, R>[]
 ): TableDataColumn[] {
+    // decorate してから extend したいから Base は使えない
     return cells.flatMap((cell) =>
         cell.column({ ...params, base: extendStyle({ base: params.base, style: decorated(style) }) })
     )
 
     function decorated(style: TableDataStyle) {
         return decorators.reduce((acc, decorator) => decorateStyle(acc, decorator(params.row)), style)
+    }
+}
+export function tableCellBaseColumn<M, R>(
+    params: TableDataParams<M>,
+    base: TableDataStyle,
+    decorators: TableDataColumnRelatedDecorator<R>[],
+    cells: TableDataCell<M, R>[],
+    row: R
+): TableDataColumn[] {
+    return cells.flatMap((cell) => cell.column({ ...params, base: decorated(base), row }))
+
+    function decorated(style: TableDataStyle) {
+        return decorators.reduce((acc, decorator) => decorateStyle(acc, decorator(row)), style)
     }
 }
 export function tableCellChildColumn<M, R, C>(
@@ -232,6 +246,7 @@ export function tableCellChildColumn<M, R, C>(
     decorators: TableDataColumnRelatedDecorator<R>[],
     cells: TableDataCell<M, C>[]
 ): TableDataColumn[] {
+    // decorate してから extend したいから Base は使えない
     return cells.flatMap((cell) =>
         cell.column({
             ...params,
@@ -243,6 +258,20 @@ export function tableCellChildColumn<M, R, C>(
     function decorated(style: TableDataStyle) {
         return decorators.reduce((acc, decorator) => decorateStyle(acc, decorator(params.row)), style)
     }
+}
+export function tableCellFooter<M, R>(
+    params: TableDataStyledParams<M>,
+    style: TableDataStyle,
+    cells: TableDataCell<M, R>[]
+): TableDataSummary[] {
+    return tableCellBaseFooter(params, extendStyle({ base: params.base, style }), cells)
+}
+export function tableCellBaseFooter<M, R>(
+    params: TableDataParams<M>,
+    base: TableDataStyle,
+    cells: TableDataCell<M, R>[]
+): TableDataSummary[] {
+    return cells.flatMap((cell) => cell.footer({ ...params, base }))
 }
 
 export function isVisibleKey(key: TableDataCellKey, visibleKeys: TableDataCellKey[]): boolean {

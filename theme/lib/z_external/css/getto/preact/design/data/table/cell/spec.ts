@@ -1,19 +1,17 @@
 import { TableDataMutable_base, TableDataMutable_row, TableDataMutable_tree } from "../mutable"
-import { tableDataMutable_base } from "../mutable/base"
+import { tableDataMutable_default } from "../mutable/base"
 import { tableDataMutable_tree } from "../mutable/tree"
 import {
-    tableCellColumn,
-    tableCellHeader,
-    tableCellSummary,
     tableCellView,
+    tableCellBaseHeader,
+    tableCellBaseSummary,
+    tableCellBaseColumn,
+    tableCellBaseFooter,
     TableDataCell,
     TableDataParams,
-    TableDataRelatedParams,
     TableDataRowKeyProvider,
-    TableDataStyledParams,
     TableSpec,
     TableSpec_hot,
-    tableCellFooter,
 } from "../cell"
 import {
     TableDataColumnDecorator,
@@ -55,8 +53,7 @@ class Spec<M, R> implements TableSpec<M, R>, TableSpec_hot<M, R> {
     constructor(content: TableSpecContent<M, R>) {
         this.content = content
         this.mutable = {
-            // TODO row の mutable は inherit じゃなくて default のスタイルである必要がある
-            core: tableDataMutable_base(),
+            core: tableDataMutable_default(),
             tree: tableDataMutable_tree(),
             row: tableDataMutable_row(),
         }
@@ -65,7 +62,7 @@ class Spec<M, R> implements TableSpec<M, R>, TableSpec_hot<M, R> {
     view(params: TableDataParams<M>): TableDataView[] {
         return tableCellView(params, this.content.cells)
     }
-    header(params: TableDataStyledParams<M>): TableDataRowSpec<TableDataHeaderRow> {
+    header(params: TableDataParams<M>): TableDataRowSpec<TableDataHeaderRow> {
         const { style } = this.mutable.core.headerStyleMutable()
         const { key } = this.mutable.row.headerRowMutable()
         const { sticky } = this.mutable.row.stickyMutable()
@@ -73,11 +70,11 @@ class Spec<M, R> implements TableSpec<M, R>, TableSpec_hot<M, R> {
             sticky,
             row: {
                 key,
-                headers: tableCellHeader(params, style, this.content.cells),
+                headers: tableCellBaseHeader(params, style, this.content.cells),
             },
         }
     }
-    summary(params: TableDataStyledParams<M>): TableDataRowSpec<TableDataSummaryRow> {
+    summary(params: TableDataParams<M>): TableDataRowSpec<TableDataSummaryRow> {
         const { style } = this.mutable.core.summaryStyleMutable()
         const { key } = this.mutable.row.summaryRowMutable()
         const { sticky } = this.mutable.row.stickyMutable()
@@ -85,23 +82,23 @@ class Spec<M, R> implements TableSpec<M, R>, TableSpec_hot<M, R> {
             sticky,
             row: {
                 key: key(),
-                summaries: tableCellSummary(params, style, this.content.cells),
+                summaries: tableCellBaseSummary(params, style, this.content.cells),
             },
         }
     }
-    column(params: TableDataRelatedParams<M, R>): TableDataRowSpec<TableDataColumnRow> {
+    column(params: TableDataParams<M>, row: R): TableDataRowSpec<TableDataColumnRow> {
         const { style } = this.mutable.core.columnStyleMutable()
         const { decorators } = this.mutable.core.columnMutable()
         const { sticky } = this.mutable.row.stickyMutable()
         return {
             sticky,
             row: {
-                key: this.content.key(params.row),
-                columns: tableCellColumn(params, style, decorators, this.content.cells),
+                key: this.content.key(row),
+                columns: tableCellBaseColumn(params, style, decorators, this.content.cells, row),
             },
         }
     }
-    footer(params: TableDataStyledParams<M>): TableDataRowSpec<TableDataFooterRow> {
+    footer(params: TableDataParams<M>): TableDataRowSpec<TableDataFooterRow> {
         const { style } = this.mutable.core.footerStyleMutable()
         const { key } = this.mutable.row.footerRowMutable()
         const { sticky } = this.mutable.row.stickyMutable()
@@ -109,7 +106,7 @@ class Spec<M, R> implements TableSpec<M, R>, TableSpec_hot<M, R> {
             sticky,
             row: {
                 key: key(),
-                footers: tableCellFooter(params, style, this.content.cells),
+                footers: tableCellBaseFooter(params, style, this.content.cells),
             },
         }
     }

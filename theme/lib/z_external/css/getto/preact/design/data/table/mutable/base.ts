@@ -8,10 +8,22 @@ import {
     TableDataHorizontalBorderProvider,
     TableDataSummaryDecorator,
 } from "../decorator"
-import { inheritStyle, TableDataHorizontalBorder } from "../style"
+import {
+    defaultColumnStyle,
+    defaultFooterStyle,
+    defaultHeaderStyle,
+    defaultSummaryStyle,
+    inheritStyle,
+    TableDataHorizontalBorder,
+} from "../style"
 
 export function tableDataMutable_base<R>(): TableDataMutable_base<R> {
     return new Mutable()
+}
+export function tableDataMutable_default<R>(): TableDataMutable_base<R> {
+    const mutable = new Mutable<R>()
+    mutable.useDefaultStyle()
+    return mutable
 }
 class Mutable<R> implements TableDataMutable_base<R> {
     headerStyle: TableDataStyleMutable
@@ -21,7 +33,6 @@ class Mutable<R> implements TableDataMutable_base<R> {
     column: TableDataColumnMutable<R>
 
     constructor() {
-        // TODO row のために default で初期化するモードが必要
         this.headerStyle = {
             style: inheritStyle(),
         }
@@ -36,6 +47,21 @@ class Mutable<R> implements TableDataMutable_base<R> {
         }
         this.column = {
             decorators: [],
+        }
+    }
+
+    useDefaultStyle(): void {
+        this.headerStyle = {
+            style: defaultHeaderStyle(),
+        }
+        this.summaryStyle = {
+            style: defaultSummaryStyle(),
+        }
+        this.columnStyle = {
+            style: defaultColumnStyle(),
+        }
+        this.footerStyle = {
+            style: defaultFooterStyle(),
         }
     }
 
