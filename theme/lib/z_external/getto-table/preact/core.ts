@@ -1,4 +1,4 @@
-import { VNodeContent, VNodeKey } from "../common"
+import { VNodeContent, VNodeKey } from "../../preact/common"
 
 import {
     inheritStyle,
