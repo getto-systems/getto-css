@@ -1,7 +1,9 @@
 import {
+    TableDataCellKey,
     TableDataColumn,
     TableDataHeader,
     TableDataHeaderGroup,
+    TableDataParams,
     TableDataSummary,
     TableDataView,
 } from "../../table"
@@ -11,9 +13,7 @@ import { tableDataMutable_group } from "../mutable/group"
 import { TableDataMutable_base, TableDataMutable_group } from "../mutable"
 import {
     TableDataCell,
-    TableDataCellKey,
     TableDataGroup,
-    TableDataParams,
     TableDataRelatedParams,
     TableDataStyledParams,
     tableCellView,
@@ -87,6 +87,7 @@ class Cell<M, R> implements TableDataGroup<M, R> {
                 ),
                 content: this.content.header(),
                 children,
+                length: length(children),
                 height: height(children),
             },
         ]
@@ -97,17 +98,32 @@ class Cell<M, R> implements TableDataGroup<M, R> {
                 right: last.style.border.vertical.right,
             }
         }
-        function height(headers: TableDataHeader[]): number {
-            return Math.max(...headers.map((header) => {
+        function length(headers: TableDataHeader[]): number {
+            return headers.reduce((acc, header) => {
                 switch (header.type) {
                     case "single":
                     case "extract":
-                        return 1
+                        return acc + header.length
 
                     case "group":
-                        return height(header.children) + 1
+                        return acc + length(header.children)
                 }
-            }))
+            }, 0)
+        }
+        function height(headers: TableDataHeader[]): number {
+            return Math.max(
+                1,
+                ...headers.map((header) => {
+                    switch (header.type) {
+                        case "single":
+                        case "extract":
+                            return header.height
+
+                        case "group":
+                            return height(header.children) + 1
+                    }
+                })
+            )
         }
     }
     children(params: TableDataStyledParams<M>): TableDataHeader[] {

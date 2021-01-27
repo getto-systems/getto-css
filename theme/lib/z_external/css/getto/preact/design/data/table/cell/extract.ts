@@ -1,6 +1,10 @@
 import {
+    TableDataCellKey,
+    TableDataColumnEmpty,
     TableDataColumnExtract,
+    TableDataColumnSingle,
     TableDataHeaderExtract,
+    TableDataParams,
     TableDataSummaryExtract,
     TableDataView,
 } from "../../table"
@@ -10,10 +14,8 @@ import { tableDataMutable_leaf } from "../mutable/leaf"
 import { TableDataMutable_base, TableDataMutable_leaf } from "../mutable"
 import {
     isVisibleKey,
-    TableDataCellKey,
-    TableDataColumnContentProvider,
     TableDataExtract,
-    TableDataParams,
+    TableDataExtractColumnContentProvider,
     TableDataRelatedParams,
     TableDataStyledParams,
 } from "../cell"
@@ -42,7 +44,7 @@ import {
 export type TableDataExtractContent<M, R> = Readonly<{
     label: TableDataContentProvider
     header: TableDataContentDecorator
-    column: TableDataColumnContentProvider<R>
+    column: TableDataExtractColumnContentProvider<R>
     length: TableDataExtractLengthProvider<M>
 }>
 export function tableData_extract<M, R>(
@@ -68,6 +70,10 @@ class Cell<M, R> implements TableDataExtract<M, R> {
             core: tableDataMutable_base(),
             leaf: tableDataMutable_leaf(),
         }
+    }
+
+    length(model: M): number {
+        return Math.max(this.content.length(model), 1)
     }
 
     isVisible(visibleKeys: TableDataCellKey[]): boolean {
@@ -97,7 +103,8 @@ class Cell<M, R> implements TableDataExtract<M, R> {
                 key: this.key,
                 style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
                 content: this.content.header(this.content.label()),
-                length: this.content.length(model),
+                length: this.length(model),
+                height: 1,
             },
         ]
     }
@@ -112,21 +119,46 @@ class Cell<M, R> implements TableDataExtract<M, R> {
         }
         const { style } = this.mutable.core.columnStyleMutable()
         const { decorators } = this.mutable.core.columnMutable()
+        const length = this.length(model)
+        const contents = this.content.column(row).slice(0, length)
+        const columnStyle = mergeVerticalBorder(
+            decorators.reduce(
+                (acc, decorator) => decorateStyle(acc, decorator(row)),
+                extendStyle({ base, style })
+            ),
+            this.verticalBorder()
+        )
         return [
-            {
-                type: "extract",
-                key: this.key,
-                style: mergeVerticalBorder(
-                    decorators.reduce(
-                        (acc, decorator) => decorateStyle(acc, decorator(row)),
-                        extendStyle({ base, style })
-                    ),
-                    this.verticalBorder()
-                ),
-                content: this.content.column(row),
-                length: this.content.length(model),
-            },
+            ...contents.map(
+                (content, index): TableDataColumnSingle => {
+                    return {
+                        type: "single",
+                        key: `${this.key}_${index}`,
+                        style: columnStyle,
+                        content,
+                        length: 1,
+                        height: 1,
+                    }
+                }
+            ),
+            ...empty(this.key),
         ]
+
+        function empty(key: TableDataCellKey): TableDataColumnEmpty[] {
+            if (contents.length >= length) {
+                return []
+            }
+
+            return [
+                {
+                    type: "empty",
+                    key: `${key}_empty`,
+                    style: columnStyle,
+                    length: length - contents.length,
+                    height: 1,
+                },
+            ]
+        }
     }
     footer(params: TableDataStyledParams<M>): TableDataSummaryExtract[] {
         const { style } = this.mutable.core.footerStyleMutable()
@@ -155,7 +187,7 @@ class Cell<M, R> implements TableDataExtract<M, R> {
                         type: "extract",
                         ...shared,
                         content: content.content(),
-                        length: this.content.length(model),
+                        length: this.length(model),
                     },
                 ]
         }

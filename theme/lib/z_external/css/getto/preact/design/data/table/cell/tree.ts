@@ -2,6 +2,7 @@ import {
     TableDataColumnRow,
     TableDataColumnTree,
     TableDataHeader,
+    TableDataParams,
     TableDataSummary,
     TableDataView,
 } from "../../table"
@@ -17,7 +18,6 @@ import {
     tableCellView,
     TableDataCell,
     TableDataChildrenProvider,
-    TableDataParams,
     TableDataRelatedParams,
     TableDataRowKeyProvider,
     TableDataStyledParams,
@@ -89,21 +89,22 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
                     style
                 ),
                 children,
-                width: width(children),
+                length: length(children),
                 height: height(children),
             },
         ]
 
-        function width(rows: TableDataColumnRow[]): number {
+        function length(rows: TableDataColumnRow[]): number {
             return rows.reduce(
                 (all, row) =>
                     row.columns.reduce((acc, column) => {
                         switch (column.type) {
-                            case "extract":
                             case "single":
-                                return acc + 1
+                            case "empty":
+                                return acc + column.length
+
                             case "tree":
-                                return acc + width(column.children)
+                                return acc + length(column.children)
                         }
                     }, all),
                 0
@@ -118,8 +119,8 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
                             ...tree.columns.map((column) => {
                                 switch (column.type) {
                                     case "single":
-                                    case "extract":
-                                        return 1
+                                    case "empty":
+                                        return column.height
 
                                     case "tree":
                                         return height(column.children)

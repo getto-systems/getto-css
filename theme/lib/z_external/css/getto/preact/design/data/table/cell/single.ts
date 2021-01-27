@@ -1,6 +1,8 @@
 import {
+    TableDataCellKey,
     TableDataColumnSingle,
     TableDataHeaderSingle,
+    TableDataParams,
     TableDataSummarySingle,
     TableDataView,
 } from "../../table"
@@ -10,9 +12,7 @@ import { tableDataMutable_leaf } from "../mutable/leaf"
 import { TableDataMutable_base, TableDataMutable_leaf } from "../mutable"
 import {
     isVisibleKey,
-    TableDataCellKey,
     TableDataColumnContentProvider,
-    TableDataParams,
     TableDataRelatedParams,
     TableDataSingle,
     TableDataStyledParams,
@@ -96,6 +96,8 @@ class Cell<M, R> implements TableDataSingle<M, R> {
                 key: this.key,
                 style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
                 content: this.content.header(this.content.label()),
+                length: 1,
+                height: 1,
             },
         ]
     }
@@ -122,6 +124,8 @@ class Cell<M, R> implements TableDataSingle<M, R> {
                     this.verticalBorder()
                 ),
                 content: this.content.column(row),
+                length: 1,
+                height: 1,
             },
         ]
     }

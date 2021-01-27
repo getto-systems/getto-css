@@ -8,6 +8,7 @@ export const decorateAlign = (aligns: TableDataAlign[]): Decorator<TableDataAlig
                 break
             case "top":
             case "middle":
+            case "baseline":
             case "bottom":
                 update.vertical = align
                 break

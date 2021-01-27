@@ -1,4 +1,10 @@
-import { TableDataColumn, TableDataHeader, TableDataSummary, TableDataView } from "../../table"
+import {
+    TableDataColumn,
+    TableDataHeader,
+    TableDataParams,
+    TableDataSummary,
+    TableDataView,
+} from "../../table"
 
 import { TableDataMutable_base } from "../mutable"
 import { tableDataMutable_base } from "../mutable/base"
@@ -11,7 +17,6 @@ import {
     TableDataCell,
     TableDataChildrenProvider,
     TableDataMultipart,
-    TableDataParams,
     TableDataRelatedParams,
     TableDataStyledParams,
 } from "../cell"

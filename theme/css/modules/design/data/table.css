@@ -46,6 +46,22 @@
     text-align: right;
 }
 
+.cell_top {
+    vertical-align: top;
+}
+
+.cell_middle {
+    vertical-align: middle;
+}
+
+.cell_baseline {
+    vertical-align: baseline;
+}
+
+.cell_bottom {
+    vertical-align: bottom;
+}
+
 .cell_border_t {
     border-top: 1px solid var(--color-black);
 }
@@ -115,7 +131,8 @@
     z-index: 1000;
 }
 
-.row_hover:hover td {
+.row_hover:hover td,
+.row_hover tr:hover td {
     background-color: var(--color-base-off);
 }
 

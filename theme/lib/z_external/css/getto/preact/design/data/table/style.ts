@@ -128,7 +128,7 @@ export type TableDataHorizontalBorderStyle = Readonly<{
     bottom: TableDataBorderClass
 }>
 
-type TableDataBorderClass = "none" | "single" | "double" | "inherit"
+export type TableDataBorderClass = "none" | "single" | "double" | "inherit"
 
 function extendHorizontalBorderStyle({
     base,
@@ -162,7 +162,7 @@ export type TableDataAlignStyle = Readonly<{
     horizontal: TableDataHorizontalAlign
 }>
 export type TableDataAlign = TableDataVerticalAlign | TableDataHorizontalAlign
-type TableDataVerticalAlign = "top" | "middle" | "bottom" | TableDataInheritAlign
+type TableDataVerticalAlign = "top" | "middle" | "baseline" | "bottom" | TableDataInheritAlign
 type TableDataHorizontalAlign = "left" | "center" | "right" | "numeric" | TableDataInheritAlign
 type TableDataInheritAlign = "inherit"
 

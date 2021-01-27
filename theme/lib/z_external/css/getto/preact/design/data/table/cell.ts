@@ -3,23 +3,21 @@ import { VNodeContent, VNodeKey } from "../../../common"
 import {
     TableDataColumn,
     TableDataColumnExtract,
-    TableDataColumnRow,
     TableDataColumnSingle,
     TableDataColumnTree,
-    TableDataFooterRow,
     TableDataHeader,
     TableDataHeaderExtract,
     TableDataHeaderGroup,
     TableDataHeaderKeyProvider,
-    TableDataHeaderRow,
     TableDataHeaderSingle,
     TableDataSummary,
     TableDataSummaryExtract,
     TableDataKeyProvider,
-    TableDataSummaryRow,
     TableDataSummarySingle,
     TableDataView,
-    TableDataRowSpec,
+    TableSpec,
+    TableDataParams,
+    TableDataCellKey,
 } from "../table"
 
 import {
@@ -35,13 +33,7 @@ import {
     TableDataSummaryProvider,
     TableDataViewDecorator,
 } from "./decorator"
-import {
-    extendStyle,
-    TableDataHorizontalBorder,
-    TableDataSticky,
-    TableDataStyle,
-    TableDataVerticalBorder,
-} from "./style"
+import { extendStyle, TableDataHorizontalBorder, TableDataStyle, TableDataVerticalBorder } from "./style"
 
 export type TableDataCell<M, R> =
     | TableDataSingle<M, R>
@@ -49,8 +41,6 @@ export type TableDataCell<M, R> =
     | TableDataGroup<M, R>
     | TableDataMultipart<M, R>
     | TableDataTree<M, R>
-
-export type TableDataCellKey = VNodeKey
 
 export interface TableDataSingle<M, R>
     extends TableDataCell_base<TableDataSingle<M, R>, R>,
@@ -147,18 +137,6 @@ interface TableDataCell_row<T> {
     stickyCross(n: number): T
 }
 
-export interface TableSpec<M, R> {
-    view(params: TableDataParams<M>): TableDataView[]
-    header(params: TableDataParams<M>): TableDataRowSpec<TableDataHeaderRow>
-    summary(params: TableDataParams<M>): TableDataRowSpec<TableDataSummaryRow>
-    column(params: TableDataParams<M>, row: R): TableDataRowSpec<TableDataColumnRow>
-    footer(params: TableDataParams<M>): TableDataRowSpec<TableDataFooterRow>
-
-    // sticky 情報
-    // header : off / on
-    // column : off / number
-    sticky(): TableDataSticky
-}
 export interface TableSpec_hot<M, R>
     extends TableDataCell_base<TableSpec_hot<M, R>, R>,
         TableDataCell_tree<TableSpec_hot<M, R>, R>,
@@ -166,12 +144,14 @@ export interface TableSpec_hot<M, R>
     freeze(): TableSpec<M, R>
 }
 
-export type TableDataParams<M> = Readonly<{ model: M; visibleKeys: TableDataCellKey[] }>
 export type TableDataStyledParams<M> = TableDataParams<M> & Readonly<{ base: TableDataStyle }>
 export type TableDataRelatedParams<M, R> = TableDataStyledParams<M> & Readonly<{ row: R }>
 
 export interface TableDataColumnContentProvider<R> {
     (row: R): VNodeContent
+}
+export interface TableDataExtractColumnContentProvider<R> {
+    (row: R): VNodeContent[]
 }
 
 export interface TableDataRowKeyProvider<R> {

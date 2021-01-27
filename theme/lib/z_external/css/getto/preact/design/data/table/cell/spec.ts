@@ -8,9 +8,7 @@ import {
     tableCellBaseColumn,
     tableCellBaseFooter,
     TableDataCell,
-    TableDataParams,
     TableDataRowKeyProvider,
-    TableSpec,
     TableSpec_hot,
 } from "../cell"
 import {
@@ -29,9 +27,10 @@ import {
     TableDataHeaderKeyProvider,
     TableDataHeaderRow,
     TableDataKeyProvider,
-    TableDataRowSpec,
+    TableDataParams,
     TableDataSummaryRow,
     TableDataView,
+    TableSpec,
 } from "../../table"
 import { tableDataMutable_row } from "../mutable/row"
 
@@ -62,57 +61,41 @@ class Spec<M, R> implements TableSpec<M, R>, TableSpec_hot<M, R> {
     view(params: TableDataParams<M>): TableDataView[] {
         return tableCellView(params, this.content.cells)
     }
-    header(params: TableDataParams<M>): TableDataRowSpec<TableDataHeaderRow> {
+    header(params: TableDataParams<M>): TableDataHeaderRow {
         const { style } = this.mutable.core.headerStyleMutable()
         const headerRow = this.mutable.row.headerRowMutable()
-        const { sticky } = this.mutable.row.stickyMutable()
         return {
-            sticky,
-            row: {
-                key: headerRow.key,
-                className: headerRow.style.className,
-                headers: tableCellBaseHeader(params, style, this.content.cells),
-            },
+            key: headerRow.key,
+            className: headerRow.style.className,
+            headers: tableCellBaseHeader(params, style, this.content.cells),
         }
     }
-    summary(params: TableDataParams<M>): TableDataRowSpec<TableDataSummaryRow> {
+    summary(params: TableDataParams<M>): TableDataSummaryRow {
         const { style } = this.mutable.core.summaryStyleMutable()
         const summaryRow = this.mutable.row.summaryRowMutable()
-        const { sticky } = this.mutable.row.stickyMutable()
         return {
-            sticky,
-            row: {
-                key: summaryRow.key(),
-                className: summaryRow.style.className,
-                summaries: tableCellBaseSummary(params, style, this.content.cells),
-            },
+            key: summaryRow.key(),
+            className: summaryRow.style.className,
+            summaries: tableCellBaseSummary(params, style, this.content.cells),
         }
     }
-    column(params: TableDataParams<M>, row: R): TableDataRowSpec<TableDataColumnRow> {
+    column(params: TableDataParams<M>, row: R): TableDataColumnRow {
         const { style } = this.mutable.core.columnStyleMutable()
         const treeRow = this.mutable.tree.rowMutable()
         const { decorators } = this.mutable.core.columnMutable()
-        const { sticky } = this.mutable.row.stickyMutable()
         return {
-            sticky,
-            row: {
-                key: this.content.key(row),
-                className: treeRow.style.className,
-                columns: tableCellBaseColumn(params, style, decorators, this.content.cells, row),
-            },
+            key: this.content.key(row),
+            className: treeRow.style.className,
+            columns: tableCellBaseColumn(params, style, decorators, this.content.cells, row),
         }
     }
-    footer(params: TableDataParams<M>): TableDataRowSpec<TableDataFooterRow> {
+    footer(params: TableDataParams<M>): TableDataFooterRow {
         const { style } = this.mutable.core.footerStyleMutable()
         const footerRow = this.mutable.row.footerRowMutable()
-        const { sticky } = this.mutable.row.stickyMutable()
         return {
-            sticky,
-            row: {
-                key: footerRow.key(),
-                className: footerRow.style.className,
-                footers: tableCellBaseFooter(params, style, this.content.cells),
-            },
+            key: footerRow.key(),
+            className: footerRow.style.className,
+            footers: tableCellBaseFooter(params, style, this.content.cells),
         }
     }
 
