@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box_double } from "../../../../z_external/css/getto/preact/design/box"
+import { box_double } from "../../../../z_external/getto-css/preact/design/box"
 import {
     form,
     label_search,
@@ -9,7 +9,7 @@ import {
     label_search_large,
     label_search_small,
     label_search_xLarge,
-} from "../../../../z_external/css/getto/preact/design/form"
+} from "../../../../z_external/getto-css/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"

@@ -1,11 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { VNodeContent } from "../common"
-
-export function searchColumn(content: VNodeContent): VNode {
-    return html`<section class="search__column">${content}</section>`
-}
+import { VNodeContent } from "../../../preact/common"
 
 export type FormContent =
     | Readonly<{ type: NormalFormType; content: NormalFormContent }>

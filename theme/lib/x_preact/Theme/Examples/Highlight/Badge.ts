@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box } from "../../../../z_external/css/getto/preact/design/box"
+import { box } from "../../../../z_external/getto-css/preact/design/box"
 import {
     badge_alert,
     badge_gray,
@@ -9,7 +9,7 @@ import {
     badge_pending,
     badge_success,
     badge_warning,
-} from "../../../../z_external/css/getto/preact/design/highlight"
+} from "../../../../z_external/getto-css/preact/design/highlight"
 
 type Props = {
     // no props

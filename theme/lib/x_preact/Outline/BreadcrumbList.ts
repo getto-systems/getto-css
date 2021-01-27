@@ -6,7 +6,7 @@ import {
     breadcrumbLink,
     breadcrumbList,
     breadcrumbSeparator,
-} from "../../z_external/css/getto/preact/layout/app"
+} from "../../z_external/getto-css/preact/layout/app"
 
 import { siteInfo } from "../common/site"
 import { icon } from "../common/icon"
