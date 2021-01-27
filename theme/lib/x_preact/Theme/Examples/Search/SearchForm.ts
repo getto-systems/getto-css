@@ -1,14 +1,14 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { container, box_fill } from "../../../../z_external/css/getto/preact/design/box"
+import { container, box_fill } from "../../../../z_external/getto-css/preact/design/box"
 import {
     search,
     search_double,
     formError,
     button_search,
     checkbox,
-} from "../../../../z_external/css/getto/preact/design/form"
+} from "../../../../z_external/getto-css/preact/design/form"
 
 import { icon, spinner } from "../../../common/icon"
 

@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box_double } from "../../../../z_external/css/getto/preact/design/box"
+import { box_double } from "../../../../z_external/getto-css/preact/design/box"
 import {
     form,
     label_textarea,
@@ -9,7 +9,7 @@ import {
     label_textarea_large,
     label_textarea_small,
     label_textarea_xLarge,
-} from "../../../../z_external/css/getto/preact/design/form"
+} from "../../../../z_external/getto-css/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"

@@ -5,7 +5,7 @@ import {
     TableDataParams,
     TableDataSummary,
     TableDataView,
-} from "../../table"
+} from "../core"
 
 import { TableDataMutable_base, TableDataMutable_tree } from "../mutable"
 import { tableDataMutable_base } from "../mutable/base"
@@ -80,14 +80,9 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
         if (children.length === 0) {
             return []
         }
-        const { style, decorators } = this.mutable.tree.rowMutable()
         return [
             {
                 type: "tree",
-                style: decorators.reduce(
-                    (acc, decorator) => decorateRowStyle(acc, decorator(params.row)),
-                    style
-                ),
                 children,
                 length: length(children),
                 height: height(children),
@@ -139,7 +134,10 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
         return this.content.data(params.row).map((child) => {
             return {
                 key: this.content.key(child),
-                className: rowMutable.style.className,
+                className: rowMutable.decorators.reduce(
+                    (acc, decorator) => decorateRowStyle(acc, decorator(params.row)),
+                    rowMutable.style
+                ).className,
                 columns: tableCellChildColumn(child, params, style, decorators, this.content.cells),
             }
         })

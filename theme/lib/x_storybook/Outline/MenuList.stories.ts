@@ -11,7 +11,7 @@ import {
     mainBody,
     appMenu,
     menuBox,
-} from "../../z_external/css/getto/preact/layout/app"
+} from "../../z_external/getto-css/preact/layout/app"
 
 import { siteInfo } from "../../x_preact/common/site"
 

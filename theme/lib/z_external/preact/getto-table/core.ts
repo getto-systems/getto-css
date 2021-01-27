@@ -1,4 +1,4 @@
-import { VNodeContent, VNodeKey } from "../../common"
+import { VNodeContent, VNodeKey } from "../../getto-css/preact/common"
 
 import {
     inheritStyle,
@@ -6,9 +6,8 @@ import {
     mergeVerticalBorder,
     TableDataClassName,
     TableDataFullStyle,
-    TableDataRowStyle,
     TableDataSticky,
-} from "./table/style"
+} from "./style"
 
 export interface TableSpec<M, R> {
     view(params: TableDataParams<M>): TableDataView[]
@@ -29,7 +28,7 @@ export type TableDataView = Readonly<{
     isVisible: boolean
 }>
 
-export type TableDataHeader = TableDataHeaderSingle | TableDataHeaderExtract | TableDataHeaderGroup
+export type TableDataHeader = TableDataHeaderSingle | TableDataHeaderExpansion | TableDataHeaderGroup
 
 export type TableDataHeaderSingle = Readonly<{
     type: "single"
@@ -39,8 +38,8 @@ export type TableDataHeaderSingle = Readonly<{
     height: 1
     length: 1
 }>
-export type TableDataHeaderExtract = Readonly<{
-    type: "extract"
+export type TableDataHeaderExpansion = Readonly<{
+    type: "expansion"
     key: VNodeKey
     style: TableDataFullStyle
     content: VNodeContent
@@ -57,7 +56,7 @@ export type TableDataHeaderGroup = Readonly<{
     length: number
 }>
 
-export type TableDataSummary = TableDataSummarySingle | TableDataSummaryExtract
+export type TableDataSummary = TableDataSummarySingle | TableDataSummaryExpansion
 
 export type TableDataSummaryEmpty = Readonly<{
     type: "empty"
@@ -72,18 +71,18 @@ export type TableDataSummarySingle =
           style: TableDataFullStyle
           content: VNodeContent
       }>
-export type TableDataSummaryExtract =
+export type TableDataSummaryExpansion =
     | TableDataSummaryEmpty
     | Readonly<{
-          type: "extract"
+          type: "expansion"
           key: VNodeKey
           style: TableDataFullStyle
           content: VNodeContent
           length: number
       }>
 
-export type TableDataColumn = TableDataColumnSingle | TableDataColumnExtract | TableDataColumnTree
-export type TableDataContentColumn = TableDataColumnSingle | TableDataColumnExtract
+export type TableDataColumn = TableDataColumnSingle | TableDataColumnExpansion | TableDataColumnTree
+export type TableDataLeafColumn = TableDataColumnSingle | TableDataColumnExpansion
 
 export type TableDataColumnSingle = Readonly<{
     type: "single"
@@ -100,39 +99,39 @@ export type TableDataColumnEmpty = Readonly<{
     length: number
     height: number
 }>
-export type TableDataColumnExtract = TableDataColumnSingle | TableDataColumnEmpty
+export type TableDataColumnExpansion = TableDataColumnSingle | TableDataColumnEmpty
 export type TableDataColumnTree = Readonly<{
     type: "tree"
-    style: TableDataRowStyle
     children: TableDataColumnRow[]
     length: number
     height: number
 }>
 export function tableDataTreePadding(
     key: VNodeKey,
+    height: number,
     tree: TableDataColumnTree,
-    header: TableDataHeader[]
+    headers: TableDataHeader[]
 ): TableDataColumnEmpty[] {
-    if (tree.children.length >= tree.height) {
+    if (tree.children.length >= height) {
         return []
     }
     return [
         {
             type: "empty",
             key,
-            style: mergeVerticalBorder(inheritStyle(), verticalBorder(header)),
+            style: mergeVerticalBorder(inheritStyle(), verticalBorder(headers)),
             length: tree.length,
-            height: tree.height - tree.children.length,
+            height: height - tree.children.length,
         },
     ]
 
-    function verticalBorder(header: TableDataHeader[]) {
-        if (header.length === 0) {
+    function verticalBorder(headers: TableDataHeader[]) {
+        if (headers.length === 0) {
             return inheritVerticalBorderStyle()
         }
         return {
-            left: header[0].style.border.vertical.left,
-            right: header[header.length - 1].style.border.vertical.right,
+            left: headers[0].style.border.vertical.left,
+            right: headers[headers.length - 1].style.border.vertical.right,
         }
     }
 }

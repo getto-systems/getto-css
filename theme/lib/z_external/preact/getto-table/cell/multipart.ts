@@ -4,7 +4,7 @@ import {
     TableDataParams,
     TableDataSummary,
     TableDataView,
-} from "../../table"
+} from "../core"
 
 import { TableDataMutable_base } from "../mutable"
 import { tableDataMutable_base } from "../mutable/base"

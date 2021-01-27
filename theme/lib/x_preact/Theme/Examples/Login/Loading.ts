@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { loginBox } from "../../../../z_external/css/getto/preact/layout/login"
+import { loginBox } from "../../../../z_external/getto-css/preact/layout/login"
 
 import { siteInfo } from "../../../common/site"
 

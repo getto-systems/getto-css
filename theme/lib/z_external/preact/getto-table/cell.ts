@@ -1,24 +1,24 @@
-import { VNodeContent, VNodeKey } from "../../../common"
+import { VNodeContent, VNodeKey } from "../../getto-css/preact/common"
 
 import {
     TableDataColumn,
-    TableDataColumnExtract,
+    TableDataColumnExpansion,
     TableDataColumnSingle,
     TableDataColumnTree,
     TableDataHeader,
-    TableDataHeaderExtract,
+    TableDataHeaderExpansion,
     TableDataHeaderGroup,
     TableDataHeaderKeyProvider,
     TableDataHeaderSingle,
     TableDataSummary,
-    TableDataSummaryExtract,
+    TableDataSummaryExpansion,
     TableDataKeyProvider,
     TableDataSummarySingle,
     TableDataView,
     TableSpec,
     TableDataParams,
     TableDataCellKey,
-} from "../table"
+} from "./core"
 
 import {
     decorateStyle,
@@ -37,7 +37,7 @@ import { extendStyle, TableDataHorizontalBorder, TableDataStyle, TableDataVertic
 
 export type TableDataCell<M, R> =
     | TableDataSingle<M, R>
-    | TableDataExtract<M, R>
+    | TableDataExpansion<M, R>
     | TableDataGroup<M, R>
     | TableDataMultipart<M, R>
     | TableDataTree<M, R>
@@ -53,16 +53,16 @@ export interface TableDataSingle<M, R>
     column(params: TableDataRelatedParams<M, R>): TableDataColumnSingle[]
     footer(params: TableDataStyledParams<M>): TableDataSummarySingle[]
 }
-export interface TableDataExtract<M, R>
-    extends TableDataCell_base<TableDataExtract<M, R>, R>,
-        TableDataCell_leaf<TableDataExtract<M, R>> {
-    type: "extract"
+export interface TableDataExpansion<M, R>
+    extends TableDataCell_base<TableDataExpansion<M, R>, R>,
+        TableDataCell_leaf<TableDataExpansion<M, R>> {
+    type: "expansion"
 
     view(params: TableDataParams<M>): TableDataView
-    header(params: TableDataStyledParams<M>): TableDataHeaderExtract[]
-    summary(params: TableDataStyledParams<M>): TableDataSummaryExtract[]
-    column(params: TableDataRelatedParams<M, R>): TableDataColumnExtract[]
-    footer(params: TableDataStyledParams<M>): TableDataSummaryExtract[]
+    header(params: TableDataStyledParams<M>): TableDataHeaderExpansion[]
+    summary(params: TableDataStyledParams<M>): TableDataSummaryExpansion[]
+    column(params: TableDataRelatedParams<M, R>): TableDataColumnExpansion[]
+    footer(params: TableDataStyledParams<M>): TableDataSummaryExpansion[]
 }
 export interface TableDataGroup<M, R>
     extends TableDataCell_base<TableDataGroup<M, R>, R>,
@@ -150,7 +150,7 @@ export type TableDataRelatedParams<M, R> = TableDataStyledParams<M> & Readonly<{
 export interface TableDataColumnContentProvider<R> {
     (row: R): VNodeContent
 }
-export interface TableDataExtractColumnContentProvider<R> {
+export interface TableDataExpansionColumnContentProvider<R> {
     (row: R): VNodeContent[]
 }
 

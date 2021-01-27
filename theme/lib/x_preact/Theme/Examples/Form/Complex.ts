@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box, modalBox } from "../../../../z_external/css/getto/preact/design/box"
+import { box, modalBox } from "../../../../z_external/getto-css/preact/design/box"
 import {
     form,
     form_error,
@@ -11,9 +11,9 @@ import {
     button_edit,
     button_delete,
     button_cancel,
-} from "../../../../z_external/css/getto/preact/design/form"
-import { label_gray } from "../../../../z_external/css/getto/preact/design/highlight"
-import { big } from "../../../../z_external/css/getto/preact/design/alignment"
+} from "../../../../z_external/getto-css/preact/design/form"
+import { label_gray } from "../../../../z_external/getto-css/preact/design/highlight"
+import { big } from "../../../../z_external/getto-css/preact/design/alignment"
 
 import { icon, spinner } from "../../../common/icon"
 

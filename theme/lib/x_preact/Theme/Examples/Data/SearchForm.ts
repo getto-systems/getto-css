@@ -1,8 +1,8 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box_fill } from "../../../../z_external/css/getto/preact/design/box"
-import { button_search } from "../../../../z_external/css/getto/preact/design/form"
+import { box_fill } from "../../../../z_external/getto-css/preact/design/box"
+import { button_search } from "../../../../z_external/getto-css/preact/design/form"
 
 import { icon, spinner } from "../../../common/icon"
 

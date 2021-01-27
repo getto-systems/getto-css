@@ -6,7 +6,7 @@ import {
     TableDataParams,
     TableDataSummary,
     TableDataView,
-} from "../../table"
+} from "../core"
 
 import { tableDataMutable_base } from "../mutable/base"
 import { tableDataMutable_group } from "../mutable/group"
@@ -102,7 +102,7 @@ class Cell<M, R> implements TableDataGroup<M, R> {
             return headers.reduce((acc, header) => {
                 switch (header.type) {
                     case "single":
-                    case "extract":
+                    case "expansion":
                         return acc + header.length
 
                     case "group":
@@ -116,7 +116,7 @@ class Cell<M, R> implements TableDataGroup<M, R> {
                 ...headers.map((header) => {
                     switch (header.type) {
                         case "single":
-                        case "extract":
+                        case "expansion":
                             return header.height
 
                         case "group":

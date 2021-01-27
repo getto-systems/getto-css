@@ -1,13 +1,13 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { loginBox } from "../../../../../z_external/css/getto/preact/layout/login"
+import { loginBox } from "../../../../../z_external/getto-css/preact/layout/login"
 import {
     form,
     form_error,
     buttons,
     button_send,
-} from "../../../../../z_external/css/getto/preact/design/form"
+} from "../../../../../z_external/getto-css/preact/design/form"
 
 import { icon, spinner } from "../../../../common/icon"
 import { siteInfo } from "../../../../common/site"

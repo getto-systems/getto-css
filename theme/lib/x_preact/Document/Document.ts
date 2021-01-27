@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { useErrorBoundary } from "preact/hooks"
 
-import { appLayout } from "../../z_external/css/getto/preact/layout/app"
+import { appLayout } from "../../z_external/getto-css/preact/layout/app"
 
 import { useTerminate } from "../common/hooks"
 

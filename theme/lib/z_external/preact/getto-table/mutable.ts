@@ -1,4 +1,4 @@
-import { TableDataHeaderKeyProvider, TableDataKeyProvider } from "../table"
+import { TableDataHeaderKeyProvider, TableDataKeyProvider } from "./core"
 import {
     TableDataColumnDecorator,
     TableDataColumnRelatedDecorator,

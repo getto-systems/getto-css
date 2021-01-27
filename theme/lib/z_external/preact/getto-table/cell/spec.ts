@@ -31,7 +31,7 @@ import {
     TableDataSummaryRow,
     TableDataView,
     TableSpec,
-} from "../../table"
+} from "../core"
 import { tableDataMutable_row } from "../mutable/row"
 
 export type TableSpecContent<M, R> = Readonly<{

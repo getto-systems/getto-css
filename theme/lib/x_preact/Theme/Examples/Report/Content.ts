@@ -9,7 +9,7 @@ import {
     reportTitle_small,
     reportTitle_xSmall,
     report_a4_portrait,
-} from "../../../../z_external/css/getto/preact/design/print"
+} from "../../../../z_external/getto-css/preact/design/print"
 
 type Props = {
     // no props

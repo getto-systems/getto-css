@@ -4,23 +4,25 @@ import { html } from "htm/preact"
 import { VNodeContent, VNodeKey } from "../common"
 import { checkbox } from "./form"
 
-import { tableSpec } from "./data/table/cell/spec"
-import { tableData } from "./data/table/cell/single"
-import { tableData_extract } from "./data/table/cell/extract"
-import { tableData_group } from "./data/table/cell/group"
-import { tableData_multipart } from "./data/table/cell/multipart"
-import { tableData_tree } from "./data/table/cell/tree"
-import { decorateNone, tableAlign, tableClassName } from "./data/table/decorator"
+import { tableSpec } from "../../../preact/getto-table/cell/spec"
+import { tableData } from "../../../preact/getto-table/cell/single"
+import { tableData_expansion } from "../../../preact/getto-table/cell/expansion"
+import { tableData_group } from "../../../preact/getto-table/cell/group"
+import { tableData_multipart } from "../../../preact/getto-table/cell/multipart"
+import { tableData_tree } from "../../../preact/getto-table/cell/tree"
+import { decorateNone, tableAlign, tableClassName } from "../../../preact/getto-table/decorator"
 import {
     TableDataColumn,
     TableDataColumnRow,
-    TableDataContentColumn,
+    TableDataLeafColumn,
     TableDataFooterRow,
     TableDataHeader,
     TableDataHeaderRow,
     TableDataSummary,
     TableDataSummaryRow,
-} from "./data/table"
+    tableDataTreePadding,
+    TableDataColumnTree,
+} from "../../../preact/getto-table/core"
 import {
     TableDataAlign,
     TableDataAlignStyle,
@@ -29,7 +31,7 @@ import {
     TableDataClassName,
     TableDataFullStyle,
     TableDataSticky,
-} from "./data/table/style"
+} from "../../../preact/getto-table/style"
 
 export function linky(content: VNodeContent): VNode {
     return html`<span class="linky">${content}</span>`
@@ -130,8 +132,8 @@ export function tableHeader({
                 headers: HeaderContainer[]
             }>
             return collections.flatMap(
-                (collection) =>
-                    collection.headers.reduce((acc, header) => {
+                ({ headers, index }) =>
+                    headers.reduce((acc, header) => {
                         return {
                             index: acc.index + header.length,
                             headers: [
@@ -142,7 +144,7 @@ export function tableHeader({
                                 },
                             ],
                         }
-                    }, initialGatherResult(collection.index)).headers
+                    }, initialGatherResult(index)).headers
             )
             function initialGatherResult(index: number): GatherResult {
                 return {
@@ -156,7 +158,7 @@ export function tableHeader({
                 collection.headers.flatMap((header, index) => {
                     switch (header.type) {
                         case "single":
-                        case "extract":
+                        case "expansion":
                             return []
 
                         case "group":
@@ -182,7 +184,7 @@ export function tableHeader({
             function rowspan() {
                 switch (header.type) {
                     case "single":
-                    case "extract":
+                    case "expansion":
                         return height - level
 
                     case "group":
@@ -223,67 +225,165 @@ export type TableColumnContent = Readonly<{
     header: TableDataHeaderRow
     column: TableDataColumnRow
 }>
-export function tableColumn({
-    sticky,
-    header: { headers },
-    column: { key, className, columns },
-}: TableColumnContent): VNode[] {
+export function tableColumn({ sticky, header: { headers }, column }: TableColumnContent): VNode[] {
     type ColumnCollection = Readonly<{
         index: number
-        columns: TableDataColumn[]
+        rows: TableDataColumnRow[]
     }>
+    type ColumnEntry =
+        | Readonly<{ type: "column"; column: ColumnContainer }>
+        | Readonly<{ type: "rows"; rows: ColumnRow[] }>
     type ColumnRow = Readonly<{
-        key: VNodeKey
+        key: VNodeKey[]
         className: TableDataClassName
         columns: ColumnContainer[]
     }>
     type ColumnContainer = Readonly<{
         index: number
-        column: TableDataContentColumn
+        column: TableDataLeafColumn
     }>
-    return column([{ index: 0, columns }])
 
-    function column(collections: ColumnCollection[]): VNode[] {
-        const height = columnHeight(collections)
+    const collection = { index: 0, rows: [column] }
+    const height = columnHeight(column.columns)
 
-        return gatherColumnRow(collections).map((row) =>
-            tr(row.key, row.className, row.columns.map(columnTd))
-        )
+    return toColumnRows(collection).map((row) =>
+        tr(row.key.join("_"), row.className, row.columns.map(columnTd))
+    )
 
-        function gatherColumnRow(collections: ColumnCollection[]): ColumnRow[] {
-            return null
-        }
+    function toColumnRows({ rows, index }: ColumnCollection): ColumnRow[] {
+        return rows.flatMap((row) => buildRow(row, toColumnEntries(row, index)))
+    }
+    function buildRow(row: TableDataColumnRow, columns: ColumnEntry[]): ColumnRow[] {
+        return columns.reduce((acc, entry): ColumnRow[] => {
+            switch (entry.type) {
+                case "column":
+                    return pushRow(acc, entry.column)
 
-        function columnTd({ index, column }: ColumnContainer): VNode {
-            return html`<td
-                class="${className()}"
-                colspan=${column.length}
-                rowspan=${height}
-                key=${column.key}
-            >
-                ${content()}
-            </td>`
-
-            function className() {
-                return [styleClass(column.style), stickyColumnClass(sticky, index)].join(" ")
+                case "rows":
+                    return mergeRows({ acc, rows: entry.rows })
             }
-            function content() {
-                switch (column.type) {
-                    case "single":
-                        return column.content
+        }, <ColumnRow[]>[])
 
-                    case "empty":
-                        return EMPTY_CONTENT
-                }
+        function pushRow(acc: ColumnRow[], column: ColumnContainer): ColumnRow[] {
+            return insertColumnRow(acc, 0, (row) => {
+                return { ...row, columns: [...row.columns, column] }
+            })
+        }
+        function mergeRows({
+            acc,
+            rows,
+        }: Readonly<{ acc: ColumnRow[]; rows: ColumnRow[] }>): ColumnRow[] {
+            return rows.reduce((acc, row, index) => {
+                return insertColumnRow(acc, index, (base) => mergeRow({ base: base, row }))
+            }, acc)
+        }
+        function mergeRow({ base, row }: Readonly<{ base: ColumnRow; row: ColumnRow }>): ColumnRow {
+            return {
+                key: [...base.key, ...row.key],
+                className: [...base.className, ...row.className],
+                columns: [...base.columns, ...row.columns],
+            }
+        }
+        function insertColumnRow(
+            rows: ColumnRow[],
+            index: number,
+            map: { (row: ColumnRow): ColumnRow }
+        ): ColumnRow[] {
+            if (rows.length === index) {
+                rows.push({
+                    key: [row.key],
+                    className: [...row.className],
+                    columns: [],
+                })
+            }
+            rows[index] = map(rows[index])
+            return rows
+        }
+    }
+    function toColumnEntries(row: TableDataColumnRow, index: number): ColumnEntry[] {
+        type GatherResult = Readonly<{
+            index: number
+            columns: ColumnEntry[]
+        }>
+
+        return row.columns.reduce((acc, column): GatherResult => {
+            switch (column.type) {
+                case "single":
+                case "empty":
+                    return {
+                        index: acc.index + column.length,
+                        columns: [
+                            ...acc.columns,
+                            { type: "column", column: { index: acc.index, column } },
+                        ],
+                    }
+
+                case "tree":
+                    return {
+                        index: acc.index + column.length,
+                        columns: [
+                            ...acc.columns,
+                            {
+                                type: "rows",
+                                rows: [
+                                    ...toColumnRows({
+                                        index: acc.index,
+                                        rows: column.children,
+                                    }),
+                                    ...padding(column, acc.index),
+                                ],
+                            },
+                        ],
+                    }
+            }
+
+            function padding(column: TableDataColumnTree, index: number): ColumnRow[] {
+                return tableDataTreePadding(`__empty_${index}`, height, column, headers).map(
+                    (column) => {
+                        return {
+                            key: [],
+                            className: [],
+                            columns: [{ index, column }],
+                        }
+                    }
+                )
+            }
+        }, initialGatherResult(index)).columns
+
+        function initialGatherResult(index: number): GatherResult {
+            return {
+                index,
+                columns: [],
             }
         }
     }
 
-    function columnHeight(collections: ColumnCollection[]): number {
-        return Math.max(
-            1,
-            ...collections.flatMap((collection) => collection.columns.map((column) => column.height))
-        )
+    function columnTd({ index, column }: ColumnContainer): VNode {
+        return html`<td
+            class="${className()}"
+            colspan=${column.length}
+            rowspan=${height}
+            key=${column.key}
+        >
+            ${content()}
+        </td>`
+
+        function className() {
+            return [styleClass(column.style), stickyColumnClass(sticky, index)].join(" ")
+        }
+        function content() {
+            switch (column.type) {
+                case "single":
+                    return column.content
+
+                case "empty":
+                    return EMPTY_CONTENT
+            }
+        }
+    }
+
+    function columnHeight(columns: TableDataColumn[]): number {
+        return Math.max(1, ...columns.map((column) => column.height))
     }
 }
 
@@ -320,7 +420,7 @@ function summaryContent(summary: TableDataSummary): VNodeContent {
             return EMPTY_CONTENT
 
         case "single":
-        case "extract":
+        case "expansion":
             return summary.content
     }
 }
@@ -414,130 +514,132 @@ const EMPTY_CONTENT = html``
 
 // TODO 以下テストコードを x_preact に移す
 
-type Model = Readonly<{
-    maxEmailCount: number
-    allParts: string[]
-}>
-type Row = Readonly<{
-    type: string
-    id: number
-    logs: Log[]
-    emails: string[]
-    parts: Record<string, Part>
-}>
-type Log = Readonly<{
-    id: number
-    date: string
-}>
-type RowLog = Readonly<{ row: Row; log: Log }>
-type Part = Readonly<{
-    name: string
-}>
+export function __demo(): void {
+    type Model = Readonly<{
+        maxEmailCount: number
+        allParts: string[]
+    }>
+    type Row = Readonly<{
+        type: string
+        id: number
+        logs: Log[]
+        emails: string[]
+        parts: Record<string, Part>
+    }>
+    type Log = Readonly<{
+        id: number
+        date: string
+    }>
+    type RowLog = Readonly<{ row: Row; log: Log }>
+    type Part = Readonly<{
+        name: string
+    }>
 
-const spec = tableSpec({
-    key: (row: Row) => row.id,
-    cells: [
-        tableData("id", (_key) => {
-            return {
-                label: () => "ID",
-                header: linky,
-                column: (row: Row) => html`${row.id}`,
-            }
-        })
-            .border(["rightDouble"])
-            .decorateColumnRelated((row) => {
-                switch (row.type) {
-                    case "summary":
-                        return tableAlign(["middle"])
-
-                    default:
-                        return decorateNone
+    const spec = tableSpec({
+        key: (row: Row) => row.id,
+        cells: [
+            tableData("id", (_key) => {
+                return {
+                    label: () => "ID",
+                    header: linky,
+                    column: (row: Row) => html`${row.id}`,
                 }
+            })
+                .border(["rightDouble"])
+                .decorateColumnRelated((row) => {
+                    switch (row.type) {
+                        case "summary":
+                            return tableAlign(["middle"])
+
+                        default:
+                            return decorateNone
+                    }
+                }),
+
+            tableData_group({
+                key: "group",
+                header: () => linky("group"),
+                cells: [
+                    tableData_expansion("expansion", (_key) => {
+                        return {
+                            label: () => "expansion",
+                            header: linky,
+                            column: (row: Row) => row.emails.map((email) => html`${email}`),
+                            length: (summary: Model) => summary.maxEmailCount,
+                        }
+                    }).border(["left"]),
+
+                    tableData_multipart({
+                        data: (summary: Model): string[] => summary.allParts,
+                        cells: (part: string) => [
+                            tableData(`part_${part}`, (_key) => {
+                                return {
+                                    label: () => part,
+                                    header: linky,
+                                    column: (row: Row) => html`${row.parts[part]}`,
+                                }
+                            }),
+                        ],
+                    }),
+                ],
             }),
 
-        tableData_group({
-            key: "group",
-            header: () => linky("group"),
-            cells: [
-                tableData_extract("extract", (_key) => {
-                    return {
-                        label: () => "extract",
-                        header: linky,
-                        column: (row: Row) => row.emails.map((email) => html`${email}`),
-                        length: (summary: Model) => summary.maxEmailCount,
-                    }
-                }).border(["left"]),
+            tableData_tree({
+                data: (row: Row): RowLog[] =>
+                    row.logs.map((log) => {
+                        return { log, row }
+                    }),
+                key: ({ log }: RowLog) => log.id,
+                cells: [
+                    tableData("logDate", (_key) => {
+                        return {
+                            label: () => "log date",
+                            header: linky,
+                            column: ({ log, row }: RowLog) => html`${row.id} / ${log.date}`,
+                        }
+                    }).border(["left"]),
+                ],
+            }),
+        ],
+    })
+        .horizontalBorderRelated((row) => (row.id > 0 ? ["bottom"] : []))
+        .decorateRowRelated(() => tableClassName(["additional_class"]))
+        .freeze()
 
-                tableData_multipart({
-                    data: (summary: Model): string[] => summary.allParts,
-                    cells: (part: string) => [
-                        tableData(`part_${part}`, (_key) => {
-                            return {
-                                label: () => part,
-                                header: linky,
-                                column: (row: Row) => html`${row.parts[part]}`,
-                            }
-                        }),
-                    ],
-                }),
-            ],
-        }),
+    const model: Model = {
+        maxEmailCount: 0,
+        allParts: ["part1"],
+    }
+    const rows: Row[] = []
 
-        tableData_tree({
-            data: (row: Row): RowLog[] =>
-                row.logs.map((log) => {
-                    return { log, row }
-                }),
-            key: ({ log }: RowLog) => log.id,
-            cells: [
-                tableData("logDate", (_key) => {
-                    return {
-                        label: () => "log date",
-                        header: linky,
-                        column: ({ log, row }: RowLog) => html`${row.id} / ${log.date}`,
-                    }
-                }).border(["left"]),
-            ],
-        }),
-    ],
-})
-    .horizontalBorderRelated((row) => (row.id > 0 ? ["bottom"] : []))
-    .decorateRowRelated(() => tableClassName(["additional_class"]))
-    .freeze()
+    const visibleKeys = ["id", "union"]
 
-const model: Model = {
-    maxEmailCount: 0,
-    allParts: ["part1"],
-}
-const rows: Row[] = []
+    const params = { visibleKeys, model, rows }
 
-const visibleKeys = ["id", "union"]
+    tableViewColumns(
+        spec
+            .view(params)
+            .map(({ isVisible, content, key }) =>
+                checkbox({ isChecked: isVisible, input: html`<input type="checkbox" />${content}`, key })
+            )
+    )
 
-const params = { visibleKeys, model, rows }
+    const content = {
+        sticky: spec.sticky(),
+        header: spec.header(params),
+        summary: spec.summary(params),
+        footer: spec.footer(params),
+    }
 
-tableViewColumns(
-    spec
-        .view(params)
-        .map(({ isVisible, content, key }) =>
-            checkbox({ isChecked: isVisible, input: html`<input type="checkbox" />${content}`, key })
-        )
-)
+    table(content.sticky, [thead(header()), tbody(body()), tfoot(footer())])
 
-const content = {
-    sticky: spec.sticky(),
-    header: spec.header(params),
-    summary: spec.summary(params),
-    footer: spec.footer(params),
-}
-
-table(content.sticky, [thead(header()), tbody(body()), tfoot(footer())])
-
-function header() {
-    return [...tableHeader(content), ...tableSummary(content)]
-}
-function body() {
-    return rows.flatMap((row) => tableColumn({ ...content, column: spec.column(params, row) }))
-}
-function footer() {
-    return tableFooter(content)
+    function header() {
+        return [...tableHeader(content), ...tableSummary(content)]
+    }
+    function body() {
+        return rows.flatMap((row) => tableColumn({ ...content, column: spec.column(params, row) }))
+    }
+    function footer() {
+        return tableFooter(content)
+    }
 }

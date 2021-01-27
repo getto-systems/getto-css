@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box } from "../../../../z_external/css/getto/preact/design/box"
+import { box } from "../../../../z_external/getto-css/preact/design/box"
 import {
     form,
     buttons,
@@ -17,7 +17,7 @@ import {
     button_undo,
     button_redo,
     button_disabled,
-} from "../../../../z_external/css/getto/preact/design/form"
+} from "../../../../z_external/getto-css/preact/design/form"
 
 import { spinner } from "../../../common/icon"
 

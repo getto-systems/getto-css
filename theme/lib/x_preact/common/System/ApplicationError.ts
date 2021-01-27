@@ -1,9 +1,9 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { loginBox } from "../../../z_external/css/getto/preact/layout/login"
-import { buttons, form } from "../../../z_external/css/getto/preact/design/form"
-import { v_small } from "../../../z_external/css/getto/preact/design/alignment"
+import { loginBox } from "../../../z_external/getto-css/preact/layout/login"
+import { buttons, form } from "../../../z_external/getto-css/preact/design/form"
+import { v_small } from "../../../z_external/getto-css/preact/design/alignment"
 
 import { siteInfo } from "../site"
 

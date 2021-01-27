@@ -1,10 +1,10 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { VNodeContent } from "../../../../z_external/css/getto/preact/common"
+import { VNodeContent } from "../../../../z_external/getto-css/preact/common"
 
-import { box_grow } from "../../../../z_external/css/getto/preact/design/box"
-import { form, checkbox } from "../../../../z_external/css/getto/preact/design/form"
+import { box_grow } from "../../../../z_external/getto-css/preact/design/box"
+import { form, checkbox } from "../../../../z_external/getto-css/preact/design/form"
 
 type Props = {
     // no props

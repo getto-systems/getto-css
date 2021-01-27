@@ -11,9 +11,9 @@ import {
     mainTitle,
     appMain,
     appSidebar,
-} from "../../../z_external/css/getto/preact/layout/app"
-import { box_fill } from "../../../z_external/css/getto/preact/design/box"
-import { form, button_search } from "../../../z_external/css/getto/preact/design/form"
+} from "../../../z_external/getto-css/preact/layout/app"
+import { box_fill } from "../../../z_external/getto-css/preact/design/box"
+import { form, button_search } from "../../../z_external/getto-css/preact/design/form"
 
 import { useTerminate } from "../../common/hooks"
 

@@ -1,6 +1,6 @@
 import { VNode } from "preact"
 
-import { box } from "../../../../z_external/css/getto/preact/design/box"
+import { box } from "../../../../z_external/getto-css/preact/design/box"
 import {
     notice_alert,
     notice_gray,
@@ -8,7 +8,7 @@ import {
     notice_pending,
     notice_success,
     notice_warning,
-} from "../../../../z_external/css/getto/preact/design/highlight"
+} from "../../../../z_external/getto-css/preact/design/highlight"
 
 type NoticeBasicProps = {
     // no props

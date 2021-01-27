@@ -1,13 +1,13 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box } from "../../../../z_external/css/getto/preact/design/box"
+import { box } from "../../../../z_external/getto-css/preact/design/box"
 import {
     form,
     label_email,
     label_email_fill,
     label_email_small,
-} from "../../../../z_external/css/getto/preact/design/form"
+} from "../../../../z_external/getto-css/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"

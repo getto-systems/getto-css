@@ -1,20 +1,22 @@
 import {
     TableDataCellKey,
+    TableDataColumnEmpty,
+    TableDataColumnExpansion,
     TableDataColumnSingle,
-    TableDataHeaderSingle,
+    TableDataHeaderExpansion,
     TableDataParams,
-    TableDataSummarySingle,
+    TableDataSummaryExpansion,
     TableDataView,
-} from "../../table"
+} from "../core"
 
 import { tableDataMutable_base } from "../mutable/base"
 import { tableDataMutable_leaf } from "../mutable/leaf"
 import { TableDataMutable_base, TableDataMutable_leaf } from "../mutable"
 import {
     isVisibleKey,
-    TableDataColumnContentProvider,
+    TableDataExpansion,
+    TableDataExpansionColumnContentProvider,
     TableDataRelatedParams,
-    TableDataSingle,
     TableDataStyledParams,
 } from "../cell"
 import {
@@ -39,34 +41,39 @@ import {
     TableDataVerticalBorderStyle,
 } from "../style"
 
-export type TableDataSingleContent<R> = Readonly<{
+export type TableDataExpansionContent<M, R> = Readonly<{
     label: TableDataContentProvider
     header: TableDataContentDecorator
-    column: TableDataColumnContentProvider<R>
+    column: TableDataExpansionColumnContentProvider<R>
+    length: TableDataExpansionLengthProvider<M>
 }>
-export function tableData<M, R>(
+export function tableData_expansion<M, R>(
     key: TableDataCellKey,
-    content: { (key: TableDataCellKey): TableDataSingleContent<R> }
-): TableDataSingle<M, R> {
+    content: { (key: TableDataCellKey): TableDataExpansionContent<M, R> }
+): TableDataExpansion<M, R> {
     return new Cell(key, content(key))
 }
-class Cell<M, R> implements TableDataSingle<M, R> {
-    readonly type = "single" as const
+class Cell<M, R> implements TableDataExpansion<M, R> {
+    readonly type = "expansion" as const
 
     key: TableDataCellKey
-    content: TableDataSingleContent<R>
+    content: TableDataExpansionContent<M, R>
     mutable: Readonly<{
         core: TableDataMutable_base<R>
         leaf: TableDataMutable_leaf
     }>
 
-    constructor(key: TableDataCellKey, content: TableDataSingleContent<R>) {
+    constructor(key: TableDataCellKey, content: TableDataExpansionContent<M, R>) {
         this.key = key
         this.content = content
         this.mutable = {
             core: tableDataMutable_base(),
             leaf: tableDataMutable_leaf(),
         }
+    }
+
+    length(model: M): number {
+        return Math.max(this.content.length(model), 1)
     }
 
     isVisible(visibleKeys: TableDataCellKey[]): boolean {
@@ -85,60 +92,84 @@ class Cell<M, R> implements TableDataSingle<M, R> {
             isVisible: this.isVisible(visibleKeys),
         }
     }
-    header({ visibleKeys, base }: TableDataStyledParams<M>): TableDataHeaderSingle[] {
+    header({ visibleKeys, base, model }: TableDataStyledParams<M>): TableDataHeaderExpansion[] {
         if (!this.isVisible(visibleKeys)) {
             return []
         }
         const { style } = this.mutable.core.headerStyleMutable()
         return [
             {
-                type: "single",
+                type: "expansion",
                 key: this.key,
                 style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
                 content: this.content.header(this.content.label()),
-                length: 1,
+                length: this.length(model),
                 height: 1,
             },
         ]
     }
-    summary(params: TableDataStyledParams<M>): TableDataSummarySingle[] {
+    summary(params: TableDataStyledParams<M>): TableDataSummaryExpansion[] {
         const { style } = this.mutable.core.summaryStyleMutable()
         const { content } = this.mutable.leaf.summaryMutable()
         return this.summaryContent(params, { style, content })
     }
-    column({ visibleKeys, base, row }: TableDataRelatedParams<M, R>): TableDataColumnSingle[] {
+    column({ visibleKeys, base, row, model }: TableDataRelatedParams<M, R>): TableDataColumnExpansion[] {
         if (!this.isVisible(visibleKeys)) {
             return []
         }
         const { style } = this.mutable.core.columnStyleMutable()
         const { decorators } = this.mutable.core.columnMutable()
+        const length = this.length(model)
+        const contents = this.content.column(row).slice(0, length)
+        const columnStyle = mergeVerticalBorder(
+            decorators.reduce(
+                (acc, decorator) => decorateStyle(acc, decorator(row)),
+                extendStyle({ base, style })
+            ),
+            this.verticalBorder()
+        )
         return [
-            {
-                type: "single",
-                key: this.key,
-                style: mergeVerticalBorder(
-                    decorators.reduce(
-                        (acc, decorator) => decorateStyle(acc, decorator(row)),
-                        extendStyle({ base, style })
-                    ),
-                    this.verticalBorder()
-                ),
-                content: this.content.column(row),
-                length: 1,
-                height: 1,
-            },
+            ...contents.map(
+                (content, index): TableDataColumnSingle => {
+                    return {
+                        type: "single",
+                        key: `${this.key}_${index}`,
+                        style: columnStyle,
+                        content,
+                        length: 1,
+                        height: 1,
+                    }
+                }
+            ),
+            ...empty(this.key),
         ]
+
+        function empty(key: TableDataCellKey): TableDataColumnEmpty[] {
+            if (contents.length >= length) {
+                return []
+            }
+
+            return [
+                {
+                    type: "empty",
+                    key: `${key}_empty`,
+                    style: columnStyle,
+                    length: length - contents.length,
+                    height: 1,
+                },
+            ]
+        }
     }
-    footer(params: TableDataStyledParams<M>): TableDataSummarySingle[] {
+    footer(params: TableDataStyledParams<M>): TableDataSummaryExpansion[] {
         const { style } = this.mutable.core.footerStyleMutable()
         const { content } = this.mutable.leaf.footerMutable()
         return this.summaryContent(params, { style, content })
     }
 
     summaryContent(
-        { visibleKeys, base }: TableDataStyledParams<M>,
+        { visibleKeys, base, model }: TableDataStyledParams<M>,
         { style, content }: SummaryContentParams
-    ): TableDataSummarySingle[] {
+    ): TableDataSummaryExpansion[] {
         if (!this.isVisible(visibleKeys)) {
             return []
         }
@@ -153,70 +184,71 @@ class Cell<M, R> implements TableDataSingle<M, R> {
             case "content":
                 return [
                     {
-                        type: "single",
+                        type: "expansion",
                         ...shared,
                         content: content.content(),
+                        length: this.length(model),
                     },
                 ]
         }
     }
 
-    border(borders: TableDataVerticalBorder[]): TableDataSingle<M, R> {
+    border(borders: TableDataVerticalBorder[]): TableDataExpansion<M, R> {
         this.mutable.leaf.border(borders)
         return this
     }
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataSingle<M, R> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataExpansion<M, R> {
         this.mutable.core.horizontalBorder(borders)
         return this
     }
-    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableDataSingle<M, R> {
+    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableDataExpansion<M, R> {
         this.mutable.core.horizontalBorderRelated(borders)
         return this
     }
-    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableDataSingle<M, R> {
+    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableDataExpansion<M, R> {
         this.mutable.core.horizontalBorder_header(borders)
         return this
     }
-    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableDataSingle<M, R> {
+    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableDataExpansion<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
         return this
     }
-    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataSingle<M, R> {
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataExpansion<M, R> {
         this.mutable.core.horizontalBorder_footer(borders)
         return this
     }
 
-    setSummary(content: TableDataSummaryProvider): TableDataSingle<M, R> {
+    setSummary(content: TableDataSummaryProvider): TableDataExpansion<M, R> {
         this.mutable.leaf.setSummary(content)
         return this
     }
-    setFooter(content: TableDataSummaryProvider): TableDataSingle<M, R> {
+    setFooter(content: TableDataSummaryProvider): TableDataExpansion<M, R> {
         this.mutable.leaf.setFooter(content)
         return this
     }
 
-    decorateView(decorator: TableDataViewDecorator): TableDataSingle<M, R> {
+    decorateView(decorator: TableDataViewDecorator): TableDataExpansion<M, R> {
         this.mutable.leaf.decorateView(decorator)
         return this
     }
-    decorateHeader(decorator: TableDataHeaderDecorator): TableDataSingle<M, R> {
+    decorateHeader(decorator: TableDataHeaderDecorator): TableDataExpansion<M, R> {
         this.mutable.core.decorateHeader(decorator)
         return this
     }
-    decorateSummary(decorator: TableDataSummaryDecorator): TableDataSingle<M, R> {
+    decorateSummary(decorator: TableDataSummaryDecorator): TableDataExpansion<M, R> {
         this.mutable.core.decorateSummary(decorator)
         return this
     }
-    decorateColumn(decorator: TableDataColumnDecorator): TableDataSingle<M, R> {
+    decorateColumn(decorator: TableDataColumnDecorator): TableDataExpansion<M, R> {
         this.mutable.core.decorateColumn(decorator)
         return this
     }
-    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataSingle<M, R> {
+    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataExpansion<M, R> {
         this.mutable.core.decorateColumnRelated(decorator)
         return this
     }
-    decorateFooter(decorator: TableDataSummaryDecorator): TableDataSingle<M, R> {
+    decorateFooter(decorator: TableDataSummaryDecorator): TableDataExpansion<M, R> {
         this.mutable.core.decorateFooter(decorator)
         return this
     }
@@ -226,3 +258,7 @@ type SummaryContentParams = Readonly<{
     style: TableDataStyle
     content: TableDataSummaryProvider
 }>
+
+interface TableDataExpansionLengthProvider<S> {
+    (model: S): number
+}

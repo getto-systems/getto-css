@@ -1,8 +1,8 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box } from "../../../../z_external/css/getto/preact/design/box"
-import { label_gray } from "../../../../z_external/css/getto/preact/design/highlight"
+import { box } from "../../../../z_external/getto-css/preact/design/box"
+import { label_gray } from "../../../../z_external/getto-css/preact/design/highlight"
 
 type Props = {
     // no props

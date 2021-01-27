@@ -4,7 +4,7 @@ import {
     TableDataStickyMutable,
     TableDataSummaryRowMutable,
 } from "../mutable"
-import { TableDataHeaderKeyProvider, TableDataKeyProvider } from "../../table"
+import { TableDataHeaderKeyProvider, TableDataKeyProvider } from "../core"
 import { decorateRowStyle, TableDataRowDecorator } from "../decorator"
 
 export function tableDataMutable_row(): TableDataMutable_row {
