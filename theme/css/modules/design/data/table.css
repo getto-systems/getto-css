@@ -1,3 +1,8 @@
+.table__viewColumns {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .table {
     border-collapse: separate;
     background-color: var(--color-white);

@@ -1,18 +1,21 @@
-import { tableDataMutable_core } from "../mutable/core"
+import {
+    TableDataColumn,
+    TableDataHeader,
+    TableDataHeaderGroup,
+    TableDataSummary,
+    TableDataView,
+} from "../../table"
+
+import { tableDataMutable_base } from "../mutable/base"
 import { tableDataMutable_group } from "../mutable/group"
-import { TableDataMutable_core, TableDataMutable_group } from "../mutable"
+import { TableDataMutable_base, TableDataMutable_group } from "../mutable"
 import {
     TableDataCell,
     TableDataCellKey,
-    TableDataColumn,
     TableDataGroup,
-    TableDataHeader,
-    TableDataHeaderGroup,
     TableDataParams,
     TableDataRelatedParams,
     TableDataStyledParams,
-    TableDataSummary,
-    TableDataView,
     tableCellView,
     tableCellSummary,
     tableCellColumn,
@@ -50,14 +53,14 @@ class Cell<M, R> implements TableDataGroup<M, R> {
 
     content: TableDataGroupContent<M, R>
     mutable: Readonly<{
-        core: TableDataMutable_core<R>
+        core: TableDataMutable_base<R>
         group: TableDataMutable_group
     }>
 
     constructor(content: TableDataGroupContent<M, R>) {
         this.content = content
         this.mutable = {
-            core: tableDataMutable_core(),
+            core: tableDataMutable_base(),
             group: tableDataMutable_group(),
         }
     }

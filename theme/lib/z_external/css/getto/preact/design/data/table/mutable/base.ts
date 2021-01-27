@@ -1,4 +1,4 @@
-import { TableDataColumnMutable, TableDataStyleMutable, TableDataMutable_core } from "../mutable"
+import { TableDataColumnMutable, TableDataStyleMutable, TableDataMutable_base } from "../mutable"
 import {
     decorateStyle,
     horizontalBorder,
@@ -10,10 +10,10 @@ import {
 } from "../decorator"
 import { inheritStyle, TableDataHorizontalBorder } from "../style"
 
-export function tableDataMutable_core<R>(): TableDataMutable_core<R> {
+export function tableDataMutable_base<R>(): TableDataMutable_base<R> {
     return new Mutable()
 }
-class Mutable<R> implements TableDataMutable_core<R> {
+class Mutable<R> implements TableDataMutable_base<R> {
     headerStyle: TableDataStyleMutable
     summaryStyle: TableDataStyleMutable
     columnStyle: TableDataStyleMutable
@@ -21,6 +21,7 @@ class Mutable<R> implements TableDataMutable_core<R> {
     column: TableDataColumnMutable<R>
 
     constructor() {
+        // TODO row のために default で初期化するモードが必要
         this.headerStyle = {
             style: inheritStyle(),
         }

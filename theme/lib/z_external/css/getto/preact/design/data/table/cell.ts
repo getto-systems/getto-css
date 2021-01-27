@@ -1,6 +1,28 @@
 import { VNodeContent, VNodeKey } from "../../../common"
 
 import {
+    TableDataColumn,
+    TableDataColumnExtract,
+    TableDataColumnRow,
+    TableDataColumnSingle,
+    TableDataColumnTree,
+    TableDataFooterRow,
+    TableDataHeader,
+    TableDataHeaderExtract,
+    TableDataHeaderGroup,
+    TableDataHeaderKeyProvider,
+    TableDataHeaderRow,
+    TableDataHeaderSingle,
+    TableDataSummary,
+    TableDataSummaryExtract,
+    TableDataKeyProvider,
+    TableDataSummaryRow,
+    TableDataSummarySingle,
+    TableDataView,
+    TableDataRowSpec,
+} from "../table"
+
+import {
     decorateStyle,
     TableDataColumnDecorator,
     TableDataColumnRelatedDecorator,
@@ -15,9 +37,8 @@ import {
 } from "./decorator"
 import {
     extendStyle,
-    TableDataFullStyle,
     TableDataHorizontalBorder,
-    TableDataRowStyle,
+    TableDataSticky,
     TableDataStyle,
     TableDataVerticalBorder,
 } from "./style"
@@ -112,105 +133,39 @@ interface TableDataCell_tree<T, R> {
     decorateRow(decorator: TableDataRowDecorator): T
     decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): T
 }
+interface TableDataCell_row<T> {
+    setHeaderKey(key: TableDataHeaderKeyProvider): T
+    setSummaryKey(key: TableDataKeyProvider): T
+    setFooterKey(key: TableDataKeyProvider): T
+
+    stickyHeader(): T
+    stickyColumn(n: number): T
+    stickyCross(n: number): T
+}
 
 export interface TableSpec<M, R> {
     view(params: TableDataParams<M>): TableDataView[]
-    header(params: TableDataParams<M>): TableDataHeader[]
-    summary(params: TableDataParams<M>): TableDataSummary[]
-    column(params: TableDataRowParams<M, R>): TableDataColumnCollection
-    footer(params: TableDataParams<M>): TableDataSummary[]
+    header(params: TableDataParams<M>): TableDataRowSpec<TableDataHeaderRow>
+    summary(params: TableDataParams<M>): TableDataRowSpec<TableDataSummaryRow>
+    column(params: TableDataColumnParams<M, R>): TableDataRowSpec<TableDataColumnRow>
+    footer(params: TableDataParams<M>): TableDataRowSpec<TableDataFooterRow>
+
+    // sticky 情報
+    // header : off / on
+    // column : off / number
+    sticky(): TableDataSticky
 }
-export interface TableRow<M, R>
-    extends TableDataCell_base<TableRow<M, R>, R>,
-        TableDataCell_tree<TableRow<M, R>, R> {
+export interface TableSpec_hot<M, R>
+    extends TableDataCell_base<TableSpec_hot<M, R>, R>,
+        TableDataCell_tree<TableSpec_hot<M, R>, R>,
+        TableDataCell_row<TableSpec_hot<M, R>> {
     freeze(): TableSpec<M, R>
 }
 
 export type TableDataParams<M> = Readonly<{ model: M; visibleKeys: TableDataCellKey[] }>
 export type TableDataStyledParams<M> = TableDataParams<M> & Readonly<{ base: TableDataStyle }>
 export type TableDataRelatedParams<M, R> = TableDataStyledParams<M> & Readonly<{ row: R }>
-export type TableDataRowParams<M, R> = TableDataParams<M> & Readonly<{ row: R }>
-
-export type TableDataView = Readonly<{
-    key: VNodeKey
-    content: VNodeContent
-    isVisible: boolean
-}>
-
-export type TableDataHeader = TableDataHeaderSingle | TableDataHeaderExtract | TableDataHeaderGroup
-
-export type TableDataHeaderSingle = Readonly<{
-    type: "single"
-    key: VNodeKey
-    style: TableDataFullStyle
-    content: VNodeContent
-}>
-export type TableDataHeaderExtract = Readonly<{
-    type: "extract"
-    key: VNodeKey
-    style: TableDataFullStyle
-    content: VNodeContent
-    length: number
-}>
-export type TableDataHeaderGroup = Readonly<{
-    type: "group"
-    key: VNodeKey
-    style: TableDataFullStyle
-    content: VNodeContent
-    children: TableDataHeader[]
-}>
-
-export type TableDataSummary = TableDataSummarySingle | TableDataSummaryExtract
-
-export type TableDataSummaryEmpty = Readonly<{
-    type: "empty"
-    key: VNodeKey
-    style: TableDataFullStyle
-}>
-export type TableDataSummarySingle =
-    | TableDataSummaryEmpty
-    | Readonly<{
-          type: "single"
-          key: VNodeKey
-          style: TableDataFullStyle
-          content: VNodeContent
-      }>
-export type TableDataSummaryExtract =
-    | TableDataSummaryEmpty
-    | Readonly<{
-          type: "extract"
-          key: VNodeKey
-          style: TableDataFullStyle
-          content: VNodeContent
-          length: number
-      }>
-
-export type TableDataColumn = TableDataColumnSingle | TableDataColumnExtract | TableDataColumnTree
-
-export type TableDataColumnSingle = Readonly<{
-    type: "single"
-    key: VNodeKey
-    style: TableDataFullStyle
-    content: VNodeContent
-}>
-export type TableDataColumnExtract = Readonly<{
-    type: "extract"
-    key: VNodeKey
-    style: TableDataFullStyle
-    content: VNodeContent
-    length: number
-}>
-export type TableDataColumnTree = Readonly<{
-    type: "tree"
-    style: TableDataRowStyle
-    children: TableDataColumnCollection[]
-    width: number
-    height: number
-}>
-export type TableDataColumnCollection = Readonly<{
-    key: VNodeKey
-    columns: TableDataColumn[]
-}>
+export type TableDataColumnParams<M, R> = TableDataParams<M> & Readonly<{ row: R }>
 
 export interface TableDataColumnContentProvider<R> {
     (row: R): VNodeContent

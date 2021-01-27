@@ -1,8 +1,10 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
+import { VNodeContent } from "../../../../z_external/css/getto/preact/common"
+
 import { box_grow } from "../../../../z_external/css/getto/preact/design/box"
-import { form, searchColumn, checkbox } from "../../../../z_external/css/getto/preact/design/form"
+import { form, checkbox } from "../../../../z_external/css/getto/preact/design/form"
 
 type Props = {
     // no props
@@ -13,7 +15,7 @@ export function SearchColumn(_: Props): VNode {
         body: [
             form({
                 title: "表示する列",
-                body: searchColumn([
+                body: tableViewColumns([
                     column("ID", true),
                     column("名前", true),
                     column("状態", true),
@@ -35,4 +37,9 @@ export function SearchColumn(_: Props): VNode {
             key: label,
         })
     }
+}
+
+// TODO data に定義したやつを使用する
+function tableViewColumns(content: VNodeContent): VNode {
+    return html`<section class="table__viewColumns">${content}</section>`
 }

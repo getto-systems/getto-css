@@ -1,5 +1,13 @@
-import { TableDataMutable_core, TableDataMutable_tree } from "../mutable"
-import { tableDataMutable_core } from "../mutable/core"
+import {
+    TableDataColumnRow,
+    TableDataColumnTree,
+    TableDataHeader,
+    TableDataSummary,
+    TableDataView,
+} from "../../table"
+
+import { TableDataMutable_base, TableDataMutable_tree } from "../mutable"
+import { tableDataMutable_base } from "../mutable/base"
 import { tableDataMutable_tree } from "../mutable/tree"
 import {
     tableCellChildColumn,
@@ -9,16 +17,11 @@ import {
     tableCellView,
     TableDataCell,
     TableDataChildrenProvider,
-    TableDataColumnCollection,
-    TableDataColumnTree,
-    TableDataHeader,
     TableDataParams,
     TableDataRelatedParams,
     TableDataRowKeyProvider,
     TableDataStyledParams,
-    TableDataSummary,
     TableDataTree,
-    TableDataView,
 } from "../cell"
 import {
     decorateRowStyle,
@@ -45,14 +48,14 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
 
     content: TableDataTreeContent<M, R, C>
     mutable: Readonly<{
-        core: TableDataMutable_core<R>
+        core: TableDataMutable_base<R>
         tree: TableDataMutable_tree<R>
     }>
 
     constructor(content: TableDataTreeContent<M, R, C>) {
         this.content = content
         this.mutable = {
-            core: tableDataMutable_core(),
+            core: tableDataMutable_base(),
             tree: tableDataMutable_tree(),
         }
     }
@@ -91,7 +94,7 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
             },
         ]
 
-        function width(rows: TableDataColumnCollection[]): number {
+        function width(rows: TableDataColumnRow[]): number {
             return rows.reduce(
                 (all, row) =>
                     row.columns.reduce((acc, column) => {
@@ -106,7 +109,7 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
                 0
             )
         }
-        function height(rows: TableDataColumnCollection[]): number {
+        function height(rows: TableDataColumnRow[]): number {
             return Math.max(
                 1,
                 rows
@@ -128,7 +131,7 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
             )
         }
     }
-    children(params: TableDataRelatedParams<M, R>): TableDataColumnCollection[] {
+    children(params: TableDataRelatedParams<M, R>): TableDataColumnRow[] {
         const { style } = this.mutable.core.columnStyleMutable()
         const { decorators } = this.mutable.core.columnMutable()
         return this.content.data(params.row).map((child) => {

@@ -1,18 +1,21 @@
-import { tableDataMutable_core } from "../mutable/core"
+import {
+    TableDataColumnExtract,
+    TableDataHeaderExtract,
+    TableDataSummaryExtract,
+    TableDataView,
+} from "../../table"
+
+import { tableDataMutable_base } from "../mutable/base"
 import { tableDataMutable_leaf } from "../mutable/leaf"
-import { TableDataMutable_core, TableDataMutable_leaf } from "../mutable"
+import { TableDataMutable_base, TableDataMutable_leaf } from "../mutable"
 import {
     isVisibleKey,
     TableDataCellKey,
     TableDataColumnContentProvider,
-    TableDataColumnExtract,
     TableDataExtract,
-    TableDataHeaderExtract,
     TableDataParams,
     TableDataRelatedParams,
     TableDataStyledParams,
-    TableDataSummaryExtract,
-    TableDataView,
 } from "../cell"
 import {
     decorateContent,
@@ -54,7 +57,7 @@ class Cell<M, R> implements TableDataExtract<M, R> {
     key: TableDataCellKey
     content: TableDataExtractContent<M, R>
     mutable: Readonly<{
-        core: TableDataMutable_core<R>
+        core: TableDataMutable_base<R>
         leaf: TableDataMutable_leaf
     }>
 
@@ -62,7 +65,7 @@ class Cell<M, R> implements TableDataExtract<M, R> {
         this.key = key
         this.content = content
         this.mutable = {
-            core: tableDataMutable_core(),
+            core: tableDataMutable_base(),
             leaf: tableDataMutable_leaf(),
         }
     }

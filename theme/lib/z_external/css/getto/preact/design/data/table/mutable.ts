@@ -1,3 +1,4 @@
+import { TableDataHeaderKeyProvider, TableDataKeyProvider } from "../table"
 import {
     TableDataColumnDecorator,
     TableDataColumnRelatedDecorator,
@@ -14,12 +15,13 @@ import {
 import {
     TableDataHorizontalBorder,
     TableDataRowStyle,
+    TableDataSticky,
     TableDataStyle,
     TableDataVerticalBorder,
     TableDataVerticalBorderStyle,
 } from "./style"
 
-export interface TableDataMutable_core<R> {
+export interface TableDataMutable_base<R> {
     headerStyleMutable(): TableDataStyleMutable
     summaryStyleMutable(): TableDataStyleMutable
     columnStyleMutable(): TableDataStyleMutable
@@ -64,6 +66,20 @@ export interface TableDataMutable_tree<R> {
     decorateRow(decorator: TableDataRowDecorator): void
     decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): void
 }
+export interface TableDataMutable_row {
+    headerRowMutable(): TableDataHeaderRowMutable
+    summaryRowMutable(): TableDataSummaryRowMutable
+    footerRowMutable(): TableDataSummaryRowMutable
+    stickyMutable(): TableDataStickyMutable
+
+    setHeaderKey(key: TableDataHeaderKeyProvider): void
+    setSummaryKey(key: TableDataKeyProvider): void
+    setFooterKey(key: TableDataKeyProvider): void
+
+    stickyHeader(): void
+    stickyColumn(n: number): void
+    stickyCross(n: number): void
+}
 
 export type TableDataStyleMutable = Readonly<{
     style: TableDataStyle
@@ -80,6 +96,15 @@ export type TableDataColumnMutable<R> = Readonly<{
 export type TableDataRowMutable<R> = Readonly<{
     style: TableDataRowStyle
     decorators: TableDataRowRelatedDecorator<R>[]
+}>
+export type TableDataHeaderRowMutable = Readonly<{
+    key: TableDataHeaderKeyProvider
+}>
+export type TableDataSummaryRowMutable = Readonly<{
+    key: TableDataKeyProvider
+}>
+export type TableDataStickyMutable = Readonly<{
+    sticky: TableDataSticky
 }>
 
 export type TableDataVerticalBorderMutable = Readonly<{

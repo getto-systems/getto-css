@@ -1,5 +1,7 @@
-import { TableDataMutable_core } from "../mutable"
-import { tableDataMutable_core } from "../mutable/core"
+import { TableDataColumn, TableDataHeader, TableDataSummary, TableDataView } from "../../table"
+
+import { TableDataMutable_base } from "../mutable"
+import { tableDataMutable_base } from "../mutable/base"
 import {
     tableCellColumn,
     tableCellFooter,
@@ -8,14 +10,10 @@ import {
     tableCellView,
     TableDataCell,
     TableDataChildrenProvider,
-    TableDataColumn,
-    TableDataHeader,
     TableDataMultipart,
     TableDataParams,
     TableDataRelatedParams,
     TableDataStyledParams,
-    TableDataSummary,
-    TableDataView,
 } from "../cell"
 import {
     TableDataColumnDecorator,
@@ -40,13 +38,13 @@ class Cell<M, R, P> implements TableDataMultipart<M, R> {
 
     content: TableDataMultipartContent<M, R, P>
     mutable: Readonly<{
-        core: TableDataMutable_core<R>
+        core: TableDataMutable_base<R>
     }>
 
     constructor(content: TableDataMultipartContent<M, R, P>) {
         this.content = content
         this.mutable = {
-            core: tableDataMutable_core(),
+            core: tableDataMutable_base(),
         }
     }
 

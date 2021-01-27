@@ -4,30 +4,66 @@ import { html } from "htm/preact"
 import { VNodeContent } from "../common"
 import { checkbox } from "./form"
 
-import { tableSpec } from "./data/table/cell/row"
+import { tableSpec } from "./data/table/cell/spec"
 import { tableData } from "./data/table/cell/single"
 import { tableData_extract } from "./data/table/cell/extract"
 import { tableData_group } from "./data/table/cell/group"
 import { tableData_multipart } from "./data/table/cell/multipart"
 import { tableData_tree } from "./data/table/cell/tree"
 import { decorateNone, tableAlign, tableClassName } from "./data/table/decorator"
-import { TableDataCellKey, TableDataView, TableSpec } from "./data/table/cell"
+import { TableSpec } from "./data/table/cell"
 
 export function linky(content: VNodeContent): VNode {
     return html`<span class="linky">${content}</span>`
 }
 
-export type TableContent = Readonly<{
-    thead: VNodeContent
-    tbody: VNodeContent
-    tfoot: VNodeContent
-}>
-// TODO table のクラスバリエーションがいろいろある
-export function table({ thead, tbody, tfoot }: TableContent): VNode {
-    return html`<table class="table">
-        ${thead}${tbody}${tfoot}
+export function tableViewColumns(content: VNodeContent): VNode {
+    return html`<section class="table__viewColumns">${content}</section>`
+}
+
+type TableType = "normal" | "small" | "fill" | "smallFill"
+function tableClass(type: TableType): string {
+    switch (type) {
+        case "normal":
+            return ""
+
+        case "smallFill":
+            return "table_small table_fill"
+
+        default:
+            return `table_${type}`
+    }
+}
+
+export function table<M, R>(spec: TableSpec<M, R>, content: VNodeContent): VNode {
+    return tableContent("normal", spec, content)
+}
+export function table_small<M, R>(spec: TableSpec<M, R>, content: VNodeContent): VNode {
+    return tableContent("small", spec, content)
+}
+export function table_fill<M, R>(spec: TableSpec<M, R>, content: VNodeContent): VNode {
+    return tableContent("fill", spec, content)
+}
+export function table_small_fill<M, R>(spec: TableSpec<M, R>, content: VNodeContent): VNode {
+    return tableContent("smallFill", spec, content)
+}
+function tableContent<M, R>(type: TableType, spec: TableSpec<M, R>, content: VNodeContent): VNode {
+    return html`<table class="table ${tableClass(type)} ${stickyClass(spec)}">
+        ${content}
     </table>`
 }
+function stickyClass<M, R>(spec: TableSpec<M, R>): string {
+    switch (spec.sticky().type) {
+        case "none":
+            return ""
+
+        case "header":
+        case "column":
+        case "cross":
+            return "table_sticky"
+    }
+}
+
 export function thead(content: VNodeContent): VNode {
     return html`<thead>
         ${content}
@@ -42,19 +78,6 @@ export function tfoot(content: VNodeContent): VNode {
     return html`<tfoot>
         ${content}
     </tfoot>`
-}
-
-export type TableViewContent<M, R> = Readonly<{
-    spec: TableSpec<M, R>
-    model: M
-    visibleKeys: TableDataCellKey[]
-}>
-export function tableViewColumns<M, R>(
-    params: TableViewContent<M, R>,
-    content: { (view: TableDataView): VNodeContent }
-): VNode {
-    // TODO    search__columns を view__columns に変える
-    return html`<section class="search__columns">${params.spec.view(params).map(content)}</section>`
 }
 
 // TODO 以下テストコードを x_preact に移す
@@ -158,16 +181,24 @@ const rows: Row[] = []
 
 const visibleKeys = ["id", "union"]
 
-const params = { spec, visibleKeys, model, rows }
+const params = { visibleKeys, model, rows }
 
-tableViewColumns(params, ({ isVisible, content, key }) =>
-    checkbox({ isChecked: isVisible, input: html`${input}${content}`, key })
+tableViewColumns(
+    spec
+        .view(params)
+        .map(({ isVisible, content, key }) =>
+            checkbox({ isChecked: isVisible, input: html`${input}${content}`, key })
+        )
 )
 
-const content = tableContent(params)
+table(spec, [thead(header()), tbody(body()), tfoot(footer())])
 
-table({
-    thead: thead(content.header),
-    tbody: tbody(content.body),
-    tfoot: tfoot(content.footer),
-})
+function header() {
+    return [...tableHeader(spec.header(params)), ...tableSummary(spec.summary(params))]
+}
+function body() {
+    return rows.map((row) => tableColumn(spec.column({ ...params, row })))
+}
+function footer() {
+    return tableFooter(spec.footer(params))
+}

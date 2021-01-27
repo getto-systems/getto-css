@@ -3,10 +3,6 @@ import { html } from "htm/preact"
 
 import { VNodeContent } from "../common"
 
-export function searchColumn(content: VNodeContent): VNode {
-    return html`<section class="search__column">${content}</section>`
-}
-
 export type FormContent =
     | Readonly<{ type: NormalFormType; content: NormalFormContent }>
     | Readonly<{ type: NoticeFormType; content: NoticeFormContent }>

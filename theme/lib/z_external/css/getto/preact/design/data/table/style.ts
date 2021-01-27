@@ -1,3 +1,9 @@
+export type TableDataSticky =
+    | Readonly<{ type: "none" }>
+    | Readonly<{ type: "header" }>
+    | Readonly<{ type: "column"; column: number }>
+    | Readonly<{ type: "cross"; column: number }>
+
 export type TableDataStyle = Readonly<{
     horizontalBorder: TableDataHorizontalBorderStyle
     align: TableDataAlignStyle
