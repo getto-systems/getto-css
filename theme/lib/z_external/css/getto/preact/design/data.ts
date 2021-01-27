@@ -197,7 +197,7 @@ function header() {
     return [...tableHeader(spec.header(params)), ...tableSummary(spec.summary(params))]
 }
 function body() {
-    return rows.map((row) => tableColumn(spec.column({ ...params, row })))
+    return rows.map((row) => tableColumn(spec.column(params, row)))
 }
 function footer() {
     return tableFooter(spec.footer(params))

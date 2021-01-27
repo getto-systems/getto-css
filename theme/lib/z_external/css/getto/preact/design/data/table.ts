@@ -29,6 +29,7 @@ export type TableDataHeaderGroup = Readonly<{
     style: TableDataFullStyle
     content: VNodeContent
     children: TableDataHeader[]
+    height: number
 }>
 
 export type TableDataSummary = TableDataSummarySingle | TableDataSummaryExtract

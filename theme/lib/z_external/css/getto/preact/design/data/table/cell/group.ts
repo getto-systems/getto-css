@@ -87,6 +87,7 @@ class Cell<M, R> implements TableDataGroup<M, R> {
                 ),
                 content: this.content.header(),
                 children,
+                height: height(children),
             },
         ]
 
@@ -95,6 +96,18 @@ class Cell<M, R> implements TableDataGroup<M, R> {
                 left: first.style.border.vertical.left,
                 right: last.style.border.vertical.right,
             }
+        }
+        function height(headers: TableDataHeader[]): number {
+            return Math.max(...headers.map((header) => {
+                switch (header.type) {
+                    case "single":
+                    case "extract":
+                        return 1
+
+                    case "group":
+                        return height(header.children) + 1
+                }
+            }))
         }
     }
     children(params: TableDataStyledParams<M>): TableDataHeader[] {
