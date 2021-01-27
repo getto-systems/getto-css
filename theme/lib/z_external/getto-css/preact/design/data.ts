@@ -4,13 +4,13 @@ import { html } from "htm/preact"
 import { VNodeContent, VNodeKey } from "../../../preact/common"
 import { checkbox } from "./form"
 
-import { tableSpec } from "../../../preact/getto-table/cell/tableSpec"
-import { tableData } from "../../../preact/getto-table/cell/single"
-import { tableData_expansion } from "../../../preact/getto-table/cell/expansion"
-import { tableData_group } from "../../../preact/getto-table/cell/group"
-import { tableData_multipart } from "../../../preact/getto-table/cell/multipart"
-import { tableData_tree } from "../../../preact/getto-table/cell/tree"
-import { decorateNone, tableAlign, tableClassName } from "../../../preact/getto-table/decorator"
+import { tableSpec } from "../../../getto-table/preact/cell/tableSpec"
+import { tableData } from "../../../getto-table/preact/cell/single"
+import { tableData_expansion } from "../../../getto-table/preact/cell/expansion"
+import { tableData_group } from "../../../getto-table/preact/cell/group"
+import { tableData_multipart } from "../../../getto-table/preact/cell/multipart"
+import { tableData_tree } from "../../../getto-table/preact/cell/tree"
+import { decorateNone, tableAlign, tableClassName } from "../../../getto-table/preact/decorator"
 import {
     TableDataColumn,
     TableDataColumnRow,
@@ -22,7 +22,7 @@ import {
     TableDataSummaryRow,
     tableDataTreePadding,
     TableDataColumnTree,
-} from "../../../preact/getto-table/core"
+} from "../../../getto-table/preact/core"
 import {
     TableDataAlign,
     TableDataAlignStyle,
@@ -31,7 +31,7 @@ import {
     TableDataClassName,
     TableDataFullStyle,
     TableDataSticky,
-} from "../../../preact/getto-table/style"
+} from "../../../getto-table/preact/style"
 
 export function linky(content: VNodeContent): VNode {
     return html`<span class="linky">${content}</span>`
@@ -486,7 +486,7 @@ function stickyHeaderClass(sticky: TableDataSticky, level: number): string {
 
         case "header":
         case "cross":
-            return `cell_sticky_top${numberToClass(level)}`
+            return `cell_sticky_top${indexToClass(level)}`
     }
 }
 function stickyColumnClass(sticky: TableDataSticky, index: number): string {
@@ -500,10 +500,10 @@ function stickyColumnClass(sticky: TableDataSticky, index: number): string {
             if (index > sticky.column) {
                 return ""
             }
-            return `cell_sticky_left${numberToClass(index)}`
+            return `cell_sticky_left${indexToClass(index)}`
     }
 }
-function numberToClass(index: number): string {
+function indexToClass(index: number): string {
     if (index === 0) {
         return ""
     }
