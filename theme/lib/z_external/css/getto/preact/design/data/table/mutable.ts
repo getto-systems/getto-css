@@ -76,6 +76,10 @@ export interface TableDataMutable_row {
     setSummaryKey(key: TableDataKeyProvider): void
     setFooterKey(key: TableDataKeyProvider): void
 
+    decorateHeaderRow(decorator: TableDataRowDecorator): void
+    decorateSummaryRow(decorator: TableDataRowDecorator): void
+    decorateFooterRow(decorator: TableDataRowDecorator): void
+
     stickyHeader(): void
     stickyColumn(n: number): void
     stickyCross(n: number): void
@@ -99,9 +103,11 @@ export type TableDataRowMutable<R> = Readonly<{
 }>
 export type TableDataHeaderRowMutable = Readonly<{
     key: TableDataHeaderKeyProvider
+    style: TableDataRowStyle
 }>
 export type TableDataSummaryRowMutable = Readonly<{
     key: TableDataKeyProvider
+    style: TableDataRowStyle
 }>
 export type TableDataStickyMutable = Readonly<{
     sticky: TableDataSticky

@@ -64,48 +64,53 @@ class Spec<M, R> implements TableSpec<M, R>, TableSpec_hot<M, R> {
     }
     header(params: TableDataParams<M>): TableDataRowSpec<TableDataHeaderRow> {
         const { style } = this.mutable.core.headerStyleMutable()
-        const { key } = this.mutable.row.headerRowMutable()
+        const headerRow = this.mutable.row.headerRowMutable()
         const { sticky } = this.mutable.row.stickyMutable()
         return {
             sticky,
             row: {
-                key,
+                key: headerRow.key,
+                className: headerRow.style.className,
                 headers: tableCellBaseHeader(params, style, this.content.cells),
             },
         }
     }
     summary(params: TableDataParams<M>): TableDataRowSpec<TableDataSummaryRow> {
         const { style } = this.mutable.core.summaryStyleMutable()
-        const { key } = this.mutable.row.summaryRowMutable()
+        const summaryRow = this.mutable.row.summaryRowMutable()
         const { sticky } = this.mutable.row.stickyMutable()
         return {
             sticky,
             row: {
-                key: key(),
+                key: summaryRow.key(),
+                className: summaryRow.style.className,
                 summaries: tableCellBaseSummary(params, style, this.content.cells),
             },
         }
     }
     column(params: TableDataParams<M>, row: R): TableDataRowSpec<TableDataColumnRow> {
         const { style } = this.mutable.core.columnStyleMutable()
+        const treeRow = this.mutable.tree.rowMutable()
         const { decorators } = this.mutable.core.columnMutable()
         const { sticky } = this.mutable.row.stickyMutable()
         return {
             sticky,
             row: {
                 key: this.content.key(row),
+                className: treeRow.style.className,
                 columns: tableCellBaseColumn(params, style, decorators, this.content.cells, row),
             },
         }
     }
     footer(params: TableDataParams<M>): TableDataRowSpec<TableDataFooterRow> {
         const { style } = this.mutable.core.footerStyleMutable()
-        const { key } = this.mutable.row.footerRowMutable()
+        const footerRow = this.mutable.row.footerRowMutable()
         const { sticky } = this.mutable.row.stickyMutable()
         return {
             sticky,
             row: {
-                key: key(),
+                key: footerRow.key(),
+                className: footerRow.style.className,
                 footers: tableCellBaseFooter(params, style, this.content.cells),
             },
         }
@@ -150,6 +155,18 @@ class Spec<M, R> implements TableSpec<M, R>, TableSpec_hot<M, R> {
     }
     decorateFooter(decorator: TableDataSummaryDecorator): TableSpec_hot<M, R> {
         this.mutable.core.decorateFooter(decorator)
+        return this
+    }
+    decorateHeaderRow(decorator: TableDataRowDecorator): TableSpec_hot<M, R> {
+        this.mutable.row.decorateHeaderRow(decorator)
+        return this
+    }
+    decorateSummaryRow(decorator: TableDataRowDecorator): TableSpec_hot<M, R> {
+        this.mutable.row.decorateSummaryRow(decorator)
+        return this
+    }
+    decorateFooterRow(decorator: TableDataRowDecorator): TableSpec_hot<M, R> {
+        this.mutable.row.decorateFooterRow(decorator)
         return this
     }
     decorateRow(decorator: TableDataRowDecorator): TableSpec_hot<M, R> {

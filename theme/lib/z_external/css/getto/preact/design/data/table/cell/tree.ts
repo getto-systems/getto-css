@@ -133,10 +133,12 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
     }
     children(params: TableDataRelatedParams<M, R>): TableDataColumnRow[] {
         const { style } = this.mutable.core.columnStyleMutable()
+        const rowMutable = this.mutable.tree.rowMutable()
         const { decorators } = this.mutable.core.columnMutable()
         return this.content.data(params.row).map((child) => {
             return {
                 key: this.content.key(child),
+                className: rowMutable.style.className,
                 columns: tableCellChildColumn(child, params, style, decorators, this.content.cells),
             }
         })

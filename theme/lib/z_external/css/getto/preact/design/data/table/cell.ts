@@ -138,6 +138,10 @@ interface TableDataCell_row<T> {
     setSummaryKey(key: TableDataKeyProvider): T
     setFooterKey(key: TableDataKeyProvider): T
 
+    decorateHeaderRow(decorator: TableDataRowDecorator): T
+    decorateSummaryRow(decorator: TableDataRowDecorator): T
+    decorateFooterRow(decorator: TableDataRowDecorator): T
+
     stickyHeader(): T
     stickyColumn(n: number): T
     stickyCross(n: number): T

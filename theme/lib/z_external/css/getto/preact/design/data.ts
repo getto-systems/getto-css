@@ -12,6 +12,7 @@ import { tableData_multipart } from "./data/table/cell/multipart"
 import { tableData_tree } from "./data/table/cell/tree"
 import { decorateNone, tableAlign, tableClassName } from "./data/table/decorator"
 import { TableSpec } from "./data/table/cell"
+import { TableDataColumnRow, TableDataFooterRow, TableDataHeaderRow, TableDataRowSpec, TableDataSummaryRow } from "./data/table"
 
 export function linky(content: VNodeContent): VNode {
     return html`<span class="linky">${content}</span>`
@@ -78,6 +79,26 @@ export function tfoot(content: VNodeContent): VNode {
     return html`<tfoot>
         ${content}
     </tfoot>`
+}
+
+export function tableHeader({ sticky, row }: TableDataRowSpec<TableDataHeaderRow>): VNode[] {
+    // TODO build header tr/th
+    return null
+}
+
+export function tableSummary({ sticky, row }: TableDataRowSpec<TableDataSummaryRow>): VNode[] {
+    // TODO build summary tr/th
+    return null
+}
+
+export function tableColumn({ sticky, row }: TableDataRowSpec<TableDataColumnRow>): VNode[] {
+    // TODO build column tr/td
+    return null
+}
+
+export function tableFooter({ sticky, row }: TableDataRowSpec<TableDataFooterRow>): VNode[] {
+    // TODO build footer tr/th
+    return null
 }
 
 // TODO 以下テストコードを x_preact に移す
@@ -187,7 +208,7 @@ tableViewColumns(
     spec
         .view(params)
         .map(({ isVisible, content, key }) =>
-            checkbox({ isChecked: isVisible, input: html`${input}${content}`, key })
+            checkbox({ isChecked: isVisible, input: html`<input type="checkbox" />${content}`, key })
         )
 )
 
@@ -197,7 +218,7 @@ function header() {
     return [...tableHeader(spec.header(params)), ...tableSummary(spec.summary(params))]
 }
 function body() {
-    return rows.map((row) => tableColumn(spec.column(params, row)))
+    return rows.flatMap((row) => tableColumn(spec.column(params, row)))
 }
 function footer() {
     return tableFooter(spec.footer(params))

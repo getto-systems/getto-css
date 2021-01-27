@@ -5,6 +5,7 @@ import {
     TableDataSummaryRowMutable,
 } from "../mutable"
 import { TableDataHeaderKeyProvider, TableDataKeyProvider } from "../../table"
+import { decorateRowStyle, TableDataRowDecorator } from "../decorator"
 
 export function tableDataMutable_row(): TableDataMutable_row {
     return new Mutable()
@@ -18,12 +19,21 @@ class Mutable implements TableDataMutable_row {
     constructor() {
         this.headerRow = {
             key: (i: number) => `__header_${i}`,
+            style: {
+                className: [],
+            },
         }
         this.summaryRow = {
             key: () => "__summary",
+            style: {
+                className: [],
+            },
         }
         this.footerRow = {
             key: () => "__footer",
+            style: {
+                className: [],
+            },
         }
         this.sticky = {
             sticky: { type: "none" },
@@ -51,6 +61,19 @@ class Mutable implements TableDataMutable_row {
     }
     setFooterKey(key: TableDataKeyProvider): void {
         this.footerRow = { ...this.footerRow, key }
+    }
+
+    decorateHeaderRow(decorator: TableDataRowDecorator): void {
+        this.headerRow = { ...this.headerRow, style: decorateRowStyle(this.headerRow.style, decorator) }
+    }
+    decorateSummaryRow(decorator: TableDataRowDecorator): void {
+        this.summaryRow = {
+            ...this.summaryRow,
+            style: decorateRowStyle(this.summaryRow.style, decorator),
+        }
+    }
+    decorateFooterRow(decorator: TableDataRowDecorator): void {
+        this.footerRow = { ...this.footerRow, style: decorateRowStyle(this.footerRow.style, decorator) }
     }
 
     stickyHeader(): void {

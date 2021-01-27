@@ -1,6 +1,6 @@
 import { VNodeContent, VNodeKey } from "../../common"
 
-import { TableDataFullStyle, TableDataRowStyle, TableDataSticky } from "./table/style"
+import { TableDataClassName, TableDataFullStyle, TableDataRowStyle, TableDataSticky } from "./table/style"
 
 export type TableDataView = Readonly<{
     key: VNodeKey
@@ -82,18 +82,22 @@ export type TableDataColumnTree = Readonly<{
 
 export type TableDataHeaderRow = Readonly<{
     key: TableDataHeaderKeyProvider
+    className: TableDataClassName
     headers: TableDataHeader[]
 }>
 export type TableDataSummaryRow = Readonly<{
     key: VNodeKey
+    className: TableDataClassName
     summaries: TableDataSummary[]
 }>
 export type TableDataColumnRow = Readonly<{
     key: VNodeKey
+    className: TableDataClassName
     columns: TableDataColumn[]
 }>
 export type TableDataFooterRow = Readonly<{
     key: VNodeKey
+    className: TableDataClassName
     footers: TableDataSummary[]
 }>
 
