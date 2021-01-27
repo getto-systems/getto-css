@@ -1,4 +1,4 @@
-import { SiteInfo } from "../../z_external/getto-css/preact/common";
+import { SiteInfo } from "../../z_external/getto-css/preact/site";
 
 export function siteInfo(): SiteInfo {
     return {

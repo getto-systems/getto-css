@@ -1,7 +1,8 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { SiteInfo, VNodeContent } from "../common"
+import { VNodeContent } from "../../../preact/common"
+import { SiteInfo } from "../site"
 
 export type MainLayoutContent = Readonly<{
     header: VNodeContent

@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { VNodeContent, VNodeKey } from "../common"
+import { VNodeContent, VNodeKey } from "../../../preact/common"
 import { checkbox } from "./form"
 
 import { tableSpec } from "../../../preact/getto-table/cell/spec"
