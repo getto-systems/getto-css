@@ -4,7 +4,7 @@ import { html } from "htm/preact"
 import { VNodeContent, VNodeKey } from "../../../preact/common"
 import { checkbox } from "./form"
 
-import { tableSpec } from "../../../preact/getto-table/cell/spec"
+import { tableSpec } from "../../../preact/getto-table/cell/tableSpec"
 import { tableData } from "../../../preact/getto-table/cell/single"
 import { tableData_expansion } from "../../../preact/getto-table/cell/expansion"
 import { tableData_group } from "../../../preact/getto-table/cell/group"
@@ -194,7 +194,7 @@ export function tableHeader({
             function className() {
                 return [
                     styleClass(header.style),
-                    stickyColumnClass(sticky, index), // TODO 検証: group はうれしくないのでは
+                    stickyColumnClass(sticky, index), // group はうれしくないかもだけど設定しちゃう
                     stickyHeaderClass(sticky, level),
                 ].join(" ")
             }
@@ -513,7 +513,6 @@ function numberToClass(index: number): string {
 const EMPTY_CONTENT = html``
 
 // TODO 以下テストコードを x_preact に移す
-
 export function __demo(): void {
     type Model = Readonly<{
         maxEmailCount: number
