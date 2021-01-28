@@ -19,6 +19,7 @@ import {
     TableDataStyle,
     TableDataVerticalBorder,
     TableDataVerticalBorderStyle,
+    TableDataVisible,
 } from "./style"
 
 export interface TableDataMutable_base<R> {
@@ -42,11 +43,13 @@ export interface TableDataMutable_base<R> {
     decorateFooter(decorator: TableDataSummaryDecorator): void
 }
 export interface TableDataMutable_leaf {
+    visibleMutable(): TableDataVisibleMutable
     viewMutable(): TableDataViewMutable
     summaryMutable(): TableDataSummaryMutable
     footerMutable(): TableDataSummaryMutable
     verticalBorderMutable(): TableDataVerticalBorderMutable
 
+    alwaysVisible(): void
     border(borders: TableDataVerticalBorder[]): void
 
     decorateView(decorator: TableDataViewDecorator): void
@@ -87,6 +90,9 @@ export interface TableDataMutable_row {
 
 export type TableDataStyleMutable = Readonly<{
     style: TableDataStyle
+}>
+export type TableDataVisibleMutable = Readonly<{
+    visible: TableDataVisible
 }>
 export type TableDataViewMutable = Readonly<{
     decorator: TableDataContentDecoratorProvider

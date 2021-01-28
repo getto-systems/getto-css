@@ -48,7 +48,7 @@ export interface TableDataSingle<M, R>
         TableDataCell_leaf<TableDataSingle<M, R>> {
     type: "single"
 
-    view(params: TableDataParams<M>): TableDataView
+    view(params: TableDataParams<M>): TableDataView[]
     header(params: TableDataStyledParams<M>): TableDataHeaderSingle[]
     summary(params: TableDataStyledParams<M>): TableDataSummarySingle[]
     column(params: TableDataRelatedParams<M, R>): TableDataColumnSingle[]
@@ -59,7 +59,7 @@ export interface TableDataExpansion<M, R>
         TableDataCell_leaf<TableDataExpansion<M, R>> {
     type: "expansion"
 
-    view(params: TableDataParams<M>): TableDataView
+    view(params: TableDataParams<M>): TableDataView[]
     header(params: TableDataStyledParams<M>): TableDataHeaderExpansion[]
     summary(params: TableDataStyledParams<M>): TableDataSummaryExpansion[]
     column(params: TableDataRelatedParams<M, R>): TableDataColumnExpansion[]
@@ -111,9 +111,12 @@ interface TableDataCell_base<T, R> {
     decorateFooter(decorator: TableDataSummaryDecorator): T
 }
 interface TableDataCell_leaf<T> {
+    alwaysVisible(): T
     border(borders: TableDataVerticalBorder[]): T
+
     setSummary(content: TableDataSummaryProvider): T
     setFooter(content: TableDataSummaryProvider): T
+
     decorateView(decorator: TableDataViewDecorator): T
 }
 interface TableDataCell_group<T> {
@@ -266,5 +269,5 @@ export function isVisibleKey(key: TableDataCellKey, visibleKeys: TableDataVisibl
 
         case "keys":
             return visibleKeys.keys.includes(key)
-    }    
+    }
 }

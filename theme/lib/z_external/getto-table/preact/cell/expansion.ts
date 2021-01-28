@@ -78,20 +78,28 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
     }
 
     isVisible(visibleKeys: TableDataVisibleKeys): boolean {
-        return isVisibleKey(this.key, visibleKeys)
+        const { visible } = this.mutable.leaf.visibleMutable()
+        return visible === "always" || isVisibleKey(this.key, visibleKeys)
     }
 
     verticalBorder(): TableDataVerticalBorderStyle {
         return this.mutable.leaf.verticalBorderMutable().border
     }
 
-    view({ visibleKeys }: TableDataParams<M>): TableDataView {
-        const { decorator } = this.mutable.leaf.viewMutable()
-        return {
-            key: this.key,
-            content: decorateContent(this.content.label(), decorator),
-            isVisible: this.isVisible(visibleKeys),
+    view({ visibleKeys }: TableDataParams<M>): TableDataView[] {
+        const { visible } = this.mutable.leaf.visibleMutable()
+        if (visible === "always") {
+            return []
         }
+
+        const { decorator } = this.mutable.leaf.viewMutable()
+        return [
+            {
+                key: this.key,
+                content: decorateContent(this.content.label(), decorator),
+                isVisible: this.isVisible(visibleKeys),
+            },
+        ]
     }
     header({ visibleKeys, base, model }: TableDataStyledParams<M>): TableDataHeaderExpansion[] {
         if (!this.isVisible(visibleKeys)) {
@@ -194,6 +202,10 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
         }
     }
 
+    alwaysVisible(): TableDataExpansion<M, R> {
+        this.mutable.leaf.alwaysVisible()
+        return this
+    }
     border(borders: TableDataVerticalBorder[]): TableDataExpansion<M, R> {
         this.mutable.leaf.border(borders)
         return this
