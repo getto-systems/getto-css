@@ -39,10 +39,9 @@ export function linky(content: VNodeContent): VNode {
     return html`<span class="linky">${content}</span>`
 }
 
-export type SortLinkContent = Readonly<{
-    sort: Sort
-    key: SortKey
-}>
+export interface SortLink {
+    (key: SortKey): { (content: VNodeContent): VNode }
+}
 export type Sort = Readonly<{
     key: SortKey
     order: SortOrder
@@ -55,27 +54,28 @@ export type SortQuery = Readonly<{
     order: SortOrder
 }>
 export type SortHref = string
-export function sortLink({ sort, key }: SortLinkContent): { (content: VNodeContent): VNode } {
-    return (content) => html`<a href=${sort.href(sortQuery())}>${content} ${sortSign()}</a>`
+export function sortLink(sort: Sort): SortLink {
+    return (key) => (content) =>
+        html`<a href=${sort.href(sortQuery(key))}>${content} ${sortSign(key)}</a>`
 
-    function sortQuery(): SortQuery {
+    function sortQuery(key: SortKey): SortQuery {
         return { key, order: sortQueryOrder() }
-    }
 
-    function sortQueryOrder(): SortOrder {
-        if (sort.key !== key) {
-            return "normal"
-        }
-        switch (sort.order) {
-            case "normal":
-                return "reverse"
-
-            case "reverse":
+        function sortQueryOrder(): SortOrder {
+            if (sort.key !== key) {
                 return "normal"
+            }
+            switch (sort.order) {
+                case "normal":
+                    return "reverse"
+
+                case "reverse":
+                    return "normal"
+            }
         }
     }
 
-    function sortSign() {
+    function sortSign(key: SortKey) {
         if (sort.key !== key) {
             return ""
         }
