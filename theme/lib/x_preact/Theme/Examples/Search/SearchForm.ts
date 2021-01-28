@@ -10,7 +10,7 @@ import {
     checkbox,
 } from "../../../../z_external/getto-css/preact/design/form"
 
-import { icon, spinner } from "../../../common/icon"
+import { spinner } from "../../../common/icon"
 
 import { EditState, SearchProps } from "./Container"
 
@@ -86,7 +86,7 @@ function SearchFooter({ state, component }: SearchFooterProps) {
         const buttonState = state.modified ? "confirm" : "normal"
         return button_search({
             state: buttonState,
-            label: html`${icon("reload")} 再読み込み`,
+            label: "検索",
             onClick: onSearchClick,
         })
     }
