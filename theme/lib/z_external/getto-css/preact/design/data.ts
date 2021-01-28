@@ -5,13 +5,14 @@ import { VNodeContent, VNodeKey } from "../../../preact/common"
 import { checkbox } from "./form"
 
 import { tableStructure } from "../../../getto-table/preact/cell/structure"
-import { tableData } from "../../../getto-table/preact/cell/single"
-import { tableData_expansion } from "../../../getto-table/preact/cell/expansion"
-import { tableData_group } from "../../../getto-table/preact/cell/group"
-import { tableData_multipart } from "../../../getto-table/preact/cell/multipart"
-import { tableData_tree } from "../../../getto-table/preact/cell/tree"
+import { tableCell } from "../../../getto-table/preact/cell/single"
+import { tableCell_expansion } from "../../../getto-table/preact/cell/expansion"
+import { tableCell_group } from "../../../getto-table/preact/cell/group"
+import { tableCell_multipart } from "../../../getto-table/preact/cell/multipart"
+import { tableCell_tree } from "../../../getto-table/preact/cell/tree"
 import { decorateNone, tableAlign, tableClassName } from "../../../getto-table/preact/decorator"
 import {
+    visibleKeys,
     TableDataColumn,
     TableDataColumnRow,
     TableDataLeafColumn,
@@ -20,7 +21,7 @@ import {
     TableDataHeaderRow,
     TableDataSummary,
     TableDataSummaryRow,
-    tableDataTreePadding,
+    tableCellTreePadding,
     TableDataColumnTree,
 } from "../../../getto-table/preact/core"
 import {
@@ -32,9 +33,61 @@ import {
     TableDataFullStyle,
     TableDataSticky,
 } from "../../../getto-table/preact/style"
+import { icon } from "../../../../x_preact/common/icon"
 
 export function linky(content: VNodeContent): VNode {
     return html`<span class="linky">${content}</span>`
+}
+
+export type SortLinkContent = Readonly<{
+    sort: Sort
+    key: SortKey
+}>
+export type Sort = Readonly<{
+    key: SortKey
+    order: SortOrder
+    href: { (query: SortQuery): SortHref }
+}>
+export type SortKey = VNodeKey
+export type SortOrder = "normal" | "reverse"
+export type SortQuery = Readonly<{
+    key: SortKey
+    order: SortOrder
+}>
+export type SortHref = string
+export function sortLink({ sort, key }: SortLinkContent): { (content: VNodeContent): VNode } {
+    return (content) => html`<a href=${sort.href(sortQuery())}>${content} ${sortSign()}</a>`
+
+    function sortQuery(): SortQuery {
+        return { key, order: sortQueryOrder() }
+    }
+
+    function sortQueryOrder(): SortOrder {
+        if (sort.key !== key) {
+            return "normal"
+        }
+        switch (sort.order) {
+            case "normal":
+                return "reverse"
+
+            case "reverse":
+                return "normal"
+        }
+    }
+
+    function sortSign() {
+        if (sort.key !== key) {
+            return ""
+        }
+
+        switch (sort.order) {
+            case "normal":
+                return icon("angle-double-down")
+
+            case "reverse":
+                return icon("angle-double-up")
+        }
+    }
 }
 
 export function tableViewColumns(content: VNodeContent): VNode {
@@ -116,36 +169,33 @@ export function tableHeader({
         index: number
         header: TableDataHeader
     }>
-    return header(0, [{ index: 0, headers }])
+    return header(0, { index: 0, headers })
 
-    function header(level: number, collections: HeaderCollection[]): VNode[] {
-        const height = headerHeight(collections)
+    function header(level: number, collection: HeaderCollection): VNode[] {
+        const height = headerHeight(collection)
 
         return [
-            tr(key(level), className, gatherHeader(collections).map(headerTh)),
-            ...header(level + 1, gatherChildren(collections)),
+            tr(key(level), className, gatherHeader(collection).map(headerTh)),
+            ...gatherChildren(collection).flatMap((collection) => header(level + 1, collection)),
         ]
 
-        function gatherHeader(collections: HeaderCollection[]): HeaderContainer[] {
+        function gatherHeader({ headers, index }: HeaderCollection): HeaderContainer[] {
             type GatherResult = Readonly<{
                 index: number
                 headers: HeaderContainer[]
             }>
-            return collections.flatMap(
-                ({ headers, index }) =>
-                    headers.reduce((acc, header) => {
-                        return {
-                            index: acc.index + header.length,
-                            headers: [
-                                ...acc.headers,
-                                {
-                                    index: acc.index,
-                                    header,
-                                },
-                            ],
-                        }
-                    }, initialGatherResult(index)).headers
-            )
+            return headers.reduce((acc, header) => {
+                return {
+                    index: acc.index + header.length,
+                    headers: [
+                        ...acc.headers,
+                        {
+                            index: acc.index,
+                            header,
+                        },
+                    ],
+                }
+            }, initialGatherResult(index)).headers
             function initialGatherResult(index: number): GatherResult {
                 return {
                     index,
@@ -153,22 +203,20 @@ export function tableHeader({
                 }
             }
         }
-        function gatherChildren(collections: HeaderCollection[]): HeaderCollection[] {
-            return collections.flatMap((collection) =>
-                collection.headers.flatMap((header, index) => {
-                    switch (header.type) {
-                        case "single":
-                        case "expansion":
-                            return []
+        function gatherChildren(collection: HeaderCollection): HeaderCollection[] {
+            return collection.headers.flatMap((header, index) => {
+                switch (header.type) {
+                    case "single":
+                    case "expansion":
+                        return []
 
-                        case "group":
-                            return {
-                                index: collection.index + index,
-                                headers: header.children,
-                            }
-                    }
-                })
-            )
+                    case "group":
+                        return {
+                            index: collection.index + index,
+                            headers: header.children,
+                        }
+                }
+            })
         }
 
         function headerTh({ index, header }: HeaderContainer): VNode {
@@ -201,11 +249,8 @@ export function tableHeader({
         }
     }
 
-    function headerHeight(collections: HeaderCollection[]): number {
-        return Math.max(
-            0,
-            ...collections.flatMap((collection) => collection.headers.map((header) => header.height))
-        )
+    function headerHeight(collection: HeaderCollection): number {
+        return Math.max(0, ...collection.headers.map((header) => header.height))
     }
 }
 
@@ -338,7 +383,7 @@ export function tableColumn({ sticky, header: { headers }, column }: TableColumn
             }
 
             function padding(column: TableDataColumnTree, index: number): ColumnRow[] {
-                return tableDataTreePadding(`__empty_${index}`, height, column, headers).map(
+                return tableCellTreePadding(`__empty_${index}`, height, column, headers).map(
                     (column) => {
                         return {
                             key: [],
@@ -486,7 +531,7 @@ function stickyHeaderClass(sticky: TableDataSticky, level: number): string {
 
         case "header":
         case "cross":
-            return `cell_sticky_top${indexToClass(level)}`
+            return `cell_sticky cell_sticky_top${indexToClass(level)}`
     }
 }
 function stickyColumnClass(sticky: TableDataSticky, index: number): string {
@@ -500,7 +545,7 @@ function stickyColumnClass(sticky: TableDataSticky, index: number): string {
             if (index > sticky.column) {
                 return ""
             }
-            return `cell_sticky_left${indexToClass(index)}`
+            return `cell_sticky cell_sticky_left${indexToClass(index)}`
     }
 }
 function indexToClass(index: number): string {
@@ -537,7 +582,7 @@ export function __demo(): void {
     const structure = tableStructure({
         key: (row: Row) => row.id,
         cells: [
-            tableData("id", (_key) => {
+            tableCell("id", (_key) => {
                 return {
                     label: () => "ID",
                     header: linky,
@@ -555,11 +600,11 @@ export function __demo(): void {
                     }
                 }),
 
-            tableData_group({
+            tableCell_group({
                 key: "group",
                 header: () => linky("group"),
                 cells: [
-                    tableData_expansion("expansion", (_key) => {
+                    tableCell_expansion("expansion", (_key) => {
                         return {
                             label: () => "expansion",
                             header: linky,
@@ -568,10 +613,10 @@ export function __demo(): void {
                         }
                     }).border(["left"]),
 
-                    tableData_multipart({
+                    tableCell_multipart({
                         data: (summary: Model): string[] => summary.allParts,
                         cells: (part: string) => [
-                            tableData(`part_${part}`, (_key) => {
+                            tableCell(`part_${part}`, (_key) => {
                                 return {
                                     label: () => part,
                                     header: linky,
@@ -583,14 +628,14 @@ export function __demo(): void {
                 ],
             }),
 
-            tableData_tree({
+            tableCell_tree({
                 data: (row: Row): RowLog[] =>
                     row.logs.map((log) => {
                         return { log, row }
                     }),
                 key: ({ log }: RowLog) => log.id,
                 cells: [
-                    tableData("logDate", (_key) => {
+                    tableCell("logDate", (_key) => {
                         return {
                             label: () => "log date",
                             header: linky,
@@ -611,9 +656,7 @@ export function __demo(): void {
     }
     const rows: Row[] = []
 
-    const visibleKeys = ["id", "union"]
-
-    const params = { visibleKeys, model, rows }
+    const params = { visibleKeys: visibleKeys(["id", "union"]), model }
 
     const content = {
         sticky: structure.sticky(),

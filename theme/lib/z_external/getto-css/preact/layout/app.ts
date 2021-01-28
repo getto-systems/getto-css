@@ -78,6 +78,10 @@ export function sidebarBody_grow(content: VNodeContent): VNode {
     return html`<section class="sidebar__body sidebar__body_grow">${content}</section>`
 }
 
+export function sidebarLargeElement(content: VNodeContent): VNode {
+    return html`<section class="layout__app__sidebar__largeElement">${content}</section>`
+}
+
 export function mainFooter(): VNode {
     return html`<footer class="main__footer">
         <p class="main__footer__message">GETTO.systems</p>
@@ -144,13 +148,13 @@ export function menuFooter(): VNode {
     </footer>`
 }
 
-export function breadcrumbList(content: VNodeContent): VNode {
+export function mainBreadcrumb(content: VNodeContent): VNode {
     return html`<aside class="main__breadcrumb">${content}</aside>`
 }
-export function breadcrumbLink(href: string, content: VNodeContent): VNode {
+export function mainBreadcrumbLink(href: string, content: VNodeContent): VNode {
     return html`<a class="main__breadcrumb__item" href="${href}">${content}</a>`
 }
-export function breadcrumbSeparator(content: VNodeContent): VNode {
+export function mainBreadcrumbSeparator(content: VNodeContent): VNode {
     return html`<span class="main__breadcrumb__separator">${content}</span>`
 }
 

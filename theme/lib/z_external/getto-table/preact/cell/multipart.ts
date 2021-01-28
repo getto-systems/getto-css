@@ -33,7 +33,7 @@ export type TableDataMultipartContent<M, R, P> = Readonly<{
     data: TableDataChildrenProvider<M, P>
     cells: TableDataMultipartCellProvider<M, R, P>
 }>
-export function tableData_multipart<M, R, P>(
+export function tableCell_multipart<M, R, P>(
     content: TableDataMultipartContent<M, R, P>
 ): TableDataMultipart<M, R> {
     return new Cell(content)

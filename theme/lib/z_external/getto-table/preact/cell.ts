@@ -18,6 +18,7 @@ import {
     TableStructure,
     TableDataParams,
     TableDataCellKey,
+    TableDataVisibleKeys,
 } from "./core"
 
 import {
@@ -258,6 +259,12 @@ export function tableCellBaseFooter<M, R>(
     return cells.flatMap((cell) => cell.footer({ ...params, base }))
 }
 
-export function isVisibleKey(key: TableDataCellKey, visibleKeys: TableDataCellKey[]): boolean {
-    return visibleKeys.includes(key)
+export function isVisibleKey(key: TableDataCellKey, visibleKeys: TableDataVisibleKeys): boolean {
+    switch (visibleKeys.type) {
+        case "all":
+            return true
+
+        case "keys":
+            return visibleKeys.keys.includes(key)
+    }    
 }

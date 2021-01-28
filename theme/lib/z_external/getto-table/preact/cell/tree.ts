@@ -40,7 +40,7 @@ export type TableDataTreeContent<M, R, C> = Readonly<{
     key: TableDataRowKeyProvider<C>
     cells: TableDataCell<M, C>[]
 }>
-export function tableData_tree<M, R, C>(content: TableDataTreeContent<M, R, C>): TableDataTree<M, R> {
+export function tableCell_tree<M, R, C>(content: TableDataTreeContent<M, R, C>): TableDataTree<M, R> {
     return new Cell(content)
 }
 class Cell<M, R, C> implements TableDataTree<M, R> {

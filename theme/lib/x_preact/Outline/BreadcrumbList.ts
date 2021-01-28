@@ -3,9 +3,9 @@ import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
 import {
-    breadcrumbLink,
-    breadcrumbList,
-    breadcrumbSeparator,
+    mainBreadcrumbLink,
+    mainBreadcrumb,
+    mainBreadcrumbSeparator,
 } from "../../z_external/getto-css/preact/layout/app"
 
 import { siteInfo } from "../common/site"
@@ -32,7 +32,7 @@ export function BreadcrumbList({ breadcrumbList }: Props): VNode {
 
     switch (state.type) {
         case "initial-breadcrumb-list":
-            return EMPTY_CONTENT
+            return mainBreadcrumb(EMPTY_CONTENT)
 
         case "succeed-to-load":
             return content(state.breadcrumb)
@@ -40,7 +40,7 @@ export function BreadcrumbList({ breadcrumbList }: Props): VNode {
 }
 
 function content(breadcrumb: Breadcrumb): VNode {
-    return breadcrumbList(breadcrumbNodes(breadcrumb))
+    return mainBreadcrumb(breadcrumbNodes(breadcrumb))
 }
 function breadcrumbNodes(breadcrumb: Breadcrumb): VNode[] {
     return [breadcrumbTop()].concat(breadcrumb.map((node) => withSeparator(...map(node))))
@@ -56,14 +56,14 @@ function breadcrumbNodes(breadcrumb: Breadcrumb): VNode[] {
     }
 }
 function breadcrumbTop(): VNode {
-    return breadcrumbLink(CATEGORY_HREF, siteInfo().title)
+    return mainBreadcrumbLink(CATEGORY_HREF, siteInfo().title)
 }
 function breadcrumbCategory({ label }: MenuCategory): VNode {
-    return breadcrumbLink(CATEGORY_HREF, label)
+    return mainBreadcrumbLink(CATEGORY_HREF, label)
 }
 function breadcrumbItem({ label, icon, href }: MenuItem): VNode {
     const content = html`<i class="${icon}"></i> ${label}`
-    return breadcrumbLink(href, content)
+    return mainBreadcrumbLink(href, content)
 }
 
 function withSeparator(key: string, content: VNode): VNode {
@@ -73,6 +73,6 @@ function withSeparator(key: string, content: VNode): VNode {
 // カテゴリーのリンク href="#menu" は menu の id="menu" と対応
 // mobile レイアウトで menu の位置に移動
 const CATEGORY_HREF = `#${MENU_ID}`
-const SEPARATOR = breadcrumbSeparator(icon("chevron-right"))
+const SEPARATOR = mainBreadcrumbSeparator(icon("chevron-right"))
 
 const EMPTY_CONTENT = html``
