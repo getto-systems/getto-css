@@ -9,7 +9,7 @@ import {
     tableCellBaseFooter,
     TableDataCell,
     TableDataRowKeyProvider,
-    TableSpec_hot,
+    TableStructure_hot,
 } from "../cell"
 import {
     TableDataColumnDecorator,
@@ -30,26 +30,26 @@ import {
     TableDataParams,
     TableDataSummaryRow,
     TableDataView,
-    TableSpec,
+    TableStructure,
 } from "../core"
 import { tableDataMutable_row } from "../mutable/row"
 
-export type TableSpecContent<M, R> = Readonly<{
+export type TableStructureContent<M, R> = Readonly<{
     key: TableDataRowKeyProvider<R>
     cells: TableDataCell<M, R>[]
 }>
-export function tableSpec<M, R>(content: TableSpecContent<M, R>): TableSpec_hot<M, R> {
-    return new Spec(content)
+export function tableStructure<M, R>(content: TableStructureContent<M, R>): TableStructure_hot<M, R> {
+    return new Structure(content)
 }
-class Spec<M, R> implements TableSpec<M, R>, TableSpec_hot<M, R> {
-    content: TableSpecContent<M, R>
+class Structure<M, R> implements TableStructure<M, R>, TableStructure_hot<M, R> {
+    content: TableStructureContent<M, R>
     mutable: Readonly<{
         core: TableDataMutable_base<R>
         tree: TableDataMutable_tree<R>
         row: TableDataMutable_row
     }>
 
-    constructor(content: TableSpecContent<M, R>) {
+    constructor(content: TableStructureContent<M, R>) {
         this.content = content
         this.mutable = {
             core: tableDataMutable_default(),
@@ -99,95 +99,95 @@ class Spec<M, R> implements TableSpec<M, R>, TableSpec_hot<M, R> {
         }
     }
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableSpec_hot<M, R> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableStructure_hot<M, R> {
         this.mutable.core.horizontalBorder(borders)
         return this
     }
-    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableSpec_hot<M, R> {
+    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableStructure_hot<M, R> {
         this.mutable.core.horizontalBorderRelated(borders)
         return this
     }
-    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableSpec_hot<M, R> {
+    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableStructure_hot<M, R> {
         this.mutable.core.horizontalBorder_header(borders)
         return this
     }
-    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableSpec_hot<M, R> {
+    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableStructure_hot<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
         return this
     }
-    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableSpec_hot<M, R> {
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableStructure_hot<M, R> {
         this.mutable.core.horizontalBorder_footer(borders)
         return this
     }
 
-    decorateHeader(decorator: TableDataHeaderDecorator): TableSpec_hot<M, R> {
+    decorateHeader(decorator: TableDataHeaderDecorator): TableStructure_hot<M, R> {
         this.mutable.core.decorateHeader(decorator)
         return this
     }
-    decorateSummary(decorator: TableDataSummaryDecorator): TableSpec_hot<M, R> {
+    decorateSummary(decorator: TableDataSummaryDecorator): TableStructure_hot<M, R> {
         this.mutable.core.decorateSummary(decorator)
         return this
     }
-    decorateColumn(decorator: TableDataColumnDecorator): TableSpec_hot<M, R> {
+    decorateColumn(decorator: TableDataColumnDecorator): TableStructure_hot<M, R> {
         this.mutable.core.decorateColumn(decorator)
         return this
     }
-    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableSpec_hot<M, R> {
+    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableStructure_hot<M, R> {
         this.mutable.core.decorateColumnRelated(decorator)
         return this
     }
-    decorateFooter(decorator: TableDataSummaryDecorator): TableSpec_hot<M, R> {
+    decorateFooter(decorator: TableDataSummaryDecorator): TableStructure_hot<M, R> {
         this.mutable.core.decorateFooter(decorator)
         return this
     }
-    decorateHeaderRow(decorator: TableDataRowDecorator): TableSpec_hot<M, R> {
+    decorateHeaderRow(decorator: TableDataRowDecorator): TableStructure_hot<M, R> {
         this.mutable.row.decorateHeaderRow(decorator)
         return this
     }
-    decorateSummaryRow(decorator: TableDataRowDecorator): TableSpec_hot<M, R> {
+    decorateSummaryRow(decorator: TableDataRowDecorator): TableStructure_hot<M, R> {
         this.mutable.row.decorateSummaryRow(decorator)
         return this
     }
-    decorateFooterRow(decorator: TableDataRowDecorator): TableSpec_hot<M, R> {
+    decorateFooterRow(decorator: TableDataRowDecorator): TableStructure_hot<M, R> {
         this.mutable.row.decorateFooterRow(decorator)
         return this
     }
-    decorateRow(decorator: TableDataRowDecorator): TableSpec_hot<M, R> {
+    decorateRow(decorator: TableDataRowDecorator): TableStructure_hot<M, R> {
         this.mutable.tree.decorateRow(decorator)
         return this
     }
-    decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): TableSpec_hot<M, R> {
+    decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): TableStructure_hot<M, R> {
         this.mutable.tree.decorateRowRelated(decorator)
         return this
     }
 
-    setHeaderKey(key: TableDataHeaderKeyProvider): TableSpec_hot<M, R> {
+    setHeaderKey(key: TableDataHeaderKeyProvider): TableStructure_hot<M, R> {
         this.mutable.row.setHeaderKey(key)
         return this
     }
-    setSummaryKey(key: TableDataKeyProvider): TableSpec_hot<M, R> {
+    setSummaryKey(key: TableDataKeyProvider): TableStructure_hot<M, R> {
         this.mutable.row.setSummaryKey(key)
         return this
     }
-    setFooterKey(key: TableDataKeyProvider): TableSpec_hot<M, R> {
+    setFooterKey(key: TableDataKeyProvider): TableStructure_hot<M, R> {
         this.mutable.row.setFooterKey(key)
         return this
     }
 
-    stickyHeader(): TableSpec_hot<M, R> {
+    stickyHeader(): TableStructure_hot<M, R> {
         this.mutable.row.stickyHeader()
         return this
     }
-    stickyColumn(column: number): TableSpec_hot<M, R> {
+    stickyColumn(column: number): TableStructure_hot<M, R> {
         this.mutable.row.stickyColumn(column)
         return this
     }
-    stickyCross(column: number): TableSpec_hot<M, R> {
+    stickyCross(column: number): TableStructure_hot<M, R> {
         this.mutable.row.stickyCross(column)
         return this
     }
 
-    freeze(): TableSpec<M, R> {
+    freeze(): TableStructure<M, R> {
         return this
     }
     sticky(): TableDataSticky {

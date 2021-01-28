@@ -9,7 +9,7 @@ import {
     TableDataSticky,
 } from "./style"
 
-export interface TableSpec<M, R> {
+export interface TableStructure<M, R> {
     view(params: TableDataParams<M>): TableDataView[]
     header(params: TableDataParams<M>): TableDataHeaderRow
     summary(params: TableDataParams<M>): TableDataSummaryRow
