@@ -15,6 +15,7 @@ import {
     tbody,
     sortLink,
     Sort,
+    SortLink,
 } from "../../../../z_external/getto-css/preact/design/data"
 import { label_gray, label_warning } from "../../../../z_external/getto-css/preact/design/highlight"
 import { VNodeContent } from "../../../../z_external/preact/common"
@@ -31,7 +32,7 @@ export function Table(_: Props): VNode {
         order: "normal",
         href: (query) => `?sort=${query.key}.${query.order}`,
     }
-    const structure = useMemo(buildStructure(sort), [])
+    const structure = useMemo(buildStructure(sortLink(sort)), [])
 
     const model: Model = {
         rows: generateRows(),
@@ -54,79 +55,6 @@ export function Table(_: Props): VNode {
             ),
         ])
     )
-
-    return sidebarLargeElement(html`<table class="table table_sticky">
-        <thead class="table__header">
-            <tr>
-                <th
-                    class="cell_sticky cell_sticky_left cell_sticky_top cell_border_t cell_border_bb cell_border_rr"
-                >
-                    <a href="#">ID <i class="lnir lnir-chevron-down"></i></a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <a href="#">名前</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <a href="#">状態</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <a href="#">メールアドレス</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <a href="#">価格</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <a href="#">更新日時</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <span class="linky">メモ</span>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb cell_border_l"></th>
-            </tr>
-        </thead>
-        <tbody>
-            ${repeatedRows()}
-        </tbody>
-    </table>`)
-
-    function repeatedRows() {
-        const result = []
-        for (let i = 0; i < 100; i++) {
-            result.push(rows())
-        }
-        return result
-    }
-
-    function rows() {
-        return html`
-            <tr class="row row_hover">
-                <td class="cell_sticky cell_sticky_left cell_border_b cell_border_rr">1234</td>
-                <td class="cell_border_b">GETTO CSS</td>
-                <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
-                <td class="cell_border_b">admin@example.com</td>
-                <td class="cell_border_b cell_numeric">1,200</td>
-                <td class="cell_border_b"><small>2020/06/19 08:03</small></td>
-                <td class="cell_border_b">simple admin theme</td>
-                <td class="cell_border_b cell_border_l">
-                    <a href="#"><i class="lnir lnir-pencil"></i> 編集</a>
-                </td>
-            </tr>
-            <tr class="row row_hover">
-                <td class="cell_sticky cell_sticky_left cell_border_b cell_border_rr">123</td>
-                <td class="cell_border_b">GETTO</td>
-                <td class="cell_border_b cell_center">
-                    <span class="label label_warning">作業中</span>
-                </td>
-                <td class="cell_border_b">user@example.com</td>
-                <td class="cell_border_b cell_numeric">13,500</td>
-                <td class="cell_border_b"><small>2020/01/10</small></td>
-                <td class="cell_border_b">simple css theme</td>
-                <td class="cell_border_b cell_border_l">
-                    <a href="#"><i class="lnir lnir-pencil"></i> 編集</a>
-                </td>
-            </tr>
-        `
-    }
 }
 
 type Model = Readonly<{
@@ -142,14 +70,14 @@ type Row = Readonly<{
     memo: string
 }>
 
-const buildStructure = (sort: Sort): Factory<TableStructure<Model, Row>> => () =>
+const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
     tableStructure({
         key: (row: Row) => row.id,
         cells: [
             tableCell("id", (key) => {
                 return {
                     label: () => "ID",
-                    header: sortLink({ sort, key }),
+                    header: sort(key),
                     column: (row: Row) => row.id,
                 }
             }).border(["rightDouble"]),
@@ -157,7 +85,7 @@ const buildStructure = (sort: Sort): Factory<TableStructure<Model, Row>> => () =
             tableCell("name", (key) => {
                 return {
                     label: () => "名前",
-                    header: sortLink({ sort, key }),
+                    header: sort(key),
                     column: (row: Row) => row.name,
                 }
             }),
@@ -165,7 +93,7 @@ const buildStructure = (sort: Sort): Factory<TableStructure<Model, Row>> => () =
             tableCell("state", (key) => {
                 return {
                     label: () => "状態",
-                    header: sortLink({ sort, key }),
+                    header: sort(key),
                     column: (row: Row) => stateLabel(row.state),
                 }
             }).decorateColumn(tableAlign(["center"])),
@@ -173,7 +101,7 @@ const buildStructure = (sort: Sort): Factory<TableStructure<Model, Row>> => () =
             tableCell("email", (key) => {
                 return {
                     label: () => "メールアドレス",
-                    header: sortLink({ sort, key }),
+                    header: sort(key),
                     column: (row: Row) => row.email,
                 }
             }),
@@ -181,7 +109,7 @@ const buildStructure = (sort: Sort): Factory<TableStructure<Model, Row>> => () =
             tableCell("price", (key) => {
                 return {
                     label: () => "価格",
-                    header: sortLink({ sort, key }),
+                    header: sort(key),
                     column: (row: Row) => formatPrice(row.price),
                 }
             }).decorateColumn(tableAlign(["numeric"])),
@@ -189,7 +117,7 @@ const buildStructure = (sort: Sort): Factory<TableStructure<Model, Row>> => () =
             tableCell("updatedAt", (key) => {
                 return {
                     label: () => "更新日時",
-                    header: sortLink({ sort, key }),
+                    header: sort(key),
                     column: (row: Row) => small(row.updatedAt),
                 }
             }),
@@ -261,8 +189,4 @@ function stateLabel(state: string): VNodeContent {
 
 function formatPrice(price: number): string {
     return Intl.NumberFormat("ja-JP").format(price)
-}
-
-interface Factory<T> {
-    (): T
 }
