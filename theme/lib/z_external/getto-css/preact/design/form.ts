@@ -354,6 +354,10 @@ function checkableContent(
     >`
 }
 
+export function pager(content: VNodeContent): VNode {
+    return html`<label class="pager">${content}</label>`
+}
+
 interface Post<T> {
     (event: T): void
 }

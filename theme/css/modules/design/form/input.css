@@ -101,6 +101,10 @@ input[type="email"] {
     width: calc(100% - 0.1rem);
 }
 
+.pager select {
+    margin-right: 0.5em;
+}
+
 .input__radio,
 .input__checkbox {
     display: inline-block;
