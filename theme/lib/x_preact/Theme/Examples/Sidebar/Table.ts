@@ -41,7 +41,6 @@ export function Table(_: Props): VNode {
 
     const content = {
         sticky: structure.sticky(),
-        view: structure.view(params),
         header: structure.header(params),
     }
 

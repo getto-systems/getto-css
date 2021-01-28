@@ -71,20 +71,28 @@ class Cell<M, R> implements TableDataSingle<M, R> {
     }
 
     isVisible(visibleKeys: TableDataVisibleKeys): boolean {
-        return isVisibleKey(this.key, visibleKeys)
+        const { visible } = this.mutable.leaf.visibleMutable()
+        return visible === "always" || isVisibleKey(this.key, visibleKeys)
     }
 
     verticalBorder(): TableDataVerticalBorderStyle {
         return this.mutable.leaf.verticalBorderMutable().border
     }
 
-    view({ visibleKeys }: TableDataParams<M>): TableDataView {
-        const { decorator } = this.mutable.leaf.viewMutable()
-        return {
-            key: this.key,
-            content: decorateContent(this.content.label(), decorator),
-            isVisible: this.isVisible(visibleKeys),
+    view({ visibleKeys }: TableDataParams<M>): TableDataView[] {
+        const { visible } = this.mutable.leaf.visibleMutable()
+        if (visible === "always") {
+            return []
         }
+
+        const { decorator } = this.mutable.leaf.viewMutable()
+        return [
+            {
+                key: this.key,
+                content: decorateContent(this.content.label(), decorator),
+                isVisible: this.isVisible(visibleKeys),
+            },
+        ]
     }
     header({ visibleKeys, base }: TableDataStyledParams<M>): TableDataHeaderSingle[] {
         if (!this.isVisible(visibleKeys)) {
@@ -162,6 +170,10 @@ class Cell<M, R> implements TableDataSingle<M, R> {
         }
     }
 
+    alwaysVisible(): TableDataSingle<M, R> {
+        this.mutable.leaf.alwaysVisible()
+        return this
+    }
     border(borders: TableDataVerticalBorder[]): TableDataSingle<M, R> {
         this.mutable.leaf.border(borders)
         return this

@@ -203,3 +203,5 @@ function extendClassName({
 }>): TableDataClassName {
     return [...base, ...style]
 }
+
+export type TableDataVisible = "normal" | "always"

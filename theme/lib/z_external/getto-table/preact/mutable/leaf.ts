@@ -3,6 +3,7 @@ import {
     TableDataSummaryMutable,
     TableDataVerticalBorderMutable,
     TableDataViewMutable,
+    TableDataVisibleMutable,
 } from "../mutable"
 import { decorateVerticalBorder } from "../decorator/border"
 import { TableDataSummaryProvider, TableDataViewDecorator } from "../decorator"
@@ -12,12 +13,16 @@ export function tableDataMutable_leaf(): TableDataMutable_leaf {
     return new Mutable()
 }
 class Mutable implements TableDataMutable_leaf {
+    visible: TableDataVisibleMutable
     view: TableDataViewMutable
     summary: TableDataSummaryMutable
     footer: TableDataSummaryMutable
     verticalBorder: TableDataVerticalBorderMutable
 
     constructor() {
+        this.visible = {
+            visible: "normal",
+        }
         this.view = {
             decorator: { type: "none" },
         }
@@ -32,6 +37,9 @@ class Mutable implements TableDataMutable_leaf {
         }
     }
 
+    visibleMutable(): TableDataVisibleMutable {
+        return this.visible
+    }
     viewMutable(): TableDataViewMutable {
         return this.view
     }
@@ -45,6 +53,9 @@ class Mutable implements TableDataMutable_leaf {
         return this.verticalBorder
     }
 
+    alwaysVisible(): void {
+        this.visible = { ...this.visible, visible: "always" }
+    }
     border(borders: TableDataVerticalBorder[]): void {
         this.verticalBorder = {
             ...this.verticalBorder,
