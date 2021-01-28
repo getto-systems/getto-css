@@ -15,7 +15,7 @@ import {
     TableDataKeyProvider,
     TableDataSummarySingle,
     TableDataView,
-    TableSpec,
+    TableStructure,
     TableDataParams,
     TableDataCellKey,
 } from "./core"
@@ -137,11 +137,11 @@ interface TableDataCell_row<T> {
     stickyCross(n: number): T
 }
 
-export interface TableSpec_hot<M, R>
-    extends TableDataCell_base<TableSpec_hot<M, R>, R>,
-        TableDataCell_tree<TableSpec_hot<M, R>, R>,
-        TableDataCell_row<TableSpec_hot<M, R>> {
-    freeze(): TableSpec<M, R>
+export interface TableStructure_hot<M, R>
+    extends TableDataCell_base<TableStructure_hot<M, R>, R>,
+        TableDataCell_tree<TableStructure_hot<M, R>, R>,
+        TableDataCell_row<TableStructure_hot<M, R>> {
+    freeze(): TableStructure<M, R>
 }
 
 export type TableDataStyledParams<M> = TableDataParams<M> & Readonly<{ base: TableDataStyle }>

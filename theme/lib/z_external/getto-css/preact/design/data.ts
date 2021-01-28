@@ -4,7 +4,7 @@ import { html } from "htm/preact"
 import { VNodeContent, VNodeKey } from "../../../preact/common"
 import { checkbox } from "./form"
 
-import { tableSpec } from "../../../getto-table/preact/cell/tableSpec"
+import { tableStructure } from "../../../getto-table/preact/cell/structure"
 import { tableData } from "../../../getto-table/preact/cell/single"
 import { tableData_expansion } from "../../../getto-table/preact/cell/expansion"
 import { tableData_group } from "../../../getto-table/preact/cell/group"
@@ -534,7 +534,7 @@ export function __demo(): void {
         name: string
     }>
 
-    const spec = tableSpec({
+    const structure = tableStructure({
         key: (row: Row) => row.id,
         cells: [
             tableData("id", (_key) => {
@@ -615,30 +615,23 @@ export function __demo(): void {
 
     const params = { visibleKeys, model, rows }
 
+    const content = {
+        sticky: structure.sticky(),
+        view: structure.view(params),
+        header: structure.header(params),
+        summary: structure.summary(params),
+        footer: structure.footer(params),
+    }
+
     tableViewColumns(
-        spec
-            .view(params)
-            .map(({ isVisible, content, key }) =>
-                checkbox({ isChecked: isVisible, input: html`<input type="checkbox" />${content}`, key })
-            )
+        content.view.map(({ isVisible, content, key }) =>
+            checkbox({ isChecked: isVisible, input: html`<input type="checkbox" />${content}`, key })
+        )
     )
 
-    const content = {
-        sticky: spec.sticky(),
-        header: spec.header(params),
-        summary: spec.summary(params),
-        footer: spec.footer(params),
-    }
-
-    table(content.sticky, [thead(header()), tbody(body()), tfoot(footer())])
-
-    function header() {
-        return [...tableHeader(content), ...tableSummary(content)]
-    }
-    function body() {
-        return rows.flatMap((row) => tableColumn({ ...content, column: spec.column(params, row) }))
-    }
-    function footer() {
-        return tableFooter(content)
-    }
+    table(content.sticky, [
+        thead([...tableHeader(content), ...tableSummary(content)]),
+        tbody(rows.flatMap((row) => tableColumn({ ...content, column: structure.column(params, row) }))),
+        tfoot(tableFooter(content)),
+    ])
 }
