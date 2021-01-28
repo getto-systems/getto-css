@@ -5,6 +5,7 @@ import {
     TableDataParams,
     TableDataSummarySingle,
     TableDataView,
+    TableDataVisibleKeys,
 } from "../core"
 
 import { tableDataMutable_base } from "../mutable/base"
@@ -44,7 +45,7 @@ export type TableDataSingleContent<R> = Readonly<{
     header: TableDataContentDecorator
     column: TableDataColumnContentProvider<R>
 }>
-export function tableData<M, R>(
+export function tableCell<M, R>(
     key: TableDataCellKey,
     content: { (key: TableDataCellKey): TableDataSingleContent<R> }
 ): TableDataSingle<M, R> {
@@ -69,7 +70,7 @@ class Cell<M, R> implements TableDataSingle<M, R> {
         }
     }
 
-    isVisible(visibleKeys: TableDataCellKey[]): boolean {
+    isVisible(visibleKeys: TableDataVisibleKeys): boolean {
         return isVisibleKey(this.key, visibleKeys)
     }
 

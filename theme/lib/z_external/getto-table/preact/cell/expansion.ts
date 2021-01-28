@@ -7,6 +7,7 @@ import {
     TableDataParams,
     TableDataSummaryExpansion,
     TableDataView,
+    TableDataVisibleKeys,
 } from "../core"
 
 import { tableDataMutable_base } from "../mutable/base"
@@ -47,7 +48,7 @@ export type TableDataExpansionContent<M, R> = Readonly<{
     column: TableDataExpansionColumnContentProvider<R>
     length: TableDataExpansionLengthProvider<M>
 }>
-export function tableData_expansion<M, R>(
+export function tableCell_expansion<M, R>(
     key: TableDataCellKey,
     content: { (key: TableDataCellKey): TableDataExpansionContent<M, R> }
 ): TableDataExpansion<M, R> {
@@ -76,7 +77,7 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
         return Math.max(this.content.length(model), 1)
     }
 
-    isVisible(visibleKeys: TableDataCellKey[]): boolean {
+    isVisible(visibleKeys: TableDataVisibleKeys): boolean {
         return isVisibleKey(this.key, visibleKeys)
     }
 

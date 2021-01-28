@@ -45,7 +45,7 @@ export type TableDataGroupContent<M, R> = Readonly<{
     header: TableDataContentProvider
     cells: TableDataCell<M, R>[]
 }>
-export function tableData_group<M, R>(content: TableDataGroupContent<M, R>): TableDataGroup<M, R> {
+export function tableCell_group<M, R>(content: TableDataGroupContent<M, R>): TableDataGroup<M, R> {
     return new Cell(content)
 }
 class Cell<M, R> implements TableDataGroup<M, R> {

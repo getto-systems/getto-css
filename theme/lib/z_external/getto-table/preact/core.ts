@@ -19,8 +19,16 @@ export interface TableStructure<M, R> {
     sticky(): TableDataSticky
 }
 
-export type TableDataParams<M> = Readonly<{ model: M; visibleKeys: TableDataCellKey[] }>
+export type TableDataParams<M> = Readonly<{ model: M; visibleKeys: TableDataVisibleKeys }>
 export type TableDataCellKey = VNodeKey
+export type TableDataVisibleKeys =
+    | Readonly<{ type: "all" }>
+    | Readonly<{ type: "keys"; keys: TableDataCellKey[] }>
+
+export const visibleAll: TableDataVisibleKeys = { type: "all" }
+export function visibleKeys(keys: TableDataCellKey[]): TableDataVisibleKeys {
+    return { type: "keys", keys }
+}
 
 export type TableDataView = Readonly<{
     key: VNodeKey
@@ -106,7 +114,7 @@ export type TableDataColumnTree = Readonly<{
     length: number
     height: number
 }>
-export function tableDataTreePadding(
+export function tableCellTreePadding(
     key: VNodeKey,
     height: number,
     tree: TableDataColumnTree,
