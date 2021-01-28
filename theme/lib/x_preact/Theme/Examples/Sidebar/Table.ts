@@ -2,10 +2,14 @@ import { VNode } from "preact"
 import { useMemo } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { TableStructure, visibleAll } from "../../../../z_external/getto-table/preact/core"
-import { sidebarLargeElement } from "../../../../z_external/getto-css/preact/layout/app"
+import { icon } from "../../../common/icon"
+
+import { visibleAll } from "../../../../z_external/getto-table/preact/core"
 import { tableStructure } from "../../../../z_external/getto-table/preact/cell/structure"
 import { tableCell } from "../../../../z_external/getto-table/preact/cell/single"
+import { tableAlign, tableClassName } from "../../../../z_external/getto-table/preact/decorator"
+
+import { sidebarLargeElement } from "../../../../z_external/getto-css/preact/layout/app"
 import {
     linky,
     table,
@@ -18,10 +22,8 @@ import {
     SortLink,
 } from "../../../../z_external/getto-css/preact/design/data"
 import { label_gray, label_warning } from "../../../../z_external/getto-css/preact/design/highlight"
-import { VNodeContent } from "../../../../z_external/preact/common"
 import { small } from "../../../../z_external/getto-css/preact/design/alignment"
-import { icon } from "../../../common/icon"
-import { tableAlign, tableClassName } from "../../../../z_external/getto-table/preact/decorator"
+import { sortSign } from "../../../common/data"
 
 type Props = {
     // no props
@@ -31,6 +33,7 @@ export function Table(_: Props): VNode {
         key: "id",
         order: "normal",
         href: (query) => `?sort=${query.key}.${query.order}`,
+        sign: sortSign,
     }
     const structure = useMemo(buildStructure(sortLink(sort)), [])
 
@@ -70,7 +73,7 @@ type Row = Readonly<{
     memo: string
 }>
 
-const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
+const buildStructure = (sort: SortLink) => () =>
     tableStructure({
         key: (row: Row) => row.id,
         cells: [
@@ -177,7 +180,7 @@ function generateRows(): Row[] {
     }
 }
 
-function stateLabel(state: string): VNodeContent {
+function stateLabel(state: string) {
     switch (state) {
         case "仮":
             return label_gray(state)
@@ -187,6 +190,6 @@ function stateLabel(state: string): VNodeContent {
     }
 }
 
-function formatPrice(price: number): string {
+function formatPrice(price: number) {
     return Intl.NumberFormat("ja-JP").format(price)
 }

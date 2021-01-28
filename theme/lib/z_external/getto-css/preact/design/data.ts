@@ -2,6 +2,7 @@ import { VNode } from "preact"
 import { html } from "htm/preact"
 
 import { VNodeContent, VNodeKey } from "../../../preact/common"
+
 import { checkbox } from "./form"
 
 import { tableStructure } from "../../../getto-table/preact/cell/structure"
@@ -11,6 +12,7 @@ import { tableCell_group } from "../../../getto-table/preact/cell/group"
 import { tableCell_multipart } from "../../../getto-table/preact/cell/multipart"
 import { tableCell_tree } from "../../../getto-table/preact/cell/tree"
 import { decorateNone, tableAlign, tableClassName } from "../../../getto-table/preact/decorator"
+
 import {
     visibleKeys,
     TableDataColumn,
@@ -33,11 +35,6 @@ import {
     TableDataFullStyle,
     TableDataSticky,
 } from "../../../getto-table/preact/style"
-import { icon } from "../../../../x_preact/common/icon"
-
-export function linky(content: VNodeContent): VNode {
-    return html`<span class="linky">${content}</span>`
-}
 
 export interface SortLink {
     (key: SortKey): { (content: VNodeContent): VNode }
@@ -46,6 +43,7 @@ export type Sort = Readonly<{
     key: SortKey
     order: SortOrder
     href: { (query: SortQuery): SortHref }
+    sign: SortSign
 }>
 export type SortKey = VNodeKey
 export type SortOrder = "normal" | "reverse"
@@ -54,6 +52,10 @@ export type SortQuery = Readonly<{
     order: SortOrder
 }>
 export type SortHref = string
+export type SortSign = Readonly<{
+    normal: VNodeContent
+    reverse: VNodeContent
+}>
 export function sortLink(sort: Sort): SortLink {
     return (key) => (content) =>
         html`<a href=${sort.href(sortQuery(key))}>${content} ${sortSign(key)}</a>`
@@ -79,19 +81,39 @@ export function sortLink(sort: Sort): SortLink {
         if (sort.key !== key) {
             return ""
         }
-
-        switch (sort.order) {
-            case "normal":
-                return icon("angle-double-down")
-
-            case "reverse":
-                return icon("angle-double-up")
-        }
+        return sort.sign[sort.order]
     }
+}
+
+export function linky(content: VNodeContent): VNode {
+    return html`<span class="linky">${content}</span>`
 }
 
 export function tableViewColumns(content: VNodeContent): VNode {
     return html`<section class="table__viewColumns">${content}</section>`
+}
+
+export type PagerOptionsContent = Readonly<{
+    all: number
+    step: number
+    content: { (params: PagerOptionsContentParams): VNodeContent }
+}>
+export type PagerOptionsContentParams = Readonly<{ start: number; end: number }>
+export function pagerOptions({ all, step, content }: PagerOptionsContent): VNode[] {
+    const options: VNode[] = []
+    for (let i = 0; i < Math.ceil(all / step); i++) {
+        const offset = i * step
+        const params = { start: offset + 1, end: end(offset) }
+        options.push(html`<option value=${offset}>${content(params)}</option>`)
+    }
+    return options
+
+    function end(offset: number) {
+        if (all < offset + step) {
+            return all
+        }
+        return offset + step
+    }
 }
 
 type TableType = "normal" | "small" | "fill" | "smallFill"

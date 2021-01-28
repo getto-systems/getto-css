@@ -1,6 +1,11 @@
 import { h, VNode } from "preact"
-import { useEffect, useErrorBoundary } from "preact/hooks"
+import { useEffect, useErrorBoundary, useMemo } from "preact/hooks"
 import { html } from "htm/preact"
+
+import { tableCell } from "../../../z_external/getto-table/preact/cell/single"
+import { tableStructure } from "../../../z_external/getto-table/preact/cell/structure"
+import { visibleAll } from "../../../z_external/getto-table/preact/core"
+import { tableAlign, tableClassName } from "../../../z_external/getto-table/preact/decorator"
 
 import {
     appLayout_sidebar_double,
@@ -13,9 +18,20 @@ import {
     appSidebar,
 } from "../../../z_external/getto-css/preact/layout/app"
 import { box_fill } from "../../../z_external/getto-css/preact/design/box"
-import { form, button_search } from "../../../z_external/getto-css/preact/design/form"
+import { form, button_search, pager } from "../../../z_external/getto-css/preact/design/form"
+import { label_gray, label_warning } from "../../../z_external/getto-css/preact/design/highlight"
+import {
+    linky,
+    pagerOptions,
+    tableColumn,
+    tableHeader,
+    table_fill,
+    tbody,
+    thead,
+} from "../../../z_external/getto-css/preact/design/data"
 
 import { useTerminate } from "../../common/hooks"
+import { pagerCount, pagerParams } from "../../common/data"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
 import { MainMenu } from "../../Outline/Menu/MainMenu"
@@ -63,51 +79,109 @@ type TableProps = {
     // no props
 }
 function Table(_: TableProps): VNode {
-    return box_fill({
-        type: "simple",
-        body: html`<table class="table table_sticky table_fill">
-            <thead class="table__header">
-                <tr>
-                    <th class="cell_sticky cell_sticky_top cell_border_bb cell_border_rr">
-                        <a href="#">ID <i class="lnir lnir-chevron-down"></i></a>
-                    </th>
-                    <th class="cell_sticky cell_sticky_top cell_border_bb">
-                        <a href="#">名前</a>
-                    </th>
-                    <th class="cell_sticky cell_sticky_top cell_border_bb">
-                        <a href="#">状態</a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                ${repeatedRows()}
-            </tbody>
-        </table>`,
-    })
+    const structure = useMemo(buildStructure, [])
 
-    function repeatedRows() {
-        const result = []
-        for (let i = 0; i < 100; i++) {
-            result.push(rows())
-        }
-        return result
+    const model: Model = {
+        rows: generateRows(),
     }
 
-    function rows() {
-        return html`
-            <tr class="row row_hover">
-                <td class="cell_border_b cell_border_rr">1234</td>
-                <td class="cell_border_b">GETTO CSS</td>
-                <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
-            </tr>
-            <tr class="row row_hover">
-                <td class="cell_border_b cell_border_rr">123</td>
-                <td class="cell_border_b">GETTO</td>
-                <td class="cell_border_b cell_center">
-                    <span class="label label_warning">作業中</span>
-                </td>
-            </tr>
-        `
+    const params = { visibleKeys: visibleAll, model }
+
+    const content = {
+        sticky: structure.sticky(),
+        header: structure.header(params),
+    }
+
+    return box_fill({
+        type: "simple",
+        body: table_fill(content.sticky, [
+            thead(tableHeader(content)),
+            tbody(
+                model.rows.flatMap((row) =>
+                    tableColumn({ ...content, column: structure.column(params, row) })
+                )
+            ),
+        ]),
+    })
+
+    type Model = Readonly<{
+        rows: Row[]
+    }>
+    type Row = Readonly<{
+        id: number
+        name: string
+        state: string
+    }>
+
+    function buildStructure() {
+        return tableStructure({
+            key: (row: Row) => row.id,
+            cells: [
+                tableCell("id", (_key) => {
+                    return {
+                        label: () => "ID",
+                        header: linky,
+                        column: (row: Row) => row.id,
+                    }
+                }).border(["rightDouble"]),
+
+                tableCell("name", (_key) => {
+                    return {
+                        label: () => "名前",
+                        header: linky,
+                        column: (row: Row) => row.name,
+                    }
+                }),
+
+                tableCell("state", (_key) => {
+                    return {
+                        label: () => "状態",
+                        header: linky,
+                        column: (row: Row) => stateLabel(row.state),
+                    }
+                }).decorateColumn(tableAlign(["center"])),
+            ],
+        })
+            .horizontalBorder_header(["topNone"])
+            .decorateRow(tableClassName(["row_hover"]))
+            .stickyHeader()
+            .freeze()
+    }
+
+    function generateRows(): Row[] {
+        return repeatedRows(100)
+
+        function repeatedRows(count: number) {
+            const result: Row[] = []
+            for (let i = 0; i < count; i++) {
+                result.push(...rows())
+            }
+            return result
+        }
+        function rows(): Row[] {
+            return [
+                {
+                    id: 1234,
+                    name: "GETTO CSS",
+                    state: "仮",
+                },
+                {
+                    id: 123,
+                    name: "GETTO",
+                    state: "作業中",
+                },
+            ]
+        }
+    }
+
+    function stateLabel(state: string) {
+        switch (state) {
+            case "仮":
+                return label_gray(state)
+
+            default:
+                return label_warning(state)
+        }
     }
 }
 
@@ -115,20 +189,21 @@ type PagerProps = {
     // no props
 }
 function Pager(_: PagerProps): VNode {
+    const all = 5532
+    const offset = 0
     return box_fill({
         type: "simple",
-        body: [form({ title: "全 5532 件中", body: html`${select()} ${button()}`, help: [] })],
+        body: [form({ title: pagerCount(all), body: [select(), button()], help: [] })],
     })
 
     function select() {
-        return html`<select>
-            <option>1 ～ 1000 件</option>
-            <option>1001 ～ 2000 件</option>
-            <option>2001 ～ 3000 件</option>
-            <option>3001 ～ 4000 件</option>
-            <option>4001 ～ 5000 件</option>
-            <option>5001 ～ 5532 件</option>
-        </select>`
+        return pager(html`<select value=${offset}>
+            ${options()}
+        </select>`)
+
+        function options() {
+            return pagerOptions(pagerParams(all))
+        }
     }
     function button() {
         return button_search({ state: "normal", label: "移動", onClick: () => null })
