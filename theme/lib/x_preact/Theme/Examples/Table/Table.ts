@@ -25,10 +25,15 @@ import {
     linky,
     SortLink,
 } from "../../../../z_external/getto-css/preact/design/data"
-import { label_gray, label_warning } from "../../../../z_external/getto-css/preact/design/highlight"
+import {
+    label_gray,
+    label_success,
+    label_warning,
+} from "../../../../z_external/getto-css/preact/design/highlight"
 import { small } from "../../../../z_external/getto-css/preact/design/alignment"
 
 import { Model, Row } from "./data"
+import { tableCell_expansion } from "../../../../z_external/getto-table/preact/cell/expansion"
 
 type Props = Readonly<{
     content: Readonly<{
@@ -132,6 +137,15 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                 ]),
             }),
 
+            tableCell_expansion("alarms", (_key) => {
+                return {
+                    label: () => "アラーム",
+                    header: linky,
+                    column: (row: Row) => row.alarms,
+                    length: (model: Model) => model.alarmMaxLength,
+                }
+            }).border(["right"]),
+
             tableCell("updatedAt", (key) => {
                 return {
                     label: () => "更新日時",
@@ -183,6 +197,9 @@ function stateLabel(state: string) {
     switch (state) {
         case "仮":
             return label_gray(state)
+
+        case "完了":
+            return label_success(state)
 
         default:
             return label_warning(state)

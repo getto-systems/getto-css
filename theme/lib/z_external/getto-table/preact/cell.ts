@@ -120,6 +120,8 @@ interface TableDataCell_leaf<T> {
     decorateView(decorator: TableDataViewDecorator): T
 }
 interface TableDataCell_group<T> {
+    horizontalBorder_group(borders: TableDataHorizontalBorder[]): T
+
     decorateView(decorator: TableDataViewDecorator): T
     decorateGroup(decorator: TableDataGroupDecorator): T
 }

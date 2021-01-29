@@ -60,6 +60,8 @@ export interface TableDataMutable_group {
     viewMutable(): TableDataViewMutable
     groupStyleMutable(): TableDataStyleMutable
 
+    horizontalBorder_group(borders: TableDataHorizontalBorder[]): void
+
     decorateView(decorator: TableDataViewDecorator): void
     decorateGroup(decorator: TableDataGroupDecorator): void
 }

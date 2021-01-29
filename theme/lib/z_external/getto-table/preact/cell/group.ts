@@ -156,6 +156,10 @@ class Cell<M, R> implements TableDataGroup<M, R> {
         this.mutable.core.horizontalBorderRelated(borders)
         return this
     }
+    horizontalBorder_group(borders: TableDataHorizontalBorder[]): TableDataGroup<M, R> {
+        this.mutable.group.horizontalBorder_group(borders)
+        return this
+    }
     horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableDataGroup<M, R> {
         this.mutable.core.horizontalBorder_header(borders)
         return this
