@@ -27,7 +27,9 @@ export function Container(_: ContainerProps): VNode {
     }
     const structure = useMemo(buildStructure(sortLink(sort)), [])
 
-    const model: Model = {}
+    const model: Model = {
+        alarmMaxLength: 3,
+    }
 
     const params = {
         visibleKeys: visibleAll,

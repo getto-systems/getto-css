@@ -1,6 +1,6 @@
 import { TableDataStyleMutable, TableDataMutable_group, TableDataViewMutable } from "../mutable"
-import { decorateStyle, TableDataGroupDecorator, TableDataViewDecorator } from "../decorator"
-import { inheritStyle } from "../style"
+import { decorateStyle, horizontalBorder, TableDataGroupDecorator, TableDataViewDecorator } from "../decorator"
+import { inheritStyle, TableDataHorizontalBorder } from "../style"
 
 export function tableDataMutable_group(): TableDataMutable_group {
     return new Mutable()
@@ -23,6 +23,10 @@ class Mutable implements TableDataMutable_group {
     }
     groupStyleMutable(): TableDataStyleMutable {
         return this.groupStyle
+    }
+
+    horizontalBorder_group(borders: TableDataHorizontalBorder[]): void {
+        this.decorateGroup(horizontalBorder(borders))
     }
 
     decorateView(decorator: TableDataViewDecorator): void {

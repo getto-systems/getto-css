@@ -184,7 +184,7 @@ export function tableHeader({
     header: { key, className, headers },
 }: TableHeaderContent): VNode[] {
     type HeaderRow = Readonly<{
-        level: number
+        info: StickyHorizontalInfo
         containers: HeaderContainer[]
     }>
     type HeaderContainer = Readonly<{
@@ -192,18 +192,28 @@ export function tableHeader({
         height: number
         header: TableDataHeader
     }>
+    type GatherInfo = Readonly<{
+        level: number
+        borderWidth: number
+        index: number
+    }>
 
-    const info = { level: 0, index: 0 }
-    return buildHeaderRows(info, headers).map(headerTr)
+    const gatherInfo = {
+        level: 0,
+        borderWidth: 0,
+        index: 0,
+    }
+    return buildHeaderRows(gatherInfo, headers).map(headerTr)
 
-    function headerTr({ level, containers }: HeaderRow): VNode {
-        return tr(key(level), className, containers.map(headerTh(level)))
+    function headerTr({ info, containers }: HeaderRow): VNode {
+        return tr(key(info.level), className, containers.map(headerTh(info)))
     }
 
-    type GatherInfo = Readonly<{ level: number; index: number }>
     function buildHeaderRows(base: GatherInfo, headers: TableDataHeader[]): HeaderRow[] {
         const rowHeight = maxHeight(headers)
-        return [gatherHeader(), ...gatherChildren()]
+        const top = gatherHeader()
+        const nextBorderWidth = borderWidth(top)
+        return [top, ...gatherChildren()]
 
         function gatherHeader(): HeaderRow {
             type GatherResult = Readonly<{
@@ -211,7 +221,7 @@ export function tableHeader({
                 containers: HeaderContainer[]
             }>
             return {
-                level: base.level,
+                info: base,
                 containers: headers.reduce((acc, header) => {
                     return {
                         index: acc.index + header.length,
@@ -247,6 +257,7 @@ export function tableHeader({
                             ...buildHeaderRows(
                                 {
                                     level: base.level + paddingHeight(header) + 1,
+                                    borderWidth: nextBorderWidth,
                                     index: base.index + index,
                                 },
                                 header.children
@@ -256,19 +267,24 @@ export function tableHeader({
             }, <HeaderRow[]>[])
         }
 
-        function paddingHeight(header: TableDataHeader): number {
-            return rowHeight - header.height
-        }
-
         function buildHeaderRows_padding(paddingHeight: number): HeaderRow[] {
             return Array(paddingHeight)
                 .fill(null)
-                .map((_, i) => {
-                    return {
-                        level: base.level + 1 + i,
-                        containers: [],
+                .map(
+                    (_, i): HeaderRow => {
+                        return {
+                            info: {
+                                level: base.level + 1 + i,
+                                borderWidth: nextBorderWidth,
+                            },
+                            containers: [],
+                        }
                     }
-                })
+                )
+        }
+
+        function paddingHeight(header: TableDataHeader): number {
+            return rowHeight - header.height
         }
 
         function merge(base: HeaderRow[], rows: HeaderRow[]): HeaderRow[] {
@@ -287,14 +303,17 @@ export function tableHeader({
                 }
                 const baseRow = base[index]
                 return {
-                    ...baseRow,
+                    info: {
+                        ...baseRow.info,
+                        borderWidth: Math.max(baseRow.info.borderWidth, row.info.borderWidth),
+                    },
                     containers: [...baseRow.containers, ...row.containers],
                 }
             }
         }
     }
 
-    function headerTh(level: number): { (container: HeaderContainer): VNode } {
+    function headerTh(info: StickyHorizontalInfo): { (container: HeaderContainer): VNode } {
         return (container) => html`<th
             class="${className(container)}"
             colspan=${container.header.length}
@@ -305,16 +324,65 @@ export function tableHeader({
         </th>`
 
         function className({ header, index }: HeaderContainer) {
-            return [
-                styleClass(header.style),
-                // group はうれしくないかもだけど設定しちゃう
-                stickyHeaderClass(sticky, { level, index }),
-            ].join(" ")
+            return [styleClass(header.style), stickyHeaderClass(sticky, { info, index })].join(" ")
         }
     }
 
     function maxHeight(headers: TableDataHeader[]): number {
         return Math.max(0, ...headers.map((header) => header.height))
+    }
+    function borderWidth(row: HeaderRow): number {
+        type BorderInfo = Readonly<{ top: number; bottom: number }>
+        return (
+            row.info.borderWidth +
+            sumBorderWidth(
+                row.containers.reduce((acc, container) => {
+                    return merge({
+                        base: acc,
+                        border: {
+                            top: topWidth(container),
+                            bottom: bottomWidth(container),
+                        },
+                    })
+                }, initialBorderWidth())
+            )
+        )
+
+        function topWidth(container: HeaderContainer): number {
+            return borderWidth(container.header.style.border.horizontal.top)
+        }
+        function bottomWidth(container: HeaderContainer): number {
+            if (container.height > 1) {
+                return 0
+            }
+            return borderWidth(container.header.style.border.horizontal.bottom)
+        }
+        function borderWidth(border: TableDataBorderClass): number {
+            switch (border) {
+                case "none":
+                case "inherit":
+                    return 0
+
+                case "single":
+                    return 1 // border-width: 1px
+
+                case "double":
+                    return 3 // border-width: 3px
+            }
+        }
+
+        function initialBorderWidth(): BorderInfo {
+            return { top: 0, bottom: 0 }
+        }
+        function sumBorderWidth({ top, bottom }: BorderInfo): number {
+            return top + bottom
+        }
+        function merge({ base, border }: { base: BorderInfo; border: BorderInfo }): BorderInfo {
+            return {
+                top: Math.max(base.top, border.top),
+                bottom: Math.max(base.bottom, border.bottom),
+            }
+        }
     }
 }
 
@@ -587,11 +655,18 @@ function styleClass(style: TableDataFullStyle): string {
     }
 }
 
-type StickyHeaderContent = Readonly<{
+type StickyHorizontalInfo = Readonly<{
     level: number
+    borderWidth: number
+}>
+type StickyHeaderContent = Readonly<{
+    info: StickyHorizontalInfo
     index: number
 }>
-function stickyHeaderClass(sticky: TableDataSticky, { level, index }: StickyHeaderContent): string {
+function stickyHeaderClass(
+    sticky: TableDataSticky,
+    { info: { level, borderWidth }, index }: StickyHeaderContent
+): string {
     switch (sticky.type) {
         case "none":
         case "column":
@@ -606,20 +681,21 @@ function stickyHeaderClass(sticky: TableDataSticky, { level, index }: StickyHead
             }
             return [
                 "cell_sticky",
-                indexedStickyClass("top", level),
-                indexedStickyClass("left", index),
+                "cell_sticky_cross",
+                stickyTopClass({ level, borderWidth: borderWidth }),
+                stickyLeftClass(index),
             ].join(" ")
     }
 
     function stickyHeader() {
-        return ["cell_sticky", indexedStickyClass("top", level)].join(" ")
+        return ["cell_sticky", stickyTopClass({ level, borderWidth: borderWidth })].join(" ")
     }
 }
 function stickyColumnClass(sticky: TableDataSticky, index: number): string {
     if (!isStickyColumn(sticky, index)) {
         return ""
     }
-    return ["cell_sticky", indexedStickyClass("left", index)].join(" ")
+    return ["cell_sticky", stickyLeftClass(index)].join(" ")
 }
 function isStickyColumn(sticky: TableDataSticky, index: number): boolean {
     switch (sticky.type) {
@@ -632,14 +708,24 @@ function isStickyColumn(sticky: TableDataSticky, index: number): boolean {
             return index < sticky.column
     }
 }
-function indexedStickyClass(type: string, index: number) {
-    return `cell_sticky_${type}${indexToClass(index)}`
+type StickyTopContent = Readonly<{ level: number; borderWidth: number }>
+function stickyTopClass({ level, borderWidth }: StickyTopContent) {
+    return `cell_sticky_top${indexToClass(level)}${borderWidthToClass(borderWidth)}`
+}
+function stickyLeftClass(index: number) {
+    return `cell_sticky_left${indexToClass(index)}`
 }
 function indexToClass(index: number): string {
     if (index === 0) {
         return ""
     }
     return (index + 1).toString()
+}
+function borderWidthToClass(borderWidth: number): string {
+    if (borderWidth === 0) {
+        return ""
+    }
+    return `_${borderWidth}`
 }
 
 const EMPTY_CONTENT = html``
