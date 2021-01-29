@@ -74,7 +74,7 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
     }
 
     length(model: M): number {
-        return Math.max(this.content.length(model), 1)
+        return Math.max(1, this.content.length(model))
     }
 
     isVisible(visibleKeys: TableDataVisibleKeys): boolean {

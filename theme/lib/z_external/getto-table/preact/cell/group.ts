@@ -88,7 +88,7 @@ class Cell<M, R> implements TableDataGroup<M, R> {
                 content: this.content.header(),
                 children,
                 length: length(children),
-                height: height(children),
+                height: height(children) + 1,
             },
         ]
 

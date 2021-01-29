@@ -1,80 +1,191 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-type Props = {
-    // no props
+import { icon } from "../../../common/icon"
+
+import {
+    TableDataColumnRow,
+    TableDataHeaderRow,
+    TableStructure,
+} from "../../../../z_external/getto-table/preact/core"
+import { tableStructure } from "../../../../z_external/getto-table/preact/cell/structure"
+import { tableCell } from "../../../../z_external/getto-table/preact/cell/single"
+import { TableDataSticky } from "../../../../z_external/getto-table/preact/style"
+import { tableAlign, tableClassName } from "../../../../z_external/getto-table/preact/decorator"
+
+import {
+    table,
+    tableHeader,
+    tableColumn,
+    thead,
+    tbody,
+    linky,
+    SortLink,
+} from "../../../../z_external/getto-css/preact/design/data"
+import { label_gray, label_warning } from "../../../../z_external/getto-css/preact/design/highlight"
+import { small } from "../../../../z_external/getto-css/preact/design/alignment"
+
+import { Model, Row } from "./data"
+import { tableCell_group } from "../../../../z_external/getto-table/preact/cell/group"
+
+type Props = Readonly<{
+    content: Readonly<{
+        sticky: TableDataSticky
+        header: TableDataHeaderRow
+    }>
+    rows: Row[]
+    column: { (row: Row): TableDataColumnRow }
+}>
+export function Table({ content, column, rows }: Props): VNode {
+    return table(content.sticky, [
+        thead(tableHeader(content)),
+        tbody(rows.flatMap((row) => tableColumn({ ...content, column: column(row) }))),
+    ])
 }
-export function Table(_: Props): VNode {
-    return html`<table class="table table_sticky">
-        <thead class="table__header">
-            <tr>
-                <th
-                    class="cell_sticky cell_sticky_left cell_sticky_top cell_border_t cell_border_bb cell_border_rr"
-                >
-                    <a href="#">ID <i class="lnir lnir-chevron-down"></i></a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <a href="#">名前</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <a href="#">状態</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <a href="#">メールアドレス</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <a href="#">価格</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <a href="#">更新日時</a>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb">
-                    <span class="linky">メモ</span>
-                </th>
-                <th class="cell_sticky cell_sticky_top cell_border_t cell_border_bb cell_border_l"></th>
-            </tr>
-        </thead>
-        <tbody>
-            ${repeatedRows()}
-        </tbody>
-    </table>`
 
-    function repeatedRows() {
-        const result = []
-        for (let i = 0; i < 100; i++) {
-            result.push(rows())
-        }
-        return result
-    }
+export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
+    tableStructure({
+        key: (row: Row) => row.id,
+        cells: [
+            tableCell("id", (key) => {
+                return {
+                    label: () => "ID",
+                    header: sort(key),
+                    column: (row: Row) => row.id,
+                }
+            }).border(["rightDouble"]),
 
-    function rows() {
-        return html`
-            <tr class="row row_hover">
-                <td class="cell_sticky cell_sticky_left cell_border_b cell_border_rr">1234</td>
-                <td class="cell_border_b">GETTO CSS</td>
-                <td class="cell_border_b cell_center"><span class="label label_gray">仮</span></td>
-                <td class="cell_border_b">admin@example.com</td>
-                <td class="cell_border_b cell_numeric">1,200</td>
-                <td class="cell_border_b"><small>2020/06/19 08:03</small></td>
-                <td class="cell_border_b">simple admin theme</td>
-                <td class="cell_border_b cell_border_l">
-                    <a href="#"><i class="lnir lnir-pencil"></i> 編集</a>
-                </td>
-            </tr>
-            <tr class="row row_hover">
-                <td class="cell_sticky cell_sticky_left cell_border_b cell_border_rr">123</td>
-                <td class="cell_border_b">GETTO</td>
-                <td class="cell_border_b cell_center">
-                    <span class="label label_warning">作業中</span>
-                </td>
-                <td class="cell_border_b">user@example.com</td>
-                <td class="cell_border_b cell_numeric">13,500</td>
-                <td class="cell_border_b"><small>2020/01/10</small></td>
-                <td class="cell_border_b">simple css theme</td>
-                <td class="cell_border_b cell_border_l">
-                    <a href="#"><i class="lnir lnir-pencil"></i> 編集</a>
-                </td>
-            </tr>
-        `
+            tableCell_group({
+                key: "base",
+                header: () => linky("基本情報"),
+                cells: [
+                    tableCell_group({
+                        key: "accountInfo",
+                        header: () => linky("基本"),
+                        cells: [
+                            tableCell("name", (key) => {
+                                return {
+                                    label: () => "名前",
+                                    header: sort(key),
+                                    column: (row: Row) => row.name,
+                                }
+                            }).border(["right"]),
+                        ],
+                    }),
+
+                    tableCell("state", (key) => {
+                        return {
+                            label: () => "状態",
+                            header: sort(key),
+                            column: (row: Row) => stateLabel(row.state),
+                        }
+                    })
+                        .border(["right"])
+                        .decorateColumn(tableAlign(["center"])),
+                ],
+            }),
+
+            tableCell_group({
+                key: "hostInfo",
+                header: () => linky("ホスト情報"),
+                cells: [
+                    tableCell_group({
+                        key: "accountInfo",
+                        header: () => linky("アカウント情報"),
+                        cells: [
+                            tableCell_group({
+                                key: "accountInfo",
+                                header: () => linky("基本情報"),
+                                cells: [
+                                    tableCell("host", (key) => {
+                                        return {
+                                            label: () => "ホスト",
+                                            header: sort(key),
+                                            column: (row: Row) => row.host,
+                                        }
+                                    }).border(["right"]),
+                                ],
+                            }),
+
+                            tableCell("account", (key) => {
+                                return {
+                                    label: () => "アカウント",
+                                    header: sort(key),
+                                    column: (row: Row) => row.account,
+                                }
+                            }).border(["right"]),
+                        ],
+                    }),
+
+                    tableCell("price", (key) => {
+                        return {
+                            label: () => "価格",
+                            header: sort(key),
+                            column: (row: Row) => formatPrice(row.price),
+                        }
+                    })
+                        .border(["rightDouble"])
+                        .decorateColumn(tableAlign(["numeric"])),
+                ],
+            }),
+
+            tableCell("updatedAt", (key) => {
+                return {
+                    label: () => "更新日時",
+                    header: sort(key),
+                    column: (row: Row) => small(row.updatedAt),
+                }
+            }),
+
+            tableCell("memo", (_key) => {
+                return {
+                    label: () => "メモ",
+                    header: linky,
+                    column: (row: Row) => row.memo,
+                }
+            }),
+
+            tableCell("formalName", (_key) => {
+                return {
+                    label: () => "正式名称",
+                    header: linky,
+                    column: (_row: Row) => "名称",
+                }
+            }),
+
+            tableCell("tel", (_key) => {
+                return {
+                    label: () => "問い合わせ電話番号",
+                    header: linky,
+                    column: (_row: Row) => "tel",
+                }
+            }),
+
+            tableCell("edit", (_key) => {
+                return {
+                    label: () => "",
+                    header: linky,
+                    column: (_row: Row) => html`<a href="#">${icon("pencil")} 編集</a>`,
+                }
+            })
+                .alwaysVisible()
+                .border(["left"]),
+        ],
+    })
+        .decorateRow(tableClassName(["row_hover"]))
+        .stickyCross(1)
+        .freeze()
+
+function stateLabel(state: string) {
+    switch (state) {
+        case "仮":
+            return label_gray(state)
+
+        default:
+            return label_warning(state)
     }
+}
+
+function formatPrice(price: number) {
+    return Intl.NumberFormat("ja-JP").format(price)
 }
