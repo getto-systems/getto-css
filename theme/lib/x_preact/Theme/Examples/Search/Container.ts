@@ -13,6 +13,7 @@ import { SearchForm } from "./SearchForm"
 import { Pager } from "./Pager"
 import { ViewColumns } from "./ViewColumns"
 import { buildStructure, Table } from "./Table"
+
 import { generateRows, Model, Row } from "./data"
 
 type ContainerProps = {
