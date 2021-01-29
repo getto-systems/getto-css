@@ -219,7 +219,7 @@ export function tableHeader({
                             ...acc.containers,
                             {
                                 index: acc.index,
-                                height: rowHeight - (header.height - 1),
+                                height: paddingHeight(header) + 1,
                                 header,
                             },
                         ],
@@ -243,17 +243,10 @@ export function tableHeader({
 
                     case "group":
                         return merge(acc, [
-                            ...Array(rowHeight - header.height)
-                                .fill(null)
-                                .map((_, i) => {
-                                    return {
-                                        level: base.level + 1 + i,
-                                        containers: [],
-                                    }
-                                }),
+                            ...buildHeaderRows_padding(paddingHeight(header)),
                             ...buildHeaderRows(
                                 {
-                                    level: base.level + rowHeight - header.height + 1,
+                                    level: base.level + paddingHeight(header) + 1,
                                     index: base.index + index,
                                 },
                                 header.children
@@ -261,6 +254,21 @@ export function tableHeader({
                         ])
                 }
             }, <HeaderRow[]>[])
+        }
+
+        function paddingHeight(header: TableDataHeader): number {
+            return rowHeight - header.height
+        }
+
+        function buildHeaderRows_padding(paddingHeight: number): HeaderRow[] {
+            return Array(paddingHeight)
+                .fill(null)
+                .map((_, i) => {
+                    return {
+                        level: base.level + 1 + i,
+                        containers: [],
+                    }
+                })
         }
 
         function merge(base: HeaderRow[], rows: HeaderRow[]): HeaderRow[] {
