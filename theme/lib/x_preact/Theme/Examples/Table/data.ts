@@ -13,6 +13,7 @@ export type Row = Readonly<{
     price: number
     alarms: string[]
     amounts: Record<TemperatureType, number>
+    articles: Article[]
     updatedAt: string
     memo: string
 }>
@@ -21,6 +22,13 @@ export type Log = Readonly<{
     log_id: number
     loggedAt: string
 }>
+
+export type Article = Readonly<{
+    title: string
+    comments: ArticleComment[]
+}>
+
+export type ArticleComment = string
 
 export type TemperatureType = "high" | "low"
 
@@ -41,6 +49,28 @@ export function generateRows(): Row[] {
                     high: 300,
                     low: 200,
                 },
+                articles: [
+                    {
+                        title: "Hello, World!",
+                        comments: ["first comment", "second comment"],
+                    },
+                    {
+                        title: "GETTO CSS",
+                        comments: ["production ready!"],
+                    },
+                    {
+                        title: "GETTO Example",
+                        comments: ["code template", "status: green"],
+                    },
+                    {
+                        title: "awesome article",
+                        comments: [],
+                    },
+                    {
+                        title: "another article",
+                        comments: ["comment"],
+                    },
+                ],
                 updatedAt: "2020/06/19 08:03",
                 memo: "simple admin theme",
             },
@@ -56,6 +86,16 @@ export function generateRows(): Row[] {
                     high: 500,
                     low: 100,
                 },
+                articles: [
+                    {
+                        title: "awesome article",
+                        comments: [],
+                    },
+                    {
+                        title: "another article",
+                        comments: ["comment"],
+                    },
+                ],
                 updatedAt: "2020/01/10",
                 memo: "simple css theme",
             },
@@ -71,6 +111,16 @@ export function generateRows(): Row[] {
                     high: 500,
                     low: 100,
                 },
+                articles: [
+                    {
+                        title: "awesome article",
+                        comments: [],
+                    },
+                    {
+                        title: "another article",
+                        comments: ["comment"],
+                    },
+                ],
                 updatedAt: "2020/01/10",
                 memo: "simple css theme",
             },
@@ -92,7 +142,7 @@ export function generateLogs(): Record<number, Log[]> {
             {
                 log_id: index + 1,
                 loggedAt: `${Math.ceil(Math.random() * 1000)}`,
-            }
+            },
         ]
     }
 }

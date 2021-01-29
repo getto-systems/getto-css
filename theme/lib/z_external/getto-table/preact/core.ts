@@ -112,15 +112,15 @@ export type TableDataColumnTree = Readonly<{
 
 export type TableCellTreePaddingContent = Readonly<{
     key: VNodeKey
-    height: number
+    rowHeight: number
     column: TableDataColumnTree
 }>
 export function tableCellTreePadding({
     key,
-    height,
+    rowHeight,
     column,
 }: TableCellTreePaddingContent): TableDataColumnEmpty[] {
-    if (column.children.length >= height) {
+    if (column.height >= rowHeight) {
         return []
     }
     return [
@@ -129,7 +129,7 @@ export function tableCellTreePadding({
             key,
             style: column.paddingStyle,
             length: column.length,
-            height: height - column.children.length,
+            height: rowHeight - column.height,
         },
     ]
 }

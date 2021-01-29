@@ -98,7 +98,7 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
 
         function height(rows: TableDataColumnRow[]): number {
             return Math.max(
-                1,
+                0,
                 rows
                     .map((tree) =>
                         Math.max(

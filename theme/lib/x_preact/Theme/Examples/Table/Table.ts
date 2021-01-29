@@ -29,7 +29,7 @@ import {
 } from "../../../../z_external/getto-css/preact/design/highlight"
 import { small } from "../../../../z_external/getto-css/preact/design/alignment"
 
-import { Log, Model, Row, TemperatureType } from "./data"
+import { Article, ArticleComment, Log, Model, Row, TemperatureType } from "./data"
 import { tableCell_expansion } from "../../../../z_external/getto-table/preact/cell/expansion"
 import { tableCell_multipart } from "../../../../z_external/getto-table/preact/cell/multipart"
 import { tableCell_tree } from "../../../../z_external/getto-table/preact/cell/tree"
@@ -45,12 +45,14 @@ type Props = Readonly<{
 export function Table({ content, column, rows }: Props): VNode {
     return table(content.sticky, [
         thead(tableHeader(content)),
-        tbody(rows.flatMap((row) => tableColumn({ ...content, column: column(row) }))),
+        tbody(rows.flatMap((row) => tableColumn({ sticky: content.sticky, column: column(row) }))),
     ])
 }
 
 const cells: TableDataCellBuilder<Model, Row> = tableCells
 const logCells: TableDataCellBuilder<Model, Log> = tableCells
+const articleCells: TableDataCellBuilder<Model, Article> = tableCells
+const commentCells: TableDataCellBuilder<Model, ArticleComment> = tableCells
 export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
     tableStructure({
         key: (row: Row) => row.row_id,
@@ -178,6 +180,34 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                             header: linky,
                             column: (log: Log) => small(log.loggedAt),
                         }
+                    }),
+                ]),
+            }),
+
+            tableCell_tree({
+                data: (row: Row) => row.articles,
+                key: (article: Article) => article.title,
+                cells: articleCells([
+                    tableCell("article", (_key) => {
+                        return {
+                            label: () => "記事",
+                            header: linky,
+                            column: (article: Article) => article.title,
+                        }
+                    }).border(["left"]),
+
+                    tableCell_tree({
+                        data: (article: Article) => article.comments,
+                        key: (comment: ArticleComment) => comment,
+                        cells: commentCells([
+                            tableCell<Model, ArticleComment>("comment", (_key) => {
+                                return {
+                                    label: () => "コメント",
+                                    header: linky,
+                                    column: (comment: ArticleComment) => comment,
+                                }
+                            }).border(["left"]),
+                        ]),
                     }),
                 ]),
             }),

@@ -24,7 +24,6 @@ import {
     TableDataSummaryRow,
     tableCellTreePadding,
     TableDataColumnTree,
-    TableDataColumnEmpty,
     TableDataColumn,
 } from "../../../getto-table/preact/core"
 import {
@@ -412,25 +411,25 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         containers: ColumnContainer[]
     }>
     type ColumnContainer = Readonly<{
-        info: ColumnInfo
+        index: number
+        rowspan: number
         column: TableDataLeafColumn
     }>
-    type ColumnInfo = Readonly<{
+    type GatherInfo = Readonly<{
         index: number
-        height: number
     }>
 
-    return buildColumnRows({ index: 0, height: maxHeight([column]) }, column).map(columnTr)
+    return buildColumnRows({ index: 0 }, column).map(columnTr)
 
     function columnTr({ key, className, containers }: ColumnRow): VNode {
         return tr(key.join("_"), className, containers.map(columnTd))
     }
 
-    function columnTd({ info: { index, height }, column }: ColumnContainer): VNode {
+    function columnTd({ index, rowspan, column }: ColumnContainer): VNode {
         return html`<td
             class="${className()}"
             colspan=${column.length}
-            rowspan=${height}
+            rowspan=${rowspan}
             key=${column.key}
         >
             ${content()}
@@ -450,7 +449,9 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         }
     }
 
-    function buildColumnRows(base: ColumnInfo, row: TableDataColumnRow): ColumnRow[] {
+    function buildColumnRows(base: GatherInfo, row: TableDataColumnRow): ColumnRow[] {
+        const rowHeight = maxHeight(row)
+
         return row.columns.reduce(
             (acc, column, index) => merge(acc, entry(column, base.index + index)),
             <ColumnRow[]>[]
@@ -460,19 +461,16 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
             switch (column.type) {
                 case "single":
                 case "empty":
-                    return leafEntry(column, { ...base, index })
+                    return leafEntry({ column, index, rowspan: rowHeight })
 
                 case "tree":
-                    return treeEntry(column, { index, height: maxHeight(column.children) })
+                    return treeEntry(column, { index })
             }
         }
-        function leafEntry(column: TableDataLeafColumn, info: ColumnInfo): ColumnEntry {
-            return {
-                type: "leaf",
-                container: { info, column },
-            }
+        function leafEntry(container: ColumnContainer): ColumnEntry {
+            return { type: "leaf", container }
         }
-        function treeEntry(column: TableDataColumnTree, info: ColumnInfo): ColumnEntry {
+        function treeEntry(column: TableDataColumnTree, info: GatherInfo): ColumnEntry {
             return {
                 type: "tree",
                 rows: [...column.children.flatMap((row) => buildColumnRows(info, row)), ...padding()],
@@ -481,16 +479,17 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
             function padding() {
                 return tableCellTreePadding({
                     key: `__empty_${info.index}`,
-                    height: base.height,
+                    rowHeight,
                     column,
-                }).map(emptyColumnRow)
-            }
-            function emptyColumnRow(column: TableDataColumnEmpty): ColumnRow {
-                return {
-                    key: [],
-                    className: [],
-                    containers: [{ info, column }],
-                }
+                }).map(
+                    (column): ColumnRow => {
+                        return {
+                            key: [],
+                            className: [],
+                            containers: [{ index: info.index, rowspan: column.height, column }],
+                        }
+                    }
+                )
             }
         }
 
@@ -545,8 +544,8 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         }
     }
 
-    function maxHeight(rows: TableDataColumnRow[]): number {
-        return Math.max(1, ...rows.flatMap((row) => row.columns.map((column) => column.height)))
+    function maxHeight(row: TableDataColumnRow): number {
+        return Math.max(1, ...row.columns.map((column) => column.height))
     }
 }
 
