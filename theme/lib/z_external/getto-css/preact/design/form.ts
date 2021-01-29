@@ -5,6 +5,7 @@ import { VNodeContent } from "../../../preact/common"
 
 export type FormContent =
     | Readonly<{ type: NormalFormType; content: NormalFormContent }>
+    | Readonly<{ type: SearchFormType; content: NormalFormContent }>
     | Readonly<{ type: NoticeFormType; content: NoticeFormContent }>
 
 type NormalFormContent = Readonly<{
@@ -19,8 +20,23 @@ type NoticeFormContent = Readonly<{
     notice: VNodeContent[]
 }>
 
-type FormType = NormalFormType | NoticeFormType
-type NormalFormType = "normal" | "search" | "search_double"
+export type FormSectionContent =
+    | Readonly<{ type: NormalFormType; content: NormalFormSectionContent }>
+    | Readonly<{ type: NoticeFormType; content: NoticeFormSectionContent }>
+
+type NormalFormSectionContent = Readonly<{
+    body: VNodeContent
+    help: VNodeContent[]
+}>
+type NoticeFormSectionContent = Readonly<{
+    body: VNodeContent
+    help: VNodeContent[]
+    notice: VNodeContent[]
+}>
+
+type FormType = NormalFormType | SearchFormType | NoticeFormType
+type NormalFormType = "normal"
+type SearchFormType = "search" | "search_double"
 type NoticeFormType = "error" | "warning"
 function mapFormType(formType: FormType): string {
     switch (formType) {
@@ -55,22 +71,56 @@ export function search_double(content: NormalFormContent): VNode {
 }
 
 function formContent(form: FormContent): VNode {
-    return html`<dl class="form ${mapFormType(form.type)}">
+    const help = {
+        help: form.content.help,
+        notice: notice(),
+    }
+    return html`<dl class="${mapFormType(form.type)}">
         <dt class="form__title">${form.content.title}</dt>
-        <dd class="form__body">${form.content.body} ${help()}</dd>
+        <dd class="form__body">${form.content.body} ${formHelp(help)}</dd>
     </dl>`
 
-    function help() {
+    function notice(): VNodeContent[] {
         switch (form.type) {
+            case "normal":
+            case "search":
+            case "search_double":
+                return []
+
             case "error":
             case "warning":
-                return formHelp([
-                    ...form.content.help.map(toFormHelp),
-                    ...form.content.notice.map(toFormNotice),
-                ])
+                return form.content.notice
+        }
+    }
+}
 
-            default:
-                return formHelp([...form.content.help.map(toFormHelp)])
+export function formSection(content: NormalFormSectionContent): VNode {
+    return formSectionContent({ type: "normal", content })
+}
+export function formSection_error(content: NoticeFormSectionContent): VNode {
+    return formSectionContent({ type: "error", content })
+}
+export function formSection_warning(content: NoticeFormSectionContent): VNode {
+    return formSectionContent({ type: "warning", content })
+}
+
+function formSectionContent(form: FormSectionContent): VNode {
+    const help = {
+        help: form.content.help,
+        notice: notice(),
+    }
+    return html`<section class="${mapFormType(form.type)}">
+        ${form.content.body} ${formHelp(help)}
+    </section>`
+
+    function notice(): VNodeContent[] {
+        switch (form.type) {
+            case "normal":
+                return []
+
+            case "error":
+            case "warning":
+                return form.content.notice
         }
     }
 }
@@ -79,8 +129,12 @@ export function formError(notice: VNodeContent[]): VNode {
     return html`<aside class="form__help form_error">${notice.map(toFormNotice)}</aside>`
 }
 
-function formHelp(content: VNodeContent) {
-    return html`<aside class="form__help">${content}</aside>`
+type FormHelpContent = Readonly<{
+    help: VNodeContent[]
+    notice: VNodeContent[]
+}>
+function formHelp({ help, notice }: FormHelpContent) {
+    return html`<aside class="form__help">${help.map(toFormHelp)}${notice.map(toFormNotice)}</aside>`
 }
 function toFormNotice(message: VNodeContent) {
     return html`<p class="form__notice">${message}</p>`
