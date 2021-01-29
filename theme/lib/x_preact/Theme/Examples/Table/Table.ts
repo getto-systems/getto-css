@@ -1,7 +1,4 @@
 import { VNode } from "preact"
-import { html } from "htm/preact"
-
-import { icon } from "../../../common/icon"
 
 import {
     tableCells,
@@ -32,8 +29,10 @@ import {
 } from "../../../../z_external/getto-css/preact/design/highlight"
 import { small } from "../../../../z_external/getto-css/preact/design/alignment"
 
-import { Model, Row } from "./data"
+import { Log, Model, Row, TemperatureType } from "./data"
 import { tableCell_expansion } from "../../../../z_external/getto-table/preact/cell/expansion"
+import { tableCell_multipart } from "../../../../z_external/getto-table/preact/cell/multipart"
+import { tableCell_tree } from "../../../../z_external/getto-table/preact/cell/tree"
 
 type Props = Readonly<{
     content: Readonly<{
@@ -51,15 +50,16 @@ export function Table({ content, column, rows }: Props): VNode {
 }
 
 const cells: TableDataCellBuilder<Model, Row> = tableCells
+const logCells: TableDataCellBuilder<Model, Log> = tableCells
 export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
     tableStructure({
-        key: (row: Row) => row.id,
+        key: (row: Row) => row.row_id,
         cells: cells([
             tableCell("id", (key) => {
                 return {
                     label: () => "ID",
                     header: sort(key),
-                    column: (row: Row) => row.id,
+                    column: (row: Row) => row.row_id,
                 }
             }).border(["rightDouble"]),
 
@@ -146,13 +146,49 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                 }
             }).border(["right"]),
 
+            tableCell_multipart({
+                data: (model: Model) => model.temperatureTypes,
+                cells: (temperatureType: TemperatureType) =>
+                    cells([
+                        tableCell("updatedAt", (_key) => {
+                            return {
+                                label: () => temperatureLabel(temperatureType),
+                                header: linky,
+                                column: (row: Row) => formatPrice(row.amounts[temperatureType]),
+                            }
+                        }).decorateColumn(tableAlign(["numeric"])),
+                    ]),
+            }),
+
+            tableCell_tree({
+                data: (row: Row, model: Model) => model.logs[row.row_id],
+                key: (log: Log) => log.log_id,
+                cells: logCells([
+                    tableCell("log_id", (_key) => {
+                        return {
+                            label: () => "ログID",
+                            header: linky,
+                            column: (log: Log) => log.log_id,
+                        }
+                    }).border(["left"]),
+
+                    tableCell("loggedAt", (_key) => {
+                        return {
+                            label: () => "ログ時刻",
+                            header: linky,
+                            column: (log: Log) => small(log.loggedAt),
+                        }
+                    }),
+                ]),
+            }),
+
             tableCell("updatedAt", (key) => {
                 return {
                     label: () => "更新日時",
                     header: sort(key),
                     column: (row: Row) => small(row.updatedAt),
                 }
-            }),
+            }).border(["left"]),
 
             tableCell("memo", (_key) => {
                 return {
@@ -161,32 +197,6 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                     column: (row: Row) => row.memo,
                 }
             }),
-
-            tableCell("formalName", (_key) => {
-                return {
-                    label: () => "正式名称",
-                    header: linky,
-                    column: (_row: Row) => "名称",
-                }
-            }),
-
-            tableCell("tel", (_key) => {
-                return {
-                    label: () => "問い合わせ電話番号",
-                    header: linky,
-                    column: (_row: Row) => "tel",
-                }
-            }),
-
-            tableCell("edit", (_key) => {
-                return {
-                    label: () => "",
-                    header: linky,
-                    column: (_row: Row) => html`<a href="#">${icon("pencil")} 編集</a>`,
-                }
-            })
-                .alwaysVisible()
-                .border(["left"]),
         ]),
     })
         .decorateRow(tableClassName(["row_hover"]))
@@ -203,6 +213,16 @@ function stateLabel(state: string) {
 
         default:
             return label_warning(state)
+    }
+}
+
+function temperatureLabel(type: TemperatureType): string {
+    switch (type) {
+        case "high":
+            return "常温"
+
+        case "low":
+            return "冷蔵"
     }
 }
 

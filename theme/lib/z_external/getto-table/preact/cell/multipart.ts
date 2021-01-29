@@ -15,8 +15,8 @@ import {
     tableCellSummary,
     tableCellView,
     TableDataCell,
-    TableDataChildrenProvider,
     TableDataMultipart,
+    TableDataMultipartProvider,
     TableDataRelatedParams,
     TableDataStyledParams,
 } from "../cell"
@@ -30,7 +30,7 @@ import {
 import { TableDataHorizontalBorder } from "../style"
 
 export type TableDataMultipartContent<M, R, P> = Readonly<{
-    data: TableDataChildrenProvider<M, P>
+    data: TableDataMultipartProvider<M, P>
     cells: TableDataMultipartCellProvider<M, R, P>
 }>
 export function tableCell_multipart<M, R, P>(

@@ -100,6 +100,23 @@ export function mergeVerticalBorder(
     }
 }
 
+export function treePaddingStyle(
+    base: TableDataStyle,
+    horizontal: TableDataHorizontalBorderStyle,
+    vertical: TableDataVerticalBorderStyle
+): TableDataFullStyle {
+    return {
+        ...base,
+        border: {
+            horizontal: extendHorizontalBorderStyle({
+                base: base.horizontalBorder,
+                style: horizontal,
+            }),
+            vertical,
+        },
+    }
+}
+
 export type TableDataVerticalBorder =
     | "left"
     | "leftDouble"
