@@ -183,96 +183,130 @@ export function tableHeader({
     sticky,
     header: { key, className, headers },
 }: TableHeaderContent): VNode[] {
-    type HeaderCollection = Readonly<{
-        index: number
-        headers: TableDataHeader[]
+    type HeaderRow = Readonly<{
+        level: number
+        containers: HeaderContainer[]
     }>
     type HeaderContainer = Readonly<{
         index: number
+        height: number
         header: TableDataHeader
     }>
-    return header(0, { index: 0, headers })
 
-    function header(level: number, collection: HeaderCollection): VNode[] {
-        const height = headerHeight(collection)
+    const info = { level: 0, index: 0 }
+    return buildHeaderRows(info, headers).map(headerTr)
 
-        return [
-            tr(key(level), className, gatherHeader(collection).map(headerTh)),
-            ...gatherChildren(collection).flatMap((collection) => header(level + 1, collection)),
-        ]
+    function headerTr({ level, containers }: HeaderRow): VNode {
+        return tr(key(level), className, containers.map(headerTh(level)))
+    }
 
-        function gatherHeader({ headers, index }: HeaderCollection): HeaderContainer[] {
+    type GatherInfo = Readonly<{ level: number; index: number }>
+    function buildHeaderRows(base: GatherInfo, headers: TableDataHeader[]): HeaderRow[] {
+        const rowHeight = maxHeight(headers)
+        return [gatherHeader(), ...gatherChildren()]
+
+        function gatherHeader(): HeaderRow {
             type GatherResult = Readonly<{
                 index: number
-                headers: HeaderContainer[]
+                containers: HeaderContainer[]
             }>
-            return headers.reduce((acc, header) => {
-                return {
-                    index: acc.index + header.length,
-                    headers: [
-                        ...acc.headers,
-                        {
-                            index: acc.index,
-                            header,
-                        },
-                    ],
-                }
-            }, initialGatherResult(index)).headers
+            return {
+                level: base.level,
+                containers: headers.reduce((acc, header) => {
+                    return {
+                        index: acc.index + header.length,
+                        containers: [
+                            ...acc.containers,
+                            {
+                                index: acc.index,
+                                height: rowHeight - (header.height - 1),
+                                header,
+                            },
+                        ],
+                    }
+                }, initialGatherResult(base.index)).containers,
+            }
             function initialGatherResult(index: number): GatherResult {
                 return {
                     index,
-                    headers: [],
+                    containers: [],
                 }
             }
         }
-        function gatherChildren(collection: HeaderCollection): HeaderCollection[] {
-            return collection.headers.flatMap((header, index) => {
+
+        function gatherChildren(): HeaderRow[] {
+            return headers.reduce((acc, header, index) => {
                 switch (header.type) {
                     case "single":
                     case "expansion":
-                        return []
+                        return acc
 
                     case "group":
-                        return {
-                            index: collection.index + index,
-                            headers: header.children,
-                        }
+                        return merge(acc, [
+                            ...Array(rowHeight - header.height)
+                                .fill(null)
+                                .map((_, i) => {
+                                    return {
+                                        level: base.level + 1 + i,
+                                        containers: [],
+                                    }
+                                }),
+                            ...buildHeaderRows(
+                                {
+                                    level: base.level + rowHeight - header.height + 1,
+                                    index: base.index + index,
+                                },
+                                header.children
+                            ),
+                        ])
                 }
-            })
+            }, <HeaderRow[]>[])
         }
 
-        function headerTh({ index, header }: HeaderContainer): VNode {
-            return html`<th
-                class="${className()}"
-                colspan=${header.length}
-                rowspan=${rowspan()}
-                key=${header.key}
-            >
-                ${header.content}
-            </th>`
+        function merge(base: HeaderRow[], rows: HeaderRow[]): HeaderRow[] {
+            return rows.reduce(
+                (acc, row, index) => [
+                    ...acc.slice(0, index),
+                    mergeRow(row, index),
+                    ...acc.slice(index + 1),
+                ],
+                base
+            )
 
-            function rowspan() {
-                switch (header.type) {
-                    case "single":
-                    case "expansion":
-                        return height - level
-
-                    case "group":
-                        return 1
+            function mergeRow(row: HeaderRow, index: number): HeaderRow {
+                if (index >= base.length) {
+                    return row
                 }
-            }
-            function className() {
-                return [
-                    styleClass(header.style),
-                    stickyColumnClass(sticky, index), // group はうれしくないかもだけど設定しちゃう
-                    stickyHeaderClass(sticky, level),
-                ].join(" ")
+                const baseRow = base[index]
+                return {
+                    ...baseRow,
+                    containers: [...baseRow.containers, ...row.containers],
+                }
             }
         }
     }
 
-    function headerHeight(collection: HeaderCollection): number {
-        return Math.max(0, ...collection.headers.map((header) => header.height))
+    function headerTh(level: number): { (container: HeaderContainer): VNode } {
+        return (container) => html`<th
+            class="${className(container)}"
+            colspan=${container.header.length}
+            rowspan=${container.height}
+            key=${container.header.key}
+        >
+            ${container.header.content}
+        </th>`
+
+        function className({ header, index }: HeaderContainer) {
+            return [
+                styleClass(header.style),
+                // group はうれしくないかもだけど設定しちゃう
+                stickyHeaderClass(sticky, { level, index }),
+            ].join(" ")
+        }
+    }
+
+    function maxHeight(headers: TableDataHeader[]): number {
+        return Math.max(0, ...headers.map((header) => header.height))
     }
 }
 
@@ -545,30 +579,53 @@ function styleClass(style: TableDataFullStyle): string {
     }
 }
 
-function stickyHeaderClass(sticky: TableDataSticky, level: number): string {
+type StickyHeaderContent = Readonly<{
+    level: number
+    index: number
+}>
+function stickyHeaderClass(sticky: TableDataSticky, { level, index }: StickyHeaderContent): string {
     switch (sticky.type) {
         case "none":
         case "column":
             return ""
 
         case "header":
+            return stickyHeader()
+
         case "cross":
-            return `cell_sticky cell_sticky_top${indexToClass(level)}`
+            if (!isStickyColumn(sticky, index)) {
+                return stickyHeader()
+            }
+            return [
+                "cell_sticky",
+                indexedStickyClass("top", level),
+                indexedStickyClass("left", index),
+            ].join(" ")
+    }
+
+    function stickyHeader() {
+        return ["cell_sticky", indexedStickyClass("top", level)].join(" ")
     }
 }
 function stickyColumnClass(sticky: TableDataSticky, index: number): string {
+    if (!isStickyColumn(sticky, index)) {
+        return ""
+    }
+    return ["cell_sticky", indexedStickyClass("left", index)].join(" ")
+}
+function isStickyColumn(sticky: TableDataSticky, index: number): boolean {
     switch (sticky.type) {
         case "none":
         case "header":
-            return ""
+            return false
 
         case "column":
         case "cross":
-            if (index > sticky.column) {
-                return ""
-            }
-            return `cell_sticky cell_sticky_left${indexToClass(index)}`
+            return index < sticky.column
     }
+}
+function indexedStickyClass(type: string, index: number) {
+    return `cell_sticky_${type}${indexToClass(index)}`
 }
 function indexToClass(index: number): string {
     if (index === 0) {
