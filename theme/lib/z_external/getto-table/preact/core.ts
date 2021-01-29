@@ -1,14 +1,7 @@
 import { VNodeContent, VNodeKey } from "../../preact/common"
 import { TableDataCell } from "./cell"
 
-import {
-    inheritStyle,
-    inheritVerticalBorderStyle,
-    mergeVerticalBorder,
-    TableDataClassName,
-    TableDataFullStyle,
-    TableDataSticky,
-} from "./style"
+import { TableDataClassName, TableDataFullStyle, TableDataSticky } from "./style"
 
 export interface TableStructure<M, R> {
     view(params: TableDataParams<M>): TableDataView[]
@@ -114,35 +107,31 @@ export type TableDataColumnTree = Readonly<{
     children: TableDataColumnRow[]
     length: number
     height: number
+    paddingStyle: TableDataFullStyle
 }>
-export function tableCellTreePadding(
-    key: VNodeKey,
-    height: number,
-    tree: TableDataColumnTree,
-    headers: TableDataHeader[]
-): TableDataColumnEmpty[] {
-    if (tree.children.length >= height) {
+
+export type TableCellTreePaddingContent = Readonly<{
+    key: VNodeKey
+    rowHeight: number
+    column: TableDataColumnTree
+}>
+export function tableCellTreePadding({
+    key,
+    rowHeight,
+    column,
+}: TableCellTreePaddingContent): TableDataColumnEmpty[] {
+    if (column.height >= rowHeight) {
         return []
     }
     return [
         {
             type: "empty",
             key,
-            style: mergeVerticalBorder(inheritStyle(), verticalBorder(headers)),
-            length: tree.length,
-            height: height - tree.children.length,
+            style: column.paddingStyle,
+            length: column.length,
+            height: rowHeight - column.height,
         },
     ]
-
-    function verticalBorder(headers: TableDataHeader[]) {
-        if (headers.length === 0) {
-            return inheritVerticalBorderStyle()
-        }
-        return {
-            left: headers[0].style.border.vertical.left,
-            right: headers[headers.length - 1].style.border.vertical.right,
-        }
-    }
 }
 
 export type TableDataHeaderRow = Readonly<{

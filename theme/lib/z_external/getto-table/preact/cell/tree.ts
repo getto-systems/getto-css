@@ -17,7 +17,7 @@ import {
     tableCellSummary,
     tableCellView,
     TableDataCell,
-    TableDataChildrenProvider,
+    TableDataTreeChildrenProvider,
     TableDataRelatedParams,
     TableDataRowKeyProvider,
     TableDataStyledParams,
@@ -33,10 +33,16 @@ import {
     TableDataRowRelatedDecorator,
     TableDataSummaryDecorator,
 } from "../decorator"
-import { TableDataHorizontalBorder } from "../style"
+import {
+    inheritVerticalBorderStyle,
+    TableDataFullStyle,
+    TableDataHorizontalBorder,
+    TableDataStyle,
+    treePaddingStyle,
+} from "../style"
 
 export type TableDataTreeContent<M, R, C> = Readonly<{
-    data: TableDataChildrenProvider<R, C>
+    data: TableDataTreeChildrenProvider<M, R, C>
     key: TableDataRowKeyProvider<C>
     cells: TableDataCell<M, C>[]
 }>
@@ -77,37 +83,22 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
     }
     column(params: TableDataRelatedParams<M, R>): TableDataColumnTree[] {
         const children = this.children(params)
-        if (children.length === 0) {
-            return []
-        }
+        // 幅とスタイルを取得するために summary を構築する
+        // summary が一番軽いだろうという判断
+        const summaries = this.summary(params)
         return [
             {
                 type: "tree",
                 children,
-                length: length(children),
+                length: summaries.length,
                 height: height(children),
+                paddingStyle: this.paddingStyle(params.base, summaries),
             },
         ]
 
-        function length(rows: TableDataColumnRow[]): number {
-            return rows.reduce(
-                (all, row) =>
-                    row.columns.reduce((acc, column) => {
-                        switch (column.type) {
-                            case "single":
-                            case "empty":
-                                return acc + column.length
-
-                            case "tree":
-                                return acc + length(column.children)
-                        }
-                    }, all),
-                0
-            )
-        }
         function height(rows: TableDataColumnRow[]): number {
             return Math.max(
-                1,
+                0,
                 rows
                     .map((tree) =>
                         Math.max(
@@ -132,7 +123,7 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
         const { style } = this.mutable.core.columnStyleMutable()
         const rowMutable = this.mutable.tree.rowMutable()
         const { decorators } = this.mutable.core.columnMutable()
-        return this.content.data(params.row).map((child) => {
+        return this.content.data(params.row, params.model).map((child) => {
             return {
                 key: this.content.key(child),
                 className: rowMutable.decorators.reduce(
@@ -142,6 +133,20 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
                 columns: tableCellChildColumn(child, params, style, decorators, this.content.cells),
             }
         })
+    }
+    paddingStyle(base: TableDataStyle, summaries: TableDataSummary[]): TableDataFullStyle {
+        const { style } = this.mutable.core.columnStyleMutable()
+        return treePaddingStyle(base, style.horizontalBorder, vertical())
+
+        function vertical() {
+            if (summaries.length === 0) {
+                return inheritVerticalBorderStyle()
+            }
+            return {
+                left: summaries[0].style.border.vertical.left,
+                right: summaries[summaries.length - 1].style.border.vertical.right,
+            }
+        }
     }
 
     horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataTree<M, R> {

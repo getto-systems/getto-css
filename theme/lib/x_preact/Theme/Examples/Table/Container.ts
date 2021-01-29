@@ -13,7 +13,7 @@ import { Pager } from "./Pager"
 import { ViewColumns } from "./ViewColumns"
 import { buildStructure, Table } from "./Table"
 
-import { generateRows, Model, Row } from "./data"
+import { generateLogs, generateRows, Model, Row } from "./data"
 
 type ContainerProps = {
     // no props
@@ -28,7 +28,9 @@ export function Container(_: ContainerProps): VNode {
     const structure = useMemo(buildStructure(sortLink(sort)), [])
 
     const model: Model = {
+        logs: generateLogs(),
         alarmMaxLength: 3,
+        temperatureTypes: ["high", "low"]
     }
 
     const params = {

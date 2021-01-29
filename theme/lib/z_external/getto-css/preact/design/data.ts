@@ -15,7 +15,6 @@ import { decorateNone, tableAlign, tableClassName } from "../../../getto-table/p
 
 import {
     visibleKeys,
-    TableDataColumn,
     TableDataColumnRow,
     TableDataLeafColumn,
     TableDataFooterRow,
@@ -25,6 +24,7 @@ import {
     TableDataSummaryRow,
     tableCellTreePadding,
     TableDataColumnTree,
+    TableDataColumn,
 } from "../../../getto-table/preact/core"
 import {
     TableDataAlign,
@@ -209,6 +209,21 @@ export function tableHeader({
         return tr(key(info.level), className, containers.map(headerTh(info)))
     }
 
+    function headerTh(info: StickyHorizontalInfo): { (container: HeaderContainer): VNode } {
+        return (container) => html`<th
+            class="${className(container)}"
+            colspan=${container.header.length}
+            rowspan=${container.height}
+            key=${container.header.key}
+        >
+            ${container.header.content}
+        </th>`
+
+        function className({ header, index }: HeaderContainer) {
+            return [styleClass(header.style), stickyHeaderClass(sticky, { info, index })].join(" ")
+        }
+    }
+
     function buildHeaderRows(base: GatherInfo, headers: TableDataHeader[]): HeaderRow[] {
         const rowHeight = maxHeight(headers)
         const top = gatherHeader()
@@ -313,21 +328,6 @@ export function tableHeader({
         }
     }
 
-    function headerTh(info: StickyHorizontalInfo): { (container: HeaderContainer): VNode } {
-        return (container) => html`<th
-            class="${className(container)}"
-            colspan=${container.header.length}
-            rowspan=${container.height}
-            key=${container.header.key}
-        >
-            ${container.header.content}
-        </th>`
-
-        function className({ header, index }: HeaderContainer) {
-            return [styleClass(header.style), stickyHeaderClass(sticky, { info, index })].join(" ")
-        }
-    }
-
     function maxHeight(headers: TableDataHeader[]): number {
         return Math.max(0, ...headers.map((header) => header.height))
     }
@@ -335,7 +335,7 @@ export function tableHeader({
         type BorderInfo = Readonly<{ top: number; bottom: number }>
         return (
             row.info.borderWidth +
-            sumBorderWidth(
+            sum(
                 row.containers.reduce((acc, container) => {
                     return merge({
                         base: acc,
@@ -344,20 +344,20 @@ export function tableHeader({
                             bottom: bottomWidth(container),
                         },
                     })
-                }, initialBorderWidth())
+                }, initialBorderInfo())
             )
         )
 
         function topWidth(container: HeaderContainer): number {
-            return borderWidth(container.header.style.border.horizontal.top)
+            return width(container.header.style.border.horizontal.top)
         }
         function bottomWidth(container: HeaderContainer): number {
             if (container.height > 1) {
                 return 0
             }
-            return borderWidth(container.header.style.border.horizontal.bottom)
+            return width(container.header.style.border.horizontal.bottom)
         }
-        function borderWidth(border: TableDataBorderClass): number {
+        function width(border: TableDataBorderClass): number {
             switch (border) {
                 case "none":
                 case "inherit":
@@ -371,10 +371,10 @@ export function tableHeader({
             }
         }
 
-        function initialBorderWidth(): BorderInfo {
+        function initialBorderInfo(): BorderInfo {
             return { top: 0, bottom: 0 }
         }
-        function sumBorderWidth({ top, bottom }: BorderInfo): number {
+        function sum({ top, bottom }: BorderInfo): number {
             return top + bottom
         }
         function merge({ base, border }: { base: BorderInfo; border: BorderInfo }): BorderInfo {
@@ -399,147 +399,37 @@ export function tableSummary({
 
 export type TableColumnContent = Readonly<{
     sticky: TableDataSticky
-    header: TableDataHeaderRow
     column: TableDataColumnRow
 }>
-export function tableColumn({ sticky, header: { headers }, column }: TableColumnContent): VNode[] {
-    type ColumnCollection = Readonly<{
-        index: number
-        rows: TableDataColumnRow[]
-    }>
+export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
     type ColumnEntry =
-        | Readonly<{ type: "column"; column: ColumnContainer }>
-        | Readonly<{ type: "rows"; rows: ColumnRow[] }>
+        | Readonly<{ type: "leaf"; container: ColumnContainer }>
+        | Readonly<{ type: "tree"; rows: ColumnRow[] }>
     type ColumnRow = Readonly<{
         key: VNodeKey[]
         className: TableDataClassName
-        columns: ColumnContainer[]
+        containers: ColumnContainer[]
     }>
     type ColumnContainer = Readonly<{
         index: number
+        rowspan: number
         column: TableDataLeafColumn
     }>
+    type GatherInfo = Readonly<{
+        index: number
+    }>
 
-    const collection = { index: 0, rows: [column] }
-    const height = columnHeight(column.columns)
+    return buildColumnRows({ index: 0 }, column).map(columnTr)
 
-    return toColumnRows(collection).map((row) =>
-        tr(row.key.join("_"), row.className, row.columns.map(columnTd))
-    )
-
-    function toColumnRows({ rows, index }: ColumnCollection): ColumnRow[] {
-        return rows.flatMap((row) => buildRow(row, toColumnEntries(row, index)))
-    }
-    function buildRow(row: TableDataColumnRow, columns: ColumnEntry[]): ColumnRow[] {
-        return columns.reduce((acc, entry): ColumnRow[] => {
-            switch (entry.type) {
-                case "column":
-                    return pushRow(acc, entry.column)
-
-                case "rows":
-                    return mergeRows({ acc, rows: entry.rows })
-            }
-        }, <ColumnRow[]>[])
-
-        function pushRow(acc: ColumnRow[], column: ColumnContainer): ColumnRow[] {
-            return insertColumnRow(acc, 0, (row) => {
-                return { ...row, columns: [...row.columns, column] }
-            })
-        }
-        function mergeRows({
-            acc,
-            rows,
-        }: Readonly<{ acc: ColumnRow[]; rows: ColumnRow[] }>): ColumnRow[] {
-            return rows.reduce((acc, row, index) => {
-                return insertColumnRow(acc, index, (base) => mergeRow({ base: base, row }))
-            }, acc)
-        }
-        function mergeRow({ base, row }: Readonly<{ base: ColumnRow; row: ColumnRow }>): ColumnRow {
-            return {
-                key: [...base.key, ...row.key],
-                className: [...base.className, ...row.className],
-                columns: [...base.columns, ...row.columns],
-            }
-        }
-        function insertColumnRow(
-            rows: ColumnRow[],
-            index: number,
-            map: { (row: ColumnRow): ColumnRow }
-        ): ColumnRow[] {
-            if (rows.length === index) {
-                rows.push({
-                    key: [row.key],
-                    className: [...row.className],
-                    columns: [],
-                })
-            }
-            rows[index] = map(rows[index])
-            return rows
-        }
-    }
-    function toColumnEntries(row: TableDataColumnRow, index: number): ColumnEntry[] {
-        type GatherResult = Readonly<{
-            index: number
-            columns: ColumnEntry[]
-        }>
-
-        return row.columns.reduce((acc, column): GatherResult => {
-            switch (column.type) {
-                case "single":
-                case "empty":
-                    return {
-                        index: acc.index + column.length,
-                        columns: [
-                            ...acc.columns,
-                            { type: "column", column: { index: acc.index, column } },
-                        ],
-                    }
-
-                case "tree":
-                    return {
-                        index: acc.index + column.length,
-                        columns: [
-                            ...acc.columns,
-                            {
-                                type: "rows",
-                                rows: [
-                                    ...toColumnRows({
-                                        index: acc.index,
-                                        rows: column.children,
-                                    }),
-                                    ...padding(column, acc.index),
-                                ],
-                            },
-                        ],
-                    }
-            }
-
-            function padding(column: TableDataColumnTree, index: number): ColumnRow[] {
-                return tableCellTreePadding(`__empty_${index}`, height, column, headers).map(
-                    (column) => {
-                        return {
-                            key: [],
-                            className: [],
-                            columns: [{ index, column }],
-                        }
-                    }
-                )
-            }
-        }, initialGatherResult(index)).columns
-
-        function initialGatherResult(index: number): GatherResult {
-            return {
-                index,
-                columns: [],
-            }
-        }
+    function columnTr({ key, className, containers }: ColumnRow): VNode {
+        return tr(key.join("_"), className, containers.map(columnTd))
     }
 
-    function columnTd({ index, column }: ColumnContainer): VNode {
+    function columnTd({ index, rowspan, column }: ColumnContainer): VNode {
         return html`<td
             class="${className()}"
             colspan=${column.length}
-            rowspan=${height}
+            rowspan=${rowspan}
             key=${column.key}
         >
             ${content()}
@@ -559,8 +449,103 @@ export function tableColumn({ sticky, header: { headers }, column }: TableColumn
         }
     }
 
-    function columnHeight(columns: TableDataColumn[]): number {
-        return Math.max(1, ...columns.map((column) => column.height))
+    function buildColumnRows(base: GatherInfo, row: TableDataColumnRow): ColumnRow[] {
+        const rowHeight = maxHeight(row)
+
+        return row.columns.reduce(
+            (acc, column, index) => merge(acc, entry(column, base.index + index)),
+            <ColumnRow[]>[]
+        )
+
+        function entry(column: TableDataColumn, index: number): ColumnEntry {
+            switch (column.type) {
+                case "single":
+                case "empty":
+                    return leafEntry({ column, index, rowspan: rowHeight })
+
+                case "tree":
+                    return treeEntry(column, { index })
+            }
+        }
+        function leafEntry(container: ColumnContainer): ColumnEntry {
+            return { type: "leaf", container }
+        }
+        function treeEntry(column: TableDataColumnTree, info: GatherInfo): ColumnEntry {
+            return {
+                type: "tree",
+                rows: [...column.children.flatMap((row) => buildColumnRows(info, row)), ...padding()],
+            }
+
+            function padding() {
+                return tableCellTreePadding({
+                    key: `__empty_${info.index}`,
+                    rowHeight,
+                    column,
+                }).map(
+                    (column): ColumnRow => {
+                        return {
+                            key: [],
+                            className: [],
+                            containers: [{ index: info.index, rowspan: column.height, column }],
+                        }
+                    }
+                )
+            }
+        }
+
+        function merge(base: ColumnRow[], entry: ColumnEntry): ColumnRow[] {
+            switch (entry.type) {
+                case "leaf":
+                    return mergeLeaf(entry.container)
+
+                case "tree":
+                    return mergeTree(entry.rows)
+            }
+
+            function mergeLeaf(container: ColumnContainer): ColumnRow[] {
+                if (base.length === 0) {
+                    return [
+                        {
+                            key: [],
+                            className: [],
+                            containers: [container],
+                        },
+                    ]
+                }
+                return [mergeContainer(base[0]), ...base.slice(1)]
+
+                function mergeContainer(first: ColumnRow): ColumnRow {
+                    return { ...first, containers: [...first.containers, container] }
+                }
+            }
+
+            function mergeTree(rows: ColumnRow[]): ColumnRow[] {
+                return rows.reduce(
+                    (acc, row, index) => [
+                        ...acc.slice(0, index),
+                        mergeRow(row, index),
+                        ...acc.slice(index + 1),
+                    ],
+                    base
+                )
+
+                function mergeRow(row: ColumnRow, index: number): ColumnRow {
+                    if (index >= base.length) {
+                        return row
+                    }
+                    const baseRow = base[index]
+                    return {
+                        key: [...baseRow.key, ...row.key],
+                        className: [...baseRow.className, ...row.className],
+                        containers: [...baseRow.containers, ...row.containers],
+                    }
+                }
+            }
+        }
+    }
+
+    function maxHeight(row: TableDataColumnRow): number {
+        return Math.max(1, ...row.columns.map((column) => column.height))
     }
 }
 

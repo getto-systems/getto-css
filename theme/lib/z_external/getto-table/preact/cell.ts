@@ -163,8 +163,11 @@ export interface TableDataExpansionColumnContentProvider<R> {
 export interface TableDataRowKeyProvider<R> {
     (row: R): VNodeKey
 }
-export interface TableDataChildrenProvider<R, C> {
-    (row: R): C[]
+export interface TableDataMultipartProvider<M, P> {
+    (model: M): P[]
+}
+export interface TableDataTreeChildrenProvider<M, R, C> {
+    (row: R, model: M): C[]
 }
 
 export function tableCellView<M, R>(
