@@ -59,18 +59,12 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                 key: "base",
                 header: () => linky("基本情報"),
                 cells: [
-                    tableCell_group({
-                        key: "accountInfo",
-                        header: () => linky("基本"),
-                        cells: [
-                            tableCell("name", (key) => {
-                                return {
-                                    label: () => "名前",
-                                    header: sort(key),
-                                    column: (row: Row) => row.name,
-                                }
-                            }).border(["right"]),
-                        ],
+                    tableCell("name", (key) => {
+                        return {
+                            label: () => "名前",
+                            header: sort(key),
+                            column: (row: Row) => row.name,
+                        }
                     }),
 
                     tableCell("state", (key) => {
@@ -80,7 +74,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                             column: (row: Row) => stateLabel(row.state),
                         }
                     })
-                        .border(["right"])
+                        .border(["rightDouble"])
                         .decorateColumn(tableAlign(["center"])),
                 ],
             }),
@@ -117,15 +111,21 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                         ],
                     }),
 
-                    tableCell("price", (key) => {
-                        return {
-                            label: () => "価格",
-                            header: sort(key),
-                            column: (row: Row) => formatPrice(row.price),
-                        }
-                    })
-                        .border(["rightDouble"])
-                        .decorateColumn(tableAlign(["numeric"])),
+                    tableCell_group({
+                        key: "purchaseInfo",
+                        header: () => linky("価格情報"),
+                        cells: [
+                            tableCell("price", (key) => {
+                                return {
+                                    label: () => "価格",
+                                    header: sort(key),
+                                    column: (row: Row) => formatPrice(row.price),
+                                }
+                            })
+                                .border(["rightDouble"])
+                                .decorateColumn(tableAlign(["numeric"])),
+                        ],
+                    }),
                 ],
             }),
 
