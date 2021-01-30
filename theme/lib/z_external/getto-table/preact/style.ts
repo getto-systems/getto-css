@@ -1,9 +1,3 @@
-export type TableDataSticky =
-    | Readonly<{ type: "none" }>
-    | Readonly<{ type: "header" }>
-    | Readonly<{ type: "column"; column: number }>
-    | Readonly<{ type: "cross"; column: number }>
-
 export type TableDataStyle = Readonly<{
     horizontalBorder: TableDataHorizontalBorderStyle
     align: TableDataAlignStyle
@@ -17,6 +11,13 @@ export type TableDataFullStyle = Readonly<{
 export type TableDataRowStyle = Readonly<{
     className: TableDataClassName
 }>
+
+export type TableDataSticky =
+    | Readonly<{ type: "none" }>
+    | Readonly<{ type: "table" }>
+    | Readonly<{ type: "header" }>
+    | Readonly<{ type: "column"; column: number }>
+    | Readonly<{ type: "cross"; column: number }>
 
 export function inheritStyle(): TableDataStyle {
     return {

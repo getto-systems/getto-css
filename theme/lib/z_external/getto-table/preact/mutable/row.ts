@@ -76,6 +76,9 @@ class Mutable implements TableDataMutable_row {
         this.footerRow = { ...this.footerRow, style: decorateRowStyle(this.footerRow.style, decorator) }
     }
 
+    stickyTable(): void {
+        this.sticky = { ...this.sticky, sticky: { type: "table" } }
+    }
     stickyHeader(): void {
         this.sticky = { ...this.sticky, sticky: { type: "header" } }
     }

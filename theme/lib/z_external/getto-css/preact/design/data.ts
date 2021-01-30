@@ -152,6 +152,7 @@ function stickyTableClass(sticky: TableDataSticky): string {
         case "none":
             return ""
 
+        case "table":
         case "header":
         case "column":
         case "cross":
@@ -755,6 +756,7 @@ function stickyHeaderClass(
 ): string[] {
     switch (sticky.type) {
         case "none":
+        case "table":
         case "column":
             return []
 
@@ -786,6 +788,7 @@ function stickyColumnClass(sticky: TableDataSticky, index: number): string[] {
 function isStickyColumn(sticky: TableDataSticky, index: number): boolean {
     switch (sticky.type) {
         case "none":
+        case "table":
         case "header":
             return false
 
