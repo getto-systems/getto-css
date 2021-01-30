@@ -106,7 +106,7 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
                             ...tree.columns.map((column) => {
                                 switch (column.type) {
                                     case "single":
-                                    case "empty":
+                                    case "expansion":
                                         return column.height
 
                                     case "tree":

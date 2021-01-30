@@ -1,6 +1,5 @@
 import {
     TableDataCellKey,
-    TableDataColumnEmpty,
     TableDataColumnExpansion,
     TableDataColumnSingle,
     TableDataHeaderExpansion,
@@ -138,36 +137,26 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
             this.verticalBorder()
         )
         return [
-            ...contents.map(
-                (content, index): TableDataColumnSingle => {
-                    return {
-                        type: "single",
-                        key: `${this.key}_${index}`,
-                        style: columnStyle,
-                        content,
-                        length: 1,
-                        height: 1,
+            {
+                type: "expansion",
+                key: this.key,
+                style: columnStyle,
+                length,
+                columns: contents.map(
+                    (content, index): TableDataColumnSingle => {
+                        return {
+                            type: "single",
+                            key: [this.key, index].join(" "),
+                            style: columnStyle,
+                            content,
+                            length: 1,
+                            height: 1,
+                        }
                     }
-                }
-            ),
-            ...empty(this.key),
+                ),
+                height: 1,
+            },
         ]
-
-        function empty(key: TableDataCellKey): TableDataColumnEmpty[] {
-            if (contents.length >= length) {
-                return []
-            }
-
-            return [
-                {
-                    type: "empty",
-                    key: `${key}_empty`,
-                    style: columnStyle,
-                    length: length - contents.length,
-                    height: 1,
-                },
-            ]
-        }
     }
     footer(params: TableDataStyledParams<M>): TableDataSummaryExpansion[] {
         const { style } = this.mutable.core.footerStyleMutable()
