@@ -3,18 +3,7 @@ import { html } from "htm/preact"
 
 import { VNodeContent, VNodeKey } from "../../../preact/common"
 
-import { checkbox } from "./form"
-
-import { tableStructure } from "../../../getto-table/preact/cell/structure"
-import { tableCell } from "../../../getto-table/preact/cell/simple"
-import { tableCell_expansion } from "../../../getto-table/preact/cell/expansion"
-import { tableCell_group } from "../../../getto-table/preact/cell/group"
-import { tableCell_multipart } from "../../../getto-table/preact/cell/multipart"
-import { tableCell_tree } from "../../../getto-table/preact/cell/tree"
-import { decorateNone, tableAlign, tableClassName } from "../../../getto-table/preact/decorator"
-
 import {
-    visibleKeys,
     TableDataColumnRow,
     TableDataFooterRow,
     TableDataHeader,
@@ -36,7 +25,6 @@ import {
     TableDataFullStyle,
     TableDataSticky,
 } from "../../../getto-table/preact/style"
-import { TableDataCell } from "../../../getto-table/preact/cell"
 
 export interface SortLink {
     (key: SortKey): { (content: VNodeContent): VNode }
@@ -846,127 +834,3 @@ function borderWidthToClass(borderWidth: number): string {
 }
 
 const EMPTY_CONTENT = html``
-
-// TODO 以下テストコードを x_preact に移す
-export function __demo(): void {
-    type Model = Readonly<{
-        maxEmailCount: number
-        allParts: string[]
-    }>
-    type Row = Readonly<{
-        type: string
-        id: number
-        logs: Log[]
-        emails: string[]
-        parts: Record<string, Part>
-    }>
-    type Log = Readonly<{
-        id: number
-        date: string
-    }>
-    type RowLog = Readonly<{ row: Row; log: Log }>
-    type Part = Readonly<{
-        name: string
-    }>
-
-    type Cells<R> = TableDataCell<Model, R>[]
-
-    const structure = tableStructure({
-        key: (row: Row) => row.id,
-        cells: <Cells<Row>>[
-            tableCell("id", (_key) => {
-                return {
-                    label: () => "ID",
-                    header: linky,
-                    column: (row: Row) => html`${row.id}`,
-                }
-            })
-                .border(["rightDouble"])
-                .decorateColumnRelated((row) => {
-                    switch (row.type) {
-                        case "summary":
-                            return tableAlign(["middle"])
-
-                        default:
-                            return decorateNone
-                    }
-                }),
-
-            tableCell_group({
-                key: "group",
-                header: () => linky("group"),
-                cells: <Cells<Row>>[
-                    tableCell_expansion("expansion", (_key) => {
-                        return {
-                            label: () => "expansion",
-                            header: linky,
-                            column: (row: Row) => row.emails.map((email) => html`${email}`),
-                            length: (summary: Model) => summary.maxEmailCount,
-                        }
-                    }).border(["left"]),
-
-                    tableCell_multipart({
-                        data: (summary: Model): string[] => summary.allParts,
-                        cells: (part: string): Cells<Row> => [
-                            tableCell(`part_${part}`, (_key) => {
-                                return {
-                                    label: () => part,
-                                    header: linky,
-                                    column: (row: Row) => html`${row.parts[part]}`,
-                                }
-                            }),
-                        ],
-                    }),
-                ],
-            }),
-
-            tableCell_tree({
-                data: (row: Row): RowLog[] =>
-                    row.logs.map((log) => {
-                        return { log, row }
-                    }),
-                key: ({ log }: RowLog) => log.id,
-                cells: <Cells<RowLog>>[
-                    tableCell("logDate", (_key) => {
-                        return {
-                            label: () => "log date",
-                            header: linky,
-                            column: ({ log, row }: RowLog) => html`${row.id} / ${log.date}`,
-                        }
-                    }).border(["left"]),
-                ],
-            }),
-        ],
-    })
-        .horizontalBorderRelated((row) => (row.id > 0 ? ["bottom"] : []))
-        .decorateRowRelated(() => tableClassName(["additional_class"]))
-        .freeze()
-
-    const model: Model = {
-        maxEmailCount: 0,
-        allParts: ["part1"],
-    }
-    const rows: Row[] = []
-
-    const params = { visibleKeys: visibleKeys(["id", "union"]), model }
-
-    const content = {
-        sticky: structure.sticky(),
-        view: structure.view(params),
-        header: structure.header(params),
-        summary: structure.summary(params),
-        footer: structure.footer(params),
-    }
-
-    tableViewColumns(
-        content.view.map(({ isVisible, content, key }) =>
-            checkbox({ isChecked: isVisible, input: html`<input type="checkbox" />${content}`, key })
-        )
-    )
-
-    table(content.sticky, [
-        thead([...tableHeader(content), ...tableSummary(content)]),
-        tbody(rows.flatMap((row) => tableColumn({ ...content, column: structure.column(params, row) }))),
-        tfoot(tableFooter(content)),
-    ])
-}
