@@ -27,6 +27,7 @@ import {
     TableDataColumnExpansion,
 } from "../../../getto-table/preact/core"
 import {
+    overrideBorderBottomToNone,
     TableDataAlign,
     TableDataAlignStyle,
     TableDataBorderClass,
@@ -196,12 +197,12 @@ export function tableHeader({
         header: TableDataHeader
     }>
 
-    type GatherInfo = Readonly<{
+    type BuildInfo = Readonly<{
         sticky: StickyHorizontalInfo
         index: number
     }>
 
-    const base: GatherInfo = {
+    const base: BuildInfo = {
         sticky: { level: 0, borderWidth: 0 },
         index: 0,
     }
@@ -226,7 +227,7 @@ export function tableHeader({
         }
     }
 
-    function buildHeaderRows(base: GatherInfo, headers: TableDataHeader[]): HeaderRow[] {
+    function buildHeaderRows(base: BuildInfo, headers: TableDataHeader[]): HeaderRow[] {
         const rowHeight = maxHeight(headers)
         const top = gatherHeader()
         const nextBorderWidth = borderWidth(top)
@@ -401,11 +402,18 @@ export function tableSummary({
     return [tr(key, className, summaries.map(summaryTd(sticky)))]
 }
 
-export type TableColumnContent = Readonly<{
+export type TableColumnContent =
+    | TableColumnContent_base
+    | (TableColumnContent_base & TableColumnContent_noBorderBottom)
+type TableColumnContent_base = Readonly<{
     sticky: TableDataSticky
     column: TableDataColumnRow
 }>
-export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
+type TableColumnContent_noBorderBottom = Readonly<{
+    noBorderBottom: boolean
+}>
+
+export function tableColumn(content: TableColumnContent): VNode[] {
     type ColumnEntry = ColumnEntry_single | ColumnEntry_expansion | ColumnEntry_tree
     type ColumnEntry_single = Readonly<{ type: "single"; container: ColumnContainer }>
     type ColumnEntry_expansion = Readonly<{
@@ -425,9 +433,10 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         index: number
         colspan: number
         rowspan: number
+        style: TableDataFullStyle
         column: TableDataColumnSingle | EmptyColumn
     }>
-    type EmptyColumn = Readonly<{ type: "empty"; key: VNodeKey; style: TableDataFullStyle }>
+    type EmptyColumn = Readonly<{ type: "empty"; key: VNodeKey }>
 
     type ColumnRow = Readonly<{
         key: VNodeKey[]
@@ -435,23 +444,27 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         containers: ColumnContainer[]
     }>
 
-    type GatherInfo = Readonly<{
+    type BuildInfo = Readonly<{
         index: number
+        bottom: boolean
     }>
 
-    return buildColumnRows({ index: 0 }, column).map(columnTr)
+    const { sticky, column } = content
+    const noBorderBottom = "noBorderBottom" in content && content.noBorderBottom
+
+    return buildColumnRows({ index: 0, bottom: true }, column).map(columnTr)
 
     function columnTr({ key, className, containers }: ColumnRow): VNode {
         return tr(key.join("_"), className, containers.map(columnTd))
     }
 
-    function columnTd({ index, colspan, rowspan, column }: ColumnContainer): VNode {
+    function columnTd({ index, colspan, rowspan, style, column }: ColumnContainer): VNode {
         return html`<td class="${className()}" colspan=${colspan} rowspan=${rowspan} key=${column.key}>
             ${content()}
         </td>`
 
         function className() {
-            return [...styleClass(column.style), ...stickyColumnClass(sticky, index)].join(" ")
+            return [...styleClass(style), ...stickyColumnClass(sticky, index)].join(" ")
         }
         function content() {
             switch (column.type) {
@@ -464,15 +477,15 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         }
     }
 
-    function buildColumnRows(base: GatherInfo, row: TableDataColumnRow): ColumnRow[] {
+    function buildColumnRows(base: BuildInfo, row: TableDataColumnRow): ColumnRow[] {
         const rowHeight = maxHeight(row)
 
         return row.columns.reduce(
-            (acc, column, index) => merge(acc, entry(column, { index: base.index + index })),
+            (acc, column, index) => merge(acc, entry(column, { ...base, index: base.index + index })),
             <ColumnRow[]>[]
         )
 
-        function entry(column: TableDataColumn, info: GatherInfo): ColumnEntry {
+        function entry(column: TableDataColumn, info: BuildInfo): ColumnEntry {
             switch (column.type) {
                 case "single":
                     return singleEntry(column, info)
@@ -484,7 +497,7 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                     return treeEntry(column, info)
             }
         }
-        function singleEntry(column: TableDataColumnSingle, { index }: GatherInfo): ColumnEntry_single {
+        function singleEntry(column: TableDataColumnSingle, { index }: BuildInfo): ColumnEntry_single {
             return {
                 type: "single",
                 container: {
@@ -492,12 +505,13 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                     index,
                     colspan: column.length,
                     rowspan: rowHeight,
+                    style: overrideBorderBottom(column.style),
                 },
             }
         }
         function expansionEntry(
             column: TableDataColumnExpansion,
-            expansionBase: GatherInfo
+            expansionBase: BuildInfo
         ): ColumnEntry {
             return {
                 type: "expansion",
@@ -507,16 +521,25 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                     .slice(0, column.length)
                     .map(
                         (single, index) =>
-                            singleEntry(single, { index: expansionBase.index + index }).container
+                            singleEntry(single, { ...base, index: expansionBase.index + index })
+                                .container
                     ),
             }
         }
-        function treeEntry(column: TableDataColumnTree, info: GatherInfo): ColumnEntry {
+        function treeEntry(column: TableDataColumnTree, info: BuildInfo): ColumnEntry {
             return {
                 type: "tree",
                 index: info.index,
                 column,
-                rows: column.children.flatMap((row) => buildColumnRows(info, row)),
+                rows: column.children.flatMap((row, index) =>
+                    buildColumnRows(
+                        {
+                            ...info,
+                            bottom: info.bottom && index === rowHeight - 1,
+                        },
+                        row
+                    )
+                ),
             }
         }
 
@@ -577,7 +600,8 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                             index,
                             colspan: column.length - containers.length,
                             rowspan: rowHeight,
-                            column: { type: "empty", key: `${column.key}__empty`, style: column.style },
+                            style: overrideBorderBottom(column.style),
+                            column: { type: "empty", key: `${column.key}__empty` },
                         },
                     ]
                 }
@@ -620,10 +644,10 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                                     index,
                                     colspan: column.length,
                                     rowspan: rowHeight - rows.length,
+                                    style: overrideBorderBottom(column.style),
                                     column: {
                                         type: "empty",
                                         key: `__empty_${index}`,
-                                        style: column.style,
                                     },
                                 },
                             ],
@@ -631,6 +655,13 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                     }
                 }
             }
+        }
+
+        function overrideBorderBottom(style: TableDataFullStyle): TableDataFullStyle {
+            if (!noBorderBottom || !base.bottom) {
+                return style
+            }
+            return overrideBorderBottomToNone(style)
         }
     }
 
