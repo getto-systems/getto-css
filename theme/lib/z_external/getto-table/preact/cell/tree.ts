@@ -108,7 +108,7 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
                                 switch (column.type) {
                                     case "single":
                                     case "expansion":
-                                        return 1
+                                        return column.height
 
                                     case "tree":
                                         return height(column.children)

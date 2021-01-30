@@ -101,8 +101,6 @@ class Cell<M, R> implements TableDataGroup<M, R> {
             return headers.reduce((acc, header) => {
                 switch (header.type) {
                     case "single":
-                        return acc + 1
-
                     case "expansion":
                         return acc + header.length
 
@@ -113,7 +111,7 @@ class Cell<M, R> implements TableDataGroup<M, R> {
         }
         function height(headers: TableDataHeader[]): number {
             return Math.max(
-                1,
+                0,
                 ...headers.map((header) => {
                     switch (header.type) {
                         case "single":
