@@ -189,7 +189,8 @@ export function tableHeader({
     }>
     type HeaderContainer = Readonly<{
         index: number
-        height: number
+        colspan: number
+        rowspan: number
         header: TableDataHeader
     }>
     type GatherInfo = Readonly<{
@@ -210,16 +211,16 @@ export function tableHeader({
     }
 
     function headerTh(info: StickyHorizontalInfo): { (container: HeaderContainer): VNode } {
-        return (container) => html`<th
-            class="${className(container)}"
-            colspan=${container.header.length}
-            rowspan=${container.height}
-            key=${container.header.key}
+        return ({index, colspan, rowspan, header}) => html`<th
+            class="${className(index, header)}"
+            colspan=${colspan}
+            rowspan=${rowspan}
+            key=${header.key}
         >
-            ${container.header.content}
+            ${header.content}
         </th>`
 
-        function className({ header, index }: HeaderContainer) {
+        function className(index: number, header: TableDataHeader) {
             return [styleClass(header.style), stickyHeaderClass(sticky, { info, index })].join(" ")
         }
     }
@@ -244,7 +245,8 @@ export function tableHeader({
                             ...acc.containers,
                             {
                                 index: acc.index,
-                                height: paddingHeight(header) + 1,
+                                colspan: header.length,
+                                rowspan: paddingHeight(header) + 1,
                                 header,
                             },
                         ],
@@ -352,7 +354,7 @@ export function tableHeader({
             return width(container.header.style.border.horizontal.top)
         }
         function bottomWidth(container: HeaderContainer): number {
-            if (container.height > 1) {
+            if (container.rowspan > 1) {
                 return 0
             }
             return width(container.header.style.border.horizontal.bottom)
