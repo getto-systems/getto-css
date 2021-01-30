@@ -33,12 +33,15 @@ export interface TableDataHorizontalBorderProvider<R> {
     (row: R): TableDataHorizontalBorder[]
 }
 
-export type TableDataSummaryProvider =
+export type TableDataSummaryProvider<M> =
     | Readonly<{ type: "none" }>
-    | Readonly<{ type: "content"; content: TableDataContentProvider }>
+    | Readonly<{ type: "content"; content: TableDataSummaryContentProvider<M> }>
 
 export interface TableDataContentProvider {
     (): VNodeContent
+}
+export interface TableDataSummaryContentProvider<M> {
+    (model: M): VNodeContent
 }
 
 export type TableDataStyleDecorator =

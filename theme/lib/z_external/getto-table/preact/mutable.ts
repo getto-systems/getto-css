@@ -9,7 +9,6 @@ import {
     TableDataRowDecorator,
     TableDataRowRelatedDecorator,
     TableDataSummaryDecorator,
-    TableDataSummaryProvider,
     TableDataViewDecorator,
 } from "./decorator"
 import {
@@ -45,16 +44,12 @@ export interface TableDataMutable_base<R> {
 export interface TableDataMutable_leaf {
     visibleMutable(): TableDataVisibleMutable
     viewMutable(): TableDataViewMutable
-    summaryMutable(): TableDataSummaryMutable
-    footerMutable(): TableDataSummaryMutable
     verticalBorderMutable(): TableDataVerticalBorderMutable
 
     alwaysVisible(): void
     border(borders: TableDataVerticalBorder[]): void
 
     decorateView(decorator: TableDataViewDecorator): void
-    setSummary(content: TableDataSummaryProvider): void
-    setFooter(content: TableDataSummaryProvider): void
 }
 export interface TableDataMutable_group {
     viewMutable(): TableDataViewMutable
@@ -99,9 +94,6 @@ export type TableDataVisibleMutable = Readonly<{
 }>
 export type TableDataViewMutable = Readonly<{
     decorator: TableDataContentDecoratorProvider
-}>
-export type TableDataSummaryMutable = Readonly<{
-    content: TableDataSummaryProvider
 }>
 export type TableDataColumnMutable<R> = Readonly<{
     decorators: TableDataColumnRelatedDecorator<R>[]

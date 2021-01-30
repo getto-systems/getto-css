@@ -44,7 +44,7 @@ export function defaultHeaderStyle(): TableDataStyle {
 }
 export function defaultSummaryStyle(): TableDataStyle {
     return {
-        horizontalBorder: { top: "single", bottom: "double" },
+        horizontalBorder: { top: "inherit", bottom: "double" },
         align: { vertical: "top", horizontal: "left" },
         className: [],
     }
@@ -88,6 +88,22 @@ export function extendStyle({
         }),
         align: extendAlign({ base: base.align, style: style.align }),
         className: extendClassName({ base: base.className, style: style.className }),
+    }
+}
+
+export function overrideBorderBottom(
+    base: TableDataFullStyle,
+    border: TableDataHorizontalBorderStyle
+): TableDataFullStyle {
+    return {
+        ...base,
+        border: {
+            ...base.border,
+            horizontal: {
+                ...base.border.horizontal,
+                bottom: border.bottom,
+            },
+        },
     }
 }
 

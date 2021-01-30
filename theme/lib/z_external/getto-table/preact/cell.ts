@@ -31,10 +31,15 @@ import {
     TableDataRowDecorator,
     TableDataRowRelatedDecorator,
     TableDataSummaryDecorator,
-    TableDataSummaryProvider,
     TableDataViewDecorator,
 } from "./decorator"
-import { extendStyle, TableDataHorizontalBorder, TableDataStyle, TableDataVerticalBorder } from "./style"
+import {
+    extendStyle,
+    overrideBorderBottom,
+    TableDataHorizontalBorder,
+    TableDataStyle,
+    TableDataVerticalBorder,
+} from "./style"
 
 export type TableDataCell<M, R> =
     | TableDataSingle<M, R>
@@ -114,9 +119,6 @@ interface TableDataCell_leaf<T> {
     alwaysVisible(): T
     border(borders: TableDataVerticalBorder[]): T
 
-    setSummary(content: TableDataSummaryProvider): T
-    setFooter(content: TableDataSummaryProvider): T
-
     decorateView(decorator: TableDataViewDecorator): T
 }
 interface TableDataCell_group<T> {
@@ -137,7 +139,7 @@ interface TableDataCell_row<T> {
     decorateHeaderRow(decorator: TableDataRowDecorator): T
     decorateSummaryRow(decorator: TableDataRowDecorator): T
     decorateFooterRow(decorator: TableDataRowDecorator): T
-    
+
     stickyTable(): T
     stickyHeader(): T
     stickyColumn(n: number): T
@@ -241,7 +243,7 @@ export function tableCellBaseColumn<M, R>(
     }
 }
 export function tableCellChildColumn<M, R, C>(
-    child: C,
+    child: Readonly<{ row: C; last: boolean }>,
     params: TableDataRelatedParams<M, R>,
     style: TableDataStyle,
     decorators: TableDataColumnRelatedDecorator<R>[],
@@ -252,14 +254,24 @@ export function tableCellChildColumn<M, R, C>(
         cells.flatMap((cell) =>
             cell.column({
                 ...params,
-                row: child,
+                row: child.row,
                 base: extendStyle({ base: params.base, style: decorated(style) }),
             })
         )
-    )
+    ).map(overrideLastChildBorderBottom)
 
     function decorated(style: TableDataStyle) {
         return decorators.reduce((acc, decorator) => decorateStyle(acc, decorator(params.row)), style)
+    }
+
+    function overrideLastChildBorderBottom(column: TableDataColumn): TableDataColumn {
+        if (!child.last) {
+            return column
+        }
+        return {
+            ...column,
+            style: overrideBorderBottom(column.style, params.base.horizontalBorder),
+        }
     }
 }
 export function tableCellFooter<M, R>(

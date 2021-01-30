@@ -2,6 +2,7 @@ export type Model = Readonly<{
     logs: Record<number, Log[]>
     alarmMaxLength: number
     temperatureTypes: TemperatureType[]
+    sumPrice: number
 }>
 
 export type Row = Readonly<{
@@ -33,7 +34,7 @@ export type ArticleComment = string
 export type TemperatureType = "high" | "low"
 
 export function generateRows(): Row[] {
-    return generate(50, rows)
+    return generate(2, rows)
 
     function rows(): Row[] {
         return [

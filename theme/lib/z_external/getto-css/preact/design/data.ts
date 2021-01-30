@@ -35,6 +35,7 @@ import {
     TableDataFullStyle,
     TableDataSticky,
 } from "../../../getto-table/preact/style"
+import { TableDataCell } from "../../../getto-table/preact/cell"
 
 export interface SortLink {
     (key: SortKey): { (content: VNodeContent): VNode }
@@ -397,7 +398,7 @@ export function tableSummary({
     sticky,
     summary: { key, className, summaries },
 }: TableSummaryContent): VNode[] {
-    return [tr(key, className, summaries.map(summaryTh(sticky)))]
+    return [tr(key, className, summaries.map(summaryTd(sticky)))]
 }
 
 export type TableColumnContent = Readonly<{
@@ -489,7 +490,7 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                 container: {
                     column,
                     index,
-                    colspan: 1,
+                    colspan: column.length,
                     rowspan: rowHeight,
                 },
             }
@@ -634,19 +635,7 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
     }
 
     function maxHeight(row: TableDataColumnRow): number {
-        return Math.max(
-            1,
-            ...row.columns.map((column) => {
-                switch (column.type) {
-                    case "single":
-                    case "expansion":
-                        return 1
-
-                    case "tree":
-                        return column.height
-                }
-            })
-        )
+        return Math.max(1, ...row.columns.map((column) => column.height))
     }
 }
 
@@ -658,7 +647,7 @@ export function tableFooter({
     sticky,
     footer: { key, className, footers },
 }: TableFooterContent): VNode[] {
-    return [tr(key, className, footers.map(summaryTh(sticky)))]
+    return [tr(key, className, footers.map(summaryTd(sticky)))]
 }
 
 function tr(key: VNodeKey, className: TableDataClassName, content: VNodeContent): VNode {
@@ -667,11 +656,13 @@ function tr(key: VNodeKey, className: TableDataClassName, content: VNodeContent)
     </tr>`
 }
 
-const summaryTh = (sticky: TableDataSticky): { (summary: TableDataSummary, index: number): VNode } => (
+const summaryTd = (sticky: TableDataSticky): { (summary: TableDataSummary, index: number): VNode } => (
     summary,
     index
 ) => {
-    return html`<th class="${className()}" key=${summary.key}>${summaryContent(summary)}</th>`
+    return html`<td class="${className()}" colspan=${summary.length} key=${summary.key}>
+        ${summaryContent(summary)}
+    </td>`
 
     function className(): string {
         return [...styleClass(summary.style), ...stickyColumnClass(sticky, index)].join(" ")
@@ -681,6 +672,7 @@ const summaryTh = (sticky: TableDataSticky): { (summary: TableDataSummary, index
 function summaryContent(summary: TableDataSummary): VNodeContent {
     switch (summary.type) {
         case "empty":
+        case "empty-expansion":
             return EMPTY_CONTENT
 
         case "single":
@@ -841,9 +833,11 @@ export function __demo(): void {
         name: string
     }>
 
+    type Cells<R> = TableDataCell<Model, R>[]
+
     const structure = tableStructure({
         key: (row: Row) => row.id,
-        cells: [
+        cells: <Cells<Row>>[
             tableCell("id", (_key) => {
                 return {
                     label: () => "ID",
@@ -865,7 +859,7 @@ export function __demo(): void {
             tableCell_group({
                 key: "group",
                 header: () => linky("group"),
-                cells: [
+                cells: <Cells<Row>>[
                     tableCell_expansion("expansion", (_key) => {
                         return {
                             label: () => "expansion",
@@ -877,7 +871,7 @@ export function __demo(): void {
 
                     tableCell_multipart({
                         data: (summary: Model): string[] => summary.allParts,
-                        cells: (part: string) => [
+                        cells: (part: string): Cells<Row> => [
                             tableCell(`part_${part}`, (_key) => {
                                 return {
                                     label: () => part,
@@ -896,7 +890,7 @@ export function __demo(): void {
                         return { log, row }
                     }),
                 key: ({ log }: RowLog) => log.id,
-                cells: [
+                cells: <Cells<RowLog>>[
                     tableCell("logDate", (_key) => {
                         return {
                             label: () => "log date",
