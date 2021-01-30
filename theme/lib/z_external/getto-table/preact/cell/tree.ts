@@ -89,11 +89,14 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
         return {
             type: "tree",
             children,
-            length: summaries.length,
+            length: length(summaries),
             height: height(children),
             style: this.paddingStyle(params.base, summaries),
         }
 
+        function length(summaries: TableDataSummary[]): number {
+            return summaries.reduce((acc, summary) => acc + summary.length, 0)
+        }
         function height(rows: TableDataColumnRow[]): number {
             return Math.max(
                 0,
@@ -105,7 +108,7 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
                                 switch (column.type) {
                                     case "single":
                                     case "expansion":
-                                        return 1
+                                        return column.height
 
                                     case "tree":
                                         return height(column.children)
@@ -121,14 +124,23 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
         const { style } = this.mutable.core.columnStyleMutable()
         const rowMutable = this.mutable.tree.rowMutable()
         const { decorators } = this.mutable.core.columnMutable()
-        return this.content.data(params.row, params.model).map((child) => {
+
+        const data = this.content.data(params.row, params.model)
+        const dataLength = data.length
+        return data.map((row, index) => {
             return {
-                key: this.content.key(child),
+                key: this.content.key(row),
                 className: rowMutable.decorators.reduce(
                     (acc, decorator) => decorateRowStyle(acc, decorator(params.row)),
                     rowMutable.style
                 ).className,
-                columns: tableCellChildColumn(child, params, style, decorators, this.content.cells),
+                columns: tableCellChildColumn(
+                    { row, last: index === dataLength - 1 },
+                    params,
+                    style,
+                    decorators,
+                    this.content.cells
+                ),
             }
         })
     }

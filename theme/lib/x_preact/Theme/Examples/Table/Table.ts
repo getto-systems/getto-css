@@ -2,7 +2,9 @@ import { VNode } from "preact"
 
 import {
     TableDataColumnRow,
+    TableDataFooterRow,
     TableDataHeaderRow,
+    TableDataSummaryRow,
     TableStructure,
 } from "../../../../z_external/getto-table/preact/core"
 import { tableStructure } from "../../../../z_external/getto-table/preact/cell/structure"
@@ -19,6 +21,9 @@ import {
     tbody,
     linky,
     SortLink,
+    tableSummary,
+    tfoot,
+    tableFooter,
 } from "../../../../z_external/getto-css/preact/design/data"
 import {
     label_gray,
@@ -37,14 +42,17 @@ type Props = Readonly<{
     content: Readonly<{
         sticky: TableDataSticky
         header: TableDataHeaderRow
+        summary: TableDataSummaryRow
+        footer: TableDataFooterRow
     }>
     rows: Row[]
     column: { (row: Row): TableDataColumnRow }
 }>
 export function Table({ content, column, rows }: Props): VNode {
     return table(content.sticky, [
-        thead(tableHeader(content)),
+        thead([...tableHeader(content), ...tableSummary(content)]),
         tbody(rows.flatMap((row) => tableColumn({ sticky: content.sticky, column: column(row) }))),
+        tfoot(tableFooter(content)),
     ])
 }
 
@@ -127,10 +135,13 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                                     label: () => "価格",
                                     header: sort(key),
                                     column: (row: Row) => formatPrice(row.price),
+                                    summary: (model: Model) => formatPrice(model.sumPrice),
+                                    footer: (model: Model) => formatPrice(model.sumPrice),
                                 }
                             })
                                 .border(["rightDouble"])
-                                .decorateColumn(tableAlign(["numeric"])),
+                                .decorateColumn(tableAlign(["numeric"]))
+                                .decorateSummary(tableAlign(["numeric"])),
                         ],
                     }),
                 ],
@@ -155,7 +166,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                                 header: linky,
                                 column: (row: Row) => formatPrice(row.amounts[temperatureType]),
                             }
-                        }).decorateColumn(tableAlign(["numeric"])),
+                        }),
                     ],
             }),
 
@@ -203,7 +214,9 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                                     header: linky,
                                     column: (comment: ArticleComment) => comment,
                                 }
-                            }).border(["left"]),
+                            })
+                                .border(["left"])
+                                .horizontalBorder(["bottomNone"]),
                         ],
                     }),
                 ],
@@ -226,6 +239,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
             }),
         ],
     })
+        .horizontalBorder_header(["bottom"])
         .decorateRow(tableClassName(["row_hover"]))
         .stickyCross(1)
         .freeze()

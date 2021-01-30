@@ -60,28 +60,23 @@ export type TableDataHeaderGroup = Readonly<{
 
 export type TableDataSummary = TableDataSummarySingle | TableDataSummaryExpansion
 
-export type TableDataSummaryEmpty = Readonly<{
-    type: "empty"
+export type TableDataSummarySingle =
+    | (TableDataSummarySingle_base & Readonly<{ type: "empty" }>)
+    | (TableDataSummarySingle_base & Readonly<{ type: "single"; content: VNodeContent }>)
+type TableDataSummarySingle_base = Readonly<{
     key: VNodeKey
     style: TableDataFullStyle
+    length: 1
 }>
-export type TableDataSummarySingle =
-    | TableDataSummaryEmpty
-    | Readonly<{
-          type: "single"
-          key: VNodeKey
-          style: TableDataFullStyle
-          content: VNodeContent
-      }>
+
 export type TableDataSummaryExpansion =
-    | TableDataSummaryEmpty
-    | Readonly<{
-          type: "expansion"
-          key: VNodeKey
-          style: TableDataFullStyle
-          content: VNodeContent
-          length: number
-      }>
+    | (TableDataSummaryExpansion_base & Readonly<{ type: "empty-expansion" }>)
+    | (TableDataSummaryExpansion_base & Readonly<{ type: "expansion"; content: VNodeContent }>)
+type TableDataSummaryExpansion_base = Readonly<{
+    key: VNodeKey
+    style: TableDataFullStyle
+    length: number
+}>
 
 export type TableDataColumn = TableDataColumnSingle | TableDataColumnExpansion | TableDataColumnTree
 
@@ -90,12 +85,15 @@ export type TableDataColumnSingle = Readonly<{
     key: VNodeKey
     style: TableDataFullStyle
     content: VNodeContent
+    length: 1
+    height: 1
 }>
 export type TableDataColumnExpansion = Readonly<{
     type: "expansion"
     key: VNodeKey
     style: TableDataFullStyle
     length: number
+    height: 1
     columns: TableDataColumnSingle[]
 }>
 export type TableDataColumnTree = Readonly<{

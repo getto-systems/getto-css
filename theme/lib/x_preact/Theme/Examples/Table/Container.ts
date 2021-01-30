@@ -30,7 +30,8 @@ export function Container(_: ContainerProps): VNode {
     const model: Model = {
         logs: generateLogs(),
         alarmMaxLength: 3,
-        temperatureTypes: ["high", "low"]
+        temperatureTypes: ["high", "low"],
+        sumPrice: 8300,
     }
 
     const params = {
@@ -42,6 +43,8 @@ export function Container(_: ContainerProps): VNode {
         sticky: structure.sticky(),
         view: structure.view(params),
         header: structure.header(params),
+        summary: structure.summary(params),
+        footer: structure.footer(params),
     }
     const tableProps = {
         content,
