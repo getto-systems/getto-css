@@ -84,16 +84,24 @@ export type TableDataSummaryExpansion =
       }>
 
 export type TableDataColumn = TableDataColumnSingle | TableDataColumnExpansion | TableDataColumnTree
-export type TableDataColumnLeaf = TableDataColumnSingle | TableDataColumnExpansion
 
 export type TableDataColumnSingle = Readonly<{
     type: "single"
     key: VNodeKey
     style: TableDataFullStyle
     content: VNodeContent
-    length: 1
-    height: 1
+    length: 1 // TODO 削除
+    height: 1 // TODO 削除
 }>
+export type TableDataColumnExpansion = Readonly<{
+    type: "expansion"
+    key: VNodeKey
+    style: TableDataFullStyle
+    length: number
+    columns: TableDataColumnSingle[]
+    height: 1 // TODO 削除
+}>
+// TODO 削除
 export type TableDataColumnEmpty = Readonly<{
     type: "empty"
     key: VNodeKey
@@ -101,7 +109,6 @@ export type TableDataColumnEmpty = Readonly<{
     length: number
     height: number
 }>
-export type TableDataColumnExpansion = TableDataColumnSingle | TableDataColumnEmpty
 export type TableDataColumnTree = Readonly<{
     type: "tree"
     children: TableDataColumnRow[]

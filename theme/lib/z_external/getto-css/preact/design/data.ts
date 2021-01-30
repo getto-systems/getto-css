@@ -16,7 +16,6 @@ import { decorateNone, tableAlign, tableClassName } from "../../../getto-table/p
 import {
     visibleKeys,
     TableDataColumnRow,
-    TableDataColumnLeaf,
     TableDataFooterRow,
     TableDataHeader,
     TableDataHeaderRow,
@@ -25,6 +24,8 @@ import {
     tableCellTreePadding,
     TableDataColumnTree,
     TableDataColumn,
+    TableDataColumnSingle,
+    TableDataColumnExpansion,
 } from "../../../getto-table/preact/core"
 import {
     TableDataAlign,
@@ -193,6 +194,7 @@ export function tableHeader({
         rowspan: number
         header: TableDataHeader
     }>
+
     type GatherInfo = Readonly<{
         sticky: StickyHorizontalInfo
         index: number
@@ -219,7 +221,7 @@ export function tableHeader({
         </th>`
 
         function className(index: number, header: TableDataHeader) {
-            return [styleClass(header.style), stickyHeaderClass(sticky, { info, index })].join(" ")
+            return [...styleClass(header.style), ...stickyHeaderClass(sticky, { info, index })].join(" ")
         }
     }
 
@@ -404,19 +406,35 @@ export type TableColumnContent = Readonly<{
 }>
 export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
     type ColumnEntry =
-        | Readonly<{ type: "leaf"; container: ColumnContainer }>
+        | ColumnEntry_single
+        | ColumnEntry_expansion
         | Readonly<{ type: "tree"; rows: ColumnRow[] }>
+
+    type ColumnEntry_single = Readonly<{ type: "single"; container: ColumnContainer }>
+    type ColumnEntry_expansion = Readonly<{
+        type: "expansion"
+        key: VNodeKey
+        style: TableDataFullStyle
+        index: number
+        length: number
+        rowspan: number
+        containers: ColumnContainer[]
+    }>
+
+    type ColumnContainer = Readonly<{
+        index: number
+        colspan: number
+        rowspan: number
+        column: TableDataColumnSingle | EmptyColumn
+    }>
+    type EmptyColumn = Readonly<{ type: "empty"; key: VNodeKey; style: TableDataFullStyle }>
+
     type ColumnRow = Readonly<{
         key: VNodeKey[]
         className: TableDataClassName
         containers: ColumnContainer[]
     }>
-    type ColumnContainer = Readonly<{
-        index: number
-        colspan: number
-        rowspan: number
-        column: TableDataColumnLeaf
-    }>
+
     type GatherInfo = Readonly<{
         index: number
     }>
@@ -433,7 +451,7 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         </td>`
 
         function className() {
-            return [styleClass(column.style), stickyColumnClass(sticky, index)].join(" ")
+            return [...styleClass(column.style), ...stickyColumnClass(sticky, index)].join(" ")
         }
         function content() {
             switch (column.type) {
@@ -457,22 +475,43 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         function entry(column: TableDataColumn, info: GatherInfo): ColumnEntry {
             switch (column.type) {
                 case "single":
-                case "empty":
-                    return leafEntry(column, info)
+                    return singleEntry(column, info)
+
+                case "expansion":
+                    return expansionEntry(column, info)
 
                 case "tree":
                     return treeEntry(column, info)
             }
         }
-        function leafEntry(column: TableDataColumnLeaf, { index }: GatherInfo): ColumnEntry {
+        function singleEntry(column: TableDataColumnSingle, { index }: GatherInfo): ColumnEntry_single {
             return {
-                type: "leaf",
+                type: "single",
                 container: {
                     column,
                     index,
                     colspan: column.length,
                     rowspan: rowHeight,
                 },
+            }
+        }
+        function expansionEntry(
+            column: TableDataColumnExpansion,
+            expansionBase: GatherInfo
+        ): ColumnEntry {
+            return {
+                type: "expansion",
+                key: column.key,
+                style: column.style,
+                index: expansionBase.index,
+                length: column.length,
+                rowspan: rowHeight,
+                containers: column.columns
+                    .slice(0, column.length)
+                    .map(
+                        (single, index) =>
+                            singleEntry(single, { index: expansionBase.index + index }).container
+                    ),
             }
         }
         function treeEntry(column: TableDataColumnTree, info: GatherInfo): ColumnEntry {
@@ -507,14 +546,17 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
 
         function merge(base: ColumnRow[], entry: ColumnEntry): ColumnRow[] {
             switch (entry.type) {
-                case "leaf":
-                    return mergeLeaf(entry.container)
+                case "single":
+                    return mergeSingle(entry.container)
+
+                case "expansion":
+                    return mergeExpansion(entry)
 
                 case "tree":
                     return mergeTree(entry.rows)
             }
 
-            function mergeLeaf(container: ColumnContainer): ColumnRow[] {
+            function mergeSingle(container: ColumnContainer): ColumnRow[] {
                 if (base.length === 0) {
                     return [
                         {
@@ -528,6 +570,47 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
 
                 function mergeContainer(first: ColumnRow): ColumnRow {
                     return { ...first, containers: [...first.containers, container] }
+                }
+            }
+
+            function mergeExpansion({
+                key,
+                style,
+                index,
+                length,
+                rowspan,
+                containers,
+            }: ColumnEntry_expansion): ColumnRow[] {
+                if (base.length === 0) {
+                    return [
+                        {
+                            key: [],
+                            className: [],
+                            containers: expandedContainers(),
+                        },
+                    ]
+                }
+                return [mergeContainer(base[0]), ...base.slice(1)]
+
+                function mergeContainer(first: ColumnRow): ColumnRow {
+                    return { ...first, containers: [...first.containers, ...expandedContainers()] }
+                }
+
+                function expandedContainers(): ColumnContainer[] {
+                    return [...containers, ...emptyContainer()]
+                }
+                function emptyContainer(): ColumnContainer[] {
+                    if (containers.length >= length) {
+                        return []
+                    }
+                    return [
+                        {
+                            index,
+                            colspan: length - containers.length,
+                            rowspan,
+                            column: { type: "empty", key: `${key}__empty`, style },
+                        },
+                    ]
                 }
             }
 
@@ -581,12 +664,13 @@ function tr(key: VNodeKey, className: TableDataClassName, content: VNodeContent)
 const summaryTh = (sticky: TableDataSticky): { (summary: TableDataSummary, index: number): VNode } => (
     summary,
     index
-) => html`<th
-    class="${styleClass(summary.style)} ${stickyColumnClass(sticky, index)}"
-    key=${summary.key}
->
-    ${summaryContent(summary)}
-</th>`
+) => {
+    return html`<th class="${className()}" key=${summary.key}>${summaryContent(summary)}</th>`
+
+    function className(): string {
+        return [...styleClass(summary.style), ...stickyColumnClass(sticky, index)].join(" ")
+    }
+}
 
 function summaryContent(summary: TableDataSummary): VNodeContent {
     switch (summary.type) {
@@ -603,8 +687,8 @@ function trClass(className: TableDataClassName): string {
     return className.join(" ")
 }
 
-function styleClass(style: TableDataFullStyle): string {
-    return [...borderClass(style.border), ...alignClass(style.align), ...style.className].join(" ")
+function styleClass(style: TableDataFullStyle): string[] {
+    return [...borderClass(style.border), ...alignClass(style.align), ...style.className]
 
     function borderClass(border: TableDataBorderStyle): string[] {
         type TypedBorder =
@@ -663,11 +747,11 @@ type StickyHeaderContent = Readonly<{
 function stickyHeaderClass(
     sticky: TableDataSticky,
     { info: { level, borderWidth }, index }: StickyHeaderContent
-): string {
+): string[] {
     switch (sticky.type) {
         case "none":
         case "column":
-            return ""
+            return []
 
         case "header":
             return stickyHeader()
@@ -681,18 +765,18 @@ function stickyHeaderClass(
                 "cell_sticky_cross",
                 stickyTopClass({ level, borderWidth: borderWidth }),
                 stickyLeftClass(index),
-            ].join(" ")
+            ]
     }
 
     function stickyHeader() {
-        return ["cell_sticky", stickyTopClass({ level, borderWidth: borderWidth })].join(" ")
+        return ["cell_sticky", stickyTopClass({ level, borderWidth: borderWidth })]
     }
 }
-function stickyColumnClass(sticky: TableDataSticky, index: number): string {
+function stickyColumnClass(sticky: TableDataSticky, index: number): string[] {
     if (!isStickyColumn(sticky, index)) {
-        return ""
+        return []
     }
-    return ["cell_sticky", stickyLeftClass(index)].join(" ")
+    return ["cell_sticky", stickyLeftClass(index)]
 }
 function isStickyColumn(sticky: TableDataSticky, index: number): boolean {
     switch (sticky.type) {
