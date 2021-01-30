@@ -133,8 +133,6 @@ class Cell<M, R> implements TableDataSingle<M, R> {
                     this.verticalBorder()
                 ),
                 content: this.content.column(row),
-                length: 1,
-                height: 1,
             },
         ]
     }
