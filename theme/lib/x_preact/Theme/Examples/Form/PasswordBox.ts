@@ -23,7 +23,6 @@ export function PasswordBox(props: Props): VNode {
     }
 
     return box_double({
-        type: "full",
         title: "password box",
         body: [
             form({

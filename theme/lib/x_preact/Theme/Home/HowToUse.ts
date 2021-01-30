@@ -21,7 +21,6 @@ export function HowToUse({ howToUse }: Props): VNode {
     }, [])
 
     return box_double({
-        type: "title",
         title: "How To Use",
         body: [
             form({ title: "リンクタグ", body: linkTag(), help: [] }),

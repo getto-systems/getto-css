@@ -23,7 +23,6 @@ export function SearchForm(props: Props): VNode {
     }
 
     return box_fill({
-        type: "footer",
         body: container([
             search({
                 title: "ID",

@@ -9,7 +9,6 @@ import { v_medium, v_small } from "../../../z_external/getto-css/preact/design/a
 export const content_home = (): VNode[] => [
     container([
         box({
-            type: "title",
             title: "GETTO CSS",
             body: [
                 html`<p>業務アプリケーションの CSS</p>`,
@@ -17,7 +16,6 @@ export const content_home = (): VNode[] => [
             ],
         }),
         box({
-            type: "title",
             title: "業務アプリケーション",
             body: [
                 notice_info("業務の目標を達成する"),
@@ -44,7 +42,6 @@ export const content_home = (): VNode[] => [
 
 export function content_home_policy(): VNode {
     return box({
-        type: "title",
         title: "基本方針",
         body: [
             notice_info("業務で必要な時に使用できる"),
@@ -66,7 +63,6 @@ export function content_home_policy(): VNode {
 }
 export function content_home_base(): VNode {
     return box({
-        type: "title",
         title: "Base",
         body: [
             notice_info("業務の目標を達成する"),
@@ -91,7 +87,6 @@ export function content_home_base(): VNode {
 }
 export function content_home_layout(): VNode {
     return box({
-        type: "title",
         title: "Layout",
         body: [
             notice_info("業務の目標を達成する"),
@@ -119,7 +114,6 @@ export function content_home_layout(): VNode {
 }
 export function content_home_box(): VNode {
     return box({
-        type: "title",
         title: "Box",
         body: [
             notice_info("業務の目標を達成する"),
@@ -135,7 +129,6 @@ export function content_home_box(): VNode {
 }
 export function content_home_highlight(): VNode {
     return box({
-        type: "title",
         title: "Highlight",
         body: [
             notice_info("業務の目標を達成する"),
@@ -151,7 +144,6 @@ export function content_home_highlight(): VNode {
 }
 export function content_home_form(): VNode {
     return box({
-        type: "title",
         title: "Form",
         body: [
             notice_info("業務の目標を達成する"),
@@ -167,7 +159,6 @@ export function content_home_form(): VNode {
 }
 export function content_home_data(): VNode {
     return box({
-        type: "title",
         title: "Data",
         body: [
             notice_info("業務の目標を達成する"),
@@ -183,7 +174,6 @@ export function content_home_data(): VNode {
 }
 export function content_home_print(): VNode {
     return box({
-        type: "title",
         title: "Print",
         body: [
             notice_info("業務の目標を達成する"),
@@ -197,7 +187,6 @@ export function content_home_print(): VNode {
 }
 export function content_home_loading(): VNode {
     return box({
-        type: "title",
         title: "Loading",
         body: [
             notice_info("業務の目標を達成する"),
@@ -211,7 +200,6 @@ export function content_home_loading(): VNode {
 }
 export function content_home_alignment(): VNode {
     return box({
-        type: "title",
         title: "Alignment",
         body: [
             notice_info("業務の目標を達成する"),
@@ -227,7 +215,6 @@ export function content_home_alignment(): VNode {
 
 export function content_home_component(): VNode {
     return box({
-        type: "title",
         title: "コンポーネント",
         body: [
             html`<p>コンポーネントライブラリは提供しない</p>`,
@@ -243,7 +230,6 @@ export function content_home_component(): VNode {
 }
 export function content_home_resources(): VNode {
     return box({
-        type: "title",
         title: "フォントとアイコン",
         body: [
             html`<p>フォントとアイコンはバンドルしない</p>`,
@@ -266,7 +252,6 @@ export function content_home_resources(): VNode {
 }
 export function content_home_size(): VNode {
     return box({
-        type: "title",
         title: "フォントサイズ",
         body: [
             form({

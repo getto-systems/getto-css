@@ -14,7 +14,7 @@ export function SearchForm({ state, component }: Props): VNode {
         component.search(null)
     }
 
-    return box_fill({ type: "simple", body: button() })
+    return box_fill({ body: button() })
 
     function button() {
         switch (state.type) {

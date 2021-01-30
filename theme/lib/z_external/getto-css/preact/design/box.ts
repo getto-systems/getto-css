@@ -8,10 +8,10 @@ export function container(content: VNodeContent): VNode {
 }
 
 export type BoxContent =
-    | Readonly<{ type: "simple"; body: VNodeContent }>
-    | Readonly<{ type: "title"; title: VNodeContent; body: VNodeContent }>
-    | Readonly<{ type: "footer"; body: VNodeContent; footer: VNodeContent }>
-    | Readonly<{ type: "full"; title: VNodeContent; body: VNodeContent; footer: VNodeContent }>
+    | Readonly<{ body: VNodeContent }>
+    | Readonly<{ title: VNodeContent; body: VNodeContent }>
+    | Readonly<{ body: VNodeContent; footer: VNodeContent }>
+    | Readonly<{ title: VNodeContent; body: VNodeContent; footer: VNodeContent }>
 
 type BoxClass = "single" | "double" | "grow" | "fill"
 function mapBoxClass(boxClass: BoxClass): string {
@@ -44,26 +44,16 @@ function boxContent(boxClass: BoxClass, content: BoxContent): VNode {
     </article>`
 
     function header(): VNodeContent {
-        switch (content.type) {
-            case "simple":
-            case "footer":
-                return ""
-
-            case "title":
-            case "full":
-                return boxHeader(content)
+        if ("header" in content) {
+            return boxHeader(content)
         }
+        return ""
     }
     function footer() {
-        switch (content.type) {
-            case "simple":
-            case "title":
-                return ""
-
-            case "footer":
-            case "full":
-                return boxFooter(content)
+        if ("footer" in content) {
+            return boxFooter(content)
         }
+        return ""
     }
 }
 

@@ -14,7 +14,6 @@ export function Pager(_: Props): VNode {
     const all = 5532
     const offset = 0
     return box({
-        type: "simple",
         body: [form({ title: pagerCount(all), body: [select(), button()], help: [] })],
     })
 

@@ -23,7 +23,6 @@ export function TextBox(props: Props): VNode {
     }
 
     return box_double({
-        type: "full",
         title: "text box",
         body: [
             form({
