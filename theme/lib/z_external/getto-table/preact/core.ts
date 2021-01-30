@@ -90,8 +90,6 @@ export type TableDataColumnSingle = Readonly<{
     key: VNodeKey
     style: TableDataFullStyle
     content: VNodeContent
-    length: 1 // TODO 削除
-    height: 1 // TODO 削除
 }>
 export type TableDataColumnExpansion = Readonly<{
     type: "expansion"
@@ -99,7 +97,6 @@ export type TableDataColumnExpansion = Readonly<{
     style: TableDataFullStyle
     length: number
     columns: TableDataColumnSingle[]
-    height: 1 // TODO 削除
 }>
 export type TableDataColumnTree = Readonly<{
     type: "tree"

@@ -149,12 +149,9 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
                             key: [this.key, index].join(" "),
                             style: columnStyle,
                             content,
-                            length: 1,
-                            height: 1,
                         }
                     }
                 ),
-                height: 1,
             },
         ]
     }

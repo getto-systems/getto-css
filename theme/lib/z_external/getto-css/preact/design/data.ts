@@ -493,7 +493,7 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                 container: {
                     column,
                     index,
-                    colspan: column.length,
+                    colspan: 1,
                     rowspan: rowHeight,
                 },
             }
@@ -646,7 +646,19 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
     }
 
     function maxHeight(row: TableDataColumnRow): number {
-        return Math.max(1, ...row.columns.map((column) => column.height))
+        return Math.max(
+            1,
+            ...row.columns.map((column) => {
+                switch (column.type) {
+                    case "single":
+                    case "expansion":
+                        return 1
+
+                    case "tree":
+                        return column.height
+                }
+            })
+        )
     }
 }
 
