@@ -84,7 +84,7 @@ export type TableDataSummaryExpansion =
       }>
 
 export type TableDataColumn = TableDataColumnSingle | TableDataColumnExpansion | TableDataColumnTree
-export type TableDataLeafColumn = TableDataColumnSingle | TableDataColumnExpansion
+export type TableDataColumnLeaf = TableDataColumnSingle | TableDataColumnExpansion
 
 export type TableDataColumnSingle = Readonly<{
     type: "single"

@@ -16,7 +16,7 @@ import { decorateNone, tableAlign, tableClassName } from "../../../getto-table/p
 import {
     visibleKeys,
     TableDataColumnRow,
-    TableDataLeafColumn,
+    TableDataColumnLeaf,
     TableDataFooterRow,
     TableDataHeader,
     TableDataHeaderRow,
@@ -413,8 +413,9 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
     }>
     type ColumnContainer = Readonly<{
         index: number
+        colspan: number
         rowspan: number
-        column: TableDataLeafColumn
+        column: TableDataColumnLeaf
     }>
     type GatherInfo = Readonly<{
         index: number
@@ -426,13 +427,8 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         return tr(key.join("_"), className, containers.map(columnTd))
     }
 
-    function columnTd({ index, rowspan, column }: ColumnContainer): VNode {
-        return html`<td
-            class="${className()}"
-            colspan=${column.length}
-            rowspan=${rowspan}
-            key=${column.key}
-        >
+    function columnTd({ index, colspan, rowspan, column }: ColumnContainer): VNode {
+        return html`<td class="${className()}" colspan=${colspan} rowspan=${rowspan} key=${column.key}>
             ${content()}
         </td>`
 
@@ -454,22 +450,30 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         const rowHeight = maxHeight(row)
 
         return row.columns.reduce(
-            (acc, column, index) => merge(acc, entry(column, base.index + index)),
+            (acc, column, index) => merge(acc, entry(column, { index: base.index + index })),
             <ColumnRow[]>[]
         )
 
-        function entry(column: TableDataColumn, index: number): ColumnEntry {
+        function entry(column: TableDataColumn, info: GatherInfo): ColumnEntry {
             switch (column.type) {
                 case "single":
                 case "empty":
-                    return leafEntry({ column, index, rowspan: rowHeight })
+                    return leafEntry(column, info)
 
                 case "tree":
-                    return treeEntry(column, { index })
+                    return treeEntry(column, info)
             }
         }
-        function leafEntry(container: ColumnContainer): ColumnEntry {
-            return { type: "leaf", container }
+        function leafEntry(column: TableDataColumnLeaf, { index }: GatherInfo): ColumnEntry {
+            return {
+                type: "leaf",
+                container: {
+                    column,
+                    index,
+                    colspan: column.length,
+                    rowspan: rowHeight,
+                },
+            }
         }
         function treeEntry(column: TableDataColumnTree, info: GatherInfo): ColumnEntry {
             return {
@@ -487,7 +491,14 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                         return {
                             key: [],
                             className: [],
-                            containers: [{ index: info.index, rowspan: column.height, column }],
+                            containers: [
+                                {
+                                    index: info.index,
+                                    colspan: column.length,
+                                    rowspan: column.height,
+                                    column,
+                                },
+                            ],
                         }
                     }
                 )
