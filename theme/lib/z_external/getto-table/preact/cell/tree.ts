@@ -135,11 +135,11 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
                     rowMutable.style
                 ).className,
                 columns: tableCellChildColumn(
-                    { row, last: index === dataLength - 1 },
                     params,
                     style,
                     decorators,
-                    this.content.cells
+                    this.content.cells,
+                    { row, last: index === dataLength - 1 }
                 ),
             }
         })
