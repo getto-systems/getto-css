@@ -776,7 +776,7 @@ function stickyHeaderClass(
     }
 
     function stickyHeader() {
-        return ["cell_sticky", stickyTopClass({ level, borderWidth: borderWidth })]
+        return ["cell_sticky", stickyTopClass({ level, borderWidth })]
     }
 }
 function stickyColumnClass(sticky: TableDataSticky, index: number): string[] {

@@ -1,8 +1,6 @@
 import { VNode } from "preact"
 
 import {
-    tableCells,
-    TableDataCellBuilder,
     TableDataColumnRow,
     TableDataHeaderRow,
     TableStructure,
@@ -33,6 +31,7 @@ import { Article, ArticleComment, Log, Model, Row, TemperatureType } from "./dat
 import { tableCell_expansion } from "../../../../z_external/getto-table/preact/cell/expansion"
 import { tableCell_multipart } from "../../../../z_external/getto-table/preact/cell/multipart"
 import { tableCell_tree } from "../../../../z_external/getto-table/preact/cell/tree"
+import { TableDataCell } from "../../../../z_external/getto-table/preact/cell"
 
 type Props = Readonly<{
     content: Readonly<{
@@ -49,14 +48,12 @@ export function Table({ content, column, rows }: Props): VNode {
     ])
 }
 
-const cells: TableDataCellBuilder<Model, Row> = tableCells
-const logCells: TableDataCellBuilder<Model, Log> = tableCells
-const articleCells: TableDataCellBuilder<Model, Article> = tableCells
-const commentCells: TableDataCellBuilder<Model, ArticleComment> = tableCells
+type Cells<R> = TableDataCell<Model, R>[]
+
 export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
     tableStructure({
         key: (row: Row) => row.row_id,
-        cells: cells([
+        cells: <Cells<Row>>[
             tableCell("id", (key) => {
                 return {
                     label: () => "ID",
@@ -68,7 +65,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
             tableCell_group({
                 key: "base",
                 header: () => linky("基本情報"),
-                cells: cells([
+                cells: <Cells<Row>>[
                     tableCell("name", (key) => {
                         return {
                             label: () => "名前",
@@ -86,21 +83,21 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                     })
                         .border(["rightDouble"])
                         .decorateColumn(tableAlign(["center"])),
-                ]),
+                ],
             }),
 
             tableCell_group({
                 key: "hostInfo",
                 header: () => linky("ホスト情報"),
-                cells: cells([
+                cells: <Cells<Row>>[
                     tableCell_group({
                         key: "accountInfo",
                         header: () => linky("アカウント情報"),
-                        cells: cells([
+                        cells: <Cells<Row>>[
                             tableCell_group({
                                 key: "accountInfo",
                                 header: () => linky("基本情報"),
-                                cells: cells([
+                                cells: <Cells<Row>>[
                                     tableCell("host", (key) => {
                                         return {
                                             label: () => "ホスト",
@@ -108,7 +105,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                                             column: (row: Row) => row.host,
                                         }
                                     }).border(["right"]),
-                                ]),
+                                ],
                             }),
 
                             tableCell("account", (key) => {
@@ -118,13 +115,13 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                                     column: (row: Row) => row.account,
                                 }
                             }).border(["right"]),
-                        ]),
+                        ],
                     }),
 
                     tableCell_group({
                         key: "purchaseInfo",
                         header: () => linky("価格情報"),
-                        cells: cells([
+                        cells: <Cells<Row>>[
                             tableCell("price", (key) => {
                                 return {
                                     label: () => "価格",
@@ -134,9 +131,9 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                             })
                                 .border(["rightDouble"])
                                 .decorateColumn(tableAlign(["numeric"])),
-                        ]),
+                        ],
                     }),
-                ]),
+                ],
             }),
 
             tableCell_expansion("alarms", (_key) => {
@@ -151,7 +148,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
             tableCell_multipart({
                 data: (model: Model) => model.temperatureTypes,
                 cells: (temperatureType: TemperatureType) =>
-                    cells([
+                    <Cells<Row>>[
                         tableCell("updatedAt", (_key) => {
                             return {
                                 label: () => temperatureLabel(temperatureType),
@@ -159,13 +156,13 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                                 column: (row: Row) => formatPrice(row.amounts[temperatureType]),
                             }
                         }).decorateColumn(tableAlign(["numeric"])),
-                    ]),
+                    ],
             }),
 
             tableCell_tree({
                 data: (row: Row, model: Model) => model.logs[row.row_id],
                 key: (log: Log) => log.log_id,
-                cells: logCells([
+                cells: <Cells<Log>>[
                     tableCell("log_id", (_key) => {
                         return {
                             label: () => "ログID",
@@ -181,13 +178,13 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                             column: (log: Log) => small(log.loggedAt),
                         }
                     }),
-                ]),
+                ],
             }),
 
             tableCell_tree({
                 data: (row: Row) => row.articles,
                 key: (article: Article) => article.title,
-                cells: articleCells([
+                cells: <Cells<Article>>[
                     tableCell("article", (_key) => {
                         return {
                             label: () => "記事",
@@ -199,7 +196,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                     tableCell_tree({
                         data: (article: Article) => article.comments,
                         key: (comment: ArticleComment) => comment,
-                        cells: commentCells([
+                        cells: <Cells<ArticleComment>>[
                             tableCell<Model, ArticleComment>("comment", (_key) => {
                                 return {
                                     label: () => "コメント",
@@ -207,9 +204,9 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                                     column: (comment: ArticleComment) => comment,
                                 }
                             }).border(["left"]),
-                        ]),
+                        ],
                     }),
-                ]),
+                ],
             }),
 
             tableCell("updatedAt", (key) => {
@@ -227,7 +224,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                     column: (row: Row) => row.memo,
                 }
             }),
-        ]),
+        ],
     })
         .decorateRow(tableClassName(["row_hover"]))
         .stickyCross(1)
