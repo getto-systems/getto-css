@@ -92,7 +92,7 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
                 children,
                 length: summaries.length,
                 height: height(children),
-                paddingStyle: this.paddingStyle(params.base, summaries),
+                style: this.paddingStyle(params.base, summaries),
             },
         ]
 

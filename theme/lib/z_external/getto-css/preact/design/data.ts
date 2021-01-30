@@ -21,7 +21,6 @@ import {
     TableDataHeaderRow,
     TableDataSummary,
     TableDataSummaryRow,
-    tableCellTreePadding,
     TableDataColumnTree,
     TableDataColumn,
     TableDataColumnSingle,
@@ -405,20 +404,24 @@ export type TableColumnContent = Readonly<{
     column: TableDataColumnRow
 }>
 export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
-    type ColumnEntry =
-        | ColumnEntry_single
-        | ColumnEntry_expansion
-        | Readonly<{ type: "tree"; rows: ColumnRow[] }>
-
+    type ColumnEntry = ColumnEntry_single | ColumnEntry_expansion | ColumnEntry_tree
     type ColumnEntry_single = Readonly<{ type: "single"; container: ColumnContainer }>
     type ColumnEntry_expansion = Readonly<{
         type: "expansion"
         key: VNodeKey
-        style: TableDataFullStyle
         index: number
+        style: TableDataFullStyle
         length: number
         rowspan: number
         containers: ColumnContainer[]
+    }>
+    type ColumnEntry_tree = Readonly<{
+        type: "tree"
+        index: number
+        style: TableDataFullStyle
+        height: number
+        colspan: number
+        rows: ColumnRow[]
     }>
 
     type ColumnContainer = Readonly<{
@@ -502,8 +505,8 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
             return {
                 type: "expansion",
                 key: column.key,
-                style: column.style,
                 index: expansionBase.index,
+                style: column.style,
                 length: column.length,
                 rowspan: rowHeight,
                 containers: column.columns
@@ -517,30 +520,11 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         function treeEntry(column: TableDataColumnTree, info: GatherInfo): ColumnEntry {
             return {
                 type: "tree",
-                rows: [...column.children.flatMap((row) => buildColumnRows(info, row)), ...padding()],
-            }
-
-            function padding() {
-                return tableCellTreePadding({
-                    key: `__empty_${info.index}`,
-                    rowHeight,
-                    column,
-                }).map(
-                    (column): ColumnRow => {
-                        return {
-                            key: [],
-                            className: [],
-                            containers: [
-                                {
-                                    index: info.index,
-                                    colspan: column.length,
-                                    rowspan: column.height,
-                                    column,
-                                },
-                            ],
-                        }
-                    }
-                )
+                index: info.index,
+                style: column.style,
+                height: rowHeight,
+                colspan: column.length,
+                rows: column.children.flatMap((row) => buildColumnRows(info, row)),
             }
         }
 
@@ -553,7 +537,7 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                     return mergeExpansion(entry)
 
                 case "tree":
-                    return mergeTree(entry.rows)
+                    return mergeTree(entry)
             }
 
             function mergeSingle(container: ColumnContainer): ColumnRow[] {
@@ -614,8 +598,8 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                 }
             }
 
-            function mergeTree(rows: ColumnRow[]): ColumnRow[] {
-                return rows.reduce(
+            function mergeTree({ style, index, height, colspan, rows }: ColumnEntry_tree): ColumnRow[] {
+                return appendEmptyRow(rows).reduce(
                     (acc, row, index) => [
                         ...acc.slice(0, index),
                         mergeRow(row, index),
@@ -633,6 +617,28 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                         key: [...baseRow.key, ...row.key],
                         className: [...baseRow.className, ...row.className],
                         containers: [...baseRow.containers, ...row.containers],
+                    }
+                }
+
+                function appendEmptyRow(rows: ColumnRow[]): ColumnRow[] {
+                    if (rows.length >= height) {
+                        return rows
+                    }
+                    return [...rows, emptyRow()]
+
+                    function emptyRow(): ColumnRow {
+                        return {
+                            key: [],
+                            className: [],
+                            containers: [
+                                {
+                                    index,
+                                    colspan,
+                                    rowspan: rowHeight - rows.length,
+                                    column: { type: "empty", key: `__empty_${index}`, style },
+                                },
+                            ],
+                        }
                     }
                 }
             }
