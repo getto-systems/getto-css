@@ -16,7 +16,7 @@ import { decorateNone, tableAlign, tableClassName } from "../../../getto-table/p
 import {
     visibleKeys,
     TableDataColumnRow,
-    TableDataLeafColumn,
+    TableDataColumnLeaf,
     TableDataFooterRow,
     TableDataHeader,
     TableDataHeaderRow,
@@ -184,7 +184,7 @@ export function tableHeader({
     header: { key, className, headers },
 }: TableHeaderContent): VNode[] {
     type HeaderRow = Readonly<{
-        info: StickyHorizontalInfo
+        sticky: StickyHorizontalInfo
         containers: HeaderContainer[]
     }>
     type HeaderContainer = Readonly<{
@@ -194,24 +194,22 @@ export function tableHeader({
         header: TableDataHeader
     }>
     type GatherInfo = Readonly<{
-        level: number
-        borderWidth: number
+        sticky: StickyHorizontalInfo
         index: number
     }>
 
-    const gatherInfo = {
-        level: 0,
-        borderWidth: 0,
+    const base: GatherInfo = {
+        sticky: { level: 0, borderWidth: 0 },
         index: 0,
     }
-    return buildHeaderRows(gatherInfo, headers).map(headerTr)
+    return buildHeaderRows(base, headers).map(headerTr)
 
-    function headerTr({ info, containers }: HeaderRow): VNode {
+    function headerTr({ sticky: info, containers }: HeaderRow): VNode {
         return tr(key(info.level), className, containers.map(headerTh(info)))
     }
 
     function headerTh(info: StickyHorizontalInfo): { (container: HeaderContainer): VNode } {
-        return ({index, colspan, rowspan, header}) => html`<th
+        return ({ index, colspan, rowspan, header }) => html`<th
             class="${className(index, header)}"
             colspan=${colspan}
             rowspan=${rowspan}
@@ -237,7 +235,7 @@ export function tableHeader({
                 containers: HeaderContainer[]
             }>
             return {
-                info: base,
+                sticky: base.sticky,
                 containers: headers.reduce((acc, header) => {
                     return {
                         index: acc.index + header.length,
@@ -273,8 +271,10 @@ export function tableHeader({
                             ...buildHeaderRows_padding(paddingHeight(header)),
                             ...buildHeaderRows(
                                 {
-                                    level: base.level + paddingHeight(header) + 1,
-                                    borderWidth: nextBorderWidth,
+                                    sticky: {
+                                        level: base.sticky.level + paddingHeight(header) + 1,
+                                        borderWidth: nextBorderWidth,
+                                    },
                                     index: base.index + index,
                                 },
                                 header.children
@@ -290,8 +290,8 @@ export function tableHeader({
                 .map(
                     (_, i): HeaderRow => {
                         return {
-                            info: {
-                                level: base.level + 1 + i,
+                            sticky: {
+                                level: base.sticky.level + 1 + i,
                                 borderWidth: nextBorderWidth,
                             },
                             containers: [],
@@ -299,7 +299,6 @@ export function tableHeader({
                     }
                 )
         }
-
         function paddingHeight(header: TableDataHeader): number {
             return rowHeight - header.height
         }
@@ -320,9 +319,9 @@ export function tableHeader({
                 }
                 const baseRow = base[index]
                 return {
-                    info: {
-                        ...baseRow.info,
-                        borderWidth: Math.max(baseRow.info.borderWidth, row.info.borderWidth),
+                    sticky: {
+                        ...baseRow.sticky,
+                        borderWidth: Math.max(baseRow.sticky.borderWidth, row.sticky.borderWidth),
                     },
                     containers: [...baseRow.containers, ...row.containers],
                 }
@@ -336,7 +335,7 @@ export function tableHeader({
     function borderWidth(row: HeaderRow): number {
         type BorderInfo = Readonly<{ top: number; bottom: number }>
         return (
-            row.info.borderWidth +
+            row.sticky.borderWidth +
             sum(
                 row.containers.reduce((acc, container) => {
                     return merge({
@@ -414,8 +413,9 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
     }>
     type ColumnContainer = Readonly<{
         index: number
+        colspan: number
         rowspan: number
-        column: TableDataLeafColumn
+        column: TableDataColumnLeaf
     }>
     type GatherInfo = Readonly<{
         index: number
@@ -427,13 +427,8 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         return tr(key.join("_"), className, containers.map(columnTd))
     }
 
-    function columnTd({ index, rowspan, column }: ColumnContainer): VNode {
-        return html`<td
-            class="${className()}"
-            colspan=${column.length}
-            rowspan=${rowspan}
-            key=${column.key}
-        >
+    function columnTd({ index, colspan, rowspan, column }: ColumnContainer): VNode {
+        return html`<td class="${className()}" colspan=${colspan} rowspan=${rowspan} key=${column.key}>
             ${content()}
         </td>`
 
@@ -455,22 +450,30 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         const rowHeight = maxHeight(row)
 
         return row.columns.reduce(
-            (acc, column, index) => merge(acc, entry(column, base.index + index)),
+            (acc, column, index) => merge(acc, entry(column, { index: base.index + index })),
             <ColumnRow[]>[]
         )
 
-        function entry(column: TableDataColumn, index: number): ColumnEntry {
+        function entry(column: TableDataColumn, info: GatherInfo): ColumnEntry {
             switch (column.type) {
                 case "single":
                 case "empty":
-                    return leafEntry({ column, index, rowspan: rowHeight })
+                    return leafEntry(column, info)
 
                 case "tree":
-                    return treeEntry(column, { index })
+                    return treeEntry(column, info)
             }
         }
-        function leafEntry(container: ColumnContainer): ColumnEntry {
-            return { type: "leaf", container }
+        function leafEntry(column: TableDataColumnLeaf, { index }: GatherInfo): ColumnEntry {
+            return {
+                type: "leaf",
+                container: {
+                    column,
+                    index,
+                    colspan: column.length,
+                    rowspan: rowHeight,
+                },
+            }
         }
         function treeEntry(column: TableDataColumnTree, info: GatherInfo): ColumnEntry {
             return {
@@ -488,7 +491,14 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                         return {
                             key: [],
                             className: [],
-                            containers: [{ index: info.index, rowspan: column.height, column }],
+                            containers: [
+                                {
+                                    index: info.index,
+                                    colspan: column.length,
+                                    rowspan: column.height,
+                                    column,
+                                },
+                            ],
                         }
                     }
                 )
