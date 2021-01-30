@@ -30,10 +30,10 @@ export type TableDataView = Readonly<{
     isVisible: boolean
 }>
 
-export type TableDataHeader = TableDataHeaderSingle | TableDataHeaderExpansion | TableDataHeaderGroup
+export type TableDataHeader = TableDataHeaderSimple | TableDataHeaderExpansion | TableDataHeaderGroup
 
-export type TableDataHeaderSingle = Readonly<{
-    type: "single"
+export type TableDataHeaderSimple = Readonly<{
+    type: "simple"
     key: VNodeKey
     style: TableDataFullStyle
     content: VNodeContent
@@ -58,12 +58,12 @@ export type TableDataHeaderGroup = Readonly<{
     length: number
 }>
 
-export type TableDataSummary = TableDataSummarySingle | TableDataSummaryExpansion
+export type TableDataSummary = TableDataSummarySimple | TableDataSummaryExpansion
 
-export type TableDataSummarySingle =
-    | (TableDataSummarySingle_base & Readonly<{ type: "empty" }>)
-    | (TableDataSummarySingle_base & Readonly<{ type: "single"; content: VNodeContent }>)
-type TableDataSummarySingle_base = Readonly<{
+export type TableDataSummarySimple =
+    | (TableDataSummarySimple_base & Readonly<{ type: "empty" }>)
+    | (TableDataSummarySimple_base & Readonly<{ type: "simple"; content: VNodeContent }>)
+type TableDataSummarySimple_base = Readonly<{
     key: VNodeKey
     style: TableDataFullStyle
     length: 1
@@ -78,10 +78,10 @@ type TableDataSummaryExpansion_base = Readonly<{
     length: number
 }>
 
-export type TableDataColumn = TableDataColumnSingle | TableDataColumnExpansion | TableDataColumnTree
+export type TableDataColumn = TableDataColumnSimple | TableDataColumnExpansion | TableDataColumnTree
 
-export type TableDataColumnSingle = Readonly<{
-    type: "single"
+export type TableDataColumnSimple = Readonly<{
+    type: "simple"
     key: VNodeKey
     style: TableDataFullStyle
     content: VNodeContent
@@ -94,7 +94,7 @@ export type TableDataColumnExpansion = Readonly<{
     style: TableDataFullStyle
     length: number
     height: 1
-    columns: TableDataColumnSingle[]
+    columns: TableDataColumnSimple[]
 }>
 export type TableDataColumnTree = Readonly<{
     type: "tree"

@@ -100,7 +100,7 @@ class Cell<M, R> implements TableDataGroup<M, R> {
         function length(headers: TableDataHeader[]): number {
             return headers.reduce((acc, header) => {
                 switch (header.type) {
-                    case "single":
+                    case "simple":
                     case "expansion":
                         return acc + header.length
 
@@ -114,7 +114,7 @@ class Cell<M, R> implements TableDataGroup<M, R> {
                 0,
                 ...headers.map((header) => {
                     switch (header.type) {
-                        case "single":
+                        case "simple":
                         case "expansion":
                             return header.height
 

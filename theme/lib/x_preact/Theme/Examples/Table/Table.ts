@@ -9,7 +9,7 @@ import {
 } from "../../../../z_external/getto-table/preact/core"
 import { tableStructure } from "../../../../z_external/getto-table/preact/cell/structure"
 import { TableDataSticky } from "../../../../z_external/getto-table/preact/style"
-import { tableCell } from "../../../../z_external/getto-table/preact/cell/single"
+import { tableCell } from "../../../../z_external/getto-table/preact/cell/simple"
 import { tableCell_group } from "../../../../z_external/getto-table/preact/cell/group"
 import { tableAlign, tableClassName } from "../../../../z_external/getto-table/preact/decorator"
 

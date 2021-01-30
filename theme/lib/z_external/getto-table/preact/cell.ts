@@ -3,17 +3,17 @@ import { VNodeContent, VNodeKey } from "../../preact/common"
 import {
     TableDataColumn,
     TableDataColumnExpansion,
-    TableDataColumnSingle,
+    TableDataColumnSimple,
     TableDataColumnTree,
     TableDataHeader,
     TableDataHeaderExpansion,
     TableDataHeaderGroup,
     TableDataHeaderKeyProvider,
-    TableDataHeaderSingle,
+    TableDataHeaderSimple,
     TableDataSummary,
     TableDataSummaryExpansion,
     TableDataKeyProvider,
-    TableDataSummarySingle,
+    TableDataSummarySimple,
     TableDataView,
     TableStructure,
     TableDataParams,
@@ -42,22 +42,22 @@ import {
 } from "./style"
 
 export type TableDataCell<M, R> =
-    | TableDataSingle<M, R>
+    | TableDataSimple<M, R>
     | TableDataExpansion<M, R>
     | TableDataGroup<M, R>
     | TableDataMultipart<M, R>
     | TableDataTree<M, R>
 
-export interface TableDataSingle<M, R>
-    extends TableDataCell_base<TableDataSingle<M, R>, R>,
-        TableDataCell_leaf<TableDataSingle<M, R>> {
-    type: "single"
+export interface TableDataSimple<M, R>
+    extends TableDataCell_base<TableDataSimple<M, R>, R>,
+        TableDataCell_leaf<TableDataSimple<M, R>> {
+    type: "simple"
 
     view(params: TableDataParams<M>): TableDataView | TableDataAlwaysVisible
-    header(params: TableDataStyledParams<M>): TableDataHeaderSingle | TableDataInvisible
-    summary(params: TableDataStyledParams<M>): TableDataSummarySingle | TableDataInvisible
-    column(params: TableDataRelatedParams<M, R>): TableDataColumnSingle | TableDataInvisible
-    footer(params: TableDataStyledParams<M>): TableDataSummarySingle | TableDataInvisible
+    header(params: TableDataStyledParams<M>): TableDataHeaderSimple | TableDataInvisible
+    summary(params: TableDataStyledParams<M>): TableDataSummarySimple | TableDataInvisible
+    column(params: TableDataRelatedParams<M, R>): TableDataColumnSimple | TableDataInvisible
+    footer(params: TableDataStyledParams<M>): TableDataSummarySimple | TableDataInvisible
 }
 export interface TableDataExpansion<M, R>
     extends TableDataCell_base<TableDataExpansion<M, R>, R>,
