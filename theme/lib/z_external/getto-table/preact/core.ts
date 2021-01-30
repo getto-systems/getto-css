@@ -101,20 +101,12 @@ export type TableDataColumnExpansion = Readonly<{
     columns: TableDataColumnSingle[]
     height: 1 // TODO 削除
 }>
-// TODO 削除
-export type TableDataColumnEmpty = Readonly<{
-    type: "empty"
-    key: VNodeKey
-    style: TableDataFullStyle
-    length: number
-    height: number
-}>
 export type TableDataColumnTree = Readonly<{
     type: "tree"
     children: TableDataColumnRow[]
     length: number
     height: number
-    paddingStyle: TableDataFullStyle
+    style: TableDataFullStyle
 }>
 
 export type TableCellTreePaddingContent = Readonly<{
@@ -122,24 +114,6 @@ export type TableCellTreePaddingContent = Readonly<{
     rowHeight: number
     column: TableDataColumnTree
 }>
-export function tableCellTreePadding({
-    key,
-    rowHeight,
-    column,
-}: TableCellTreePaddingContent): TableDataColumnEmpty[] {
-    if (column.height >= rowHeight) {
-        return []
-    }
-    return [
-        {
-            type: "empty",
-            key,
-            style: column.paddingStyle,
-            length: column.length,
-            height: rowHeight - column.height,
-        },
-    ]
-}
 
 export type TableDataHeaderRow = Readonly<{
     key: TableDataHeaderKeyProvider
