@@ -14,8 +14,10 @@ import { tableDataMutable_leaf } from "../mutable/leaf"
 import { TableDataMutable_base, TableDataMutable_leaf } from "../mutable"
 import {
     isVisibleKey,
+    TableDataAlwaysVisible,
     TableDataExpansion,
     TableDataExpansionColumnContentProvider,
+    TableDataInvisible,
     TableDataRelatedParams,
     TableDataStyledParams,
 } from "../cell"
@@ -77,7 +79,7 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
     }
 
     isVisible(visibleKeys: TableDataVisibleKeys): boolean {
-        const { visible } = this.mutable.leaf.visibleMutable()
+        const { visibleType: visible } = this.mutable.leaf.visibleMutable()
         return visible === "always" || isVisibleKey(this.key, visibleKeys)
     }
 
@@ -85,45 +87,51 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
         return this.mutable.leaf.verticalBorderMutable().border
     }
 
-    view({ visibleKeys }: TableDataParams<M>): TableDataView[] {
-        const { visible } = this.mutable.leaf.visibleMutable()
+    view({ visibleKeys }: TableDataParams<M>): TableDataView | TableDataAlwaysVisible {
+        const { visibleType: visible } = this.mutable.leaf.visibleMutable()
         if (visible === "always") {
-            return []
+            return { type: "always-visible" }
         }
 
         const { decorator } = this.mutable.leaf.viewMutable()
-        return [
-            {
-                key: this.key,
-                content: decorateContent(this.content.label(), decorator),
-                isVisible: this.isVisible(visibleKeys),
-            },
-        ]
+        return {
+            type: "view",
+            key: this.key,
+            content: decorateContent(this.content.label(), decorator),
+            isVisible: this.isVisible(visibleKeys),
+        }
     }
-    header({ visibleKeys, base, model }: TableDataStyledParams<M>): TableDataHeaderExpansion[] {
+    header({
+        visibleKeys,
+        base,
+        model,
+    }: TableDataStyledParams<M>): TableDataHeaderExpansion | TableDataInvisible {
         if (!this.isVisible(visibleKeys)) {
-            return []
+            return { type: "invisible" }
         }
         const { style } = this.mutable.core.headerStyleMutable()
-        return [
-            {
-                type: "expansion",
-                key: this.key,
-                style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
-                content: this.content.header(this.content.label()),
-                length: this.length(model),
-                height: 1,
-            },
-        ]
+        return {
+            type: "expansion",
+            key: this.key,
+            style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
+            content: this.content.header(this.content.label()),
+            length: this.length(model),
+            height: 1,
+        }
     }
-    summary(params: TableDataStyledParams<M>): TableDataSummaryExpansion[] {
+    summary(params: TableDataStyledParams<M>): TableDataSummaryExpansion | TableDataInvisible {
         const { style } = this.mutable.core.summaryStyleMutable()
         const { content } = this.mutable.leaf.summaryMutable()
         return this.summaryContent(params, { style, content })
     }
-    column({ visibleKeys, base, row, model }: TableDataRelatedParams<M, R>): TableDataColumnExpansion[] {
+    column({
+        visibleKeys,
+        base,
+        row,
+        model,
+    }: TableDataRelatedParams<M, R>): TableDataColumnExpansion | TableDataInvisible {
         if (!this.isVisible(visibleKeys)) {
-            return []
+            return { type: "invisible" }
         }
         const { style } = this.mutable.core.columnStyleMutable()
         const { decorators } = this.mutable.core.columnMutable()
@@ -136,26 +144,24 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
             ),
             this.verticalBorder()
         )
-        return [
-            {
-                type: "expansion",
-                key: this.key,
-                style: columnStyle,
-                length,
-                columns: contents.map(
-                    (content, index): TableDataColumnSingle => {
-                        return {
-                            type: "single",
-                            key: [this.key, index].join(" "),
-                            style: columnStyle,
-                            content,
-                        }
+        return {
+            type: "expansion",
+            key: this.key,
+            style: columnStyle,
+            length,
+            columns: contents.map(
+                (content, index): TableDataColumnSingle => {
+                    return {
+                        type: "single",
+                        key: [this.key, index].join(" "),
+                        style: columnStyle,
+                        content,
                     }
-                ),
-            },
-        ]
+                }
+            ),
+        }
     }
-    footer(params: TableDataStyledParams<M>): TableDataSummaryExpansion[] {
+    footer(params: TableDataStyledParams<M>): TableDataSummaryExpansion | TableDataInvisible {
         const { style } = this.mutable.core.footerStyleMutable()
         const { content } = this.mutable.leaf.footerMutable()
         return this.summaryContent(params, { style, content })
@@ -164,9 +170,9 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
     summaryContent(
         { visibleKeys, base, model }: TableDataStyledParams<M>,
         { style, content }: SummaryContentParams
-    ): TableDataSummaryExpansion[] {
+    ): TableDataSummaryExpansion | TableDataInvisible {
         if (!this.isVisible(visibleKeys)) {
-            return []
+            return { type: "invisible" }
         }
         const shared = {
             key: this.key,
@@ -174,17 +180,15 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
         }
         switch (content.type) {
             case "none":
-                return [{ type: "empty", ...shared }]
+                return { type: "empty", ...shared }
 
             case "content":
-                return [
-                    {
-                        type: "expansion",
-                        ...shared,
-                        content: content.content(),
-                        length: this.length(model),
-                    },
-                ]
+                return {
+                    type: "expansion",
+                    ...shared,
+                    content: content.content(),
+                    length: this.length(model),
+                }
         }
     }
 

@@ -221,4 +221,4 @@ function extendClassName({
     return [...base, ...style]
 }
 
-export type TableDataVisible = "normal" | "always"
+export type TableDataVisibleType = "normal" | "always"

@@ -48,22 +48,22 @@ export interface TableDataSingle<M, R>
         TableDataCell_leaf<TableDataSingle<M, R>> {
     type: "single"
 
-    view(params: TableDataParams<M>): TableDataView[]
-    header(params: TableDataStyledParams<M>): TableDataHeaderSingle[]
-    summary(params: TableDataStyledParams<M>): TableDataSummarySingle[]
-    column(params: TableDataRelatedParams<M, R>): TableDataColumnSingle[]
-    footer(params: TableDataStyledParams<M>): TableDataSummarySingle[]
+    view(params: TableDataParams<M>): TableDataView | TableDataAlwaysVisible
+    header(params: TableDataStyledParams<M>): TableDataHeaderSingle | TableDataInvisible
+    summary(params: TableDataStyledParams<M>): TableDataSummarySingle | TableDataInvisible
+    column(params: TableDataRelatedParams<M, R>): TableDataColumnSingle | TableDataInvisible
+    footer(params: TableDataStyledParams<M>): TableDataSummarySingle | TableDataInvisible
 }
 export interface TableDataExpansion<M, R>
     extends TableDataCell_base<TableDataExpansion<M, R>, R>,
         TableDataCell_leaf<TableDataExpansion<M, R>> {
     type: "expansion"
 
-    view(params: TableDataParams<M>): TableDataView[]
-    header(params: TableDataStyledParams<M>): TableDataHeaderExpansion[]
-    summary(params: TableDataStyledParams<M>): TableDataSummaryExpansion[]
-    column(params: TableDataRelatedParams<M, R>): TableDataColumnExpansion[]
-    footer(params: TableDataStyledParams<M>): TableDataSummaryExpansion[]
+    view(params: TableDataParams<M>): TableDataView | TableDataAlwaysVisible
+    header(params: TableDataStyledParams<M>): TableDataHeaderExpansion | TableDataInvisible
+    summary(params: TableDataStyledParams<M>): TableDataSummaryExpansion | TableDataInvisible
+    column(params: TableDataRelatedParams<M, R>): TableDataColumnExpansion | TableDataInvisible
+    footer(params: TableDataStyledParams<M>): TableDataSummaryExpansion | TableDataInvisible
 }
 export interface TableDataGroup<M, R>
     extends TableDataCell_base<TableDataGroup<M, R>, R>,
@@ -71,7 +71,7 @@ export interface TableDataGroup<M, R>
     type: "group"
 
     view(params: TableDataParams<M>): TableDataView[]
-    header(params: TableDataStyledParams<M>): TableDataHeaderGroup[]
+    header(params: TableDataStyledParams<M>): TableDataHeaderGroup | TableDataInvisible
     summary(params: TableDataStyledParams<M>): TableDataSummary[]
     column(params: TableDataRelatedParams<M, R>): TableDataColumn[]
     footer(params: TableDataStyledParams<M>): TableDataSummary[]
@@ -93,7 +93,7 @@ export interface TableDataTree<M, R>
     view(params: TableDataParams<M>): TableDataView[]
     header(params: TableDataStyledParams<M>): TableDataHeader[]
     summary(params: TableDataStyledParams<M>): TableDataSummary[]
-    column(params: TableDataRelatedParams<M, R>): TableDataColumnTree[]
+    column(params: TableDataRelatedParams<M, R>): TableDataColumnTree
     footer(params: TableDataStyledParams<M>): TableDataSummary[]
 }
 
@@ -153,6 +153,9 @@ export interface TableStructure_hot<M, R>
 export type TableDataStyledParams<M> = TableDataParams<M> & Readonly<{ base: TableDataStyle }>
 export type TableDataRelatedParams<M, R> = TableDataStyledParams<M> & Readonly<{ row: R }>
 
+export type TableDataAlwaysVisible = Readonly<{ type: "always-visible" }>
+export type TableDataInvisible = Readonly<{ type: "invisible" }>
+
 export interface TableDataColumnContentProvider<R> {
     (row: R): VNodeContent
 }
@@ -174,7 +177,7 @@ export function tableCellView<M, R>(
     params: TableDataParams<M>,
     cells: TableDataCell<M, R>[]
 ): TableDataView[] {
-    return cells.flatMap((cell) => cell.view(params))
+    return withoutAlwaysVisible(cells.flatMap((cell) => cell.view(params)))
 }
 export function tableCellHeader<M, R>(
     params: TableDataStyledParams<M>,
@@ -188,7 +191,7 @@ export function tableCellBaseHeader<M, R>(
     base: TableDataStyle,
     cells: TableDataCell<M, R>[]
 ): TableDataHeader[] {
-    return cells.flatMap((cell) => cell.header({ ...params, base }))
+    return withoutInvisible(cells.flatMap((cell) => cell.header({ ...params, base })))
 }
 export function tableCellSummary<M, R>(
     params: TableDataStyledParams<M>,
@@ -202,7 +205,7 @@ export function tableCellBaseSummary<M, R>(
     base: TableDataStyle,
     cells: TableDataCell<M, R>[]
 ): TableDataSummary[] {
-    return cells.flatMap((cell) => cell.summary({ ...params, base }))
+    return withoutInvisible(cells.flatMap((cell) => cell.summary({ ...params, base })))
 }
 export function tableCellColumn<M, R>(
     params: TableDataRelatedParams<M, R>,
@@ -211,8 +214,10 @@ export function tableCellColumn<M, R>(
     cells: TableDataCell<M, R>[]
 ): TableDataColumn[] {
     // decorate してから extend したいから Base は使えない
-    return cells.flatMap((cell) =>
-        cell.column({ ...params, base: extendStyle({ base: params.base, style: decorated(style) }) })
+    return withoutInvisible(
+        cells.flatMap((cell) =>
+            cell.column({ ...params, base: extendStyle({ base: params.base, style: decorated(style) }) })
+        )
     )
 
     function decorated(style: TableDataStyle) {
@@ -226,7 +231,9 @@ export function tableCellBaseColumn<M, R>(
     cells: TableDataCell<M, R>[],
     row: R
 ): TableDataColumn[] {
-    return cells.flatMap((cell) => cell.column({ ...params, base: decorated(base), row }))
+    return withoutInvisible(
+        cells.flatMap((cell) => cell.column({ ...params, base: decorated(base), row }))
+    )
 
     function decorated(style: TableDataStyle) {
         return decorators.reduce((acc, decorator) => decorateStyle(acc, decorator(row)), style)
@@ -240,12 +247,14 @@ export function tableCellChildColumn<M, R, C>(
     cells: TableDataCell<M, C>[]
 ): TableDataColumn[] {
     // decorate してから extend したいから Base は使えない
-    return cells.flatMap((cell) =>
-        cell.column({
-            ...params,
-            row: child,
-            base: extendStyle({ base: params.base, style: decorated(style) }),
-        })
+    return withoutInvisible(
+        cells.flatMap((cell) =>
+            cell.column({
+                ...params,
+                row: child,
+                base: extendStyle({ base: params.base, style: decorated(style) }),
+            })
+        )
     )
 
     function decorated(style: TableDataStyle) {
@@ -264,8 +273,18 @@ export function tableCellBaseFooter<M, R>(
     base: TableDataStyle,
     cells: TableDataCell<M, R>[]
 ): TableDataSummary[] {
-    return cells.flatMap((cell) => cell.footer({ ...params, base }))
+    return withoutInvisible(cells.flatMap((cell) => cell.footer({ ...params, base })))
 }
+
+function withoutAlwaysVisible(views: (TableDataAlwaysVisible | TableDataView)[]): TableDataView[] {
+    // TableDataView と always-visible の中から always-visible を取り除くと TableDataView[] になる
+    return views.filter((view) => view.type !== "always-visible") as TableDataView[]
+}
+function withoutInvisible<T>(entries: (TableDataInvisible | TableDataTypedContent<T>)[]): T[] {
+    // T と invisible の中から invisible を取り除くと T[] になる
+    return entries.filter((entry) => entry.type !== "invisible") as T[]
+}
+type TableDataTypedContent<T> = T & Readonly<{ type: string }>
 
 export function isVisibleKey(key: TableDataCellKey, visibleKeys: TableDataVisibleKeys): boolean {
     switch (visibleKeys.type) {

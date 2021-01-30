@@ -13,7 +13,9 @@ import { tableDataMutable_leaf } from "../mutable/leaf"
 import { TableDataMutable_base, TableDataMutable_leaf } from "../mutable"
 import {
     isVisibleKey,
+    TableDataAlwaysVisible,
     TableDataColumnContentProvider,
+    TableDataInvisible,
     TableDataRelatedParams,
     TableDataSingle,
     TableDataStyledParams,
@@ -71,7 +73,7 @@ class Cell<M, R> implements TableDataSingle<M, R> {
     }
 
     isVisible(visibleKeys: TableDataVisibleKeys): boolean {
-        const { visible } = this.mutable.leaf.visibleMutable()
+        const { visibleType: visible } = this.mutable.leaf.visibleMutable()
         return visible === "always" || isVisibleKey(this.key, visibleKeys)
     }
 
@@ -79,64 +81,63 @@ class Cell<M, R> implements TableDataSingle<M, R> {
         return this.mutable.leaf.verticalBorderMutable().border
     }
 
-    view({ visibleKeys }: TableDataParams<M>): TableDataView[] {
-        const { visible } = this.mutable.leaf.visibleMutable()
+    view({ visibleKeys }: TableDataParams<M>): TableDataView | TableDataAlwaysVisible {
+        const { visibleType: visible } = this.mutable.leaf.visibleMutable()
         if (visible === "always") {
-            return []
+            return { type: "always-visible" }
         }
 
         const { decorator } = this.mutable.leaf.viewMutable()
-        return [
-            {
-                key: this.key,
-                content: decorateContent(this.content.label(), decorator),
-                isVisible: this.isVisible(visibleKeys),
-            },
-        ]
+        return {
+            type: "view",
+            key: this.key,
+            content: decorateContent(this.content.label(), decorator),
+            isVisible: this.isVisible(visibleKeys),
+        }
     }
-    header({ visibleKeys, base }: TableDataStyledParams<M>): TableDataHeaderSingle[] {
+    header({ visibleKeys, base }: TableDataStyledParams<M>): TableDataHeaderSingle | TableDataInvisible {
         if (!this.isVisible(visibleKeys)) {
-            return []
+            return { type: "invisible" }
         }
         const { style } = this.mutable.core.headerStyleMutable()
-        return [
-            {
-                type: "single",
-                key: this.key,
-                style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
-                content: this.content.header(this.content.label()),
-                length: 1,
-                height: 1,
-            },
-        ]
+        return {
+            type: "single",
+            key: this.key,
+            style: mergeVerticalBorder(extendStyle({ base, style }), this.verticalBorder()),
+            content: this.content.header(this.content.label()),
+            length: 1,
+            height: 1,
+        }
     }
-    summary(params: TableDataStyledParams<M>): TableDataSummarySingle[] {
+    summary(params: TableDataStyledParams<M>): TableDataSummarySingle | TableDataInvisible {
         const { style } = this.mutable.core.summaryStyleMutable()
         const { content } = this.mutable.leaf.summaryMutable()
         return this.summaryContent(params, { style, content })
     }
-    column({ visibleKeys, base, row }: TableDataRelatedParams<M, R>): TableDataColumnSingle[] {
+    column({
+        visibleKeys,
+        base,
+        row,
+    }: TableDataRelatedParams<M, R>): TableDataColumnSingle | TableDataInvisible {
         if (!this.isVisible(visibleKeys)) {
-            return []
+            return { type: "invisible" }
         }
         const { style } = this.mutable.core.columnStyleMutable()
         const { decorators } = this.mutable.core.columnMutable()
-        return [
-            {
-                type: "single",
-                key: this.key,
-                style: mergeVerticalBorder(
-                    decorators.reduce(
-                        (acc, decorator) => decorateStyle(acc, decorator(row)),
-                        extendStyle({ base, style })
-                    ),
-                    this.verticalBorder()
+        return {
+            type: "single",
+            key: this.key,
+            style: mergeVerticalBorder(
+                decorators.reduce(
+                    (acc, decorator) => decorateStyle(acc, decorator(row)),
+                    extendStyle({ base, style })
                 ),
-                content: this.content.column(row),
-            },
-        ]
+                this.verticalBorder()
+            ),
+            content: this.content.column(row),
+        }
     }
-    footer(params: TableDataStyledParams<M>): TableDataSummarySingle[] {
+    footer(params: TableDataStyledParams<M>): TableDataSummarySingle | TableDataInvisible {
         const { style } = this.mutable.core.footerStyleMutable()
         const { content } = this.mutable.leaf.footerMutable()
         return this.summaryContent(params, { style, content })
@@ -145,9 +146,9 @@ class Cell<M, R> implements TableDataSingle<M, R> {
     summaryContent(
         { visibleKeys, base }: TableDataStyledParams<M>,
         { style, content }: SummaryContentParams
-    ): TableDataSummarySingle[] {
+    ): TableDataSummarySingle | TableDataInvisible {
         if (!this.isVisible(visibleKeys)) {
-            return []
+            return { type: "invisible" }
         }
         const shared = {
             key: this.key,
@@ -155,16 +156,14 @@ class Cell<M, R> implements TableDataSingle<M, R> {
         }
         switch (content.type) {
             case "none":
-                return [{ type: "empty", ...shared }]
+                return { type: "empty", ...shared }
 
             case "content":
-                return [
-                    {
-                        type: "single",
-                        ...shared,
-                        content: content.content(),
-                    },
-                ]
+                return {
+                    type: "single",
+                    ...shared,
+                    content: content.content(),
+                }
         }
     }
 

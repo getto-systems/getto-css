@@ -81,20 +81,18 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
         const { style } = this.mutable.core.footerStyleMutable()
         return tableCellFooter(params, style, this.content.cells)
     }
-    column(params: TableDataRelatedParams<M, R>): TableDataColumnTree[] {
+    column(params: TableDataRelatedParams<M, R>): TableDataColumnTree {
         const children = this.children(params)
         // 幅とスタイルを取得するために summary を構築する
         // summary が一番軽いだろうという判断
         const summaries = this.summary(params)
-        return [
-            {
-                type: "tree",
-                children,
-                length: summaries.length,
-                height: height(children),
-                style: this.paddingStyle(params.base, summaries),
-            },
-        ]
+        return {
+            type: "tree",
+            children,
+            length: summaries.length,
+            height: height(children),
+            style: this.paddingStyle(params.base, summaries),
+        }
 
         function height(rows: TableDataColumnRow[]): number {
             return Math.max(
