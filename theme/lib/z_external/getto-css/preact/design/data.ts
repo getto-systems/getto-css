@@ -477,13 +477,22 @@ export function tableColumn(content: TableColumnContent): VNode[] {
         }
     }
 
-    function buildColumnRows(base: BuildInfo, row: TableDataColumnRow): ColumnRow[] {
-        const rowHeight = maxHeight(row)
+    function buildColumnRows(base: BuildInfo, source: TableDataColumnRow): ColumnRow[] {
+        const rowHeight = maxHeight(source)
 
-        return row.columns.reduce(
-            (acc, column, index) => merge(acc, entry(column, { ...base, index: base.index + index })),
-            <ColumnRow[]>[]
-        )
+        return source.columns
+            .reduce(
+                (acc, column, index) =>
+                    merge(acc, entry(column, { ...base, index: base.index + index })),
+                <ColumnRow[]>[]
+            )
+            .map((row) => {
+                return {
+                    ...row,
+                    key: [source.key, ...row.key],
+                    className: [...source.className, ...row.className],
+                }
+            })
 
         function entry(column: TableDataColumn, info: BuildInfo): ColumnEntry {
             switch (column.type) {
@@ -681,12 +690,6 @@ export function tableFooter({
     return [tr(key, className, footers.map(summaryTd(sticky)))]
 }
 
-function tr(key: VNodeKey, className: TableDataClassName, content: VNodeContent): VNode {
-    return html`<tr class="${trClass(className)}" key=${key}>
-        ${content}
-    </tr>`
-}
-
 const summaryTd = (sticky: TableDataSticky): { (summary: TableDataSummary, index: number): VNode } => (
     summary,
     index
@@ -712,8 +715,10 @@ function summaryContent(summary: TableDataSummary): VNodeContent {
     }
 }
 
-function trClass(className: TableDataClassName): string {
-    return className.join(" ")
+function tr(key: VNodeKey, className: TableDataClassName, content: VNodeContent): VNode {
+    return html`<tr class="${className.join(" ")}" key=${key}>
+        ${content}
+    </tr>`
 }
 
 function styleClass(style: TableDataFullStyle): string[] {

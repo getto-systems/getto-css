@@ -169,7 +169,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                 data: (model: Model) => model.temperatureTypes,
                 cells: (temperatureType: TemperatureType) =>
                     <Cells<Row>>[
-                        tableCell("updatedAt", (_key) => {
+                        tableCell(`temperature_${temperatureType}`, (_key) => {
                             return {
                                 label: () => temperatureLabel(temperatureType),
                                 header: linky,
