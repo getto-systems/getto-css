@@ -19,7 +19,7 @@ import {
     TableDataStyle,
     TableDataVerticalBorder,
     TableDataVerticalBorderStyle,
-    TableDataVisible,
+    TableDataVisibleType,
 } from "./style"
 
 export interface TableDataMutable_base<R> {
@@ -94,7 +94,7 @@ export type TableDataStyleMutable = Readonly<{
     style: TableDataStyle
 }>
 export type TableDataVisibleMutable = Readonly<{
-    visible: TableDataVisible
+    visibleType: TableDataVisibleType
 }>
 export type TableDataViewMutable = Readonly<{
     decorator: TableDataContentDecoratorProvider

@@ -21,7 +21,7 @@ class Mutable implements TableDataMutable_leaf {
 
     constructor() {
         this.visible = {
-            visible: "normal",
+            visibleType: "normal",
         }
         this.view = {
             decorator: { type: "none" },
@@ -54,7 +54,7 @@ class Mutable implements TableDataMutable_leaf {
     }
 
     alwaysVisible(): void {
-        this.visible = { ...this.visible, visible: "always" }
+        this.visible = { ...this.visible, visibleType: "always" }
     }
     border(borders: TableDataVerticalBorder[]): void {
         this.verticalBorder = {

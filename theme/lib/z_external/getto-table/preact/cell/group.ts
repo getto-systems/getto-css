@@ -21,6 +21,7 @@ import {
     tableCellColumn,
     tableCellHeader,
     tableCellFooter,
+    TableDataInvisible,
 } from "../cell"
 import {
     TableDataColumnDecorator,
@@ -68,29 +69,27 @@ class Cell<M, R> implements TableDataGroup<M, R> {
     view(params: TableDataParams<M>): TableDataView[] {
         return tableCellView(params, this.content.cells)
     }
-    header(params: TableDataStyledParams<M>): TableDataHeaderGroup[] {
+    header(params: TableDataStyledParams<M>): TableDataHeaderGroup | TableDataInvisible {
         const children = this.children(params)
         if (children.length === 0) {
-            return []
+            return { type: "invisible" }
         }
         const { style } = this.mutable.group.groupStyleMutable()
-        return [
-            {
-                type: "group",
-                key: this.content.key,
-                style: mergeVerticalBorder(
-                    extendStyle({
-                        base: baseGroupStyle(params.base),
-                        style,
-                    }),
-                    verticalBorder(children[0], children[children.length - 1])
-                ),
-                content: this.content.header(),
-                children,
-                length: length(children),
-                height: height(children) + 1,
-            },
-        ]
+        return {
+            type: "group",
+            key: this.content.key,
+            style: mergeVerticalBorder(
+                extendStyle({
+                    base: baseGroupStyle(params.base),
+                    style,
+                }),
+                verticalBorder(children[0], children[children.length - 1])
+            ),
+            content: this.content.header(),
+            children,
+            length: length(children),
+            height: height(children) + 1,
+        }
 
         function verticalBorder(first: TableDataHeader, last: TableDataHeader) {
             return {

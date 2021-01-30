@@ -25,6 +25,7 @@ export function visibleKeys(keys: TableDataCellKey[]): TableDataVisibleKeys {
 }
 
 export type TableDataView = Readonly<{
+    type: "view"
     key: VNodeKey
     content: VNodeContent
     isVisible: boolean
