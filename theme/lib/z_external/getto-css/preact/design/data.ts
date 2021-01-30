@@ -6,7 +6,7 @@ import { VNodeContent, VNodeKey } from "../../../preact/common"
 import { checkbox } from "./form"
 
 import { tableStructure } from "../../../getto-table/preact/cell/structure"
-import { tableCell } from "../../../getto-table/preact/cell/single"
+import { tableCell } from "../../../getto-table/preact/cell/simple"
 import { tableCell_expansion } from "../../../getto-table/preact/cell/expansion"
 import { tableCell_group } from "../../../getto-table/preact/cell/group"
 import { tableCell_multipart } from "../../../getto-table/preact/cell/multipart"
@@ -23,7 +23,7 @@ import {
     TableDataSummaryRow,
     TableDataColumnTree,
     TableDataColumn,
-    TableDataColumnSingle,
+    TableDataColumnSimple,
     TableDataColumnExpansion,
 } from "../../../getto-table/preact/core"
 import {
@@ -266,7 +266,7 @@ export function tableHeader({
         function gatherChildren(): HeaderRow[] {
             return headers.reduce((acc, header, index) => {
                 switch (header.type) {
-                    case "single":
+                    case "simple":
                     case "expansion":
                         return acc
 
@@ -414,8 +414,8 @@ type TableColumnContent_noBorderBottom = Readonly<{
 }>
 
 export function tableColumn(content: TableColumnContent): VNode[] {
-    type ColumnEntry = ColumnEntry_single | ColumnEntry_expansion | ColumnEntry_tree
-    type ColumnEntry_single = Readonly<{ type: "single"; container: ColumnContainer }>
+    type ColumnEntry = ColumnEntry_simple | ColumnEntry_expansion | ColumnEntry_tree
+    type ColumnEntry_simple = Readonly<{ type: "simple"; container: ColumnContainer }>
     type ColumnEntry_expansion = Readonly<{
         type: "expansion"
         index: number
@@ -434,7 +434,7 @@ export function tableColumn(content: TableColumnContent): VNode[] {
         colspan: number
         rowspan: number
         style: TableDataFullStyle
-        column: TableDataColumnSingle | EmptyColumn
+        column: TableDataColumnSimple | EmptyColumn
     }>
     type EmptyColumn = Readonly<{ type: "empty"; key: VNodeKey }>
 
@@ -468,7 +468,7 @@ export function tableColumn(content: TableColumnContent): VNode[] {
         }
         function content() {
             switch (column.type) {
-                case "single":
+                case "simple":
                     return column.content
 
                 case "empty":
@@ -496,8 +496,8 @@ export function tableColumn(content: TableColumnContent): VNode[] {
 
         function entry(column: TableDataColumn, info: BuildInfo): ColumnEntry {
             switch (column.type) {
-                case "single":
-                    return singleEntry(column, info)
+                case "simple":
+                    return simpleEntry(column, info)
 
                 case "expansion":
                     return expansionEntry(column, info)
@@ -506,9 +506,9 @@ export function tableColumn(content: TableColumnContent): VNode[] {
                     return treeEntry(column, info)
             }
         }
-        function singleEntry(column: TableDataColumnSingle, { index }: BuildInfo): ColumnEntry_single {
+        function simpleEntry(column: TableDataColumnSimple, { index }: BuildInfo): ColumnEntry_simple {
             return {
-                type: "single",
+                type: "simple",
                 container: {
                     column,
                     index,
@@ -529,8 +529,8 @@ export function tableColumn(content: TableColumnContent): VNode[] {
                 containers: column.columns
                     .slice(0, column.length)
                     .map(
-                        (single, index) =>
-                            singleEntry(single, { ...base, index: expansionBase.index + index })
+                        (column, index) =>
+                            simpleEntry(column, { ...base, index: expansionBase.index + index })
                                 .container
                     ),
             }
@@ -554,8 +554,8 @@ export function tableColumn(content: TableColumnContent): VNode[] {
 
         function merge(base: ColumnRow[], entry: ColumnEntry): ColumnRow[] {
             switch (entry.type) {
-                case "single":
-                    return mergeSingle(entry.container)
+                case "simple":
+                    return mergeSimple(entry.container)
 
                 case "expansion":
                     return mergeExpansion(entry)
@@ -564,7 +564,7 @@ export function tableColumn(content: TableColumnContent): VNode[] {
                     return mergeTree(entry)
             }
 
-            function mergeSingle(container: ColumnContainer): ColumnRow[] {
+            function mergeSimple(container: ColumnContainer): ColumnRow[] {
                 if (base.length === 0) {
                     return [
                         {
@@ -709,7 +709,7 @@ function summaryContent(summary: TableDataSummary): VNodeContent {
         case "empty-expansion":
             return EMPTY_CONTENT
 
-        case "single":
+        case "simple":
         case "expansion":
             return summary.content
     }

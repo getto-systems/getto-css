@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { useMemo } from "preact/hooks"
 
-import { tableCell } from "../../../../../z_external/getto-table/preact/cell/single"
+import { tableCell } from "../../../../../z_external/getto-table/preact/cell/simple"
 import { tableStructure } from "../../../../../z_external/getto-table/preact/cell/structure"
 import { visibleAll } from "../../../../../z_external/getto-table/preact/core"
 import { tableAlign, tableClassName } from "../../../../../z_external/getto-table/preact/decorator"

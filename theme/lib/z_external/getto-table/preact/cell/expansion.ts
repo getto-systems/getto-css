@@ -1,7 +1,7 @@
 import {
     TableDataCellKey,
     TableDataColumnExpansion,
-    TableDataColumnSingle,
+    TableDataColumnSimple,
     TableDataHeaderExpansion,
     TableDataParams,
     TableDataSummaryExpansion,
@@ -169,9 +169,9 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
             length,
             height: 1,
             columns: contents.map(
-                (content, index): TableDataColumnSingle => {
+                (content, index): TableDataColumnSimple => {
                     return {
-                        type: "single",
+                        type: "simple",
                         key: [this.key, index].join(" "),
                         style: columnStyle,
                         content,
