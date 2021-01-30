@@ -243,11 +243,11 @@ export function tableCellBaseColumn<M, R>(
     }
 }
 export function tableCellChildColumn<M, R, C>(
-    child: Readonly<{ row: C; last: boolean }>,
     params: TableDataRelatedParams<M, R>,
-    style: TableDataStyle,
+    base: TableDataStyle,
     decorators: TableDataColumnRelatedDecorator<R>[],
-    cells: TableDataCell<M, C>[]
+    cells: TableDataCell<M, C>[],
+    child: Readonly<{ row: C; last: boolean }>
 ): TableDataColumn[] {
     // decorate してから extend したいから Base は使えない
     return withoutInvisible(
@@ -255,7 +255,7 @@ export function tableCellChildColumn<M, R, C>(
             cell.column({
                 ...params,
                 row: child.row,
-                base: extendStyle({ base: params.base, style: decorated(style) }),
+                base: extendStyle({ base: params.base, style: decorated(base) }),
             })
         )
     ).map(overrideLastChildBorderBottom)
