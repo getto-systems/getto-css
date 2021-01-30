@@ -21,7 +21,6 @@ export function NumberBox(props: Props): VNode {
     }
 
     return box({
-        type: "full",
         title: "number box",
         body: [
             form({

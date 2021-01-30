@@ -18,7 +18,6 @@ type Props = {
 }
 export function Label(_: Props): VNode {
     return box({
-        type: "title",
         title: "label",
         body: [
             html`<p>

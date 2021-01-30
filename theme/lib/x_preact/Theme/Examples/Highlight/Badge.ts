@@ -16,7 +16,6 @@ type Props = {
 }
 export function Badge(_: Props): VNode {
     return box({
-        type: "title",
         title: "badge",
         body: [
             html`<p>

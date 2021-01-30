@@ -21,7 +21,6 @@ export function EmailBox(props: Props): VNode {
     }
 
     return box({
-        type: "full",
         title: "email box",
         body: [
             form({

@@ -15,7 +15,6 @@ type NoticeBasicProps = {
 }
 export function NoticeBasic(_: NoticeBasicProps): VNode {
     return box({
-        type: "title",
         title: "notice",
         body: [
             notice_gray("データがありません"),
@@ -31,7 +30,6 @@ type NoticeOtherProps = {
 }
 export function NoticeOther(_: NoticeOtherProps): VNode {
     return box({
-        type: "title",
         title: "notice",
         body: [
             notice_warning("この項目は作業中です"),

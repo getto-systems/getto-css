@@ -16,7 +16,6 @@ export function Radio(props: Props): VNode {
     }
 
     return box({
-        type: "full",
         title: "radio",
         body: [
             form({

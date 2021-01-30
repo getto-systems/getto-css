@@ -29,7 +29,6 @@ export function Button(_: Props): VNode {
         // 何もしない
     }
     return box({
-        type: "title",
         title: "button",
         body: [
             form({

@@ -16,7 +16,6 @@ export function Misc(props: Props): VNode {
     }
 
     return box({
-        type: "full",
         title: "misc",
         body: [
             form({

@@ -23,7 +23,6 @@ export function TextArea(props: Props): VNode {
     }
 
     return box_double({
-        type: "full",
         title: "text area",
         body: [
             form({

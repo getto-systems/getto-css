@@ -12,7 +12,6 @@ type Props = Readonly<{
 }>
 export function ViewColumns({view}: Props): VNode {
     return box_grow({
-        type: "simple",
         body: [
             form({
                 title: "表示する列",

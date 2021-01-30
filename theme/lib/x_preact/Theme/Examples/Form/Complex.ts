@@ -54,7 +54,6 @@ export function Complex(props: Props): VNode {
             modal.delete.component.open(null)
         }
         return box({
-            type: "full",
             title: "complex",
             body: [
                 form({ title: "名前", body: "GETTO CSS", help: [] }),
@@ -93,7 +92,6 @@ export function Complex(props: Props): VNode {
 
         if (state.invalid) {
             return box({
-                type: "full",
                 title: "complex",
                 body: [
                     form_error({
@@ -113,7 +111,6 @@ export function Complex(props: Props): VNode {
             })
         } else {
             return box({
-                type: "full",
                 title: "complex",
                 body: [
                     form({

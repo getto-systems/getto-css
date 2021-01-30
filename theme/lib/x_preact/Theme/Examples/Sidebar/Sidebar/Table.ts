@@ -35,7 +35,6 @@ export function Table(_: TableProps): VNode {
     }
 
     return box_fill({
-        type: "simple",
         body: table(content.sticky, [
             thead(tableHeader(content)),
             tbody(

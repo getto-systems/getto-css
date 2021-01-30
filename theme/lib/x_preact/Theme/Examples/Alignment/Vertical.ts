@@ -9,7 +9,6 @@ type Props = {
 }
 export function Vertical(_: Props): VNode {
     return box({
-        type: "title",
         title: "vertical",
         body: [
             html`<p>small 間隔</p>`,

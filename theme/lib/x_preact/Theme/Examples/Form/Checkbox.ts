@@ -16,7 +16,6 @@ export function Checkbox(props: Props): VNode {
     }
 
     return box({
-        type: "full",
         title: "checkbox",
         body: [
             form({

@@ -3,6 +3,7 @@ import { html } from "htm/preact"
 
 import { VNodeContent } from "../../../preact/common"
 
+// TODO 引数をシンプルにできる
 export type FormContent =
     | Readonly<{ type: NormalFormType; content: NormalFormContent }>
     | Readonly<{ type: SearchFormType; content: NormalFormContent }>

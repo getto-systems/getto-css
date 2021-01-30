@@ -23,7 +23,6 @@ export function SearchBox(props: Props): VNode {
     }
 
     return box_double({
-        type: "full",
         title: "search box",
         body: [
             form({

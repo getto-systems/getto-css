@@ -9,7 +9,6 @@ type Props = {
 }
 export function Visibility(_: Props): VNode {
     return box({
-        type: "title",
         title: "visibility",
         body: [
             html`<p>
