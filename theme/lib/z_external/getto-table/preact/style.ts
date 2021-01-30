@@ -107,6 +107,19 @@ export function overrideBorderBottom(
     }
 }
 
+export function overrideBorderBottomToNone(base: TableDataFullStyle): TableDataFullStyle {
+    return {
+        ...base,
+        border: {
+            ...base.border,
+            horizontal: {
+                ...base.border.horizontal,
+                bottom: "none",
+            },
+        },
+    }
+}
+
 export function mergeVerticalBorder(
     style: TableDataStyle,
     vertical: TableDataVerticalBorderStyle

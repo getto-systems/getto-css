@@ -49,9 +49,18 @@ type Props = Readonly<{
     column: { (row: Row): TableDataColumnRow }
 }>
 export function Table({ content, column, rows }: Props): VNode {
+    const dataLength = rows.length
     return table(content.sticky, [
         thead([...tableHeader(content), ...tableSummary(content)]),
-        tbody(rows.flatMap((row) => tableColumn({ sticky: content.sticky, column: column(row) }))),
+        tbody(
+            rows.flatMap((row, index) =>
+                tableColumn({
+                    sticky: content.sticky,
+                    column: column(row),
+                    noBorderBottom: index === dataLength - 1,
+                })
+            )
+        ),
         tfoot(tableFooter(content)),
     ])
 }
