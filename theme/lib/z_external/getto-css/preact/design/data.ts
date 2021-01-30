@@ -408,19 +408,14 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
     type ColumnEntry_single = Readonly<{ type: "single"; container: ColumnContainer }>
     type ColumnEntry_expansion = Readonly<{
         type: "expansion"
-        key: VNodeKey
         index: number
-        style: TableDataFullStyle
-        length: number
-        rowspan: number
+        column: TableDataColumnExpansion
         containers: ColumnContainer[]
     }>
     type ColumnEntry_tree = Readonly<{
         type: "tree"
         index: number
-        style: TableDataFullStyle
-        height: number
-        colspan: number
+        column: TableDataColumnTree
         rows: ColumnRow[]
     }>
 
@@ -504,11 +499,8 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
         ): ColumnEntry {
             return {
                 type: "expansion",
-                key: column.key,
                 index: expansionBase.index,
-                style: column.style,
-                length: column.length,
-                rowspan: rowHeight,
+                column,
                 containers: column.columns
                     .slice(0, column.length)
                     .map(
@@ -521,9 +513,7 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
             return {
                 type: "tree",
                 index: info.index,
-                style: column.style,
-                height: rowHeight,
-                colspan: column.length,
+                column,
                 rows: column.children.flatMap((row) => buildColumnRows(info, row)),
             }
         }
@@ -557,14 +547,7 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                 }
             }
 
-            function mergeExpansion({
-                key,
-                style,
-                index,
-                length,
-                rowspan,
-                containers,
-            }: ColumnEntry_expansion): ColumnRow[] {
+            function mergeExpansion({ index, column, containers }: ColumnEntry_expansion): ColumnRow[] {
                 if (base.length === 0) {
                     return [
                         {
@@ -584,21 +567,21 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                     return [...containers, ...emptyContainer()]
                 }
                 function emptyContainer(): ColumnContainer[] {
-                    if (containers.length >= length) {
+                    if (containers.length >= column.length) {
                         return []
                     }
                     return [
                         {
                             index,
-                            colspan: length - containers.length,
-                            rowspan,
-                            column: { type: "empty", key: `${key}__empty`, style },
+                            colspan: column.length - containers.length,
+                            rowspan: rowHeight,
+                            column: { type: "empty", key: `${column.key}__empty`, style: column.style },
                         },
                     ]
                 }
             }
 
-            function mergeTree({ style, index, height, colspan, rows }: ColumnEntry_tree): ColumnRow[] {
+            function mergeTree({ index, column, rows }: ColumnEntry_tree): ColumnRow[] {
                 return appendEmptyRow(rows).reduce(
                     (acc, row, index) => [
                         ...acc.slice(0, index),
@@ -621,7 +604,7 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                 }
 
                 function appendEmptyRow(rows: ColumnRow[]): ColumnRow[] {
-                    if (rows.length >= height) {
+                    if (rows.length >= rowHeight) {
                         return rows
                     }
                     return [...rows, emptyRow()]
@@ -633,9 +616,13 @@ export function tableColumn({ sticky, column }: TableColumnContent): VNode[] {
                             containers: [
                                 {
                                     index,
-                                    colspan,
+                                    colspan: column.length,
                                     rowspan: rowHeight - rows.length,
-                                    column: { type: "empty", key: `__empty_${index}`, style },
+                                    column: {
+                                        type: "empty",
+                                        key: `__empty_${index}`,
+                                        style: column.style,
+                                    },
                                 },
                             ],
                         }
