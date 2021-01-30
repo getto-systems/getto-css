@@ -1,5 +1,4 @@
 import { VNodeContent, VNodeKey } from "../../preact/common"
-import { TableDataCell } from "./cell"
 
 import { TableDataClassName, TableDataFullStyle, TableDataSticky } from "./style"
 
@@ -139,23 +138,4 @@ export interface TableDataHeaderKeyProvider {
 }
 export interface TableDataKeyProvider {
     (): VNodeKey
-}
-
-export interface TableDataCellBuilder<M, R> {
-    (cells: TableDataCell<M, R>[]): TableDataCell<M, R>[]
-}
-export function tableCells<M, R>(cells: TableDataCell<M, R>[]): TableDataCell<M, R>[] {
-    return cells
-
-    // work around
-    // 空の配列だと型推論が失敗するので、
-    // 下記サンプルのように具体的な型の cells を定義するために使う
-    //
-    //   const cells: TableDataCellBuilder<Model, Row> = tableCells
-    //
-    //   tableCell_group({
-    //       key: "base",
-    //       header: () => linky("基本情報"),
-    //       cells: cells([]),
-    //   })
 }
