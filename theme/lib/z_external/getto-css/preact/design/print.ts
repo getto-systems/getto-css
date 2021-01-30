@@ -20,15 +20,16 @@ export function reportHeader(content: VNodeContent): VNode {
     return html`<header class="report__header">${content}</header>`
 }
 
-// TODO 引数をシンプルにできる
-type ReportTitleTypedContent = Readonly<{
-    type: ReportTitleType
-    content: ReportTitleContent
-}>
 export type ReportTitleContent = Readonly<{
     style: ReportTitleStyle
     title: VNodeContent
 }>
+
+type ReportTitleTypedContent = Readonly<{
+    type: ReportTitleType
+    content: ReportTitleContent
+}>
+
 type ReportTitleType = "large" | "small" | "xSmall"
 type ReportTitleStyle = "left" | "center"
 

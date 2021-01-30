@@ -3,37 +3,20 @@ import { html } from "htm/preact"
 
 import { VNodeContent } from "../../../preact/common"
 
-// TODO 引数をシンプルにできる
-export type FormContent =
+type FormContent =
     | Readonly<{ type: NormalFormType; content: NormalFormContent }>
     | Readonly<{ type: SearchFormType; content: NormalFormContent }>
     | Readonly<{ type: NoticeFormType; content: NoticeFormContent }>
 
-type NormalFormContent = Readonly<{
+export type NormalFormContent = Readonly<{
     title: VNodeContent
     body: VNodeContent
     help: VNodeContent[]
 }>
-type NoticeFormContent = Readonly<{
-    title: VNodeContent
-    body: VNodeContent
-    help: VNodeContent[]
-    notice: VNodeContent[]
-}>
-
-export type FormSectionContent =
-    | Readonly<{ type: NormalFormType; content: NormalFormSectionContent }>
-    | Readonly<{ type: NoticeFormType; content: NoticeFormSectionContent }>
-
-type NormalFormSectionContent = Readonly<{
-    body: VNodeContent
-    help: VNodeContent[]
-}>
-type NoticeFormSectionContent = Readonly<{
-    body: VNodeContent
-    help: VNodeContent[]
-    notice: VNodeContent[]
-}>
+export type NoticeFormContent = NormalFormContent &
+    Readonly<{
+        notice: VNodeContent[]
+    }>
 
 type FormType = NormalFormType | SearchFormType | NoticeFormType
 type NormalFormType = "normal"
@@ -94,6 +77,19 @@ function formContent(form: FormContent): VNode {
         }
     }
 }
+
+type FormSectionContent =
+    | Readonly<{ type: NormalFormType; content: NormalFormSectionContent }>
+    | Readonly<{ type: NoticeFormType; content: NoticeFormSectionContent }>
+
+export type NormalFormSectionContent = Readonly<{
+    body: VNodeContent
+    help: VNodeContent[]
+}>
+export type NoticeFormSectionContent = NormalFormSectionContent &
+    Readonly<{
+        notice: VNodeContent[]
+    }>
 
 export function formSection(content: NormalFormSectionContent): VNode {
     return formSectionContent({ type: "normal", content })
