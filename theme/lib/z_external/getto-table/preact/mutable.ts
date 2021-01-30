@@ -85,6 +85,7 @@ export interface TableDataMutable_row {
     decorateSummaryRow(decorator: TableDataRowDecorator): void
     decorateFooterRow(decorator: TableDataRowDecorator): void
 
+    stickyTable(): void
     stickyHeader(): void
     stickyColumn(n: number): void
     stickyCross(n: number): void

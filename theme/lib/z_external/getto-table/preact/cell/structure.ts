@@ -174,6 +174,10 @@ class Structure<M, R> implements TableStructure<M, R>, TableStructure_hot<M, R> 
         return this
     }
 
+    stickyTable(): TableStructure_hot<M, R> {
+        this.mutable.row.stickyTable()
+        return this
+    }
     stickyHeader(): TableStructure_hot<M, R> {
         this.mutable.row.stickyHeader()
         return this

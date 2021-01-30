@@ -137,7 +137,8 @@ interface TableDataCell_row<T> {
     decorateHeaderRow(decorator: TableDataRowDecorator): T
     decorateSummaryRow(decorator: TableDataRowDecorator): T
     decorateFooterRow(decorator: TableDataRowDecorator): T
-
+    
+    stickyTable(): T
     stickyHeader(): T
     stickyColumn(n: number): T
     stickyCross(n: number): T
