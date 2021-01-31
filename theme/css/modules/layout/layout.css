@@ -61,5 +61,5 @@
         left: 100%;
         width: calc(var(--width-sidebar-double) + 0.5rem);
         visibility: hidden;
-    }    
+    }
 }

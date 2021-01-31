@@ -53,18 +53,9 @@ input[type="number"] {
     appearance: textfield;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    appearance: none;
-}
-
-.input_small input[type="number"] {
-    width: var(--width-input-tiny);
-}
-
-.input_small :--input-text,
-input[type="number"] {
-    width: var(--width-input-small);
+textarea,
+input[type="email"] {
+    width: var(--width-input-large);
 }
 
 :--input-text,
@@ -74,10 +65,22 @@ input[type="tel"],
     width: var(--width-input-normal);
 }
 
-.input_large :--input-text,
-textarea,
-input[type="email"] {
+.input_large :--input-text {
     width: var(--width-input-large);
+}
+
+.input_small :--input-text,
+input[type="number"] {
+    width: var(--width-input-small);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+}
+
+.input_small input[type="number"] {
+    width: var(--width-input-tiny);
 }
 
 .input_xLarge :--input-text,

@@ -13,19 +13,6 @@
     justify-content: center;
 }
 
-.button_left .button {
-    margin-right: 0.25rem;
-}
-
-.button_right {
-    align-self: stretch;
-    text-align: right;
-}
-
-.button_right .button {
-    margin-left: 0.25rem;
-}
-
 .button {
     display: inline-block;
     cursor: pointer;
@@ -38,6 +25,19 @@
 
     vertical-align: middle;
     white-space: nowrap;
+}
+
+.button_left .button {
+    margin-right: 0.25rem;
+}
+
+.button_right {
+    align-self: stretch;
+    text-align: right;
+}
+
+.button_right .button {
+    margin-left: 0.25rem;
 }
 
 .button_edit,
