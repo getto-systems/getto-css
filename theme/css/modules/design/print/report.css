@@ -15,10 +15,12 @@
 .report__contentLimit {
     position: relative;
 }
+
 .report__contentLimit__mark {
     position: absolute;
     display: block;
 }
+
 .report_a4_portrait .report__contentLimit__mark {
     height: calc(254mm - 1.5em);
 }
@@ -30,9 +32,11 @@
 .report__title {
     font-size: var(--font-size-xx-large);
 }
+
 .report__title_small {
     font-size: var(--font-size-x-large);
 }
+
 .report__title_xSmall {
     font-size: var(--font-size-small);
 }
@@ -55,9 +59,11 @@
 .report__folio {
     font-size: var(--font-size-small);
 }
+
 .report__folio_left .report__folio {
     margin-right: 0.25rem;
 }
+
 .report__folio_right .report__folio {
     margin-left: 0.25rem;
 }

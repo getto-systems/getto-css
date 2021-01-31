@@ -13,7 +13,8 @@
     "postcss:resources": "npm run postcss:lnir && npm run postcss:font",
     "postcss:lnir": "postcss --config theme/postcss.config.js --output theme/public/dist/css/lnir.min.css theme/css/resources/lnir.css",
     "postcss:font": "postcss --config theme/postcss.config.js --output theme/public/dist/css/font.min.css theme/css/resources/font.css",
-    "test": "npm run setup && npm run test:eslint && npm run test:jest",
+    "test": "npm run setup && npm run test:stylelint && npm run test:eslint && npm run test:jest",
+    "test:stylelint": "find theme/css/modules/ -name '*.css' | xargs stylelint --config .stylelintrc.json",
     "test:eslint": "eslint --ext .ts theme/lib/",
     "test:jest": "jest -c theme/jest.config.js"
   },
