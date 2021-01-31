@@ -7,3 +7,5 @@ export type ApiRoles = string[] & { ApiRoles: never }
 export function markApiRoles(roles: string[]): ApiRoles {
     return roles as ApiRoles
 }
+
+export type LoadApiCredentialError = Readonly<{ type: "infra-error"; err: string }>

@@ -1,14 +1,3 @@
-export type FindEvent =
-    | Readonly<{ type: "delayed-to-find" }>
-    | Readonly<{ type: "failed-to-find"; err: FindError }>
-    | Readonly<{ type: "succeed-to-find"; upToDate: boolean; target: AppTarget }>
-
-export type FindError = Readonly<{ type: "failed-to-check"; err: CheckError }>
-
-export type CheckError =
-    | Readonly<{ type: "server-error" }>
-    | Readonly<{ type: "infra-error"; err: string }>
-
 export type AppTarget =
     | Readonly<{ versioned: false; version: Version }>
     | Readonly<{ versioned: true; version: Version; pageLocation: PageLocation }>
@@ -50,3 +39,9 @@ export function markPageLocation(page: PageLocation_data): PageLocation {
 export function pageLocationToPath(page: PageLocation): string {
     return `${page.pathname}${page.search}${page.hash}`
 }
+
+export type FindError = Readonly<{ type: "failed-to-check"; err: CheckError }>
+
+export type CheckError =
+    | Readonly<{ type: "server-error" }>
+    | Readonly<{ type: "infra-error"; err: string }>
