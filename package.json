@@ -4,7 +4,7 @@
   "description": "simple admin css theme",
   "scripts": {
     "storybook": "cd storybook && npm run build",
-    "storybook:install": "cd storybook && npm clean-install",
+    "storybook:clean-install": "cd storybook && npm clean-install",
     "start": "npm run setup && npm run serve",
     "build": "npm run setup && npm run postcss && npm run webpack",
     "setup": "node theme/setup.js",
