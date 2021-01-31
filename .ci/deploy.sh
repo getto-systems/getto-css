@@ -30,7 +30,7 @@ deploy_main(){
   npm run storybook
   deploy_storybook
 
-  deploy_cp_public_index "2.21.1"
+  # deploy_cp_public_index "2.21.1"
 }
 deploy_rewrite_version(){
   for file in $(find $public_root/dist $public_root/root -name '*.html'); do
