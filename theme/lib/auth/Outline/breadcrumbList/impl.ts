@@ -1,4 +1,4 @@
-import { ComponentBase } from "../../../z_external/getto-example/component/base"
+import { ComponentBase } from "../../../sub/getto-example/component/base"
 
 import {
     BreadcrumbListComponentFactory,

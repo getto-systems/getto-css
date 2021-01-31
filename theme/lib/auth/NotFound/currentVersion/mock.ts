@@ -1,4 +1,4 @@
-import { MockComponent } from "../../../z_external/getto-example/component/mock"
+import { MockComponent } from "../../../sub/getto-example/component/mock"
 import { markVersion } from "../../permission/currentVersion/data"
 
 import { CurrentVersionComponent, CurrentVersionState } from "./component"
