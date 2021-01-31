@@ -1,3 +1,5 @@
+import { ComponentBase } from "../../../z_external/getto-example/component/base"
+
 import {
     CurrentVersionMaterial,
     CurrentVersionComponent,
@@ -8,24 +10,12 @@ import {
 export const initCurrentVersionComponent: CurrentVersionComponentFactory = (material) =>
     new Component(material)
 
-class Component implements CurrentVersionComponent {
+class Component extends ComponentBase<CurrentVersionState> implements CurrentVersionComponent {
     material: CurrentVersionMaterial
 
-    listener: Post<CurrentVersionState>[] = []
-
     constructor(material: CurrentVersionMaterial) {
+        super()
         this.material = material
-    }
-
-    onStateChange(post: Post<CurrentVersionState>): void {
-        this.listener.push(post)
-    }
-    post(state: CurrentVersionState): void {
-        this.listener.forEach((post) => post(state))
-    }
-
-    terminate(): void {
-        this.listener.splice(0, this.listener.length)
     }
 
     load(): void {
@@ -33,8 +23,4 @@ class Component implements CurrentVersionComponent {
             this.post(event)
         })
     }
-}
-
-interface Post<T> {
-    (state: T): void
 }

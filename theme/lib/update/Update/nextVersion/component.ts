@@ -10,6 +10,7 @@ export type NextVersionMaterial = Readonly<{
 
 export interface NextVersionComponent {
     onStateChange(post: Post<NextVersionState>): void
+    terminate(): void
     find(): void
 }
 

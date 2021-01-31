@@ -40,10 +40,13 @@ export function newDashboardAsSingle(): DashboardEntryPoint {
             getMenuTarget: () => detectMenuTarget(env.version, currentURL),
         },
     }
+    const resource = initDashboardResource(factory, collector)
     return {
-        resource: initDashboardResource(factory, collector),
+        resource,
         terminate: () => {
-            // worker とインターフェイスを合わせるために必要
+            resource.breadcrumbList.terminate()
+            resource.menuList.terminate()
+            resource.howToUse.terminate()
         },
     }
 }

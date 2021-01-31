@@ -10,6 +10,7 @@ export type ContentMaterial = Readonly<{
 
 export interface ContentComponent {
     onStateChange(post: Post<ContentState>): void
+    terminate(): void
     load(): void
 }
 
