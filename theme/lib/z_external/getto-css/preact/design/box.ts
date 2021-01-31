@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { VNodeContent } from "../../../getto-example/preact/common"
+import { VNodeContent } from "../common"
 
 export function container(content: VNodeContent): VNode {
     return html`<section class="container">${content}</section>`

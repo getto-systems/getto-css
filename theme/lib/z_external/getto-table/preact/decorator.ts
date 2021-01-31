@@ -1,4 +1,4 @@
-import { VNodeContent } from "../../getto-example/preact/common"
+import { VNodeContent } from "./common"
 
 import { decorateAlign } from "./decorator/align"
 import { decorateHorizontalBorder } from "./decorator/border"

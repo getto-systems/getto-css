@@ -1,6 +1,6 @@
 import { useEffect, useState } from "preact/hooks"
 
-import { VNodeKey } from "../../../../../getto-example/preact/common"
+import { VNodeKey } from "../../../common"
 
 // rows をページの高さによって分割する
 // design/print の report で出力される構造で、

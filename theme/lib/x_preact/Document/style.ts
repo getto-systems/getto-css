@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { VNodeContent } from "../../z_external/getto-example/preact/common"
+import { VNodeContent } from "../../z_external/getto-css/preact/common"
 import { label_alert, label_pending } from "../../z_external/getto-css/preact/design/highlight"
 import { v_medium, v_small } from "../../z_external/getto-css/preact/design/alignment"
 

@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { VNodeContent } from "../../../getto-example/preact/common"
+import { VNodeContent } from "../common"
 
 type Color = "gray" | "alert" | "success" | "warning" | "pending" | "info"
 

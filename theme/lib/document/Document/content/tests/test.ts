@@ -28,6 +28,7 @@ describe("Content", () => {
 
                     case "succeed-to-load":
                         expect(stack).toEqual([{ type: "succeed-to-load", path: "/docs/index.html" }])
+                        resource.content.terminate()
                         done()
                         break
 

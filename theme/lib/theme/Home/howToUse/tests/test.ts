@@ -47,6 +47,7 @@ describe("HowToUse", () => {
                                 ],
                             },
                         ])
+                        resource.howToUse.terminate()
                         done()
                         break
 
@@ -92,6 +93,7 @@ describe("HowToUse", () => {
                                 ],
                             },
                         ])
+                        resource.howToUse.terminate()
                         done()
                         break
 
@@ -138,6 +140,7 @@ describe("HowToUse", () => {
                                 ],
                             },
                         ])
+                        resource.howToUse.terminate()
                         done()
                         break
 

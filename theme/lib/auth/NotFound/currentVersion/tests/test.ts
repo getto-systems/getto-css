@@ -27,6 +27,7 @@ describe("CurrentVersion", () => {
                                 currentVersion: "1.0.0",
                             },
                         ])
+                        resource.currentVersion.terminate()
                         done()
                         break
 
