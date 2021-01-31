@@ -49,6 +49,7 @@ describe("BreadcrumbList", () => {
                                 ],
                             },
                         ])
+                        resource.breadcrumbList.terminate()
                         done()
                         break
 
@@ -83,6 +84,7 @@ describe("BreadcrumbList", () => {
                                 breadcrumb: [],
                             },
                         ])
+                        resource.breadcrumbList.terminate()
                         done()
                         break
 
@@ -260,6 +262,7 @@ describe("MenuList", () => {
                                 ],
                             },
                         ])
+                        resource.menuList.terminate()
                         done()
                         break
 
@@ -441,6 +444,7 @@ describe("MenuList", () => {
                                 ],
                             },
                         ])
+                        resource.menuList.terminate()
                         done()
                         break
 
@@ -794,6 +798,7 @@ describe("MenuList", () => {
                         },
                     ])
                     expectToSaveExpand(repository, [["MAIN"], ["DOCUMENT"], ["DOCUMENT", "DETAIL"]])
+                    resource.menuList.terminate()
                     done()
                 }
             }
@@ -1003,6 +1008,7 @@ describe("MenuList", () => {
                                 ],
                             },
                         ])
+                        resource.menuList.terminate()
                         done()
                         break
 

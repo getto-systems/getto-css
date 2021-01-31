@@ -52,6 +52,7 @@ describe("NextVersion", () => {
                         expect(appTargetToPath(state.target)).toBe(
                             "/1.0.0/index.html?search=parameter#hash"
                         )
+                        resource.nextVersion.terminate()
                         done()
                         break
 
@@ -110,6 +111,7 @@ describe("NextVersion", () => {
                         expect(appTargetToPath(state.target)).toBe(
                             "/1.0.0/index.html?search=parameter#hash"
                         )
+                        resource.nextVersion.terminate()
                         done()
                         break
 
@@ -167,6 +169,7 @@ describe("NextVersion", () => {
                         expect(appTargetToPath(state.target)).toBe(
                             "/1.1.0/index.html?search=parameter#hash"
                         )
+                        resource.nextVersion.terminate()
                         done()
                         break
 
@@ -224,6 +227,7 @@ describe("NextVersion", () => {
                         expect(appTargetToPath(state.target)).toBe(
                             "/1.0.1/index.html?search=parameter#hash"
                         )
+                        resource.nextVersion.terminate()
                         done()
                         break
 
@@ -281,6 +285,7 @@ describe("NextVersion", () => {
                         expect(appTargetToPath(state.target)).toBe(
                             "/1.2.0/index.html?search=parameter#hash"
                         )
+                        resource.nextVersion.terminate()
                         done()
                         break
 
@@ -338,6 +343,7 @@ describe("NextVersion", () => {
                         expect(appTargetToPath(state.target)).toBe(
                             "/1.0.2/index.html?search=parameter#hash"
                         )
+                        resource.nextVersion.terminate()
                         done()
                         break
 
@@ -395,6 +401,7 @@ describe("NextVersion", () => {
                         expect(appTargetToPath(state.target)).toBe(
                             "/1.1.1/index.html?search=parameter#hash"
                         )
+                        resource.nextVersion.terminate()
                         done()
                         break
 
@@ -452,6 +459,7 @@ describe("NextVersion", () => {
                         expect(appTargetToPath(state.target)).toBe(
                             "/1.1.1/index.html?search=parameter#hash"
                         )
+                        resource.nextVersion.terminate()
                         done()
                         break
 
@@ -509,6 +517,7 @@ describe("NextVersion", () => {
                         expect(appTargetToPath(state.target)).toBe(
                             "/1.1.0/index.html?search=parameter#hash"
                         )
+                        resource.nextVersion.terminate()
                         done()
                         break
 
@@ -559,6 +568,7 @@ describe("NextVersion", () => {
                             },
                         ])
                         expect(appTargetToPath(state.target)).toBe("/1.0.0/index.html")
+                        resource.nextVersion.terminate()
                         done()
                         break
 
