@@ -17,6 +17,7 @@ import {
 } from "../../../getto-table/preact/core"
 import {
     overrideBorderBottomToNone,
+    overrideBorderBottomToSingle,
     TableDataAlign,
     TableDataAlignStyle,
     TableDataBorderClass,
@@ -166,14 +167,14 @@ export function tfoot(content: VNodeContent): VNode {
     </tfoot>`
 }
 
-export type TableHeaderContent = Readonly<{
+export type TableHeaderContent =
+    | TableHeaderContent_base
+    | (TableHeaderContent_base & Readonly<{ singleLastBorderBottom: boolean }>)
+type TableHeaderContent_base = Readonly<{
     sticky: TableDataSticky
     header: TableDataHeaderRow
 }>
-export function tableHeader({
-    sticky,
-    header: { key, className, headers },
-}: TableHeaderContent): VNode[] {
+export function tableHeader(content: TableHeaderContent): VNode[] {
     type HeaderRow = Readonly<{
         sticky: StickyHorizontalInfo
         containers: HeaderContainer[]
@@ -182,6 +183,7 @@ export function tableHeader({
         index: number
         colspan: number
         rowspan: number
+        style: TableDataFullStyle
         header: TableDataHeader
     }>
 
@@ -190,6 +192,12 @@ export function tableHeader({
         index: number
     }>
 
+    const {
+        sticky,
+        header: { key, className, headers },
+    } = content
+    const singleLastBorderBottom = "singleLastBorderBottom" in content && content.singleLastBorderBottom
+
     const base: BuildInfo = {
         sticky: { level: 0, borderWidth: 0 },
         index: 0,
@@ -197,12 +205,12 @@ export function tableHeader({
     return buildHeaderRows(base, headers).map(headerTr)
 
     function headerTr({ sticky: info, containers }: HeaderRow): VNode {
-        return tr(key(info.level), className, containers.map(headerTh(info)))
+        return tr([key(info.level)], className, containers.map(headerTh(info)))
     }
 
     function headerTh(info: StickyHorizontalInfo): { (container: HeaderContainer): VNode } {
-        return ({ index, colspan, rowspan, header }) => html`<th
-            class="${className(index, header)}"
+        return ({ index, colspan, rowspan, style, header }) => html`<th
+            class="${className(index, style)}"
             colspan=${colspan}
             rowspan=${rowspan}
             key=${header.key}
@@ -210,8 +218,8 @@ export function tableHeader({
             ${header.content}
         </th>`
 
-        function className(index: number, header: TableDataHeader) {
-            return [...styleClass(header.style), ...stickyHeaderClass(sticky, { info, index })].join(" ")
+        function className(index: number, style: TableDataFullStyle) {
+            return [...styleClass(style), ...stickyHeaderClass(sticky, { info, index })].join(" ")
         }
     }
 
@@ -237,6 +245,7 @@ export function tableHeader({
                                 index: acc.index,
                                 colspan: header.length,
                                 rowspan: paddingHeight(header) + 1,
+                                style: overrideLastBorderBottom(header.style),
                                 header,
                             },
                         ],
@@ -319,6 +328,13 @@ export function tableHeader({
                 }
             }
         }
+
+        function overrideLastBorderBottom(style: TableDataFullStyle): TableDataFullStyle {
+            if (!singleLastBorderBottom) {
+                return style
+            }
+            return overrideBorderBottomToSingle(style)
+        }
     }
 
     function maxHeight(headers: TableDataHeader[]): number {
@@ -387,7 +403,7 @@ export function tableSummary({
     sticky,
     summary: { key, className, summaries },
 }: TableSummaryContent): VNode[] {
-    return [tr(key, className, summaries.map(summaryTd(sticky)))]
+    return [tr([key], className, summaries.map(summaryTd(sticky)))]
 }
 
 export type TableColumnContent =
@@ -398,7 +414,7 @@ type TableColumnContent_base = Readonly<{
     column: TableDataColumnRow
 }>
 type TableColumnContent_noBorderBottom = Readonly<{
-    noBorderBottom: boolean
+    noLastBorderBottom: boolean
 }>
 
 export function tableColumn(content: TableColumnContent): VNode[] {
@@ -438,12 +454,12 @@ export function tableColumn(content: TableColumnContent): VNode[] {
     }>
 
     const { sticky, column } = content
-    const noBorderBottom = "noBorderBottom" in content && content.noBorderBottom
+    const noLastBorderBottom = "noLastBorderBottom" in content && content.noLastBorderBottom
 
     return buildColumnRows({ index: 0, bottom: true }, column).map(columnTr)
 
     function columnTr({ key, className, containers }: ColumnRow): VNode {
-        return tr(key.join("_"), className, containers.map(columnTd))
+        return tr(key, className, containers.map(columnTd))
     }
 
     function columnTd({ index, colspan, rowspan, style, column }: ColumnContainer): VNode {
@@ -502,7 +518,7 @@ export function tableColumn(content: TableColumnContent): VNode[] {
                     index,
                     colspan: column.length,
                     rowspan: rowHeight,
-                    style: overrideBorderBottom(column.style),
+                    style: overrideLastBorderBottom(column.style),
                 },
             }
         }
@@ -597,7 +613,7 @@ export function tableColumn(content: TableColumnContent): VNode[] {
                             index,
                             colspan: column.length - containers.length,
                             rowspan: rowHeight,
-                            style: overrideBorderBottom(column.style),
+                            style: overrideLastBorderBottom(column.style),
                             column: { type: "empty", key: `${column.key}__empty` },
                         },
                     ]
@@ -641,7 +657,7 @@ export function tableColumn(content: TableColumnContent): VNode[] {
                                     index,
                                     colspan: column.length,
                                     rowspan: rowHeight - rows.length,
-                                    style: overrideBorderBottom(column.style),
+                                    style: overrideLastBorderBottom(column.style),
                                     column: {
                                         type: "empty",
                                         key: `__empty_${index}`,
@@ -654,8 +670,8 @@ export function tableColumn(content: TableColumnContent): VNode[] {
             }
         }
 
-        function overrideBorderBottom(style: TableDataFullStyle): TableDataFullStyle {
-            if (!noBorderBottom || !base.bottom) {
+        function overrideLastBorderBottom(style: TableDataFullStyle): TableDataFullStyle {
+            if (!noLastBorderBottom || !base.bottom) {
                 return style
             }
             return overrideBorderBottomToNone(style)
@@ -675,7 +691,7 @@ export function tableFooter({
     sticky,
     footer: { key, className, footers },
 }: TableFooterContent): VNode[] {
-    return [tr(key, className, footers.map(summaryTd(sticky)))]
+    return [tr([key], className, footers.map(summaryTd(sticky)))]
 }
 
 const summaryTd = (sticky: TableDataSticky): { (summary: TableDataSummary, index: number): VNode } => (
@@ -703,8 +719,8 @@ function summaryContent(summary: TableDataSummary): VNodeContent {
     }
 }
 
-function tr(key: VNodeKey, className: TableDataClassName, content: VNodeContent): VNode {
-    return html`<tr class="${className.join(" ")}" key=${key}>
+function tr(key: VNodeKey[], className: TableDataClassName, content: VNodeContent): VNode {
+    return html`<tr class="${className.join(" ")}" key=${key.join("_")} data-root-key=${key[0]}>
         ${content}
     </tr>`
 }

@@ -51,13 +51,13 @@ type Props = Readonly<{
 export function Table({ content, column, rows }: Props): VNode {
     const dataLength = rows.length
     return table(content.sticky, [
-        thead([...tableHeader(content), ...tableSummary(content)]),
+        thead([...tableHeader({ ...content, singleLastBorderBottom: true }), ...tableSummary(content)]),
         tbody(
             rows.flatMap((row, index) =>
                 tableColumn({
                     sticky: content.sticky,
                     column: column(row),
-                    noBorderBottom: index === dataLength - 1,
+                    noLastBorderBottom: index === dataLength - 1,
                 })
             )
         ),
@@ -248,7 +248,6 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
             }),
         ],
     })
-        .horizontalBorder_header(["bottom"])
         .decorateRow(tableClassName(["row_hover"]))
         .stickyCross(1)
         .freeze()
