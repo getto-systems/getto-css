@@ -95,26 +95,26 @@ export function overrideBorderBottom(
     base: TableDataFullStyle,
     border: TableDataHorizontalBorderStyle
 ): TableDataFullStyle {
-    return {
-        ...base,
-        border: {
-            ...base.border,
-            horizontal: {
-                ...base.border.horizontal,
-                bottom: border.bottom,
-            },
-        },
-    }
+    return overrideBorderBottomTo(base, border.bottom)
 }
 
 export function overrideBorderBottomToNone(base: TableDataFullStyle): TableDataFullStyle {
+    return overrideBorderBottomTo(base, "none")
+}
+export function overrideBorderBottomToSingle(base: TableDataFullStyle): TableDataFullStyle {
+    return overrideBorderBottomTo(base, "single")
+}
+function overrideBorderBottomTo(
+    base: TableDataFullStyle,
+    border: TableDataBorderClass
+): TableDataFullStyle {
     return {
         ...base,
         border: {
             ...base.border,
             horizontal: {
                 ...base.border.horizontal,
-                bottom: "none",
+                bottom: border,
             },
         },
     }

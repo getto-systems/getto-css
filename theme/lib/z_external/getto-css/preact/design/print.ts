@@ -4,16 +4,47 @@ import { html } from "htm/preact"
 import { VNodeContent } from "../../../preact/common"
 
 export type ReportContent = Readonly<{
+    index: number
     header: VNodeContent
-    content: VNodeContent
+    body: VNodeContent
     footer: VNodeContent
 }>
 
-export function report_a4_portrait({ header, content, footer }: ReportContent): VNode {
-    return html`<article class="report report_a4_portrait">
-        <section>${header} ${content}</section>
-        ${footer}
+type ReportStyle = Readonly<{ size: ReportPageSize; layout: ReportLayout }>
+type ReportPageSize = "a4"
+type ReportLayout = "portrait"
+function reportClass({ size, layout }: ReportStyle) {
+    return `report_${size}_${layout}`
+}
+
+// id 付与
+// ルート要素: __css__print__report_${index}
+// header 要素: __css__print__reportHeader_${index}
+export function report_a4_portrait(content: ReportContent): VNode {
+    return reportContent({ size: "a4", layout: "portrait" }, content)
+}
+function reportContent(style: ReportStyle, { index, header, body, footer }: ReportContent): VNode {
+    return html`<article class="report ${reportClass(style)}" id=${reportID()} key=${reportID()}>
+        <main>
+            ${contentLimitMarker()}
+            <section id=${reportHeaderID()}>${header}</section>
+            <section>${body}</section>
+        </main>
+        <section>${footer}</section>
     </article>`
+
+    function reportID() {
+        return `__css__print__report_${index}`
+    }
+    function reportHeaderID() {
+        return `__css__print__reportHeader_${index}`
+    }
+
+    function contentLimitMarker() {
+        return html`<aside class="report__contentLimit">
+            <mark class="report__contentLimit__mark"></mark>
+        </aside>`
+    }
 }
 
 export function reportHeader(content: VNodeContent): VNode {
@@ -65,10 +96,6 @@ function reportTitleContent(report: ReportTitleTypedContent): VNode {
             mapReportTitleStyle(report.content.style),
         ].join(" ")
     }
-}
-
-export function reportBody(content: VNodeContent): VNode {
-    return html`<main>${content}</main>`
 }
 
 export type ReportFooterContent = Readonly<{

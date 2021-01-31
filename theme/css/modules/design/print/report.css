@@ -12,6 +12,16 @@
     height: 254mm;
 }
 
+.report__contentLimit {
+    position: relative;
+}
+.report__contentLimit__mark {
+    position: absolute;
+    height: calc(254mm - 1.5em);
+
+    display: block;
+}
+
 .report__header {
     margin-bottom: var(--content-vertical-space-small);
 }
