@@ -24,6 +24,10 @@ class Component implements CurrentVersionComponent {
         this.listener.forEach((post) => post(state))
     }
 
+    terminate(): void {
+        this.listener.splice(0, this.listener.length)
+    }
+
     load(): void {
         this.material.find((event) => {
             this.post(event)

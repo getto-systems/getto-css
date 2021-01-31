@@ -11,6 +11,9 @@ export class MockComponent<T> {
         post(this.state)
         this.listener = post
     }
+    terminate(): void {
+        this.listener = null
+    }
     update(state: T): void {
         if (this.listener) {
             this.listener(state)
