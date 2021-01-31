@@ -1,6 +1,8 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
+import { useReportRowsComposition } from "../../../../z_external/getto-css/preact/design/hooks/print/compose"
+
 import {
     reportFolio,
     reportFolios,
@@ -8,7 +10,6 @@ import {
     reportTitle_small,
     reportTitle_xSmall,
     report_a4_portrait,
-    useReportRowsComposition,
 } from "../../../../z_external/getto-css/preact/design/print"
 import {
     TableDataColumnRow,
