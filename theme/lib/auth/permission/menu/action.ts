@@ -1,14 +1,8 @@
 import { LoadResult } from "../../common/credential/event"
+import { LoadMenuEvent, ToggleMenuExpandEvent } from "./event"
 
-import {
-    LoadBreadcrumbEvent,
-    LoadMenuEvent,
-    Menu,
-    MenuCategoryPath,
-    MenuTarget,
-    ToggleMenuExpandEvent,
-} from "./data"
 import { ApiNonce, ApiRoles } from "../../common/credential/data"
+import { LoadBreadcrumbEvent, Menu, MenuCategoryPath, MenuTarget } from "./data"
 
 export type MenuAction = Readonly<{
     loadBreadcrumb: LoadBreadcrumbPod

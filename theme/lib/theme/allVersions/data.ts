@@ -8,12 +8,6 @@ export type VersionInfo = Readonly<{
     isCurrent: boolean
 }>
 
-export type FindEvent =
-    | Readonly<{ type: "try-to-find"; currentVersion: Version }>
-    | Readonly<{ type: "delayed-to-find"; currentVersion: Version }>
-    | Readonly<{ type: "failed-to-find"; err: FindError; currentVersion: Version }>
-    | Readonly<{ type: "succeed-to-find"; versions: AllVersions; currentVersion: Version }>
-
 export type FindError =
     | Readonly<{ type: "server-error" }>
     | Readonly<{ type: "infra-error"; err: string }>

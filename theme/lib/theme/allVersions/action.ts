@@ -1,4 +1,4 @@
-import { FindEvent } from "./data"
+import { FindEvent } from "./event"
 
 export type AllVersionsAction = Readonly<{
     find: FindPod
