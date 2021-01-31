@@ -10,6 +10,7 @@ export type CurrentVersionMaterial = Readonly<{
 
 export interface CurrentVersionComponent {
     onStateChange(post: Post<CurrentVersionState>): void
+    terminate(): void
     load(): void
 }
 

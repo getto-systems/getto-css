@@ -11,6 +11,7 @@ export type HowToUseMaterial = Readonly<{
 
 export interface HowToUseComponent {
     onStateChange(post: Post<HowToUseState>): void
+    terminate(): void
     load(): void
 }
 

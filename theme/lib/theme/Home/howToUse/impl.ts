@@ -1,3 +1,5 @@
+import { ComponentBase } from "../../../z_external/getto-example/component/base"
+
 import {
     HowToUseMaterial,
     HowToUseComponent,
@@ -7,20 +9,12 @@ import {
 
 export const initHowToUseComponent: HowToUseComponentFactory = (material) => new Component(material)
 
-class Component implements HowToUseComponent {
+class Component extends ComponentBase<HowToUseState> implements HowToUseComponent {
     material: HowToUseMaterial
 
-    listener: Post<HowToUseState>[] = []
-
     constructor(material: HowToUseMaterial) {
+        super()
         this.material = material
-    }
-
-    onStateChange(post: Post<HowToUseState>): void {
-        this.listener.push(post)
-    }
-    post(state: HowToUseState): void {
-        this.listener.forEach((post) => post(state))
     }
 
     load(): void {
@@ -28,8 +22,4 @@ class Component implements HowToUseComponent {
             this.post(event)
         })
     }
-}
-
-interface Post<T> {
-    (state: T): void
 }

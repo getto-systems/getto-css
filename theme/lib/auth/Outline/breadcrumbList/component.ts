@@ -11,6 +11,7 @@ export type BreadcrumbListMaterial = Readonly<{
 
 export interface BreadcrumbListComponent {
     onStateChange(post: Post<BreadcrumbListState>): void
+    terminate(): void
     load(): void
 }
 

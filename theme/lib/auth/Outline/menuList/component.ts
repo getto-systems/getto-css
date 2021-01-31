@@ -16,6 +16,7 @@ export type MenuListMaterial = Readonly<{
 
 export interface MenuListComponent {
     onStateChange(post: Post<MenuListState>): void
+    terminate(): void
     load(): void
     toggle(menu: Menu, path: MenuCategoryPath): void
 }

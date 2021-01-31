@@ -42,10 +42,13 @@ export function newDocumentAsSingle(): DocumentEntryPoint {
             getContentPath: () => detectContentPath(env.version, currentURL),
         },
     }
+    const resource = initDocumentResource(factory, collector)
     return {
-        resource: initDocumentResource(factory, collector),
+        resource,
         terminate: () => {
-            // worker とインターフェイスを合わせるために必要
+            resource.breadcrumbList.terminate()
+            resource.menuList.terminate()
+            resource.content.terminate()
         },
     }
 }
