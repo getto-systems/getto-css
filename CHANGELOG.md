@@ -1,5 +1,57 @@
 # CHANGELOG
 
+## Version : 2.21.0
+
+- fix: terminate : See merge request getto-systems-base/projects/css!388
+- fix: event : See merge request getto-systems-base/projects/css!387
+- fix: event : See merge request getto-systems-base/projects/css!386
+- fix: event : See merge request getto-systems-base/projects/css!385
+- fix: report example : See merge request getto-systems-base/projects/css!384
+- fix: report sample : See merge request getto-systems-base/projects/css!383
+- refactor: compose hooks : See merge request getto-systems-base/projects/css!382
+- refactor: report : See merge request getto-systems-base/projects/css!381
+- fix: report : See merge request getto-systems-base/projects/css!380
+- refactor: form : See merge request getto-systems-base/projects/css!379
+- fix: box parameters : See merge request getto-systems-base/projects/css!378
+- remove: test code : See merge request getto-systems-base/projects/css!377
+- rename: simple : See merge request getto-systems-base/projects/css!376
+- fix: column row key/class : See merge request getto-systems-base/projects/css!375
+- fix: no border bottom table : See merge request getto-systems-base/projects/css!374
+- refactor: build cell : See merge request getto-systems-base/projects/css!373
+- fix: table : See merge request getto-systems-base/projects/css!372
+- fix: Cell type : See merge request getto-systems-base/projects/css!371
+- add: sticky table : See merge request getto-systems-base/projects/css!370
+- fix: visible : See merge request getto-systems-base/projects/css!369
+- refactor: build table : See merge request getto-systems-base/projects/css!368
+- refactor: column props : See merge request getto-systems-base/projects/css!367
+- refactor: tree : See merge request getto-systems-base/projects/css!366
+- refactor: expansion : See merge request getto-systems-base/projects/css!365
+- refactor: header : See merge request getto-systems-base/projects/css!364
+- refactor: header colspan/rowspan : See merge request getto-systems-base/projects/css!363
+- fix: tree : See merge request getto-systems-base/projects/css!362
+- fix: sticky header position : See merge request getto-systems-base/projects/css!361
+- add: tableCells helper : See merge request getto-systems-base/projects/css!360
+- refactor: table header : See merge request getto-systems-base/projects/css!359
+- fix: table header : See merge request getto-systems-base/projects/css!358
+- fix: data : See merge request getto-systems-base/projects/css!357
+- fix: search : See merge request getto-systems-base/projects/css!356
+- refactor: sidebar : See merge request getto-systems-base/projects/css!355
+- fix: sidebar : See merge request getto-systems-base/projects/css!354
+- fix: sort link : See merge request getto-systems-base/projects/css!353
+- add: always visible : See merge request getto-systems-base/projects/css!352
+- add: sort link : See merge request getto-systems-base/projects/css!351
+- rename: structure : See merge request getto-systems-base/projects/css!350
+- rename: libs : See merge request getto-systems-base/projects/css!349
+- fix: table : See merge request getto-systems-base/projects/css!348
+- add: table : See merge request getto-systems-base/projects/css!347
+- fix: docs : See merge request getto-systems-base/projects/css!346
+- fix: input : See merge request getto-systems-base/projects/css!345
+- add: css libs : See merge request getto-systems-base/projects/css!344
+- add: style : See merge request getto-systems-base/projects/css!343
+- fix: icon : See merge request getto-systems-base/projects/css!342
+- fix: style : See merge request getto-systems-base/projects/css!341
+
+
 ## Version : 2.20.1
 
 - fix: site info : See merge request getto-systems-base/projects/css!339
