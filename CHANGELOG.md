@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## Version : 2.21.1
+
+- upgrade: storybook : See merge request getto-systems-base/projects/css!393
+- move: component : See merge request getto-systems-base/projects/css!392
+- move: preact : See merge request getto-systems-base/projects/css!391
+- update: preact : See merge request getto-systems-base/projects/css!390
+
+
 ## Version : 2.21.0
 
 - fix: terminate : See merge request getto-systems-base/projects/css!388
