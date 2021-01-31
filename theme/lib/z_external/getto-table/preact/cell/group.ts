@@ -12,8 +12,8 @@ import { tableDataMutable_base } from "../mutable/base"
 import { tableDataMutable_group } from "../mutable/group"
 import { TableDataMutable_base, TableDataMutable_group } from "../mutable"
 import {
-    TableDataCell,
-    TableDataGroup,
+    TableCell,
+    TableCellGroup,
     TableDataRelatedParams,
     TableDataStyledParams,
     tableCellView,
@@ -44,12 +44,12 @@ import {
 export type TableDataGroupContent<M, R> = Readonly<{
     key: TableDataCellKey
     header: TableDataContentProvider
-    cells: TableDataCell<M, R>[]
+    cells: TableCell<M, R>[]
 }>
-export function tableCell_group<M, R>(content: TableDataGroupContent<M, R>): TableDataGroup<M, R> {
+export function tableCell_group<M, R>(content: TableDataGroupContent<M, R>): TableCellGroup<M, R> {
     return new Cell(content)
 }
-class Cell<M, R> implements TableDataGroup<M, R> {
+class Cell<M, R> implements TableCellGroup<M, R> {
     readonly type = "group" as const
 
     content: TableDataGroupContent<M, R>
@@ -147,56 +147,56 @@ class Cell<M, R> implements TableDataGroup<M, R> {
         return tableCellColumn(params, style, decorators, this.content.cells)
     }
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataGroup<M, R> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableCellGroup<M, R> {
         this.mutable.core.horizontalBorder(borders)
         return this
     }
-    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableDataGroup<M, R> {
+    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableCellGroup<M, R> {
         this.mutable.core.horizontalBorderRelated(borders)
         return this
     }
-    horizontalBorder_group(borders: TableDataHorizontalBorder[]): TableDataGroup<M, R> {
+    horizontalBorder_group(borders: TableDataHorizontalBorder[]): TableCellGroup<M, R> {
         this.mutable.group.horizontalBorder_group(borders)
         return this
     }
-    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableDataGroup<M, R> {
+    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableCellGroup<M, R> {
         this.mutable.core.horizontalBorder_header(borders)
         return this
     }
-    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableDataGroup<M, R> {
+    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableCellGroup<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
         return this
     }
-    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataGroup<M, R> {
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableCellGroup<M, R> {
         this.mutable.core.horizontalBorder_footer(borders)
         return this
     }
 
-    decorateView(decorator: TableDataViewDecorator): TableDataGroup<M, R> {
+    decorateView(decorator: TableDataViewDecorator): TableCellGroup<M, R> {
         this.mutable.group.decorateView(decorator)
         return this
     }
-    decorateGroup(decorator: TableDataGroupDecorator): TableDataGroup<M, R> {
+    decorateGroup(decorator: TableDataGroupDecorator): TableCellGroup<M, R> {
         this.mutable.group.decorateGroup(decorator)
         return this
     }
-    decorateHeader(decorator: TableDataHeaderDecorator): TableDataGroup<M, R> {
+    decorateHeader(decorator: TableDataHeaderDecorator): TableCellGroup<M, R> {
         this.mutable.core.decorateHeader(decorator)
         return this
     }
-    decorateSummary(decorator: TableDataSummaryDecorator): TableDataGroup<M, R> {
+    decorateSummary(decorator: TableDataSummaryDecorator): TableCellGroup<M, R> {
         this.mutable.core.decorateSummary(decorator)
         return this
     }
-    decorateColumn(decorator: TableDataColumnDecorator): TableDataGroup<M, R> {
+    decorateColumn(decorator: TableDataColumnDecorator): TableCellGroup<M, R> {
         this.mutable.core.decorateColumn(decorator)
         return this
     }
-    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataGroup<M, R> {
+    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableCellGroup<M, R> {
         this.mutable.core.decorateColumnRelated(decorator)
         return this
     }
-    decorateFooter(decorator: TableDataSummaryDecorator): TableDataGroup<M, R> {
+    decorateFooter(decorator: TableDataSummaryDecorator): TableCellGroup<M, R> {
         this.mutable.core.decorateFooter(decorator)
         return this
     }

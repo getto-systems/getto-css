@@ -17,7 +17,7 @@ import {
     TableDataColumnContentProvider,
     TableDataInvisible,
     TableDataRelatedParams,
-    TableDataSimple,
+    TableCellSimple,
     TableDataStyledParams,
 } from "../cell"
 import {
@@ -62,10 +62,10 @@ type TableDataSimpleContent_footer<M> = Readonly<{ footer: TableDataSummaryConte
 export function tableCell<M, R>(
     key: TableDataCellKey,
     content: { (key: TableDataCellKey): TableDataSimpleContent<M, R> }
-): TableDataSimple<M, R> {
+): TableCellSimple<M, R> {
     return new Cell(key, content(key))
 }
-class Cell<M, R> implements TableDataSimple<M, R> {
+class Cell<M, R> implements TableCellSimple<M, R> {
     readonly type = "simple" as const
 
     key: TableDataCellKey
@@ -193,57 +193,57 @@ class Cell<M, R> implements TableDataSimple<M, R> {
         }
     }
 
-    alwaysVisible(): TableDataSimple<M, R> {
+    alwaysVisible(): TableCellSimple<M, R> {
         this.mutable.leaf.alwaysVisible()
         return this
     }
-    border(borders: TableDataVerticalBorder[]): TableDataSimple<M, R> {
+    border(borders: TableDataVerticalBorder[]): TableCellSimple<M, R> {
         this.mutable.leaf.border(borders)
         return this
     }
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataSimple<M, R> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableCellSimple<M, R> {
         this.mutable.base.horizontalBorder(borders)
         return this
     }
-    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableDataSimple<M, R> {
+    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableCellSimple<M, R> {
         this.mutable.base.horizontalBorderRelated(borders)
         return this
     }
-    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableDataSimple<M, R> {
+    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableCellSimple<M, R> {
         this.mutable.base.horizontalBorder_header(borders)
         return this
     }
-    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableDataSimple<M, R> {
+    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableCellSimple<M, R> {
         this.mutable.base.horizontalBorder_summary(borders)
         return this
     }
-    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataSimple<M, R> {
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableCellSimple<M, R> {
         this.mutable.base.horizontalBorder_footer(borders)
         return this
     }
 
-    decorateView(decorator: TableDataViewDecorator): TableDataSimple<M, R> {
+    decorateView(decorator: TableDataViewDecorator): TableCellSimple<M, R> {
         this.mutable.leaf.decorateView(decorator)
         return this
     }
-    decorateHeader(decorator: TableDataHeaderDecorator): TableDataSimple<M, R> {
+    decorateHeader(decorator: TableDataHeaderDecorator): TableCellSimple<M, R> {
         this.mutable.base.decorateHeader(decorator)
         return this
     }
-    decorateSummary(decorator: TableDataSummaryDecorator): TableDataSimple<M, R> {
+    decorateSummary(decorator: TableDataSummaryDecorator): TableCellSimple<M, R> {
         this.mutable.base.decorateSummary(decorator)
         return this
     }
-    decorateColumn(decorator: TableDataColumnDecorator): TableDataSimple<M, R> {
+    decorateColumn(decorator: TableDataColumnDecorator): TableCellSimple<M, R> {
         this.mutable.base.decorateColumn(decorator)
         return this
     }
-    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataSimple<M, R> {
+    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableCellSimple<M, R> {
         this.mutable.base.decorateColumnRelated(decorator)
         return this
     }
-    decorateFooter(decorator: TableDataSummaryDecorator): TableDataSimple<M, R> {
+    decorateFooter(decorator: TableDataSummaryDecorator): TableCellSimple<M, R> {
         this.mutable.base.decorateFooter(decorator)
         return this
     }

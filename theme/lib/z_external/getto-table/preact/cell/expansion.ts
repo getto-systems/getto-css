@@ -15,7 +15,7 @@ import { TableDataMutable_base, TableDataMutable_leaf } from "../mutable"
 import {
     isVisibleKey,
     TableDataAlwaysVisible,
-    TableDataExpansion,
+    TableCellExpansion,
     TableDataExpansionColumnContentProvider,
     TableDataInvisible,
     TableDataRelatedParams,
@@ -64,10 +64,10 @@ type TableDataExpansionContent_footer<M> = Readonly<{ footer: TableDataSummaryCo
 export function tableCell_expansion<M, R>(
     key: TableDataCellKey,
     content: { (key: TableDataCellKey): TableDataExpansionContent<M, R> }
-): TableDataExpansion<M, R> {
+): TableCellExpansion<M, R> {
     return new Cell(key, content(key))
 }
-class Cell<M, R> implements TableDataExpansion<M, R> {
+class Cell<M, R> implements TableCellExpansion<M, R> {
     readonly type = "expansion" as const
 
     key: TableDataCellKey
@@ -219,57 +219,57 @@ class Cell<M, R> implements TableDataExpansion<M, R> {
         }
     }
 
-    alwaysVisible(): TableDataExpansion<M, R> {
+    alwaysVisible(): TableCellExpansion<M, R> {
         this.mutable.leaf.alwaysVisible()
         return this
     }
-    border(borders: TableDataVerticalBorder[]): TableDataExpansion<M, R> {
+    border(borders: TableDataVerticalBorder[]): TableCellExpansion<M, R> {
         this.mutable.leaf.border(borders)
         return this
     }
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataExpansion<M, R> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableCellExpansion<M, R> {
         this.mutable.base.horizontalBorder(borders)
         return this
     }
-    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableDataExpansion<M, R> {
+    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableCellExpansion<M, R> {
         this.mutable.base.horizontalBorderRelated(borders)
         return this
     }
-    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableDataExpansion<M, R> {
+    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableCellExpansion<M, R> {
         this.mutable.base.horizontalBorder_header(borders)
         return this
     }
-    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableDataExpansion<M, R> {
+    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableCellExpansion<M, R> {
         this.mutable.base.horizontalBorder_summary(borders)
         return this
     }
-    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataExpansion<M, R> {
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableCellExpansion<M, R> {
         this.mutable.base.horizontalBorder_footer(borders)
         return this
     }
 
-    decorateView(decorator: TableDataViewDecorator): TableDataExpansion<M, R> {
+    decorateView(decorator: TableDataViewDecorator): TableCellExpansion<M, R> {
         this.mutable.leaf.decorateView(decorator)
         return this
     }
-    decorateHeader(decorator: TableDataHeaderDecorator): TableDataExpansion<M, R> {
+    decorateHeader(decorator: TableDataHeaderDecorator): TableCellExpansion<M, R> {
         this.mutable.base.decorateHeader(decorator)
         return this
     }
-    decorateSummary(decorator: TableDataSummaryDecorator): TableDataExpansion<M, R> {
+    decorateSummary(decorator: TableDataSummaryDecorator): TableCellExpansion<M, R> {
         this.mutable.base.decorateSummary(decorator)
         return this
     }
-    decorateColumn(decorator: TableDataColumnDecorator): TableDataExpansion<M, R> {
+    decorateColumn(decorator: TableDataColumnDecorator): TableCellExpansion<M, R> {
         this.mutable.base.decorateColumn(decorator)
         return this
     }
-    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataExpansion<M, R> {
+    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableCellExpansion<M, R> {
         this.mutable.base.decorateColumnRelated(decorator)
         return this
     }
-    decorateFooter(decorator: TableDataSummaryDecorator): TableDataExpansion<M, R> {
+    decorateFooter(decorator: TableDataSummaryDecorator): TableCellExpansion<M, R> {
         this.mutable.base.decorateFooter(decorator)
         return this
     }

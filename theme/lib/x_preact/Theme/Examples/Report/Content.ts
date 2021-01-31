@@ -37,6 +37,8 @@ import {
 import { small } from "../../../../z_external/getto-css/preact/design/alignment"
 
 import { Model, Row } from "./data"
+import { TableCell } from "../../../../z_external/getto-table/preact/cell"
+import { tableCell_tree } from "../../../../z_external/getto-table/preact/cell/tree"
 
 type Props = {
     content: Readonly<{
@@ -120,10 +122,11 @@ export function Content({ content, column, rows }: Props): VNode {
     }
 }
 
+type Cells<R> = TableCell<Model, R>
 export const buildStructure = (): TableStructure<Model, Row> =>
     tableStructure({
         key: (row: Row) => row.id,
-        cells: [
+        cells: <Cells<Row>[]>[
             tableCell("id", (_key) => {
                 return {
                     label: () => "ID",
@@ -148,18 +151,24 @@ export const buildStructure = (): TableStructure<Model, Row> =>
                 }
             }),
 
-            tableCell("price", (_key) => {
-                return {
-                    label: () => "価格",
-                    header: linky,
-                    column: (row: Row) => formatPrice(row.price),
-                    summary: (model: Model) => formatPrice(model.sumPrice),
-                    footer: (model: Model) => formatPrice(model.sumPrice),
-                }
-            })
-                .decorateSummary(tableAlign(["numeric"]))
-                .decorateFooter(tableAlign(["numeric"]))
-                .decorateColumn(tableAlign(["numeric"])),
+            tableCell_tree({
+                data: (row: Row) => row.price,
+                key: (price: number) => price,                
+                cells: <Cells<number>[]>[
+                    tableCell("price", (_key) => {
+                        return {
+                            label: () => "価格",
+                            header: linky,
+                            column: (price: number) => formatPrice(price),
+                            summary: (model: Model) => formatPrice(model.sumPrice),
+                            footer: (model: Model) => formatPrice(model.sumPrice),
+                        }
+                    })
+                        .decorateSummary(tableAlign(["numeric"]))
+                        .decorateFooter(tableAlign(["numeric"]))
+                        .decorateColumn(tableAlign(["numeric"])),
+                ],
+            }),
 
             tableCell("updatedAt", (_key) => {
                 return {
