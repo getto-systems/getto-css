@@ -14,8 +14,8 @@ import {
     tableCellHeader,
     tableCellSummary,
     tableCellView,
-    TableDataCell,
-    TableDataMultipart,
+    TableCell,
+    TableCellMultipart,
     TableDataMultipartProvider,
     TableDataRelatedParams,
     TableDataStyledParams,
@@ -35,10 +35,10 @@ export type TableDataMultipartContent<M, R, P> = Readonly<{
 }>
 export function tableCell_multipart<M, R, P>(
     content: TableDataMultipartContent<M, R, P>
-): TableDataMultipart<M, R> {
+): TableCellMultipart<M, R> {
     return new Cell(content)
 }
-class Cell<M, R, P> implements TableDataMultipart<M, R> {
+class Cell<M, R, P> implements TableCellMultipart<M, R> {
     readonly type = "multipart" as const
 
     content: TableDataMultipartContent<M, R, P>
@@ -53,7 +53,7 @@ class Cell<M, R, P> implements TableDataMultipart<M, R> {
         }
     }
 
-    cells(model: M): TableDataCell<M, R>[] {
+    cells(model: M): TableCell<M, R>[] {
         return this.content.data(model).flatMap((part) => this.content.cells(part))
     }
 
@@ -78,49 +78,49 @@ class Cell<M, R, P> implements TableDataMultipart<M, R> {
         return tableCellFooter(params, style, this.cells(params.model))
     }
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataMultipart<M, R> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableCellMultipart<M, R> {
         this.mutable.core.horizontalBorder(borders)
         return this
     }
-    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableDataMultipart<M, R> {
+    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableCellMultipart<M, R> {
         this.mutable.core.horizontalBorderRelated(borders)
         return this
     }
-    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableDataMultipart<M, R> {
+    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableCellMultipart<M, R> {
         this.mutable.core.horizontalBorder_header(borders)
         return this
     }
-    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableDataMultipart<M, R> {
+    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableCellMultipart<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
         return this
     }
-    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataMultipart<M, R> {
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableCellMultipart<M, R> {
         this.mutable.core.horizontalBorder_footer(borders)
         return this
     }
 
-    decorateHeader(decorator: TableDataHeaderDecorator): TableDataMultipart<M, R> {
+    decorateHeader(decorator: TableDataHeaderDecorator): TableCellMultipart<M, R> {
         this.mutable.core.decorateHeader(decorator)
         return this
     }
-    decorateSummary(decorator: TableDataSummaryDecorator): TableDataMultipart<M, R> {
+    decorateSummary(decorator: TableDataSummaryDecorator): TableCellMultipart<M, R> {
         this.mutable.core.decorateSummary(decorator)
         return this
     }
-    decorateColumn(decorator: TableDataColumnDecorator): TableDataMultipart<M, R> {
+    decorateColumn(decorator: TableDataColumnDecorator): TableCellMultipart<M, R> {
         this.mutable.core.decorateColumn(decorator)
         return this
     }
-    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataMultipart<M, R> {
+    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableCellMultipart<M, R> {
         this.mutable.core.decorateColumnRelated(decorator)
         return this
     }
-    decorateFooter(decorator: TableDataSummaryDecorator): TableDataMultipart<M, R> {
+    decorateFooter(decorator: TableDataSummaryDecorator): TableCellMultipart<M, R> {
         this.mutable.core.decorateFooter(decorator)
         return this
     }
 }
 
 interface TableDataMultipartCellProvider<M, R, C> {
-    (child: C): TableDataCell<M, R>[]
+    (child: C): TableCell<M, R>[]
 }

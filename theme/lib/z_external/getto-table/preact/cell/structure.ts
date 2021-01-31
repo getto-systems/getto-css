@@ -7,7 +7,7 @@ import {
     tableCellBaseSummary,
     tableCellBaseColumn,
     tableCellBaseFooter,
-    TableDataCell,
+    TableCell,
     TableDataRowKeyProvider,
     TableStructure_hot,
 } from "../cell"
@@ -36,7 +36,7 @@ import { tableDataMutable_row } from "../mutable/row"
 
 export type TableStructureContent<M, R> = Readonly<{
     key: TableDataRowKeyProvider<R>
-    cells: TableDataCell<M, R>[]
+    cells: TableCell<M, R>[]
 }>
 export function tableStructure<M, R>(content: TableStructureContent<M, R>): TableStructure_hot<M, R> {
     return new Structure(content)

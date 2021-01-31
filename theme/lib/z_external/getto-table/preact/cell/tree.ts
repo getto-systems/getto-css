@@ -16,12 +16,12 @@ import {
     tableCellHeader,
     tableCellSummary,
     tableCellView,
-    TableDataCell,
+    TableCell,
     TableDataTreeChildrenProvider,
     TableDataRelatedParams,
     TableDataRowKeyProvider,
     TableDataStyledParams,
-    TableDataTree,
+    TableCellTree,
 } from "../cell"
 import {
     decorateRowStyle,
@@ -44,12 +44,12 @@ import {
 export type TableDataTreeContent<M, R, C> = Readonly<{
     data: TableDataTreeChildrenProvider<M, R, C>
     key: TableDataRowKeyProvider<C>
-    cells: TableDataCell<M, C>[]
+    cells: TableCell<M, C>[]
 }>
-export function tableCell_tree<M, R, C>(content: TableDataTreeContent<M, R, C>): TableDataTree<M, R> {
+export function tableCell_tree<M, R, C>(content: TableDataTreeContent<M, R, C>): TableCellTree<M, R> {
     return new Cell(content)
 }
-class Cell<M, R, C> implements TableDataTree<M, R> {
+class Cell<M, R, C> implements TableCellTree<M, R> {
     readonly type = "tree" as const
 
     content: TableDataTreeContent<M, R, C>
@@ -159,52 +159,52 @@ class Cell<M, R, C> implements TableDataTree<M, R> {
         }
     }
 
-    horizontalBorder(borders: TableDataHorizontalBorder[]): TableDataTree<M, R> {
+    horizontalBorder(borders: TableDataHorizontalBorder[]): TableCellTree<M, R> {
         this.mutable.core.horizontalBorder(borders)
         return this
     }
-    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableDataTree<M, R> {
+    horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): TableCellTree<M, R> {
         this.mutable.core.horizontalBorderRelated(borders)
         return this
     }
-    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableDataTree<M, R> {
+    horizontalBorder_header(borders: TableDataHorizontalBorder[]): TableCellTree<M, R> {
         this.mutable.core.horizontalBorder_header(borders)
         return this
     }
-    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableDataTree<M, R> {
+    horizontalBorder_summary(borders: TableDataHorizontalBorder[]): TableCellTree<M, R> {
         this.mutable.core.horizontalBorder_summary(borders)
         return this
     }
-    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableDataTree<M, R> {
+    horizontalBorder_footer(borders: TableDataHorizontalBorder[]): TableCellTree<M, R> {
         this.mutable.core.horizontalBorder_footer(borders)
         return this
     }
 
-    decorateHeader(decorator: TableDataHeaderDecorator): TableDataTree<M, R> {
+    decorateHeader(decorator: TableDataHeaderDecorator): TableCellTree<M, R> {
         this.mutable.core.decorateHeader(decorator)
         return this
     }
-    decorateSummary(decorator: TableDataSummaryDecorator): TableDataTree<M, R> {
+    decorateSummary(decorator: TableDataSummaryDecorator): TableCellTree<M, R> {
         this.mutable.core.decorateSummary(decorator)
         return this
     }
-    decorateColumn(decorator: TableDataColumnDecorator): TableDataTree<M, R> {
+    decorateColumn(decorator: TableDataColumnDecorator): TableCellTree<M, R> {
         this.mutable.core.decorateColumn(decorator)
         return this
     }
-    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableDataTree<M, R> {
+    decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): TableCellTree<M, R> {
         this.mutable.core.decorateColumnRelated(decorator)
         return this
     }
-    decorateRow(decorator: TableDataRowDecorator): TableDataTree<M, R> {
+    decorateRow(decorator: TableDataRowDecorator): TableCellTree<M, R> {
         this.mutable.tree.decorateRow(decorator)
         return this
     }
-    decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): TableDataTree<M, R> {
+    decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): TableCellTree<M, R> {
         this.mutable.tree.decorateRowRelated(decorator)
         return this
     }
-    decorateFooter(decorator: TableDataSummaryDecorator): TableDataTree<M, R> {
+    decorateFooter(decorator: TableDataSummaryDecorator): TableCellTree<M, R> {
         this.mutable.core.decorateFooter(decorator)
         return this
     }

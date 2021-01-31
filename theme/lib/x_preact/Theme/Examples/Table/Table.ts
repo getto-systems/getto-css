@@ -36,7 +36,7 @@ import { Article, ArticleComment, Log, Model, Row, TemperatureType } from "./dat
 import { tableCell_expansion } from "../../../../z_external/getto-table/preact/cell/expansion"
 import { tableCell_multipart } from "../../../../z_external/getto-table/preact/cell/multipart"
 import { tableCell_tree } from "../../../../z_external/getto-table/preact/cell/tree"
-import { TableDataCell } from "../../../../z_external/getto-table/preact/cell"
+import { TableCell } from "../../../../z_external/getto-table/preact/cell"
 
 type Props = Readonly<{
     content: Readonly<{
@@ -65,7 +65,7 @@ export function Table({ content, column, rows }: Props): VNode {
     ])
 }
 
-type Cells<R> = TableDataCell<Model, R>[]
+type Cells<R> = TableCell<Model, R>[]
 
 export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
     tableStructure({

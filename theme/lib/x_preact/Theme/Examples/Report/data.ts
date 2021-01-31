@@ -6,7 +6,7 @@ export type Row = Readonly<{
     id: number
     name: string
     email: string
-    price: number
+    price: number[]
     updatedAt: string
 }>
 
@@ -26,14 +26,14 @@ export function generateRows(): Row[] {
                 id: 1234,
                 name: "GETTO CSS",
                 email: "admin@example.com",
-                price: 1200,
+                price: [1200],
                 updatedAt: "2020/06/19 08:03",
             },
             {
                 id: 123,
                 name: "GETTO",
                 email: "user@example.com",
-                price: 13500,
+                price: [13500, 1500, 600],
                 updatedAt: "2020/01/10",
             },
         ]

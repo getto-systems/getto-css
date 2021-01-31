@@ -41,16 +41,16 @@ import {
     TableDataVerticalBorder,
 } from "./style"
 
-export type TableDataCell<M, R> =
-    | TableDataSimple<M, R>
-    | TableDataExpansion<M, R>
-    | TableDataGroup<M, R>
-    | TableDataMultipart<M, R>
-    | TableDataTree<M, R>
+export type TableCell<M, R> =
+    | TableCellSimple<M, R>
+    | TableCellExpansion<M, R>
+    | TableCellGroup<M, R>
+    | TableCellMultipart<M, R>
+    | TableCellTree<M, R>
 
-export interface TableDataSimple<M, R>
-    extends TableDataCell_base<TableDataSimple<M, R>, R>,
-        TableDataCell_leaf<TableDataSimple<M, R>> {
+export interface TableCellSimple<M, R>
+    extends TableCell_base<TableCellSimple<M, R>, R>,
+        TableCell_leaf<TableCellSimple<M, R>> {
     type: "simple"
 
     view(params: TableDataParams<M>): TableDataView | TableDataAlwaysVisible
@@ -59,9 +59,9 @@ export interface TableDataSimple<M, R>
     column(params: TableDataRelatedParams<M, R>): TableDataColumnSimple | TableDataInvisible
     footer(params: TableDataStyledParams<M>): TableDataSummarySimple | TableDataInvisible
 }
-export interface TableDataExpansion<M, R>
-    extends TableDataCell_base<TableDataExpansion<M, R>, R>,
-        TableDataCell_leaf<TableDataExpansion<M, R>> {
+export interface TableCellExpansion<M, R>
+    extends TableCell_base<TableCellExpansion<M, R>, R>,
+        TableCell_leaf<TableCellExpansion<M, R>> {
     type: "expansion"
 
     view(params: TableDataParams<M>): TableDataView | TableDataAlwaysVisible
@@ -70,9 +70,9 @@ export interface TableDataExpansion<M, R>
     column(params: TableDataRelatedParams<M, R>): TableDataColumnExpansion | TableDataInvisible
     footer(params: TableDataStyledParams<M>): TableDataSummaryExpansion | TableDataInvisible
 }
-export interface TableDataGroup<M, R>
-    extends TableDataCell_base<TableDataGroup<M, R>, R>,
-        TableDataCell_group<TableDataGroup<M, R>> {
+export interface TableCellGroup<M, R>
+    extends TableCell_base<TableCellGroup<M, R>, R>,
+        TableCell_group<TableCellGroup<M, R>> {
     type: "group"
 
     view(params: TableDataParams<M>): TableDataView[]
@@ -81,7 +81,7 @@ export interface TableDataGroup<M, R>
     column(params: TableDataRelatedParams<M, R>): TableDataColumn[]
     footer(params: TableDataStyledParams<M>): TableDataSummary[]
 }
-export interface TableDataMultipart<M, R> extends TableDataCell_base<TableDataMultipart<M, R>, R> {
+export interface TableCellMultipart<M, R> extends TableCell_base<TableCellMultipart<M, R>, R> {
     type: "multipart"
 
     view(params: TableDataParams<M>): TableDataView[]
@@ -90,9 +90,9 @@ export interface TableDataMultipart<M, R> extends TableDataCell_base<TableDataMu
     column(params: TableDataRelatedParams<M, R>): TableDataColumn[]
     footer(params: TableDataStyledParams<M>): TableDataSummary[]
 }
-export interface TableDataTree<M, R>
-    extends TableDataCell_base<TableDataTree<M, R>, R>,
-        TableDataCell_tree<TableDataTree<M, R>, R> {
+export interface TableCellTree<M, R>
+    extends TableCell_base<TableCellTree<M, R>, R>,
+        TableCell_tree<TableCellTree<M, R>, R> {
     type: "tree"
 
     view(params: TableDataParams<M>): TableDataView[]
@@ -102,7 +102,7 @@ export interface TableDataTree<M, R>
     footer(params: TableDataStyledParams<M>): TableDataSummary[]
 }
 
-interface TableDataCell_base<T, R> {
+interface TableCell_base<T, R> {
     horizontalBorder(borders: TableDataHorizontalBorder[]): T
     horizontalBorderRelated(borders: TableDataHorizontalBorderProvider<R>): T
     horizontalBorder_header(borders: TableDataHorizontalBorder[]): T
@@ -115,23 +115,23 @@ interface TableDataCell_base<T, R> {
     decorateColumnRelated(decorator: TableDataColumnRelatedDecorator<R>): T
     decorateFooter(decorator: TableDataSummaryDecorator): T
 }
-interface TableDataCell_leaf<T> {
+interface TableCell_leaf<T> {
     alwaysVisible(): T
     border(borders: TableDataVerticalBorder[]): T
 
     decorateView(decorator: TableDataViewDecorator): T
 }
-interface TableDataCell_group<T> {
+interface TableCell_group<T> {
     horizontalBorder_group(borders: TableDataHorizontalBorder[]): T
 
     decorateView(decorator: TableDataViewDecorator): T
     decorateGroup(decorator: TableDataGroupDecorator): T
 }
-interface TableDataCell_tree<T, R> {
+interface TableCell_tree<T, R> {
     decorateRow(decorator: TableDataRowDecorator): T
     decorateRowRelated(decorator: TableDataRowRelatedDecorator<R>): T
 }
-interface TableDataCell_row<T> {
+interface TableCell_structure<T> {
     setHeaderKey(key: TableDataHeaderKeyProvider): T
     setSummaryKey(key: TableDataKeyProvider): T
     setFooterKey(key: TableDataKeyProvider): T
@@ -147,9 +147,9 @@ interface TableDataCell_row<T> {
 }
 
 export interface TableStructure_hot<M, R>
-    extends TableDataCell_base<TableStructure_hot<M, R>, R>,
-        TableDataCell_tree<TableStructure_hot<M, R>, R>,
-        TableDataCell_row<TableStructure_hot<M, R>> {
+    extends TableCell_base<TableStructure_hot<M, R>, R>,
+        TableCell_tree<TableStructure_hot<M, R>, R>,
+        TableCell_structure<TableStructure_hot<M, R>> {
     freeze(): TableStructure<M, R>
 }
 
@@ -178,35 +178,35 @@ export interface TableDataTreeChildrenProvider<M, R, C> {
 
 export function tableCellView<M, R>(
     params: TableDataParams<M>,
-    cells: TableDataCell<M, R>[]
+    cells: TableCell<M, R>[]
 ): TableDataView[] {
     return withoutAlwaysVisible(cells.flatMap((cell) => cell.view(params)))
 }
 export function tableCellHeader<M, R>(
     params: TableDataStyledParams<M>,
     style: TableDataStyle,
-    cells: TableDataCell<M, R>[]
+    cells: TableCell<M, R>[]
 ): TableDataHeader[] {
     return tableCellBaseHeader(params, extendStyle({ base: params.base, style }), cells)
 }
 export function tableCellBaseHeader<M, R>(
     params: TableDataParams<M>,
     base: TableDataStyle,
-    cells: TableDataCell<M, R>[]
+    cells: TableCell<M, R>[]
 ): TableDataHeader[] {
     return withoutInvisible(cells.flatMap((cell) => cell.header({ ...params, base })))
 }
 export function tableCellSummary<M, R>(
     params: TableDataStyledParams<M>,
     style: TableDataStyle,
-    cells: TableDataCell<M, R>[]
+    cells: TableCell<M, R>[]
 ): TableDataSummary[] {
     return tableCellBaseSummary(params, extendStyle({ base: params.base, style }), cells)
 }
 export function tableCellBaseSummary<M, R>(
     params: TableDataParams<M>,
     base: TableDataStyle,
-    cells: TableDataCell<M, R>[]
+    cells: TableCell<M, R>[]
 ): TableDataSummary[] {
     return withoutInvisible(cells.flatMap((cell) => cell.summary({ ...params, base })))
 }
@@ -214,7 +214,7 @@ export function tableCellColumn<M, R>(
     params: TableDataRelatedParams<M, R>,
     style: TableDataStyle,
     decorators: TableDataColumnRelatedDecorator<R>[],
-    cells: TableDataCell<M, R>[]
+    cells: TableCell<M, R>[]
 ): TableDataColumn[] {
     // decorate してから extend したいから Base は使えない
     return withoutInvisible(
@@ -231,7 +231,7 @@ export function tableCellBaseColumn<M, R>(
     params: TableDataParams<M>,
     base: TableDataStyle,
     decorators: TableDataColumnRelatedDecorator<R>[],
-    cells: TableDataCell<M, R>[],
+    cells: TableCell<M, R>[],
     row: R
 ): TableDataColumn[] {
     return withoutInvisible(
@@ -246,7 +246,7 @@ export function tableCellChildColumn<M, R, C>(
     params: TableDataRelatedParams<M, R>,
     base: TableDataStyle,
     decorators: TableDataColumnRelatedDecorator<R>[],
-    cells: TableDataCell<M, C>[],
+    cells: TableCell<M, C>[],
     child: Readonly<{ row: C; last: boolean }>
 ): TableDataColumn[] {
     // decorate してから extend したいから Base は使えない
@@ -277,14 +277,14 @@ export function tableCellChildColumn<M, R, C>(
 export function tableCellFooter<M, R>(
     params: TableDataStyledParams<M>,
     style: TableDataStyle,
-    cells: TableDataCell<M, R>[]
+    cells: TableCell<M, R>[]
 ): TableDataSummary[] {
     return tableCellBaseFooter(params, extendStyle({ base: params.base, style }), cells)
 }
 export function tableCellBaseFooter<M, R>(
     params: TableDataParams<M>,
     base: TableDataStyle,
-    cells: TableDataCell<M, R>[]
+    cells: TableCell<M, R>[]
 ): TableDataSummary[] {
     return withoutInvisible(cells.flatMap((cell) => cell.footer({ ...params, base })))
 }
