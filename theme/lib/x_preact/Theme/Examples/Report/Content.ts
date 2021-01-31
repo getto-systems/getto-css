@@ -1,17 +1,14 @@
 import { VNode } from "preact"
-import { useEffect, useState } from "preact/hooks"
 import { html } from "htm/preact"
-
-import { VNodeKey } from "../../../../z_external/preact/common"
 
 import {
     reportFolio,
-    reportFooter,
-    reportHeader,
+    reportFolios,
     reportTitle,
     reportTitle_small,
     reportTitle_xSmall,
     report_a4_portrait,
+    useReportRowsComposition,
 } from "../../../../z_external/getto-css/preact/design/print"
 import {
     TableDataColumnRow,
@@ -51,154 +48,20 @@ type Props = {
     column: { (row: Row): TableDataColumnRow }
 }
 export function Content({ content, column, rows }: Props): VNode {
-    type ReportComposition = Readonly<{
-        pagedRows: Row[][]
-        composeIndex: number
-    }>
+    const pageID = (index: number) => `__css__print__report_${index}`
 
-    const [data, setData] = useState<ReportComposition>({ pagedRows: [rows], composeIndex: 0 })
-    useEffect(() => {
-        const nextComposition = compose()
-        if (nextComposition.hasNext) {
-            setData(nextComposition.data)
-        }
-
-        type ComposeInfo = Readonly<{ rowChanged: number; currentKey: CurrentKey }>
-        type CurrentKey =
-            | Readonly<{ type: "initial" }>
-            | Readonly<{ type: "focused"; key: VNodeKey }>
-            | Readonly<{ type: "notFound" }>
-        type NextComposition =
-            | Readonly<{ hasNext: false }>
-            | Readonly<{ hasNext: true; data: ReportComposition }>
-
-        function compose(): NextComposition {
-            type MarkerOffset = Readonly<{ found: false }> | Readonly<{ found: true; offset: number }>
-
-            // composeIndex のページの tr を検査
-            const page = document.getElementById(`__css__print__report_${data.composeIndex}`)
-            if (!page) {
-                return { hasNext: false }
-            }
-
-            let info: ComposeInfo = { rowChanged: 0, currentKey: { type: "initial" } }
-
-            const marker = findMarker(page)
-            if (!marker.found) {
-                return { hasNext: false }
-            }
-
-            let headerHeight = 0
-            const tableHeaders = page.getElementsByTagName("tfoot")
-            for (const element of tableHeaders) {
-                headerHeight += element.offsetHeight
-            }
-
-            let footerHeight = 0
-            const tableFooters = page.getElementsByTagName("tfoot")
-            for (const element of tableFooters) {
-                footerHeight += element.offsetHeight
-            }
-
-            const tableBodies = page.getElementsByTagName("tbody")
-            for (const body of tableBodies) {
-                const tableRows = body.getElementsByTagName("tr")
-                for (const tr of tableRows) {
-                    // tr の data-root-key を取り出してそれが変更されたら rowChanged をインクリメント
-                    const key = tr.getAttribute("data-root-key")
-                    if (!key) {
-                        info = { rowChanged: info.rowChanged, currentKey: { type: "notFound" } }
-                    } else {
-                        switch (info.currentKey.type) {
-                            case "initial":
-                                info = {
-                                    rowChanged: info.rowChanged,
-                                    currentKey: { type: "focused", key },
-                                }
-                                break
-
-                            case "notFound":
-                                info = {
-                                    rowChanged: info.rowChanged + 1,
-                                    currentKey: { type: "focused", key },
-                                }
-                                break
-
-                            case "focused":
-                                if (key !== info.currentKey.key) {
-                                    info = {
-                                        rowChanged: info.rowChanged + 1,
-                                        currentKey: { type: "focused", key },
-                                    }
-                                }
-                                break
-                        }
-                    }
-
-                    if (
-                        footerHeight + body.offsetTop + tr.offsetTop + tr.offsetHeight - headerHeight >
-                        marker.offset
-                    ) {
-                        // tr 全体が収まっていなかった場合、
-                        // pagedRows を分割して composeIndex に rowChanged をセット
-                        return {
-                            hasNext: true,
-                            data: {
-                                pagedRows: [
-                                    ...data.pagedRows.slice(0, -1),
-                                    ...splitRows(data.pagedRows[data.pagedRows.length - 1]),
-                                ],
-                                composeIndex: data.composeIndex + 1,
-                            },
-                        }
-                    }
-                }
-            }
-
-            return { hasNext: false }
-
-            function findMarker(page: HTMLElement): MarkerOffset {
-                const markers = page.getElementsByClassName("report__contentLimit__mark")
-                for (const marker of markers) {
-                    if (marker instanceof HTMLElement) {
-                        return {
-                            found: true,
-                            offset: marker.offsetHeight - headerHeight(),
-                        }
-                    }
-                }
-                return { found: false }
-
-                function headerHeight() {
-                    const reportHeader = document.getElementById(
-                        `__css__print__reportHeader_${data.composeIndex}`
-                    )
-                    if (!reportHeader) {
-                        return 0
-                    }
-                    return reportHeader.offsetHeight
-                }
-            }
-
-            function splitRows(rows: Row[]): Row[][] {
-                // ただし、rowChanged が 0 の場合は少なくとも 1行を pagedRows に含める
-                const index = sliceIndex()
-                return [rows.slice(0, index), rows.slice(index)]
-
-                function sliceIndex(): number {
-                    return Math.max(1, info.rowChanged)
-                }
-            }
-        }
-    }, [data])
+    const data = useReportRowsComposition(rows, {
+        root: (index: number) => document.getElementById(pageID(index)),
+        rowKey: (tr: HTMLTableRowElement) => tr.getAttribute("data-root-key"),
+    })
 
     return html`${data.pagedRows.map(reportPage)}`
 
     function reportPage(pagedRows: Row[], index: number): VNode {
         const dataLength = pagedRows.length
         return report_a4_portrait({
-            index: index,
-            header: reportHeader(title()),
+            id: pageID(index),
+            header: title(),
             body: table_small_fill(content.sticky, [
                 thead([
                     ...tableHeader({ ...content, singleLastBorderBottom: hasSummary() }),
@@ -215,7 +78,10 @@ export function Content({ content, column, rows }: Props): VNode {
                 ),
                 tfoot(tableFooter(content)),
             ]),
-            footer: footer(index),
+            footer: reportFolios({
+                left: reportFolio("作成日: 2020/06/19"),
+                right: reportFolio(`${index + 1} / ${data.pagedRows.length}ページ`),
+            }),
         })
 
         function title() {
@@ -250,13 +116,6 @@ export function Content({ content, column, rows }: Props): VNode {
             }
             return tableSummary(content)
         }
-    }
-
-    function footer(index: number) {
-        return reportFooter({
-            left: reportFolio("作成日: 2020/06/19"),
-            right: reportFolio(`${index + 1} / ${data.pagedRows.length}ページ`),
-        })
     }
 }
 

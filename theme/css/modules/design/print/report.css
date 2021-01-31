@@ -17,9 +17,10 @@
 }
 .report__contentLimit__mark {
     position: absolute;
-    height: calc(254mm - 1.5em);
-
     display: block;
+}
+.report_a4_portrait .report__contentLimit__mark {
+    height: calc(254mm - 1.5em);
 }
 
 .report__header {
@@ -41,23 +42,23 @@
 }
 
 .report__footer {
-    display: flex;
-    justify-content: space-between;
-
     border-top: 1px dotted var(--color-black);
     padding-top: var(--content-vertical-space-tiny);
     margin-top: var(--content-vertical-space-tiny);
 }
 
+.report__folio__container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .report__folio {
     font-size: var(--font-size-small);
 }
-
-.report__footer_left .report__folio {
+.report__folio_left .report__folio {
     margin-right: 0.25rem;
 }
-
-.report__footer_right .report__folio {
+.report__folio_right .report__folio {
     margin-left: 0.25rem;
 }
 
