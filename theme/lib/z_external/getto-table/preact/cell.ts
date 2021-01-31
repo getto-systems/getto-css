@@ -1,4 +1,4 @@
-import { VNodeContent, VNodeKey } from "../../preact/common"
+import { VNodeContent, VNodeKey } from "../../getto-example/preact/common"
 
 import {
     TableDataColumn,
