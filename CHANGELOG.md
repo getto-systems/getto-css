@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.21.2
+
+- fix: deploy : See merge request getto-systems-base/projects/css!395
+
+
 ## Version : 2.21.1
 
 - upgrade: storybook : See merge request getto-systems-base/projects/css!393
