@@ -3,27 +3,27 @@ import { html } from "htm/preact"
 
 import { VNodeContent } from "../common"
 
-type FormContent =
-    | Readonly<{ type: NormalFormType; content: NormalFormContent }>
-    | Readonly<{ type: SearchFormType; content: NormalFormContent }>
-    | Readonly<{ type: NoticeFormType; content: NoticeFormContent }>
+type FieldContent =
+    | Readonly<{ type: NormalFieldType; content: NormalFieldContent }>
+    | Readonly<{ type: SearchFieldType; content: NormalFieldContent }>
+    | Readonly<{ type: NoticeFieldType; content: NoticeFieldContent }>
 
-export type NormalFormContent = NormalFormContent_base | (NormalFormContent_base & FormContent_help)
-export type NoticeFormContent = NormalFormContent & FormContent_notice
+export type NormalFieldContent = NormalFieldContent_base | (NormalFieldContent_base & FieldContent_help)
+export type NoticeFieldContent = NormalFieldContent & FieldContent_notice
 
-type NormalFormContent_base = Readonly<{
+type NormalFieldContent_base = Readonly<{
     title: VNodeContent
     body: VNodeContent
 }>
-type FormContent_help = Readonly<{ help: VNodeContent[] }>
-type FormContent_notice = Readonly<{ notice: VNodeContent[] }>
+type FieldContent_help = Readonly<{ help: VNodeContent[] }>
+type FieldContent_notice = Readonly<{ notice: VNodeContent[] }>
 
-type FormType = NormalFormType | SearchFormType | NoticeFormType
-type NormalFormType = "normal"
-type SearchFormType = "search" | "search_double"
-type NoticeFormType = "error" | "warning"
-function mapFormType(formType: FormType): string {
-    switch (formType) {
+type FieldType = NormalFieldType | SearchFieldType | NoticeFieldType
+type NormalFieldType = "normal"
+type SearchFieldType = "search" | "search_double"
+type NoticeFieldType = "error" | "warning"
+function mapFieldType(fieldType: FieldType): string {
+    switch (fieldType) {
         case "normal":
             return ""
 
@@ -34,44 +34,44 @@ function mapFormType(formType: FormType): string {
             return "search search_double"
 
         default:
-            return `form_${formType}`
+            return `field_${fieldType}`
     }
 }
 
-export function form(content: NormalFormContent): VNode {
-    return formContent({ type: "normal", content })
+export function field(content: NormalFieldContent): VNode {
+    return fieldContent({ type: "normal", content })
 }
-export function form_error(content: NoticeFormContent): VNode {
-    return formContent({ type: "error", content })
+export function field_error(content: NoticeFieldContent): VNode {
+    return fieldContent({ type: "error", content })
 }
-export function form_warning(content: NoticeFormContent): VNode {
-    return formContent({ type: "warning", content })
+export function field_warning(content: NoticeFieldContent): VNode {
+    return fieldContent({ type: "warning", content })
 }
-export function search(content: NormalFormContent): VNode {
-    return formContent({ type: "search", content })
+export function search(content: NormalFieldContent): VNode {
+    return fieldContent({ type: "search", content })
 }
-export function search_double(content: NormalFormContent): VNode {
-    return formContent({ type: "search_double", content })
+export function search_double(content: NormalFieldContent): VNode {
+    return fieldContent({ type: "search_double", content })
 }
 
-function formContent(form: FormContent): VNode {
+function fieldContent(field: FieldContent): VNode {
     const help = {
         help: helpContent(),
         notice: noticeContent(),
     }
-    return html`<dl class="${mapFormType(form.type)}">
-        <dt class="form__title">${form.content.title}</dt>
-        <dd class="form__body">${form.content.body} ${formHelp(help)}</dd>
+    return html`<dl class="${mapFieldType(field.type)}">
+        <dt class="field__title">${field.content.title}</dt>
+        <dd class="field__body">${field.content.body} ${fieldHelp(help)}</dd>
     </dl>`
 
     function helpContent(): VNodeContent[] {
-        if ("help" in form.content) {
-            return form.content.help
+        if ("help" in field.content) {
+            return field.content.help
         }
         return []
     }
     function noticeContent(): VNodeContent[] {
-        switch (form.type) {
+        switch (field.type) {
             case "normal":
             case "search":
             case "search_double":
@@ -79,74 +79,74 @@ function formContent(form: FormContent): VNode {
 
             case "error":
             case "warning":
-                return form.content.notice
+                return field.content.notice
         }
     }
 }
 
-type FormSectionContent =
-    | Readonly<{ type: NormalFormType; content: NormalFormSectionContent }>
-    | Readonly<{ type: NoticeFormType; content: NoticeFormSectionContent }>
+type FieldSectionContent =
+    | Readonly<{ type: NormalFieldType; content: NormalFieldSectionContent }>
+    | Readonly<{ type: NoticeFieldType; content: NoticeFieldSectionContent }>
 
-export type NormalFormSectionContent =
-    | NormalFormSectionContent_base
-    | (NormalFormSectionContent_base & FormContent_help)
-export type NoticeFormSectionContent = NormalFormSectionContent & FormContent_notice
+export type NormalFieldSectionContent =
+    | NormalFieldSectionContent_base
+    | (NormalFieldSectionContent_base & FieldContent_help)
+export type NoticeFieldSectionContent = NormalFieldSectionContent & FieldContent_notice
 
-type NormalFormSectionContent_base = Readonly<{ body: VNodeContent }>
+type NormalFieldSectionContent_base = Readonly<{ body: VNodeContent }>
 
-export function formSection(content: NormalFormSectionContent): VNode {
-    return formSectionContent({ type: "normal", content })
+export function fieldSection(content: NormalFieldSectionContent): VNode {
+    return fieldSectionContent({ type: "normal", content })
 }
-export function formSection_error(content: NoticeFormSectionContent): VNode {
-    return formSectionContent({ type: "error", content })
+export function fieldSection_error(content: NoticeFieldSectionContent): VNode {
+    return fieldSectionContent({ type: "error", content })
 }
-export function formSection_warning(content: NoticeFormSectionContent): VNode {
-    return formSectionContent({ type: "warning", content })
+export function fieldSection_warning(content: NoticeFieldSectionContent): VNode {
+    return fieldSectionContent({ type: "warning", content })
 }
 
-function formSectionContent(form: FormSectionContent): VNode {
+function fieldSectionContent(field: FieldSectionContent): VNode {
     const help = {
         help: helpContent(),
         notice: noticeContent(),
     }
-    return html`<section class="${mapFormType(form.type)}">
-        ${form.content.body} ${formHelp(help)}
+    return html`<section class="${mapFieldType(field.type)}">
+        ${field.content.body} ${fieldHelp(help)}
     </section>`
 
     function helpContent(): VNodeContent[] {
-        if ("help" in form.content) {
-            return form.content.help
+        if ("help" in field.content) {
+            return field.content.help
         }
         return []
     }
     function noticeContent(): VNodeContent[] {
-        switch (form.type) {
+        switch (field.type) {
             case "normal":
                 return []
 
             case "error":
             case "warning":
-                return form.content.notice
+                return field.content.notice
         }
     }
 }
 
-export function formError(notice: VNodeContent[]): VNode {
-    return html`<aside class="form__help form_error">${notice.map(toFormNotice)}</aside>`
+export function fieldError(notice: VNodeContent[]): VNode {
+    return html`<aside class="field__help field_error">${notice.map(toFieldNotice)}</aside>`
 }
 
-type FormHelpContent = Readonly<{
+type FieldHelpContent = Readonly<{
     help: VNodeContent[]
     notice: VNodeContent[]
 }>
-function formHelp({ help, notice }: FormHelpContent) {
-    return html`<aside class="form__help">${help.map(toFormHelp)}${notice.map(toFormNotice)}</aside>`
+function fieldHelp({ help, notice }: FieldHelpContent) {
+    return html`<aside class="field__help">${help.map(toFieldHelp)}${notice.map(toFieldNotice)}</aside>`
 }
-function toFormNotice(message: VNodeContent) {
-    return html`<p class="form__notice">${message}</p>`
+function toFieldNotice(message: VNodeContent) {
+    return html`<p class="field__notice">${message}</p>`
 }
-function toFormHelp(message: VNodeContent) {
+function toFieldHelp(message: VNodeContent) {
     return html`<p>${message}</p>`
 }
 

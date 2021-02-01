@@ -4,7 +4,7 @@ import { html } from "htm/preact"
 import { TableDataView } from "../../../../z_external/getto-table/preact/core"
 
 import { box_grow } from "../../../../z_external/getto-css/preact/design/box"
-import { form, checkbox } from "../../../../z_external/getto-css/preact/design/form"
+import { field, checkbox } from "../../../../z_external/getto-css/preact/design/form"
 import { tableViewColumns } from "../../../../z_external/getto-css/preact/design/data"
 
 type Props = Readonly<{
@@ -13,7 +13,7 @@ type Props = Readonly<{
 export function ViewColumns({view}: Props): VNode {
     return box_grow({
         body: [
-            form({
+            field({
                 title: "表示する列",
                 body: tableViewColumns(
                     view.map(({ isVisible, content, key }) =>

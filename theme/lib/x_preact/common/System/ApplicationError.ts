@@ -2,7 +2,7 @@ import { VNode } from "preact"
 import { html } from "htm/preact"
 
 import { loginBox } from "../../../z_external/getto-css/preact/layout/login"
-import { buttons, form } from "../../../z_external/getto-css/preact/design/form"
+import { buttons, field } from "../../../z_external/getto-css/preact/design/form"
 import { v_small } from "../../../z_external/getto-css/preact/design/alignment"
 
 import { siteInfo } from "../site"
@@ -20,8 +20,8 @@ export function ApplicationError({ err }: Props): VNode {
                 これはシステム側の不備です
             </p>`,
             v_small(),
-            form({ title: "画面", body: html`<pre>${location.pathname}</pre>`, help: [location.host] }),
-            form({ title: "詳細", body: err, help: [] }),
+            field({ title: "画面", body: html`<pre>${location.pathname}</pre>`, help: [location.host] }),
+            field({ title: "詳細", body: err, help: [] }),
             html`<p>
                 お手数ですが、管理者に詳細をお伝えください<br />
                 直前まで行っていた作業も教えていただけると助かります

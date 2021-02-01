@@ -3,7 +3,7 @@ import { html } from "htm/preact"
 
 import { box_double } from "../../../../z_external/getto-css/preact/design/box"
 import {
-    form,
+    field,
     label_text,
     label_text_fill,
     label_text_large,
@@ -25,27 +25,27 @@ export function TextBox(props: Props): VNode {
     return box_double({
         title: "text box",
         body: [
-            form({
+            field({
                 title: "small",
                 body: label_text_small(html`<input type="text" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "default",
                 body: label_text(html`<input type="text" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "large",
                 body: label_text_large(html`<input type="text" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "extra large",
                 body: label_text_xLarge(html`<input type="text" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "fill",
                 body: label_text_fill(html`<input type="text" onInput=${onInput} />`),
                 help: [],

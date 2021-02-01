@@ -3,8 +3,8 @@ import { html } from "htm/preact"
 
 import { loginBox } from "../../../../../z_external/getto-css/preact/layout/login"
 import {
-    form,
-    form_error,
+    field,
+    field_error,
     buttons,
     button_send,
     label_text_fill,
@@ -74,7 +74,7 @@ export function Forget({ state, component }: Props): VNode {
         if (state.invalid) {
             return [
                 label_text_fill(
-                    form_error({
+                    field_error({
                         title: "ログインID",
                         body: html`<input type="text" onInput=${onInput} />`,
                         help: ["登録されたメールアドレスにリセットトークンを送信します"],
@@ -85,7 +85,7 @@ export function Forget({ state, component }: Props): VNode {
         } else {
             return [
                 label_text_fill(
-                    form({
+                    field({
                         title: "ログインID",
                         body: html`<input type="text" onInput=${onInputAsInvalid} />`,
                         help: ["登録されたメールアドレスにリセットトークンを送信します"],

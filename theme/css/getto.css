@@ -22,7 +22,7 @@
 
 @import "./modules/design/form/input.css";
 @import "./modules/design/form/button.css";
-@import "./modules/design/form/form.css";
+@import "./modules/design/form/field.css";
 @import "./modules/design/form/search.css";
 
 @import "./modules/design/data/table.css";

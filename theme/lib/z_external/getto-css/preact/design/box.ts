@@ -8,10 +8,14 @@ export function container(content: VNodeContent): VNode {
 }
 
 export type BoxContent =
-    | Readonly<{ body: VNodeContent }>
-    | Readonly<{ title: VNodeContent; body: VNodeContent }>
-    | Readonly<{ body: VNodeContent; footer: VNodeContent }>
-    | Readonly<{ title: VNodeContent; body: VNodeContent; footer: VNodeContent }>
+    | BoxContent_body
+    | (BoxContent_title & BoxContent_body)
+    | (BoxContent_body & BoxContent_footer)
+    | (BoxContent_title & BoxContent_body & BoxContent_footer)
+
+type BoxContent_title = Readonly<{ title: VNodeContent }>
+type BoxContent_body = Readonly<{ body: VNodeContent }>
+type BoxContent_footer = Readonly<{ footer: VNodeContent }>
 
 type BoxClass = "single" | "double" | "grow" | "fill"
 function mapBoxClass(boxClass: BoxClass): string {
@@ -39,33 +43,33 @@ export function box_fill(content: BoxContent): VNode {
 
 function boxContent(boxClass: BoxClass, content: BoxContent): VNode {
     return html`<article class="box ${mapBoxClass(boxClass)}">
-        <main>${header()} ${boxBody(content)}</main>
+        <main>${header()} ${boxBody(content.body)}</main>
         ${footer()}
     </article>`
 
     function header(): VNodeContent {
-        if ("header" in content) {
-            return boxHeader(content)
+        if ("title" in content) {
+            return boxHeader(content.title)
         }
         return ""
     }
     function footer() {
         if ("footer" in content) {
-            return boxFooter(content)
+            return boxFooter(content.footer)
         }
         return ""
     }
 }
 
-function boxHeader({ title }: { title: VNodeContent }) {
+function boxHeader(title: VNodeContent) {
     return html`<header class="box__header">
         <h2>${title}</h2>
     </header>`
 }
-function boxBody({ body }: { body: VNodeContent }) {
+function boxBody(body: VNodeContent) {
     return html`<section class="box__body">${body}</section>`
 }
-function boxFooter({ footer }: { footer: VNodeContent }) {
+function boxFooter(footer: VNodeContent) {
     return html`<footer class="box__footer">${footer}</footer>`
 }
 

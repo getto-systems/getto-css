@@ -4,7 +4,7 @@ import { html } from "htm/preact"
 import { pagerCount, pagerParams } from "../../../common/data"
 
 import { box } from "../../../../z_external/getto-css/preact/design/box"
-import { form, button_search, pager } from "../../../../z_external/getto-css/preact/design/form"
+import { field, button_search, pager } from "../../../../z_external/getto-css/preact/design/form"
 import { pagerOptions } from "../../../../z_external/getto-css/preact/design/data"
 
 type Props = {
@@ -14,7 +14,7 @@ export function Pager(_: Props): VNode {
     const all = 5532
     const offset = 0
     return box({
-        body: [form({ title: pagerCount(all), body: [select(), button()], help: [] })],
+        body: [field({ title: pagerCount(all), body: [select(), button()], help: [] })],
     })
 
     function select() {

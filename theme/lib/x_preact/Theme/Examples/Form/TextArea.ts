@@ -3,7 +3,7 @@ import { html } from "htm/preact"
 
 import { box_double } from "../../../../z_external/getto-css/preact/design/box"
 import {
-    form,
+    field,
     label_textarea,
     label_textarea_fill,
     label_textarea_large,
@@ -25,27 +25,27 @@ export function TextArea(props: Props): VNode {
     return box_double({
         title: "text area",
         body: [
-            form({
+            field({
                 title: "small",
                 body: label_textarea_small(html`<textarea rows="1" onInput=${onInput}></textarea>`),
                 help: [],
             }),
-            form({
+            field({
                 title: "default",
                 body: label_textarea(html`<textarea rows="2" onInput=${onInput}></textarea>`),
                 help: [],
             }),
-            form({
+            field({
                 title: "large",
                 body: label_textarea_large(html`<textarea rows="2" onInput=${onInput}></textarea>`),
                 help: [],
             }),
-            form({
+            field({
                 title: "extra large",
                 body: label_textarea_xLarge(html`<textarea rows="2" onInput=${onInput}></textarea>`),
                 help: [],
             }),
-            form({
+            field({
                 title: "fill",
                 body: label_textarea_fill(html`<textarea rows="2" onInput=${onInput}></textarea>`),
                 help: [],

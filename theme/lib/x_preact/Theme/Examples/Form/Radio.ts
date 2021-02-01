@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { box } from "../../../../z_external/getto-css/preact/design/box"
-import { form, radio, radio_block } from "../../../../z_external/getto-css/preact/design/form"
+import { field, radio, radio_block } from "../../../../z_external/getto-css/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -18,7 +18,7 @@ export function Radio(props: Props): VNode {
     return box({
         title: "radio",
         body: [
-            form({
+            field({
                 title: "inline",
                 body: [
                     radio({
@@ -44,7 +44,7 @@ export function Radio(props: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "block",
                 body: [
                     radio_block({

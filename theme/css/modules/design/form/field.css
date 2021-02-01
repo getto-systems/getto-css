@@ -1,40 +1,40 @@
-.form__title {
+.field__title {
     font-size: var(--font-size-small);
     margin-bottom: 0.375em;
 }
 
-.form__body {
+.field__body {
     margin-left: 1em;
     margin-bottom: var(--content-vertical-space-small);
     overflow-x: auto;
 }
 
-.form__help {
+.field__help {
     font-size: var(--font-size-small);
     margin-left: 0.5em;
     margin-top: 0.375em;
 }
 
-.form__help p {
+.field__help p {
     margin-top: 0;
 }
 
-.form_error .form__title,
-.form_error .form__notice {
+.field_error .field__title,
+.field_error .field__notice {
     color: var(--color-alert);
 }
 
-.form_error :--input {
+.field_error :--input {
     border-color: var(--color-alert);
     background-color: var(--color-alert-off);
 }
 
-.form_warning .form__title,
-.form_warning .form__notice {
+.field_warning .field__title,
+.field_warning .field__notice {
     color: var(--color-warning);
 }
 
-.form_warning :--input {
+.field_warning :--input {
     border-color: var(--color-warning);
     background-color: var(--color-warning-off);
 }

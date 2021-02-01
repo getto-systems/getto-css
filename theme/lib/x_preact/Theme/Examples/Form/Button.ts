@@ -3,7 +3,7 @@ import { html } from "htm/preact"
 
 import { box } from "../../../../z_external/getto-css/preact/design/box"
 import {
-    form,
+    field,
     buttons,
     button_edit,
     button_search,
@@ -31,7 +31,7 @@ export function Button(_: Props): VNode {
     return box({
         title: "button",
         body: [
-            form({
+            field({
                 title: "edit",
                 body: [
                     buttons({
@@ -45,7 +45,7 @@ export function Button(_: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "search",
                 body: [
                     buttons({
@@ -59,7 +59,7 @@ export function Button(_: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "send",
                 body: [
                     buttons({
@@ -73,7 +73,7 @@ export function Button(_: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "delete",
                 body: [
                     buttons({
@@ -87,7 +87,7 @@ export function Button(_: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "complete",
                 body: [
                     buttons({
@@ -101,7 +101,7 @@ export function Button(_: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "warning",
                 body: [
                     buttons({
@@ -115,7 +115,7 @@ export function Button(_: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "pending",
                 body: [
                     buttons({
@@ -129,7 +129,7 @@ export function Button(_: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "cancel / close",
                 body: [
                     buttons({
@@ -142,7 +142,7 @@ export function Button(_: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "undo / redo",
                 body: [
                     buttons({
@@ -155,7 +155,7 @@ export function Button(_: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "disabled",
                 body: [
                     buttons({
