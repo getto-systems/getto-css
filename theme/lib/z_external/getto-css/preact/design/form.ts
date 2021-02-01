@@ -150,15 +150,32 @@ function toFormHelp(message: VNodeContent) {
     return html`<p>${message}</p>`
 }
 
-export type ButtonsContent = Readonly<{
-    left: VNodeContent
-    right: VNodeContent
-}>
-export function buttons({ left, right }: ButtonsContent): VNode {
+export type ButtonsContent =
+    | ButtonsContent_left
+    | ButtonsContent_right
+    | (ButtonsContent_left & ButtonsContent_right)
+
+type ButtonsContent_left = Readonly<{ left: VNodeContent }>
+type ButtonsContent_right = Readonly<{ right: VNodeContent }>
+
+export function buttons(content: ButtonsContent): VNode {
     return html`<aside class="button__container">
-        <section class="button_left">${left}</section>
-        <section class="button_right">${right}</section>
+        <section class="button_left">${left()}</section>
+        <section class="button_right">${right()}</section>
     </aside>`
+
+    function left() {
+        if ("left" in content) {
+            return content.left
+        }
+        return ""
+    }
+    function right() {
+        if ("right" in content) {
+            return content.right
+        }
+        return ""
+    }
 }
 
 type ButtonContent =

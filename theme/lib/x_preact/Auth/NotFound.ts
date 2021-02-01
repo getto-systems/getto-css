@@ -63,7 +63,6 @@ function Content({ currentVersion }: ContentProps): VNode {
         ],
         footer: buttons({
             left: [html`<a href="${homeHref()}">${icon("home")} ホームへ</a>`],
-            right: [],
         }),
     })
 
