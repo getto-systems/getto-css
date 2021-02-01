@@ -1,6 +1,8 @@
 import { VNode } from "preact"
-import { useState, useEffect } from "preact/hooks"
+import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
+
+import { useComponent } from "../common/hooks"
 
 import {
     mainBreadcrumbLink,
@@ -24,9 +26,8 @@ type Props = Readonly<{
     breadcrumbList: BreadcrumbListComponent
 }>
 export function BreadcrumbList({ breadcrumbList }: Props): VNode {
-    const [state, setState] = useState(initialBreadcrumbListState)
+    const state = useComponent(breadcrumbList, initialBreadcrumbListState)
     useEffect(() => {
-        breadcrumbList.onStateChange(setState)
         breadcrumbList.load()
     }, [])
 

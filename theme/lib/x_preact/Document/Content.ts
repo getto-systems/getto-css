@@ -2,6 +2,8 @@ import { h, VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
+import { useComponent } from "../common/hooks"
+
 import { VNodeContent } from "../../z_external/getto-css/preact/common"
 import { appMain, mainBody, mainHeader, mainTitle } from "../../z_external/getto-css/preact/layout/app"
 
@@ -17,14 +19,12 @@ type Props = Readonly<{
     breadcrumbList: BreadcrumbListComponent
 }>
 export function Content(resource: Props): VNode {
-    const content = resource.content
-
-    const [state, setState] = useState(initialContentState)
-    const [loadContentState, setLoadContentState] = useState(initialLoadContentState)
+    const state = useComponent(resource.content, initialContentState)
     useEffect(() => {
-        content.onStateChange(setState)
-        content.load()
+        resource.content.load()
     }, [])
+
+    const [loadContentState, setLoadContentState] = useState(initialLoadContentState)
 
     useEffect(() => {
         switch (state.type) {

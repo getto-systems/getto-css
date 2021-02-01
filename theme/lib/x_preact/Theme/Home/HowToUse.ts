@@ -1,6 +1,8 @@
 import { VNode } from "preact"
-import { useState, useEffect } from "preact/hooks"
+import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
+
+import { useComponent } from "../../common/hooks"
 
 import { box_double } from "../../../z_external/getto-css/preact/design/box"
 import { form } from "../../../z_external/getto-css/preact/design/form"
@@ -14,9 +16,8 @@ type Props = Readonly<{
     howToUse: HowToUseComponent
 }>
 export function HowToUse({ howToUse }: Props): VNode {
-    const [state, setState] = useState(initialHowToUseState)
+    const state = useComponent(howToUse, initialHowToUseState)
     useEffect(() => {
-        howToUse.onStateChange(setState)
         howToUse.load()
     }, [])
 

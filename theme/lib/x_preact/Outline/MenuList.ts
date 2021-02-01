@@ -1,6 +1,8 @@
 import { VNode } from "preact"
-import { useState, useEffect } from "preact/hooks"
+import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
+
+import { useComponent } from "../common/hooks"
 
 import { menuBody, menuBox, menuCategory, menuItem } from "../../z_external/getto-css/preact/layout/app"
 import { badge_alert, notice_alert } from "../../z_external/getto-css/preact/design/highlight"
@@ -16,9 +18,8 @@ type Props = Readonly<{
     menuList: MenuListComponent
 }>
 export function MenuList({ menuList }: Props): VNode {
-    const [state, setState] = useState(initialMenuListState)
+    const state = useComponent(menuList, initialMenuListState)
     useEffect(() => {
-        menuList.onStateChange(setState)
         menuList.load()
     }, [])
 
