@@ -7,6 +7,7 @@ import {
     form_error,
     buttons,
     button_send,
+    label_text_fill,
 } from "../../../../../z_external/getto-css/preact/design/form"
 
 import { icon, spinner } from "../../../../common/icon"
@@ -72,20 +73,24 @@ export function Forget({ state, component }: Props): VNode {
     function resetForm(state: EditState) {
         if (state.invalid) {
             return [
-                form_error({
-                    title: "ログインID",
-                    body: html`<input type="text" class="input_fill" onInput=${onInput} />`,
-                    help: ["登録されたメールアドレスにリセットトークンを送信します"],
-                    notice: ["ログインIDを入力してください"],
-                }),
+                label_text_fill(
+                    form_error({
+                        title: "ログインID",
+                        body: html`<input type="text" onInput=${onInput} />`,
+                        help: ["登録されたメールアドレスにリセットトークンを送信します"],
+                        notice: ["ログインIDを入力してください"],
+                    })
+                ),
             ]
         } else {
             return [
-                form({
-                    title: "ログインID",
-                    body: html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`,
-                    help: ["登録されたメールアドレスにリセットトークンを送信します"],
-                }),
+                label_text_fill(
+                    form({
+                        title: "ログインID",
+                        body: html`<input type="text" onInput=${onInputAsInvalid} />`,
+                        help: ["登録されたメールアドレスにリセットトークンを送信します"],
+                    })
+                ),
             ]
         }
     }
