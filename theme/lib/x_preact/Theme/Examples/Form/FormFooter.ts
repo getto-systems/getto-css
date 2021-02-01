@@ -2,7 +2,7 @@ import { html } from "htm/preact"
 import { VNode } from "preact"
 
 import {
-    formError,
+    fieldError,
     buttons,
     button_close,
     button_delete,
@@ -103,6 +103,6 @@ export function FormFooter({ state, component }: Props): VNode {
         if (!state.invalid) {
             return ""
         }
-        return formError(["保存できない項目があります"])
+        return fieldError(["保存できない項目があります"])
     }
 }

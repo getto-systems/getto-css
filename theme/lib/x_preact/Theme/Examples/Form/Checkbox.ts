@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { box } from "../../../../z_external/getto-css/preact/design/box"
-import { form, checkbox, checkbox_block } from "../../../../z_external/getto-css/preact/design/form"
+import { field, checkbox, checkbox_block } from "../../../../z_external/getto-css/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -18,7 +18,7 @@ export function Checkbox(props: Props): VNode {
     return box({
         title: "checkbox",
         body: [
-            form({
+            field({
                 title: "inline",
                 body: [
                     checkbox({
@@ -49,7 +49,7 @@ export function Checkbox(props: Props): VNode {
                 ],
                 help: [],
             }),
-            form({
+            field({
                 title: "block",
                 body: [
                     checkbox_block({

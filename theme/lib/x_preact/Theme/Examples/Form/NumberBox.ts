@@ -3,7 +3,7 @@ import { html } from "htm/preact"
 
 import { box } from "../../../../z_external/getto-css/preact/design/box"
 import {
-    form,
+    field,
     label_number,
     label_number_fill,
     label_number_small,
@@ -23,17 +23,17 @@ export function NumberBox(props: Props): VNode {
     return box({
         title: "number box",
         body: [
-            form({
+            field({
                 title: "small",
                 body: label_number_small(html`<input type="number" onInput=${onInput} /> 回`),
                 help: [],
             }),
-            form({
+            field({
                 title: "default",
                 body: label_number(html`<input type="number" onInput=${onInput} /> 年`),
                 help: [],
             }),
-            form({
+            field({
                 title: "fill",
                 body: label_number_fill(html`<input type="number" onInput=${onInput} />`),
                 help: [],

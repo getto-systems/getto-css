@@ -5,7 +5,7 @@ import { container, box_fill } from "../../../../z_external/getto-css/preact/des
 import {
     search,
     search_double,
-    formError,
+    fieldError,
     button_search,
     checkbox,
 } from "../../../../z_external/getto-css/preact/design/form"
@@ -91,6 +91,6 @@ function SearchFooter({ state, component }: SearchFooterProps) {
     }
 
     function searchError() {
-        return formError(["通信エラーが発生しました。もう一度試してください"])
+        return fieldError(["通信エラーが発生しました。もう一度試してください"])
     }
 }

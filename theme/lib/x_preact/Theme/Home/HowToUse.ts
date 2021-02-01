@@ -3,7 +3,7 @@ import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { box_double } from "../../../z_external/getto-css/preact/design/box"
-import { form } from "../../../z_external/getto-css/preact/design/form"
+import { field } from "../../../z_external/getto-css/preact/design/form"
 import { notice_alert, label_info } from "../../../z_external/getto-css/preact/design/highlight"
 
 import { useComponent } from "../../common/hooks"
@@ -24,8 +24,8 @@ export function HowToUse({ howToUse }: Props): VNode {
     return box_double({
         title: "How To Use",
         body: [
-            form({ title: "リンクタグ", body: linkTag(), help: [] }),
-            form({ title: "バージョン", body: versions(), help: [] }),
+            field({ title: "リンクタグ", body: linkTag(), help: [] }),
+            field({ title: "バージョン", body: versions(), help: [] }),
         ],
     })
 

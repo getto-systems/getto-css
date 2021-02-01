@@ -22,7 +22,7 @@ import {
     tbody,
     thead,
 } from "../../../../z_external/getto-css/preact/design/data"
-import { formSection, formSection_error } from "../../../../z_external/getto-css/preact/design/form"
+import { fieldSection, fieldSection_error } from "../../../../z_external/getto-css/preact/design/form"
 import { label_gray, label_warning } from "../../../../z_external/getto-css/preact/design/highlight"
 import { small } from "../../../../z_external/getto-css/preact/design/alignment"
 
@@ -60,7 +60,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                     label: () => "名前",
                     header: sort(key),
                     column: (_row: Row) =>
-                        formSection_error({
+                        fieldSection_error({
                             body: html`<input type="text" value="" />`,
                             help: ["識別のための作業名"],
                             notice: ["作業名は必須です"],
@@ -81,7 +81,7 @@ export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row>
                     label: () => "メールアドレス",
                     header: sort(key),
                     column: (_row: Row) =>
-                        formSection({
+                        fieldSection({
                             body: html`<input type="email" value="" />`,
                             help: ["連絡先メールアドレス"],
                         }),

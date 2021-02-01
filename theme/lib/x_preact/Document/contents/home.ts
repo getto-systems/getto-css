@@ -2,7 +2,7 @@ import { VNode } from "preact"
 import { html } from "htm/preact"
 
 import { container, box } from "../../../z_external/getto-css/preact/design/box"
-import { form } from "../../../z_external/getto-css/preact/design/form"
+import { field } from "../../../z_external/getto-css/preact/design/form"
 import { notice_info } from "../../../z_external/getto-css/preact/design/highlight"
 import { v_medium, v_small } from "../../../z_external/getto-css/preact/design/alignment"
 
@@ -239,7 +239,7 @@ export function content_home_resources(): VNode {
                 そうでない場合はテーブルのスタイルで等幅指定を追加する必要がある
             </p>`,
             v_medium(),
-            form({
+            field({
                 title: "最適化に使用したリソース",
                 body: html`<ul>
                     <li>みんなの文字</li>
@@ -254,7 +254,7 @@ export function content_home_size(): VNode {
     return box({
         title: "フォントサイズ",
         body: [
-            form({
+            field({
                 title: "相対指定",
                 body: html`<ul>
                     <li>big / small</li>
@@ -263,7 +263,7 @@ export function content_home_size(): VNode {
                 </ul>`,
                 help: [],
             }),
-            form({
+            field({
                 title: "絶対指定",
                 body: html`<ul>
                     <li>main : title / footer</li>

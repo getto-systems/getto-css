@@ -3,8 +3,8 @@ import { html } from "htm/preact"
 
 import { loginBox } from "../../../../../z_external/getto-css/preact/layout/login"
 import {
-    form,
-    form_error,
+    field,
+    field_error,
     buttons,
     button_send,
     label_text_fill,
@@ -63,7 +63,7 @@ export function Login({ state, component }: Props): VNode {
         if (state.invalid) {
             return [
                 label_text_fill(
-                    form_error({
+                    field_error({
                         title: "ログインID",
                         body: html`<input type="text" onInput=${onInput} />`,
                         help: [],
@@ -71,7 +71,7 @@ export function Login({ state, component }: Props): VNode {
                     })
                 ),
                 label_password_fill(
-                    form_error({
+                    field_error({
                         title: "パスワード",
                         body: html`<input type="password" onInput=${onInput} />`,
                         help: [],
@@ -82,14 +82,14 @@ export function Login({ state, component }: Props): VNode {
         } else {
             return [
                 label_text_fill(
-                    form({
+                    field({
                         title: "ログインID",
                         body: [html`<input type="text" onInput=${onInputAsInvalid} />`],
                         help: [],
                     })
                 ),
                 label_password_fill(
-                    form({
+                    field({
                         title: "パスワード",
                         body: [html`<input type="password" onInput=${onInputAsInvalid} />`],
                         help: [],

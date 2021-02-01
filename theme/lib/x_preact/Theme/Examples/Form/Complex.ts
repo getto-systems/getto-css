@@ -3,9 +3,9 @@ import { html } from "htm/preact"
 
 import { box, modalBox } from "../../../../z_external/getto-css/preact/design/box"
 import {
-    form,
-    form_error,
-    form_warning,
+    field,
+    field_error,
+    field_warning,
     buttons,
     button_complete,
     button_edit,
@@ -56,13 +56,13 @@ export function Complex(props: Props): VNode {
         return box({
             title: "complex",
             body: [
-                form({ title: "名前", body: "GETTO CSS", help: [] }),
-                form({
+                field({ title: "名前", body: "GETTO CSS", help: [] }),
+                field({
                     title: "state",
                     body: [big(label_gray("仮"))],
                     help: [],
                 }),
-                form({
+                field({
                     title: "transition",
                     body: [
                         big(
@@ -94,13 +94,13 @@ export function Complex(props: Props): VNode {
             return box({
                 title: "complex",
                 body: [
-                    form_error({
+                    field_error({
                         title: "名前",
                         body: html`<input type="text" value="GETTO CSS" onInput=${onInput} />`,
                         help: ["プロジェクトの識別に使用します"],
                         notice: ["名前は必須です"],
                     }),
-                    form_warning({
+                    field_warning({
                         title: "メールアドレス",
                         body: html`<input type="email" value="admin@example.com" onInput=${onInput} />`,
                         help: ["重要なメッセージの通知先として使用します"],
@@ -113,12 +113,12 @@ export function Complex(props: Props): VNode {
             return box({
                 title: "complex",
                 body: [
-                    form({
+                    field({
                         title: "名前",
                         body: html`<input type="text" value="GETTO CSS" onInput=${onInputAsInvalid} />`,
                         help: ["プロジェクトの識別に使用します"],
                     }),
-                    form({
+                    field({
                         title: "メールアドレス",
                         body: html`<input
                             type="email"

@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
 import { box } from "../../../../z_external/getto-css/preact/design/box"
-import { form } from "../../../../z_external/getto-css/preact/design/form"
+import { field } from "../../../../z_external/getto-css/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"
@@ -18,12 +18,12 @@ export function Misc(props: Props): VNode {
     return box({
         title: "misc",
         body: [
-            form({
+            field({
                 title: "tel",
                 body: html`<input type="tel" onInput=${onInput} />`,
                 help: [],
             }),
-            form({
+            field({
                 title: "select",
                 body: html`<select onChange=${onInput}>
                     <option>仮</option>
@@ -34,24 +34,24 @@ export function Misc(props: Props): VNode {
 
                 help: [],
             }),
-            form({
+            field({
                 title: "long select",
                 body: html`<select onChange=${onInput}>
                     <option>長い選択肢。さらに長い選択肢。より長い選択肢。</option>
                 </select>`,
                 help: [],
             }),
-            form({
+            field({
                 title: "date",
                 body: html`<input type="date" onInput=${onInput} />`,
                 help: [],
             }),
-            form({
+            field({
                 title: "time",
                 body: html`<input type="time" onInput=${onInput} />`,
                 help: [],
             }),
-            form({
+            field({
                 title: "file",
                 body: html`<input type="file" onInput=${onInput} />`,
                 help: [],

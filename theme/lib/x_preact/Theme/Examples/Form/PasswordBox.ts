@@ -3,7 +3,7 @@ import { html } from "htm/preact"
 
 import { box_double } from "../../../../z_external/getto-css/preact/design/box"
 import {
-    form,
+    field,
     label_password,
     label_password_fill,
     label_password_large,
@@ -25,27 +25,27 @@ export function PasswordBox(props: Props): VNode {
     return box_double({
         title: "password box",
         body: [
-            form({
+            field({
                 title: "small",
                 body: label_password_small(html`<input type="password" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "default",
                 body: label_password(html`<input type="password" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "large",
                 body: label_password_large(html`<input type="password" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "extra large",
                 body: label_password_xLarge(html`<input type="password" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "fill",
                 body: label_password_fill(html`<input type="password" onInput=${onInput} />`),
                 help: [],

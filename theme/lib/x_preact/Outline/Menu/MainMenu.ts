@@ -6,7 +6,7 @@ import {
     menuFooter,
     menuHeader,
 } from "../../../z_external/getto-css/preact/layout/app"
-import { form } from "../../../z_external/getto-css/preact/design/form"
+import { field } from "../../../z_external/getto-css/preact/design/form"
 
 import { siteInfo } from "../../common/site"
 
@@ -27,5 +27,5 @@ export function MainMenu(props: Props): VNode {
 }
 
 function globalInformation(): VNode {
-    return form({ title: "information", body: "global state", help: [] })
+    return field({ title: "information", body: "global state", help: [] })
 }

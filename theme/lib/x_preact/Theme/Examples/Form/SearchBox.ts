@@ -3,7 +3,7 @@ import { html } from "htm/preact"
 
 import { box_double } from "../../../../z_external/getto-css/preact/design/box"
 import {
-    form,
+    field,
     label_search,
     label_search_fill,
     label_search_large,
@@ -25,27 +25,27 @@ export function SearchBox(props: Props): VNode {
     return box_double({
         title: "search box",
         body: [
-            form({
+            field({
                 title: "small",
                 body: label_search_small(html`<input type="search" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "default",
                 body: label_search(html`<input type="search" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "large",
                 body: label_search_large(html`<input type="search" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "extra large",
                 body: label_search_xLarge(html`<input type="search" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "fill",
                 body: label_search_fill(html`<input type="search" onInput=${onInput} />`),
                 help: [],

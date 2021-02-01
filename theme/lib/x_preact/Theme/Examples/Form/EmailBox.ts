@@ -3,7 +3,7 @@ import { html } from "htm/preact"
 
 import { box } from "../../../../z_external/getto-css/preact/design/box"
 import {
-    form,
+    field,
     label_email,
     label_email_fill,
     label_email_small,
@@ -23,17 +23,17 @@ export function EmailBox(props: Props): VNode {
     return box({
         title: "email box",
         body: [
-            form({
+            field({
                 title: "small",
                 body: label_email_small(html`<input type="email" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "default",
                 body: label_email(html`<input type="email" onInput=${onInput} />`),
                 help: [],
             }),
-            form({
+            field({
                 title: "fill",
                 body: label_email_fill(html`<input type="email" onInput=${onInput} />`),
                 help: [],
