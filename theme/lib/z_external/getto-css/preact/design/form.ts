@@ -271,7 +271,7 @@ function buttonContent(button: ButtonContent): VNode {
             ${button.content.label}
         </button>`
     } else {
-        return html`<button class=${buttonClass()}>${button.content.label}</button>`
+        return html`<button type="button" class=${buttonClass()}>${button.content.label}</button>`
     }
 
     function buttonClass() {
