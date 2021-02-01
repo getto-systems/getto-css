@@ -37,21 +37,21 @@ export function NextVersion({ nextVersion }: Props): VNode {
             return EMPTY_CONTENT
 
         case "delayed-to-find":
-            return delayedContent()
+            return delayedMessage()
 
         case "succeed-to-find":
             // location の変更は useEffect で行うので中身は空
             return EMPTY_CONTENT
 
         case "failed-to-find":
-            return failedContent(state.err)
+            return failedMessage(state.err)
     }
 
-    function delayedContent() {
+    function delayedMessage() {
         return loginBox(siteInfo(), {
             title: "アプリケーション読み込み中",
             body: [
-                html`<p>${spinner} ${" "} アプリケーションの読み込みに時間がかかっています</p>`,
+                html`<p>${spinner} アプリケーションの読み込みに時間がかかっています</p>`,
                 html`<p>
                     30秒以上かかるようであれば何かがおかしいので、<br />
                     お手数ですが、管理者にお伝えください
@@ -61,7 +61,7 @@ export function NextVersion({ nextVersion }: Props): VNode {
         })
     }
 
-    function failedContent(err: FindError) {
+    function failedMessage(err: FindError) {
         return h(ApplicationError, { err: errorMessage() })
 
         function errorMessage() {

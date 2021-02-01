@@ -27,5 +27,5 @@ export function MainMenu(props: Props): VNode {
 }
 
 function globalInformation(): VNode {
-    return field({ title: "information", body: "global state", help: [] })
+    return field({ title: "information", body: "global state" })
 }
