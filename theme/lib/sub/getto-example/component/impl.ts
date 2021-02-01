@@ -1,7 +1,7 @@
 export class BaseComponent<S> {
-    listener: Post<S>[] = []
+    listener: Listener<S>[] = []
 
-    onStateChange(post: Post<S>): void {
+    onStateChange(post: Listener<S>): void {
         this.listener.push(post)
     }
     post(state: S): void {
@@ -13,6 +13,6 @@ export class BaseComponent<S> {
     }
 }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }

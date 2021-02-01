@@ -10,7 +10,7 @@ export type BreadcrumbListMaterial = Readonly<{
 }>
 
 export interface BreadcrumbListComponent {
-    onStateChange(post: Post<BreadcrumbListState>): void
+    onStateChange(listener: Listener<BreadcrumbListState>): void
     terminate(): void
     load(): void
 }
@@ -21,6 +21,6 @@ export type BreadcrumbListState =
 
 export const initialBreadcrumbListState: BreadcrumbListState = { type: "initial-breadcrumb-list" }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }

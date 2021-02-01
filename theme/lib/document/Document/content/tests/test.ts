@@ -16,7 +16,7 @@ describe("Content", () => {
 
         resource.content.load()
 
-        function stateHandler(): Post<ContentState> {
+        function stateHandler(): Listener<ContentState> {
             const stack: ContentState[] = []
             return (state) => {
                 stack.push(state)
@@ -83,7 +83,7 @@ function standardSimulator(): DocumentSimulator {
     }
 }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }
 

@@ -107,7 +107,7 @@ export function menuBody(id: string, content: VNodeContent): VNode {
 export type MenuCategoryContent = Readonly<{
     isExpand: boolean
     label: string
-    toggle: Post<Event>
+    toggle: Handler<Event>
     badge: VNodeContent
     children: VNodeContent
 }>
@@ -158,6 +158,6 @@ export function mainBreadcrumbSeparator(content: VNodeContent): VNode {
     return html`<span class="main__breadcrumb__separator">${content}</span>`
 }
 
-interface Post<T> {
+interface Handler<T> {
     (event: T): void
 }

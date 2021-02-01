@@ -71,13 +71,13 @@ export type ListProps = Readonly<{
     component: ListComponent
 }>
 export interface ListComponent {
-    search: Post<null>
+    search: Action<null>
 }
 export type ListState = Readonly<{ type: "try-to-search" }> | Readonly<{ type: "search" }>
 
 const initialList: ListState = { type: "search" }
 
-interface Post<T> {
+interface Action<T> {
     (event: T): void
 }
 

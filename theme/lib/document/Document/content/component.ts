@@ -9,7 +9,7 @@ export type ContentMaterial = Readonly<{
 }>
 
 export interface ContentComponent {
-    onStateChange(post: Post<ContentState>): void
+    onStateChange(post: Listener<ContentState>): void
     terminate(): void
     load(): void
 }
@@ -20,6 +20,6 @@ export type ContentState =
 
 export const initialContentState: ContentState = { type: "initial-content" }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }

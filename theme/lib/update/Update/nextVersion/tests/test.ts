@@ -16,7 +16,7 @@ describe("NextVersion", () => {
 
         resource.nextVersion.find()
 
-        function stateHandler(): Post<NextVersionState> {
+        function stateHandler(): Listener<NextVersionState> {
             const stack: NextVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -74,7 +74,7 @@ describe("NextVersion", () => {
 
         resource.nextVersion.find()
 
-        function stateHandler(): Post<NextVersionState> {
+        function stateHandler(): Listener<NextVersionState> {
             const stack: NextVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -133,7 +133,7 @@ describe("NextVersion", () => {
 
         resource.nextVersion.find()
 
-        function stateHandler(): Post<NextVersionState> {
+        function stateHandler(): Listener<NextVersionState> {
             const stack: NextVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -191,7 +191,7 @@ describe("NextVersion", () => {
 
         resource.nextVersion.find()
 
-        function stateHandler(): Post<NextVersionState> {
+        function stateHandler(): Listener<NextVersionState> {
             const stack: NextVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -249,7 +249,7 @@ describe("NextVersion", () => {
 
         resource.nextVersion.find()
 
-        function stateHandler(): Post<NextVersionState> {
+        function stateHandler(): Listener<NextVersionState> {
             const stack: NextVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -307,7 +307,7 @@ describe("NextVersion", () => {
 
         resource.nextVersion.find()
 
-        function stateHandler(): Post<NextVersionState> {
+        function stateHandler(): Listener<NextVersionState> {
             const stack: NextVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -365,7 +365,7 @@ describe("NextVersion", () => {
 
         resource.nextVersion.find()
 
-        function stateHandler(): Post<NextVersionState> {
+        function stateHandler(): Listener<NextVersionState> {
             const stack: NextVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -423,7 +423,7 @@ describe("NextVersion", () => {
 
         resource.nextVersion.find()
 
-        function stateHandler(): Post<NextVersionState> {
+        function stateHandler(): Listener<NextVersionState> {
             const stack: NextVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -481,7 +481,7 @@ describe("NextVersion", () => {
 
         resource.nextVersion.find()
 
-        function stateHandler(): Post<NextVersionState> {
+        function stateHandler(): Listener<NextVersionState> {
             const stack: NextVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -539,7 +539,7 @@ describe("NextVersion", () => {
 
         resource.nextVersion.find()
 
-        function stateHandler(): Post<NextVersionState> {
+        function stateHandler(): Listener<NextVersionState> {
             const stack: NextVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -684,7 +684,7 @@ function waitSimulator(): NextVersionSimulator {
     }
 }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }
 

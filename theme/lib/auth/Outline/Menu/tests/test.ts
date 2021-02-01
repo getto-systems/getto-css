@@ -19,7 +19,7 @@ describe("BreadcrumbList", () => {
 
         resource.breadcrumbList.load()
 
-        function stateHandler(): Post<BreadcrumbListState> {
+        function stateHandler(): Listener<BreadcrumbListState> {
             const stack: BreadcrumbListState[] = []
             return (state) => {
                 stack.push(state)
@@ -67,7 +67,7 @@ describe("BreadcrumbList", () => {
 
         resource.breadcrumbList.load()
 
-        function stateHandler(): Post<BreadcrumbListState> {
+        function stateHandler(): Listener<BreadcrumbListState> {
             const stack: BreadcrumbListState[] = []
             return (state) => {
                 stack.push(state)
@@ -104,7 +104,7 @@ describe("MenuList", () => {
 
         resource.menuList.load()
 
-        function stateHandler(): Post<MenuListState> {
+        function stateHandler(): Listener<MenuListState> {
             const stack: MenuListState[] = []
             return (state) => {
                 stack.push(state)
@@ -286,7 +286,7 @@ describe("MenuList", () => {
 
         resource.menuList.load()
 
-        function stateHandler(): Post<MenuListState> {
+        function stateHandler(): Listener<MenuListState> {
             const stack: MenuListState[] = []
             return (state) => {
                 stack.push(state)
@@ -473,7 +473,7 @@ describe("MenuList", () => {
             [markMenuCategoryLabel("DOCUMENT"), markMenuCategoryLabel("DETAIL")],
         ]
 
-        function stateHandler(): Post<MenuListState> {
+        function stateHandler(): Listener<MenuListState> {
             const stack: MenuListState[] = []
             return (state) => {
                 stack.push(state)
@@ -812,7 +812,7 @@ describe("MenuList", () => {
 
         resource.menuList.load()
 
-        function stateHandler(): Post<MenuListState> {
+        function stateHandler(): Listener<MenuListState> {
             const stack: MenuListState[] = []
             return (state) => {
                 stack.push(state)
@@ -1173,7 +1173,7 @@ function expectToSaveExpand(repository: MenuRepository, menuExpand: string[][]) 
     expect(repository.menuExpands.findMenuExpand()).toEqual({ success: true, menuExpand })
 }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }
 

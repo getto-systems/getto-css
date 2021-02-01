@@ -159,7 +159,7 @@ type ButtonContent =
 export type StatefulButtonContent = ClickableButtonContent | ConnectButtonContent
 type ClickableButtonContent = Readonly<{
     state: ClickableButtonState
-    onClick: Post<Event>
+    onClick: Handler<Event>
     label: VNodeContent
 }>
 type ConnectButtonContent = Readonly<{
@@ -169,7 +169,7 @@ type ConnectButtonContent = Readonly<{
 
 export type StatelessButtonContent = Readonly<{
     state: NormalButtonState
-    onClick: Post<Event>
+    onClick: Handler<Event>
     label: VNodeContent
 }>
 export type DisabledButtonContent = Readonly<{
@@ -251,7 +251,7 @@ function buttonContent(button: ButtonContent): VNode {
         return `button ${mapButtonType(button.type)} ${mapButtonState(button.content.state)}`
     }
 
-    type Info = Readonly<{ clickable: false }> | Readonly<{ clickable: true; onClick: Post<Event> }>
+    type Info = Readonly<{ clickable: false }> | Readonly<{ clickable: true; onClick: Handler<Event> }>
     function detect(): Info {
         if (button.type === "disabled") {
             return { clickable: false }
@@ -409,6 +409,6 @@ export function pager(content: VNodeContent): VNode {
     return html`<label class="pager">${content}</label>`
 }
 
-interface Post<T> {
+interface Handler<T> {
     (event: T): void
 }

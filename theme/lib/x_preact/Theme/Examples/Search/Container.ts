@@ -86,8 +86,8 @@ export type SearchProps = Readonly<{
     component: SearchComponent
 }>
 export interface SearchComponent {
-    search: Post<null>
-    inputValidValue: Post<null>
+    search: Action<null>
+    inputValidValue: Action<null>
 }
 export type SearchState =
     | Readonly<{ type: "search"; state: EditState }>
@@ -109,6 +109,6 @@ const initialSearch: SearchState = {
 
 const NO_PROPS = {}
 
-interface Post<T> {
+interface Action<T> {
     (event: T): void
 }
