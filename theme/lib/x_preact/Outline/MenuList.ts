@@ -4,7 +4,6 @@ import { html } from "htm/preact"
 
 import { menuBody, menuBox, menuCategory, menuItem } from "../../z_external/getto-css/preact/layout/app"
 import { badge_alert, notice_alert } from "../../z_external/getto-css/preact/design/highlight"
-import { v_small } from "../../z_external/getto-css/preact/design/alignment"
 
 import { useComponent } from "../common/hooks"
 
@@ -98,7 +97,7 @@ function error(err: LoadMenuError): VNode {
 function loadMenuError(err: LoadMenuError): VNode[] {
     switch (err.type) {
         case "empty-nonce":
-            return [notice_alert("認証エラー"), v_small(), detail("もう一度ログインしてください")]
+            return [notice_alert("認証エラー"), detail("もう一度ログインしてください")]
 
         case "bad-request":
             return [notice_alert("アプリケーションエラー")]
@@ -107,10 +106,10 @@ function loadMenuError(err: LoadMenuError): VNode[] {
             return [notice_alert("サーバーエラー")]
 
         case "bad-response":
-            return [notice_alert("レスポンスエラー"), v_small(), detail(err.err)]
+            return [notice_alert("レスポンスエラー"), detail(err.err)]
 
         case "infra-error":
-            return [notice_alert("ネットワークエラー"), v_small(), detail(err.err)]
+            return [notice_alert("ネットワークエラー"), detail(err.err)]
     }
 
     function detail(err: string) {
