@@ -7,6 +7,8 @@ import {
     form_error,
     buttons,
     button_send,
+    label_text_fill,
+    label_password_fill,
 } from "../../../../../z_external/getto-css/preact/design/form"
 
 import { icon, spinner } from "../../../../common/icon"
@@ -60,33 +62,39 @@ export function Login({ state, component }: Props): VNode {
     function loginForm(state: EditState) {
         if (state.invalid) {
             return [
-                form_error({
-                    title: "ログインID",
-                    body: html`<input type="text" class="input_fill" onInput=${onInput} />`,
-                    help: [],
-                    notice: ["ログインIDを入力してください"],
-                }),
-                form_error({
-                    title: "パスワード",
-                    body: html`<input type="password" class="input_fill" onInput=${onInput} />`,
-                    help: [],
-                    notice: ["パスワードを入力してください"],
-                }),
+                label_text_fill(
+                    form_error({
+                        title: "ログインID",
+                        body: html`<input type="text" onInput=${onInput} />`,
+                        help: [],
+                        notice: ["ログインIDを入力してください"],
+                    })
+                ),
+                label_password_fill(
+                    form_error({
+                        title: "パスワード",
+                        body: html`<input type="password" onInput=${onInput} />`,
+                        help: [],
+                        notice: ["パスワードを入力してください"],
+                    })
+                ),
             ]
         } else {
             return [
-                form({
-                    title: "ログインID",
-                    body: [html`<input type="text" class="input_fill" onInput=${onInputAsInvalid} />`],
-                    help: [],
-                }),
-                form({
-                    title: "パスワード",
-                    body: [
-                        html`<input type="password" class="input_fill" onInput=${onInputAsInvalid} />`,
-                    ],
-                    help: [],
-                }),
+                label_text_fill(
+                    form({
+                        title: "ログインID",
+                        body: [html`<input type="text" onInput=${onInputAsInvalid} />`],
+                        help: [],
+                    })
+                ),
+                label_password_fill(
+                    form({
+                        title: "パスワード",
+                        body: [html`<input type="password" onInput=${onInputAsInvalid} />`],
+                        help: [],
+                    })
+                ),
             ]
         }
     }
