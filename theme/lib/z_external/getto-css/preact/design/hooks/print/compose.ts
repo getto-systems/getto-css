@@ -43,6 +43,7 @@ function composeReportRows<R>(
         | Readonly<{ type: "focused"; key: VNodeKey }>
         | Readonly<{ type: "notFound" }>
 
+    // TODO ContentHeight に変えたい
     type MarkerOffset = Readonly<{ found: false }> | Readonly<{ found: true; offset: number }>
 
     const page = root(data.composeIndex)
@@ -66,17 +67,26 @@ function composeReportRows<R>(
                     found: true,
                     // padding 内部の高さから report__header の高さを除いたものを基準とすることで
                     // ヘッダに追加要素があっても適切に高さを計算できるようにする
-                    offset: marker.offsetHeight - reportHeaderHeight(),
+                    offset: marker.offsetHeight - reportHeaderHeight() - reportFooterHeight(),
                 }
             }
         }
         return { found: false }
 
         function reportHeaderHeight() {
-            const headers = page.getElementsByClassName("report__header")
-            for (const header of headers) {
-                if (header instanceof HTMLElement) {
-                    return header.offsetHeight
+            const elements = page.getElementsByClassName("report__header")
+            for (const element of elements) {
+                if (element instanceof HTMLElement) {
+                    return element.offsetHeight
+                }
+            }
+            return 0
+        }
+        function reportFooterHeight() {
+            const elements = page.getElementsByClassName("report__footer")
+            for (const element of elements) {
+                if (element instanceof HTMLElement) {
+                    return element.offsetHeight
                 }
             }
             return 0

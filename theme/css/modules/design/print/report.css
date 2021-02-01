@@ -22,7 +22,7 @@
 }
 
 .report_a4_portrait .report__contentLimit__mark {
-    height: calc(254mm - 1.5em);
+    height: 254mm;
 }
 
 .report__header {
