@@ -1,5 +1,5 @@
 import { VNode } from "preact"
-import { useState, useEffect } from "preact/hooks"
+import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
 import {
@@ -8,6 +8,7 @@ import {
     mainBreadcrumbSeparator,
 } from "../../z_external/getto-css/preact/layout/app"
 
+import { useComponent } from "../common/hooks"
 import { siteInfo } from "../common/site"
 import { icon } from "../common/icon"
 
@@ -24,9 +25,8 @@ type Props = Readonly<{
     breadcrumbList: BreadcrumbListComponent
 }>
 export function BreadcrumbList({ breadcrumbList }: Props): VNode {
-    const [state, setState] = useState(initialBreadcrumbListState)
+    const state = useComponent(breadcrumbList, initialBreadcrumbListState)
     useEffect(() => {
-        breadcrumbList.onStateChange(setState)
         breadcrumbList.load()
     }, [])
 

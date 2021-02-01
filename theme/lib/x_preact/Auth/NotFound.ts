@@ -1,11 +1,11 @@
 import { h, VNode } from "preact"
-import { useEffect, useErrorBoundary, useState } from "preact/hooks"
+import { useEffect, useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { loginBox } from "../../z_external/getto-css/preact/layout/login"
 import { buttons } from "../../z_external/getto-css/preact/design/form"
 
-import { useTerminate } from "../common/hooks"
+import { useComponent, useTerminate } from "../common/hooks"
 import { siteInfo } from "../common/site"
 import { icon } from "../common/icon"
 
@@ -43,9 +43,8 @@ type ContentProps = Readonly<{
     currentVersion: CurrentVersionComponent
 }>
 function Content({ currentVersion }: ContentProps): VNode {
-    const [state, setState] = useState(initialCurrentVersionState)
+    const state = useComponent(currentVersion, initialCurrentVersionState)
     useEffect(() => {
-        currentVersion.onStateChange(setState)
         currentVersion.load()
     }, [])
 

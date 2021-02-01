@@ -1,9 +1,10 @@
 import { h, VNode } from "preact"
-import { useState, useEffect } from "preact/hooks"
+import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { loginBox } from "../../../z_external/getto-css/preact/layout/login"
 
+import { useComponent } from "../../common/hooks"
 import { siteInfo } from "../../common/site"
 import { spinner } from "../../common/icon"
 
@@ -16,9 +17,8 @@ import { appTargetToPath, FindError } from "../../../update/nextVersion/data"
 
 type Props = NextVersionResource
 export function NextVersion({ nextVersion }: Props): VNode {
-    const [state, setState] = useState(initialNextVersionState)
+    const state = useComponent(nextVersion, initialNextVersionState)
     useEffect(() => {
-        nextVersion.onStateChange(setState)
         nextVersion.find()
     }, [])
 
