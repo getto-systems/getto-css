@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.23.0
+
+- rename: field : See merge request getto-systems-base/projects/css!409
+
+
 ## Version : 2.22.1
 
 - fix: login input class : See merge request getto-systems-base/projects/css!407
