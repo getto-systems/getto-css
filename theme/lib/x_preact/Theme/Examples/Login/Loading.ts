@@ -27,7 +27,7 @@ export function Loading(_: Props): VNode {
 
     return loginBox(siteInfo(), {
         title: "アプリケーション読み込み中",
-        content: [
+        body: [
             html`<p>
                 <i class="lnir lnir-spinner lnir-is-spinning"></i> ${" "}
                 アプリケーションの読み込みに時間がかかっています

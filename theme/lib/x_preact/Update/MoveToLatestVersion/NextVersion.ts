@@ -50,7 +50,7 @@ export function NextVersion({ nextVersion }: Props): VNode {
     function delayedContent() {
         return loginBox(siteInfo(), {
             title: "アプリケーション読み込み中",
-            content: [
+            body: [
                 html`<p>${spinner} ${" "} アプリケーションの読み込みに時間がかかっています</p>`,
                 html`<p>
                     30秒以上かかるようであれば何かがおかしいので、<br />

@@ -14,7 +14,7 @@ type Props = Readonly<{
 export function ApplicationError({ err }: Props): VNode {
     return loginBox(siteInfo(), {
         title: html`システムエラーが発生しました`,
-        content: [
+        body: [
             html`<p>
                 エラーが発生したため、処理を中断しました<br />
                 これはシステム側の不備です
