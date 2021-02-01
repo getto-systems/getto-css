@@ -26,7 +26,7 @@ export function Login({ state, component }: Props): VNode {
         component.login(null)
     }
 
-    return loginBox(siteInfo(), { title: "ログイン", content: content(), footer: footer() })
+    return loginBox(siteInfo(), { title: "ログイン", body: content(), footer: footer() })
 
     function content() {
         switch (state.type) {

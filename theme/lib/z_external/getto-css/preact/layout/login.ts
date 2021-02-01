@@ -6,11 +6,11 @@ import { SiteInfo } from "../../site"
 
 export type LoginBoxContent = Readonly<{
     title: VNodeContent
-    content: VNodeContent
+    body: VNodeContent
     footer: VNodeContent
 }>
 
-export function loginBox(siteInfo: SiteInfo, { title, content, footer }: LoginBoxContent): VNode {
+export function loginBox(siteInfo: SiteInfo, { title, body, footer }: LoginBoxContent): VNode {
     return html`<aside class="layout__login">
         <section class="loginBox">
             ${header(siteInfo)}
@@ -18,7 +18,7 @@ export function loginBox(siteInfo: SiteInfo, { title, content, footer }: LoginBo
                 <header class="loginBox__main__header">
                     <h1 class="loginBox__main__title">${title}</h1>
                 </header>
-                <main class="loginBox__main__body">${content}</main>
+                <main class="loginBox__main__body">${body}</main>
                 <footer class="loginBox__main__footer">${footer}</footer>
             </article>
         </section>

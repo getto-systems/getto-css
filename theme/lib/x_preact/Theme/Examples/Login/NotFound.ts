@@ -28,7 +28,7 @@ export function NotFound(_: Props): VNode {
 
     return loginBox(siteInfo(), {
         title: "リンクが切れていました",
-        content: [
+        body: [
             html`<p>
                 リンクされたページが見つかりませんでした<br />
                 これはシステム側の不備です
