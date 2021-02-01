@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.22.1
+
+- fix: login input class : See merge request getto-systems-base/projects/css!407
+
+
 ## Version : 2.22.0
 
 - fix: report composition : See merge request getto-systems-base/projects/css!405
