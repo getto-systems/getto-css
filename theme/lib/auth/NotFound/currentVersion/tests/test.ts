@@ -10,7 +10,7 @@ describe("CurrentVersion", () => {
 
         resource.currentVersion.load()
 
-        function stateHandler(): Post<CurrentVersionState> {
+        function stateHandler(): Listener<CurrentVersionState> {
             const stack: CurrentVersionState[] = []
             return (state) => {
                 stack.push(state)
@@ -50,7 +50,7 @@ function standardVersion(): string {
     return "1.0.0"
 }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }
 

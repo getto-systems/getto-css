@@ -9,7 +9,7 @@ export type NextVersionMaterial = Readonly<{
 }>
 
 export interface NextVersionComponent {
-    onStateChange(post: Post<NextVersionState>): void
+    onStateChange(post: Listener<NextVersionState>): void
     terminate(): void
     find(): void
 }
@@ -22,6 +22,6 @@ export type NextVersionState =
 
 export const initialNextVersionState: NextVersionState = { type: "initial-next-version" }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }

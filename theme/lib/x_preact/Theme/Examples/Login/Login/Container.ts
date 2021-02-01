@@ -49,9 +49,9 @@ export type LoginProps = Readonly<{
     component: LoginComponent
 }>
 export interface LoginComponent {
-    inputValidValue: Post<null>
-    inputInvalidValue: Post<null>
-    login: Post<null>
+    inputValidValue: Action<null>
+    inputInvalidValue: Action<null>
+    login: Action<null>
 }
 export type LoginState =
     | Readonly<{ type: "login"; state: EditState }>
@@ -67,6 +67,6 @@ const initialEditState: EditState = {
     invalid: false,
 }
 
-interface Post<T> {
+interface Action<T> {
     (event: T): void
 }

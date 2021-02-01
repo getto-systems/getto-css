@@ -39,7 +39,7 @@ export function Container(_: ContainerProps): VNode {
         ])}
     `
 
-    function useStaticFormProps(action: { delete: Post<null> }): FormProps {
+    function useStaticFormProps(action: { delete: Action<null> }): FormProps {
         return useFormProps({ type: "static" }, action)
     }
     function useEditingFormProps(): FormProps {
@@ -49,7 +49,7 @@ export function Container(_: ContainerProps): VNode {
             },
         })
     }
-    function useFormProps(initialState: FormState, action: { delete: Post<null> }): FormProps {
+    function useFormProps(initialState: FormState, action: { delete: Action<null> }): FormProps {
         const [state, setState] = useState<FormState>(initialState)
         const component: FormComponent = {
             edit: () => {
@@ -173,14 +173,14 @@ export type FormProps = Readonly<{
     component: FormComponent
 }>
 export interface FormComponent {
-    edit: Post<null>
-    close: Post<null>
-    inputValidValue: Post<null>
-    inputInvalidValue: Post<null>
-    undo: Post<null>
-    redo: Post<null>
-    save: Post<null>
-    delete: Post<null>
+    edit: Action<null>
+    close: Action<null>
+    inputValidValue: Action<null>
+    inputInvalidValue: Action<null>
+    undo: Action<null>
+    redo: Action<null>
+    save: Action<null>
+    delete: Action<null>
 }
 export type FormState =
     | Readonly<{ type: "static" }>
@@ -206,19 +206,19 @@ const initialFormEditing: FormState = {
 }
 
 export interface CompleteComponent {
-    open: Post<null>
-    complete: Post<null>
-    close: Post<null>
+    open: Action<null>
+    complete: Action<null>
+    close: Action<null>
 }
 
 export interface DeleteComponent {
-    open: Post<null>
-    delete: Post<null>
-    close: Post<null>
+    open: Action<null>
+    delete: Action<null>
+    close: Action<null>
 }
 
 const NO_PROPS = {}
 
-interface Post<T> {
+interface Action<T> {
     (event: T): void
 }

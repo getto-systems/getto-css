@@ -9,7 +9,7 @@ export type CurrentVersionMaterial = Readonly<{
 }>
 
 export interface CurrentVersionComponent {
-    onStateChange(post: Post<CurrentVersionState>): void
+    onStateChange(listener: Listener<CurrentVersionState>): void
     terminate(): void
     load(): void
 }
@@ -20,6 +20,6 @@ export type CurrentVersionState =
 
 export const initialCurrentVersionState: CurrentVersionState = { type: "initial-current-version" }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }

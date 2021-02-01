@@ -10,7 +10,7 @@ export type HowToUseMaterial = Readonly<{
 }>
 
 export interface HowToUseComponent {
-    onStateChange(post: Post<HowToUseState>): void
+    onStateChange(post: Listener<HowToUseState>): void
     terminate(): void
     load(): void
 }
@@ -24,6 +24,6 @@ export type HowToUseState =
 
 export const initialHowToUseState: HowToUseState = { type: "initial-how-to-use" }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }

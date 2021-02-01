@@ -58,8 +58,8 @@ const initialLoadContentState: LoadContentState = { loaded: false }
 function documentTitle(path: ContentPath): string {
     return findEntry(path).title
 }
-async function loadContent(path: ContentPath, hook: Post<VNodeContent>) {
-    hook(await findEntry(path).content())
+async function loadContent(path: ContentPath, post: Post<VNodeContent>) {
+    post(await findEntry(path).content())
 }
 function findEntry(path: ContentPath): ContentEntry {
     const entry = contentMap[path]

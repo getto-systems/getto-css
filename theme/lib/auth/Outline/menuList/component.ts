@@ -15,7 +15,7 @@ export type MenuListMaterial = Readonly<{
 }>
 
 export interface MenuListComponent {
-    onStateChange(post: Post<MenuListState>): void
+    onStateChange(listener: Listener<MenuListState>): void
     terminate(): void
     load(): void
     toggle(menu: Menu, path: MenuCategoryPath): void
@@ -31,6 +31,6 @@ export type MenuListState =
 
 export const initialMenuListState: MenuListState = { type: "initial-menu-list" }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }

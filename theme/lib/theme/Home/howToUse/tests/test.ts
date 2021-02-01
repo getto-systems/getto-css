@@ -23,7 +23,7 @@ describe("HowToUse", () => {
 
         resource.howToUse.load()
 
-        function stateHandler(): Post<HowToUseState> {
+        function stateHandler(): Listener<HowToUseState> {
             const stack: HowToUseState[] = []
             return (state) => {
                 stack.push(state)
@@ -69,7 +69,7 @@ describe("HowToUse", () => {
 
         resource.howToUse.load()
 
-        function stateHandler(): Post<HowToUseState> {
+        function stateHandler(): Listener<HowToUseState> {
             const stack: HowToUseState[] = []
             return (state) => {
                 stack.push(state)
@@ -115,7 +115,7 @@ describe("HowToUse", () => {
 
         resource.howToUse.load()
 
-        function stateHandler(): Post<HowToUseState> {
+        function stateHandler(): Listener<HowToUseState> {
             const stack: HowToUseState[] = []
             return (state) => {
                 stack.push(state)
@@ -263,7 +263,7 @@ function menuBadgeSimulator() {
     }
 }
 
-interface Post<T> {
+interface Listener<T> {
     (state: T): void
 }
 

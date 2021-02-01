@@ -49,9 +49,9 @@ export type ForgetProps = Readonly<{
     component: ForgetComponent
 }>
 export interface ForgetComponent {
-    inputValidValue: Post<null>
-    inputInvalidValue: Post<null>
-    reset: Post<null>
+    inputValidValue: Action<null>
+    inputInvalidValue: Action<null>
+    reset: Action<null>
 }
 export type ForgetState =
     | Readonly<{ type: "reset"; state: EditState }>
@@ -68,6 +68,6 @@ const initialEditState: EditState = {
     invalid: false,
 }
 
-interface Post<T> {
+interface Action<T> {
     (event: T): void
 }
