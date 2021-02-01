@@ -43,21 +43,21 @@ function composeReportRows<R>(
         | Readonly<{ type: "focused"; key: VNodeKey }>
         | Readonly<{ type: "notFound" }>
 
-    type MarkerOffset = Readonly<{ found: false }> | Readonly<{ found: true; offset: number }>
+    type ContentHeight = Readonly<{ found: false }> | Readonly<{ found: true; height: number }>
 
     const page = root(data.composeIndex)
     if (!page) {
         return { hasNext: false }
     }
 
-    const marker = findMarkerOffset(page)
-    if (!marker.found) {
+    const contentHeight = findContentHeight(page)
+    if (!contentHeight.found) {
         return { hasNext: false }
     }
 
-    return findNextComposition(page, marker.offset)
+    return findNextComposition(page, contentHeight.height)
 
-    function findMarkerOffset(page: HTMLElement): MarkerOffset {
+    function findContentHeight(page: HTMLElement): ContentHeight {
         // report__contentLimit__mark は css によって report の padding 内部の高さになっている
         const markers = page.getElementsByClassName("report__contentLimit__mark")
         for (const marker of markers) {
@@ -66,24 +66,33 @@ function composeReportRows<R>(
                     found: true,
                     // padding 内部の高さから report__header の高さを除いたものを基準とすることで
                     // ヘッダに追加要素があっても適切に高さを計算できるようにする
-                    offset: marker.offsetHeight - reportHeaderHeight(),
+                    height: marker.offsetHeight - reportHeaderHeight() - reportFooterHeight(),
                 }
             }
         }
         return { found: false }
 
         function reportHeaderHeight() {
-            const headers = page.getElementsByClassName("report__header")
-            for (const header of headers) {
-                if (header instanceof HTMLElement) {
-                    return header.offsetHeight
+            const elements = page.getElementsByClassName("report__header")
+            for (const element of elements) {
+                if (element instanceof HTMLElement) {
+                    return element.offsetHeight
+                }
+            }
+            return 0
+        }
+        function reportFooterHeight() {
+            const elements = page.getElementsByClassName("report__footer")
+            for (const element of elements) {
+                if (element instanceof HTMLElement) {
+                    return element.offsetHeight
                 }
             }
             return 0
         }
     }
 
-    function findNextComposition(page: HTMLElement, offset: number): NextReportRowsComposition<R> {
+    function findNextComposition(page: HTMLElement, height: number): NextReportRowsComposition<R> {
         let info = initialComposeInfo()
 
         const tableBodies = page.getElementsByTagName("tbody")
@@ -92,7 +101,7 @@ function composeReportRows<R>(
             for (const tr of tableRows) {
                 info = nextComposeInfo(info, rowKey(tr))
 
-                if (body.offsetTop + tr.offsetTop + tr.offsetHeight > offset) {
+                if (body.offsetTop + tr.offsetTop + tr.offsetHeight > height) {
                     return nextComposition(data, info.changeKeyCount)
                 }
             }
