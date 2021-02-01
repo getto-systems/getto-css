@@ -8,15 +8,21 @@ type FormContent =
     | Readonly<{ type: SearchFormType; content: NormalFormContent }>
     | Readonly<{ type: NoticeFormType; content: NoticeFormContent }>
 
-export type NormalFormContent = Readonly<{
+export type NormalFormContent =
+    | NormalFormContent_base
+    | (NormalFormContent_base & NormalFormContent_help)
+export type NoticeFormContent = NormalFormContent & NormalFormContent_notice
+
+type NormalFormContent_base = Readonly<{
     title: VNodeContent
     body: VNodeContent
+}>
+type NormalFormContent_help = Readonly<{
     help: VNodeContent[]
 }>
-export type NoticeFormContent = NormalFormContent &
-    Readonly<{
-        notice: VNodeContent[]
-    }>
+type NormalFormContent_notice = Readonly<{
+    notice: VNodeContent[]
+}>
 
 type FormType = NormalFormType | SearchFormType | NoticeFormType
 type NormalFormType = "normal"
@@ -56,15 +62,21 @@ export function search_double(content: NormalFormContent): VNode {
 
 function formContent(form: FormContent): VNode {
     const help = {
-        help: form.content.help,
-        notice: notice(),
+        help: helpContent(),
+        notice: noticeContent(),
     }
     return html`<dl class="${mapFormType(form.type)}">
         <dt class="form__title">${form.content.title}</dt>
         <dd class="form__body">${form.content.body} ${formHelp(help)}</dd>
     </dl>`
 
-    function notice(): VNodeContent[] {
+    function helpContent(): VNodeContent[] {
+        if ("help" in form.content) {
+            return form.content.help
+        }
+        return []
+    }
+    function noticeContent(): VNodeContent[] {
         switch (form.type) {
             case "normal":
             case "search":
