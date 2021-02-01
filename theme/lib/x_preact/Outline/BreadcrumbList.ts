@@ -2,14 +2,13 @@ import { VNode } from "preact"
 import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { useComponent } from "../common/hooks"
-
 import {
     mainBreadcrumbLink,
     mainBreadcrumb,
     mainBreadcrumbSeparator,
 } from "../../z_external/getto-css/preact/layout/app"
 
+import { useComponent } from "../common/hooks"
 import { siteInfo } from "../common/site"
 import { icon } from "../common/icon"
 

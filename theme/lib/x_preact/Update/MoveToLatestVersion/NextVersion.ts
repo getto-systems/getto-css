@@ -2,10 +2,9 @@ import { h, VNode } from "preact"
 import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { useComponent } from "../../common/hooks"
-
 import { loginBox } from "../../../z_external/getto-css/preact/layout/login"
 
+import { useComponent } from "../../common/hooks"
 import { siteInfo } from "../../common/site"
 import { spinner } from "../../common/icon"
 
