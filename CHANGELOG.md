@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## Version : 2.22.0
+
+- fix: report composition : See merge request getto-systems-base/projects/css!405
+- fix: login box content : See merge request getto-systems-base/projects/css!404
+- fix: buttons content : See merge request getto-systems-base/projects/css!403
+- fix: form params : See merge request getto-systems-base/projects/css!402
+- fix: use component : See merge request getto-systems-base/projects/css!401
+- refactor: listener : See merge request getto-systems-base/projects/css!400
+- refactor: interface name : See merge request getto-systems-base/projects/css!399
+- fix: base component : See merge request getto-systems-base/projects/css!398
+- fix: deploy : See merge request getto-systems-base/projects/css!397
+
+
 ## Version : 2.21.2
 
 - fix: deploy : See merge request getto-systems-base/projects/css!395
