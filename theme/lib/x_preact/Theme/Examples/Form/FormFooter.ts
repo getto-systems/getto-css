@@ -32,10 +32,10 @@ export function FormFooter({ state, component }: Props): VNode {
             })
 
         case "try-to-save":
-            return buttons({ left: savingButton(), right: [] })
+            return buttons({ left: savingButton() })
 
         case "editing":
-            return html`${buttons({ left: saveButton(state.state), right: [] })}${buttons({
+            return html`${buttons({ left: saveButton(state.state) })}${buttons({
                 left: closeButton(state.state),
                 right: [redoButton(state.state), undoButton(state.state)],
             })}
