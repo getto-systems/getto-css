@@ -1,4 +1,4 @@
-import { ComponentBase } from "../../../sub/getto-example/component/base"
+import { BaseComponent } from "../../../sub/getto-example/component/impl"
 
 import {
     CurrentVersionMaterial,
@@ -10,7 +10,7 @@ import {
 export const initCurrentVersionComponent: CurrentVersionComponentFactory = (material) =>
     new Component(material)
 
-class Component extends ComponentBase<CurrentVersionState> implements CurrentVersionComponent {
+class Component extends BaseComponent<CurrentVersionState> implements CurrentVersionComponent {
     material: CurrentVersionMaterial
 
     constructor(material: CurrentVersionMaterial) {

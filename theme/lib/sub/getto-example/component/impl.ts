@@ -1,4 +1,4 @@
-export class ComponentBase<S> {
+export class BaseComponent<S> {
     listener: Post<S>[] = []
 
     onStateChange(post: Post<S>): void {

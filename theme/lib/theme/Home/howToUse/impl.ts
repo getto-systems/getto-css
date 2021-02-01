@@ -1,4 +1,4 @@
-import { ComponentBase } from "../../../sub/getto-example/component/base"
+import { BaseComponent } from "../../../sub/getto-example/component/impl"
 
 import {
     HowToUseMaterial,
@@ -9,7 +9,7 @@ import {
 
 export const initHowToUseComponent: HowToUseComponentFactory = (material) => new Component(material)
 
-class Component extends ComponentBase<HowToUseState> implements HowToUseComponent {
+class Component extends BaseComponent<HowToUseState> implements HowToUseComponent {
     material: HowToUseMaterial
 
     constructor(material: HowToUseMaterial) {

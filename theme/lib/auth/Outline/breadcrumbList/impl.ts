@@ -1,4 +1,4 @@
-import { ComponentBase } from "../../../sub/getto-example/component/base"
+import { BaseComponent } from "../../../sub/getto-example/component/impl"
 
 import {
     BreadcrumbListComponentFactory,
@@ -10,7 +10,7 @@ import {
 export const initBreadcrumbListComponent: BreadcrumbListComponentFactory = (material) =>
     new Component(material)
 
-class Component extends ComponentBase<BreadcrumbListState> implements BreadcrumbListComponent {
+class Component extends BaseComponent<BreadcrumbListState> implements BreadcrumbListComponent {
     material: BreadcrumbListMaterial
 
     constructor(material: BreadcrumbListMaterial) {

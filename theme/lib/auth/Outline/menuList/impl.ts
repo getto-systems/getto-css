@@ -1,4 +1,4 @@
-import { ComponentBase } from "../../../sub/getto-example/component/base"
+import { BaseComponent } from "../../../sub/getto-example/component/impl"
 
 import {
     MenuListComponentFactory,
@@ -11,7 +11,7 @@ import { Menu, MenuCategoryPath } from "../../permission/menu/data"
 
 export const initMenuListComponent: MenuListComponentFactory = (material) => new Component(material)
 
-class Component extends ComponentBase<MenuListState> implements MenuListComponent {
+class Component extends BaseComponent<MenuListState> implements MenuListComponent {
     material: MenuListMaterial
 
     constructor(material: MenuListMaterial) {
