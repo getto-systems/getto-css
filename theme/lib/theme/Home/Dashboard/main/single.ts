@@ -46,6 +46,7 @@ export function newDashboardAsSingle(): DashboardEntryPoint {
         terminate: () => {
             resource.breadcrumbList.terminate()
             resource.menuList.terminate()
+
             resource.howToUse.terminate()
         },
     }

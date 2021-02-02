@@ -15,7 +15,7 @@ describe("BreadcrumbList", () => {
     test("load breadcrumb", (done) => {
         const { resource } = standardMenuResource()
 
-        resource.breadcrumbList.onStateChange(stateHandler())
+        resource.breadcrumbList.addStateHandler(stateHandler())
 
         resource.breadcrumbList.load()
 
@@ -49,7 +49,6 @@ describe("BreadcrumbList", () => {
                                 ],
                             },
                         ])
-                        resource.breadcrumbList.terminate()
                         done()
                         break
 
@@ -63,7 +62,7 @@ describe("BreadcrumbList", () => {
     test("load empty breadcrumb; unknown menu target", (done) => {
         const { resource } = unknownMenuResource()
 
-        resource.breadcrumbList.onStateChange(stateHandler())
+        resource.breadcrumbList.addStateHandler(stateHandler())
 
         resource.breadcrumbList.load()
 
@@ -84,7 +83,6 @@ describe("BreadcrumbList", () => {
                                 breadcrumb: [],
                             },
                         ])
-                        resource.breadcrumbList.terminate()
                         done()
                         break
 
@@ -100,7 +98,7 @@ describe("MenuList", () => {
     test("load menu", (done) => {
         const { resource } = standardMenuResource()
 
-        resource.menuList.onStateChange(stateHandler())
+        resource.menuList.addStateHandler(stateHandler())
 
         resource.menuList.load()
 
@@ -262,7 +260,6 @@ describe("MenuList", () => {
                                 ],
                             },
                         ])
-                        resource.menuList.terminate()
                         done()
                         break
 
@@ -282,7 +279,7 @@ describe("MenuList", () => {
     test("load menu; saved expands", (done) => {
         const { resource } = expandMenuResource()
 
-        resource.menuList.onStateChange(stateHandler())
+        resource.menuList.addStateHandler(stateHandler())
 
         resource.menuList.load()
 
@@ -444,7 +441,6 @@ describe("MenuList", () => {
                                 ],
                             },
                         ])
-                        resource.menuList.terminate()
                         done()
                         break
 
@@ -464,7 +460,7 @@ describe("MenuList", () => {
     test("load menu; toggle expands", (done) => {
         const { repository, resource } = standardMenuResource()
 
-        resource.menuList.onStateChange(stateHandler())
+        resource.menuList.addStateHandler(stateHandler())
 
         resource.menuList.load()
 
@@ -798,7 +794,6 @@ describe("MenuList", () => {
                         },
                     ])
                     expectToSaveExpand(repository, [["MAIN"], ["DOCUMENT"], ["DOCUMENT", "DETAIL"]])
-                    resource.menuList.terminate()
                     done()
                 }
             }
@@ -808,7 +803,7 @@ describe("MenuList", () => {
     test("load menu; development docs", (done) => {
         const { resource } = developmentDocsMenuResource()
 
-        resource.menuList.onStateChange(stateHandler())
+        resource.menuList.addStateHandler(stateHandler())
 
         resource.menuList.load()
 
@@ -1008,7 +1003,6 @@ describe("MenuList", () => {
                                 ],
                             },
                         ])
-                        resource.menuList.terminate()
                         done()
                         break
 

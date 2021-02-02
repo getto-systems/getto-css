@@ -1,4 +1,4 @@
-import { BaseComponent } from "../../../sub/getto-example/component/impl"
+import { ApplicationBaseComponent } from "../../../sub/getto-example/application/impl"
 
 import {
     NextVersionComponentFactory,
@@ -10,7 +10,7 @@ import {
 export const initNextVersionComponent: NextVersionComponentFactory = (material) =>
     new Component(material)
 
-class Component extends BaseComponent<NextVersionState> implements NextVersionComponent {
+class Component extends ApplicationBaseComponent<NextVersionState> implements NextVersionComponent {
     material: NextVersionMaterial
 
     constructor(material: NextVersionMaterial) {

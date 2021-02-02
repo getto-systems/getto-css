@@ -12,7 +12,7 @@ describe("Content", () => {
     test("load content", (done) => {
         const { resource } = standardResource()
 
-        resource.content.onStateChange(stateHandler())
+        resource.content.addStateHandler(stateHandler())
 
         resource.content.load()
 
@@ -28,7 +28,6 @@ describe("Content", () => {
 
                     case "succeed-to-load":
                         expect(stack).toEqual([{ type: "succeed-to-load", path: "/docs/index.html" }])
-                        resource.content.terminate()
                         done()
                         break
 

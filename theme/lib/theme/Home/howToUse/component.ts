@@ -1,3 +1,4 @@
+import { ApplicationComponent } from "../../../sub/getto-example/application/component"
 import { Find } from "../../allVersions/action"
 
 import { AllVersions, FindError, Version } from "../../allVersions/data"
@@ -9,9 +10,7 @@ export type HowToUseMaterial = Readonly<{
     find: Find
 }>
 
-export interface HowToUseComponent {
-    onStateChange(post: Listener<HowToUseState>): void
-    terminate(): void
+export interface HowToUseComponent extends ApplicationComponent<HowToUseState> {
     load(): void
 }
 
@@ -23,7 +22,3 @@ export type HowToUseState =
     | Readonly<{ type: "succeed-to-find"; versions: AllVersions; currentVersion: Version }>
 
 export const initialHowToUseState: HowToUseState = { type: "initial-how-to-use" }
-
-interface Listener<T> {
-    (state: T): void
-}

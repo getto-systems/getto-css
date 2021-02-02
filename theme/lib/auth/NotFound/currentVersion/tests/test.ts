@@ -6,7 +6,7 @@ describe("CurrentVersion", () => {
     test("load current version", (done) => {
         const { resource } = standardResource()
 
-        resource.currentVersion.onStateChange(stateHandler())
+        resource.currentVersion.addStateHandler(stateHandler())
 
         resource.currentVersion.load()
 
@@ -27,7 +27,6 @@ describe("CurrentVersion", () => {
                                 currentVersion: "1.0.0",
                             },
                         ])
-                        resource.currentVersion.terminate()
                         done()
                         break
 
