@@ -3,6 +3,10 @@ import { html } from "htm/preact"
 
 import { VNodeContent } from "../common"
 
+export function form(box: VNodeContent): VNode {
+    return html`<form>${box}</form>`
+}
+
 type FieldContent =
     | Readonly<{ type: NormalFieldType; content: NormalFieldContent }>
     | Readonly<{ type: SearchFieldType; content: NormalFieldContent }>
