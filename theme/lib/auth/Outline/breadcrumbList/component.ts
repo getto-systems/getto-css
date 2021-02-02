@@ -1,3 +1,5 @@
+import { ApplicationComponent } from "../../../sub/getto-example/application/component"
+
 import { LoadBreadcrumb } from "../../permission/menu/action"
 
 import { Breadcrumb } from "../../permission/menu/data"
@@ -9,9 +11,7 @@ export type BreadcrumbListMaterial = Readonly<{
     loadBreadcrumb: LoadBreadcrumb
 }>
 
-export interface BreadcrumbListComponent {
-    onStateChange(listener: Listener<BreadcrumbListState>): void
-    terminate(): void
+export interface BreadcrumbListComponent extends ApplicationComponent<BreadcrumbListState> {
     load(): void
 }
 
@@ -20,7 +20,3 @@ export type BreadcrumbListState =
     | Readonly<{ type: "succeed-to-load"; breadcrumb: Breadcrumb }>
 
 export const initialBreadcrumbListState: BreadcrumbListState = { type: "initial-breadcrumb-list" }
-
-interface Listener<T> {
-    (state: T): void
-}

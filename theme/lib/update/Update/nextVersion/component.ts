@@ -1,3 +1,4 @@
+import { ApplicationComponent } from "../../../sub/getto-example/application/component"
 import { Find } from "../../nextVersion/action"
 import { AppTarget, FindError } from "../../nextVersion/data"
 
@@ -8,9 +9,7 @@ export type NextVersionMaterial = Readonly<{
     find: Find
 }>
 
-export interface NextVersionComponent {
-    onStateChange(post: Listener<NextVersionState>): void
-    terminate(): void
+export interface NextVersionComponent extends ApplicationComponent<NextVersionState> {
     find(): void
 }
 
@@ -21,7 +20,3 @@ export type NextVersionState =
     | Readonly<{ type: "succeed-to-find"; upToDate: boolean; target: AppTarget }>
 
 export const initialNextVersionState: NextVersionState = { type: "initial-next-version" }
-
-interface Listener<T> {
-    (state: T): void
-}

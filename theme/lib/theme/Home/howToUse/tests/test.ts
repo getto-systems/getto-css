@@ -19,7 +19,7 @@ describe("HowToUse", () => {
     test("load versions", (done) => {
         const { resource } = standardResource()
 
-        resource.howToUse.onStateChange(stateHandler())
+        resource.howToUse.addStateHandler(stateHandler())
 
         resource.howToUse.load()
 
@@ -47,7 +47,6 @@ describe("HowToUse", () => {
                                 ],
                             },
                         ])
-                        resource.howToUse.terminate()
                         done()
                         break
 
@@ -65,7 +64,7 @@ describe("HowToUse", () => {
     test("load versions; without current version", (done) => {
         const { resource } = withoutCurrentVersionResource()
 
-        resource.howToUse.onStateChange(stateHandler())
+        resource.howToUse.addStateHandler(stateHandler())
 
         resource.howToUse.load()
 
@@ -93,7 +92,6 @@ describe("HowToUse", () => {
                                 ],
                             },
                         ])
-                        resource.howToUse.terminate()
                         done()
                         break
 
@@ -111,7 +109,7 @@ describe("HowToUse", () => {
     test("load versions; delayed", (done) => {
         const { resource } = waitResource()
 
-        resource.howToUse.onStateChange(stateHandler())
+        resource.howToUse.addStateHandler(stateHandler())
 
         resource.howToUse.load()
 
@@ -140,7 +138,6 @@ describe("HowToUse", () => {
                                 ],
                             },
                         ])
-                        resource.howToUse.terminate()
                         done()
                         break
 

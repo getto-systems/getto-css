@@ -6,7 +6,7 @@ import { find } from "../../../permission/currentVersion/impl/core"
 
 import { NotFoundFactory, initNotFoundResource } from "../impl/core"
 
-import { NotFoundEntryPoint } from "../view"
+import { NotFoundEntryPoint } from "../entryPoint"
 
 export function newNotFoundAsSingle(): NotFoundEntryPoint {
     const factory: NotFoundFactory = {

@@ -30,10 +30,12 @@ export function newExampleAsSingle(): ExampleEntryPoint {
             getMenuTarget: () => detectMenuTarget(env.version, currentURL),
         },
     }
+    const resource = initExampleResource(factory, collector)
     return {
-        resource: initExampleResource(factory, collector),
+        resource ,
         terminate: () => {
-            // worker とインターフェイスを合わせるために必要
+            resource.menuList.terminate()
+            resource.breadcrumbList.terminate()
         },
     }
 }

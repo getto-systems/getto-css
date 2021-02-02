@@ -1,10 +1,10 @@
-import { BaseComponent } from "../../../sub/getto-example/component/impl"
+import { ApplicationBaseComponent } from "../../../sub/getto-example/application/impl"
 
 import { ContentComponentFactory, ContentMaterial, ContentComponent, ContentState } from "./component"
 
 export const initContentComponent: ContentComponentFactory = (material) => new Component(material)
 
-class Component extends BaseComponent<ContentState> implements ContentComponent {
+class Component extends ApplicationBaseComponent<ContentState> implements ContentComponent {
     material: ContentMaterial
 
     constructor(material: ContentMaterial) {
