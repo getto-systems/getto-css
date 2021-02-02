@@ -3,8 +3,8 @@ import { html } from "htm/preact"
 
 import { VNodeContent } from "../common"
 
-export function form(box: VNodeContent): VNode {
-    return html`<form>${box}</form>`
+export function form(content: VNodeContent): VNode {
+    return html`<form>${content}</form>`
 }
 
 type FieldContent =
