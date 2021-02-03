@@ -1,7 +1,8 @@
+import { initMenuExpandTestStorage } from "../../../../auth/Outline/Menu/tests/core"
 import { DocumentRepository, DocumentSimulator, newDocumentResource } from "../../Document/tests/core"
 
+import { initMenuExpandRepository } from "../../../../auth/permission/menu/impl/repository/menuExpand"
 import { initMemoryApiCredentialRepository } from "../../../../auth/common/credential/impl/repository/apiCredential/memory"
-import { initMemoryMenuExpandRepository } from "../../../../auth/permission/menu/impl/repository/menuExpand/memory"
 
 import { MenuBadge, MenuTree } from "../../../../auth/permission/menu/infra"
 
@@ -68,7 +69,7 @@ function standardRepository(): DocumentRepository {
             markApiNonce("api-nonce"),
             markApiRoles(["admin"])
         ),
-        menuExpands: initMemoryMenuExpandRepository([]),
+        menuExpands: initMenuExpandRepository(initMenuExpandTestStorage({ menuExpand: { set: false } })),
     }
 }
 
