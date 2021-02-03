@@ -1,7 +1,8 @@
-import { MenuRepository, MenuSimulator, newMenuResource } from "./core"
+import { initMenuExpandTestStorage, MenuRepository, MenuSimulator, newMenuResource } from "./core"
 
 import { initMemoryApiCredentialRepository } from "../../../common/credential/impl/repository/apiCredential/memory"
-import { initMemoryMenuExpandRepository } from "../../../permission/menu/impl/repository/menuExpand/memory"
+
+import { initMenuExpandRepository } from "../../../permission/menu/impl/repository/menuExpand"
 
 import { MenuBadge, MenuTree } from "../../../permission/menu/infra"
 
@@ -1128,7 +1129,11 @@ function standardRepository(): MenuRepository {
             markApiNonce("api-nonce"),
             markApiRoles(["admin"])
         ),
-        menuExpands: initMemoryMenuExpandRepository([]),
+        menuExpands: initMenuExpandRepository(
+            initMenuExpandTestStorage({
+                menuExpand: { set: false },
+            })
+        ),
     }
 }
 function developmentDocsRepository(): MenuRepository {
@@ -1137,7 +1142,11 @@ function developmentDocsRepository(): MenuRepository {
             markApiNonce("api-nonce"),
             markApiRoles(["admin", "development-docs"])
         ),
-        menuExpands: initMemoryMenuExpandRepository([]),
+        menuExpands: initMenuExpandRepository(
+            initMenuExpandTestStorage({
+                menuExpand: { set: false },
+            })
+        ),
     }
 }
 function expandRepository(): MenuRepository {
@@ -1146,7 +1155,11 @@ function expandRepository(): MenuRepository {
             markApiNonce("api-nonce"),
             markApiRoles(["admin"])
         ),
-        menuExpands: initMemoryMenuExpandRepository([[markMenuCategoryLabel("DOCUMENT")]]),
+        menuExpands: initMenuExpandRepository(
+            initMenuExpandTestStorage({
+                menuExpand: { set: true, value: [[markMenuCategoryLabel("DOCUMENT")]] },
+            })
+        ),
     }
 }
 

@@ -2,6 +2,9 @@ import {
     initSimulateMenuBadgeClient,
     MenuBadgeSimulator,
 } from "../../../permission/menu/impl/remote/menuBadge/simulate"
+import { initMemoryTypedStorage, MemoryTypedStorageStore } from "../../../../z_infra/storage/memory"
+
+import { MenuExpandStorage } from "../../../permission/menu/impl/repository/menuExpand"
 
 import { detectMenuTarget } from "../impl/location"
 
@@ -12,7 +15,7 @@ import { loadApiNonce, loadApiRoles } from "../../../common/credential/impl/core
 import { loadBreadcrumb, loadMenu, toggleMenuExpand } from "../../../permission/menu/impl/core"
 
 import { ApiCredentialRepository } from "../../../common/credential/infra"
-import { MenuExpandRepository, MenuTree } from "../../../permission/menu/infra"
+import { MenuExpand, MenuExpandRepository, MenuTree } from "../../../permission/menu/infra"
 
 import { BreadcrumbListComponent } from "../../breadcrumbList/component"
 import { MenuListComponent } from "../../menuList/component"
@@ -87,5 +90,14 @@ export function initMenuAction(
         loadBreadcrumb: loadBreadcrumb(infra),
         loadMenu: loadMenu(infra),
         toggleMenuExpand: toggleMenuExpand(infra),
+    }
+}
+
+export type MenuExpandTestStorageParam = Readonly<{
+    menuExpand: MemoryTypedStorageStore<MenuExpand>
+}>
+export function initMenuExpandTestStorage(params: MenuExpandTestStorageParam): MenuExpandStorage {
+    return {
+        menuExpand: initMemoryTypedStorage(params.menuExpand),
     }
 }

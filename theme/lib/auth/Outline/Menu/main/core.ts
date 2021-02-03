@@ -2,7 +2,6 @@ import { env } from "../../../../y_static/env"
 
 import { initMemoryApiCredentialRepository } from "../../../common/credential/impl/repository/apiCredential/memory"
 import { initStaticMenuBadgeClient } from "../../../permission/menu/impl/remote/menuBadge/static"
-import { initStorageMenuExpandRepository } from "../../../permission/menu/impl/repository/menuExpand/storage"
 import { documentMenuTree, mainMenuTree } from "../impl/menu/menuTree"
 
 import { loadApiNonce, loadApiRoles } from "../../../common/credential/impl/core"
@@ -14,6 +13,11 @@ import { MenuAction } from "../../../permission/menu/action"
 import { markApiNonce, markApiRoles } from "../../../common/credential/data"
 import { initNoopMenuBadgeClient } from "../../../permission/menu/impl/remote/menuBadge/noop"
 import { MenuBadgeClient, MenuTree } from "../../../permission/menu/infra"
+import {
+    initMenuExpandConverter,
+    initMenuExpandRepository,
+} from "../../../permission/menu/impl/repository/menuExpand"
+import { initWebTypedStorage } from "../../../../z_infra/storage/webStorage"
 
 export function initCredentialAction(): CredentialAction {
     const apiCredentials = initMemoryApiCredentialRepository(
@@ -43,10 +47,13 @@ function initMenuAction(
     menuExpandStorage: Storage,
     menuBadge: MenuBadgeClient
 ): MenuAction {
-    const menuExpands = initStorageMenuExpandRepository(
-        menuExpandStorage,
-        env.storageKey.menuExpand.main
-    )
+    const menuExpands = initMenuExpandRepository({
+        menuExpand: initWebTypedStorage(
+            menuExpandStorage,
+            env.storageKey.menuExpand.main,
+            initMenuExpandConverter()
+        ),
+    })
 
     return {
         loadBreadcrumb: loadBreadcrumb({ menuTree }),
