@@ -4,12 +4,12 @@ import { html } from "htm/preact"
 
 import { icon } from "../../../common/icon"
 
-import { visibleAll } from "../../../../z_external/getto-table/preact/core"
-import { tableStructure } from "../../../../z_external/getto-table/preact/cell/structure"
-import { tableCell } from "../../../../z_external/getto-table/preact/cell/simple"
-import { tableAlign, tableClassName } from "../../../../z_external/getto-table/preact/decorator"
+import { visibleAll } from "../../../../z_vendor/getto-table/preact/core"
+import { tableStructure } from "../../../../z_vendor/getto-table/preact/cell/structure"
+import { tableCell } from "../../../../z_vendor/getto-table/preact/cell/simple"
+import { tableAlign, tableClassName } from "../../../../z_vendor/getto-table/preact/decorator"
 
-import { sidebarLargeElement } from "../../../../z_external/getto-css/preact/layout/app"
+import { sidebarLargeElement } from "../../../../z_vendor/getto-css/preact/layout/app"
 import {
     linky,
     table,
@@ -20,9 +20,9 @@ import {
     sortLink,
     Sort,
     SortLink,
-} from "../../../../z_external/getto-css/preact/design/data"
-import { label_gray, label_warning } from "../../../../z_external/getto-css/preact/design/highlight"
-import { small } from "../../../../z_external/getto-css/preact/design/alignment"
+} from "../../../../z_vendor/getto-css/preact/design/data"
+import { label_gray, label_warning } from "../../../../z_vendor/getto-css/preact/design/highlight"
+import { small } from "../../../../z_vendor/getto-css/preact/design/alignment"
 import { sortSign } from "../../../common/data"
 
 type Props = {

@@ -3,7 +3,7 @@ import { useMemo } from "preact/hooks"
 
 import { buildStructure, Content } from "./Content"
 import { generateRows, Model, Row } from "./data"
-import { visibleAll } from "../../../../z_external/getto-table/preact/core"
+import { visibleAll } from "../../../../z_vendor/getto-table/preact/core"
 
 type ContainerProps = {
     // no props

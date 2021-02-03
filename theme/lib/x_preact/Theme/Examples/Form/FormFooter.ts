@@ -10,7 +10,7 @@ import {
     button_edit,
     button_redo,
     button_undo,
-} from "../../../../z_external/getto-css/preact/design/form"
+} from "../../../../z_vendor/getto-css/preact/design/form"
 
 import { spinner } from "../../../common/icon"
 

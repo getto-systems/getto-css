@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useState } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { container } from "../../../../z_external/getto-css/preact/design/box"
+import { container } from "../../../../z_vendor/getto-css/preact/design/box"
 
 import { Complex } from "./Complex"
 import { Misc } from "./Misc"

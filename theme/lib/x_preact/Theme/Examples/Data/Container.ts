@@ -4,10 +4,10 @@ import { html } from "htm/preact"
 
 import { sortSign } from "../../../common/data"
 
-import { visibleKeys } from "../../../../z_external/getto-table/preact/core"
+import { visibleKeys } from "../../../../z_vendor/getto-table/preact/core"
 
-import { container } from "../../../../z_external/getto-css/preact/design/box"
-import { Sort, sortLink } from "../../../../z_external/getto-css/preact/design/data"
+import { container } from "../../../../z_vendor/getto-css/preact/design/box"
+import { Sort, sortLink } from "../../../../z_vendor/getto-css/preact/design/data"
 
 import { SearchForm } from "./SearchForm"
 import { Pager } from "./Pager"

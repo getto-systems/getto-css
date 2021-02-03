@@ -1,12 +1,12 @@
 import { VNode } from "preact"
 import { useMemo } from "preact/hooks"
 
-import { tableCell } from "../../../../../z_external/getto-table/preact/cell/simple"
-import { tableStructure } from "../../../../../z_external/getto-table/preact/cell/structure"
-import { visibleAll } from "../../../../../z_external/getto-table/preact/core"
-import { tableAlign, tableClassName } from "../../../../../z_external/getto-table/preact/decorator"
+import { tableCell } from "../../../../../z_vendor/getto-table/preact/cell/simple"
+import { tableStructure } from "../../../../../z_vendor/getto-table/preact/cell/structure"
+import { visibleAll } from "../../../../../z_vendor/getto-table/preact/core"
+import { tableAlign, tableClassName } from "../../../../../z_vendor/getto-table/preact/decorator"
 
-import { box_fill } from "../../../../../z_external/getto-css/preact/design/box"
+import { box_fill } from "../../../../../z_vendor/getto-css/preact/design/box"
 import {
     linky,
     table,
@@ -14,8 +14,8 @@ import {
     tableHeader,
     tbody,
     thead,
-} from "../../../../../z_external/getto-css/preact/design/data"
-import { label_gray, label_warning } from "../../../../../z_external/getto-css/preact/design/highlight"
+} from "../../../../../z_vendor/getto-css/preact/design/data"
+import { label_gray, label_warning } from "../../../../../z_vendor/getto-css/preact/design/highlight"
 
 type TableProps = {
     // no props

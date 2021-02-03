@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { useReportRowsComposition } from "../../../../z_external/getto-css/preact/design/hooks/print/compose"
+import { useReportRowsComposition } from "../../../../z_vendor/getto-css/preact/design/hooks/print/compose"
 
 import {
     reportFolio,
@@ -10,18 +10,18 @@ import {
     reportTitle_small,
     reportTitle_xSmall,
     report_a4_portrait,
-} from "../../../../z_external/getto-css/preact/design/print"
+} from "../../../../z_vendor/getto-css/preact/design/print"
 import {
     TableDataColumnRow,
     TableDataFooterRow,
     TableDataHeaderRow,
     TableDataSummaryRow,
     TableStructure,
-} from "../../../../z_external/getto-table/preact/core"
-import { tableStructure } from "../../../../z_external/getto-table/preact/cell/structure"
-import { tableCell } from "../../../../z_external/getto-table/preact/cell/simple"
-import { tableAlign, tableClassName } from "../../../../z_external/getto-table/preact/decorator"
-import { TableDataSticky } from "../../../../z_external/getto-table/preact/style"
+} from "../../../../z_vendor/getto-table/preact/core"
+import { tableStructure } from "../../../../z_vendor/getto-table/preact/cell/structure"
+import { tableCell } from "../../../../z_vendor/getto-table/preact/cell/simple"
+import { tableAlign, tableClassName } from "../../../../z_vendor/getto-table/preact/decorator"
+import { TableDataSticky } from "../../../../z_vendor/getto-table/preact/style"
 
 import {
     linky,
@@ -33,12 +33,12 @@ import {
     tbody,
     tfoot,
     thead,
-} from "../../../../z_external/getto-css/preact/design/data"
-import { small } from "../../../../z_external/getto-css/preact/design/alignment"
+} from "../../../../z_vendor/getto-css/preact/design/data"
+import { small } from "../../../../z_vendor/getto-css/preact/design/alignment"
 
 import { Model, Row } from "./data"
-import { TableCell } from "../../../../z_external/getto-table/preact/cell"
-import { tableCell_tree } from "../../../../z_external/getto-table/preact/cell/tree"
+import { TableCell } from "../../../../z_vendor/getto-table/preact/cell"
+import { tableCell_tree } from "../../../../z_vendor/getto-table/preact/cell/tree"
 
 type Props = {
     content: Readonly<{

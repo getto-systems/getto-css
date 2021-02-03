@@ -2,9 +2,9 @@ import { VNode } from "preact"
 import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { box_double } from "../../../z_external/getto-css/preact/design/box"
-import { field } from "../../../z_external/getto-css/preact/design/form"
-import { notice_alert, label_info } from "../../../z_external/getto-css/preact/design/highlight"
+import { box_double } from "../../../z_vendor/getto-css/preact/design/box"
+import { field } from "../../../z_vendor/getto-css/preact/design/form"
+import { notice_alert, label_info } from "../../../z_vendor/getto-css/preact/design/highlight"
 
 import { useComponent } from "../../common/hooks"
 

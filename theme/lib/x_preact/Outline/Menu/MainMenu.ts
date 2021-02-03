@@ -5,8 +5,8 @@ import {
     menuBox,
     menuFooter,
     menuHeader,
-} from "../../../z_external/getto-css/preact/layout/app"
-import { field } from "../../../z_external/getto-css/preact/design/form"
+} from "../../../z_vendor/getto-css/preact/layout/app"
+import { field } from "../../../z_vendor/getto-css/preact/design/form"
 
 import { siteInfo } from "../../common/site"
 
