@@ -1,8 +1,8 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box } from "../../../../z_external/getto-css/preact/design/box"
-import { v_large, v_medium, v_small } from "../../../../z_external/getto-css/preact/design/alignment"
+import { box } from "../../../../z_vendor/getto-css/preact/design/box"
+import { v_large, v_medium, v_small } from "../../../../z_vendor/getto-css/preact/design/alignment"
 
 type Props = {
     // no props

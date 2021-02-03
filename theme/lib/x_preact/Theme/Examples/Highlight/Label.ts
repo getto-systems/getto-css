@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box } from "../../../../z_external/getto-css/preact/design/box"
+import { box } from "../../../../z_vendor/getto-css/preact/design/box"
 import {
     label_alert,
     label_gray,
@@ -9,7 +9,7 @@ import {
     label_pending,
     label_success,
     label_warning,
-} from "../../../../z_external/getto-css/preact/design/highlight"
+} from "../../../../z_vendor/getto-css/preact/design/highlight"
 
 import { icon } from "../../../common/icon"
 

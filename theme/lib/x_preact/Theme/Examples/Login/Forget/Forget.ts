@@ -1,14 +1,14 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { loginBox } from "../../../../../z_external/getto-css/preact/layout/login"
+import { loginBox } from "../../../../../z_vendor/getto-css/preact/layout/login"
 import {
     field,
     field_error,
     buttons,
     button_send,
     label_text_fill,
-} from "../../../../../z_external/getto-css/preact/design/form"
+} from "../../../../../z_vendor/getto-css/preact/design/form"
 
 import { icon, spinner } from "../../../../common/icon"
 import { siteInfo } from "../../../../common/site"

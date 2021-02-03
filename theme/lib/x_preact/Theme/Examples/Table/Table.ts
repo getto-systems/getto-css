@@ -6,12 +6,12 @@ import {
     TableDataHeaderRow,
     TableDataSummaryRow,
     TableStructure,
-} from "../../../../z_external/getto-table/preact/core"
-import { tableStructure } from "../../../../z_external/getto-table/preact/cell/structure"
-import { TableDataSticky } from "../../../../z_external/getto-table/preact/style"
-import { tableCell } from "../../../../z_external/getto-table/preact/cell/simple"
-import { tableCell_group } from "../../../../z_external/getto-table/preact/cell/group"
-import { tableAlign, tableClassName } from "../../../../z_external/getto-table/preact/decorator"
+} from "../../../../z_vendor/getto-table/preact/core"
+import { tableStructure } from "../../../../z_vendor/getto-table/preact/cell/structure"
+import { TableDataSticky } from "../../../../z_vendor/getto-table/preact/style"
+import { tableCell } from "../../../../z_vendor/getto-table/preact/cell/simple"
+import { tableCell_group } from "../../../../z_vendor/getto-table/preact/cell/group"
+import { tableAlign, tableClassName } from "../../../../z_vendor/getto-table/preact/decorator"
 
 import {
     table,
@@ -24,19 +24,19 @@ import {
     tableSummary,
     tfoot,
     tableFooter,
-} from "../../../../z_external/getto-css/preact/design/data"
+} from "../../../../z_vendor/getto-css/preact/design/data"
 import {
     label_gray,
     label_success,
     label_warning,
-} from "../../../../z_external/getto-css/preact/design/highlight"
-import { small } from "../../../../z_external/getto-css/preact/design/alignment"
+} from "../../../../z_vendor/getto-css/preact/design/highlight"
+import { small } from "../../../../z_vendor/getto-css/preact/design/alignment"
 
 import { Article, ArticleComment, Log, Model, Row, TemperatureType } from "./data"
-import { tableCell_expansion } from "../../../../z_external/getto-table/preact/cell/expansion"
-import { tableCell_multipart } from "../../../../z_external/getto-table/preact/cell/multipart"
-import { tableCell_tree } from "../../../../z_external/getto-table/preact/cell/tree"
-import { TableCell } from "../../../../z_external/getto-table/preact/cell"
+import { tableCell_expansion } from "../../../../z_vendor/getto-table/preact/cell/expansion"
+import { tableCell_multipart } from "../../../../z_vendor/getto-table/preact/cell/multipart"
+import { tableCell_tree } from "../../../../z_vendor/getto-table/preact/cell/tree"
+import { TableCell } from "../../../../z_vendor/getto-table/preact/cell"
 
 type Props = Readonly<{
     content: Readonly<{

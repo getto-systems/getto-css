@@ -3,9 +3,9 @@ import { html } from "htm/preact"
 
 import { pagerCount, pagerParams } from "../../../../common/data"
 
-import { box_fill } from "../../../../../z_external/getto-css/preact/design/box"
-import { pagerOptions } from "../../../../../z_external/getto-css/preact/design/data"
-import { button_search, field, pager } from "../../../../../z_external/getto-css/preact/design/form"
+import { box_fill } from "../../../../../z_vendor/getto-css/preact/design/box"
+import { pagerOptions } from "../../../../../z_vendor/getto-css/preact/design/data"
+import { button_search, field, pager } from "../../../../../z_vendor/getto-css/preact/design/form"
 
 type PagerProps = {
     // no props

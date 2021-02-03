@@ -10,7 +10,7 @@ import {
     mainTitle,
     appMain,
     appSidebar,
-} from "../../../z_external/getto-css/preact/layout/app"
+} from "../../../z_vendor/getto-css/preact/layout/app"
 
 import { useTerminate } from "../../common/hooks"
 

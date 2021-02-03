@@ -7,11 +7,11 @@ import {
     TableDataColumnRow,
     TableDataHeaderRow,
     TableStructure,
-} from "../../../../z_external/getto-table/preact/core"
-import { tableStructure } from "../../../../z_external/getto-table/preact/cell/structure"
-import { tableCell } from "../../../../z_external/getto-table/preact/cell/simple"
-import { TableDataSticky } from "../../../../z_external/getto-table/preact/style"
-import { tableAlign, tableClassName } from "../../../../z_external/getto-table/preact/decorator"
+} from "../../../../z_vendor/getto-table/preact/core"
+import { tableStructure } from "../../../../z_vendor/getto-table/preact/cell/structure"
+import { tableCell } from "../../../../z_vendor/getto-table/preact/cell/simple"
+import { TableDataSticky } from "../../../../z_vendor/getto-table/preact/style"
+import { tableAlign, tableClassName } from "../../../../z_vendor/getto-table/preact/decorator"
 
 import {
     table,
@@ -21,9 +21,9 @@ import {
     tbody,
     linky,
     SortLink,
-} from "../../../../z_external/getto-css/preact/design/data"
-import { label_gray, label_warning } from "../../../../z_external/getto-css/preact/design/highlight"
-import { small } from "../../../../z_external/getto-css/preact/design/alignment"
+} from "../../../../z_vendor/getto-css/preact/design/data"
+import { label_gray, label_warning } from "../../../../z_vendor/getto-css/preact/design/highlight"
+import { small } from "../../../../z_vendor/getto-css/preact/design/alignment"
 
 import { Model, Row } from "./data"
 

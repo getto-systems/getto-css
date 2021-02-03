@@ -1,8 +1,8 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box } from "../../../../z_external/getto-css/preact/design/box"
-import { field } from "../../../../z_external/getto-css/preact/design/form"
+import { box } from "../../../../z_vendor/getto-css/preact/design/box"
+import { field } from "../../../../z_vendor/getto-css/preact/design/form"
 
 import { FormProps } from "./Container"
 import { FormFooter } from "./FormFooter"

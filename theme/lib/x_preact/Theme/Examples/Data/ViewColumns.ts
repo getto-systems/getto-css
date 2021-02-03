@@ -1,11 +1,11 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { TableDataView } from "../../../../z_external/getto-table/preact/core"
+import { TableDataView } from "../../../../z_vendor/getto-table/preact/core"
 
-import { box_grow } from "../../../../z_external/getto-css/preact/design/box"
-import { field, checkbox } from "../../../../z_external/getto-css/preact/design/form"
-import { tableViewColumns } from "../../../../z_external/getto-css/preact/design/data"
+import { box_grow } from "../../../../z_vendor/getto-css/preact/design/box"
+import { field, checkbox } from "../../../../z_vendor/getto-css/preact/design/form"
+import { tableViewColumns } from "../../../../z_vendor/getto-css/preact/design/data"
 
 type Props = Readonly<{
     view: TableDataView[]

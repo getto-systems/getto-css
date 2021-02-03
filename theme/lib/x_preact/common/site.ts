@@ -1,4 +1,4 @@
-import { SiteInfo } from "../../z_external/getto-css/site";
+import { SiteInfo } from "../../z_vendor/getto-css/site";
 
 export function siteInfo(): SiteInfo {
     return {
