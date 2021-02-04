@@ -1,8 +1,4 @@
-import {
-    TypedStorage,
-    TypedStorageConverter,
-    TypedStorageDecoded,
-} from "../../../../../z_infra/storage/infra"
+import { TypedStorage } from "../../../../../z_infra/storage/infra"
 import { MenuExpand, MenuExpandRepository, MenuExpandResponse, ToggleExpandResponse } from "../../infra"
 
 export type MenuExpandStorage = Readonly<{
@@ -44,36 +40,6 @@ class Repository implements MenuExpandRepository {
             return { success: true }
         } catch (err) {
             return { success: false, err: { type: "infra-error", err: `${err}` } }
-        }
-    }
-}
-
-export function initMenuExpandConverter(): TypedStorageConverter<MenuExpand> {
-    return new MenuExpandConverter()
-}
-
-class MenuExpandConverter implements TypedStorageConverter<MenuExpand> {
-    encode(value: MenuExpand): string {
-        return JSON.stringify(value)
-    }
-    decode(raw: string): TypedStorageDecoded<MenuExpand> {
-        return validate(JSON.parse(raw))
-
-        function validate(json: unknown): TypedStorageDecoded<MenuExpand> {
-            if (!(json instanceof Array)) {
-                return { decodeError: true, err: `menu expand parse error: invalid array : ${raw}` }
-            }
-            if (
-                !json.every(
-                    (value) => value instanceof Array && value.every((val) => typeof val === "string")
-                )
-            ) {
-                return {
-                    decodeError: true,
-                    err: `menu expand parse error: invalid array entry : ${raw}`,
-                }
-            }
-            return { decodeError: false, value: json }
         }
     }
 }
