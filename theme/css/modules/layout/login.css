@@ -2,18 +2,17 @@
     background-color: var(--color-white);
 }
 
-.loginBox__header {
+.loginBox__logo {
     background-color: var(--color-base);
     color: var(--color-white);
-
     padding: 0.5rem;
 }
 
-.loginBox__header__brand {
+.loginBox__logo__brand {
     font-size: var(--font-size-large);
 }
 
-.loginBox__header__title {
+.loginBox__logo__title {
     font-size: var(--font-size-xx-large);
 }
 
@@ -46,9 +45,9 @@
         margin-top: 10vh;
     }
 
-    .loginBox__header__brand,
-    .loginBox__header__title,
-    .loginBox__header__subTitle {
+    .loginBox__logo__brand,
+    .loginBox__logo__title,
+    .loginBox__logo__subTitle {
         display: block;
     }
 }
@@ -58,13 +57,13 @@
         border-bottom: 1px dotted var(--color-black);
     }
 
-    .loginBox__header__brand,
-    .loginBox__header__title {
+    .loginBox__logo__brand,
+    .loginBox__logo__title {
         display: inline-block;
         margin-right: 0.5rem;
     }
 
-    .loginBox__header__subTitle {
+    .loginBox__logo__subTitle {
         display: block;
     }
 
