@@ -8,6 +8,7 @@
 
 @import "./modules/layout/layout.css";
 @import "./modules/layout/login.css";
+@import "./modules/layout/app/app.css";
 @import "./modules/layout/app/main.css";
 @import "./modules/layout/app/menu.css";
 @import "./modules/layout/app/sidebar.css";

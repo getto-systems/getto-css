@@ -10,9 +10,11 @@ import {
 } from "../../../z_vendor/getto-css/preact/layout/app"
 
 import { useTerminate } from "../../common/hooks"
+import { copyright, siteInfo } from "../../common/site"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
-import { MainMenu } from "../../Outline/Menu/MainMenu"
+import { GlobalInfo } from "../../Outline/GlobalInfo"
+import { MenuList } from "../../Outline/MenuList"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
 import { HowToUse } from "./HowToUse"
 
@@ -38,10 +40,13 @@ export function Dashboard({ dashboard: { resource, terminate } }: Props): VNode 
     }, [])
 
     return appLayout({
+        siteInfo: siteInfo(),
+        header: [h(GlobalInfo, resource)],
         main: appMain({
             header: mainHeader([mainTitle("ホーム"), h(BreadcrumbList, resource)]),
             body: mainBody(h(HowToUse, resource)),
+            copyright: copyright(),
         }),
-        menu: MainMenu(resource),
+        menu: h(MenuList, resource),
     })
 }

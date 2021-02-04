@@ -2,30 +2,14 @@
     background-color: var(--color-black-off);
 }
 
-.menu__header {
-    background-color: var(--color-base);
-    color: var(--color-white);
-
-    padding: 0.5rem;
-}
-
-.menu__brand {
-    font-size: var(--font-size-large);
-}
-
-.menu__title {
-    font-size: var(--font-size-xx-large);
-}
-
 .menu__box {
     padding: 0.5rem;
-
-    border-bottom: 1px dotted var(--color-black);
-
     background-color: var(--color-white);
+    border-bottom: 1px dotted var(--color-black);
 }
 
 .menu__body {
+    background-color: var(--color-black-off);
     padding-right: 0.5rem;
     padding-left: 0.5rem;
 }
@@ -94,28 +78,22 @@
 }
 
 .menu__footer {
+    background-color: var(--color-black-off);
     border-top: 1px dotted var(--color-black);
-
-    padding-top: var(--content-vertical-space-tiny);
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-
-    margin-bottom: var(--content-vertical-space-tiny);
+    padding: var(--content-vertical-space-small) 0.5rem;
 }
 
 .menu__footer__message {
-    text-align: right;
     font-size: var(--font-size-small);
 }
 
 @media (--media-desktop) {
     .menu {
-        width: var(--width-menu);
-        position: fixed;
-        left: 0;
+        flex-shrink: 0;
+        position: sticky;
         top: 0;
-        bottom: 0;
-
+        width: var(--width-menu);
+        height: 100vh;
         overflow-y: auto;
 
         border-right: 1px dotted var(--color-black);
@@ -128,29 +106,9 @@
         flex-grow: 1;
         overflow-y: auto;
     }
-
-    .menu__brand,
-    .menu__title,
-    .menu__subTitle {
-        display: block;
-    }
 }
 
 @media (--media-mobile) {
-    .menu__header {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-    }
-
-    .menu__brand,
-    .menu__title,
-    .menu__subTitle {
-        display: inline-block;
-        margin-right: 0.5rem;
-    }
-
     .menu__box {
         border-top: 1px dotted var(--color-black);
     }
@@ -187,29 +145,12 @@
 }
 
 @media (--media-shallow) {
-    .menu__header {
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-    .menu__subTitle {
-        display: block;
-    }
-
     .menu__nav {
         margin-right: 0;
     }
 }
 
 @media (--media-sidebar-enabled) and (--media-mobile) {
-    .layout__app__sidebar_single .menu__header {
-        right: var(--width-sidebar-single);
-    }
-
-    .layout__app__sidebar_double .menu__header {
-        right: var(--width-sidebar-double);
-    }
-
     .layout__app__sidebar_single .menu__body {
         margin-right: var(--width-sidebar-single);
     }

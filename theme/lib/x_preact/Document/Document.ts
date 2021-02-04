@@ -4,9 +4,10 @@ import { useErrorBoundary } from "preact/hooks"
 import { appLayout } from "../../z_vendor/getto-css/preact/layout/app"
 
 import { useTerminate } from "../common/hooks"
+import { siteInfo } from "../common/site"
 
 import { ApplicationError } from "../common/System/ApplicationError"
-import { DocumentMenu } from "../Outline/Menu/DocumentMenu"
+import { MenuList } from "../Outline/MenuList"
 import { Content } from "./Content"
 
 import { DocumentEntryPoint } from "../../document/Document/Document/entryPoint"
@@ -27,7 +28,9 @@ export function Document({ document: { resource, terminate } }: Props): VNode {
     useTerminate(terminate)
 
     return appLayout({
+        siteInfo: siteInfo(),
+        header: [],
         main: h(Content, resource),
-        menu: DocumentMenu(resource),
+        menu: h(MenuList, resource),
     })
 }

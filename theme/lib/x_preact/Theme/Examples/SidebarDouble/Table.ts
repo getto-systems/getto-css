@@ -9,7 +9,6 @@ import { tableStructure } from "../../../../z_vendor/getto-table/preact/cell/str
 import { tableCell } from "../../../../z_vendor/getto-table/preact/cell/simple"
 import { tableAlign, tableClassName } from "../../../../z_vendor/getto-table/preact/decorator"
 
-import { sidebarLargeElement } from "../../../../z_vendor/getto-css/preact/layout/app"
 import {
     linky,
     table,
@@ -48,16 +47,14 @@ export function Table(_: Props): VNode {
         header: structure.header(params),
     }
 
-    return sidebarLargeElement(
-        table(content.sticky, [
-            thead(tableHeader(content)),
-            tbody(
-                model.rows.flatMap((row) =>
-                    tableColumn({ ...content, column: structure.column(params, row) })
-                )
-            ),
-        ])
-    )
+    return table(content.sticky, [
+        thead(tableHeader(content)),
+        tbody(
+            model.rows.flatMap((row) =>
+                tableColumn({ ...content, column: structure.column(params, row) })
+            )
+        ),
+    ])
 }
 
 type Model = Readonly<{
