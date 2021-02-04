@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## Version : 2.24.0
+
+- fix: layout : See merge request getto-systems-base/projects/css!426
+- fix: login box : See merge request getto-systems-base/projects/css!425
+- fix: gitlab ci : See merge request getto-systems-base/projects/css!424
+- fix: menu nav : See merge request getto-systems-base/projects/css!423
+- remove: credential : See merge request getto-systems-base/projects/css!422
+- separate: menu expand converter : See merge request getto-systems-base/projects/css!421
+- fix: storage : See merge request getto-systems-base/projects/css!420
+- rename: z_vendor : See merge request getto-systems-base/projects/css!419
+- fix: menu children list item tag : See merge request getto-systems-base/projects/css!418
+- refactor: component : See merge request getto-systems-base/projects/css!417
+- upgrade: storybook : See merge request getto-systems-base/projects/css!416
+- add: form : See merge request getto-systems-base/projects/css!415
+- fix: menu : See merge request getto-systems-base/projects/css!414
+- fix: content : See merge request getto-systems-base/projects/css!413
+- fix: login layout content : See merge request getto-systems-base/projects/css!412
+- fix: button : See merge request getto-systems-base/projects/css!411
+
+
 ## Version : 2.23.0
 
 - rename: field : See merge request getto-systems-base/projects/css!409
