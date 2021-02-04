@@ -13,10 +13,8 @@ import { MenuAction } from "../../../permission/menu/action"
 import { markApiNonce, markApiRoles } from "../../../common/credential/data"
 import { initNoopMenuBadgeClient } from "../../../permission/menu/impl/remote/menuBadge/noop"
 import { MenuBadgeClient, MenuTree } from "../../../permission/menu/infra"
-import {
-    initMenuExpandConverter,
-    initMenuExpandRepository,
-} from "../../../permission/menu/impl/repository/menuExpand"
+import { initMenuExpandRepository } from "../../../permission/menu/impl/repository/menuExpand"
+import { initMenuExpandConverter } from "../../../permission/menu/impl/repository/converter"
 import { initWebTypedStorage } from "../../../../z_infra/storage/webStorage"
 
 export function initCredentialAction(): CredentialAction {
