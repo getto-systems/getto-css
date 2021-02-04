@@ -1,8 +1,7 @@
 image: node:15.5.1-buster
 
 stages:
-  - test_css
-  - test_lib
+  - test
   - bump_version
   - release
   - release_deploy
@@ -14,7 +13,7 @@ variables:
   TRELLIS_PSYCHER_GETTO: https://trellis.getto.systems/psycher/getto/2.7.2
 
 test_css:
-  stage: test_css
+  stage: test
   only:
     refs:
       - merge_requests
@@ -28,7 +27,7 @@ test_css:
     - npm run test:css
 
 test_lib:
-  stage: test_lib
+  stage: test
   only:
     refs:
       - merge_requests

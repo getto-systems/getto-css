@@ -291,6 +291,10 @@
     top: calc(calc(var(--table-header-height) * 4) + 15px);
 }
 
+.cell_sticky_left {
+    left: 0;
+}
+
 .cell_sticky_cross {
     z-index: 2;
 }
@@ -298,16 +302,4 @@
 .row_hover:hover td,
 .row_hover tr:hover td {
     background-color: var(--color-base-off);
-}
-
-@media (--media-desktop) {
-    .cell_sticky_left {
-        left: var(--width-menu);
-    }
-}
-
-@media (--media-mobile) {
-    .cell_sticky_left {
-        left: 0;
-    }
 }

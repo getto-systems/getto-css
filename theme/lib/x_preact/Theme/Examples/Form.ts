@@ -10,9 +10,11 @@ import {
 } from "../../../z_vendor/getto-css/preact/layout/app"
 
 import { useTerminate } from "../../common/hooks"
+import { copyright, siteInfo } from "../../common/site"
 
 import { ApplicationError } from "../../common/System/ApplicationError"
-import { MainMenu } from "../../Outline/Menu/MainMenu"
+import { GlobalInfo } from "../../Outline/GlobalInfo"
+import { MenuList } from "../../Outline/MenuList"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
 import { Container } from "./Form/Container"
 
@@ -38,11 +40,14 @@ export function Form({ example: { resource, terminate } }: Props): VNode {
     }, [])
 
     return appLayout({
+        siteInfo: siteInfo(),
+        header: [h(GlobalInfo, resource)],
         main: appMain({
             header: mainHeader([mainTitle("Form"), h(BreadcrumbList, resource)]),
             body: mainBody(h(Container, NO_PROPS)),
+            copyright: copyright(),
         }),
-        menu: MainMenu(resource),
+        menu: h(MenuList, resource),
     })
 }
 

@@ -13,6 +13,7 @@ import { ContentComponent, initialContentState } from "../../document/Document/c
 import { BreadcrumbListComponent } from "../../auth/Outline/breadcrumbList/component"
 
 import { ContentPath } from "../../document/content/data"
+import { copyright } from "../common/site"
 
 type Props = Readonly<{
     content: ContentComponent
@@ -48,6 +49,7 @@ export function Content(resource: Props): VNode {
             return appMain({
                 header: mainHeader([mainTitle(documentTitle(state.path)), h(BreadcrumbList, resource)]),
                 body: mainBody(loadContentState.content),
+                copyright: copyright(),
             })
     }
 }
