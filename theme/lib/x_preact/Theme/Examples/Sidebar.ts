@@ -19,7 +19,7 @@ import { MainMenu } from "../../Outline/Menu/MainMenu"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
 import { Container } from "./Sidebar/Container"
 
-import { ExampleEntryPoint } from "../../../theme/Example/view"
+import { ExampleEntryPoint } from "../../../theme/Example/entryPoint"
 import { Table } from "./Sidebar/Sidebar/Table"
 import { Pager } from "./Sidebar/Sidebar/Pager"
 

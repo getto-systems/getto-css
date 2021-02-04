@@ -9,11 +9,11 @@ import { initMenuListComponent } from "../../../../auth/Outline/menuList/impl"
 import { initBreadcrumbListComponent } from "../../../../auth/Outline/breadcrumbList/impl"
 import { initContentComponent } from "../../content/impl"
 
-import { initCredentialAction, initDocumentMenuAction } from "../../../../auth/Outline/Menu/main/core"
+import { initDocumentMenuAction } from "../../../../auth/Outline/Menu/main/core"
 
 import { loadContent } from "../../../content/impl/core"
 
-import { DocumentEntryPoint } from "../view"
+import { DocumentEntryPoint } from "../entryPoint"
 
 import { ContentAction } from "../../../content/action"
 
@@ -23,7 +23,6 @@ export function newDocumentAsSingle(): DocumentEntryPoint {
 
     const factory: DocumentFactory = {
         actions: {
-            credential: initCredentialAction(),
             menu: initDocumentMenuAction(menuExpandStorage),
             content: initContentAction(),
         },

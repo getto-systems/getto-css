@@ -1,17 +1,15 @@
-import { DashboardResource } from "../view"
+import { DashboardResource } from "../entryPoint"
 
 import { MenuListComponentFactory } from "../../../../auth/Outline/menuList/component"
 import { BreadcrumbListComponentFactory } from "../../../../auth/Outline/breadcrumbList/component"
 
 import { HowToUseComponentFactory } from "../../howToUse/component"
 
-import { CredentialAction } from "../../../../auth/common/credential/action"
 import { MenuAction, MenuTargetCollector } from "../../../../auth/permission/menu/action"
 import { AllVersionsAction } from "../../../allVersions/action"
 
 export type DashboardFactory = Readonly<{
     actions: Readonly<{
-        credential: CredentialAction
         menu: MenuAction
         allVersions: AllVersionsAction
     }>
@@ -30,9 +28,6 @@ export function initDashboardResource(
     collector: DashboardCollector
 ): DashboardResource {
     const actions = {
-        loadApiNonce: factory.actions.credential.loadApiNonce(),
-        loadApiRoles: factory.actions.credential.loadApiRoles(),
-
         find: factory.actions.allVersions.find(),
 
         loadBreadcrumb: factory.actions.menu.loadBreadcrumb(collector.menu),

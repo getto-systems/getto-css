@@ -16,7 +16,7 @@ import { MainMenu } from "../../Outline/Menu/MainMenu"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
 import { Container } from "./Highlight/Container"
 
-import { ExampleEntryPoint } from "../../../theme/Example/view"
+import { ExampleEntryPoint } from "../../../theme/Example/entryPoint"
 
 type Props = Readonly<{
     example: ExampleEntryPoint

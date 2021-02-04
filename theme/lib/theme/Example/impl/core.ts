@@ -1,14 +1,12 @@
-import { ExampleResource } from "../view"
+import { ExampleResource } from "../entryPoint"
 
 import { MenuListComponentFactory } from "../../../auth/Outline/menuList/component"
 import { BreadcrumbListComponentFactory } from "../../../auth/Outline/breadcrumbList/component"
 
-import { CredentialAction } from "../../../auth/common/credential/action"
 import { MenuAction, MenuTargetCollector } from "../../../auth/permission/menu/action"
 
 export type ExampleFactory = Readonly<{
     actions: Readonly<{
-        credential: CredentialAction
         menu: MenuAction
     }>
     components: Readonly<{
@@ -24,9 +22,6 @@ export function initExampleResource(
     collector: ExampleCollector
 ): ExampleResource {
     const actions = {
-        loadApiNonce: factory.actions.credential.loadApiNonce(),
-        loadApiRoles: factory.actions.credential.loadApiRoles(),
-
         loadBreadcrumb: factory.actions.menu.loadBreadcrumb(collector.menu),
         loadMenu: factory.actions.menu.loadMenu(collector.menu),
         toggleMenuExpand: factory.actions.menu.toggleMenuExpand(),

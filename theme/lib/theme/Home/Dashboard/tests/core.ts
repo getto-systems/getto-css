@@ -1,4 +1,4 @@
-import { initCredentialAction, initMenuAction } from "../../../../auth/Outline/Menu/tests/core"
+import { initMenuAction } from "../../../../auth/Outline/Menu/tests/core"
 
 import { detectMenuTarget } from "../../../../auth/Outline/Menu/impl/location"
 import { MenuBadgeSimulator } from "../../../../auth/permission/menu/impl/remote/menuBadge/simulate"
@@ -13,11 +13,10 @@ import { initBreadcrumbListComponent } from "../../../../auth/Outline/breadcrumb
 import { initMenuListComponent } from "../../../../auth/Outline/menuList/impl"
 import { initHowToUseComponent } from "../../howToUse/impl"
 
-import { ApiCredentialRepository } from "../../../../auth/common/credential/infra"
 import { MenuExpandRepository, MenuTree } from "../../../../auth/permission/menu/infra"
 import { AllVersionsActionConfig } from "../../../allVersions/infra"
 
-import { DashboardResource } from "../view"
+import { DashboardResource } from "../entryPoint"
 
 import { AllVersionsAction } from "../../../allVersions/action"
 
@@ -25,7 +24,6 @@ export type DashboardConfig = Readonly<{
     allVersions: AllVersionsActionConfig
 }>
 export type DashboardRepository = Readonly<{
-    apiCredentials: ApiCredentialRepository
     menuExpands: MenuExpandRepository
 }>
 export type DashboardSimulator = Readonly<{
@@ -42,7 +40,6 @@ export function newDashboardResource(
 ): DashboardResource {
     const factory: DashboardFactory = {
         actions: {
-            credential: initCredentialAction(repository.apiCredentials),
             menu: initMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
             allVersions: initAllVersionsAction(version, config.allVersions, simulator.find),
         },

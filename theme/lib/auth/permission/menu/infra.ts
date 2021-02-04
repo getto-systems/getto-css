@@ -1,4 +1,3 @@
-import { ApiNonce } from "../../common/credential/data"
 import { MenuCategoryPath } from "./data"
 
 export type LoadBreadcrumbInfra = Readonly<{
@@ -98,7 +97,7 @@ export type MenuExpandError = Readonly<{ type: "infra-error"; err: string }>
 export type ToggleExpandError = Readonly<{ type: "infra-error"; err: string }>
 
 export interface MenuBadgeClient {
-    getBadge(apiNonce: ApiNonce): Promise<MenuBadgeResponse>
+    getBadge(): Promise<MenuBadgeResponse>
 }
 
 export type MenuBadgeResponse =
