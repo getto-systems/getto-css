@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.24.1
+
+- fix: menu : See merge request getto-systems-base/projects/css!428
+
+
 ## Version : 2.24.0
 
 - fix: layout : See merge request getto-systems-base/projects/css!426
