@@ -1,18 +1,16 @@
-import { DocumentResource } from "../view"
+import { DocumentResource } from "../entryPoint"
 
 import { MenuListComponentFactory } from "../../../../auth/Outline/menuList/component"
 import { BreadcrumbListComponentFactory } from "../../../../auth/Outline/breadcrumbList/component"
 
 import { ContentComponentFactory } from "../../content/component"
 
-import { CredentialAction } from "../../../../auth/common/credential/action"
 import { MenuAction, MenuTargetCollector } from "../../../../auth/permission/menu/action"
 
 import { ContentAction, LoadContentCollector } from "../../../content/action"
 
 export type DocumentFactory = Readonly<{
     actions: Readonly<{
-        credential: CredentialAction
         menu: MenuAction
         content: ContentAction
     }>
@@ -32,9 +30,6 @@ export function initDocumentResource(
     collector: DocumentCollector
 ): DocumentResource {
     const actions = {
-        loadApiNonce: factory.actions.credential.loadApiNonce(),
-        loadApiRoles: factory.actions.credential.loadApiRoles(),
-
         loadBreadcrumb: factory.actions.menu.loadBreadcrumb(collector.menu),
         loadMenu: factory.actions.menu.loadMenu(collector.menu),
         toggleMenuExpand: factory.actions.menu.toggleMenuExpand(),

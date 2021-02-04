@@ -3,7 +3,7 @@ import { MockComponent } from "../../sub/getto-example/application/mock"
 import { initBreadcrumbListComponent } from "../../auth/Outline/breadcrumbList/mock"
 import { initMenuListComponent } from "../../auth/Outline/menuList/mock"
 
-import { ExampleEntryPoint } from "./view"
+import { ExampleEntryPoint } from "./entryPoint"
 
 import { BreadcrumbListState, initialBreadcrumbListState } from "../../auth/Outline/breadcrumbList/component"
 import { initialMenuListState, MenuListState } from "../../auth/Outline/menuList/component"

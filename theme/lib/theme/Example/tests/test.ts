@@ -2,11 +2,8 @@ import { initMenuExpandTestStorage } from "../../../auth/Outline/Menu/tests/core
 import { ExampleRepository, ExampleSimulator, newExampleResource } from "./core"
 
 import { initMenuExpandRepository } from "../../../auth/permission/menu/impl/repository/menuExpand"
-import { initMemoryApiCredentialRepository } from "../../../auth/common/credential/impl/repository/apiCredential/memory"
 
 import { MenuBadge, MenuTree } from "../../../auth/permission/menu/infra"
-
-import { ApiNonce, markApiNonce, markApiRoles } from "../../../auth/common/credential/data"
 
 describe("Example", () => {
     test("load", (done) => {
@@ -41,10 +38,6 @@ function standardMenuTree(): MenuTree {
 
 function standardRepository(): ExampleRepository {
     return {
-        apiCredentials: initMemoryApiCredentialRepository(
-            markApiNonce("api-nonce"),
-            markApiRoles(["admin"])
-        ),
         menuExpands: initMenuExpandRepository(initMenuExpandTestStorage({ menuExpand: { set: false } })),
     }
 }
@@ -57,7 +50,7 @@ function standardSimulator(): ExampleSimulator {
 
 function menuBadgeSimulator() {
     return {
-        getMenuBadge: async (_apiNonce: ApiNonce): Promise<MenuBadge> => {
+        getMenuBadge: async (): Promise<MenuBadge> => {
             return {}
         },
     }

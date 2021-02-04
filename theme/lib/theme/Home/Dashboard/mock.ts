@@ -4,7 +4,7 @@ import { initBreadcrumbListComponent } from "../../../auth/Outline/breadcrumbLis
 import { initMenuListComponent } from "../../../auth/Outline/menuList/mock"
 import { initHowToUseComponent } from "../howToUse/mock"
 
-import { DashboardEntryPoint } from "./view"
+import { DashboardEntryPoint } from "./entryPoint"
 
 import { BreadcrumbListState, initialBreadcrumbListState } from "../../../auth/Outline/breadcrumbList/component"
 import { initialMenuListState, MenuListState } from "../../../auth/Outline/menuList/component"

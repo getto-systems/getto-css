@@ -13,9 +13,6 @@ import {
 
 import { LoadBreadcrumbPod, LoadMenuPod, ToggleMenuExpandPod } from "../action"
 
-import { LoadResult } from "../../../common/credential/event"
-
-import { ApiRoles } from "../../../common/credential/data"
 import {
     Breadcrumb,
     BreadcrumbNode,
@@ -89,16 +86,11 @@ function toBreadcrumb({ menuTree, menuTarget }: BreadcrumbInfo): Breadcrumb {
     }
 }
 
-export const loadMenu = (infra: LoadMenuInfra): LoadMenuPod => (collector) => async (
-    nonce,
-    roles,
-    post
-) => {
+export const loadMenu = (infra: LoadMenuInfra): LoadMenuPod => (collector) => async (post) => {
     const { menuTree, menuExpands, menuBadge } = infra
 
     const info: MenuInfo = {
         menuTree: menuTree,
-        roles,
         menuTarget: collector.getMenuTarget(),
     }
 
@@ -119,24 +111,7 @@ export const loadMenu = (infra: LoadMenuInfra): LoadMenuPod => (collector) => as
         menu: toMenu(info, menuExpandResponse.menuExpand, EMPTY_BADGE),
     })
 
-    if (!nonce.success) {
-        post({
-            type: "failed-to-load",
-            menu: toMenu(info, menuExpandResponse.menuExpand, EMPTY_BADGE),
-            err: nonce.err,
-        })
-        return
-    }
-    if (!nonce.found) {
-        post({
-            type: "failed-to-load",
-            menu: toMenu(info, menuExpandResponse.menuExpand, EMPTY_BADGE),
-            err: { type: "empty-nonce" },
-        })
-        return
-    }
-
-    const menuBadgeResponse = await menuBadge.getBadge(nonce.content)
+    const menuBadgeResponse = await menuBadge.getBadge()
     if (!menuBadgeResponse.success) {
         post({
             type: "failed-to-load",
@@ -154,15 +129,10 @@ export const loadMenu = (infra: LoadMenuInfra): LoadMenuPod => (collector) => as
 
 type MenuInfo = Readonly<{
     menuTree: MenuTree
-    roles: LoadResult<ApiRoles>
     menuTarget: MenuTarget
 }>
 
-function toMenu(
-    { menuTree, menuTarget, roles }: MenuInfo,
-    menuExpand: MenuExpand,
-    menuBadge: MenuBadge
-): Menu {
+function toMenu({ menuTree, menuTarget }: MenuInfo, menuExpand: MenuExpand, menuBadge: MenuBadge): Menu {
     const menuExpandSet = new MenuCategoryPathSet()
     menuExpandSet.init(menuExpand)
 
@@ -187,10 +157,6 @@ function toMenu(
         menuTree: MenuTree,
         path: MenuCategoryPath
     ): MenuNode[] {
-        if (!isAllow()) {
-            return EMPTY_MENU
-        }
-
         const children = menuTreeToMenu(menuTree, path)
         if (children.length === 0) {
             return EMPTY_MENU
@@ -209,19 +175,6 @@ function toMenu(
             },
         ]
 
-        function isAllow(): boolean {
-            switch (category.permission.type) {
-                case "any":
-                    return true
-                case "role":
-                    if (!roles.success || !roles.found) {
-                        return false
-                    }
-                    return category.permission.roles.some((role) => {
-                        return roles.content.includes(role)
-                    })
-            }
-        }
         function hasActive(node: MenuNode): boolean {
             switch (node.type) {
                 case "category":

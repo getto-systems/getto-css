@@ -9,7 +9,7 @@ import { ApplicationError } from "../common/System/ApplicationError"
 import { DocumentMenu } from "../Outline/Menu/DocumentMenu"
 import { Content } from "./Content"
 
-import { DocumentEntryPoint } from "../../document/Document/Document/view"
+import { DocumentEntryPoint } from "../../document/Document/Document/entryPoint"
 
 type Props = {
     document: DocumentEntryPoint

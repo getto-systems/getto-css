@@ -7,13 +7,11 @@ import {
 } from "../../Dashboard/tests/core"
 
 import { initMenuExpandRepository } from "../../../../auth/permission/menu/impl/repository/menuExpand"
-import { initMemoryApiCredentialRepository } from "../../../../auth/common/credential/impl/repository/apiCredential/memory"
 
 import { MenuBadge, MenuTree } from "../../../../auth/permission/menu/infra"
 
 import { HowToUseState } from "../component"
 
-import { ApiNonce, markApiNonce, markApiRoles } from "../../../../auth/common/credential/data"
 import { wait } from "../../../../z_infra/delayed/core"
 
 describe("HowToUse", () => {
@@ -212,10 +210,6 @@ function standardConfig(): DashboardConfig {
 
 function standardRepository(): DashboardRepository {
     return {
-        apiCredentials: initMemoryApiCredentialRepository(
-            markApiNonce("api-nonce"),
-            markApiRoles(["admin"])
-        ),
         menuExpands: initMenuExpandRepository(initMenuExpandTestStorage({ menuExpand: { set: false } })),
     }
 }
@@ -255,7 +249,7 @@ function waitSimulator(): DashboardSimulator {
 
 function menuBadgeSimulator() {
     return {
-        getMenuBadge: async (_apiNonce: ApiNonce): Promise<MenuBadge> => {
+        getMenuBadge: async (): Promise<MenuBadge> => {
             return {}
         },
     }

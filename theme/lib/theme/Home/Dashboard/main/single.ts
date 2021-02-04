@@ -12,11 +12,11 @@ import { initMenuListComponent } from "../../../../auth/Outline/menuList/impl"
 import { initBreadcrumbListComponent } from "../../../../auth/Outline/breadcrumbList/impl"
 import { initHowToUseComponent } from "../../howToUse/impl"
 
-import { initCredentialAction, initMainMenuAction } from "../../../../auth/Outline/Menu/main/core"
+import { initMainMenuAction } from "../../../../auth/Outline/Menu/main/core"
 
 import { find } from "../../../allVersions/impl/core"
 
-import { DashboardEntryPoint } from "../view"
+import { DashboardEntryPoint } from "../entryPoint"
 
 export function newDashboardAsSingle(): DashboardEntryPoint {
     const menuExpandStorage = localStorage
@@ -24,7 +24,6 @@ export function newDashboardAsSingle(): DashboardEntryPoint {
 
     const factory: DashboardFactory = {
         actions: {
-            credential: initCredentialAction(),
             menu: initMainMenuAction(menuExpandStorage),
             allVersions: initAllVersionsAction(),
         },

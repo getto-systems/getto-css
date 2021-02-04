@@ -1,4 +1,4 @@
-import { initCredentialAction, initMenuAction } from "../../../auth/Outline/Menu/tests/core"
+import { initMenuAction } from "../../../auth/Outline/Menu/tests/core"
 
 import { detectMenuTarget } from "../../../auth/Outline/Menu/impl/location"
 import { MenuBadgeSimulator } from "../../../auth/permission/menu/impl/remote/menuBadge/simulate"
@@ -8,13 +8,11 @@ import { ExampleCollector, ExampleFactory, initExampleResource } from "../impl/c
 import { initBreadcrumbListComponent } from "../../../auth/Outline/breadcrumbList/impl"
 import { initMenuListComponent } from "../../../auth/Outline/menuList/impl"
 
-import { ApiCredentialRepository } from "../../../auth/common/credential/infra"
 import { MenuExpandRepository, MenuTree } from "../../../auth/permission/menu/infra"
 
-import { ExampleResource } from "../view"
+import { ExampleResource } from "../entryPoint"
 
 export type ExampleRepository = Readonly<{
-    apiCredentials: ApiCredentialRepository
     menuExpands: MenuExpandRepository
 }>
 export type ExampleSimulator = Readonly<{
@@ -29,7 +27,6 @@ export function newExampleResource(
 ): ExampleResource {
     const factory: ExampleFactory = {
         actions: {
-            credential: initCredentialAction(repository.apiCredentials),
             menu: initMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
         },
         components: {

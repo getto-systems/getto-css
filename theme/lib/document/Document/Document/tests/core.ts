@@ -1,4 +1,4 @@
-import { initCredentialAction, initMenuAction,  } from "../../../../auth/Outline/Menu/tests/core"
+import { initMenuAction } from "../../../../auth/Outline/Menu/tests/core"
 
 import { detectMenuTarget } from "../../../../auth/Outline/Menu/impl/location"
 import { MenuBadgeSimulator } from "../../../../auth/permission/menu/impl/remote/menuBadge/simulate"
@@ -9,16 +9,14 @@ import { initBreadcrumbListComponent } from "../../../../auth/Outline/breadcrumb
 import { initMenuListComponent } from "../../../../auth/Outline/menuList/impl"
 import { initContentComponent } from "../../content/impl"
 
-import { ApiCredentialRepository } from "../../../../auth/common/credential/infra"
 import { MenuExpandRepository, MenuTree } from "../../../../auth/permission/menu/infra"
 
-import { DocumentResource } from "../view"
+import { DocumentResource } from "../entryPoint"
 import { ContentAction } from "../../../content/action"
 import { loadContent } from "../../../content/impl/core"
 import { detectContentPath } from "../impl/location"
 
 export type DocumentRepository = Readonly<{
-    apiCredentials: ApiCredentialRepository
     menuExpands: MenuExpandRepository
 }>
 export type DocumentSimulator = Readonly<{
@@ -33,7 +31,6 @@ export function newDocumentResource(
 ): DocumentResource {
     const factory: DocumentFactory = {
         actions: {
-            credential: initCredentialAction(repository.apiCredentials),
             menu: initMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
             content: initContentAction(),
         },

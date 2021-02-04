@@ -16,7 +16,7 @@ import { MainMenu } from "../../Outline/Menu/MainMenu"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
 import { HowToUse } from "./HowToUse"
 
-import { DashboardEntryPoint } from "../../../theme/Home/Dashboard/view"
+import { DashboardEntryPoint } from "../../../theme/Home/Dashboard/entryPoint"
 
 type Props = Readonly<{
     dashboard: DashboardEntryPoint

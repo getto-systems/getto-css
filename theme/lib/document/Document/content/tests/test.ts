@@ -2,11 +2,9 @@ import { initMenuExpandTestStorage } from "../../../../auth/Outline/Menu/tests/c
 import { DocumentRepository, DocumentSimulator, newDocumentResource } from "../../Document/tests/core"
 
 import { initMenuExpandRepository } from "../../../../auth/permission/menu/impl/repository/menuExpand"
-import { initMemoryApiCredentialRepository } from "../../../../auth/common/credential/impl/repository/apiCredential/memory"
 
 import { MenuBadge, MenuTree } from "../../../../auth/permission/menu/infra"
 
-import { ApiNonce, markApiNonce, markApiRoles } from "../../../../auth/common/credential/data"
 import { ContentState } from "../component"
 
 describe("Content", () => {
@@ -65,10 +63,6 @@ function standardMenuTree(): MenuTree {
 
 function standardRepository(): DocumentRepository {
     return {
-        apiCredentials: initMemoryApiCredentialRepository(
-            markApiNonce("api-nonce"),
-            markApiRoles(["admin"])
-        ),
         menuExpands: initMenuExpandRepository(initMenuExpandTestStorage({ menuExpand: { set: false } })),
     }
 }
@@ -76,7 +70,7 @@ function standardRepository(): DocumentRepository {
 function standardSimulator(): DocumentSimulator {
     return {
         menuBadge: {
-            getMenuBadge: async (_apiNonce: ApiNonce): Promise<MenuBadge> => {
+            getMenuBadge: async (): Promise<MenuBadge> => {
                 return {}
             },
         },

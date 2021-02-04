@@ -7,9 +7,9 @@ import { detectMenuTarget } from "../../../auth/Outline/Menu/impl/location"
 import { initMenuListComponent } from "../../../auth/Outline/menuList/impl"
 import { initBreadcrumbListComponent } from "../../../auth/Outline/breadcrumbList/impl"
 
-import { initCredentialAction, initMainMenuAction } from "../../../auth/Outline/Menu/main/core"
+import { initMainMenuAction } from "../../../auth/Outline/Menu/main/core"
 
-import { ExampleEntryPoint } from "../view"
+import { ExampleEntryPoint } from "../entryPoint"
 
 export function newExampleAsSingle(): ExampleEntryPoint {
     const menuExpandStorage = localStorage
@@ -17,7 +17,6 @@ export function newExampleAsSingle(): ExampleEntryPoint {
 
     const factory: ExampleFactory = {
         actions: {
-            credential: initCredentialAction(),
             menu: initMainMenuAction(menuExpandStorage),
         },
         components: {
@@ -32,7 +31,7 @@ export function newExampleAsSingle(): ExampleEntryPoint {
     }
     const resource = initExampleResource(factory, collector)
     return {
-        resource ,
+        resource,
         terminate: () => {
             resource.menuList.terminate()
             resource.breadcrumbList.terminate()
