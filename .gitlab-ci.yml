@@ -1,7 +1,8 @@
 image: node:15.5.1-buster
 
 stages:
-  - test
+  - test_css
+  - test_lib
   - bump_version
   - release
   - release_deploy
@@ -12,8 +13,22 @@ variables:
   TRELLIS_CI_BUMP_VERSION: https://trellis.getto.systems/ci/bump-version/1.10.2
   TRELLIS_PSYCHER_GETTO: https://trellis.getto.systems/psycher/getto/2.7.2
 
-test:
-  stage: test
+test_css:
+  stage: test_css
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - theme/css/**/*.css
+      - package-lock.json
+
+  before_script:
+    - npm clean-install
+  script:
+    - npm run test:css
+
+test_lib:
+  stage: test_lib
   only:
     refs:
       - merge_requests
@@ -24,7 +39,7 @@ test:
   before_script:
     - npm clean-install
   script:
-    - npm test
+    - npm run test:lib
 
 
 bump_version:
