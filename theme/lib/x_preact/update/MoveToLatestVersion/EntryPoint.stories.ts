@@ -7,7 +7,7 @@ import { initMockPropsPasser } from "../../../sub/getto-example/x_components/App
 import { newMockMoveToNextVersion } from "../../../update/x_components/MoveToNextVersion/EntryPoint/mock"
 import { NextVersionMockProps } from "../../../update/x_components/MoveToNextVersion/nextVersion/mock"
 
-import "../../../css/getto.css"
+import "../../../../css/getto.css"
 
 export default {
     title: "Update/MoveToNextVersion",

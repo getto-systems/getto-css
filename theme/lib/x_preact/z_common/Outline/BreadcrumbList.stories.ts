@@ -10,7 +10,7 @@ import {
     initMockBreadcrumbListComponent,
 } from "../../../auth/x_components/Outline/breadcrumbList/mock"
 
-import "../../../css/getto.css"
+import "../../../../css/getto.css"
 
 export default {
     title: "Outline/BreadcrumbList",

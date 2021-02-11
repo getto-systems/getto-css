@@ -17,7 +17,7 @@ import { MenuList } from "./MenuList"
 import { initMockPropsPasser } from "../../../sub/getto-example/x_components/Application/mock"
 import { MenuListMockProps, initMockMenuListComponent } from "../../../auth/x_components/Outline/menuList/mock"
 
-import "../../../css/getto.css"
+import "../../../../css/getto.css"
 
 export default {
     title: "Outline/MenuList",
