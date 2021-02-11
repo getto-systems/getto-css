@@ -1,4 +1,4 @@
-import { initMenuExpandTestStorage, MenuRepository, MenuSimulator, newMenuResource } from "./core"
+import { initTestMenuExpandTestStorage, MenuRepository, MenuSimulator, newTestMenuResource } from "./core"
 
 import { initMenuExpandRepository } from "../../../../permission/menu/impl/repository/menuExpand"
 
@@ -805,7 +805,7 @@ function standardMenuResource() {
     const menuTree = standardMenuTree()
     const repository = standardRepository()
     const simulator = standardSimulator()
-    const resource = newMenuResource(version, url, menuTree, repository, simulator)
+    const resource = newTestMenuResource(version, url, menuTree, repository, simulator)
 
     return { repository, resource }
 }
@@ -815,7 +815,7 @@ function unknownMenuResource() {
     const menuTree = standardMenuTree()
     const repository = standardRepository()
     const simulator = standardSimulator()
-    const resource = newMenuResource(version, url, menuTree, repository, simulator)
+    const resource = newTestMenuResource(version, url, menuTree, repository, simulator)
 
     return { resource }
 }
@@ -825,7 +825,7 @@ function expandMenuResource() {
     const menuTree = standardMenuTree()
     const repository = expandRepository()
     const simulator = standardSimulator()
-    const resource = newMenuResource(version, url, menuTree, repository, simulator)
+    const resource = newTestMenuResource(version, url, menuTree, repository, simulator)
 
     return { resource }
 }
@@ -877,7 +877,7 @@ function standardMenuTree(): MenuTree {
 function standardRepository(): MenuRepository {
     return {
         menuExpands: initMenuExpandRepository(
-            initMenuExpandTestStorage({
+            initTestMenuExpandTestStorage({
                 menuExpand: { set: false },
             })
         ),
@@ -886,7 +886,7 @@ function standardRepository(): MenuRepository {
 function expandRepository(): MenuRepository {
     return {
         menuExpands: initMenuExpandRepository(
-            initMenuExpandTestStorage({
+            initTestMenuExpandTestStorage({
                 menuExpand: { set: true, value: [[markMenuCategoryLabel("DOCUMENT")]] },
             })
         ),

@@ -5,7 +5,7 @@ import { initNextVersionComponent } from "../impl"
 
 import { CheckSimulator } from "../../../../nextVersion/impl/remote/check/simulate"
 
-import { initNextVersionAction } from "../../EntryPoint/tests/core"
+import { initTestNextVersionAction } from "../../EntryPoint/tests/core"
 
 import { NextVersionResource } from "../../EntryPoint/entryPoint"
 import { NextVersionActionConfig } from "../../../../nextVersion/infra"
@@ -22,7 +22,7 @@ export function newNextVersionResource(
 ): NextVersionResource {
     const factory = {
         actions: {
-            nextVersion: initNextVersionAction(config, simulator),
+            nextVersion: initTestNextVersionAction(config, simulator),
         },
         components: {
             nextVersion: initNextVersionComponent,

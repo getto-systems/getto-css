@@ -1,4 +1,4 @@
-import { initMenuAction } from "../../../../../auth/x_components/Outline/Menu/tests/core"
+import { initTestMenuAction } from "../../../../../auth/x_components/Outline/Menu/tests/core"
 
 import { detectMenuTarget } from "../../../../../auth/x_components/Outline/Menu/impl/location"
 import { MenuBadgeSimulator } from "../../../../../auth/permission/menu/impl/remote/menuBadge/simulate"
@@ -18,7 +18,7 @@ export type ExampleRepository = Readonly<{
 export type ExampleSimulator = Readonly<{
     menuBadge: MenuBadgeSimulator
 }>
-export function newExampleResource(
+export function newTestExampleResource(
     version: string,
     currentURL: URL,
     menuTree: MenuTree,
@@ -27,7 +27,7 @@ export function newExampleResource(
 ): ExampleResource {
     const factory: ExampleFactory = {
         actions: {
-            menu: initMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
+            menu: initTestMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
         },
         components: {
             menuList: initMenuListComponent,

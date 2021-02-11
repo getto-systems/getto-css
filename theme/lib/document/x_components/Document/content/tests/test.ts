@@ -1,5 +1,5 @@
-import { initMenuExpandTestStorage } from "../../../../../auth/x_components/Outline/Menu/tests/core"
-import { DocumentRepository, DocumentSimulator, newDocumentResource } from "../../EntryPoint/tests/core"
+import { initTestMenuExpandTestStorage } from "../../../../../auth/x_components/Outline/Menu/tests/core"
+import { DocumentRepository, DocumentSimulator, newTestDocumentResource } from "../../EntryPoint/tests/core"
 
 import { initMenuExpandRepository } from "../../../../../auth/permission/menu/impl/repository/menuExpand"
 
@@ -44,7 +44,7 @@ function standardResource() {
     const menuTree = standardMenuTree()
     const repository = standardRepository()
     const simulator = standardSimulator()
-    const resource = newDocumentResource(version, url, menuTree, repository, simulator)
+    const resource = newTestDocumentResource(version, url, menuTree, repository, simulator)
 
     return { repository, resource }
 }
@@ -63,7 +63,7 @@ function standardMenuTree(): MenuTree {
 
 function standardRepository(): DocumentRepository {
     return {
-        menuExpands: initMenuExpandRepository(initMenuExpandTestStorage({ menuExpand: { set: false } })),
+        menuExpands: initMenuExpandRepository(initTestMenuExpandTestStorage({ menuExpand: { set: false } })),
     }
 }
 

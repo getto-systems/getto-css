@@ -30,7 +30,7 @@ export type MenuRepository = Readonly<{
 export type MenuSimulator = Readonly<{
     menuBadge: MenuBadgeSimulator
 }>
-export function newMenuResource(
+export function newTestMenuResource(
     version: string,
     currentURL: URL,
     menuTree: MenuTree,
@@ -38,7 +38,7 @@ export function newMenuResource(
     simulator: MenuSimulator
 ): MenuResource {
     const actions = {
-        menu: initMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
+        menu: initTestMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
     }
     const collector = {
         menu: {
@@ -57,7 +57,7 @@ export function newMenuResource(
     }
 }
 
-export function initMenuAction(
+export function initTestMenuAction(
     menuTree: MenuTree,
     menuExpands: MenuExpandRepository,
     simulator: MenuBadgeSimulator
@@ -75,10 +75,10 @@ export function initMenuAction(
     }
 }
 
-export type MenuExpandTestStorageParam = Readonly<{
+export type MenuExpandStorageTestParam = Readonly<{
     menuExpand: MemoryTypedStorageStore<MenuExpand>
 }>
-export function initMenuExpandTestStorage(params: MenuExpandTestStorageParam): MenuExpandStorage {
+export function initTestMenuExpandTestStorage(params: MenuExpandStorageTestParam): MenuExpandStorage {
     return {
         menuExpand: initMemoryTypedStorage(params.menuExpand),
     }
