@@ -2,7 +2,7 @@ import { render, h } from "preact"
 
 import { newExampleAsSingle } from "../../../../theme/x_components/Example/EntryPoint/main/single"
 
-import { Highlight } from "../../../../x_preact/Theme/Examples/Highlight"
+import { Highlight } from "../../../../x_preact/theme/Examples/Highlight"
 
 import "../../../../../css/getto.css"
 

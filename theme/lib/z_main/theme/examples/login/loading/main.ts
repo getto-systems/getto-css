@@ -1,6 +1,6 @@
 import { render, h } from "preact"
 
-import { Loading } from "../../../../../x_preact/Theme/Examples/Login/Loading"
+import { Loading } from "../../../../../x_preact/theme/Examples/Login/Loading"
 
 import "../../../../../../css/getto.css"
 

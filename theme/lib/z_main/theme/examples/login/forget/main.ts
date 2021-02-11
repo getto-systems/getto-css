@@ -1,6 +1,6 @@
 import { render, h } from "preact"
 
-import { Forget } from "../../../../../x_preact/Theme/Examples/Login/Forget"
+import { Forget } from "../../../../../x_preact/theme/Examples/Login/Forget"
 
 import "../../../../../../css/getto.css"
 
