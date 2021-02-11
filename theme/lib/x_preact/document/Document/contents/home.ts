@@ -1,10 +1,10 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { container, box } from "../../../z_vendor/getto-css/preact/design/box"
-import { field } from "../../../z_vendor/getto-css/preact/design/form"
-import { notice_info } from "../../../z_vendor/getto-css/preact/design/highlight"
-import { v_medium, v_small } from "../../../z_vendor/getto-css/preact/design/alignment"
+import { container, box } from "../../../../z_vendor/getto-css/preact/design/box"
+import { field } from "../../../../z_vendor/getto-css/preact/design/form"
+import { notice_info } from "../../../../z_vendor/getto-css/preact/design/highlight"
+import { v_medium, v_small } from "../../../../z_vendor/getto-css/preact/design/alignment"
 
 export const content_home = (): VNode[] => [
     container([

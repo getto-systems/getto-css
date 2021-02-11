@@ -20,10 +20,8 @@ import { HowToUse } from "./HowToUse"
 
 import { DashboardEntryPoint } from "../../../theme/x_components/Dashboard/EntryPoint/entryPoint"
 
-type Props = Readonly<{
-    dashboard: DashboardEntryPoint
-}>
-export function Dashboard({ dashboard: { resource, terminate } }: Props): VNode {
+type Props = DashboardEntryPoint
+export function EntryPoint({ resource, terminate }: Props): VNode {
     const [err] = useErrorBoundary((err) => {
         // 認証していないのでエラーはどうしようもない
         console.log(err)

@@ -2,11 +2,11 @@ import { h, VNode } from "preact"
 import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { NotFound } from "./NotFound"
+import { EntryPoint } from "./EntryPoint"
 
-import { initMockPropsPasser } from "../../sub/getto-example/x_components/Application/mock"
-import { CurrentVersionMockProps } from "../../auth/x_components/NotFound/currentVersion/mock"
-import { newMockNotFound } from "../../auth/x_components/NotFound/EntryPoint/mock"
+import { initMockPropsPasser } from "../../../sub/getto-example/x_components/Application/mock"
+import { CurrentVersionMockProps } from "../../../auth/x_components/NotFound/currentVersion/mock"
+import { newMockNotFound } from "../../../auth/x_components/NotFound/EntryPoint/mock"
 
 import "../../../css/getto.css"
 
@@ -24,7 +24,7 @@ type MockProps = {
 }
 const Template: Story<MockProps> = (args) => {
     const passer = initMockPropsPasser<CurrentVersionMockProps>()
-    const notFound = newMockNotFound(passer)
+    const entryPoint = newMockNotFound(passer)
     return h(Preview, { args })
 
     function Preview(_: { args: MockProps }) {
@@ -37,7 +37,7 @@ const Template: Story<MockProps> = (args) => {
                     padding: 0 !important;
                 }
             </style>
-            ${h(NotFound, { notFound })}
+            ${h(EntryPoint, entryPoint)}
         `
     }
 }

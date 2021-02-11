@@ -8,10 +8,8 @@ import { ApplicationError } from "../../z_common/System/ApplicationError"
 import { MoveToNextVersionEntryPoint } from "../../../update/x_components/MoveToNextVersion/EntryPoint/entryPoint"
 import { NextVersion } from "./NextVersion"
 
-type Props = Readonly<{
-    moveToNextVersion: MoveToNextVersionEntryPoint
-}>
-export function MoveToLatestVersion({ moveToNextVersion: { resource, terminate } }: Props): VNode {
+type Props = MoveToNextVersionEntryPoint
+export function EntryPoint({ resource, terminate }: Props): VNode {
     const [err] = useErrorBoundary((err) => {
         // ここでエラーをどこかに投げたい、けど認証前なのでこれでお茶を濁す
         console.log(err)
