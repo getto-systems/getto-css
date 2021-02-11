@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.25.1
+
+- fix: breadcrumb : See merge request getto-systems-base/projects/css!436
+- move: linky : See merge request getto-systems-base/projects/css!435
+
+
 ## Version : 2.25.0
 
 - fix: style : See merge request getto-systems-base/projects/css!433
