@@ -9,15 +9,19 @@
 }
 
 .loginBox__logo__brand {
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-normal);
 }
 
 .loginBox__logo__title {
-    font-size: var(--font-size-xx-large);
+    font-size: var(--font-size-x-large);
+}
+
+.loginBox__logo__subTitle {
+    font-size: var(--font-size-small);
 }
 
 .loginBox__main__title {
-    font-size: var(--font-size-x-large);
+    font-size: var(--font-size-xx-large);
 }
 
 .loginBox__main__body {
