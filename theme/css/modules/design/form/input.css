@@ -13,31 +13,31 @@
 :--input {
     border: 1px solid var(--color-base);
     font-size: var(--font-size-normal);
-    padding: calc(0.3em - 1px) 0.5em;
+    padding: calc(0.3em - 1px) 0.75em;
 }
 
 textarea {
-    padding: calc(0.375em - 1px) 0.5em;
+    padding: calc(0.375em - 1px) 0.75em;
 }
 
 input[type="date"] {
-    padding: calc(0.225em - 1px) 0.5em;
+    padding: calc(0.225em - 1px) 0.75em;
 }
 
 input[type="time"] {
-    padding: calc(0.2em - 1px) 0.5em;
+    padding: calc(0.2em - 1px) 0.75em;
 }
 
 input[type="file"] {
     background-color: var(--color-white-pure);
     font-size: var(--font-size-smaller);
-    width: calc(100% - 1.25rem);
-    padding: calc(0.1565em - 1px) 0.5em;
+    width: calc(100% - 0.5em);
+    padding: calc(0.1565em - 1px) 0.1em;
 }
 
 select {
     padding: calc(0.275em - 1px) 0.5em;
-    max-width: calc(100% - 0.1rem);
+    max-width: calc(100% - 0.1em);
 }
 
 select,
