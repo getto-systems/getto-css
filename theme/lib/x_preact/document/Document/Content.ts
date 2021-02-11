@@ -2,18 +2,18 @@ import { h, VNode } from "preact"
 import { useState, useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { VNodeContent } from "../../z_vendor/getto-css/preact/common"
-import { appMain, mainBody, mainHeader, mainTitle } from "../../z_vendor/getto-css/preact/layout/app"
+import { VNodeContent } from "../../../z_vendor/getto-css/preact/common"
+import { appMain, mainBody, mainHeader, mainTitle } from "../../../z_vendor/getto-css/preact/layout/app"
 
-import { useComponent } from "../z_common/hooks"
+import { useComponent } from "../../z_common/hooks"
 
-import { BreadcrumbList } from "../z_common/Outline/BreadcrumbList"
+import { BreadcrumbList } from "../../z_common/Outline/BreadcrumbList"
 
-import { ContentComponent, initialContentState } from "../../document/x_components/Document/content/component"
-import { BreadcrumbListComponent } from "../../auth/x_components/Outline/breadcrumbList/component"
+import { ContentComponent, initialContentState } from "../../../document/x_components/Document/content/component"
+import { BreadcrumbListComponent } from "../../../auth/x_components/Outline/breadcrumbList/component"
 
-import { ContentPath } from "../../document/content/data"
-import { copyright } from "../z_common/site"
+import { ContentPath } from "../../../document/content/data"
+import { copyright } from "../../z_common/site"
 
 type Props = Readonly<{
     content: ContentComponent
@@ -77,7 +77,7 @@ function entry(title: string, content: ContentFactory<VNodeContent>): ContentEnt
 }
 
 const indexEntry: ContentEntry = entry("ドキュメント", async () =>
-    (await import("./contents/home")).content_home()
+    (await import("../contents/home")).content_home()
 )
 const contentMap: Record<ContentPath, ContentEntry> = {
     "/docs/index.html": indexEntry,

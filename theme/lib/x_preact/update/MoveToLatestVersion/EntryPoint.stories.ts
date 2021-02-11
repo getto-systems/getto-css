@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { useEffect } from "preact/hooks"
 
-import { MoveToLatestVersion } from "./EntryPoint"
+import { EntryPoint } from "./EntryPoint"
 
 import { initMockPropsPasser } from "../../../sub/getto-example/x_components/Application/mock"
 import { newMockMoveToNextVersion } from "../../../update/x_components/MoveToNextVersion/EntryPoint/mock"
@@ -21,14 +21,14 @@ export default {
 type MockProps = NextVersionMockProps
 const Template: Story<MockProps> = (args) => {
     const passer = initMockPropsPasser<NextVersionMockProps>()
-    const moveToNextVersion = newMockMoveToNextVersion(passer)
+    const entryPoint = newMockMoveToNextVersion(passer)
     return h(Preview, { args })
 
     function Preview(props: { args: MockProps }) {
         useEffect(() => {
             passer.update(props.args)
         })
-        return h(MoveToLatestVersion, { moveToNextVersion })
+        return h(EntryPoint, entryPoint)
     }
 }
 

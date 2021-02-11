@@ -2,13 +2,13 @@ import { h, VNode } from "preact"
 import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { Document } from "./EntryPoint"
+import { EntryPoint } from "./EntryPoint"
 
-import { DocumentMockPropsPasser, newMockDocument } from "../../document/x_components/Document/EntryPoint/mock"
-import { initMockPropsPasser } from "../../sub/getto-example/x_components/Application/mock"
-import { MenuListMockProps } from "../../auth/x_components/Outline/menuList/mock"
-import { BreadcrumbListMockProps } from "../../auth/x_components/Outline/breadcrumbList/mock"
-import { ContentMockProps } from "../../document/x_components/Document/content/mock"
+import { DocumentMockPropsPasser, newMockDocument } from "../../../document/x_components/Document/EntryPoint/mock"
+import { initMockPropsPasser } from "../../../sub/getto-example/x_components/Application/mock"
+import { MenuListMockProps } from "../../../auth/x_components/Outline/menuList/mock"
+import { BreadcrumbListMockProps } from "../../../auth/x_components/Outline/breadcrumbList/mock"
+import { ContentMockProps } from "../../../document/x_components/Document/content/mock"
 
 import "../../../css/getto.css"
 
@@ -32,7 +32,7 @@ const Template: Story<MockProps> = (args) => {
         breadcrumbList: initMockPropsPasser<BreadcrumbListMockProps>(),
         content: initMockPropsPasser<ContentMockProps>(),
     }
-    const document = newMockDocument(passer)
+    const entryPoint = newMockDocument(passer)
     return h(Preview, { args })
 
     function Preview(props: { args: MockProps }) {
@@ -55,7 +55,7 @@ const Template: Story<MockProps> = (args) => {
                     padding: 0 !important;
                 }
             </style>
-            ${h(Document, { document })}
+            ${h(EntryPoint, entryPoint)}
         `
     }
 }
