@@ -2,13 +2,16 @@ import { h, VNode } from "preact"
 import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { Dashboard } from "./EntryPoint"
+import { EntryPoint } from "./EntryPoint"
 
 import { initMockPropsPasser } from "../../../sub/getto-example/x_components/Application/mock"
 import { MenuListMockProps } from "../../../auth/x_components/Outline/menuList/mock"
 import { BreadcrumbListMockProps } from "../../../auth/x_components/Outline/breadcrumbList/mock"
 import { HowToUseMockProps } from "../../../theme/x_components/Dashboard/howToUse/mock"
-import { DashboardMockPropsPasser, newMockDashboard } from "../../../theme/x_components/Dashboard/EntryPoint/mock"
+import {
+    DashboardMockPropsPasser,
+    newMockDashboard,
+} from "../../../theme/x_components/Dashboard/EntryPoint/mock"
 
 import "../../../../css/getto.css"
 
@@ -32,7 +35,7 @@ const Template: Story<MockProps> = (args) => {
         breadcrumbList: initMockPropsPasser<BreadcrumbListMockProps>(),
         howToUse: initMockPropsPasser<HowToUseMockProps>(),
     }
-    const dashboard = newMockDashboard(passer)
+    const entryPoint = newMockDashboard(passer)
     return h(Preview, { args })
 
     function Preview(props: { args: MockProps }) {
@@ -55,7 +58,7 @@ const Template: Story<MockProps> = (args) => {
                     padding: 0 !important;
                 }
             </style>
-            ${h(Dashboard, { dashboard })}
+            ${h(EntryPoint, entryPoint)}
         `
     }
 }
