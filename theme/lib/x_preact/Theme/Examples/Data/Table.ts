@@ -14,7 +14,6 @@ import { tableCell } from "../../../../z_vendor/getto-table/preact/cell/simple"
 import { tableAlign, tableClassName } from "../../../../z_vendor/getto-table/preact/decorator"
 
 import {
-    linky,
     SortLink,
     table,
     tableColumn,
@@ -23,7 +22,7 @@ import {
     thead,
 } from "../../../../z_vendor/getto-css/preact/design/data"
 import { fieldSection, fieldSection_error } from "../../../../z_vendor/getto-css/preact/design/form"
-import { label_gray, label_warning } from "../../../../z_vendor/getto-css/preact/design/highlight"
+import { label_gray, label_warning, linky } from "../../../../z_vendor/getto-css/preact/design/highlight"
 import { small } from "../../../../z_vendor/getto-css/preact/design/alignment"
 
 import { Model, Row } from "./data"
