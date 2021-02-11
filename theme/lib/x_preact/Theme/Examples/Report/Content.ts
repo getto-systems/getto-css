@@ -24,7 +24,6 @@ import { tableAlign, tableClassName } from "../../../../z_vendor/getto-table/pre
 import { TableDataSticky } from "../../../../z_vendor/getto-table/preact/style"
 
 import {
-    linky,
     tableColumn,
     tableFooter,
     tableHeader,
@@ -39,6 +38,7 @@ import { small } from "../../../../z_vendor/getto-css/preact/design/alignment"
 import { Model, Row } from "./data"
 import { TableCell } from "../../../../z_vendor/getto-table/preact/cell"
 import { tableCell_tree } from "../../../../z_vendor/getto-table/preact/cell/tree"
+import { linky } from "../../../../z_vendor/getto-css/preact/design/highlight"
 
 type Props = {
     content: Readonly<{
@@ -153,7 +153,7 @@ export const buildStructure = (): TableStructure<Model, Row> =>
 
             tableCell_tree({
                 data: (row: Row) => row.price,
-                key: (price: number) => price,                
+                key: (price: number) => price,
                 cells: <Cells<number>[]>[
                     tableCell("price", (_key) => {
                         return {

@@ -19,10 +19,9 @@ import {
     tableColumn,
     thead,
     tbody,
-    linky,
     SortLink,
 } from "../../../../z_vendor/getto-css/preact/design/data"
-import { label_gray, label_warning } from "../../../../z_vendor/getto-css/preact/design/highlight"
+import { label_gray, label_warning, linky } from "../../../../z_vendor/getto-css/preact/design/highlight"
 import { small } from "../../../../z_vendor/getto-css/preact/design/alignment"
 
 import { Model, Row } from "./data"

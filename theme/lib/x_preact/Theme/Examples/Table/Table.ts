@@ -19,7 +19,6 @@ import {
     tableColumn,
     thead,
     tbody,
-    linky,
     SortLink,
     tableSummary,
     tfoot,
@@ -29,6 +28,7 @@ import {
     label_gray,
     label_success,
     label_warning,
+    linky,
 } from "../../../../z_vendor/getto-css/preact/design/highlight"
 import { small } from "../../../../z_vendor/getto-css/preact/design/alignment"
 

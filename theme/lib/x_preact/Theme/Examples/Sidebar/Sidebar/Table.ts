@@ -8,14 +8,17 @@ import { tableAlign, tableClassName } from "../../../../../z_vendor/getto-table/
 
 import { box_fill } from "../../../../../z_vendor/getto-css/preact/design/box"
 import {
-    linky,
     table,
     tableColumn,
     tableHeader,
     tbody,
     thead,
 } from "../../../../../z_vendor/getto-css/preact/design/data"
-import { label_gray, label_warning } from "../../../../../z_vendor/getto-css/preact/design/highlight"
+import {
+    label_gray,
+    label_warning,
+    linky,
+} from "../../../../../z_vendor/getto-css/preact/design/highlight"
 
 type TableProps = {
     // no props
