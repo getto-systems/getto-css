@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.26.0
+
+- fix: form : See merge request getto-systems-base/projects/css!438
+
+
 ## Version : 2.25.1
 
 - fix: breadcrumb : See merge request getto-systems-base/projects/css!436
