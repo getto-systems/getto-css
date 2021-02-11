@@ -80,7 +80,7 @@
 .menu__footer {
     background-color: var(--color-black-off);
     border-top: 1px dotted var(--color-black);
-    padding: var(--content-vertical-space-small) 0.5rem;
+    padding: var(--content-vertical-space-tiny) 0.5rem;
 }
 
 .menu__footer__message {
