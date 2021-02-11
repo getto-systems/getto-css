@@ -9,7 +9,7 @@ module.exports = {
 
 function findEntries() {
     return [
-        "/update/moveToLatestVersion",
+        "/available/moveToLatestVersion",
         "/auth/notFound",
         ...findHtmlFiles().map((entry) => `/theme${entry}`),
     ]
