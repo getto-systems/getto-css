@@ -9,8 +9,8 @@ import { useComponent } from "../common/hooks"
 
 import { BreadcrumbList } from "../Outline/BreadcrumbList"
 
-import { ContentComponent, initialContentState } from "../../document/Document/content/component"
-import { BreadcrumbListComponent } from "../../auth/Outline/breadcrumbList/component"
+import { ContentComponent, initialContentState } from "../../document/x_components/Document/content/component"
+import { BreadcrumbListComponent } from "../../auth/x_components/Outline/breadcrumbList/component"
 
 import { ContentPath } from "../../document/content/data"
 import { copyright } from "../common/site"

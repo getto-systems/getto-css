@@ -1,6 +1,6 @@
 import { render, h } from "preact"
 
-import { newExampleAsSingle } from "../../../../theme/Example/main/single"
+import { newExampleAsSingle } from "../../../../theme/x_components/Example/EntryPoint/main/single"
 
 import { Table } from "../../../../x_preact/Theme/Examples/Table"
 

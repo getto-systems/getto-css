@@ -4,11 +4,11 @@ import { html } from "htm/preact"
 
 import { Dashboard } from "../../../x_preact/Theme/Home/Dashboard"
 
-import { initMockPropsPasser } from "../../../sub/getto-example/application/mock"
-import { MenuListMockProps } from "../../../auth/Outline/menuList/mock"
-import { BreadcrumbListMockProps } from "../../../auth/Outline/breadcrumbList/mock"
-import { HowToUseMockProps } from "../../../theme/Home/howToUse/mock"
-import { DashboardMockPropsPasser, newMockDashboard } from "../../../theme/Home/Dashboard/mock"
+import { initMockPropsPasser } from "../../../sub/getto-example/x_components/Application/mock"
+import { MenuListMockProps } from "../../../auth/x_components/Outline/menuList/mock"
+import { BreadcrumbListMockProps } from "../../../auth/x_components/Outline/breadcrumbList/mock"
+import { HowToUseMockProps } from "../../../theme/x_components/Dashboard/howToUse/mock"
+import { DashboardMockPropsPasser, newMockDashboard } from "../../../theme/x_components/Dashboard/EntryPoint/mock"
 
 import "../../../../css/getto.css"
 

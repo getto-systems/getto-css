@@ -21,7 +21,7 @@ import { MenuList } from "../../Outline/MenuList"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
 import { Container } from "./Sidebar/Container"
 
-import { ExampleEntryPoint } from "../../../theme/Example/entryPoint"
+import { ExampleEntryPoint } from "../../../theme/x_components/Example/EntryPoint/entryPoint"
 import { Table } from "./Sidebar/Sidebar/Table"
 import { Pager } from "./Sidebar/Sidebar/Pager"
 
