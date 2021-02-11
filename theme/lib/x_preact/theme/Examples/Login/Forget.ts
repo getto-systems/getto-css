@@ -1,5 +1,7 @@
 import { h, VNode } from "preact"
-import { useEffect, useErrorBoundary } from "preact/hooks"
+import { useErrorBoundary } from "preact/hooks"
+
+import { useDocumentTitle } from "../../../z_common/hooks"
 
 import { ApplicationError } from "../../../z_common/System/ApplicationError"
 import { Container } from "./Forget/Container"
@@ -12,14 +14,11 @@ export function Forget(_: Props): VNode {
         // 認証していないのでエラーはどうしようもない
         console.log(err)
     })
-
     if (err) {
         return h(ApplicationError, { err: `${err}` })
     }
 
-    useEffect(() => {
-        document.title = `Forget | ${document.title}`
-    }, [])
+    useDocumentTitle("Forget")
 
     return h(Container, NO_PROPS)
 }

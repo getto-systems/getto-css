@@ -14,16 +14,15 @@ import { DocumentEntryPoint } from "../../../document/x_components/Document/Entr
 
 type Props = DocumentEntryPoint
 export function EntryPoint({ resource, terminate }: Props): VNode {
+    useTermination(terminate)
+
     const [err] = useErrorBoundary((err) => {
         // 認証していないのでエラーはどうしようもない
         console.log(err)
     })
-
     if (err) {
         return h(ApplicationError, { err: `${err}` })
     }
-
-    useTermination(terminate)
 
     return appLayout({
         siteInfo: siteInfo(),

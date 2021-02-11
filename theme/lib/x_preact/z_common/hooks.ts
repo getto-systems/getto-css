@@ -10,6 +10,12 @@ interface Terminate {
     (): void
 }
 
+export function useDocumentTitle(title: string): void {
+    useEffect(() => {
+        document.title = `${title} | ${document.title}`
+    }, [])
+}
+
 export function useComponent<S>(component: ApplicationComponent<S>, initial: S): S {
     const [state, setState] = useState(initial)
     useEffect(() => {

@@ -1,5 +1,5 @@
 import { h, VNode } from "preact"
-import { useEffect, useErrorBoundary } from "preact/hooks"
+import { useErrorBoundary } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { loginBox } from "../../../../z_vendor/getto-css/preact/layout/login"
@@ -8,6 +8,7 @@ import { buttons } from "../../../../z_vendor/getto-css/preact/design/form"
 import { siteInfo } from "../../../z_common/site"
 
 import { ApplicationError } from "../../../z_common/System/ApplicationError"
+import { useDocumentTitle } from "../../../z_common/hooks"
 
 type Props = Readonly<{
     // no props
@@ -22,9 +23,7 @@ export function NotFound(_: Props): VNode {
         return h(ApplicationError, { err: `${err}` })
     }
 
-    useEffect(() => {
-        document.title = `Not Found | ${document.title}`
-    }, [])
+    useDocumentTitle("Not Found")
 
     return loginBox(siteInfo(), {
         title: "リンクが切れていました",
