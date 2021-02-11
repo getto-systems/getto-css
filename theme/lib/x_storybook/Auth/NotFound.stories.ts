@@ -4,9 +4,9 @@ import { html } from "htm/preact"
 
 import { NotFound } from "../../x_preact/Auth/NotFound"
 
-import { initMockPropsPasser } from "../../sub/getto-example/application/mock"
-import { CurrentVersionMockProps } from "../../auth/NotFound/currentVersion/mock"
-import { newMockNotFound } from "../../auth/NotFound/NotFound/mock"
+import { initMockPropsPasser } from "../../sub/getto-example/x_components/Application/mock"
+import { CurrentVersionMockProps } from "../../auth/x_components/NotFound/currentVersion/mock"
+import { newMockNotFound } from "../../auth/x_components/NotFound/EntryPoint/mock"
 
 import "../../../css/getto.css"
 

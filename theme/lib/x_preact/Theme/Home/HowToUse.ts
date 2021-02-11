@@ -8,7 +8,7 @@ import { notice_alert, label_info } from "../../../z_vendor/getto-css/preact/des
 
 import { useComponent } from "../../common/hooks"
 
-import { HowToUseComponent, initialHowToUseState } from "../../../theme/Home/howToUse/component"
+import { HowToUseComponent, initialHowToUseState } from "../../../theme/x_components/Dashboard/howToUse/component"
 
 import { AllVersions, FindError, Version, VersionInfo } from "../../../theme/allVersions/data"
 

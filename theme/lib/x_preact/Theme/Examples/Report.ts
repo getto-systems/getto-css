@@ -18,7 +18,7 @@ import { MenuList } from "../../Outline/MenuList"
 import { BreadcrumbList } from "../../Outline/BreadcrumbList"
 import { Container } from "./Report/Container"
 
-import { ExampleEntryPoint } from "../../../theme/Example/entryPoint"
+import { ExampleEntryPoint } from "../../../theme/x_components/Example/EntryPoint/entryPoint"
 
 type Props = Readonly<{
     example: ExampleEntryPoint

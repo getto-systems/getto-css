@@ -4,11 +4,11 @@ import { html } from "htm/preact"
 
 import { Document } from "../../x_preact/Document/Document"
 
-import { DocumentMockPropsPasser, newMockDocument } from "../../document/Document/Document/mock"
-import { initMockPropsPasser } from "../../sub/getto-example/application/mock"
-import { MenuListMockProps } from "../../auth/Outline/menuList/mock"
-import { BreadcrumbListMockProps } from "../../auth/Outline/breadcrumbList/mock"
-import { ContentMockProps } from "../../document/Document/content/mock"
+import { DocumentMockPropsPasser, newMockDocument } from "../../document/x_components/Document/EntryPoint/mock"
+import { initMockPropsPasser } from "../../sub/getto-example/x_components/Application/mock"
+import { MenuListMockProps } from "../../auth/x_components/Outline/menuList/mock"
+import { BreadcrumbListMockProps } from "../../auth/x_components/Outline/breadcrumbList/mock"
+import { ContentMockProps } from "../../document/x_components/Document/content/mock"
 
 import "../../../css/getto.css"
 

@@ -3,8 +3,8 @@ import { useEffect } from "preact/hooks"
 
 import { HowToUse } from "../../../x_preact/Theme/Home/HowToUse"
 
-import { initMockPropsPasser } from "../../../sub/getto-example/application/mock"
-import { HowToUseMockProps, initMockHowToUseComponent } from "../../../theme/Home/howToUse/mock"
+import { initMockPropsPasser } from "../../../sub/getto-example/x_components/Application/mock"
+import { HowToUseMockProps, initMockHowToUseComponent } from "../../../theme/x_components/Dashboard/howToUse/mock"
 
 import "../../../../css/getto.css"
 
