@@ -1,4 +1,4 @@
-import { env } from "../../../../../y_static/env"
+import { env } from "../../../../../y_environment/env"
 
 import { initStaticMenuBadgeClient } from "../../../../permission/menu/impl/remote/menuBadge/static"
 import { documentMenuTree, mainMenuTree } from "../impl/menu/menuTree"
