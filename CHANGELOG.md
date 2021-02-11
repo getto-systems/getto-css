@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version : 2.25.0
+
+- fix: style : See merge request getto-systems-base/projects/css!433
+- upgrade: package : See merge request getto-systems-base/projects/css!432
+- apply: example : See merge request getto-systems-base/projects/css!431
+
+
 ## Version : 2.24.1
 
 - fix: menu : See merge request getto-systems-base/projects/css!428
