@@ -20,6 +20,7 @@ import {
 } from "../../auth/Outline/breadcrumbList/component"
 
 import { Breadcrumb, BreadcrumbNode, MenuCategory, MenuItem } from "../../auth/permission/menu/data"
+import { linky } from "../../z_vendor/getto-css/preact/design/highlight"
 
 type Props = Readonly<{
     breadcrumbList: BreadcrumbListComponent
@@ -56,10 +57,10 @@ function breadcrumbNodes(breadcrumb: Breadcrumb): VNode[] {
     }
 }
 function breadcrumbTop(): VNode {
-    return mainBreadcrumbLink(CATEGORY_HREF, siteInfo().title)
+    return mainBreadcrumbLink(CATEGORY_HREF, html`${icon("menu-alt-3")} ${siteInfo().title}`)
 }
 function breadcrumbCategory({ label }: MenuCategory): VNode {
-    return mainBreadcrumbLink(CATEGORY_HREF, label)
+    return linky(label)
 }
 function breadcrumbItem({ label, icon, href }: MenuItem): VNode {
     const content = html`<i class="${icon}"></i> ${label}`
