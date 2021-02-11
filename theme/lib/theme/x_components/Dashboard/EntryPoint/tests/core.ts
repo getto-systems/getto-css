@@ -1,4 +1,4 @@
-import { initMenuAction } from "../../../../../auth/x_components/Outline/Menu/tests/core"
+import { initTestMenuAction } from "../../../../../auth/x_components/Outline/Menu/tests/core"
 
 import { detectMenuTarget } from "../../../../../auth/x_components/Outline/Menu/impl/location"
 import { MenuBadgeSimulator } from "../../../../../auth/permission/menu/impl/remote/menuBadge/simulate"
@@ -30,7 +30,7 @@ export type DashboardSimulator = Readonly<{
     menuBadge: MenuBadgeSimulator
     find: FindSimulator
 }>
-export function newDashboardResource(
+export function newTestDashboardResource(
     version: string,
     currentURL: URL,
     menuTree: MenuTree,
@@ -40,8 +40,8 @@ export function newDashboardResource(
 ): DashboardResource {
     const factory: DashboardFactory = {
         actions: {
-            menu: initMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
-            allVersions: initAllVersionsAction(version, config.allVersions, simulator.find),
+            menu: initTestMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
+            allVersions: initTestAllVersionsAction(version, config.allVersions, simulator.find),
         },
         components: {
             menuList: initMenuListComponent,
@@ -59,7 +59,7 @@ export function newDashboardResource(
     return initDashboardResource(factory, collector)
 }
 
-function initAllVersionsAction(
+function initTestAllVersionsAction(
     version: string,
     config: AllVersionsActionConfig,
     simulator: FindSimulator

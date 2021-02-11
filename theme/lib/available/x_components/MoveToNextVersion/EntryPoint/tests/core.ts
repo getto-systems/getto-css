@@ -11,7 +11,7 @@ import { NextVersionAction } from "../../../../nextVersion/action"
 export type NextVersionSimulator = Readonly<{
     check: CheckSimulator
 }>
-export function initNextVersionAction(
+export function initTestNextVersionAction(
     config: NextVersionActionConfig,
     simulator: NextVersionSimulator
 ): NextVersionAction {

@@ -1,4 +1,4 @@
-import { initMenuAction } from "../../../../../auth/x_components/Outline/Menu/tests/core"
+import { initTestMenuAction } from "../../../../../auth/x_components/Outline/Menu/tests/core"
 
 import { detectMenuTarget } from "../../../../../auth/x_components/Outline/Menu/impl/location"
 import { MenuBadgeSimulator } from "../../../../../auth/permission/menu/impl/remote/menuBadge/simulate"
@@ -22,7 +22,7 @@ export type DocumentRepository = Readonly<{
 export type DocumentSimulator = Readonly<{
     menuBadge: MenuBadgeSimulator
 }>
-export function newDocumentResource(
+export function newTestDocumentResource(
     version: string,
     currentURL: URL,
     menuTree: MenuTree,
@@ -31,8 +31,8 @@ export function newDocumentResource(
 ): DocumentResource {
     const factory: DocumentFactory = {
         actions: {
-            menu: initMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
-            content: initContentAction(),
+            menu: initTestMenuAction(menuTree, repository.menuExpands, simulator.menuBadge),
+            content: initTestContentAction(),
         },
         components: {
             menuList: initMenuListComponent,
@@ -53,7 +53,7 @@ export function newDocumentResource(
     return initDocumentResource(factory, collector)
 }
 
-function initContentAction(): ContentAction {
+function initTestContentAction(): ContentAction {
     return {
         loadContent: loadContent(),
     }

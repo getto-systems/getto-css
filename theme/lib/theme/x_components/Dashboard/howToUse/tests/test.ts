@@ -1,9 +1,9 @@
-import { initMenuExpandTestStorage } from "../../../../../auth/x_components/Outline/Menu/tests/core"
+import { initTestMenuExpandTestStorage } from "../../../../../auth/x_components/Outline/Menu/tests/core"
 import {
     DashboardConfig,
     DashboardRepository,
     DashboardSimulator,
-    newDashboardResource,
+    newTestDashboardResource,
 } from "../../EntryPoint/tests/core"
 
 import { initMenuExpandRepository } from "../../../../../auth/permission/menu/impl/repository/menuExpand"
@@ -173,7 +173,7 @@ function standardResource() {
     const config = standardConfig()
     const repository = standardRepository()
     const simulator = standardSimulator()
-    const resource = newDashboardResource(version, url, menuTree, config, repository, simulator)
+    const resource = newTestDashboardResource(version, url, menuTree, config, repository, simulator)
 
     return { repository, resource }
 }
@@ -184,7 +184,7 @@ function withoutCurrentVersionResource() {
     const config = standardConfig()
     const repository = standardRepository()
     const simulator = withoutCurrentVersionSimulator()
-    const resource = newDashboardResource(version, url, menuTree, config, repository, simulator)
+    const resource = newTestDashboardResource(version, url, menuTree, config, repository, simulator)
 
     return { repository, resource }
 }
@@ -195,7 +195,7 @@ function waitResource() {
     const config = standardConfig()
     const repository = standardRepository()
     const simulator = waitSimulator()
-    const resource = newDashboardResource(version, url, menuTree, config, repository, simulator)
+    const resource = newTestDashboardResource(version, url, menuTree, config, repository, simulator)
 
     return { repository, resource }
 }
@@ -224,7 +224,7 @@ function standardConfig(): DashboardConfig {
 
 function standardRepository(): DashboardRepository {
     return {
-        menuExpands: initMenuExpandRepository(initMenuExpandTestStorage({ menuExpand: { set: false } })),
+        menuExpands: initMenuExpandRepository(initTestMenuExpandTestStorage({ menuExpand: { set: false } })),
     }
 }
 
