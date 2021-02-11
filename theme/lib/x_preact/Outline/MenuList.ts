@@ -13,11 +13,11 @@ import {
 import { badge_alert, notice_alert } from "../../z_vendor/getto-css/preact/design/highlight"
 
 import { useComponent } from "../common/hooks"
+import { poweredBy } from "../common/site"
 
 import { MenuListComponent, initialMenuListState } from "../../auth/Outline/menuList/component"
 
 import { Menu, MenuCategoryNode, MenuItemNode, LoadMenuError } from "../../auth/permission/menu/data"
-import { poweredBy } from "../common/site"
 
 export const MENU_ID = "menu"
 

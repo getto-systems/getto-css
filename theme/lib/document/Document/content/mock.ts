@@ -1,20 +1,28 @@
-import { MockComponent } from "../../../sub/getto-example/application/mock"
+import { MockComponent, MockPropsPasser } from "../../../sub/getto-example/application/mock"
 import { ContentComponent, ContentState } from "./component"
 
-export function initContentComponent(state: ContentState): ContentMockComponent {
-    return new ContentMockComponent(state)
-}
-
+export type ContentMockPropsPasser = MockPropsPasser<ContentMockProps>
 export type ContentMockProps = Readonly<{ type: "success" }>
 
-export function mapContentMockProps(props: ContentMockProps): ContentState {
-    switch (props.type) {
-        case "success":
-            return { type: "succeed-to-load", path: "/docs/index.html" }
-    }
+export function initMockContentComponent(passer: ContentMockPropsPasser): ContentMockComponent {
+    return new ContentMockComponent(passer)
 }
 
 class ContentMockComponent extends MockComponent<ContentState> implements ContentComponent {
+    constructor(passer: ContentMockPropsPasser) {
+        super()
+        passer.addPropsHandler((props) => {
+            this.post(mapProps(props))
+        })
+
+        function mapProps(props: ContentMockProps): ContentState {
+            switch (props.type) {
+                case "success":
+                    return { type: "succeed-to-load", path: "/docs/index.html" }
+            }
+        }
+    }
+
     load(): void {
         // mock ではなにもしない
     }

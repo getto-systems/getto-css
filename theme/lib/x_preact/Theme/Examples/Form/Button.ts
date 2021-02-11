@@ -134,8 +134,8 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            button_cancel({ state: "normal", label: "キャンセル", onClick }),
-                            button_close({ state: "normal", label: "閉じる", onClick }),
+                            button_cancel({ label: "キャンセル", onClick }),
+                            button_close({ label: "閉じる", onClick }),
                         ],
                         right: [],
                     }),
@@ -147,8 +147,8 @@ export function Button(_: Props): VNode {
                 body: [
                     buttons({
                         left: [
-                            button_undo({ state: "normal", label: "キャ取り消すンセル", onClick }),
-                            button_redo({ state: "normal", label: "やり直す", onClick }),
+                            button_undo({ label: "取り消す", onClick }),
+                            button_redo({ label: "やり直す", onClick }),
                         ],
                         right: [],
                     }),
@@ -159,7 +159,7 @@ export function Button(_: Props): VNode {
                 title: "disabled",
                 body: [
                     buttons({
-                        left: [button_disabled({ state: "normal", label: "やり直す" })],
+                        left: [button_disabled({ label: "やり直す" })],
                         right: [],
                     }),
                 ],

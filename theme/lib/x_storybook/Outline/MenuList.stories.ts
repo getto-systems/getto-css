@@ -1,4 +1,5 @@
 import { h, VNode } from "preact"
+import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
 import {
@@ -13,9 +14,8 @@ import { copyright, siteInfo } from "../../x_preact/common/site"
 
 import { MenuList } from "../../x_preact/Outline/MenuList"
 
-import { mapMenuMockProps, MenuMockProps, initMenuListComponent } from "../../auth/Outline/menuList/mock"
-
-import { initialMenuListState } from "../../auth/Outline/menuList/component"
+import { initMockPropsPasser } from "../../sub/getto-example/application/mock"
+import { MenuListMockProps, initMockMenuListComponent } from "../../auth/Outline/menuList/mock"
 
 import "../../../css/getto.css"
 
@@ -28,13 +28,16 @@ export default {
     },
 }
 
-type MockProps = MenuMockProps
+type MockProps = MenuListMockProps
 const Template: Story<MockProps> = (args) => {
-    const menuList = initMenuListComponent(initialMenuListState)
+    const passer = initMockPropsPasser<MenuListMockProps>()
+    const menuList = initMockMenuListComponent(passer)
     return h(Preview, { args })
 
     function Preview(props: { args: MockProps }) {
-        menuList.update(mapMenuMockProps(props.args))
+        useEffect(() => {
+            passer.update(props.args)
+        })
         const menuProps = { menuList }
         return html`
             <style>

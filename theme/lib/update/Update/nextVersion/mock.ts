@@ -1,29 +1,37 @@
-import { MockComponent } from "../../../sub/getto-example/application/mock"
+import { MockComponent, MockPropsPasser } from "../../../sub/getto-example/application/mock"
 
 import { NextVersionComponent, NextVersionState } from "./component"
 
-export function initNextVersionComponent(state: NextVersionState): NextVersionMockComponent {
-    return new NextVersionMockComponent(state)
-}
-
+export type NextVersionMockPropsPasser = MockPropsPasser<NextVersionMockProps>
 export type NextVersionMockProps =
     | Readonly<{ type: "delayed" }>
     | Readonly<{ type: "failed"; err: string }>
 
-export function mapNextVersionMockProps(props: NextVersionMockProps): NextVersionState {
-    switch (props.type) {
-        case "delayed":
-            return { type: "delayed-to-find" }
-
-        case "failed":
-            return {
-                type: "failed-to-find",
-                err: { type: "failed-to-check", err: { type: "infra-error", err: props.err } },
-            }
-    }
+export function initNextVersionComponent(passer: NextVersionMockPropsPasser): NextVersionMockComponent {
+    return new NextVersionMockComponent(passer)
 }
 
 class NextVersionMockComponent extends MockComponent<NextVersionState> implements NextVersionComponent {
+    constructor(passer: NextVersionMockPropsPasser) {
+        super()
+        passer.addPropsHandler((props) => {
+            this.post(mapProps(props))
+        })
+
+        function mapProps(props: NextVersionMockProps): NextVersionState {
+            switch (props.type) {
+                case "delayed":
+                    return { type: "delayed-to-find" }
+
+                case "failed":
+                    return {
+                        type: "failed-to-find",
+                        err: { type: "failed-to-check", err: { type: "infra-error", err: props.err } },
+                    }
+            }
+        }
+    }
+
     find(): void {
         // mock ではなにもしない
     }

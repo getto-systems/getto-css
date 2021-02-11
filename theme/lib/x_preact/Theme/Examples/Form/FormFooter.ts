@@ -53,7 +53,7 @@ export function FormFooter({ state, component }: Props): VNode {
         }
 
         if (state.invalid) {
-            return button_disabled({ state: "normal", label })
+            return button_disabled({ label })
         }
 
         const buttonState = state.modified ? "confirm" : "normal"
@@ -67,9 +67,9 @@ export function FormFooter({ state, component }: Props): VNode {
         }
 
         if (state.undoEnabled) {
-            return button_disabled({ state: "normal", label })
+            return button_disabled({ label })
         } else {
-            return button_close({ state: "normal", label, onClick })
+            return button_close({ label, onClick })
         }
     }
     function redoButton(state: EditState) {
@@ -80,9 +80,9 @@ export function FormFooter({ state, component }: Props): VNode {
         }
 
         if (state.redoEnabled) {
-            return button_redo({ state: "normal", label, onClick })
+            return button_redo({ label, onClick })
         } else {
-            return button_disabled({ state: "normal", label })
+            return button_disabled({ label })
         }
     }
     function undoButton(state: EditState) {
@@ -93,9 +93,9 @@ export function FormFooter({ state, component }: Props): VNode {
         }
 
         if (state.undoEnabled) {
-            return button_undo({ state: "normal", label, onClick })
+            return button_undo({ label, onClick })
         } else {
-            return button_disabled({ state: "normal", label })
+            return button_disabled({ label })
         }
     }
 
