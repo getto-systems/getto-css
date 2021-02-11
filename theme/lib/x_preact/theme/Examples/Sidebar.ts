@@ -1,5 +1,5 @@
 import { h, VNode } from "preact"
-import { useEffect, useErrorBoundary } from "preact/hooks"
+import { useErrorBoundary } from "preact/hooks"
 
 import {
     mainHeader,
@@ -12,7 +12,7 @@ import {
     appSidebar,
 } from "../../../z_vendor/getto-css/preact/layout/app"
 
-import { useTermination } from "../../z_common/hooks"
+import { useDocumentTitle, useTermination } from "../../z_common/hooks"
 import { copyright, siteInfo } from "../../z_common/site"
 
 import { ApplicationError } from "../../z_common/System/ApplicationError"
@@ -29,20 +29,17 @@ type Props = Readonly<{
     example: ExampleEntryPoint
 }>
 export function Sidebar({ example: { resource, terminate } }: Props): VNode {
+    useTermination(terminate)
+
     const [err] = useErrorBoundary((err) => {
         // 認証していないのでエラーはどうしようもない
         console.log(err)
     })
-
     if (err) {
         return h(ApplicationError, { err: `${err}` })
     }
 
-    useTermination(terminate)
-
-    useEffect(() => {
-        document.title = `Sidebar | ${document.title}`
-    }, [])
+    useDocumentTitle("Sidebar")
 
     return appLayout_sidebar({
         siteInfo: siteInfo(),

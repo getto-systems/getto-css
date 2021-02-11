@@ -1,5 +1,7 @@
 import { h, VNode } from "preact"
-import { useEffect, useErrorBoundary } from "preact/hooks"
+import { useErrorBoundary } from "preact/hooks"
+
+import { useDocumentTitle } from "../../../z_common/hooks"
 
 import { ApplicationError } from "../../../z_common/System/ApplicationError"
 
@@ -11,14 +13,11 @@ export function Error(_: Props): VNode {
         // 認証していないのでエラーはどうしようもない
         console.log(err)
     })
-
     if (err) {
         return h(ApplicationError, { err: `${err}` })
     }
 
-    useEffect(() => {
-        document.title = `Error | ${document.title}`
-    }, [])
+    useDocumentTitle("Error")
 
     return h(ApplicationError, { err: "アプリケーションエラー" })
 }
