@@ -1,12 +1,14 @@
 import { h, VNode } from "preact"
+import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { Document } from "../../x_preact/Document/Document"
 
-import { newDocument } from "../../document/Document/Document/mock"
-import { mapContentMockProps } from "../../document/Document/content/mock"
-import { mapBreadcrumbMockProps } from "../../auth/Outline/breadcrumbList/mock"
-import { mapMenuMockProps } from "../../auth/Outline/menuList/mock"
+import { DocumentMockPropsPasser, newMockDocument } from "../../document/Document/Document/mock"
+import { initMockPropsPasser } from "../../sub/getto-example/application/mock"
+import { MenuListMockProps } from "../../auth/Outline/menuList/mock"
+import { BreadcrumbListMockProps } from "../../auth/Outline/breadcrumbList/mock"
+import { ContentMockProps } from "../../document/Document/content/mock"
 
 import "../../../css/getto.css"
 
@@ -25,25 +27,28 @@ type MockProps = Readonly<{
     breadcrumbIcon: string
 }>
 const Template: Story<MockProps> = (args) => {
-    const { document, update } = newDocument()
+    const passer: DocumentMockPropsPasser = {
+        menuList: initMockPropsPasser<MenuListMockProps>(),
+        breadcrumbList: initMockPropsPasser<BreadcrumbListMockProps>(),
+        content: initMockPropsPasser<ContentMockProps>(),
+    }
+    const document = newMockDocument(passer)
     return h(Preview, { args })
 
     function Preview(props: { args: MockProps }) {
-        update.menuList(
-            mapMenuMockProps({
+        useEffect(() => {
+            passer.menuList.update({
                 type: "success",
                 label: props.args.menuLabel,
                 badgeCount: props.args.menuBadgeCount,
             })
-        )
-        update.breadcrumbList(
-            mapBreadcrumbMockProps({
+            passer.breadcrumbList.update({
                 type: "success",
                 label: props.args.menuLabel,
                 icon: props.args.breadcrumbIcon,
             })
-        )
-        update.content(mapContentMockProps({ type: "success" }))
+            passer.content.update({ type: "success" })
+        })
         return html`
             <style>
                 .sb-main-padded {

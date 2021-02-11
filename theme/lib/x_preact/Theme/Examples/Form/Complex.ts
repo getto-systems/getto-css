@@ -156,7 +156,7 @@ function CompleteModal({ state, component }: ModalContentProps<CompleteComponent
                 よろしいですか？`,
             footer: buttons({
                 left: button_complete({ state: "confirm", label: "完了", onClick: onCompleteClick }),
-                right: button_cancel({ state: "normal", label: "キャンセル", onClick: onCloseClick }),
+                right: button_cancel({ label: "キャンセル", onClick: onCloseClick }),
             }),
         })
     }
@@ -185,7 +185,7 @@ function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): 
                 よろしいですか？`,
             footer: buttons({
                 left: button_delete({ state: "confirm", label: "削除", onClick: onDeleteClick }),
-                right: button_cancel({ state: "normal", label: "キャンセル", onClick: onCloseClick }),
+                right: button_cancel({ label: "キャンセル", onClick: onCloseClick }),
             }),
         })
     }

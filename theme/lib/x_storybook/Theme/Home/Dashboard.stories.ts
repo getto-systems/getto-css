@@ -1,12 +1,14 @@
 import { h, VNode } from "preact"
+import { useEffect } from "preact/hooks"
 import { html } from "htm/preact"
 
 import { Dashboard } from "../../../x_preact/Theme/Home/Dashboard"
 
-import { newDashboard } from "../../../theme/Home/Dashboard/mock"
-import { mapHowToUseMockProps } from "../../../theme/Home/howToUse/mock"
-import { mapBreadcrumbMockProps } from "../../../auth/Outline/breadcrumbList/mock"
-import { mapMenuMockProps } from "../../../auth/Outline/menuList/mock"
+import { initMockPropsPasser } from "../../../sub/getto-example/application/mock"
+import { MenuListMockProps } from "../../../auth/Outline/menuList/mock"
+import { BreadcrumbListMockProps } from "../../../auth/Outline/breadcrumbList/mock"
+import { HowToUseMockProps } from "../../../theme/Home/howToUse/mock"
+import { DashboardMockPropsPasser, newMockDashboard } from "../../../theme/Home/Dashboard/mock"
 
 import "../../../../css/getto.css"
 
@@ -25,25 +27,28 @@ type MockProps = Readonly<{
     breadcrumbIcon: string
 }>
 const Template: Story<MockProps> = (args) => {
-    const { dashboard, update } = newDashboard()
+    const passer: DashboardMockPropsPasser = {
+        menuList: initMockPropsPasser<MenuListMockProps>(),
+        breadcrumbList: initMockPropsPasser<BreadcrumbListMockProps>(),
+        howToUse: initMockPropsPasser<HowToUseMockProps>(),
+    }
+    const dashboard = newMockDashboard(passer)
     return h(Preview, { args })
 
     function Preview(props: { args: MockProps }) {
-        update.menuList(
-            mapMenuMockProps({
+        useEffect(() => {
+            passer.menuList.update({
                 type: "success",
                 label: props.args.menuLabel,
                 badgeCount: props.args.menuBadgeCount,
             })
-        )
-        update.breadcrumbList(
-            mapBreadcrumbMockProps({
+            passer.breadcrumbList.update({
                 type: "success",
                 label: props.args.menuLabel,
                 icon: props.args.breadcrumbIcon,
             })
-        )
-        update.howToUse(mapHowToUseMockProps({ type: "success" }))
+            passer.howToUse.update({ type: "success" })
+        })
         return html`
             <style>
                 .sb-main-padded {

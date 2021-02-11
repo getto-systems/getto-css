@@ -1,18 +1,14 @@
 import { h, VNode } from "preact"
+import { useEffect } from "preact/hooks"
 
 import { Content } from "../../x_preact/Document/Content"
 
+import { initMockPropsPasser } from "../../sub/getto-example/application/mock"
+import { ContentMockProps, initMockContentComponent } from "../../document/Document/content/mock"
 import {
-    mapContentMockProps,
-    ContentMockProps,
-    initContentComponent,
-} from "../../document/Document/content/mock"
-import {
-    initBreadcrumbListComponent,
-    mapBreadcrumbMockProps,
+    BreadcrumbListMockProps,
+    initMockBreadcrumbListComponent,
 } from "../../auth/Outline/breadcrumbList/mock"
-
-import { initialContentState } from "../../document/Document/content/component"
 
 import "../../../css/getto.css"
 
@@ -27,14 +23,19 @@ export default {
 
 type MockProps = ContentMockProps
 const Template: Story<MockProps> = (args) => {
-    const content = initContentComponent(initialContentState)
-    const breadcrumbList = initBreadcrumbListComponent(
-        mapBreadcrumbMockProps({ type: "success", label: "ホーム", icon: "home" })
-    )
+    const passer = {
+        breadcrumbList: initMockPropsPasser<BreadcrumbListMockProps>(),
+        content: initMockPropsPasser<ContentMockProps>(),
+    }
+    const breadcrumbList = initMockBreadcrumbListComponent(passer.breadcrumbList)
+    const content = initMockContentComponent(passer.content)
     return h(Preview, { args })
 
     function Preview(props: { args: MockProps }) {
-        content.update(mapContentMockProps(props.args))
+        useEffect(() => {
+            passer.breadcrumbList.update({ type: "success", label: "ホーム", icon: "home" })
+            passer.content.update(props.args)
+        })
         return h(Content, { content, breadcrumbList })
     }
 }

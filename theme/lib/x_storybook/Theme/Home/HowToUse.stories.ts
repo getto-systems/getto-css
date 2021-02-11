@@ -1,14 +1,10 @@
 import { h, VNode } from "preact"
+import { useEffect } from "preact/hooks"
 
 import { HowToUse } from "../../../x_preact/Theme/Home/HowToUse"
 
-import {
-    HowToUseMockProps,
-    initHowToUseComponent,
-    mapHowToUseMockProps,
-} from "../../../theme/Home/howToUse/mock"
-
-import { initialHowToUseState } from "../../../theme/Home/howToUse/component"
+import { initMockPropsPasser } from "../../../sub/getto-example/application/mock"
+import { HowToUseMockProps, initMockHowToUseComponent } from "../../../theme/Home/howToUse/mock"
 
 import "../../../../css/getto.css"
 
@@ -23,11 +19,14 @@ export default {
 
 type MockProps = HowToUseMockProps
 const Template: Story<MockProps> = (args) => {
-    const howToUse = initHowToUseComponent(initialHowToUseState)
+    const passer = initMockPropsPasser<HowToUseMockProps>()
+    const howToUse = initMockHowToUseComponent(passer)
     return h(Preview, { args })
 
     function Preview(props: { args: MockProps }) {
-        howToUse.update(mapHowToUseMockProps(props.args))
+        useEffect(() => {
+            passer.update(props.args)
+        })
         return h(HowToUse, { howToUse })
     }
 }
