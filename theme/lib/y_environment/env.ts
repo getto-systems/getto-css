@@ -1,10 +1,10 @@
 export const env = {
-    "isProduction": false,
     "version": "dist",
+    "isProduction": false,
     "storageKey": {
         "menuExpand": {
             "main": "GETTO-CSS-MENU-EXPAND-MAIN",
-            "document": "GETTO-CSS-MENU-EXPAND-DOCUMENT"
+            "docs": "GETTO-CSS-MENU-EXPAND-DOCS"
         }
     }
 }

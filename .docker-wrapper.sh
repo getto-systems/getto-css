@@ -1,4 +1,4 @@
-DOCKER_WRAPPER_IMAGE_node(){ echo "15.5.1-buster"; }
+DOCKER_WRAPPER_IMAGE_node(){ head -1 $APP_ROOT/.gitlab-ci.yml | sed "s/image: //"; }
 
 DOCKER_WRAPPER_APP(){
   npm-server http $1 npm start

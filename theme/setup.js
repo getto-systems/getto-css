@@ -19,13 +19,13 @@ function envContent() {
     })()
 
     const env = {
-        isProduction,
         version,
+        isProduction,
 
         storageKey: {
             menuExpand: {
-                main: process.env.STORAGE_KEY_MENU_EXPAND_MAIN,
-                document: process.env.STORAGE_KEY_MENU_EXPAND_DOCUMENT,
+                main: "GETTO-CSS-MENU-EXPAND-MAIN",
+                docs: "GETTO-CSS-MENU-EXPAND-DOCS",
             },
         },
     }
