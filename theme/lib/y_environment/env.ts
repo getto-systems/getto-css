@@ -3,7 +3,7 @@ export const env = {
     "isProduction": false,
     "storageKey": {
         "menuExpand": {
-            "main": "GETTO-CSS-MENU-EXPAND-MAIN",
+            "home": "GETTO-CSS-MENU-EXPAND-HOME",
             "docs": "GETTO-CSS-MENU-EXPAND-DOCS"
         }
     }

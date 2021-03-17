@@ -3,22 +3,11 @@ const path = require("path")
 
 const TerserPlugin = require("terser-webpack-plugin")
 
-const entryPoint = require("../entryPoint")
+const environment = require("../environment")
+const entryPoint = require("../entry_point")
 
 module.exports = {
-    entry: () => {
-        return entryPoint.findEntries().reduce((acc, name) => {
-            acc[entryPoint.toEntryName(name)] = toMainPath(name)
-            return acc
-        }, {})
-
-        function toMainPath(name) {
-            return toPath("main", name)
-        }
-        function toPath(type, name) {
-            return path.join(__dirname, "../lib/z_main", entryPoint.toEntryPath(name), `${type}.ts`)
-        }
-    },
+    entry: entryPoint.findEntries(),
     output: {
         path: path.join(__dirname, "dist"),
         filename: "[name].js",
@@ -43,7 +32,7 @@ module.exports = {
         ],
     },
     optimization: {
-        minimize: process.env.BUILD_ENV == "production",
+        minimize: environment.isProduction(),
         minimizer: [new TerserPlugin()],
     },
     watchOptions: {
