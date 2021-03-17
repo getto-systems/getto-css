@@ -11,5 +11,5 @@
 /theme/artifact/dist/**/*.css
 /theme/public/dist/**/*.js
 
-**/y_static/*
-!**/y_static/.keep
+**/y_*/*
+!**/y_*/.keep
