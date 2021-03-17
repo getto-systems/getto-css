@@ -1,3 +1,4 @@
+import "../../../theme/css"
 import { render, h } from "preact"
 
 import { newNotFoundView } from "../../../avail/action_not_found/init"

@@ -1,3 +1,4 @@
+import "../../../theme/css"
 import { render, h } from "preact"
 
 import { newDocsView } from "../../../docs/action_docs/init"

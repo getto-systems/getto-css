@@ -1,3 +1,4 @@
+import "../../theme/css"
 import { render, h } from "preact"
 
 import { newDashboardView } from "../../theme/action_dashboard/init"

@@ -1,9 +1,8 @@
+import "../../../../../theme/css"
 import { h, VNode } from "preact"
 
 import { SearchFormComponent } from "./search_form"
 import { SearchComponent, SearchState } from "./container"
-
-import "../../../../css/getto.css"
 
 export default {
     title: "Theme/Examples/Search",

@@ -23,7 +23,7 @@ import {
 type TableProps = {
     // no props
 }
-export function TableComponent(_: TableProps): VNode {
+export function SidebarDoubleTableComponent(_: TableProps): VNode {
     const structure = useMemo(buildStructure, [])
 
     const model: Model = {

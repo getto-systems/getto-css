@@ -1,9 +1,8 @@
+import "../../../../../../theme/css"
 import { h, VNode } from "preact"
 
 import { LoginComponent } from "./login"
 import { LoginAction, LoginState } from "./container"
-
-import "../../../../../css/getto.css"
 
 export default {
     title: "Theme/Examples/Login/Login",

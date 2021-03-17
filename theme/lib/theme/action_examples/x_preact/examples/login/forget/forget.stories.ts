@@ -1,9 +1,8 @@
+import "../../../../../../theme/css"
 import { h, VNode } from "preact"
 
 import { ForgetComponent } from "./forget"
 import { ForgetAction, ForgetState } from "./container"
-
-import "../../../../../css/getto.css"
 
 export default {
     title: "Theme/Examples/Login/Forget",

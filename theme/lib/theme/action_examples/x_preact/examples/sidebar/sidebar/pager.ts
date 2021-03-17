@@ -10,7 +10,7 @@ import { button_search, field, pager } from "../../../../../../z_vendor/getto-cs
 type PagerProps = {
     // no props
 }
-export function PagerComponent(_: PagerProps): VNode {
+export function SidebarPagerComponent(_: PagerProps): VNode {
     const all = 5532
     const offset = 0
     return box_fill({

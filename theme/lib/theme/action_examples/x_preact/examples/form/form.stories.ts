@@ -1,15 +1,9 @@
+import "../../../../../theme/css"
 import { h, VNode } from "preact"
 
 import { ComplexComponent } from "./complex"
-import {
-    CompleteComponent,
-    DeleteComponent,
-    FormComponent,
-    FormState,
-} from "./container"
+import { CompleteComponent, DeleteComponent, FormComponent, FormState } from "./container"
 import { ModalState } from "./modal"
-
-import "../../../../css/getto.css"
 
 export default {
     title: "Theme/Examples/Form",
@@ -49,7 +43,7 @@ const Template: Story<MockProps> = (args) => {
         modal: Readonly<{
             complete: ModalState
             delete: ModalState
-            generate: ModalState            
+            generate: ModalState
         }>
     }>
     function map(args: MockProps): ComplexState {
