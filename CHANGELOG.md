@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## Version : 2.27.0
+
+- fix: paragraph : See merge request getto-systems-base/projects/css!460
+- fix: label / badge vertical align : See merge request getto-systems-base/projects/css!459
+- fix: menu summary handle : See merge request getto-systems-base/projects/css!458
+- fix: disabled button cursor : See merge request getto-systems-base/projects/css!457
+- fix: privacy policy : See merge request getto-systems-base/projects/css!456
+- fix: docs : See merge request getto-systems-base/projects/css!455
+- fix: docs : See merge request getto-systems-base/projects/css!454
+- fix: all versions url : See merge request getto-systems-base/projects/css!453
+- refactor: examples : See merge request getto-systems-base/projects/css!452
+- apply: example : See merge request getto-systems-base/projects/css!451
+- remove: unused file : See merge request getto-systems-base/projects/css!450
+- update: packages : See merge request getto-systems-base/projects/css!449
+- fix: infra : See merge request getto-systems-base/projects/css!448
+- fix: test function name : See merge request getto-systems-base/projects/css!447
+- rename: available : See merge request getto-systems-base/projects/css!446
+- fix: useDocumentTitle : See merge request getto-systems-base/projects/css!445
+- fix: useTermination : See merge request getto-systems-base/projects/css!444
+- fix: entry point : See merge request getto-systems-base/projects/css!443
+- fix: y_environment : See merge request getto-systems-base/projects/css!442
+- refactor: x_preact : See merge request getto-systems-base/projects/css!441
+- refactor: x_components : See merge request getto-systems-base/projects/css!440
+
+
 ## Version : 2.26.0
 
 - fix: form : See merge request getto-systems-base/projects/css!438
