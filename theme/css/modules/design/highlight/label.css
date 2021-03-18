@@ -7,7 +7,7 @@
     padding: calc(0.1875em - 2px) 0.75em;
     border: 1px solid transparent;
 
-    vertical-align: middle;
+    vertical-align: top;
     white-space: nowrap;
 }
 
