@@ -27,7 +27,6 @@
 }
 
 .menu__nav__summary {
-    display: flex;
     cursor: pointer;
 
     padding: calc(0.4em - 1px) 0.5em;
@@ -35,6 +34,11 @@
     border-radius: 0.5rem;
 
     align-items: center;
+}
+
+.menu__nav__summary__container {
+    display: inline-flex;
+    width: calc(100% - 1.1em);
 }
 
 .menu__nav__summary__label {
