@@ -29,7 +29,7 @@ import { icon } from "../../../../../x_preact/common/design/icon"
 type Props = {
     // no props
 }
-export function TableComponent(_: Props): VNode {
+export function SidebarTableComponent(_: Props): VNode {
     const sort: Sort = {
         key: "id",
         order: "normal",

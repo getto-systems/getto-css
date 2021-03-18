@@ -1,29 +1,37 @@
 import "../../../../../../theme/css"
-import { h, VNode } from "preact"
+import { h } from "preact"
 
 import { LoginComponent } from "./login"
 import { LoginAction, LoginState } from "./container"
+import { enumKeys, storyTemplate } from "../../../../../../z_vendor/storybook/preact/story"
+
+enum LoginEnum {
+    "initial",
+    "invalid",
+    "fill",
+    "try-to-login",
+}
 
 export default {
     title: "Theme/Examples/Login/Login",
     argTypes: {
-        type: {
-            table: { disable: true },
+        login: {
+            control: { type: "select", options: enumKeys(LoginEnum) },
         },
     },
 }
 
-type MockProps =
-    | Readonly<{ type: "initial" }>
-    | Readonly<{ type: "invalid" }>
-    | Readonly<{ type: "fill" }>
-    | Readonly<{ type: "try-to-login" }>
+type MockProps = Readonly<{
+    login: keyof typeof LoginEnum
+}>
+const template = storyTemplate<MockProps>((props) => {
+    return h(LoginComponent, {
+        state: state(),
+        action: mockAction(),
+    })
 
-const Template: Story<MockProps> = (args) => {
-    return h(LoginComponent, { state: map(args), component: initMockComponent() })
-
-    function map(args: MockProps): LoginState {
-        switch (args.type) {
+    function state(): LoginState {
+        switch (props.login) {
             case "initial":
                 return {
                     type: "login",
@@ -57,9 +65,9 @@ const Template: Story<MockProps> = (args) => {
                 }
         }
     }
-}
+})
 
-function initMockComponent(): LoginAction {
+function mockAction(): LoginAction {
     return {
         inputInvalidValue: noop,
         inputValidValue: noop,
@@ -70,27 +78,4 @@ function noop() {
     // 何もしない
 }
 
-interface Story<T> {
-    args?: T
-    (args: T): VNode
-}
-
-export const Initial = Template.bind({})
-Initial.args = {
-    type: "initial",
-}
-
-export const Invalid = Template.bind({})
-Invalid.args = {
-    type: "invalid",
-}
-
-export const Fill = Template.bind({})
-Fill.args = {
-    type: "fill",
-}
-
-export const TryToLogin = Template.bind({})
-TryToLogin.args = {
-    type: "try-to-login",
-}
+export const Login = template({ login: "initial" })

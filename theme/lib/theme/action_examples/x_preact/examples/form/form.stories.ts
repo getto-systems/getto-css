@@ -1,40 +1,47 @@
 import "../../../../../theme/css"
-import { h, VNode } from "preact"
+import { h } from "preact"
+
+import { enumKeys, storyTemplate } from "../../../../../z_vendor/storybook/preact/story"
 
 import { ComplexComponent } from "./complex"
-import { CompleteComponent, DeleteComponent, FormComponent, FormState } from "./container"
+import { CompleteAction, DeleteAction, FormAction, FormState } from "./container"
 import { ModalState } from "./modal"
+
+enum FormEnum {
+    "initial",
+    "editing",
+    "invalid",
+    "modified",
+    "undoEnabled",
+    "redoEnabled",
+    "try-to-save",
+    "complete",
+    "try-to-complete",
+    "delete",
+    "try-to-delete",
+}
 
 export default {
     title: "Theme/Examples/Form",
     argTypes: {
-        type: {
-            table: { disable: true },
+        form: {
+            control: { type: "select", options: enumKeys(FormEnum) },
         },
     },
 }
 
-type MockProps =
-    | Readonly<{ type: "initial" }>
-    | Readonly<{ type: "editing" }>
-    | Readonly<{ type: "invalid" }>
-    | Readonly<{ type: "modified" }>
-    | Readonly<{ type: "undoEnabled" }>
-    | Readonly<{ type: "redoEnabled" }>
-    | Readonly<{ type: "try-to-save" }>
-    | Readonly<{ type: "complete" }>
-    | Readonly<{ type: "try-to-complete" }>
-    | Readonly<{ type: "delete" }>
-    | Readonly<{ type: "try-to-delete" }>
+type MockProps = Readonly<{
+    form: keyof typeof FormEnum
+}>
 
-const Template: Story<MockProps> = (args) => {
-    const { state, modal } = map(args)
+const template = storyTemplate<MockProps>((props) => {
+    const { state, modal } = map()
     return h(ComplexComponent, {
         state,
-        component: initMockFormComponent(),
+        action: mockFormAction(),
         modal: {
-            complete: { state: modal.complete, component: initMockCompleteComponent() },
-            delete: { state: modal.delete, component: initMockDeleteComponent() },
+            complete: { state: modal.complete, component: mockCompleteAction() },
+            delete: { state: modal.delete, component: mockDeleteAction() },
         },
     })
 
@@ -46,8 +53,8 @@ const Template: Story<MockProps> = (args) => {
             generate: ModalState
         }>
     }>
-    function map(args: MockProps): ComplexState {
-        switch (args.type) {
+    function map(): ComplexState {
+        switch (props.form) {
             case "initial":
                 return {
                     state: {
@@ -217,9 +224,9 @@ const Template: Story<MockProps> = (args) => {
                 }
         }
     }
-}
+})
 
-function initMockFormComponent(): FormComponent {
+function mockFormAction(): FormAction {
     return {
         edit: noop,
         close: noop,
@@ -231,14 +238,14 @@ function initMockFormComponent(): FormComponent {
         delete: noop,
     }
 }
-function initMockCompleteComponent(): CompleteComponent {
+function mockCompleteAction(): CompleteAction {
     return {
         open: noop,
         close: noop,
         complete: noop,
     }
 }
-function initMockDeleteComponent(): DeleteComponent {
+function mockDeleteAction(): DeleteAction {
     return {
         open: noop,
         close: noop,
@@ -249,62 +256,4 @@ function noop() {
     // 何もしない
 }
 
-interface Story<T> {
-    args?: T
-    (args: T): VNode
-}
-
-export const Initial = Template.bind({})
-Initial.args = {
-    type: "initial",
-}
-
-export const Editing = Template.bind({})
-Editing.args = {
-    type: "editing",
-}
-
-export const Invalid = Template.bind({})
-Invalid.args = {
-    type: "invalid",
-}
-
-export const Modified = Template.bind({})
-Modified.args = {
-    type: "modified",
-}
-
-export const UndoEnabled = Template.bind({})
-UndoEnabled.args = {
-    type: "undoEnabled",
-}
-
-export const RedoEnabled = Template.bind({})
-RedoEnabled.args = {
-    type: "redoEnabled",
-}
-
-export const TryToSave = Template.bind({})
-TryToSave.args = {
-    type: "try-to-save",
-}
-
-export const Complete = Template.bind({})
-Complete.args = {
-    type: "complete",
-}
-
-export const TryToComplete = Template.bind({})
-TryToComplete.args = {
-    type: "try-to-complete",
-}
-
-export const Delete = Template.bind({})
-Delete.args = {
-    type: "delete",
-}
-
-export const TryToDelete = Template.bind({})
-TryToDelete.args = {
-    type: "try-to-delete",
-}
+export const Form = template({ form: "initial" })

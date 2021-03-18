@@ -11,7 +11,7 @@ export function LoginContainerComponent(_: ContainerProps): VNode {
 
     function useLoginProps(): LoginProps {
         const [state, setState] = useState<LoginState>({ type: "login", state: initialEditState })
-        const component: LoginAction = {
+        const action: LoginAction = {
             inputValidValue: () => {
                 setState({
                     type: "login",
@@ -40,18 +40,18 @@ export function LoginContainerComponent(_: ContainerProps): VNode {
                 }, 3000)
             },
         }
-        return { state, component }
+        return { state, action }
     }
 }
 
 export type LoginProps = Readonly<{
     state: LoginState
-    component: LoginAction
+    action: LoginAction
 }>
 export interface LoginAction {
-    inputValidValue: Action<null>
-    inputInvalidValue: Action<null>
-    login: Action<null>
+    inputValidValue: Method<null>
+    inputInvalidValue: Method<null>
+    login: Method<null>
 }
 export type LoginState =
     | Readonly<{ type: "login"; state: EditState }>
@@ -67,6 +67,6 @@ const initialEditState: EditState = {
     invalid: false,
 }
 
-interface Action<T> {
+interface Method<T> {
     (event: T): void
 }

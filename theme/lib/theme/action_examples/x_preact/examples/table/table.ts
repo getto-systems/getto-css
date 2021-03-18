@@ -48,7 +48,7 @@ type Props = Readonly<{
     rows: Row[]
     column: { (row: Row): TableDataColumnRow }
 }>
-export function TableComponent({ content, column, rows }: Props): VNode {
+export function TableTableComponent({ content, column, rows }: Props): VNode {
     const dataLength = rows.length
     return table(content.sticky, [
         thead([...tableHeader({ ...content, singleLastBorderBottom: true }), ...tableSummary(content)]),

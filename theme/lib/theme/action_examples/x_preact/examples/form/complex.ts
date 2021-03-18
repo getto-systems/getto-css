@@ -15,7 +15,7 @@ import {
 import { label_gray } from "../../../../../z_vendor/getto-css/preact/design/highlight"
 import { big } from "../../../../../z_vendor/getto-css/preact/design/alignment"
 
-import { CompleteComponent, DeleteComponent, EditState, FormProps } from "./container"
+import { CompleteAction, DeleteAction, EditState, FormProps } from "./container"
 import { FormFooterComponent } from "./form_footer"
 import { ModalComponent, ModalContentProps, ModalProps } from "./modal"
 import { icon, spinner } from "../../../../../x_preact/common/design/icon"
@@ -23,12 +23,12 @@ import { icon, spinner } from "../../../../../x_preact/common/design/icon"
 type Props = FormProps &
     Readonly<{
         modal: Readonly<{
-            complete: ModalProps<CompleteComponent>
-            delete: ModalProps<DeleteComponent>
+            complete: ModalProps<CompleteAction>
+            delete: ModalProps<DeleteAction>
         }>
     }>
 export function ComplexComponent(props: Props): VNode {
-    const { state, component, modal } = props
+    const { state, action: component, modal } = props
 
     switch (state.type) {
         case "static":
@@ -141,7 +141,7 @@ export function ComplexComponent(props: Props): VNode {
     }
 }
 
-function CompleteModal({ state, component }: ModalContentProps<CompleteComponent>): VNode {
+function CompleteModal({ state, component }: ModalContentProps<CompleteAction>): VNode {
     function onCompleteClick() {
         component.complete(null)
     }
@@ -172,7 +172,7 @@ function CompleteModal({ state, component }: ModalContentProps<CompleteComponent
         })
     }
 }
-function DeleteModal({ state, component }: ModalContentProps<DeleteComponent>): VNode {
+function DeleteModal({ state, component }: ModalContentProps<DeleteAction>): VNode {
     function onDeleteClick() {
         component.delete(null)
     }

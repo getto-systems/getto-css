@@ -16,7 +16,7 @@ import {
 import { EditState, FormProps } from "./container"
 
 type Props = FormProps
-export function FormFooterComponent({ state, component }: Props): VNode {
+export function FormFooterComponent({ state, action: component }: Props): VNode {
     function onEditClick() {
         component.edit(null)
     }

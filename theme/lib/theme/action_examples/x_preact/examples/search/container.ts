@@ -9,12 +9,12 @@ import { visibleKeys } from "../../../../../z_vendor/getto-table/preact/core"
 import { container } from "../../../../../z_vendor/getto-css/preact/design/box"
 import { Sort, sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
 
-import { SearchFormComponent } from "./search_form"
-import { PagerComponent } from "./pager"
-import { ViewColumnsComponent } from "./view_columns"
-import { buildStructure, TableComponent } from "./table"
+import { SearchSearchFormComponent } from "./search_form"
+import { SearchPagerComponent } from "./pager"
+import { SearchViewColumnsComponent } from "./view_columns"
+import { buildStructure, SearchTableComponent } from "./table"
 
-import { generateRows, Model, Row } from "./data"
+import { generateSearchRows, Model, Row } from "./data"
 
 type ContainerProps = {
     // no props
@@ -42,18 +42,19 @@ export function SearchContainerComponent(_: ContainerProps): VNode {
     }
     const tableProps = {
         content,
-        rows: generateRows(),
+        rows: generateSearchRows(),
         column: (row: Row) => structure.column(params, row),
     }
 
     return html`
-        ${h(SearchFormComponent, useSearchProps())} ${container([h(PagerComponent, NO_PROPS), h(ViewColumnsComponent, content)])}
-        ${h(TableComponent, tableProps)}
+        ${h(SearchSearchFormComponent, useSearchProps())}
+        ${container([h(SearchPagerComponent, NO_PROPS), h(SearchViewColumnsComponent, content)])}
+        ${h(SearchTableComponent, tableProps)}
     `
 
     function useSearchProps(): SearchProps {
         const [state, setState] = useState<SearchState>(initialSearch)
-        const component: SearchComponent = {
+        const action: SearchAction = {
             search: () => {
                 setState({ type: "try-to-search" })
 
@@ -77,17 +78,17 @@ export function SearchContainerComponent(_: ContainerProps): VNode {
                 })
             },
         }
-        return { state, component }
+        return { state, action }
     }
 }
 
 export type SearchProps = Readonly<{
     state: SearchState
-    component: SearchComponent
+    action: SearchAction
 }>
-export interface SearchComponent {
-    search: Action<null>
-    inputValidValue: Action<null>
+export interface SearchAction {
+    search: Method<null>
+    inputValidValue: Method<null>
 }
 export type SearchState =
     | Readonly<{ type: "search"; state: EditState }>
@@ -109,6 +110,6 @@ const initialSearch: SearchState = {
 
 const NO_PROPS = {}
 
-interface Action<T> {
+interface Method<T> {
     (event: T): void
 }

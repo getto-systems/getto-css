@@ -50,7 +50,7 @@ type Props = {
     rows: Row[]
     column: { (row: Row): TableDataColumnRow }
 }
-export function ContentComponent({ content, column, rows }: Props): VNode {
+export function ReportContentComponent({ content, column, rows }: Props): VNode {
     const pageID = (index: number) => `__css__print__report_${index}`
 
     const data = useReportRowsComposition(rows, {
@@ -123,7 +123,7 @@ export function ContentComponent({ content, column, rows }: Props): VNode {
 }
 
 type Cells<R> = TableCell<Model, R>
-export const buildStructure = (): TableStructure<Model, Row> =>
+export const buildReportStructure = (): TableStructure<Model, Row> =>
     tableStructure({
         key: (row: Row) => row.id,
         cells: <Cells<Row>[]>[

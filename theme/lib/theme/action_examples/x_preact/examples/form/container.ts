@@ -39,7 +39,7 @@ export function FormContainerComponent(_: ContainerProps): VNode {
         ])}
     `
 
-    function useStaticFormProps(action: { delete: Action<null> }): FormProps {
+    function useStaticFormProps(action: { delete: Method<null> }): FormProps {
         return useFormProps({ type: "static" }, action)
     }
     function useEditingFormProps(): FormProps {
@@ -49,9 +49,9 @@ export function FormContainerComponent(_: ContainerProps): VNode {
             },
         })
     }
-    function useFormProps(initialState: FormState, action: { delete: Action<null> }): FormProps {
+    function useFormProps(initialState: FormState, action: { delete: Method<null> }): FormProps {
         const [state, setState] = useState<FormState>(initialState)
-        const component: FormComponent = {
+        const component: FormAction = {
             edit: () => {
                 setState(initialFormEditing)
             },
@@ -111,7 +111,7 @@ export function FormContainerComponent(_: ContainerProps): VNode {
             },
             ...action,
         }
-        return { state, component }
+        return { state, action: component }
     }
     function useComplexProps() {
         const modal = {
@@ -128,9 +128,9 @@ export function FormContainerComponent(_: ContainerProps): VNode {
         }
     }
 
-    function useCompleteModal(): ModalProps<CompleteComponent> {
+    function useCompleteModal(): ModalProps<CompleteAction> {
         const [state, setState] = useState<ModalState>({ active: false })
-        const component: CompleteComponent = {
+        const component: CompleteAction = {
             open: () => {
                 setState({ active: true, state: { connecting: false } })
             },
@@ -147,9 +147,9 @@ export function FormContainerComponent(_: ContainerProps): VNode {
         }
         return { state, component }
     }
-    function useDeleteModal(): ModalProps<DeleteComponent> {
+    function useDeleteModal(): ModalProps<DeleteAction> {
         const [state, setState] = useState<ModalState>({ active: false })
-        const component: DeleteComponent = {
+        const component: DeleteAction = {
             open: () => {
                 setState({ active: true, state: { connecting: false } })
             },
@@ -170,17 +170,17 @@ export function FormContainerComponent(_: ContainerProps): VNode {
 
 export type FormProps = Readonly<{
     state: FormState
-    component: FormComponent
+    action: FormAction
 }>
-export interface FormComponent {
-    edit: Action<null>
-    close: Action<null>
-    inputValidValue: Action<null>
-    inputInvalidValue: Action<null>
-    undo: Action<null>
-    redo: Action<null>
-    save: Action<null>
-    delete: Action<null>
+export interface FormAction {
+    edit: Method<null>
+    close: Method<null>
+    inputValidValue: Method<null>
+    inputInvalidValue: Method<null>
+    undo: Method<null>
+    redo: Method<null>
+    save: Method<null>
+    delete: Method<null>
 }
 export type FormState =
     | Readonly<{ type: "static" }>
@@ -205,20 +205,20 @@ const initialFormEditing: FormState = {
     state: initialEditState,
 }
 
-export interface CompleteComponent {
-    open: Action<null>
-    complete: Action<null>
-    close: Action<null>
+export interface CompleteAction {
+    open: Method<null>
+    complete: Method<null>
+    close: Method<null>
 }
 
-export interface DeleteComponent {
-    open: Action<null>
-    delete: Action<null>
-    close: Action<null>
+export interface DeleteAction {
+    open: Method<null>
+    delete: Method<null>
+    close: Method<null>
 }
 
 const NO_PROPS = {}
 
-interface Action<T> {
+interface Method<T> {
     (event: T): void
 }

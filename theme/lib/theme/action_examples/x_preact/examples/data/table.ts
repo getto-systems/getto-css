@@ -41,14 +41,14 @@ type Props = Readonly<{
     rows: Row[]
     column: { (row: Row): TableDataColumnRow }
 }>
-export function TableComponent({ content, column, rows }: Props): VNode {
+export function DataTableComponent({ content, column, rows }: Props): VNode {
     return table(content.sticky, [
         thead(tableHeader(content)),
         tbody(rows.flatMap((row) => tableColumn({ ...content, column: column(row) }))),
     ])
 }
 
-export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
+export const buildDataStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
     tableStructure({
         key: (row: Row) => row.id,
         cells: [

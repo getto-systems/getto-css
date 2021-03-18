@@ -34,7 +34,7 @@ type Props = Readonly<{
     rows: Row[]
     column: { (row: Row): TableDataColumnRow }
 }>
-export function TableComponent({ content, column, rows }: Props): VNode {
+export function SearchTableComponent({ content, column, rows }: Props): VNode {
     return table(content.sticky, [
         thead(tableHeader(content)),
         tbody(rows.flatMap((row) => tableColumn({ ...content, column: column(row) }))),

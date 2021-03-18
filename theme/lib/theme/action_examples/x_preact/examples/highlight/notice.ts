@@ -13,7 +13,7 @@ import {
 type NoticeBasicProps = {
     // no props
 }
-export function NoticeBasicComponent(_: NoticeBasicProps): VNode {
+export function BasicNoticeComponent(_: NoticeBasicProps): VNode {
     return box({
         title: "notice",
         body: [
@@ -28,7 +28,7 @@ export function NoticeBasicComponent(_: NoticeBasicProps): VNode {
 type NoticeOtherProps = {
     // no props
 }
-export function NoticeOtherComponent(_: NoticeOtherProps): VNode {
+export function OtherNoticeComponent(_: NoticeOtherProps): VNode {
     return box({
         title: "notice",
         body: [

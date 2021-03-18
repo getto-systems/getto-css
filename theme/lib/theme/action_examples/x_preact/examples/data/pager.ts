@@ -9,7 +9,7 @@ import { pagerCount, pagerParams } from "../../../../../x_preact/common/design/t
 type Props = {
     // no props
 }
-export function PagerComponent(_: Props): VNode {
+export function DataPagerComponent(_: Props): VNode {
     const all = 5532
     const offset = 0
     return box({

@@ -6,7 +6,7 @@ import { field } from "../../../../../z_vendor/getto-css/preact/design/form"
 type Props = {
     // no props
 }
-export function BoxComponent(_: Props): VNode {
+export function SidebarBoxComponent(_: Props): VNode {
     return container([
         box_double({
             title: "title",

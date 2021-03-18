@@ -16,7 +16,7 @@ import { EditState, ForgetProps } from "./container"
 import { icon, spinner } from "../../../../../../x_preact/common/design/icon"
 
 type Props = ForgetProps
-export function ForgetComponent({ state, component }: Props): VNode {
+export function ForgetComponent({ state, action: component }: Props): VNode {
     function onInput() {
         component.inputValidValue(null)
     }

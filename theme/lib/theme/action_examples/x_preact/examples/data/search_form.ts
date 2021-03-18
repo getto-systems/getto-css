@@ -8,7 +8,7 @@ import { ListProps } from "./container"
 import { icon, spinner } from "../../../../../x_preact/common/design/icon"
 
 type Props = ListProps
-export function SearchFormComponent({ state, component }: Props): VNode {
+export function DataSearchFormComponent({ state, action: component }: Props): VNode {
     function onSearchClick() {
         component.search(null)
     }
