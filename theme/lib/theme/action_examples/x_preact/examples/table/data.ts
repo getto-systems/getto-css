@@ -33,7 +33,7 @@ export type ArticleComment = string
 
 export type TemperatureType = "high" | "low"
 
-export function generateRows(): Row[] {
+export function generateTableRows(): Row[] {
     return generate(2, rows)
 
     function rows(): Row[] {

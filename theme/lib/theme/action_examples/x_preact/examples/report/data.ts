@@ -10,7 +10,7 @@ export type Row = Readonly<{
     updatedAt: string
 }>
 
-export function generateRows(): Row[] {
+export function generateReportRows(): Row[] {
     return repeatedRows(50)
 
     function repeatedRows(count: number) {

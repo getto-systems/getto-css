@@ -9,11 +9,11 @@ import { visibleAll } from "../../../../../z_vendor/getto-table/preact/core"
 import { container } from "../../../../../z_vendor/getto-css/preact/design/box"
 import { Sort, sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
 
-import { PagerComponent } from "./pager"
-import { ViewColumnsComponent } from "./view_columns"
-import { buildStructure, TableComponent } from "./table"
+import { TablePagerComponent } from "./pager"
+import { TableViewColumnsComponent } from "./view_columns"
+import { buildStructure, TableTableComponent } from "./table"
 
-import { generateLogs, generateRows, Model, Row } from "./data"
+import { generateLogs, generateTableRows, Model, Row } from "./data"
 
 type ContainerProps = {
     // no props
@@ -48,13 +48,13 @@ export function TableContainerComponent(_: ContainerProps): VNode {
     }
     const tableProps = {
         content,
-        rows: generateRows(),
+        rows: generateTableRows(),
         column: (row: Row) => structure.column(params, row),
     }
 
     return html`
-        ${container([h(PagerComponent, NO_PROPS), h(ViewColumnsComponent, content)])}
-        ${h(TableComponent, tableProps)}
+        ${container([h(TablePagerComponent, NO_PROPS), h(TableViewColumnsComponent, content)])}
+        ${h(TableTableComponent, tableProps)}
     `
 }
 

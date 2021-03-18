@@ -14,8 +14,8 @@ import { EditState, SearchProps } from "./container"
 import { spinner } from "../../../../../x_preact/common/design/icon"
 
 type Props = SearchProps
-export function SearchFormComponent(props: Props): VNode {
-    const { component } = props
+export function SearchSearchFormComponent(props: Props): VNode {
+    const { action: component } = props
 
     function onInput() {
         component.inputValidValue(null)
@@ -65,7 +65,7 @@ export function SearchFormComponent(props: Props): VNode {
 }
 
 type SearchFooterProps = SearchProps
-function SearchFooter({ state, component }: SearchFooterProps) {
+function SearchFooter({ state, action: component }: SearchFooterProps) {
     function onSearchClick() {
         component.search(null)
     }

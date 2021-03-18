@@ -17,7 +17,7 @@ import { EditState, LoginProps } from "./container"
 import { icon, spinner } from "../../../../../../x_preact/common/design/icon"
 
 type Props = LoginProps
-export function LoginComponent({ state, component }: Props): VNode {
+export function LoginComponent({ state, action: component }: Props): VNode {
     function onInput() {
         component.inputValidValue(null)
     }

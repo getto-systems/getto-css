@@ -10,7 +10,7 @@ import { tableViewColumns } from "../../../../../z_vendor/getto-css/preact/desig
 type Props = Readonly<{
     view: TableDataView[]
 }>
-export function ViewColumnsComponent({view}: Props): VNode {
+export function TableViewColumnsComponent({view}: Props): VNode {
     return box_grow({
         body: [
             field({

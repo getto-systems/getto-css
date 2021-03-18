@@ -9,12 +9,12 @@ import { visibleKeys } from "../../../../../z_vendor/getto-table/preact/core"
 import { container } from "../../../../../z_vendor/getto-css/preact/design/box"
 import { Sort, sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
 
-import { SearchFormComponent } from "./search_form"
-import { PagerComponent } from "./pager"
-import { ViewColumnsComponent } from "./view_columns"
-import { buildStructure, TableComponent } from "./table"
+import { DataSearchFormComponent } from "./search_form"
+import { DataPagerComponent } from "./pager"
+import { DataViewColumnsComponent } from "./view_columns"
+import { buildDataStructure, DataTableComponent } from "./table"
 
-import { generateRows, Model, Row } from "./data"
+import { generateDataRows, Model, Row } from "./data"
 
 type ContainerProps = {
     // no props
@@ -26,7 +26,7 @@ export function DataContainerComponent(_: ContainerProps): VNode {
         href: (query) => `?sort=${query.key}.${query.order}`,
         sign: sortSign,
     }
-    const structure = useMemo(buildStructure(sortLink(sort)), [])
+    const structure = useMemo(buildDataStructure(sortLink(sort)), [])
 
     const model: Model = {}
 
@@ -42,19 +42,19 @@ export function DataContainerComponent(_: ContainerProps): VNode {
     }
     const tableProps = {
         content,
-        rows: generateRows(),
+        rows: generateDataRows(),
         column: (row: Row) => structure.column(params, row),
     }
 
     return html`
-        ${h(SearchFormComponent, useListProps())}
-        ${container([h(PagerComponent, NO_PROPS), h(ViewColumnsComponent, content)])}
-        ${h(TableComponent, tableProps)}
+        ${h(DataSearchFormComponent, useListProps())}
+        ${container([h(DataPagerComponent, NO_PROPS), h(DataViewColumnsComponent, content)])}
+        ${h(DataTableComponent, tableProps)}
     `
 
     function useListProps(): ListProps {
         const [state, setState] = useState<ListState>(initialList)
-        const component: ListComponent = {
+        const action: ListAction = {
             search: () => {
                 setState({ type: "try-to-search" })
 
@@ -63,22 +63,22 @@ export function DataContainerComponent(_: ContainerProps): VNode {
                 }, 3000)
             },
         }
-        return { state, component }
+        return { state, action }
     }
 }
 
 export type ListProps = Readonly<{
     state: ListState
-    component: ListComponent
+    action: ListAction
 }>
-export interface ListComponent {
-    search: Action<null>
+export interface ListAction {
+    search: Method<null>
 }
 export type ListState = Readonly<{ type: "try-to-search" }> | Readonly<{ type: "search" }>
 
 const initialList: ListState = { type: "search" }
 
-interface Action<T> {
+interface Method<T> {
     (event: T): void
 }
 

@@ -11,7 +11,7 @@ export function ForgetContainerComponent(_: ContainerProps): VNode {
 
     function useResetProps(): ForgetProps {
         const [state, setState] = useState<ForgetState>({ type: "reset", state: initialEditState })
-        const component: ForgetAction = {
+        const action: ForgetAction = {
             inputValidValue: () => {
                 setState({
                     type: "reset",
@@ -40,18 +40,18 @@ export function ForgetContainerComponent(_: ContainerProps): VNode {
                 }, 3000)
             },
         }
-        return { state, component }
+        return { state, action }
     }
 }
 
 export type ForgetProps = Readonly<{
     state: ForgetState
-    component: ForgetAction
+    action: ForgetAction
 }>
 export interface ForgetAction {
-    inputValidValue: Action<null>
-    inputInvalidValue: Action<null>
-    reset: Action<null>
+    inputValidValue: Method<null>
+    inputInvalidValue: Method<null>
+    reset: Method<null>
 }
 export type ForgetState =
     | Readonly<{ type: "reset"; state: EditState }>
@@ -68,6 +68,6 @@ const initialEditState: EditState = {
     invalid: false,
 }
 
-interface Action<T> {
+interface Method<T> {
     (event: T): void
 }

@@ -12,7 +12,7 @@ export type Row = Readonly<{
     memo: string
 }>
 
-export function generateRows(): Row[] {
+export function generateDataRows(): Row[] {
     return repeatedRows(100)
 
     function repeatedRows(count: number) {

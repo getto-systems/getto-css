@@ -16,7 +16,7 @@ import { FormFooterComponent } from "./form_footer"
 
 type Props = FormProps
 export function TextAreaComponent(props: Props): VNode {
-    const { component } = props
+    const { action: component } = props
 
     function onInput() {
         component.inputValidValue(null)

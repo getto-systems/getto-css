@@ -10,7 +10,7 @@ import { pagerOptions } from "../../../../../z_vendor/getto-css/preact/design/da
 type Props = {
     // no props
 }
-export function PagerComponent(_: Props): VNode {
+export function SearchPagerComponent(_: Props): VNode {
     const all = 5532
     const offset = 0
     return box({

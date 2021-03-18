@@ -1,29 +1,37 @@
 import "../../../../../../theme/css"
-import { h, VNode } from "preact"
+import { h } from "preact"
 
 import { ForgetComponent } from "./forget"
 import { ForgetAction, ForgetState } from "./container"
+import { enumKeys, storyTemplate } from "../../../../../../z_vendor/storybook/preact/story"
+
+enum ForgetEnum {
+    "initial",
+    "invalid",
+    "fill",
+    "try-to-reset",
+}
 
 export default {
     title: "Theme/Examples/Login/Forget",
     argTypes: {
-        type: {
-            table: { disable: true },
+        forget: {
+            control: { type: "select", options: enumKeys(ForgetEnum) },
         },
     },
 }
 
-type MockProps =
-    | Readonly<{ type: "initial" }>
-    | Readonly<{ type: "invalid" }>
-    | Readonly<{ type: "fill" }>
-    | Readonly<{ type: "try-to-reset" }>
+type MockProps = Readonly<{
+    forget: keyof typeof ForgetEnum
+}>
+const template = storyTemplate<MockProps>((props) => {
+    return h(ForgetComponent, {
+        state: state(),
+        action: mockAction(),
+    })
 
-const Template: Story<MockProps> = (args) => {
-    return h(ForgetComponent, { state: map(args), component: initMockComponent() })
-
-    function map(args: MockProps): ForgetState {
-        switch (args.type) {
+    function state(): ForgetState {
+        switch (props.forget) {
             case "initial":
                 return {
                     type: "reset",
@@ -57,9 +65,9 @@ const Template: Story<MockProps> = (args) => {
                 }
         }
     }
-}
+})
 
-function initMockComponent(): ForgetAction {
+function mockAction(): ForgetAction {
     return {
         inputInvalidValue: noop,
         inputValidValue: noop,
@@ -70,27 +78,4 @@ function noop() {
     // 何もしない
 }
 
-interface Story<T> {
-    args?: T
-    (args: T): VNode
-}
-
-export const Initial = Template.bind({})
-Initial.args = {
-    type: "initial",
-}
-
-export const Invalid = Template.bind({})
-Invalid.args = {
-    type: "invalid",
-}
-
-export const Fill = Template.bind({})
-Fill.args = {
-    type: "fill",
-}
-
-export const TryToReset = Template.bind({})
-TryToReset.args = {
-    type: "try-to-reset",
-}
+export const Forget = template({ forget: "initial" })

@@ -5,7 +5,7 @@ import { container } from "../../../../../z_vendor/getto-css/preact/design/box"
 
 import { BadgeComponent } from "./badge"
 import { LabelComponent } from "./label"
-import { NoticeBasicComponent, NoticeOtherComponent } from "./notice"
+import { BasicNoticeComponent, OtherNoticeComponent } from "./notice"
 
 type ContainerProps = {
     // no props
@@ -15,8 +15,8 @@ export function HighlightContainerComponent(_: ContainerProps): VNode {
         ${container([
             h(BadgeComponent, NO_PROPS),
             h(LabelComponent, NO_PROPS),
-            h(NoticeBasicComponent, NO_PROPS),
-            h(NoticeOtherComponent, NO_PROPS),
+            h(BasicNoticeComponent, NO_PROPS),
+            h(OtherNoticeComponent, NO_PROPS),
         ])}
     `
 }

@@ -1,15 +1,15 @@
 import { h, VNode } from "preact"
 import { useMemo } from "preact/hooks"
 
-import { buildStructure, ContentComponent } from "./content"
-import { generateRows, Model, Row } from "./data"
+import { buildReportStructure, ReportContentComponent } from "./content"
+import { generateReportRows, Model, Row } from "./data"
 import { visibleAll } from "../../../../../z_vendor/getto-table/preact/core"
 
 type ContainerProps = {
     // no props
 }
 export function ReportContainerComponent(_: ContainerProps): VNode {
-    const structure = useMemo(buildStructure, [])
+    const structure = useMemo(buildReportStructure, [])
 
     const model: Model = {
         sumPrice: 6200,
@@ -29,9 +29,9 @@ export function ReportContainerComponent(_: ContainerProps): VNode {
     }
     const contentProps = {
         content,
-        rows: generateRows(),
+        rows: generateReportRows(),
         column: (row: Row) => structure.column(params, row),
     }
 
-    return h(ContentComponent, contentProps)
+    return h(ReportContentComponent, contentProps)
 }

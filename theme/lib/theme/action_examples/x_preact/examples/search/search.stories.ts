@@ -1,29 +1,37 @@
 import "../../../../../theme/css"
-import { h, VNode } from "preact"
+import { h } from "preact"
 
-import { SearchFormComponent } from "./search_form"
-import { SearchComponent, SearchState } from "./container"
+import { SearchSearchFormComponent } from "./search_form"
+import { SearchAction, SearchState } from "./container"
+import { enumKeys, storyTemplate } from "../../../../../z_vendor/storybook/preact/story"
+
+enum SearchEnum {
+    "initial",
+    "invalid",
+    "modified",
+    "try-to-search",
+}
 
 export default {
     title: "Theme/Examples/Search",
     argTypes: {
-        type: {
-            table: { disable: true },
+        search: {
+            control: { type: "select", options: enumKeys(SearchEnum) },
         },
     },
 }
 
-type MockProps =
-    | Readonly<{ type: "initial" }>
-    | Readonly<{ type: "invalid" }>
-    | Readonly<{ type: "modified" }>
-    | Readonly<{ type: "try-to-search" }>
+type MockProps = Readonly<{
+    search: keyof typeof SearchEnum
+}>
+const template = storyTemplate<MockProps>((props) => {
+    return h(SearchSearchFormComponent, {
+        state: state(),
+        action: initMockComponent(),
+    })
 
-const Template: Story<MockProps> = (args) => {
-    return h(SearchFormComponent, { state: map(args), component: initMockComponent() })
-
-    function map(args: MockProps): SearchState {
-        switch (args.type) {
+    function state(): SearchState {
+        switch (props.search) {
             case "initial":
                 return {
                     type: "search",
@@ -57,9 +65,9 @@ const Template: Story<MockProps> = (args) => {
                 }
         }
     }
-}
+})
 
-function initMockComponent(): SearchComponent {
+function initMockComponent(): SearchAction {
     return {
         inputValidValue: noop,
         search: noop,
@@ -69,27 +77,4 @@ function noop() {
     // 何もしない
 }
 
-interface Story<T> {
-    args?: T
-    (args: T): VNode
-}
-
-export const Initial = Template.bind({})
-Initial.args = {
-    type: "initial",
-}
-
-export const Invalid = Template.bind({})
-Invalid.args = {
-    type: "invalid",
-}
-
-export const Modified = Template.bind({})
-Modified.args = {
-    type: "modified",
-}
-
-export const TryToSearch = Template.bind({})
-TryToSearch.args = {
-    type: "try-to-search",
-}
+export const Search = template({ search: "initial" })
