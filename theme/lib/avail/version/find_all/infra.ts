@@ -5,6 +5,7 @@ import { GetVersionsRemoteError, VersionInfo } from "./data"
 
 export type FindAllVersionInfra = Readonly<{
     version: string
+    versionsURL: string
     get: GetVersionsRemotePod
     config: Readonly<{
         takeLongtimeThreshold: DelayTime

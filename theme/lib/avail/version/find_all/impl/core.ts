@@ -7,17 +7,15 @@ import { FindAllVersionMethod } from "../method"
 
 import { FindAllVersionEvent } from "../event"
 
-const VERSIONS_URL = "/versions.txt"
-
 interface Find {
     (infra: FindAllVersionInfra): FindAllVersionMethod
 }
 export const findAllVersion: Find = (infra) => async (post) => {
-    const { version, config } = infra
+    const { version, versionsURL, config } = infra
     const get = infra.get(allVersionsRemoteConverter(version))
 
     // ネットワークの状態が悪い可能性があるので、一定時間後に take longtime イベントを発行
-    const response = await delayedChecker(get(VERSIONS_URL), config.takeLongtimeThreshold, () =>
+    const response = await delayedChecker(get(versionsURL), config.takeLongtimeThreshold, () =>
         post({ type: "take-longtime-to-find" }),
     )
     if (!response.success) {

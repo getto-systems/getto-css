@@ -79,11 +79,13 @@ function takeLongtime() {
 
 function initResource(get: GetVersionsRemotePod): FindAllVersionResource {
     const version = standard_version()
+    const versionsURL = standard_versionsURL()
     return initFindAllVersionResource(
         initFindAllVersionCoreAction(
             initFindAllVersionCoreMaterial({
                 get,
                 version,
+                versionsURL,
                 config: {
                     takeLongtimeThreshold: { delay_millisecond: 32 },
                 },
@@ -94,6 +96,9 @@ function initResource(get: GetVersionsRemotePod): FindAllVersionResource {
 
 function standard_version(): string {
     return "1.1.0"
+}
+function standard_versionsURL(): string {
+    return "/versions.txt"
 }
 
 function standard_get(): GetVersionsRemotePod {
