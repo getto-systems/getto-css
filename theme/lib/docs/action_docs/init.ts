@@ -4,18 +4,16 @@ import { newLoadMenuResource } from "../../outline/menu/action_load_menu/init"
 
 import { initDocsView } from "./impl"
 
-import { DocsContent, DocsView } from "./resource"
+import { DocsView } from "./resource"
 
-type OutsideFeature = DocsContent &
-    Readonly<{
-        webStorage: Storage
-        currentLocation: Location
-    }>
+type OutsideFeature = Readonly<{
+    webStorage: Storage
+    currentLocation: Location
+}>
 export function newDocsView(feature: OutsideFeature): DocsView {
     const menu = docsMenuContent()
     return initDocsView({
         ...newLoadBreadcrumbListResource(feature, menu),
         ...newLoadMenuResource(feature, menu),
-        docs: feature.docs,
     })
 }
