@@ -57,7 +57,7 @@
 }
 
 .button_disabled {
-    cursor: not-allowed;
+    cursor: default;
     color: var(--color-black);
     border-color: var(--color-black);
     background-color: var(--color-black-alpha);
