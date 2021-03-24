@@ -67,7 +67,7 @@ export function TableTableComponent({ content, column, rows }: Props): VNode {
 
 type Cells<R> = TableCell<Model, R>[]
 
-export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
+export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
     tableStructure({
         key: (row: Row) => row.row_id,
         cells: <Cells<Row>>[

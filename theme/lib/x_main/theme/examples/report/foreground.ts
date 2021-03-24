@@ -7,9 +7,9 @@ import { ExamplesEntry } from "../../../../theme/action_examples/x_preact/exampl
 import { ReportContainerComponent } from "../../../../theme/action_examples/x_preact/examples/report/container"
 
 render(
-    h(
-        ExamplesEntry({ title: "Report", component: ReportContainerComponent }),
-        newExampleView({ webStorage: localStorage, currentLocation: location }),
-    ),
+    h(ExamplesEntry, {
+        view: newExampleView({ webStorage: localStorage, currentLocation: location }),
+        content: { title: "Report", component: ReportContainerComponent },
+    }),
     document.body,
 )

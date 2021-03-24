@@ -7,7 +7,7 @@ import { sortSign } from "../../../../../x_preact/common/design/table"
 import { visibleKeys } from "../../../../../z_vendor/getto-table/preact/core"
 
 import { container } from "../../../../../z_vendor/getto-css/preact/design/box"
-import { Sort, sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
+import { sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
 
 import { DataSearchFormComponent } from "./search_form"
 import { DataPagerComponent } from "./pager"
@@ -20,13 +20,18 @@ type ContainerProps = {
     // no props
 }
 export function DataContainerComponent(_: ContainerProps): VNode {
-    const sort: Sort = {
-        key: "id",
-        order: "normal",
-        href: (query) => `?sort=${query.key}.${query.order}`,
-        sign: sortSign,
-    }
-    const structure = useMemo(buildDataStructure(sortLink(sort)), [])
+    const structure = useMemo(
+        () =>
+            buildDataStructure(
+                sortLink({
+                    key: "id",
+                    order: "normal",
+                    href: (query) => `?sort=${query.key}.${query.order}`,
+                    sign: sortSign,
+                }),
+            )(),
+        [],
+    )
 
     const model: Model = {}
 

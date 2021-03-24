@@ -7,9 +7,9 @@ import { ExamplesEntry } from "../../../../theme/action_examples/x_preact/exampl
 import { SearchContainerComponent } from "../../../../theme/action_examples/x_preact/examples/search/container"
 
 render(
-    h(
-        ExamplesEntry({ title: "Search", component: SearchContainerComponent }),
-        newExampleView({ webStorage: localStorage, currentLocation: location }),
-    ),
+    h(ExamplesEntry, {
+        view: newExampleView({ webStorage: localStorage, currentLocation: location }),
+        content: { title: "Search", component: SearchContainerComponent },
+    }),
     document.body,
 )

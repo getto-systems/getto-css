@@ -41,7 +41,7 @@ export function SearchTableComponent({ content, column, rows }: Props): VNode {
     ])
 }
 
-export const buildStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
+export const buildSearchStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
     tableStructure({
         key: (row: Row) => row.id,
         cells: [

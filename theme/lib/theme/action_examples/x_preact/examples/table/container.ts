@@ -7,11 +7,11 @@ import { sortSign } from "../../../../../x_preact/common/design/table"
 import { visibleAll } from "../../../../../z_vendor/getto-table/preact/core"
 
 import { container } from "../../../../../z_vendor/getto-css/preact/design/box"
-import { Sort, sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
+import { sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
 
 import { TablePagerComponent } from "./pager"
 import { TableViewColumnsComponent } from "./view_columns"
-import { buildStructure, TableTableComponent } from "./table"
+import { buildTableStructure, TableTableComponent } from "./table"
 
 import { generateLogs, generateTableRows, Model, Row } from "./data"
 
@@ -19,13 +19,18 @@ type ContainerProps = {
     // no props
 }
 export function TableContainerComponent(_: ContainerProps): VNode {
-    const sort: Sort = {
-        key: "id",
-        order: "normal",
-        href: (query) => `?sort=${query.key}.${query.order}`,
-        sign: sortSign,
-    }
-    const structure = useMemo(buildStructure(sortLink(sort)), [])
+    const structure = useMemo(
+        () =>
+            buildTableStructure(
+                sortLink({
+                    key: "id",
+                    order: "normal",
+                    href: (query) => `?sort=${query.key}.${query.order}`,
+                    sign: sortSign,
+                }),
+            )(),
+        [],
+    )
 
     const model: Model = {
         logs: generateLogs(),

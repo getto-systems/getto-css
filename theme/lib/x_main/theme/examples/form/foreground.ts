@@ -7,9 +7,9 @@ import { ExamplesEntry } from "../../../../theme/action_examples/x_preact/exampl
 import { FormContainerComponent } from "../../../../theme/action_examples/x_preact/examples/form/container"
 
 render(
-    h(
-        ExamplesEntry({ title: "Form", component: FormContainerComponent }),
-        newExampleView({ webStorage: localStorage, currentLocation: location }),
-    ),
+    h(ExamplesEntry, {
+        view: newExampleView({ webStorage: localStorage, currentLocation: location }),
+        content: { title: "Form", component: FormContainerComponent },
+    }),
     document.body,
 )

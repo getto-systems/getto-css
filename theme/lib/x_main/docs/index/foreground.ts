@@ -14,8 +14,12 @@ import {
 import { DocsEntry } from "../../../docs/action_docs/x_preact/docs"
 
 render(
-    h(
-        DocsEntry({
+    h(DocsEntry, {
+        view: newDocsView({
+            webStorage: localStorage,
+            currentLocation: location,
+        }),
+        docs: {
             title: "ドキュメント",
             contents: [
                 [docs_theme],
@@ -23,11 +27,7 @@ render(
                 [docs_theme_design],
                 [docs_theme_details],
             ],
-        }),
-        newDocsView({
-            webStorage: localStorage,
-            currentLocation: location,
-        }),
-    ),
+        },
+    }),
     document.body,
 )

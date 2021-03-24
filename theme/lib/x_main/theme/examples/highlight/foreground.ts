@@ -7,9 +7,9 @@ import { ExamplesEntry } from "../../../../theme/action_examples/x_preact/exampl
 import { HighlightContainerComponent } from "../../../../theme/action_examples/x_preact/examples/highlight/container"
 
 render(
-    h(
-        ExamplesEntry({ title: "Highlight", component: HighlightContainerComponent }),
-        newExampleView({ webStorage: localStorage, currentLocation: location }),
-    ),
+    h(ExamplesEntry, {
+        view: newExampleView({ webStorage: localStorage, currentLocation: location }),
+        content: { title: "Highlight", component: HighlightContainerComponent },
+    }),
     document.body,
 )
