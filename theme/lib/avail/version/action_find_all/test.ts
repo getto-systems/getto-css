@@ -14,56 +14,58 @@ import { FindAllVersionResource } from "./resource"
 import { FindAllVersionCoreState } from "./core/action"
 
 describe("FindAllVersion", () => {
-    test("find all", (done) => {
-        const { resource } = standard()
+    test("find all", () =>
+        new Promise<void>((done) => {
+            const { resource } = standard()
 
-        const runner = setupAsyncActionTestRunner(actionHasDone, [
-            {
-                statement: () => {
-                    resource.findAll.ignite()
+            const runner = setupAsyncActionTestRunner(actionHasDone, [
+                {
+                    statement: () => {
+                        resource.findAll.ignite()
+                    },
+                    examine: (stack) => {
+                        expect(stack).toEqual([
+                            {
+                                type: "succeed-to-find",
+                                versions: [
+                                    { version: "1.1.0", isCurrent: true },
+                                    { version: "1.0.0", isCurrent: false },
+                                ],
+                            },
+                        ])
+                    },
                 },
-                examine: (stack) => {
-                    expect(stack).toEqual([
-                        {
-                            type: "succeed-to-find",
-                            versions: [
-                                { version: "1.1.0", isCurrent: true },
-                                { version: "1.0.0", isCurrent: false },
-                            ],
-                        },
-                    ])
+            ])
+
+            resource.findAll.subscriber.subscribe(runner(done))
+        }))
+
+    test("find all; take longtime", () =>
+        new Promise<void>((done) => {
+            const { resource } = takeLongtime()
+
+            const runner = setupAsyncActionTestRunner(actionHasDone, [
+                {
+                    statement: () => {
+                        resource.findAll.ignite()
+                    },
+                    examine: (stack) => {
+                        expect(stack).toEqual([
+                            { type: "take-longtime-to-find" },
+                            {
+                                type: "succeed-to-find",
+                                versions: [
+                                    { version: "1.1.0", isCurrent: true },
+                                    { version: "1.0.0", isCurrent: false },
+                                ],
+                            },
+                        ])
+                    },
                 },
-            },
-        ])
+            ])
 
-        resource.findAll.subscriber.subscribe(runner(done))
-    })
-
-    test("find all; take longtime", (done) => {
-        const { resource } = takeLongtime()
-
-        const runner = setupAsyncActionTestRunner(actionHasDone, [
-            {
-                statement: () => {
-                    resource.findAll.ignite()
-                },
-                examine: (stack) => {
-                    expect(stack).toEqual([
-                        { type: "take-longtime-to-find" },
-                        {
-                            type: "succeed-to-find",
-                            versions: [
-                                { version: "1.1.0", isCurrent: true },
-                                { version: "1.0.0", isCurrent: false },
-                            ],
-                        },
-                    ])
-                },
-            },
-        ])
-
-        resource.findAll.subscriber.subscribe(runner(done))
-    })
+            resource.findAll.subscriber.subscribe(runner(done))
+        }))
 })
 
 function standard() {

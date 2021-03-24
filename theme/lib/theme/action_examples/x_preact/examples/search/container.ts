@@ -7,12 +7,12 @@ import { sortSign } from "../../../../../x_preact/common/design/table"
 import { visibleKeys } from "../../../../../z_vendor/getto-table/preact/core"
 
 import { container } from "../../../../../z_vendor/getto-css/preact/design/box"
-import { Sort, sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
+import { sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
 
 import { SearchSearchFormComponent } from "./search_form"
 import { SearchPagerComponent } from "./pager"
 import { SearchViewColumnsComponent } from "./view_columns"
-import { buildStructure, SearchTableComponent } from "./table"
+import { buildSearchStructure, SearchTableComponent } from "./table"
 
 import { generateSearchRows, Model, Row } from "./data"
 
@@ -20,13 +20,18 @@ type ContainerProps = {
     // no props
 }
 export function SearchContainerComponent(_: ContainerProps): VNode {
-    const sort: Sort = {
-        key: "id",
-        order: "normal",
-        href: (query) => `?sort=${query.key}.${query.order}`,
-        sign: sortSign,
-    }
-    const structure = useMemo(buildStructure(sortLink(sort)), [])
+    const structure = useMemo(
+        () =>
+            buildSearchStructure(
+                sortLink({
+                    key: "id",
+                    order: "normal",
+                    href: (query) => `?sort=${query.key}.${query.order}`,
+                    sign: sortSign,
+                }),
+            )(),
+        [],
+    )
 
     const model: Model = {}
 

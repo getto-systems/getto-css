@@ -7,9 +7,9 @@ import { ExamplesEntry } from "../../../../theme/action_examples/x_preact/exampl
 import { DataContainerComponent } from "../../../../theme/action_examples/x_preact/examples/data/container"
 
 render(
-    h(
-        ExamplesEntry({ title: "Data", component: DataContainerComponent }),
-        newExampleView({ webStorage: localStorage, currentLocation: location }),
-    ),
+    h(ExamplesEntry, {
+        view: newExampleView({ webStorage: localStorage, currentLocation: location }),
+        content: { title: "Data", component: DataContainerComponent },
+    }),
     document.body,
 )

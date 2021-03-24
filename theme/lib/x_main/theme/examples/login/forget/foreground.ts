@@ -5,6 +5,6 @@ import { ExamplesLoginEntry } from "../../../../../theme/action_examples/x_preac
 import { ForgetContainerComponent } from "../../../../../theme/action_examples/x_preact/examples/login/forget/container"
 
 render(
-    h(ExamplesLoginEntry({ title: "Forget", component: ForgetContainerComponent }), {}),
+    h(ExamplesLoginEntry, { content: { title: "Forget", component: ForgetContainerComponent } }),
     document.body,
 )

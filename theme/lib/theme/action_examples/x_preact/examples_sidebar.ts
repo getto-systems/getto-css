@@ -43,24 +43,22 @@ type EmptyProps = {
     // no props
 }
 
-interface Entry {
-    (view: ExamplesView): VNode
-}
+type EntryProps = Readonly<{
+    view: ExamplesView
+    content: ExamplesContent
+}>
+export function ExamplesSidebarEntry(props: EntryProps): VNode {
+    const resource = useApplicationView(props.view)
 
-export function ExamplesSidebarEntry(content: ExamplesContent): Entry {
-    return (view) => {
-        const resource = useApplicationView(view)
-
-        const [err] = useErrorBoundary((err) => {
-            // 認証がないのでエラーはどうしようもない
-            console.log(err)
-        })
-        if (err) {
-            return h(ApplicationErrorComponent, { err: `${err}` })
-        }
-
-        return h(ExamplesSidebarComponent, { ...resource, content })
+    const [err] = useErrorBoundary((err) => {
+        // 認証がないのでエラーはどうしようもない
+        console.log(err)
+    })
+    if (err) {
+        return h(ApplicationErrorComponent, { err: `${err}` })
     }
+
+    return h(ExamplesSidebarComponent, { ...resource, content: props.content })
 }
 
 type Props = ExamplesResource & Readonly<{ content: ExamplesContent }>
@@ -82,7 +80,7 @@ export function ExamplesSidebarComponent(resource: Props): VNode {
             header: mainHeader(mainTitle(resource.content.sidebar.title)),
             body: resource.content.sidebar.body.map((body) => {
                 if (body.isGrow) {
-                    return sidebarBody_grow(h(body.component, {}))                    
+                    return sidebarBody_grow(h(body.component, {}))
                 } else {
                     return sidebarBody(h(body.component, {}))
                 }

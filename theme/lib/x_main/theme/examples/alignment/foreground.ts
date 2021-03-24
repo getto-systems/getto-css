@@ -7,9 +7,9 @@ import { AlignmentContainerComponent } from "../../../../theme/action_examples/x
 import { ExamplesEntry } from "../../../../theme/action_examples/x_preact/examples"
 
 render(
-    h(
-        ExamplesEntry({ title: "Alignment", component: AlignmentContainerComponent }),
-        newExampleView({ webStorage: localStorage, currentLocation: location }),
-    ),
+    h(ExamplesEntry, {
+        view: newExampleView({ webStorage: localStorage, currentLocation: location }),
+        content: { title: "Alignment", component: AlignmentContainerComponent },
+    }),
     document.body,
 )

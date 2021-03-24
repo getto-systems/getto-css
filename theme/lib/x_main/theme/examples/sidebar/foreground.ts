@@ -9,8 +9,9 @@ import { SidebarPagerComponent } from "../../../../theme/action_examples/x_preac
 import { SidebarTableComponent } from "../../../../theme/action_examples/x_preact/examples/sidebar/sidebar/table"
 
 render(
-    h(
-        ExamplesSidebarEntry({
+    h(ExamplesSidebarEntry, {
+        view: newExampleView({ webStorage: localStorage, currentLocation: location }),
+        content: {
             title: "Sidebar",
             component: SidebarContainerComponent,
             sidebar: {
@@ -20,8 +21,7 @@ render(
                     { isGrow: true, component: SidebarTableComponent },
                 ],
             },
-        }),
-        newExampleView({ webStorage: localStorage, currentLocation: location }),
-    ),
+        },
+    }),
     document.body,
 )

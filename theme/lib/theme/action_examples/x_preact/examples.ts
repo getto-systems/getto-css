@@ -32,24 +32,22 @@ type EmptyProps = {
     // no props
 }
 
-interface Entry {
-    (view: ExamplesView): VNode
-}
+type EntryProps = Readonly<{
+    view: ExamplesView
+    content: ExamplesContent
+}>
+export function ExamplesEntry(props: EntryProps): VNode {
+    const resource = useApplicationView(props.view)
 
-export function ExamplesEntry(content: ExamplesContent): Entry {
-    return (view) => {
-        const resource = useApplicationView(view)
-
-        const [err] = useErrorBoundary((err) => {
-            // 認証がないのでエラーはどうしようもない
-            console.log(err)
-        })
-        if (err) {
-            return h(ApplicationErrorComponent, { err: `${err}` })
-        }
-
-        return h(ExamplesComponent, { ...resource, content })
+    const [err] = useErrorBoundary((err) => {
+        // 認証がないのでエラーはどうしようもない
+        console.log(err)
+    })
+    if (err) {
+        return h(ApplicationErrorComponent, { err: `${err}` })
     }
+
+    return h(ExamplesComponent, { ...resource, content: props.content })
 }
 
 type Props = ExamplesResource & Readonly<{ content: ExamplesContent }>

@@ -14,7 +14,6 @@ import {
     thead,
     tbody,
     sortLink,
-    Sort,
     SortLink,
 } from "../../../../../z_vendor/getto-css/preact/design/data"
 import {
@@ -30,13 +29,18 @@ type Props = {
     // no props
 }
 export function SidebarTableComponent(_: Props): VNode {
-    const sort: Sort = {
-        key: "id",
-        order: "normal",
-        href: (query) => `?sort=${query.key}.${query.order}`,
-        sign: sortSign,
-    }
-    const structure = useMemo(buildStructure(sortLink(sort)), [])
+    const structure = useMemo(
+        () =>
+            buildStructure(
+                sortLink({
+                    key: "id",
+                    order: "normal",
+                    href: (query) => `?sort=${query.key}.${query.order}`,
+                    sign: sortSign,
+                }),
+            )(),
+        [],
+    )
 
     const model: Model = {
         rows: generateRows(),

@@ -5,6 +5,6 @@ import { ExamplesLoginEntry } from "../../../../../theme/action_examples/x_preac
 import { LoginContainerComponent } from "../../../../../theme/action_examples/x_preact/examples/login/login/container"
 
 render(
-    h(ExamplesLoginEntry({ title: "Login", component: LoginContainerComponent }), {}),
+    h(ExamplesLoginEntry, { content: { title: "Login", component: LoginContainerComponent } }, {}),
     document.body,
 )

@@ -9,8 +9,9 @@ import { SidebarDoublePagerComponent } from "../../../../theme/action_examples/x
 import { SidebarDoubleTableComponent } from "../../../../theme/action_examples/x_preact/examples/sidebar_double/sidebar/table"
 
 render(
-    h(
-        ExamplesSidebarDoubleEntry({
+    h(ExamplesSidebarDoubleEntry, {
+        view: newExampleView({ webStorage: localStorage, currentLocation: location }),
+        content: {
             title: "Sidebar Double",
             component: SidebarDoubleContainerComponent,
             sidebar: {
@@ -20,8 +21,7 @@ render(
                     { isGrow: true, component: SidebarDoubleTableComponent },
                 ],
             },
-        }),
-        newExampleView({ webStorage: localStorage, currentLocation: location }),
-    ),
+        },
+    }),
     document.body,
 )
