@@ -1,18 +1,14 @@
-import { ApiResult } from "../data"
+import { ApiCommonError, ApiResult } from "../data"
 
-type CheckURL = string
-
-type RemoteResult = ApiResult<RemoteResponse, RemoteError>
-type RemoteResponse = Readonly<{ found: boolean }>
-type RemoteError =
-    | Readonly<{ type: "server-error" }>
-    | Readonly<{ type: "infra-error"; err: string }>
-
-interface CheckDeployExists {
-    (url: CheckURL): Promise<RemoteResult>
+interface Check {
+    (url: string): Promise<CheckResult>
 }
-export function newApi_CheckDeployExists(): CheckDeployExists {
-    return async (url: CheckURL): Promise<RemoteResult> => {
+
+type CheckResult = ApiResult<CheckResponse, ApiCommonError>
+type CheckResponse = Readonly<{ found: boolean }>
+
+export function newApi_CheckDeployExists(): Check {
+    return async (url): Promise<CheckResult> => {
         const response = await fetch(url, { method: "HEAD" })
         if (!response.ok) {
             if (response.status >= 500) {

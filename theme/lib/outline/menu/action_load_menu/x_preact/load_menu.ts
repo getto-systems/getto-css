@@ -19,6 +19,7 @@ import { LoadMenuResource, LoadMenuResourceState } from "../resource"
 
 import { RepositoryError } from "../../../../z_vendor/getto-application/infra/repository/data"
 import { GetMenuBadgeError, Menu, MenuCategoryNode, MenuItemNode } from "../../kernel/data"
+import { remoteCommonError } from "../../../../z_vendor/getto-application/infra/remote/helper"
 
 export const MENU_ID = "menu"
 
@@ -42,9 +43,6 @@ export function LoadMenuComponent(props: Props): VNode {
 
         case "failed-to-update":
             return menu([menuBox(error(props.state.err)), content(props.state.menu)])
-
-        case "failed-to-fetch-menu":
-            return menu([menuBox(fetchError())])
 
         case "required-to-login":
             return menu([menuBox(requiredToLogin())])
@@ -127,12 +125,6 @@ function badge(badgeCount: number) {
     return badge_alert(html`${badgeCount}`)
 }
 
-function fetchError(): VNode[] {
-    return [
-        notice_alert("アプリケーションエラー"),
-        html`<small><p>アプリケーションの設定ミスです。メニューを取得できません</p></small>`,
-    ]
-}
 function requiredToLogin(): VNode[] {
     return [notice_alert("認証エラー"), html`<small><p>もう一度ログインしてください</p></small>`]
 }
@@ -143,19 +135,10 @@ function repositoryError(err: RepositoryError): VNode[] {
     }
 }
 function error(err: GetMenuBadgeError): VNode[] {
-    switch (err.type) {
-        case "bad-request":
-            return [notice_alert("アプリケーションエラー")]
-
-        case "server-error":
-            return [notice_alert("サーバーエラー")]
-
-        case "bad-response":
-            return [notice_alert("レスポンスエラー"), ...errorDetail(err.err)]
-
-        case "infra-error":
-            return [notice_alert("ネットワークエラー"), ...errorDetail(err.err)]
-    }
+    return remoteCommonError(err, (reason) => [
+        notice_alert(reason.message),
+        ...reason.detail.map((message) => html`<small><p>${message}</p></small>`),
+    ])
 }
 function errorDetail(err: string): VNode[] {
     if (err.length === 0) {

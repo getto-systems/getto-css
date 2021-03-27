@@ -1,5 +1,5 @@
 export type Model = Readonly<{
-    logs: Record<number, Log[]>
+    logs: Map<number, Log[]>
     alarmMaxLength: number
     temperatureTypes: TemperatureType[]
     sumPrice: number
@@ -13,7 +13,7 @@ export type Row = Readonly<{
     host: string
     price: number
     alarms: string[]
-    amounts: Record<TemperatureType, number>
+    amounts: Map<TemperatureType, number>
     articles: Article[]
     updatedAt: string
     memo: string
@@ -46,10 +46,7 @@ export function generateTableRows(): Row[] {
                 host: "getto.systems",
                 price: 1200,
                 alarms: ["10:00"],
-                amounts: {
-                    high: 300,
-                    low: 200,
-                },
+                amounts: amount(300, 200),
                 articles: [
                     {
                         title: "Hello, World!",
@@ -83,10 +80,7 @@ export function generateTableRows(): Row[] {
                 host: "example.com",
                 price: 13500,
                 alarms: ["12:00", "16:00", "20:00"],
-                amounts: {
-                    high: 500,
-                    low: 100,
-                },
+                amounts: amount(500, 100),
                 articles: [
                     {
                         title: "awesome article",
@@ -108,10 +102,7 @@ export function generateTableRows(): Row[] {
                 host: "getto.systems",
                 price: 600,
                 alarms: [],
-                amounts: {
-                    high: 500,
-                    low: 100,
-                },
+                amounts: amount(500, 100),
                 articles: [
                     {
                         title: "awesome article",
@@ -127,14 +118,21 @@ export function generateTableRows(): Row[] {
             },
         ]
     }
+
+    function amount(high: number, low: number): Map<TemperatureType, number> {
+        const amount = new Map()
+        amount.set("high", high)
+        amount.set("low", low)
+        return amount
+    }
 }
 
-export function generateLogs(): Record<number, Log[]> {
-    const logs: Record<number, Log[]> = {}
+export function generateLogs(): Map<number, Log[]> {
+    const logs: Map<number, Log[]> = new Map()
 
-    logs[12] = generate(3, rows)
-    logs[123] = generate(0, rows)
-    logs[1234] = generate(5, rows)
+    logs.set(12, generate(3, rows))
+    logs.set(123, generate(0, rows))
+    logs.set(1234, generate(5, rows))
 
     return logs
 

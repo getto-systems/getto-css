@@ -4,13 +4,14 @@ import { newGetMenuBadgeRemote } from "../../kernel/infra/remote/get_menu_badge/
 
 import { UpdateMenuBadgeInfra } from "../infra"
 import { MenuContent } from "../../kernel/infra"
+import { newGetMenuBadgeNoopRemote } from "../../kernel/infra/remote/get_menu_badge/noop"
 
-export function newUpdateMenuBadgeInfra(
-    menuContent: MenuContent,
-): UpdateMenuBadgeInfra {
+export function newUpdateMenuBadgeInfra(menuContent: MenuContent): UpdateMenuBadgeInfra {
     return {
         version: env.version,
         menuTree: menuContent.menuTree,
-        getMenuBadge: newGetMenuBadgeRemote(),
+        getMenuBadge: menuContent.loadMenuBadge
+            ? newGetMenuBadgeRemote()
+            : newGetMenuBadgeNoopRemote(),
     }
 }
