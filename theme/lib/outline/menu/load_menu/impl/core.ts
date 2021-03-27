@@ -1,4 +1,4 @@
-import { menuExpandRepositoryConverter } from "../../kernel/impl/convert"
+import { menuExpandRepositoryConverter } from "../../kernel/impl/converter"
 
 import { buildMenu } from "../../kernel/impl/menu"
 
@@ -42,4 +42,4 @@ export function loadMenuEventHasDone(_event: LoadMenuEvent): boolean {
     return true
 }
 
-const EMPTY_BADGE: MenuBadge = {}
+const EMPTY_BADGE: MenuBadge = new Map()

@@ -1,18 +1,14 @@
-import { ApiResult } from "../data"
-
-type VersionsURL = string
-
-type RemoteResult = ApiResult<RemoteResponse, RemoteError>
-type RemoteResponse = Readonly<{ versions: string[] }>
-type RemoteError =
-    | Readonly<{ type: "server-error" }>
-    | Readonly<{ type: "infra-error"; err: string }>
+import { ApiCommonError, ApiResult } from "../data"
 
 interface GetVersions {
-    (url: VersionsURL): Promise<RemoteResult>
+    (url: string): Promise<GetVersionsResult>
 }
+
+type GetVersionsResult = ApiResult<GetVersionsResponse, ApiCommonError>
+type GetVersionsResponse = Readonly<{ versions: string[] }>
+
 export function newApi_GetVersions(): GetVersions {
-    return async (url: VersionsURL): Promise<RemoteResult> => {
+    return async (url): Promise<GetVersionsResult> => {
         const response = await fetch(url)
         if (!response.ok) {
             return { success: false, err: { type: "server-error" } }

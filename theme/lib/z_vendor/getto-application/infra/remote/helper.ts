@@ -1,19 +1,26 @@
-import { RemoteCommonError } from "./data"
-import { Remote, RemotePod, RemoteResult } from "./infra"
+import { RemoteCommonError, RemoteInfraError } from "./data"
+import { Remote, RemoteFeature, RemotePod, RemoteResult } from "./infra"
 
-export function wrapRemote<M, V, R, E>(
-    remote: Remote<M, R, E>,
-    errorHandler: { (err: unknown): E },
-): RemotePod<M, V, R, E> {
+export function remoteFeature(serverURL: string, webCrypto: Crypto): RemoteFeature {
+    return {
+        serverURL,
+        nonce: () => webCrypto.getRandomValues(new Uint32Array(4)).join("-"),
+    }
+}
+
+export function wrapRemote<M, V, R, E_raw, E_unknown>(
+    remote: Remote<M, R, E_raw>,
+    errorHandler: { (err: unknown): E_unknown },
+): RemotePod<M, V, R, E_raw | E_unknown> {
     return (converter) => async (message) => {
-        const remoteResult = await access(message)
-        if (!remoteResult.success) {
-            return remoteResult
+        const result = await access(message)
+        if (!result.success) {
+            return result
         }
-        return { success: true, value: converter(remoteResult.value) }
+        return { success: true, value: converter(result.value) }
     }
 
-    async function access(message: M): Promise<RemoteResult<R, E>> {
+    async function access(message: M): Promise<RemoteResult<R, E_raw | E_unknown>> {
         try {
             return await remote(message)
         } catch (err) {
@@ -21,27 +28,49 @@ export function wrapRemote<M, V, R, E>(
         }
     }
 }
+export function remoteInfraError(err: unknown): RemoteInfraError {
+    return {
+        type: "infra-error",
+        err: `${err}`,
+    }
+}
 
 export function passThroughRemoteValue<T>(value: T): T {
     return value
 }
 
-export function remoteCommonError(
+export type RemoteCommonErrorReason = Readonly<{
+    message: string
+    detail: string[]
+}>
+export function remoteCommonError<T>(
     err: RemoteCommonError,
-    message: { (reason: string): string },
-): string[] {
+    message: { (reason: RemoteCommonErrorReason): T[] },
+): T[] {
     switch (err.type) {
-        case "bad-request":
-            return [message("アプリケーションエラー")]
+        case "unauthorized":
+            return message({
+                message: "認証エラー",
+                detail: ["もう一度ログインしてください"],
+            })
+
+        case "invalid-nonce":
+            return message({
+                message: "接続エラー",
+                detail: [
+                    "もう一度操作してください",
+                    "繰り返しエラーになる場合、お手数ですが管理者に連絡お願いします",
+                ],
+            })
 
         case "server-error":
-            return [message("サーバーエラー")]
-
-        case "bad-response":
-            return [message("レスポンスエラー"), ...detail(err.err)]
+            return message({
+                message: "サーバーエラー",
+                detail: ["お手数ですが管理者に連絡お願いします"],
+            })
 
         case "infra-error":
-            return [message("ネットワークエラー"), ...detail(err.err)]
+            return message({ message: "ネットワークエラー", detail: detail(err.err) })
     }
 
     function detail(message: string): string[] {

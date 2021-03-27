@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-message MenuExpandMessage {
-  message Path { repeated string labels = 1; }
-
-  repeated Path paths = 1;
-}

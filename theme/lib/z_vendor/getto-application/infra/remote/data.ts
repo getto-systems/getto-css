@@ -1,5 +1,7 @@
 export type RemoteCommonError =
-    | Readonly<{ type: "bad-request" }>
+    | Readonly<{ type: "unauthorized" }>
+    | Readonly<{ type: "invalid-nonce" }>
     | Readonly<{ type: "server-error" }>
-    | Readonly<{ type: "bad-response"; err: string }>
-    | Readonly<{ type: "infra-error"; err: string }>
+    | RemoteInfraError
+
+export type RemoteInfraError = Readonly<{ type: "infra-error"; err: string }>

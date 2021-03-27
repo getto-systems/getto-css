@@ -51,15 +51,18 @@ type Props = Readonly<{
 export function TableTableComponent({ content, column, rows }: Props): VNode {
     const dataLength = rows.length
     return table(content.sticky, [
-        thead([...tableHeader({ ...content, singleLastBorderBottom: true }), ...tableSummary(content)]),
+        thead([
+            ...tableHeader({ ...content, singleLastBorderBottom: true }),
+            ...tableSummary(content),
+        ]),
         tbody(
             rows.flatMap((row, index) =>
                 tableColumn({
                     sticky: content.sticky,
                     column: column(row),
                     noLastBorderBottom: index === dataLength - 1,
-                })
-            )
+                }),
+            ),
         ),
         tfoot(tableFooter(content)),
     ])
@@ -173,14 +176,15 @@ export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model,
                             return {
                                 label: () => temperatureLabel(temperatureType),
                                 header: linky,
-                                column: (row: Row) => formatPrice(row.amounts[temperatureType]),
+                                column: (row: Row) =>
+                                    formatPrice(row.amounts.get(temperatureType) || 0),
                             }
                         }),
                     ],
             }),
 
             tableCell_tree({
-                data: (row: Row, model: Model) => model.logs[row.row_id],
+                data: (row: Row, model: Model) => model.logs.get(row.row_id) || [],
                 key: (log: Log) => log.log_id,
                 cells: <Cells<Log>>[
                     tableCell("log_id", (_key) => {

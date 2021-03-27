@@ -1,4 +1,4 @@
-import { menuBadgeRemoteConverter } from "../../kernel/impl/convert"
+import { menuBadgeRemoteConverter } from "../../kernel/impl/converter"
 
 import { buildMenu, BuildMenuParams } from "../../kernel/impl/menu"
 
@@ -45,4 +45,4 @@ export function updateMenuBadgeEventHasDone(_event: UpdateMenuBadgeEvent): boole
     return true
 }
 
-const EMPTY_BADGE: MenuBadge = {}
+const EMPTY_BADGE: MenuBadge = new Map()
