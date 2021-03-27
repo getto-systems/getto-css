@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version : 2.27.1
+
+- refactor : See merge request getto-systems-base/projects/css!464
+- apply: eslint : See merge request getto-systems-base/projects/css!463
+- apply: getto-css update : See merge request getto-systems-base/projects/css!462
+
+
 ## Version : 2.27.0
 
 - fix: paragraph : See merge request getto-systems-base/projects/css!460
