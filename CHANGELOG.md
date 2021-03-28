@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version : 2.28.2
+
+- fix: postcss import : See merge request getto-systems-base/projects/css!472
+- fix: deploy : See merge request getto-systems-base/projects/css!471
+- fix: deploy : See merge request getto-systems-base/projects/css!470
+
+
 ## Version : 2.28.1
 
 - fix: artifact : See merge request getto-systems-base/projects/css!468
