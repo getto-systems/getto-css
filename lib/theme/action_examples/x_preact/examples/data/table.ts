@@ -31,7 +31,7 @@ import {
 import { small } from "../../../../../z_vendor/getto-css/preact/design/alignment"
 
 import { Model, Row } from "./data"
-import { icon } from "../../../../../x_preact/common/design/icon"
+import { icon } from "../../../../../x_preact/design/icon"
 
 type Props = Readonly<{
     content: Readonly<{

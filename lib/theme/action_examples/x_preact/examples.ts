@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useErrorBoundary } from "preact/hooks"
 
 import { useApplicationView } from "../../../z_vendor/getto-application/action/x_preact/hooks"
-import { useDocumentTitle } from "../../../x_preact/common/hooks"
+import { useDocumentTitle } from "../../../x_preact/hooks"
 
 import {
     appLayout,
@@ -12,7 +12,7 @@ import {
     mainTitle,
 } from "../../../z_vendor/getto-css/preact/layout/app"
 
-import { copyright, siteInfo } from "../../../x_preact/common/site"
+import { copyright, siteInfo } from "../../site"
 
 import { ApplicationErrorComponent } from "../../../avail/common/x_preact/application_error"
 import { LoadMenuEntry } from "../../../outline/menu/action_load_menu/x_preact/load_menu"
@@ -55,7 +55,7 @@ export function ExamplesComponent(resource: Props): VNode {
     useDocumentTitle(resource.content.title)
 
     return appLayout({
-        siteInfo: siteInfo(),
+        siteInfo,
         header: [h(GlobalInfoComponent, resource)],
         main: appMain({
             header: mainHeader([
@@ -63,7 +63,7 @@ export function ExamplesComponent(resource: Props): VNode {
                 h(LoadBreadcrumbListComponent, resource),
             ]),
             body: mainBody(h(resource.content.component, {})),
-            copyright: copyright(),
+            copyright,
         }),
         menu: h(LoadMenuEntry, resource),
     })

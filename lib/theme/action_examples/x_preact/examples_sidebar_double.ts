@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useErrorBoundary } from "preact/hooks"
 
 import { useApplicationView } from "../../../z_vendor/getto-application/action/x_preact/hooks"
-import { useDocumentTitle } from "../../../x_preact/common/hooks"
+import { useDocumentTitle } from "../../../x_preact/hooks"
 
 import {
     appLayout_sidebar_double,
@@ -15,7 +15,7 @@ import {
     sidebarBody_grow,
 } from "../../../z_vendor/getto-css/preact/layout/app"
 
-import { copyright, siteInfo } from "../../../x_preact/common/site"
+import { copyright, siteInfo } from "../../site"
 
 import { ApplicationErrorComponent } from "../../../avail/common/x_preact/application_error"
 import { LoadMenuEntry } from "../../../outline/menu/action_load_menu/x_preact/load_menu"
@@ -66,7 +66,7 @@ export function ExamplesSidebarDoubleComponent(resource: Props): VNode {
     useDocumentTitle(resource.content.title)
 
     return appLayout_sidebar_double({
-        siteInfo: siteInfo(),
+        siteInfo,
         header: [h(GlobalInfoComponent, resource)],
         main: appMain({
             header: mainHeader([
@@ -74,7 +74,7 @@ export function ExamplesSidebarDoubleComponent(resource: Props): VNode {
                 h(LoadBreadcrumbListComponent, resource),
             ]),
             body: mainBody(h(resource.content.component, {})),
-            copyright: copyright(),
+            copyright,
         }),
         sidebar: appSidebar({
             header: mainHeader(mainTitle(resource.content.sidebar.title)),
@@ -85,7 +85,7 @@ export function ExamplesSidebarDoubleComponent(resource: Props): VNode {
                     return sidebarBody(h(body.component, {}))
                 }
             }),
-            copyright: copyright(),
+            copyright,
         }),
         menu: h(LoadMenuEntry, resource),
     })

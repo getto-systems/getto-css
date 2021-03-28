@@ -3,13 +3,13 @@ import { html } from "htm/preact"
 
 import { loginBox } from "../../../../../z_vendor/getto-css/preact/layout/login"
 
-import { siteInfo } from "../../../../../x_preact/common/site"
+import { siteInfo } from "../../../../site"
 
 type Props = Readonly<{
     // no props
 }>
 export function LoadingComponent(_: Props): VNode {
-    return loginBox(siteInfo(), {
+    return loginBox(siteInfo, {
         title: "アプリケーション読み込み中",
         body: [
             html`<p>

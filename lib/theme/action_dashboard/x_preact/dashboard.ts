@@ -9,9 +9,9 @@ import {
 } from "../../../z_vendor/getto-css/preact/layout/app"
 
 import { useApplicationView } from "../../../z_vendor/getto-application/action/x_preact/hooks"
-import { useDocumentTitle } from "../../../x_preact/common/hooks"
+import { useDocumentTitle } from "../../../x_preact/hooks"
 
-import { copyright, siteInfo } from "../../../x_preact/common/site"
+import { copyright, siteInfo } from "../../site"
 
 import { ApplicationErrorComponent } from "../../../avail/common/x_preact/application_error"
 import { LoadMenuEntry } from "../../../outline/menu/action_load_menu/x_preact/load_menu"
@@ -39,12 +39,12 @@ export function DashboardComponent(resource: DashboardResource): VNode {
     useDocumentTitle("ホーム")
 
     return appLayout({
-        siteInfo: siteInfo(),
+        siteInfo,
         header: [h(GlobalInfoComponent, resource)],
         main: appMain({
             header: mainHeader([mainTitle("ホーム"), h(LoadBreadcrumbListComponent, resource)]),
             body: mainBody(h(HowToUseComponent, resource)),
-            copyright: copyright(),
+            copyright,
         }),
         menu: h(LoadMenuEntry, resource),
     })

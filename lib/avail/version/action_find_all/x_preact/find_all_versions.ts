@@ -3,10 +3,10 @@ import { html } from "htm/preact"
 
 import { useApplicationAction } from "../../../../z_vendor/getto-application/action/x_preact/hooks"
 
-import { VNodeContent } from "../../../../x_preact/common/design/common"
+import { VNodeContent } from "../../../../x_preact/design/common"
 import { field } from "../../../../z_vendor/getto-css/preact/design/form"
 import { label_info } from "../../../../z_vendor/getto-css/preact/design/highlight"
-import { spinner } from "../../../../x_preact/common/design/icon"
+import { spinner } from "../../../../x_preact/design/icon"
 
 import { FindAllVersionResource, FindAllVersionResourceState } from "../resource"
 

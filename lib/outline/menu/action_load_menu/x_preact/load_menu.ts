@@ -13,7 +13,7 @@ import {
 } from "../../../../z_vendor/getto-css/preact/layout/app"
 import { badge_alert, notice_alert } from "../../../../z_vendor/getto-css/preact/design/highlight"
 
-import { poweredBy } from "../../../../x_preact/common/site"
+import { poweredBy } from "../../../../theme/site"
 
 import { LoadMenuResource, LoadMenuResourceState } from "../resource"
 
@@ -52,7 +52,7 @@ export function LoadMenuComponent(props: Props): VNode {
     }
 
     function menu(content: VNode[]) {
-        return appMenu([...content, menuFooter(poweredBy())])
+        return appMenu([...content, menuFooter(poweredBy)])
     }
 
     function content(wholeMenu: Menu): VNode {

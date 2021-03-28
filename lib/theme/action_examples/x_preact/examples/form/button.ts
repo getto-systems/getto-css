@@ -18,7 +18,7 @@ import {
     button_redo,
     button_disabled,
 } from "../../../../../z_vendor/getto-css/preact/design/form"
-import { spinner } from "../../../../../x_preact/common/design/icon"
+import { spinner } from "../../../../../x_preact/design/icon"
 
 type Props = {
     // no props

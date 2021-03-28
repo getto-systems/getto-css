@@ -22,8 +22,8 @@ import {
     linky,
 } from "../../../../../z_vendor/getto-css/preact/design/highlight"
 import { small } from "../../../../../z_vendor/getto-css/preact/design/alignment"
-import { sortSign } from "../../../../../x_preact/common/design/table"
-import { icon } from "../../../../../x_preact/common/design/icon"
+import { sortSign } from "../../../../../x_preact/design/table"
+import { icon } from "../../../../../x_preact/design/icon"
 
 type Props = {
     // no props

@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { useErrorBoundary } from "preact/hooks"
 
-import { useDocumentTitle } from "../../../x_preact/common/hooks"
+import { useDocumentTitle } from "../../../x_preact/hooks"
 
 import { ApplicationErrorComponent } from "../../../avail/common/x_preact/application_error"
 import { ExamplesContent } from "./examples"

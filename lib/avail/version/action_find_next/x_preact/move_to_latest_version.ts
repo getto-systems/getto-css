@@ -8,8 +8,8 @@ import {
 } from "../../../../z_vendor/getto-application/action/x_preact/hooks"
 
 import { loginBox } from "../../../../z_vendor/getto-css/preact/layout/login"
-import { siteInfo } from "../../../../x_preact/common/site"
-import { spinner } from "../../../../x_preact/common/design/icon"
+import { siteInfo } from "../../../../theme/site"
+import { spinner } from "../../../../x_preact/design/icon"
 
 import { ApplicationErrorComponent } from "../../../common/x_preact/application_error"
 
@@ -66,7 +66,7 @@ export function MoveToLatestVersionComponent(props: Props): VNode {
     }
 
     function takeLongtimeMessage() {
-        return loginBox(siteInfo(), {
+        return loginBox(siteInfo, {
             title: "アプリケーション読み込み中",
             body: [
                 html`<p>${spinner} アプリケーションの読み込みに時間がかかっています</p>`,

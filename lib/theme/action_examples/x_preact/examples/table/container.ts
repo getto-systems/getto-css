@@ -2,7 +2,7 @@ import { h, VNode } from "preact"
 import { useMemo } from "preact/hooks"
 import { html } from "htm/preact"
 
-import { sortSign } from "../../../../../x_preact/common/design/table"
+import { sortSign } from "../../../../../x_preact/design/table"
 
 import { visibleAll } from "../../../../../z_vendor/getto-table/preact/core"
 
