@@ -13,7 +13,8 @@
 
 /public/dist/**/*.js
 
-/artifact/dist/**/*.css
+/artifact/dist/*
+!/artifact/dist/.keep
 
 **/y_*/*
 !**/y_*/.keep
