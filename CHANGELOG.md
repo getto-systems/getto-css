@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.28.0
+
+- re-arrange: workspace path : See merge request getto-systems-base/projects/css!466
+
+
+
 ## Version : 2.27.1
 
 - refactor : See merge request getto-systems-base/projects/css!464
