@@ -5,13 +5,13 @@ import { v_small } from "../../../z_vendor/getto-css/preact/design/alignment"
 import { buttons, field } from "../../../z_vendor/getto-css/preact/design/form"
 import { loginBox } from "../../../z_vendor/getto-css/preact/layout/login"
 
-import { siteInfo } from "../../../x_preact/common/site"
+import { siteInfo } from "../../../theme/site"
 
 type Props = Readonly<{
     err: string
 }>
 export function ApplicationErrorComponent(props: Props): VNode {
-    return loginBox(siteInfo(), {
+    return loginBox(siteInfo, {
         title: html`システムエラーが発生しました`,
         body: [
             html`<p>

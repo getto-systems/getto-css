@@ -1,6 +1,6 @@
 import { html } from "htm/preact"
 import { VNode } from "preact"
-import { spinner } from "../../../../../x_preact/common/design/icon"
+import { spinner } from "../../../../../x_preact/design/icon"
 
 import {
     fieldError,

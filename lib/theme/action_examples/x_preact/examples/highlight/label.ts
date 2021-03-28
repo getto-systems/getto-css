@@ -10,7 +10,7 @@ import {
     label_success,
     label_warning,
 } from "../../../../../z_vendor/getto-css/preact/design/highlight"
-import { icon } from "../../../../../x_preact/common/design/icon"
+import { icon } from "../../../../../x_preact/design/icon"
 
 type Props = {
     // no props

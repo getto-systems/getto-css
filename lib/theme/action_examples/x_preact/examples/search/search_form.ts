@@ -11,7 +11,7 @@ import {
 } from "../../../../../z_vendor/getto-css/preact/design/form"
 
 import { EditState, SearchProps } from "./container"
-import { spinner } from "../../../../../x_preact/common/design/icon"
+import { spinner } from "../../../../../x_preact/design/icon"
 
 type Props = SearchProps
 export function SearchSearchFormComponent(props: Props): VNode {

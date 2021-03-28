@@ -18,7 +18,7 @@ import { big } from "../../../../../z_vendor/getto-css/preact/design/alignment"
 import { CompleteAction, DeleteAction, EditState, FormProps } from "./container"
 import { FormFooterComponent } from "./form_footer"
 import { ModalComponent, ModalContentProps, ModalProps } from "./modal"
-import { icon, spinner } from "../../../../../x_preact/common/design/icon"
+import { icon, spinner } from "../../../../../x_preact/design/icon"
 
 type Props = FormProps &
     Readonly<{

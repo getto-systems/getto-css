@@ -10,7 +10,7 @@ import {
     mainBody,
 } from "../../../../z_vendor/getto-css/preact/layout/app"
 
-import { copyright, siteInfo } from "../../../../x_preact/common/site"
+import { copyright, siteInfo } from "../../../../theme/site"
 import { lniClass, lnir } from "../../../../z_external/icon/line_icon"
 
 import { LoadMenuComponent } from "./load_menu"
@@ -49,12 +49,12 @@ type MockProps = Readonly<{
 }>
 const template = storyTemplate<MockProps>((props) => {
     return appLayout({
-        siteInfo: siteInfo(),
+        siteInfo,
         header: [],
         main: appMain({
             header: mainHeader([mainTitle("タイトル")]),
             body: mainBody("コンテンツ"),
-            copyright: copyright(),
+            copyright,
         }),
         menu: h(LoadMenuComponent, {
             menu: mockLoadMenuCoreAction(menu()),

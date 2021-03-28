@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { icon } from "../../../../../x_preact/common/design/icon"
+import { icon } from "../../../../../x_preact/design/icon"
 
 import {
     TableDataColumnRow,

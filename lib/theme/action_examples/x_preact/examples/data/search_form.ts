@@ -5,7 +5,7 @@ import { box_fill } from "../../../../../z_vendor/getto-css/preact/design/box"
 import { button_search } from "../../../../../z_vendor/getto-css/preact/design/form"
 
 import { ListProps } from "./container"
-import { icon, spinner } from "../../../../../x_preact/common/design/icon"
+import { icon, spinner } from "../../../../../x_preact/design/icon"
 
 type Props = ListProps
 export function DataSearchFormComponent({ state, action: component }: Props): VNode {

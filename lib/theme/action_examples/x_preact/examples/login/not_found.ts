@@ -4,13 +4,13 @@ import { html } from "htm/preact"
 import { loginBox } from "../../../../../z_vendor/getto-css/preact/layout/login"
 import { buttons } from "../../../../../z_vendor/getto-css/preact/design/form"
 
-import { siteInfo } from "../../../../../x_preact/common/site"
+import { siteInfo } from "../../../../site"
 
 type Props = Readonly<{
     // no props
 }>
 export function NotFoundComponent(_: Props): VNode {
-    return loginBox(siteInfo(), {
+    return loginBox(siteInfo, {
         title: "リンクが切れていました",
         body: [
             html`<p>

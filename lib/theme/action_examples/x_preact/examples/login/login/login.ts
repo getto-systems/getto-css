@@ -11,10 +11,10 @@ import {
     label_password_fill,
 } from "../../../../../../z_vendor/getto-css/preact/design/form"
 
-import { siteInfo } from "../../../../../../x_preact/common/site"
+import { siteInfo } from "../../../../../site"
 
 import { EditState, LoginProps } from "./container"
-import { icon, spinner } from "../../../../../../x_preact/common/design/icon"
+import { icon, spinner } from "../../../../../../x_preact/design/icon"
 
 type Props = LoginProps
 export function LoginComponent({ state, action: component }: Props): VNode {
@@ -28,7 +28,7 @@ export function LoginComponent({ state, action: component }: Props): VNode {
         component.login(null)
     }
 
-    return loginBox(siteInfo(), { title: "ログイン", body: content(), footer: footer() })
+    return loginBox(siteInfo, { title: "ログイン", body: content(), footer: footer() })
 
     function content() {
         switch (state.type) {

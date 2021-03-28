@@ -10,10 +10,10 @@ import {
     label_text_fill,
 } from "../../../../../../z_vendor/getto-css/preact/design/form"
 
-import { siteInfo } from "../../../../../../x_preact/common/site"
+import { siteInfo } from "../../../../../site"
 
 import { EditState, ForgetProps } from "./container"
-import { icon, spinner } from "../../../../../../x_preact/common/design/icon"
+import { icon, spinner } from "../../../../../../x_preact/design/icon"
 
 type Props = ForgetProps
 export function ForgetComponent({ state, action: component }: Props): VNode {
@@ -27,7 +27,7 @@ export function ForgetComponent({ state, action: component }: Props): VNode {
         component.reset(null)
     }
 
-    return loginBox(siteInfo(), { title: "パスワードリセット", body: content(), footer: footer() })
+    return loginBox(siteInfo, { title: "パスワードリセット", body: content(), footer: footer() })
 
     function content() {
         switch (state.type) {
