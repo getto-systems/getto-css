@@ -5,11 +5,15 @@
 /storybook/lib/
 /storybook/css/
 
-/theme/public/dist/coverage/
-/theme/public/dist/storybook/
+/public/dist/coverage/
+/public/dist/storybook/
 
-/theme/artifact/dist/**/*.css
-/theme/public/dist/**/*.js
+/public/dist/css/*
+!/public/dist/css/.keep
+
+/public/dist/**/*.js
+
+/artifact/dist/**/*.css
 
 **/y_*/*
 !**/y_*/.keep
