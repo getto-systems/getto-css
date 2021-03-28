@@ -7,8 +7,8 @@ deploy_main(){
   local artifact_root
   local public_root
 
-  artifact_root=theme/artifact
-  public_root=theme/public
+  artifact_root=artifact
+  public_root=public
 
   version=$(cat .release-version)
 

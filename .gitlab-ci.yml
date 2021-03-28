@@ -18,7 +18,7 @@ test_css:
     refs:
       - merge_requests
     changes:
-      - theme/css/**/*.css
+      - css/**/*.css
       - package-lock.json
 
   before_script:
@@ -32,7 +32,7 @@ test_lib:
     refs:
       - merge_requests
     changes:
-      - theme/lib/**/*.ts
+      - lib/**/*.ts
       - package-lock.json
 
   before_script:

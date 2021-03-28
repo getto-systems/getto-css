@@ -3,9 +3,9 @@
   "scripts": {
     "build": "npm run setup && npm run build-storybook",
     "setup": "npm run setup:lib && npm run setup:css",
-    "setup:lib": "rm -rf lib && cp -a ../theme/lib .",
-    "setup:css": "rm -rf css && cp -a ../theme/css .",
-    "build-storybook": "build-storybook -o ../theme/public/dist/storybook/"
+    "setup:lib": "rm -rf lib && cp -a ../lib .",
+    "setup:css": "rm -rf css && cp -a ../css .",
+    "build-storybook": "build-storybook -o ../public/dist/storybook/"
   },
   "author": "",
   "license": "MIT",
