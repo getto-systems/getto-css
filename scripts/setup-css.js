@@ -5,6 +5,7 @@ const fs = require("fs")
 const postcss = require("postcss")
 
 const autoprefixer = require("autoprefixer")
+const postcssImport = require("postcss-import")
 const customMedia = require("postcss-custom-media")
 const customSelectors = require("postcss-custom-selectors")
 
@@ -13,12 +14,12 @@ const CleanCss = require("clean-css")
 compile({
     source: path.join(__dirname, "../css/resources/site.css"),
     output: path.join(__dirname, "../public/dist/css/site.css"),
-    plugins: [autoprefixer()],
+    plugins: [postcssImport(), autoprefixer()],
 })
 compile({
     source: path.join(__dirname, "../css/getto.css"),
     output: path.join(__dirname, "../artifact/dist/getto.css"),
-    plugins: [customMedia(), customSelectors(), autoprefixer()],
+    plugins: [postcssImport(), customMedia(), customSelectors(), autoprefixer()],
 })
 
 function compile({ source, output, plugins }) {
