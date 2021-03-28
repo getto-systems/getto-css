@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.28.1
+
+- fix: artifact : See merge request getto-systems-base/projects/css!468
+
+
 ## Version : 2.28.0
 
 - re-arrange: workspace path : See merge request getto-systems-base/projects/css!466
