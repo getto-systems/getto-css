@@ -41,6 +41,19 @@ export function box_fill(content: BoxContent): VNode {
     return boxContent("fill", content)
 }
 
+export function box_transparent(content: VNodeContent): VNode {
+    return boxTransparent("single", content)
+}
+export function box_double_transparent(content: VNodeContent): VNode {
+    return boxTransparent("double", content)
+}
+export function box_grow_transparent(content: VNodeContent): VNode {
+    return boxTransparent("grow", content)
+}
+export function box_fill_transparent(content: VNodeContent): VNode {
+    return boxTransparent("fill", content)
+}
+
 function boxContent(boxClass: BoxClass, content: BoxContent): VNode {
     return html`<article class="box ${mapBoxClass(boxClass)}">
         <main>${header()} ${boxBody(content.body)}</main>
@@ -59,6 +72,9 @@ function boxContent(boxClass: BoxClass, content: BoxContent): VNode {
         }
         return ""
     }
+}
+function boxTransparent(boxClass: BoxClass, content: VNodeContent): VNode {
+    return html`<article class="box box_transparent ${mapBoxClass(boxClass)}">${content}</article>`
 }
 
 function boxHeader(title: VNodeContent) {

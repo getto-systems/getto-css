@@ -11,6 +11,11 @@
     background-color: var(--color-white);
 }
 
+.box_transparent {
+    border-color: transparent;
+    background-color: transparent;
+}
+
 .box_grow {
     flex-grow: 2;
 }
