@@ -5,7 +5,7 @@ import { useApplicationView } from "../../../z_vendor/getto-application/action/x
 import { useDocumentTitle } from "../../../x_preact/hooks"
 
 import {
-    appLayout_sidebar_double,
+    appLayout,
     appMain,
     appSidebar,
     mainBody,
@@ -65,7 +65,7 @@ type Props = ExamplesResource & Readonly<{ content: ExamplesContent }>
 export function ExamplesSidebarDoubleComponent(resource: Props): VNode {
     useDocumentTitle(resource.content.title)
 
-    return appLayout_sidebar_double({
+    return appLayout({
         siteInfo,
         header: [h(GlobalInfoComponent, resource)],
         main: appMain({
@@ -76,7 +76,7 @@ export function ExamplesSidebarDoubleComponent(resource: Props): VNode {
             body: mainBody(h(resource.content.component, {})),
             copyright,
         }),
-        sidebar: appSidebar({
+        sidebar_double: appSidebar({
             header: mainHeader(mainTitle(resource.content.sidebar.title)),
             body: resource.content.sidebar.body.map((body) => {
                 if (body.isGrow) {
