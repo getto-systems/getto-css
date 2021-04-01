@@ -9,6 +9,10 @@
         display: none;
     }
 
+    .container {
+        display: block;
+    }
+
     @page {
         margin: 0;
     }

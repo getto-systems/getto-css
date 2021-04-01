@@ -100,9 +100,7 @@ export function appSidebar({ header, body, copyright }: MainLayoutContent): VNod
     return html`<aside class="sidebar">${header} ${body} ${mainFooter(copyright)}</aside>`
 }
 export function appMenu(content: VNodeContent): VNode {
-    return html`<aside class="layout__app__menu">
-        <section class="menu">${content}</section>
-    </aside>`
+    return html`<aside class="menu">${content}</aside>`
 }
 
 export function mainHeader(content: VNodeContent): VNode {
