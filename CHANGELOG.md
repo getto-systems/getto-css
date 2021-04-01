@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.30.0
+
+- add: container top : See merge request getto-systems-base/projects/css!484
+- fix: sidebar style : See merge request getto-systems-base/projects/css!483
+
+
 ## Version : 2.29.0
 
 - add: table noMargin : See merge request getto-systems-base/projects/css!481
