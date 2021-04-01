@@ -5,7 +5,7 @@
     font-size: var(--font-size-smaller);
 
     padding: calc(0.1875em - 2px) 0.75em;
-    border: 1px dotted transparent;
+    border: 1px solid transparent;
     border-radius: 0.25rem;
 
     vertical-align: top;
@@ -14,36 +14,36 @@
 
 .label_gray {
     color: var(--color-black);
-    border-color: var(--color-black-off);
-    background-color: var(--color-black-off);
+    border-color: var(--color-black);
+    background-color: var(--color-white-off);
 }
 
 .label_alert {
     color: var(--color-alert);
-    border-color: var(--color-alert-alpha);
+    border-color: var(--color-alert);
     background-color: var(--color-alert-off);
 }
 
 .label_success {
     color: var(--color-success);
-    border-color: var(--color-success-alpha);
+    border-color: var(--color-success);
     background-color: var(--color-success-off);
 }
 
 .label_warning {
     color: var(--color-warning);
-    border-color: var(--color-warning-alpha);
+    border-color: var(--color-warning);
     background-color: var(--color-warning-off);
 }
 
 .label_pending {
     color: var(--color-pending);
-    border-color: var(--color-pending-alpha);
+    border-color: var(--color-pending);
     background-color: var(--color-pending-off);
 }
 
 .label_info {
     color: var(--color-base);
-    border-color: var(--color-base-alpha);
+    border-color: var(--color-base);
     background-color: var(--color-base-off);
 }

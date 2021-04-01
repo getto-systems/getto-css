@@ -7,22 +7,17 @@
     --color-white-pure: #fff;
 
     --color-base: #005caf;
-    --color-base-alpha: #005caf66;
     --color-base-off: #eef7ff;
 
     --color-alert: #ab3b3a;
-    --color-alert-alpha: #ab3b3a66;
     --color-alert-off: #f8eaea;
 
     --color-success: #227d51;
-    --color-success-alpha: #227d5166;
     --color-success-off: #e3f7ee;
 
     --color-warning: #9b6e23;
-    --color-warning-alpha: #9b6e2366;
     --color-warning-off: #f9f2e5;
 
     --color-pending: #6f3381;
-    --color-pending-alpha: #6f338166;
     --color-pending-off: #f2e7f6;
 }
