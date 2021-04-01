@@ -3,9 +3,13 @@ import { html } from "htm/preact"
 
 import { pagerCount, pagerParams } from "../../../../../../x_preact/design/table"
 
-import { box_fill } from "../../../../../../z_vendor/getto-css/preact/design/box"
+import { box_grow, container } from "../../../../../../z_vendor/getto-css/preact/design/box"
 import { pagerOptions } from "../../../../../../z_vendor/getto-css/preact/design/data"
-import { button_search, field, pager } from "../../../../../../z_vendor/getto-css/preact/design/form"
+import {
+    button_search,
+    field,
+    pager,
+} from "../../../../../../z_vendor/getto-css/preact/design/form"
 
 type PagerProps = {
     // no props
@@ -13,9 +17,11 @@ type PagerProps = {
 export function SidebarPagerComponent(_: PagerProps): VNode {
     const all = 5532
     const offset = 0
-    return box_fill({
-        body: [field({ title: pagerCount(all), body: [select(), button()], help: [] })],
-    })
+    return container(
+        box_grow({
+            body: [field({ title: pagerCount(all), body: [select(), button()], help: [] })],
+        }),
+    )
 
     function select() {
         return pager(html`<select value=${offset}>

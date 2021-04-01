@@ -1,7 +1,7 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box_fill } from "../../../../../z_vendor/getto-css/preact/design/box"
+import { box_grow, container } from "../../../../../z_vendor/getto-css/preact/design/box"
 import { button_search } from "../../../../../z_vendor/getto-css/preact/design/form"
 
 import { ListProps } from "./container"
@@ -13,7 +13,7 @@ export function DataSearchFormComponent({ state, action: component }: Props): VN
         component.search(null)
     }
 
-    return box_fill({ body: button() })
+    return container([box_grow({ body: button() })])
 
     function button() {
         switch (state.type) {

@@ -6,7 +6,7 @@ import { tableStructure } from "../../../../../../z_vendor/getto-table/preact/ce
 import { visibleAll } from "../../../../../../z_vendor/getto-table/preact/core"
 import { tableAlign, tableClassName } from "../../../../../../z_vendor/getto-table/preact/decorator"
 
-import { box_fill } from "../../../../../../z_vendor/getto-css/preact/design/box"
+import { box_grow, container } from "../../../../../../z_vendor/getto-css/preact/design/box"
 import {
     tableColumn,
     tableHeader,
@@ -37,16 +37,18 @@ export function SidebarDoubleTableComponent(_: TableProps): VNode {
         header: structure.header(params),
     }
 
-    return box_fill({
-        body: table_fill(content.sticky, [
-            thead(tableHeader(content)),
-            tbody(
-                model.rows.flatMap((row) =>
-                    tableColumn({ ...content, column: structure.column(params, row) }),
+    return container(
+        box_grow({
+            body: table_fill(content.sticky, [
+                thead(tableHeader(content)),
+                tbody(
+                    model.rows.flatMap((row) =>
+                        tableColumn({ ...content, column: structure.column(params, row) }),
+                    ),
                 ),
-            ),
-        ]),
-    })
+            ]),
+        }),
+    )
 
     type Model = Readonly<{
         rows: Row[]

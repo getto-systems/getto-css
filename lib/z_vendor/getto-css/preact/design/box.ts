@@ -17,7 +17,7 @@ type BoxContent_title = Readonly<{ title: VNodeContent }>
 type BoxContent_body = Readonly<{ body: VNodeContent }>
 type BoxContent_footer = Readonly<{ footer: VNodeContent }>
 
-type BoxClass = "single" | "double" | "grow" | "fill"
+type BoxClass = "single" | "double" | "grow"
 function mapBoxClass(boxClass: BoxClass): string {
     switch (boxClass) {
         case "single":
@@ -37,9 +37,6 @@ export function box_double(content: BoxContent): VNode {
 export function box_grow(content: BoxContent): VNode {
     return boxContent("grow", content)
 }
-export function box_fill(content: BoxContent): VNode {
-    return boxContent("fill", content)
-}
 
 export function box_transparent(content: VNodeContent): VNode {
     return boxTransparent("single", content)
@@ -49,9 +46,6 @@ export function box_double_transparent(content: VNodeContent): VNode {
 }
 export function box_grow_transparent(content: VNodeContent): VNode {
     return boxTransparent("grow", content)
-}
-export function box_fill_transparent(content: VNodeContent): VNode {
-    return boxTransparent("fill", content)
 }
 
 function boxContent(boxClass: BoxClass, content: BoxContent): VNode {
