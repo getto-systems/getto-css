@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { container, box_fill } from "../../../../../z_vendor/getto-css/preact/design/box"
+import { container, box_grow } from "../../../../../z_vendor/getto-css/preact/design/box"
 import {
     search,
     search_double,
@@ -21,47 +21,57 @@ export function SearchSearchFormComponent(props: Props): VNode {
         component.inputValidValue(null)
     }
 
-    return box_fill({
-        body: container([
-            search({
-                title: "ID",
-                body: html`<input type="search" class="input_fill" onInput=${onInput} />`,
-                help: ["完全一致検索"],
-            }),
-            search({
-                title: "名前",
-                body: html`<input type="search" class="input_fill" onInput=${onInput} />`,
-                help: [],
-            }),
-            search_double({
-                title: "radio",
-                body: [
-                    checkbox({
-                        isChecked: true,
-                        input: html`<input
-                                type="radio"
-                                name="radio"
-                                checked
-                                onClick="${onInput}"
-                            />仮`,
-                        key: "仮",
-                    }),
-                    checkbox({
-                        isChecked: false,
-                        input: html`<input type="radio" name="radio" onClick="${onInput}" />作業中`,
-                        key: "作業中",
-                    }),
-                    checkbox({
-                        isChecked: false,
-                        input: html`<input type="radio" name="radio" onClick="${onInput}" />完了`,
-                        key: "完了",
-                    }),
-                ],
-                help: [],
-            }),
-        ]),
-        footer: h(SearchFooter, props),
-    })
+    return container(
+        box_grow({
+            body: container([
+                search({
+                    title: "ID",
+                    body: html`<input type="search" class="input_fill" onInput=${onInput} />`,
+                    help: ["完全一致検索"],
+                }),
+                search({
+                    title: "名前",
+                    body: html`<input type="search" class="input_fill" onInput=${onInput} />`,
+                    help: [],
+                }),
+                search_double({
+                    title: "radio",
+                    body: [
+                        checkbox({
+                            isChecked: true,
+                            input: html`<input
+                                    type="radio"
+                                    name="radio"
+                                    checked
+                                    onClick="${onInput}"
+                                />仮`,
+                            key: "仮",
+                        }),
+                        checkbox({
+                            isChecked: false,
+                            input: html`<input
+                                    type="radio"
+                                    name="radio"
+                                    onClick="${onInput}"
+                                />作業中`,
+                            key: "作業中",
+                        }),
+                        checkbox({
+                            isChecked: false,
+                            input: html`<input
+                                    type="radio"
+                                    name="radio"
+                                    onClick="${onInput}"
+                                />完了`,
+                            key: "完了",
+                        }),
+                    ],
+                    help: [],
+                }),
+            ]),
+            footer: h(SearchFooter, props),
+        }),
+    )
 }
 
 type SearchFooterProps = SearchProps

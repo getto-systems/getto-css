@@ -3,7 +3,6 @@ import { html } from "htm/preact"
 
 import {
     box_double_transparent,
-    box_fill_transparent,
     box_grow_transparent,
     box_transparent,
     container,
@@ -25,7 +24,6 @@ export function HighlightContainerComponent(_: ContainerProps): VNode {
             h(BasicNoticeComponent, NO_PROPS),
             h(OtherNoticeComponent, NO_PROPS),
         ])}
-        ${container([box_fill_transparent(notice_info("transparent fill"))])}
         ${container([
             box_transparent(notice_info("transparent")),
             box_grow_transparent(notice_info("transparent grow")),

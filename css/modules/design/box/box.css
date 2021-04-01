@@ -38,16 +38,11 @@
 
 @media (--media-wide) {
     .box {
-        margin-right: 0.5rem;
         width: var(--width-box);
     }
 
-    .box.box_double {
+    .box_double {
         width: var(--width-box-double);
-    }
-
-    .box.box_fill {
-        width: calc(100% - 1.6rem);
     }
 }
 
