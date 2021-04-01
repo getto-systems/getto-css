@@ -5,7 +5,7 @@ import { useApplicationView } from "../../../z_vendor/getto-application/action/x
 import { useDocumentTitle } from "../../../x_preact/hooks"
 
 import {
-    appLayout_sidebar,
+    appLayout,
     appMain,
     appSidebar,
     mainBody,
@@ -65,7 +65,7 @@ type Props = ExamplesResource & Readonly<{ content: ExamplesContent }>
 export function ExamplesSidebarComponent(resource: Props): VNode {
     useDocumentTitle(resource.content.title)
 
-    return appLayout_sidebar({
+    return appLayout({
         siteInfo,
         header: [h(GlobalInfoComponent, resource)],
         main: appMain({
