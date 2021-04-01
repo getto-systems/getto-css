@@ -42,8 +42,8 @@ export function SidebarTableComponent(_: TableProps): VNode {
             thead(tableHeader(content)),
             tbody(
                 model.rows.flatMap((row) =>
-                    tableColumn({ ...content, column: structure.column(params, row) })
-                )
+                    tableColumn({ ...content, column: structure.column(params, row) }),
+                ),
             ),
         ]),
     })
@@ -58,38 +58,49 @@ export function SidebarTableComponent(_: TableProps): VNode {
     }>
 
     function buildStructure() {
-        return tableStructure({
-            key: (row: Row) => row.id,
-            cells: [
-                tableCell("id", (_key) => {
-                    return {
-                        label: () => "ID",
-                        header: linky,
-                        column: (row: Row) => row.id,
-                    }
-                }).border(["rightDouble"]),
+        return tableStructure(key, [
+            tableCell("id", (_key) => ({
+                label: () => "ID",
+                header: linky,
+                column: id,
+            })).border(["rightDouble"]),
 
-                tableCell("name", (_key) => {
-                    return {
-                        label: () => "名前",
-                        header: linky,
-                        column: (row: Row) => row.name,
-                    }
-                }),
+            tableCell("name", (_key) => ({
+                label: () => "名前",
+                header: linky,
+                column: name,
+            })),
 
-                tableCell("state", (_key) => {
-                    return {
-                        label: () => "状態",
-                        header: linky,
-                        column: (row: Row) => stateLabel(row.state),
-                    }
-                }).decorateColumn(tableAlign(["center"])),
-            ],
-        })
+            tableCell("state", (_key) => ({
+                label: () => "状態",
+                header: linky,
+                column: state,
+            })).decorateColumn(tableAlign(["center"])),
+        ])
             .horizontalBorder_header(["topNone"])
             .decorateRow(tableClassName(["row_hover"]))
             .stickyHeader()
             .freeze()
+
+        function key(row: Row): number {
+            return row.id
+        }
+
+        function id(row: Row): number {
+            return row.id
+        }
+        function name(row: Row): string {
+            return row.name
+        }
+        function state(row: Row): VNode {
+            switch (row.state) {
+                case "仮":
+                    return label_gray(row.state)
+
+                default:
+                    return label_warning(row.state)
+            }
+        }
     }
 
     function generateRows(): Row[] {
@@ -115,16 +126,6 @@ export function SidebarTableComponent(_: TableProps): VNode {
                     state: "作業中",
                 },
             ]
-        }
-    }
-
-    function stateLabel(state: string) {
-        switch (state) {
-            case "仮":
-                return label_gray(state)
-
-            default:
-                return label_warning(state)
         }
     }
 }

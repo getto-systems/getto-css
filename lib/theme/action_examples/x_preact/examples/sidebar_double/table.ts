@@ -76,78 +76,95 @@ type Row = Readonly<{
     memo: string
 }>
 
-const buildStructure = (sort: SortLink) => () =>
-    tableStructure({
-        key: (row: Row) => row.id,
-        cells: [
-            tableCell("id", (key) => {
-                return {
-                    label: () => "ID",
-                    header: sort(key),
-                    column: (row: Row) => row.id,
-                }
-            }).border(["rightDouble"]),
+const buildStructure = (sort: SortLink) => () => {
+    return tableStructure(key, [
+        tableCell("id", (key) => ({
+            label: () => "ID",
+            header: sort(key),
+            column: id,
+        })).border(["rightDouble"]),
 
-            tableCell("name", (key) => {
-                return {
-                    label: () => "名前",
-                    header: sort(key),
-                    column: (row: Row) => row.name,
-                }
-            }),
+        tableCell("name", (key) => ({
+            label: () => "名前",
+            header: sort(key),
+            column: name,
+        })),
 
-            tableCell("state", (key) => {
-                return {
-                    label: () => "状態",
-                    header: sort(key),
-                    column: (row: Row) => stateLabel(row.state),
-                }
-            }).decorateColumn(tableAlign(["center"])),
+        tableCell("state", (key) => ({
+            label: () => "状態",
+            header: sort(key),
+            column: state,
+        })).decorateColumn(tableAlign(["center"])),
 
-            tableCell("email", (key) => {
-                return {
-                    label: () => "メールアドレス",
-                    header: sort(key),
-                    column: (row: Row) => row.email,
-                }
-            }),
+        tableCell("email", (key) => ({
+            label: () => "メールアドレス",
+            header: sort(key),
+            column: email,
+        })),
 
-            tableCell("price", (key) => {
-                return {
-                    label: () => "価格",
-                    header: sort(key),
-                    column: (row: Row) => formatPrice(row.price),
-                }
-            }).decorateColumn(tableAlign(["numeric"])),
+        tableCell("price", (key) => ({
+            label: () => "価格",
+            header: sort(key),
+            column: price,
+        })).decorateColumn(tableAlign(["numeric"])),
 
-            tableCell("updatedAt", (key) => {
-                return {
-                    label: () => "更新日時",
-                    header: sort(key),
-                    column: (row: Row) => small(row.updatedAt),
-                }
-            }),
+        tableCell("updatedAt", (key) => ({
+            label: () => "更新日時",
+            header: sort(key),
+            column: updatedAt,
+        })),
 
-            tableCell("memo", (_key) => {
-                return {
-                    label: () => "メモ",
-                    header: linky,
-                    column: (row: Row) => row.memo,
-                }
-            }),
+        tableCell("memo", (_key) => ({
+            label: () => "メモ",
+            header: linky,
+            column: memo,
+        })),
 
-            tableCell("edit", (_key) => {
-                return {
-                    label: () => "",
-                    header: linky,
-                    column: (_row: Row) => html`<a href="#">${icon("pencil")} 編集</a>`,
-                }
-            }).border(["left"]),
-        ],
-    })
+        tableCell("edit", (_key) => ({
+            label: () => "",
+            header: linky,
+            column: editLink,
+        })).border(["left"]),
+    ])
         .decorateRow(tableClassName(["row_hover"]))
         .stickyCross(1)
         .freeze()
+
+    function key(row: Row): number {
+        return row.id
+    }
+
+    function id(row: Row): number {
+        return row.id
+    }
+    function name(row: Row): string {
+        return row.name
+    }
+    function email(row: Row): string {
+        return row.email
+    }
+    function memo(row: Row): string {
+        return row.memo
+    }
+    function state(row: Row): VNode {
+        switch (row.state) {
+            case "仮":
+                return label_gray(row.state)
+
+            default:
+                return label_warning(row.state)
+        }
+    }
+    function price(row: Row): string {
+        return formatPrice(row.price)
+    }
+    function updatedAt(row: Row): VNode {
+        return small(row.updatedAt)
+    }
+    function editLink(_row: Row): VNode {
+        return html`<a href="#">${icon("pencil")} 編集</a>`
+    }
+}
 
 function generateRows(): Row[] {
     return repeatedRows(100)
@@ -180,16 +197,6 @@ function generateRows(): Row[] {
                 memo: "simple css theme",
             },
         ]
-    }
-}
-
-function stateLabel(state: string) {
-    switch (state) {
-        case "仮":
-            return label_gray(state)
-
-        default:
-            return label_warning(state)
     }
 }
 

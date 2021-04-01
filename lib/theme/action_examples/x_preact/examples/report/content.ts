@@ -76,8 +76,8 @@ export function ReportContentComponent({ content, column, rows }: Props): VNode 
                             ...content,
                             column: column(row),
                             noLastBorderBottom: index === dataLength - 1,
-                        })
-                    )
+                        }),
+                    ),
                 ),
                 tfoot(tableFooter(content)),
             ]),
@@ -123,66 +123,79 @@ export function ReportContentComponent({ content, column, rows }: Props): VNode 
 }
 
 type Cells<R> = TableCell<Model, R>
-export const buildReportStructure = (): TableStructure<Model, Row> =>
-    tableStructure({
-        key: (row: Row) => row.id,
-        cells: <Cells<Row>[]>[
-            tableCell("id", (_key) => {
-                return {
-                    label: () => "ID",
-                    header: linky,
-                    column: (row: Row) => row.id,
-                }
-            }).border(["rightDouble"]),
+export const buildReportStructure = (): TableStructure<Model, Row> => {
+    return tableStructure(key, <Cells<Row>[]>[
+        tableCell("id", (_key) => ({
+            label: () => "ID",
+            header: linky,
+            column: id,
+        })).border(["rightDouble"]),
 
-            tableCell("name", (_key) => {
-                return {
-                    label: () => "名前",
-                    header: linky,
-                    column: (row: Row) => row.name,
-                }
-            }),
+        tableCell("name", (_key) => ({
+            label: () => "名前",
+            header: linky,
+            column: name,
+        })),
 
-            tableCell("email", (_key) => {
-                return {
-                    label: () => "メールアドレス",
-                    header: linky,
-                    column: (row: Row) => row.email,
-                }
-            }),
+        tableCell("email", (_key) => ({
+            label: () => "メールアドレス",
+            header: linky,
+            column: email,
+        })),
 
-            tableCell_tree({
-                data: (row: Row) => row.price,
-                key: (price: number) => price,
-                cells: <Cells<number>[]>[
-                    tableCell("price", (_key) => {
-                        return {
-                            label: () => "価格",
-                            header: linky,
-                            column: (price: number) => formatPrice(price),
-                            summary: (model: Model) => formatPrice(model.sumPrice),
-                            footer: (model: Model) => formatPrice(model.sumPrice),
-                        }
-                    })
-                        .decorateSummary(tableAlign(["numeric"]))
-                        .decorateFooter(tableAlign(["numeric"]))
-                        .decorateColumn(tableAlign(["numeric"])),
-                ],
-            }),
-
-            tableCell("updatedAt", (_key) => {
-                return {
-                    label: () => "更新日時",
+        tableCell_tree({
+            data: (row: Row) => row.price,
+            key: (price: number) => price,
+            cells: <Cells<number>[]>[
+                tableCell("price", (_key) => ({
+                    label: () => "価格",
                     header: linky,
-                    column: (row: Row) => small(row.updatedAt),
-                }
-            }),
-        ],
-    })
+                    column: price,
+                    summary: sumPrice,
+                    footer: sumPrice,
+                }))
+                    .decorateSummary(tableAlign(["numeric"]))
+                    .decorateFooter(tableAlign(["numeric"]))
+                    .decorateColumn(tableAlign(["numeric"])),
+            ],
+        }),
+
+        tableCell("updatedAt", (_key) => ({
+            label: () => "更新日時",
+            header: linky,
+            column: updatedAt,
+        })),
+    ])
         .decorateRow(tableClassName(["row_hover"]))
         .stickyCross(1)
         .freeze()
 
-function formatPrice(price: number) {
+    function key(row: Row): number {
+        return row.id
+    }
+
+    function id(row: Row): number {
+        return row.id
+    }
+    function name(row: Row): string {
+        return row.name
+    }
+    function email(row: Row): string {
+        return row.email
+    }
+    function updatedAt(row: Row): VNode {
+        return small(row.updatedAt)
+    }
+
+    function price(price: number): string {
+        return formatPrice(price)
+    }
+
+    function sumPrice(model: Model): string {
+        return formatPrice(model.sumPrice)
+    }
+}
+
+function formatPrice(price: number): string {
     return Intl.NumberFormat("ja-JP").format(price)
 }

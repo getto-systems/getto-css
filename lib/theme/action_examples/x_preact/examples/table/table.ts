@@ -70,202 +70,233 @@ export function TableTableComponent({ content, column, rows }: Props): VNode {
 
 type Cells<R> = TableCell<Model, R>[]
 
-export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model, Row> =>
-    tableStructure({
-        key: (row: Row) => row.row_id,
-        cells: <Cells<Row>>[
-            tableCell("id", (key) => {
-                return {
-                    label: () => "ID",
+export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model, Row> => {
+    return tableStructure(key, <Cells<Row>>[
+        tableCell("id", (key) => ({
+            label: () => "ID",
+            header: sort(key),
+            column: id,
+        })).border(["rightDouble"]),
+
+        tableCell_group({
+            key: "base",
+            header: () => linky("基本情報"),
+            cells: <Cells<Row>>[
+                tableCell("name", (key) => ({
+                    label: () => "名前",
                     header: sort(key),
-                    column: (row: Row) => row.row_id,
-                }
-            }).border(["rightDouble"]),
+                    column: name,
+                })),
 
-            tableCell_group({
-                key: "base",
-                header: () => linky("基本情報"),
-                cells: <Cells<Row>>[
-                    tableCell("name", (key) => {
-                        return {
-                            label: () => "名前",
-                            header: sort(key),
-                            column: (row: Row) => row.name,
-                        }
-                    }),
+                tableCell("state", (key) => ({
+                    label: () => "状態",
+                    header: sort(key),
+                    column: state,
+                }))
+                    .border(["rightDouble"])
+                    .decorateColumn(tableAlign(["center"])),
+            ],
+        }),
 
-                    tableCell("state", (key) => {
-                        return {
-                            label: () => "状態",
-                            header: sort(key),
-                            column: (row: Row) => stateLabel(row.state),
-                        }
-                    })
-                        .border(["rightDouble"])
-                        .decorateColumn(tableAlign(["center"])),
-                ],
-            }),
-
-            tableCell_group({
-                key: "hostInfo",
-                header: () => linky("ホスト情報"),
-                cells: <Cells<Row>>[
-                    tableCell_group({
-                        key: "accountInfo",
-                        header: () => linky("アカウント情報"),
-                        cells: <Cells<Row>>[
-                            tableCell_group({
-                                key: "accountInfo",
-                                header: () => linky("基本情報"),
-                                cells: <Cells<Row>>[
-                                    tableCell("host", (key) => {
-                                        return {
-                                            label: () => "ホスト",
-                                            header: sort(key),
-                                            column: (row: Row) => row.host,
-                                        }
-                                    }).border(["right"]),
-                                ],
-                            }),
-
-                            tableCell("account", (key) => {
-                                return {
-                                    label: () => "アカウント",
+        tableCell_group({
+            key: "hostInfo",
+            header: () => linky("ホスト情報"),
+            cells: <Cells<Row>>[
+                tableCell_group({
+                    key: "accountInfo",
+                    header: () => linky("アカウント情報"),
+                    cells: <Cells<Row>>[
+                        tableCell_group({
+                            key: "accountInfo",
+                            header: () => linky("基本情報"),
+                            cells: <Cells<Row>>[
+                                tableCell("host", (key) => ({
+                                    label: () => "ホスト",
                                     header: sort(key),
-                                    column: (row: Row) => row.account,
-                                }
-                            }).border(["right"]),
-                        ],
-                    }),
-
-                    tableCell_group({
-                        key: "purchaseInfo",
-                        header: () => linky("価格情報"),
-                        cells: <Cells<Row>>[
-                            tableCell("price", (key) => {
-                                return {
-                                    label: () => "価格",
-                                    header: sort(key),
-                                    column: (row: Row) => formatPrice(row.price),
-                                    summary: (model: Model) => formatPrice(model.sumPrice),
-                                    footer: (model: Model) => formatPrice(model.sumPrice),
-                                }
-                            })
-                                .border(["rightDouble"])
-                                .decorateColumn(tableAlign(["numeric"]))
-                                .decorateSummary(tableAlign(["numeric"])),
-                        ],
-                    }),
-                ],
-            }),
-
-            tableCell_expansion("alarms", (_key) => {
-                return {
-                    label: () => "アラーム",
-                    header: linky,
-                    column: (row: Row) => row.alarms,
-                    length: (model: Model) => model.alarmMaxLength,
-                }
-            }).border(["right"]),
-
-            tableCell_multipart({
-                data: (model: Model) => model.temperatureTypes,
-                cells: (temperatureType: TemperatureType) =>
-                    <Cells<Row>>[
-                        tableCell(`temperature_${temperatureType}`, (_key) => {
-                            return {
-                                label: () => temperatureLabel(temperatureType),
-                                header: linky,
-                                column: (row: Row) =>
-                                    formatPrice(row.amounts.get(temperatureType) || 0),
-                            }
+                                    column: host,
+                                })).border(["right"]),
+                            ],
                         }),
+
+                        tableCell("account", (key) => ({
+                            label: () => "アカウント",
+                            header: sort(key),
+                            column: account,
+                        })).border(["right"]),
                     ],
-            }),
+                }),
 
-            tableCell_tree({
-                data: (row: Row, model: Model) => model.logs.get(row.row_id) || [],
-                key: (log: Log) => log.log_id,
-                cells: <Cells<Log>>[
-                    tableCell("log_id", (_key) => {
-                        return {
-                            label: () => "ログID",
-                            header: linky,
-                            column: (log: Log) => log.log_id,
-                        }
-                    }).border(["left"]),
+                tableCell_group({
+                    key: "purchaseInfo",
+                    header: () => linky("価格情報"),
+                    cells: <Cells<Row>>[
+                        tableCell("price", (key) => ({
+                            label: () => "価格",
+                            header: sort(key),
+                            column: price,
+                            summary: sumPrice,
+                            footer: sumPrice,
+                        }))
+                            .border(["rightDouble"])
+                            .decorateColumn(tableAlign(["numeric"]))
+                            .decorateSummary(tableAlign(["numeric"])),
+                    ],
+                }),
+            ],
+        }),
 
-                    tableCell("loggedAt", (_key) => {
-                        return {
-                            label: () => "ログ時刻",
-                            header: linky,
-                            column: (log: Log) => small(log.loggedAt),
-                        }
-                    }),
+        tableCell_expansion("alarms", (_key) => ({
+            label: () => "アラーム",
+            header: linky,
+            column: alarms,
+            length: alarmLength,
+        })).border(["right"]),
+
+        tableCell_multipart({
+            data: (model: Model) => model.temperatureTypes,
+            cells: (temperatureType: TemperatureType) =>
+                <Cells<Row>>[
+                    tableCell(`temperature_${temperatureType}`, (_key) => ({
+                        label: () => temperatureLabel(temperatureType),
+                        header: linky,
+                        column: temperatureAmount(temperatureType),
+                    })),
                 ],
-            }),
+        }),
 
-            tableCell_tree({
-                data: (row: Row) => row.articles,
-                key: (article: Article) => article.title,
-                cells: <Cells<Article>>[
-                    tableCell("article", (_key) => {
-                        return {
-                            label: () => "記事",
-                            header: linky,
-                            column: (article: Article) => article.title,
-                        }
-                    }).border(["left"]),
-
-                    tableCell_tree({
-                        data: (article: Article) => article.comments,
-                        key: (comment: ArticleComment) => comment,
-                        cells: <Cells<ArticleComment>>[
-                            tableCell<Model, ArticleComment>("comment", (_key) => {
-                                return {
-                                    label: () => "コメント",
-                                    header: linky,
-                                    column: (comment: ArticleComment) => comment,
-                                }
-                            })
-                                .border(["left"])
-                                .horizontalBorder(["bottomNone"]),
-                        ],
-                    }),
-                ],
-            }),
-
-            tableCell("updatedAt", (key) => {
-                return {
-                    label: () => "更新日時",
-                    header: sort(key),
-                    column: (row: Row) => small(row.updatedAt),
-                }
-            }).border(["left"]),
-
-            tableCell("memo", (_key) => {
-                return {
-                    label: () => "メモ",
+        tableCell_tree({
+            data: (row: Row, model: Model) => model.logs.get(row.row_id) || [],
+            key: logKey,
+            cells: <Cells<Log>>[
+                tableCell("log_id", (_key) => ({
+                    label: () => "ログID",
                     header: linky,
-                    column: (row: Row) => row.memo,
-                }
-            }),
-        ],
-    })
+                    column: logID,
+                })).border(["left"]),
+
+                tableCell("loggedAt", (_key) => ({
+                    label: () => "ログ時刻",
+                    header: linky,
+                    column: loggedAt,
+                })),
+            ],
+        }),
+
+        tableCell_tree({
+            data: (row: Row) => row.articles,
+            key: articleKey,
+            cells: <Cells<Article>>[
+                tableCell("article", (_key) => ({
+                    label: () => "記事",
+                    header: linky,
+                    column: articleTitle,
+                })).border(["left"]),
+
+                tableCell_tree({
+                    data: (article: Article) => article.comments,
+                    key: commentKey,
+                    cells: <Cells<ArticleComment>>[
+                        tableCell<Model, ArticleComment>("comment", (_key) => ({
+                            label: () => "コメント",
+                            header: linky,
+                            column: comment,
+                        }))
+                            .border(["left"])
+                            .horizontalBorder(["bottomNone"]),
+                    ],
+                }),
+            ],
+        }),
+
+        tableCell("updatedAt", (key) => ({
+            label: () => "更新日時",
+            header: sort(key),
+            column: updatedAt,
+        })).border(["left"]),
+
+        tableCell("memo", (_key) => ({
+            label: () => "メモ",
+            header: linky,
+            column: memo,
+        })),
+    ])
         .decorateRow(tableClassName(["row_hover"]))
         .stickyCross(1)
         .freeze()
 
-function stateLabel(state: string) {
-    switch (state) {
-        case "仮":
-            return label_gray(state)
+    function key(row: Row): number {
+        return row.row_id
+    }
 
-        case "完了":
-            return label_success(state)
+    function id(row: Row): number {
+        return row.row_id
+    }
+    function name(row: Row): string {
+        return row.name
+    }
+    function host(row: Row): string {
+        return row.host
+    }
+    function account(row: Row): string {
+        return row.account
+    }
+    function memo(row: Row): string {
+        return row.memo
+    }
+    function state(row: Row): VNode {
+        switch (row.state) {
+            case "仮":
+                return label_gray(row.state)
 
-        default:
-            return label_warning(state)
+            case "完了":
+                return label_success(row.state)
+
+            default:
+                return label_warning(row.state)
+        }
+    }
+    function price(row: Row): string {
+        return formatPrice(row.price)
+    }
+    function alarms(row: Row): string[] {
+        return row.alarms
+    }
+    function temperatureAmount(temperatureType: TemperatureType): { (row: Row): string } {
+        return (row) => formatPrice(row.amounts.get(temperatureType) || 0)
+    }
+    function updatedAt(row: Row): VNode {
+        return small(row.updatedAt)
+    }
+
+    function logKey(log: Log): number {
+        return log.log_id
+    }
+    function logID(log: Log): number {
+        return log.log_id
+    }
+    function loggedAt(log: Log): VNode {
+        return small(log.loggedAt)
+    }
+
+    function articleKey(article: Article): string {
+        return article.title
+    }
+    function articleTitle(article: Article): string {
+        return article.title
+    }
+
+    function commentKey(comment: ArticleComment): string {
+        return comment
+    }
+    function comment(comment: ArticleComment): string {
+        return comment
+    }
+
+    function sumPrice(model: Model): string {
+        return formatPrice(model.sumPrice)
+    }
+    function alarmLength(model: Model): number {
+        return model.alarmMaxLength
     }
 }
 
@@ -279,6 +310,6 @@ function temperatureLabel(type: TemperatureType): string {
     }
 }
 
-function formatPrice(price: number) {
+function formatPrice(price: number): string {
     return Intl.NumberFormat("ja-JP").format(price)
 }
