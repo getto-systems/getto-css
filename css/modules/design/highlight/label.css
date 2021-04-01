@@ -6,6 +6,7 @@
 
     padding: calc(0.1875em - 2px) 0.75em;
     border: 1px solid transparent;
+    border-radius: 0.25rem;
 
     vertical-align: top;
     white-space: nowrap;
@@ -14,7 +15,7 @@
 .label_gray {
     color: var(--color-black);
     border-color: var(--color-black);
-    background-color: var(--color-black-off);
+    background-color: var(--color-white-off);
 }
 
 .label_alert {
