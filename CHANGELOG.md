@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.33.0
+
+- fix: box : See merge request getto-systems-base/projects/css!492
+
+
 ## Version : 2.32.0
 
 - fix: box : See merge request getto-systems-base/projects/css!490
