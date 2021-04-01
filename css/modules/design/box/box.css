@@ -12,6 +12,7 @@
 .box_transparent {
     border-color: transparent;
     background-color: transparent;
+    padding: 0;
 }
 
 .box_grow {
