@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.31.0
+
+- fix: print style : See merge request getto-systems-base/projects/css!487
+- fix: style : See merge request getto-systems-base/projects/css!486
+
+
 ## Version : 2.30.0
 
 - add: container top : See merge request getto-systems-base/projects/css!484
