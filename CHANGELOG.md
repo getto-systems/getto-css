@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## Version : 2.29.0
+
+- add: table noMargin : See merge request getto-systems-base/projects/css!481
+- remove: box_fill : See merge request getto-systems-base/projects/css!480
+- add: transparent box : See merge request getto-systems-base/projects/css!479
+- fix: label / badge border color : See merge request getto-systems-base/projects/css!478
+- refactor: table label : See merge request getto-systems-base/projects/css!477
+- refactor: table structure args : See merge request getto-systems-base/projects/css!476
+- refactor: site info : See merge request getto-systems-base/projects/css!475
+- move: tsconfig : See merge request getto-systems-base/projects/css!474
+
+
 ## Version : 2.28.2
 
 - fix: postcss import : See merge request getto-systems-base/projects/css!472
