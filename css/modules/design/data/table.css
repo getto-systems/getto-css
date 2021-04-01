@@ -9,6 +9,10 @@
     margin-bottom: 0.5rem;
 }
 
+.table_noMargin {
+    margin: 0;
+}
+
 .table_fill {
     width: 100%;
 }
