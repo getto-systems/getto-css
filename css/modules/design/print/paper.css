@@ -1,9 +1,11 @@
 @media print {
+    .app__header,
     .main__header,
     .main__footer,
+    .sidebar,
     .menu,
     .box,
-    .paper_hide {
+    .paper_hidden {
         display: none;
     }
 

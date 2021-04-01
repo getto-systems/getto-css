@@ -167,7 +167,7 @@ const buildStructure = (sort: SortLink) => () => {
 }
 
 function generateRows(): Row[] {
-    return repeatedRows(100)
+    return repeatedRows(10)
 
     function repeatedRows(count: number) {
         const result: Row[] = []

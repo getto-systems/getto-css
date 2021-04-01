@@ -94,14 +94,10 @@ export type MainLayoutContent = Readonly<{
     copyright: VNodeContent
 }>
 export function appMain({ header, body, copyright }: MainLayoutContent): VNode {
-    return html`<article class="layout__app__main">
-        ${header} ${body} ${mainFooter(copyright)}
-    </article>`
+    return html`<article>${header} ${body} ${mainFooter(copyright)}</article>`
 }
 export function appSidebar({ header, body, copyright }: MainLayoutContent): VNode {
-    return html`<aside class="layout__app__sidebar">
-        <section class="sidebar">${header} ${body} ${mainFooter(copyright)}</section>
-    </aside>`
+    return html`<aside class="sidebar">${header} ${body} ${mainFooter(copyright)}</aside>`
 }
 export function appMenu(content: VNodeContent): VNode {
     return html`<aside class="layout__app__menu">
