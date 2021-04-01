@@ -37,7 +37,7 @@
 }
 
 @media (--media-sidebar-disabled) {
-    .sidebar .box {
+    .sidebar__body_grow {
         max-height: 50vh;
         overflow-y: auto;
     }
