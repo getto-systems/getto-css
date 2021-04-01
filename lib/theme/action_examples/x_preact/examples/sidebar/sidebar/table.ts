@@ -6,11 +6,10 @@ import { tableStructure } from "../../../../../../z_vendor/getto-table/preact/ce
 import { visibleAll } from "../../../../../../z_vendor/getto-table/preact/core"
 import { tableAlign, tableClassName } from "../../../../../../z_vendor/getto-table/preact/decorator"
 
-import { box_grow, container } from "../../../../../../z_vendor/getto-css/preact/design/box"
 import {
-    table,
     tableColumn,
     tableHeader,
+    table_fill_noMargin,
     tbody,
     thead,
 } from "../../../../../../z_vendor/getto-css/preact/design/data"
@@ -37,18 +36,14 @@ export function SidebarTableComponent(_: TableProps): VNode {
         header: structure.header(params),
     }
 
-    return container(
-        box_grow({
-            body: table(content.sticky, [
-                thead(tableHeader(content)),
-                tbody(
-                    model.rows.flatMap((row) =>
-                        tableColumn({ ...content, column: structure.column(params, row) }),
-                    ),
-                ),
-            ]),
-        }),
-    )
+    return table_fill_noMargin(content.sticky, [
+        thead(tableHeader(content)),
+        tbody(
+            model.rows.flatMap((row) =>
+                tableColumn({ ...content, column: structure.column(params, row) }),
+            ),
+        ),
+    ])
 
     type Model = Readonly<{
         rows: Row[]
@@ -79,7 +74,6 @@ export function SidebarTableComponent(_: TableProps): VNode {
                 column: state,
             })).decorateColumn(tableAlign(["center"])),
         ])
-            .horizontalBorder_header(["topNone"])
             .decorateRow(tableClassName(["row_hover"]))
             .stickyHeader()
             .freeze()
