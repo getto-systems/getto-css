@@ -60,19 +60,19 @@ export function SidebarTableComponent(_: TableProps): VNode {
     function buildStructure() {
         return tableStructure(key, [
             tableCell("id", (_key) => ({
-                label: () => "ID",
+                label: "ID",
                 header: linky,
                 column: id,
             })).border(["rightDouble"]),
 
             tableCell("name", (_key) => ({
-                label: () => "名前",
+                label: "名前",
                 header: linky,
                 column: name,
             })),
 
             tableCell("state", (_key) => ({
-                label: () => "状態",
+                label: "状態",
                 header: linky,
                 column: state,
             })).decorateColumn(tableAlign(["center"])),

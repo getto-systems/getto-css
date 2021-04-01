@@ -126,19 +126,19 @@ type Cells<R> = TableCell<Model, R>
 export const buildReportStructure = (): TableStructure<Model, Row> => {
     return tableStructure(key, <Cells<Row>[]>[
         tableCell("id", (_key) => ({
-            label: () => "ID",
+            label: "ID",
             header: linky,
             column: id,
         })).border(["rightDouble"]),
 
         tableCell("name", (_key) => ({
-            label: () => "名前",
+            label: "名前",
             header: linky,
             column: name,
         })),
 
         tableCell("email", (_key) => ({
-            label: () => "メールアドレス",
+            label: "メールアドレス",
             header: linky,
             column: email,
         })),
@@ -148,7 +148,7 @@ export const buildReportStructure = (): TableStructure<Model, Row> => {
             key: (price: number) => price,
             cells: <Cells<number>[]>[
                 tableCell("price", (_key) => ({
-                    label: () => "価格",
+                    label: "価格",
                     header: linky,
                     column: price,
                     summary: sumPrice,
@@ -161,7 +161,7 @@ export const buildReportStructure = (): TableStructure<Model, Row> => {
         }),
 
         tableCell("updatedAt", (_key) => ({
-            label: () => "更新日時",
+            label: "更新日時",
             header: linky,
             column: updatedAt,
         })),

@@ -73,23 +73,23 @@ type Cells<R> = TableCell<Model, R>[]
 export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model, Row> => {
     return tableStructure(key, <Cells<Row>>[
         tableCell("id", (key) => ({
-            label: () => "ID",
+            label: "ID",
             header: sort(key),
             column: id,
         })).border(["rightDouble"]),
 
         tableCell_group({
             key: "base",
-            header: () => linky("基本情報"),
+            header: linky("基本情報"),
             cells: <Cells<Row>>[
                 tableCell("name", (key) => ({
-                    label: () => "名前",
+                    label: "名前",
                     header: sort(key),
                     column: name,
                 })),
 
                 tableCell("state", (key) => ({
-                    label: () => "状態",
+                    label: "状態",
                     header: sort(key),
                     column: state,
                 }))
@@ -100,18 +100,18 @@ export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model,
 
         tableCell_group({
             key: "hostInfo",
-            header: () => linky("ホスト情報"),
+            header: linky("ホスト情報"),
             cells: <Cells<Row>>[
                 tableCell_group({
                     key: "accountInfo",
-                    header: () => linky("アカウント情報"),
+                    header: linky("アカウント情報"),
                     cells: <Cells<Row>>[
                         tableCell_group({
                             key: "accountInfo",
-                            header: () => linky("基本情報"),
+                            header: linky("基本情報"),
                             cells: <Cells<Row>>[
                                 tableCell("host", (key) => ({
-                                    label: () => "ホスト",
+                                    label: "ホスト",
                                     header: sort(key),
                                     column: host,
                                 })).border(["right"]),
@@ -119,7 +119,7 @@ export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model,
                         }),
 
                         tableCell("account", (key) => ({
-                            label: () => "アカウント",
+                            label: "アカウント",
                             header: sort(key),
                             column: account,
                         })).border(["right"]),
@@ -128,10 +128,10 @@ export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model,
 
                 tableCell_group({
                     key: "purchaseInfo",
-                    header: () => linky("価格情報"),
+                    header: linky("価格情報"),
                     cells: <Cells<Row>>[
                         tableCell("price", (key) => ({
-                            label: () => "価格",
+                            label: "価格",
                             header: sort(key),
                             column: price,
                             summary: sumPrice,
@@ -146,7 +146,7 @@ export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model,
         }),
 
         tableCell_expansion("alarms", (_key) => ({
-            label: () => "アラーム",
+            label: "アラーム",
             header: linky,
             column: alarms,
             length: alarmLength,
@@ -157,7 +157,7 @@ export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model,
             cells: (temperatureType: TemperatureType) =>
                 <Cells<Row>>[
                     tableCell(`temperature_${temperatureType}`, (_key) => ({
-                        label: () => temperatureLabel(temperatureType),
+                        label: temperatureLabel(temperatureType),
                         header: linky,
                         column: temperatureAmount(temperatureType),
                     })),
@@ -169,13 +169,13 @@ export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model,
             key: logKey,
             cells: <Cells<Log>>[
                 tableCell("log_id", (_key) => ({
-                    label: () => "ログID",
+                    label: "ログID",
                     header: linky,
                     column: logID,
                 })).border(["left"]),
 
                 tableCell("loggedAt", (_key) => ({
-                    label: () => "ログ時刻",
+                    label: "ログ時刻",
                     header: linky,
                     column: loggedAt,
                 })),
@@ -187,7 +187,7 @@ export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model,
             key: articleKey,
             cells: <Cells<Article>>[
                 tableCell("article", (_key) => ({
-                    label: () => "記事",
+                    label: "記事",
                     header: linky,
                     column: articleTitle,
                 })).border(["left"]),
@@ -197,7 +197,7 @@ export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model,
                     key: commentKey,
                     cells: <Cells<ArticleComment>>[
                         tableCell<Model, ArticleComment>("comment", (_key) => ({
-                            label: () => "コメント",
+                            label: "コメント",
                             header: linky,
                             column: comment,
                         }))
@@ -209,13 +209,13 @@ export const buildTableStructure = (sort: SortLink) => (): TableStructure<Model,
         }),
 
         tableCell("updatedAt", (key) => ({
-            label: () => "更新日時",
+            label: "更新日時",
             header: sort(key),
             column: updatedAt,
         })).border(["left"]),
 
         tableCell("memo", (_key) => ({
-            label: () => "メモ",
+            label: "メモ",
             header: linky,
             column: memo,
         })),

@@ -48,61 +48,61 @@ export function SearchTableComponent({ content, column, rows }: Props): VNode {
 export const buildSearchStructure = (sort: SortLink) => (): TableStructure<Model, Row> => {
     return tableStructure(key, [
         tableCell("id", (key) => ({
-            label: () => "ID",
+            label: "ID",
             header: sort(key),
             column: id,
         })).border(["rightDouble"]),
 
         tableCell("name", (key) => ({
-            label: () => "名前",
+            label: "名前",
             header: sort(key),
             column: name,
         })),
 
         tableCell("state", (key) => ({
-            label: () => "状態",
+            label: "状態",
             header: sort(key),
             column: state,
         })).decorateColumn(tableAlign(["center"])),
 
         tableCell("email", (key) => ({
-            label: () => "メールアドレス",
+            label: "メールアドレス",
             header: sort(key),
             column: email,
         })),
 
         tableCell("price", (key) => ({
-            label: () => "価格",
+            label: "価格",
             header: sort(key),
             column: price,
         })).decorateColumn(tableAlign(["numeric"])),
 
         tableCell("updatedAt", (key) => ({
-            label: () => "更新日時",
+            label: "更新日時",
             header: sort(key),
             column: updatedAt,
         })),
 
         tableCell("memo", (_key) => ({
-            label: () => "メモ",
+            label: "メモ",
             header: linky,
             column: memo,
         })),
 
         tableCell("formalName", (_key) => ({
-            label: () => "正式名称",
+            label: "正式名称",
             header: linky,
             column: formalName,
         })),
 
         tableCell("tel", (_key) => ({
-            label: () => "問い合わせ電話番号",
+            label: "問い合わせ電話番号",
             header: linky,
             column: tel,
         })),
 
         tableCell("edit", (_key) => ({
-            label: () => "",
+            label: "",
             header: linky,
             column: editLink,
         }))
