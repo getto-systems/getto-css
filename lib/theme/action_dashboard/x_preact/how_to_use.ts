@@ -1,7 +1,7 @@
 import { h, VNode } from "preact"
 import { html } from "htm/preact"
 
-import { box_double } from "../../../z_vendor/getto-css/preact/design/box"
+import { box_double, container } from "../../../z_vendor/getto-css/preact/design/box"
 import { field } from "../../../z_vendor/getto-css/preact/design/form"
 
 import { FindAllVersionsEntry } from "../../../avail/version/action_find_all/x_preact/find_all_versions"
@@ -11,13 +11,15 @@ import { GetCurrentVersionResource } from "../../../avail/version/action_get_cur
 
 type Props = FindAllVersionResource & GetCurrentVersionResource
 export function HowToUseComponent(props: Props): VNode {
-    return box_double({
-        title: "How To Use",
-        body: [
-            field({ title: "リンクタグ", body: linkTag(), help: [] }),
-            h(FindAllVersionsEntry, props),
-        ],
-    })
+    return container(
+        box_double({
+            title: "How To Use",
+            body: [
+                field({ title: "リンクタグ", body: linkTag(), help: [] }),
+                h(FindAllVersionsEntry, props),
+            ],
+        }),
+    )
 
     function linkTag(): VNode {
         return html`<pre>${link()}</pre>`
