@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.34.0
+
+- fix: class name decorator : See merge request getto-systems-base/projects/css!495
+- fix: flex-gap emulate : See merge request getto-systems-base/projects/css!494
+
+
 ## Version : 2.33.0
 
 - fix: box : See merge request getto-systems-base/projects/css!492
