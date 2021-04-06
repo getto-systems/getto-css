@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version : 2.34.1
+
+
+
 ## Version : 2.34.0
 
 - fix: class name decorator : See merge request getto-systems-base/projects/css!495
