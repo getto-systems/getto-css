@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version : 2.34.2
+
+
+
 ## Version : 2.34.1
 
 
