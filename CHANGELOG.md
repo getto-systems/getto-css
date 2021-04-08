@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.34.3
+
+- apply: example : See merge request getto-systems-base/projects/css!501
+- rename: z_details : See merge request getto-systems-base/projects/css!500
+
+
 ## Version : 2.34.2
 
 
