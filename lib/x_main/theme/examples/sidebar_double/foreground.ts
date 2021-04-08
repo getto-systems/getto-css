@@ -1,6 +1,8 @@
 import "../../../../theme/css"
 import { render, h } from "preact"
 
+import { foregroundOutsideFeature } from "../../../x_outside_feature/common"
+
 import { newExampleView } from "../../../../theme/action_examples/init"
 
 import { ExamplesSidebarDoubleEntry } from "../../../../theme/action_examples/x_preact/examples_sidebar_double"
@@ -10,7 +12,7 @@ import { SidebarDoubleTableComponent } from "../../../../theme/action_examples/x
 
 render(
     h(ExamplesSidebarDoubleEntry, {
-        view: newExampleView({ webStorage: localStorage, currentLocation: location }),
+        view: newExampleView(foregroundOutsideFeature()),
         content: {
             title: "Sidebar Double",
             component: SidebarDoubleContainerComponent,

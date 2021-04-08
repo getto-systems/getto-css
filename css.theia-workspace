@@ -13,7 +13,7 @@
             "path": "file:///apps/getto/css/env"
         },
         {
-            "path": "file:///apps/getto/css/scripts"
+            "path": "file:///apps/getto/css/setup"
         },
         {
             "path": "file:///apps/getto/css/config"

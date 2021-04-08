@@ -1,6 +1,8 @@
 import "../../../../theme/css"
 import { render, h } from "preact"
 
+import { foregroundOutsideFeature } from "../../../x_outside_feature/common"
+
 import { newExampleView } from "../../../../theme/action_examples/init"
 
 import { ExamplesSidebarEntry } from "../../../../theme/action_examples/x_preact/examples_sidebar"
@@ -10,7 +12,7 @@ import { SidebarTableComponent } from "../../../../theme/action_examples/x_preac
 
 render(
     h(ExamplesSidebarEntry, {
-        view: newExampleView({ webStorage: localStorage, currentLocation: location }),
+        view: newExampleView(foregroundOutsideFeature()),
         content: {
             title: "Sidebar",
             component: SidebarContainerComponent,
