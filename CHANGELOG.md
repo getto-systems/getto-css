@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.34.4
+
+- fix: protobuf setup : See merge request getto-systems-base/projects/css!503
+
+
+
 ## Version : 2.34.3
 
 - apply: example : See merge request getto-systems-base/projects/css!501
