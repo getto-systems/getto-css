@@ -39,6 +39,7 @@ test_lib:
     - npm clean-install
   script:
     - npm run test:lib
+    - npm run build
 
 
 bump_version:
