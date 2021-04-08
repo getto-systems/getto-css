@@ -1,4 +1,4 @@
-import { newApi_GetMenuBadge } from "../../../../../../z_external/api/outline/get_menu_badge"
+import { newApi_GetMenuBadge } from "../../../../../../z_details/api/outline/get_menu_badge"
 
 import {
     remoteInfraError,

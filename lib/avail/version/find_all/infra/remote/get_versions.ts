@@ -1,4 +1,4 @@
-import { newApi_GetVersions } from "../../../../../z_external/api/avail/get_versions"
+import { newApi_GetVersions } from "../../../../../z_details/api/avail/get_versions"
 
 import { wrapRemote } from "../../../../../z_vendor/getto-application/infra/remote/helper"
 
