@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.34.7
+
+- fix: menu : See merge request getto-systems-base/projects/css!509
+
+
 ## Version : 2.34.6
 
 - fix: menu : See merge request getto-systems-base/projects/css!507
