@@ -23,11 +23,8 @@ function envContent() {
         version,
         isProduction,
 
-        storageKey: {
-            menuExpand: {
-                home: "GETTO-CSS-MENU-EXPAND-HOME",
-                docs: "GETTO-CSS-MENU-EXPAND-DOCS",
-            },
+        database: {
+            menuExpand: "GETTO-CSS-MENU-EXPAND",
         },
     }
 
