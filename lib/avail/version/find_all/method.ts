@@ -1,9 +1,9 @@
 import { FindAllVersionEvent } from "./event"
 
 export interface FindAllVersionMethod {
-    (post: Post<FindAllVersionEvent>): void
+    <S>(post: Post<FindAllVersionEvent, S>): Promise<S>
 }
 
-interface Post<T> {
-    (event: T): void
+interface Post<E, S> {
+    (event: E): S
 }

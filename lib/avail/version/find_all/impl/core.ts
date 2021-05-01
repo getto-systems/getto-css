@@ -19,11 +19,10 @@ export const findAllVersion: Find = (infra) => async (post) => {
         post({ type: "take-longtime-to-find" }),
     )
     if (!response.success) {
-        post({ type: "failed-to-find", err: response.err })
-        return
+        return post({ type: "failed-to-find", err: response.err })
     }
 
-    post({ type: "succeed-to-find", versions: response.value })
+    return post({ type: "succeed-to-find", versions: response.value })
 }
 
 export function findAllVersionEventHasDone(event: FindAllVersionEvent): boolean {

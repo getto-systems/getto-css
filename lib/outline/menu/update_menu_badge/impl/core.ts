@@ -29,13 +29,12 @@ export const updateMenuBadge: Update = (infra, store) => (detecter) => async (po
     // デモンストレーションなので固定 nonce を使用
     const response = await getMenuBadge("nonce")
     if (!response.success) {
-        post({ type: "failed-to-update", menu: buildMenu(buildParams), err: response.err })
-        return
+        return post({ type: "failed-to-update", menu: buildMenu(buildParams), err: response.err })
     }
 
     store.menuBadge.set(response.value)
 
-    post({
+    return post({
         type: "succeed-to-update",
         menu: buildMenu({ ...buildParams, menuBadge: response.value }),
     })

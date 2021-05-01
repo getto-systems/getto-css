@@ -1,4 +1,4 @@
-import { setupAsyncActionTestRunner } from "../../../z_vendor/getto-application/action/test_helper"
+import { setupAsyncActionTestRunner } from "../../../z_vendor/getto-application/action/test_helper_legacy"
 
 import { mockRemotePod } from "../../../z_vendor/getto-application/infra/remote/mock"
 
