@@ -1,4 +1,9 @@
 import { delayedChecker } from "../../../../z_vendor/getto-application/infra/timer/helper"
+import { passThroughRemoteValue } from "../../../../z_vendor/getto-application/infra/remote/helper"
+
+import { versionStringConfigConverter } from "../../converter"
+import { applicationTargetPathLocationConverter, versionConfigConverter } from "./converter"
+import { versionToString } from "./helper"
 
 import { CheckDeployExistsRemote, FindNextVersionInfra } from "../infra"
 
@@ -9,11 +14,6 @@ import {
 } from "../method"
 
 import { CheckDeployExistsRemoteError, Version } from "../data"
-import { passThroughRemoteValue } from "../../../../z_vendor/getto-application/infra/remote/helper"
-import { applicationTargetPathLocationConverter, versionConfigConverter } from "./converter"
-import { versionToString } from "./helper"
-import { versionStringConfigConverter } from "../../converter"
-import { FindNextVersionEvent } from "../event"
 
 interface Detecter {
     (keys: FindNextVersionLocationKeys): FindNextVersionLocationDetectMethod
@@ -64,17 +64,6 @@ export const findNextVersion: Find = (infra) => (detecter) => async (post) => {
             version: versionToString(next.version),
             target,
         })
-    }
-}
-
-export function findNextVersionEventHasDone(event: FindNextVersionEvent): boolean {
-    switch (event.type) {
-        case "take-longtime-to-find":
-            return false
-
-        case "succeed-to-find":
-        case "failed-to-find":
-            return true
     }
 }
 

@@ -1,71 +1,51 @@
-import { setupAsyncActionTestRunner } from "../../../z_vendor/getto-application/action/test_helper_legacy"
+import { setupActionTestRunner } from "../../../z_vendor/getto-application/action/test_helper"
 
 import { mockRemotePod } from "../../../z_vendor/getto-application/infra/remote/mock"
 
 import { initFindAllVersionResource } from "./impl"
 import { initFindAllVersionCoreAction, initFindAllVersionCoreMaterial } from "./core/impl"
 
-import { findAllVersionEventHasDone } from "../find_all/impl/core"
-
 import { GetVersionsRemotePod, GetVersionsSimulator } from "../find_all/infra"
 
 import { FindAllVersionResource } from "./resource"
 
-import { FindAllVersionCoreState } from "./core/action"
-
 describe("FindAllVersion", () => {
-    test("find all", () =>
-        new Promise<void>((done) => {
-            const { resource } = standard()
+    test("find all", async () => {
+        const { resource } = standard()
 
-            const runner = setupAsyncActionTestRunner(actionHasDone, [
+        const runner = setupActionTestRunner(resource.findAll.subscriber)
+
+        await runner(() => resource.findAll.ignite()).then((stack) => {
+            expect(stack).toEqual([
                 {
-                    statement: () => {
-                        resource.findAll.ignite()
-                    },
-                    examine: (stack) => {
-                        expect(stack).toEqual([
-                            {
-                                type: "succeed-to-find",
-                                versions: [
-                                    { version: "1.1.0", isCurrent: true },
-                                    { version: "1.0.0", isCurrent: false },
-                                ],
-                            },
-                        ])
-                    },
+                    type: "succeed-to-find",
+                    versions: [
+                        { version: "1.1.0", isCurrent: true },
+                        { version: "1.0.0", isCurrent: false },
+                    ],
                 },
             ])
+        })
+    })
 
-            resource.findAll.subscriber.subscribe(runner(done))
-        }))
+    test("find all; take longtime", async () => {
+        const { resource } = takeLongtime()
 
-    test("find all; take longtime", () =>
-        new Promise<void>((done) => {
-            const { resource } = takeLongtime()
+        const runner = setupActionTestRunner(resource.findAll.subscriber)
 
-            const runner = setupAsyncActionTestRunner(actionHasDone, [
+        await runner(() => resource.findAll.ignite()).then((stack) => {
+            expect(stack).toEqual([
+                { type: "take-longtime-to-find" },
                 {
-                    statement: () => {
-                        resource.findAll.ignite()
-                    },
-                    examine: (stack) => {
-                        expect(stack).toEqual([
-                            { type: "take-longtime-to-find" },
-                            {
-                                type: "succeed-to-find",
-                                versions: [
-                                    { version: "1.1.0", isCurrent: true },
-                                    { version: "1.0.0", isCurrent: false },
-                                ],
-                            },
-                        ])
-                    },
+                    type: "succeed-to-find",
+                    versions: [
+                        { version: "1.1.0", isCurrent: true },
+                        { version: "1.0.0", isCurrent: false },
+                    ],
                 },
             ])
-
-            resource.findAll.subscriber.subscribe(runner(done))
-        }))
+        })
+    })
 })
 
 function standard() {
@@ -113,13 +93,3 @@ const getVersionsSimulator: GetVersionsSimulator = () => ({
     success: true,
     value: { versions: ["1.1.0", "1.0.0"] },
 })
-
-function actionHasDone(state: FindAllVersionCoreState): boolean {
-    switch (state.type) {
-        case "initial-all-version":
-            return false
-
-        default:
-            return findAllVersionEventHasDone(state)
-    }
-}
