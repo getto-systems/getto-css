@@ -5,8 +5,6 @@ import { FindAllVersionInfra } from "../infra"
 
 import { FindAllVersionMethod } from "../method"
 
-import { FindAllVersionEvent } from "../event"
-
 interface Find {
     (infra: FindAllVersionInfra): FindAllVersionMethod
 }
@@ -19,20 +17,8 @@ export const findAllVersion: Find = (infra) => async (post) => {
         post({ type: "take-longtime-to-find" }),
     )
     if (!response.success) {
-        post({ type: "failed-to-find", err: response.err })
-        return
+        return post({ type: "failed-to-find", err: response.err })
     }
 
-    post({ type: "succeed-to-find", versions: response.value })
-}
-
-export function findAllVersionEventHasDone(event: FindAllVersionEvent): boolean {
-    switch (event.type) {
-        case "take-longtime-to-find":
-            return false
-
-        case "succeed-to-find":
-        case "failed-to-find":
-            return true
-    }
+    return post({ type: "succeed-to-find", versions: response.value })
 }
