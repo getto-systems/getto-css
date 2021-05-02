@@ -6,6 +6,6 @@ server {
   ssl_certificate_key ${TLS_KEY};
 
   location / {
-    proxy_pass http://${LABO_IP}:${GETTO_CSS_UI_PUBLIC_PORT};
+    proxy_pass http://${GETTO_CSS_UI_DEV_IP}:${GETTO_CSS_UI_PUBLIC_PORT};
   }
 }
