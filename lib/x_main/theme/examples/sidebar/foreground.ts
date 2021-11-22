@@ -19,8 +19,8 @@ render(
             sidebar: {
                 title: "List",
                 body: [
-                    { isGrow: false, component: SidebarPagerComponent },
-                    { isGrow: true, component: SidebarTableComponent },
+                    { component: SidebarPagerComponent },
+                    { component: SidebarTableComponent },
                 ],
             },
         },

@@ -19,8 +19,8 @@ render(
             sidebar: {
                 title: "List",
                 body: [
-                    { isGrow: false, component: SidebarDoublePagerComponent },
-                    { isGrow: true, component: SidebarDoubleTableComponent },
+                    { component: SidebarDoublePagerComponent },
+                    { component: SidebarDoubleTableComponent },
                 ],
             },
         },
