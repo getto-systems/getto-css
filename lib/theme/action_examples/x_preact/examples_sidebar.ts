@@ -12,7 +12,6 @@ import {
     mainHeader,
     mainTitle,
     sidebarBody,
-    sidebarBody_grow,
 } from "../../../z_vendor/getto-css/preact/layout/app"
 
 import { copyright, siteInfo } from "../../site"
@@ -36,7 +35,6 @@ interface Component {
     (props: EmptyProps): VNode
 }
 type SidebarBody = Readonly<{
-    isGrow: boolean
     component: Component
 }>
 type EmptyProps = {
@@ -78,13 +76,7 @@ export function ExamplesSidebarComponent(resource: Props): VNode {
         }),
         sidebar: appSidebar({
             header: mainHeader(mainTitle(resource.content.sidebar.title)),
-            body: resource.content.sidebar.body.map((body) => {
-                if (body.isGrow) {
-                    return sidebarBody_grow(h(body.component, {}))
-                } else {
-                    return sidebarBody(h(body.component, {}))
-                }
-            }),
+            body: sidebarBody(resource.content.sidebar.body.map((body) => h(body.component, {}))),
             copyright,
         }),
         menu: h(LoadMenuEntry, resource),

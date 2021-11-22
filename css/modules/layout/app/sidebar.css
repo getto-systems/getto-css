@@ -29,7 +29,7 @@
         width: var(--width-sidebar-double);
     }
 
-    .sidebar__body_grow {
+    .sidebar__body {
         flex-grow: 1;
         overflow: auto;
         margin-bottom: 0.5rem;
@@ -37,7 +37,7 @@
 }
 
 @media (--media-sidebar-disabled) {
-    .sidebar__body_grow {
+    .sidebar__body {
         max-height: 50vh;
         overflow-y: auto;
     }
