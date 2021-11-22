@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## Version : 2.34.9
+
+- fix: app port : See merge request getto-systems-base/projects/css!517
+- fix: nginx config : See merge request getto-systems-base/projects/css!516
+- apply: example : See merge request getto-systems-base/projects/css!514
+- add: code-workspace : See merge request getto-systems-base/projects/css!513
+
+
 ## Version : 2.34.8
 
 - fix: menu : See merge request getto-systems-base/projects/css!511
