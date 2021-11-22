@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.35.0
+
+- fix: sidebar layout : See merge request getto-systems-base/projects/css!519
+
+
+
 ## Version : 2.34.9
 
 - fix: app port : See merge request getto-systems-base/projects/css!517
