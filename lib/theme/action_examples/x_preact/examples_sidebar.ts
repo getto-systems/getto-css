@@ -12,6 +12,7 @@ import {
     mainBody,
     mainHeader,
     mainTitle,
+    mainTitleWithSidebarButton,
     sidebarBody,
 } from "../../../z_vendor/getto-css/preact/layout/app"
 
@@ -78,14 +79,10 @@ export function ExamplesSidebarComponent(resource: Props): VNode {
         }),
         sidebar: appSidebar({
             header: mainHeader(
-                mainTitle(
-                    buttons({
-                        left: resource.content.sidebar.title,
-                        right: html`<a href="#" class="sidebar__button"
-                            ><i class="lnir lnir-shift-right"></i
-                        ></a>`,
-                    }),
-                ),
+                mainTitleWithSidebarButton({
+                    title: resource.content.sidebar.title,
+                    button: html`<a href="#"><i class="lnir lnir-shift-right"></i></a>`,
+                }),
             ),
             body: sidebarBody(resource.content.sidebar.body.map((body) => h(body.component, {}))),
             copyright,
