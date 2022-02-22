@@ -1,5 +1,6 @@
 import { h, VNode } from "preact"
 import { useErrorBoundary } from "preact/hooks"
+import { html } from "htm/preact"
 
 import { useApplicationView } from "../../../z_vendor/getto-application/action/x_preact/hooks"
 import { useDocumentTitle } from "../../../x_preact/hooks"
@@ -22,6 +23,7 @@ import { LoadBreadcrumbListComponent } from "../../../outline/menu/action_load_b
 import { GlobalInfoComponent } from "../../action_base/x_preact/global_info"
 
 import { ExamplesView, ExamplesResource } from "../resource"
+import { buttons } from "../../../z_vendor/getto-css/preact/design/form"
 
 export type ExamplesContent = Readonly<{
     title: string
@@ -75,7 +77,16 @@ export function ExamplesSidebarComponent(resource: Props): VNode {
             copyright,
         }),
         sidebar: appSidebar({
-            header: mainHeader(mainTitle(resource.content.sidebar.title)),
+            header: mainHeader(
+                mainTitle(
+                    buttons({
+                        left: resource.content.sidebar.title,
+                        right: html`<a href="#" class="sidebar__button"
+                            ><i class="lnir lnir-shift-right"></i
+                        ></a>`,
+                    }),
+                ),
+            ),
             body: sidebarBody(resource.content.sidebar.body.map((body) => h(body.component, {}))),
             copyright,
         }),
