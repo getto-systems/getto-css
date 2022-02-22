@@ -24,7 +24,6 @@ import { LoadBreadcrumbListComponent } from "../../../outline/menu/action_load_b
 import { GlobalInfoComponent } from "../../action_base/x_preact/global_info"
 
 import { ExamplesView, ExamplesResource } from "../resource"
-import { buttons } from "../../../z_vendor/getto-css/preact/design/form"
 
 export type ExamplesContent = Readonly<{
     title: string
