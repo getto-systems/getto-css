@@ -3,6 +3,7 @@ import { html } from "htm/preact"
 
 import { VNodeContent } from "../common"
 import { SiteInfo } from "../../site"
+import { buttons } from "../design/form"
 
 export type AppLayoutContent =
     | AppLayoutContent_base
@@ -102,6 +103,17 @@ export function mainHeader(content: VNodeContent): VNode {
 
 export function mainTitle(content: VNodeContent): VNode {
     return html`<h1 class="main__title">${content}</h1>`
+}
+export function mainTitleWithSidebarButton({
+    title,
+    button,
+}: Readonly<{ title: VNodeContent; button: VNodeContent }>): VNode {
+    return mainTitle(
+        buttons({
+            left: title,
+            right: html`<div class="sidebar__button">${button}</div>`,
+        }),
+    )
 }
 
 export function mainBody(content: VNodeContent): VNode {

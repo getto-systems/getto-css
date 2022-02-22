@@ -1,5 +1,6 @@
 import { h, VNode } from "preact"
 import { useErrorBoundary } from "preact/hooks"
+import { html } from "htm/preact"
 
 import { useApplicationView } from "../../../z_vendor/getto-application/action/x_preact/hooks"
 import { useDocumentTitle } from "../../../x_preact/hooks"
@@ -11,6 +12,7 @@ import {
     mainBody,
     mainHeader,
     mainTitle,
+    mainTitleWithSidebarButton,
     sidebarBody,
 } from "../../../z_vendor/getto-css/preact/layout/app"
 
@@ -75,7 +77,12 @@ export function ExamplesSidebarComponent(resource: Props): VNode {
             copyright,
         }),
         sidebar: appSidebar({
-            header: mainHeader(mainTitle(resource.content.sidebar.title)),
+            header: mainHeader(
+                mainTitleWithSidebarButton({
+                    title: resource.content.sidebar.title,
+                    button: html`<a href="#"><i class="lnir lnir-shift-right"></i></a>`,
+                }),
+            ),
             body: sidebarBody(resource.content.sidebar.body.map((body) => h(body.component, {}))),
             copyright,
         }),

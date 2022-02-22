@@ -41,4 +41,8 @@
         max-height: 50vh;
         overflow-y: auto;
     }
+
+    .sidebar__button {
+        display: none;
+    }
 }
