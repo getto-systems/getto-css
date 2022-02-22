@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.36.0
+
+- add: sidebar__button : See merge request getto-systems-base/projects/css!521
+
+
 ## Version : 2.35.0
 
 - fix: sidebar layout : See merge request getto-systems-base/projects/css!519
