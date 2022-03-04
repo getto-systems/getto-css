@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.37.0
+
+- add: a.focused : See merge request getto-systems-base/projects/css!523
+
+
 ## Version : 2.36.0
 
 - add: sidebar__button : See merge request getto-systems-base/projects/css!521
