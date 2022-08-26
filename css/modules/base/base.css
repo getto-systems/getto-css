@@ -33,8 +33,20 @@ a {
 }
 
 a:hover,
-a:focus,
+a:focus {
+    color: var(--color-base);
+    border-color: var(--color-base);
+    background-color: var(--color-white-pure);
+}
+
 a.focused {
+    color: var(--color-white);
+    border-color: var(--color-base);
+    background-color: var(--color-base);
+}
+
+a.focused:hover,
+a.focused:focus {
     color: var(--color-base);
     border-color: var(--color-base);
     background-color: var(--color-white-pure);
