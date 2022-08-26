@@ -10,6 +10,7 @@ export type Row = Readonly<{
     price: number
     updatedAt: string
     memo: string
+    focused: boolean
 }>
 
 export function generateSearchRows(): Row[] {
@@ -20,7 +21,7 @@ export function generateSearchRows(): Row[] {
         for (let i = 0; i < count; i++) {
             result.push(...rows())
         }
-        return result
+        return [{ ...result[0], focused: true }, ...result]
     }
     function rows(): Row[] {
         return [
@@ -32,6 +33,7 @@ export function generateSearchRows(): Row[] {
                 price: 1200,
                 updatedAt: "2020/06/19 08:03",
                 memo: "simple admin theme",
+                focused: false,
             },
             {
                 id: 123,
@@ -41,6 +43,7 @@ export function generateSearchRows(): Row[] {
                 price: 13500,
                 updatedAt: "2020/01/10",
                 memo: "simple css theme",
+                focused: false,
             },
         ]
     }

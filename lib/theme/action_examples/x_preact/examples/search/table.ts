@@ -150,8 +150,12 @@ export const buildSearchStructure = (sort: SortLink) => (): TableStructure<Model
     function tel(_row: Row): string {
         return "tel"
     }
-    function editLink(_row: Row): VNode {
-        return html`<a href="#">${icon("pencil")} 編集</a>`
+    function editLink(row: Row): VNode {
+        return html`<a href="#" class="${focusClass()}">${icon("pencil")} 編集</a>`
+
+        function focusClass(): string | undefined {
+            return row.focused ? "focused" : undefined
+        }
     }
 }
 
