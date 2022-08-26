@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.38.0
+
+- fix: focused style : See merge request getto-systems-base/projects/css!525
+
+
 ## Version : 2.37.0
 
 - add: a.focused : See merge request getto-systems-base/projects/css!523
