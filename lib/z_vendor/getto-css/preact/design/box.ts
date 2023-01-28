@@ -108,11 +108,14 @@ export function modalBox({ title, body, footer }: ModalContent): VNode {
     </aside>`
 }
 
-export function modalBoxFixed({ title, body, footer }: ModalContent): VNode {
+export type ModalFixedContent = Readonly<{
+    title: VNodeContent
+    body: VNodeContent
+}>
+
+export function modalBoxFixed({ title, body }: ModalFixedContent): VNode {
     return html`<aside class="modal">
-        <section class="modal__box_fixed">
-            ${modalHeader(title)} ${modalBody(body)} ${modalFooter(footer)}
-        </section>
+        <section class="modal__box_fixed">${modalHeader(title)} ${modalBody(body)}</section>
     </aside>`
 }
 

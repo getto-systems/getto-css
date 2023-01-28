@@ -10,7 +10,8 @@ module.exports = {
     entry: entryPoint.findEntries(),
     output: {
         path: path.join(__dirname, "dist"),
-        filename: "[name].js",
+        filename: "dist/[name].js",
+        globalObject: "self",
     },
     module: {
         rules: [
