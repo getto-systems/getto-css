@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.39.0
+
+- add: modal_fixed : See merge request getto-systems-base/projects/css!527
+
+
 ## Version : 2.38.0
 
 - fix: focused style : See merge request getto-systems-base/projects/css!525
