@@ -18,7 +18,7 @@ import {
     tableHeader,
     tbody,
     thead,
-} from "../../../../../z_vendor/getto-css/preact/design/data"
+} from "../../../../../z_vendor/getto-css/preact/design/table"
 import {
     fieldSection,
     fieldSection_error,

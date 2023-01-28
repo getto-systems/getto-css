@@ -23,7 +23,7 @@ import {
     tableSummary,
     tfoot,
     tableFooter,
-} from "../../../../../z_vendor/getto-css/preact/design/data"
+} from "../../../../../z_vendor/getto-css/preact/design/table"
 import {
     label_gray,
     label_success,

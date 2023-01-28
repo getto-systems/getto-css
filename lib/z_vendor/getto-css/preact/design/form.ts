@@ -12,17 +12,14 @@ type FieldContent =
     | Readonly<{ type: SearchFieldType; content: NormalFieldContent }>
     | Readonly<{ type: NoticeFieldType; content: NoticeFieldContent }>
 
-export type NormalFieldContent =
-    | NormalFieldContent_base
-    | (NormalFieldContent_base & FieldContent_help)
-export type NoticeFieldContent = NormalFieldContent & FieldContent_notice
-
-type NormalFieldContent_base = Readonly<{
+export type NormalFieldContent = Readonly<{
     title: VNodeContent
     body: VNodeContent
+    help?: readonly VNodeContent[]
 }>
-type FieldContent_help = Readonly<{ help: VNodeContent[] }>
-type FieldContent_notice = Readonly<{ notice: VNodeContent[] }>
+export type NoticeFieldContent = NormalFieldContent & Readonly<{ notice: readonly VNodeContent[] }>
+export type SearchFieldContent = NormalFieldContent &
+    Readonly<{ label: { (content: VNode): VNode } }>
 
 type FieldType = NormalFieldType | SearchFieldType | NoticeFieldType
 type NormalFieldType = "normal"
@@ -44,6 +41,31 @@ function mapFieldType(fieldType: FieldType): string {
     }
 }
 
+export type InputFieldContent = NormalFieldContent &
+    Readonly<{
+        editableState?: Readonly<{ isEditable: boolean }>
+        validateState?:
+            | Readonly<{ type: "normal" }>
+            | Readonly<{ type: "error"; notice: readonly VNodeContent[] }>
+        label: { (content: VNode): VNode }
+    }>
+
+export function inputField(content: InputFieldContent): VNode {
+    const isEditable = content.editableState === undefined ? true : content.editableState.isEditable
+
+    if (!isEditable || content.validateState === undefined) {
+        return content.label(field(content))
+    }
+
+    switch (content.validateState.type) {
+        case "normal":
+            return content.label(field(content))
+
+        case "error":
+            return content.label(field_error({ ...content, notice: content.validateState.notice }))
+    }
+}
+
 export function field(content: NormalFieldContent): VNode {
     return fieldContent({ type: "normal", content })
 }
@@ -53,11 +75,11 @@ export function field_error(content: NoticeFieldContent): VNode {
 export function field_warning(content: NoticeFieldContent): VNode {
     return fieldContent({ type: "warning", content })
 }
-export function search(content: NormalFieldContent): VNode {
-    return fieldContent({ type: "search", content })
+export function search(content: SearchFieldContent): VNode {
+    return content.label(fieldContent({ type: "search", content }))
 }
-export function search_double(content: NormalFieldContent): VNode {
-    return fieldContent({ type: "search_double", content })
+export function search_double(content: SearchFieldContent): VNode {
+    return content.label(fieldContent({ type: "search_double", content }))
 }
 
 function fieldContent(field: FieldContent): VNode {
@@ -70,13 +92,13 @@ function fieldContent(field: FieldContent): VNode {
         <dd class="field__body">${field.content.body} ${fieldHelp(help)}</dd>
     </dl>`
 
-    function helpContent(): VNodeContent[] {
-        if ("help" in field.content) {
+    function helpContent(): readonly VNodeContent[] {
+        if (field.content.help) {
             return field.content.help
         }
         return []
     }
-    function noticeContent(): VNodeContent[] {
+    function noticeContent(): readonly VNodeContent[] {
         switch (field.type) {
             case "normal":
             case "search":
@@ -94,10 +116,10 @@ type FieldSectionContent =
     | Readonly<{ type: NormalFieldType; content: NormalFieldSectionContent }>
     | Readonly<{ type: NoticeFieldType; content: NoticeFieldSectionContent }>
 
-export type NormalFieldSectionContent =
-    | NormalFieldSectionContent_base
-    | (NormalFieldSectionContent_base & FieldContent_help)
-export type NoticeFieldSectionContent = NormalFieldSectionContent & FieldContent_notice
+export type NormalFieldSectionContent = NormalFieldSectionContent_base &
+    Partial<{ help: readonly VNodeContent[] }>
+export type NoticeFieldSectionContent = NormalFieldSectionContent &
+    Readonly<{ notice: readonly VNodeContent[] }>
 
 type NormalFieldSectionContent_base = Readonly<{ body: VNodeContent }>
 
@@ -120,13 +142,13 @@ function fieldSectionContent(field: FieldSectionContent): VNode {
         ${field.content.body} ${fieldHelp(help)}
     </section>`
 
-    function helpContent(): VNodeContent[] {
-        if ("help" in field.content) {
+    function helpContent(): readonly VNodeContent[] {
+        if (field.content.help) {
             return field.content.help
         }
         return []
     }
-    function noticeContent(): VNodeContent[] {
+    function noticeContent(): readonly VNodeContent[] {
         switch (field.type) {
             case "normal":
                 return []
@@ -138,21 +160,47 @@ function fieldSectionContent(field: FieldSectionContent): VNode {
     }
 }
 
-export function fieldError(notice: VNodeContent[]): VNode {
+type FieldHelpContent = Readonly<{
+    help?: readonly VNodeContent[]
+    notice?: readonly VNodeContent[]
+}>
+export function fieldHelp(content: FieldHelpContent): VNode {
+    if (helpLength() + noticeLength() === 0) {
+        return html``
+    }
+    return html`<aside class="field__help">${notice()}${help()}</aside>`
+
+    function helpLength(): number {
+        return content.help?.length || 0
+    }
+    function noticeLength(): number {
+        return content.notice?.length || 0
+    }
+
+    function notice(): VNode[] {
+        if (!content.notice) {
+            return []
+        }
+        return content.notice.map(toFieldNotice)
+    }
+    function help(): VNode[] {
+        if (!content.help) {
+            return []
+        }
+        return content.help.map(toFieldHelp)
+    }
+}
+export function fieldHelp_error(notice: readonly VNodeContent[]): VNode {
+    if (notice.length === 0) {
+        return html``
+    }
     return html`<aside class="field__help field_error">${notice.map(toFieldNotice)}</aside>`
 }
-
-type FieldHelpContent = Readonly<{
-    help: VNodeContent[]
-    notice: VNodeContent[]
-}>
-function fieldHelp({ help, notice }: FieldHelpContent) {
-    if (help.length + notice.length == 0) {
-        return ""
+export function fieldHelp_warning(notice: readonly VNodeContent[]): VNode {
+    if (notice.length === 0) {
+        return html``
     }
-    return html`<aside class="field__help">
-        ${notice.map(toFieldNotice)}${help.map(toFieldHelp)}
-    </aside>`
+    return html`<aside class="field__help field_warning">${notice.map(toFieldNotice)}</aside>`
 }
 function toFieldNotice(message: VNodeContent) {
     return html`<p class="field__notice">${message}</p>`
@@ -161,14 +209,7 @@ function toFieldHelp(message: VNodeContent) {
     return html`<p>${message}</p>`
 }
 
-export type ButtonsContent =
-    | ButtonsContent_left
-    | ButtonsContent_right
-    | (ButtonsContent_left & ButtonsContent_right)
-
-type ButtonsContent_left = Readonly<{ left: VNodeContent }>
-type ButtonsContent_right = Readonly<{ right: VNodeContent }>
-
+export type ButtonsContent = Partial<{ left: VNodeContent; right: VNodeContent }>
 export function buttons(content: ButtonsContent): VNode {
     return html`<aside class="button__container">
         <section class="button_left">${left()}</section>
@@ -176,13 +217,13 @@ export function buttons(content: ButtonsContent): VNode {
     </aside>`
 
     function left() {
-        if ("left" in content) {
+        if (content.left) {
             return content.left
         }
         return ""
     }
     function right() {
-        if ("right" in content) {
+        if (content.right) {
             return content.right
         }
         return ""
@@ -190,7 +231,10 @@ export function buttons(content: ButtonsContent): VNode {
 }
 
 type ButtonContent =
-    | Readonly<{ type: StatefulButtonType; content: StatefulButtonContent }>
+    | Readonly<{
+          type: StatefulButtonType
+          content: StatefulButtonContent
+      }>
     | Readonly<{
           type: StatelessButtonType
           content: StatelessButtonContent & NormalStateButtonContent
@@ -205,10 +249,12 @@ type ClickableButtonContent = Readonly<{
     state: ClickableButtonState
     onClick: Handler<Event>
     label: VNodeContent
+    submit?: boolean
 }>
 type ConnectButtonContent = Readonly<{
     state: ConnectButtonState
     label: VNodeContent
+    submit?: boolean
 }>
 
 export type StatelessButtonContent = Readonly<{
@@ -218,7 +264,10 @@ export type StatelessButtonContent = Readonly<{
 export type DisabledButtonContent = Readonly<{
     label: VNodeContent
 }>
-type NormalStateButtonContent = Readonly<{ state: NormalButtonState }>
+type NormalStateButtonContent = Readonly<{
+    state: NormalButtonState
+    submit?: boolean
+}>
 
 type ButtonType = StatefulButtonType | StatelessButtonType | DisabledButtonType
 type StatefulButtonType = "edit" | "search" | "send" | "delete" | "complete" | "warning" | "pending"
@@ -315,6 +364,10 @@ function buttonContent(button: ButtonContent): VNode {
         }
 
         function submitType(): SubmitType {
+            if (button.content.submit !== undefined) {
+                return button.content.submit ? "submit" : "button"
+            }
+
             switch (button.type) {
                 // 正常実行系は submit
                 case "edit":
@@ -349,6 +402,10 @@ function mapInputStyle(style: InputStyle): string {
         default:
             return `input_${style}`
     }
+}
+
+export function label(content: VNodeContent): VNode {
+    return html`<label>${content}</label>`
 }
 
 export function label_number_small(content: VNodeContent): VNode {
@@ -453,8 +510,8 @@ function mapCheckableStyle(type: CheckableType, style: CheckableStyle): string {
         case "inline":
             return `input__${type}`
 
-        default:
-            return `input__${type} input__${type}_${style}`
+        case "block":
+            return `input__${type} input__${type}_block`
     }
 }
 

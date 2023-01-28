@@ -7,7 +7,7 @@ import { sortSign } from "../../../../../x_preact/design/table"
 import { visibleAll } from "../../../../../z_vendor/getto-table/preact/core"
 
 import { container } from "../../../../../z_vendor/getto-css/preact/design/box"
-import { sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
+import { sortLink } from "../../../../../z_vendor/getto-css/preact/design/table"
 
 import { TablePagerComponent } from "./pager"
 import { TableViewColumnsComponent } from "./view_columns"

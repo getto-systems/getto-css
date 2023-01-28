@@ -10,15 +10,12 @@ export function container_top(content: VNodeContent): VNode {
     return html`<section class="container container_top">${content}</section>`
 }
 
-export type BoxContent =
-    | BoxContent_body
-    | (BoxContent_title & BoxContent_body)
-    | (BoxContent_body & BoxContent_footer)
-    | (BoxContent_title & BoxContent_body & BoxContent_footer)
-
-type BoxContent_title = Readonly<{ title: VNodeContent }>
-type BoxContent_body = Readonly<{ body: VNodeContent }>
-type BoxContent_footer = Readonly<{ footer: VNodeContent }>
+export type BoxContent = Readonly<{ body: VNodeContent }> &
+    Partial<{
+        form: boolean
+        title: VNodeContent
+        footer: VNodeContent
+    }>
 
 type BoxClass = "single" | "double" | "grow"
 function mapBoxClass(boxClass: BoxClass): string {
@@ -52,19 +49,30 @@ export function box_grow_transparent(content: VNodeContent): VNode {
 }
 
 function boxContent(boxClass: BoxClass, content: BoxContent): VNode {
-    return html`<article class="box ${mapBoxClass(boxClass)}">
-        <main>${header()} ${boxBody(content.body)}</main>
-        ${footer()}
-    </article>`
+    if (content.form) {
+        return html`<form class="${classAttribute()}">${inner()}</form>`
+    } else {
+        return html`<article class="${classAttribute()}">${inner()}</article>`
+    }
+
+    function classAttribute(): string {
+        return `box ${mapBoxClass(boxClass)}`
+    }
+    function inner(): VNode {
+        return html`
+            <main>${header()} ${boxBody(content.body)}</main>
+            ${footer()}
+        `
+    }
 
     function header(): VNodeContent {
-        if ("title" in content) {
+        if (content.title) {
             return boxHeader(content.title)
         }
         return ""
     }
     function footer() {
-        if ("footer" in content) {
+        if (content.footer) {
             return boxFooter(content.footer)
         }
         return ""
@@ -95,6 +103,14 @@ export type ModalContent = Readonly<{
 export function modalBox({ title, body, footer }: ModalContent): VNode {
     return html`<aside class="modal">
         <section class="modal__box">
+            ${modalHeader(title)} ${modalBody(body)} ${modalFooter(footer)}
+        </section>
+    </aside>`
+}
+
+export function modalBoxFixed({ title, body, footer }: ModalContent): VNode {
+    return html`<aside class="modal">
+        <section class="modal__box_fixed">
             ${modalHeader(title)} ${modalBody(body)} ${modalFooter(footer)}
         </section>
     </aside>`

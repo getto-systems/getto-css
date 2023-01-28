@@ -15,7 +15,7 @@ import {
     tbody,
     sortLink,
     SortLink,
-} from "../../../../../z_vendor/getto-css/preact/design/data"
+} from "../../../../../z_vendor/getto-css/preact/design/table"
 import {
     label_gray,
     label_warning,
