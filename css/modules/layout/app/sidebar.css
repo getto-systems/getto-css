@@ -1,6 +1,7 @@
 .sidebar {
     min-height: 100%;
     background-color: var(--color-black-off);
+    z-index: 10;
 }
 
 .sidebar__body {
