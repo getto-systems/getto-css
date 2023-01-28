@@ -4,7 +4,7 @@ import { html } from "htm/preact"
 import { pagerCount, pagerParams } from "../../../../../../x_preact/design/table"
 
 import { box_grow, container } from "../../../../../../z_vendor/getto-css/preact/design/box"
-import { pagerOptions } from "../../../../../../z_vendor/getto-css/preact/design/data"
+import { pagerOptions } from "../../../../../../z_vendor/getto-css/preact/design/table"
 import {
     button_search,
     field,

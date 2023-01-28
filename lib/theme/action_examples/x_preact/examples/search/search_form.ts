@@ -5,9 +5,10 @@ import { container, box_grow } from "../../../../../z_vendor/getto-css/preact/de
 import {
     search,
     search_double,
-    fieldError,
+    fieldHelp_error,
     button_search,
     checkbox,
+    label,
 } from "../../../../../z_vendor/getto-css/preact/design/form"
 
 import { EditState, SearchProps } from "./container"
@@ -26,16 +27,19 @@ export function SearchSearchFormComponent(props: Props): VNode {
             body: container([
                 search({
                     title: "ID",
+                    label: label,
                     body: html`<input type="search" class="input_fill" onInput=${onInput} />`,
                     help: ["完全一致検索"],
                 }),
                 search({
                     title: "名前",
+                    label: label,
                     body: html`<input type="search" class="input_fill" onInput=${onInput} />`,
                     help: [],
                 }),
                 search_double({
                     title: "radio",
+                    label: label,
                     body: [
                         checkbox({
                             isChecked: true,
@@ -105,6 +109,6 @@ function SearchFooter({ state, action: component }: SearchFooterProps) {
     }
 
     function searchError() {
-        return fieldError(["通信エラーが発生しました。もう一度試してください"])
+        return fieldHelp_error(["通信エラーが発生しました。もう一度試してください"])
     }
 }

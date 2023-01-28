@@ -32,7 +32,7 @@ import {
     tbody,
     tfoot,
     thead,
-} from "../../../../../z_vendor/getto-css/preact/design/data"
+} from "../../../../../z_vendor/getto-css/preact/design/table"
 import { small } from "../../../../../z_vendor/getto-css/preact/design/alignment"
 
 import { Model, Row } from "./data"
@@ -58,9 +58,9 @@ export function ReportContentComponent({ content, column, rows }: Props): VNode 
         rowKey: (tr: HTMLTableRowElement) => tr.getAttribute("data-root-key"),
     })
 
-    return html`${data.pagedRows.map(reportPage)}`
+    return html`${data.pagedRows.map((rows, index) => reportPage(rows, index))}`
 
-    function reportPage(pagedRows: Row[], index: number): VNode {
+    function reportPage(pagedRows: readonly Row[], index: number): VNode {
         const dataLength = pagedRows.length
         return report_a4_portrait({
             id: pageID(index),

@@ -51,15 +51,33 @@ module.exports = {
         ignored: /(node_modules|.git)/,
     },
     devServer: {
-        contentBase: path.join(__dirname, "."),
-        publicPath: "/dist/",
+        static: {
+            directory: path.join(__dirname, "dist"),
+            publicPath: "/dist/",
+        },
 
         host: "0.0.0.0",
         port: process.env.PUBLIC_APP_PORT,
 
-        hot: true,
-        sockPort: "443",
+        proxy: [
+            {
+                context: ["/dist/auth/sign", "/dist/avail"],
+                target: `http://localhost:${process.env.PUBLIC_APP_PORT}`,
+                pathRewrite: { "^/dist": "" },
+            },
+        ],
 
-        disableHostCheck: true,
+        hot: true,
+        client: {
+            webSocketURL: `wss://${webSocketHost()}/ws`,
+        },
+        allowedHosts: "all",
     },
+}
+
+function webSocketHost() {
+    if (!process.env.PUBLIC_SERVER_URL) {
+        return "localhost"
+    }
+    return new URL(process.env.PUBLIC_SERVER_URL).host
 }

@@ -4,6 +4,7 @@
     align-items: center;
 
     position: fixed;
+    margin: 0;
 
     top: 0;
     bottom: 0;
@@ -17,6 +18,14 @@
     border: 1px solid var(--color-black);
 
     min-width: var(--width-box);
+    padding: 0.5rem;
+}
+
+.modal__box_fixed {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+
+    height: 80%;
     padding: 0.5rem;
 }
 
@@ -41,10 +50,18 @@
     .modal {
         left: var(--width-menu);
     }
+
+    .modal__box_fixed {
+        width: 80%;
+    }
 }
 
 @media (--media-mobile) {
     .modal {
         left: 0;
+    }
+
+    .modal__box_fixed {
+        width: 100%;
     }
 }

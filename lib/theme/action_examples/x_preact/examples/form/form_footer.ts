@@ -3,7 +3,7 @@ import { VNode } from "preact"
 import { spinner } from "../../../../../x_preact/design/icon"
 
 import {
-    fieldError,
+    fieldHelp_error,
     buttons,
     button_close,
     button_delete,
@@ -102,6 +102,6 @@ export function FormFooterComponent({ state, action: component }: Props): VNode 
         if (!state.invalid) {
             return ""
         }
-        return fieldError(["保存できない項目があります"])
+        return fieldHelp_error(["保存できない項目があります"])
     }
 }

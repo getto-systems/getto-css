@@ -3,7 +3,7 @@ import { html } from "htm/preact"
 
 import { box } from "../../../../../z_vendor/getto-css/preact/design/box"
 import { field, button_search, pager } from "../../../../../z_vendor/getto-css/preact/design/form"
-import { pagerOptions } from "../../../../../z_vendor/getto-css/preact/design/data"
+import { pagerOptions } from "../../../../../z_vendor/getto-css/preact/design/table"
 import { pagerCount, pagerParams } from "../../../../../x_preact/design/table"
 
 type Props = {

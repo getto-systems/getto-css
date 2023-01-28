@@ -7,7 +7,7 @@ import { sortSign } from "../../../../../x_preact/design/table"
 import { visibleKeys } from "../../../../../z_vendor/getto-table/preact/core"
 
 import { container } from "../../../../../z_vendor/getto-css/preact/design/box"
-import { sortLink } from "../../../../../z_vendor/getto-css/preact/design/data"
+import { sortLink } from "../../../../../z_vendor/getto-css/preact/design/table"
 
 import { DataSearchFormComponent } from "./search_form"
 import { DataPagerComponent } from "./pager"

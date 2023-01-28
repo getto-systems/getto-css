@@ -1,37 +1,31 @@
 import { VNode } from "preact"
 import { html } from "htm/preact"
 
-import { VNodeContent } from "../common"
-import { SiteInfo } from "../../site"
 import { buttons } from "../design/form"
 
-export type AppLayoutContent =
-    | AppLayoutContent_base
-    | (AppLayoutContent_base & AppLayoutContent_sidebar)
-    | (AppLayoutContent_base & AppLayoutContent_sidebar_double)
+import { VNodeContent } from "../common"
+import { SiteInfo } from "../../site"
 
-type AppLayoutContent_base = Readonly<{
+export type AppLayoutContent = Readonly<{
     siteInfo: SiteInfo
-    header: VNodeContent[]
+    header: readonly VNodeContent[]
     main: VNodeContent
     menu: VNodeContent
-}>
-type AppLayoutContent_sidebar = Readonly<{
-    sidebar: VNodeContent
-}>
-type AppLayoutContent_sidebar_double = Readonly<{
-    sidebar_double: VNodeContent
-}>
+}> &
+    Partial<{
+        sidebar: VNodeContent
+        sidebar_double: VNodeContent
+    }>
 
 export function appLayout(content: AppLayoutContent): VNode {
     const { siteInfo, header, main, menu } = content
-    if ("sidebar" in content) {
+    if (content.sidebar) {
         return layoutContent("sidebar_single", siteInfo, header, [
             appBodyContainer([main, content.sidebar]),
             menu,
         ])
     }
-    if ("sidebar_double" in content) {
+    if (content.sidebar_double) {
         return layoutContent("sidebar_double", siteInfo, header, [
             appBodyContainer([main, content.sidebar_double]),
             menu,
@@ -55,8 +49,8 @@ function toAppLayoutClass(type: AppLayoutType): string {
 function layoutContent(
     type: AppLayoutType,
     siteInfo: SiteInfo,
-    header: VNodeContent[],
-    content: VNodeContent[],
+    header: readonly VNodeContent[],
+    content: readonly VNodeContent[],
 ) {
     return html`<main class="layout__app ${toAppLayoutClass(type)}">
         ${appHeader(siteInfo, header)}
@@ -64,7 +58,7 @@ function layoutContent(
     </main>`
 }
 
-function appHeader({ brand, title, subTitle }: SiteInfo, header: VNodeContent[]): VNode {
+function appHeader({ brand, title, subTitle }: SiteInfo, header: readonly VNodeContent[]): VNode {
     return html`<header class="app__header">${logo()} ${header.map(box)}</header>`
 
     function logo() {
@@ -78,7 +72,7 @@ function appHeader({ brand, title, subTitle }: SiteInfo, header: VNodeContent[])
         return html`<section class="app__header__box">${content}</section>`
     }
 }
-function appBodyContainer(content: VNodeContent[]): VNode {
+function appBodyContainer(content: readonly VNodeContent[]): VNode {
     return html`<section class="layout__app__body__container">${content}</section>`
 }
 
@@ -120,8 +114,16 @@ export function mainBody(content: VNodeContent): VNode {
     return html`<section class="main__body">${content}</section>`
 }
 
-export function sidebarBody(content: VNodeContent): VNode {
-    return html`<section class="sidebar__body">${content}</section>`
+export type SidebarBodyProps = Partial<{
+    id: string
+}>
+export function sidebarBody(content: VNodeContent, props: SidebarBodyProps = {}): VNode {
+    return html`<section id="${props.id}" class="sidebar__body">${content}</section>`
+}
+export function sidebarBody_grow(content: VNodeContent, props: SidebarBodyProps = {}): VNode {
+    return html`<section id="${props.id}" class="sidebar__body sidebar__body_grow">
+        ${content}
+    </section>`
 }
 
 export function mainFooter(copyright: VNodeContent): VNode {
