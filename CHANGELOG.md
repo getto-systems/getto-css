@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version : 2.40.0
+
+- fix: modal : See merge request getto-systems-base/projects/css!530
+- fix: modal : See merge request getto-systems-base/projects/css!529
+
+
 ## Version : 2.39.0
 
 - add: modal_fixed : See merge request getto-systems-base/projects/css!527
