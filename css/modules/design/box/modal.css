@@ -20,6 +20,7 @@
 
     min-width: var(--width-box);
     padding: 0.5rem;
+    overflow: auto;
 }
 
 .modal__box_fixed {
