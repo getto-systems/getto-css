@@ -102,9 +102,11 @@ export type ModalContent = Readonly<{
 
 export function modalBox({ title, body, footer }: ModalContent): VNode {
     return html`<aside class="modal">
-        <section class="modal__box">
-            ${modalHeader(title)} ${modalBody(body)} ${modalFooter(footer)}
-        </section>
+        <aside class="modal__container">
+            <section class="modal__box">
+                ${modalHeader(title)} ${modalBody(body)} ${modalFooter(footer)}
+            </section>
+        </aside>
     </aside>`
 }
 
@@ -115,7 +117,9 @@ export type ModalFixedContent = Readonly<{
 
 export function modalBoxFixed({ title, body }: ModalFixedContent): VNode {
     return html`<aside class="modal">
-        <section class="modal__box_fixed">${modalHeader(title)} ${modalBody(body)}</section>
+        <aside class="modal__container">
+            <section class="modal__box_fixed">${modalHeader(title)} ${modalBody(body)}</section>
+        </aside>
     </aside>`
 }
 
