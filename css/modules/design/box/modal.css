@@ -61,7 +61,6 @@
 @media (--media-desktop) {
     .modal {
         left: var(--width-menu);
-        margin-top: 60px;
     }
 
     .modal__box_fixed {
