@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.41.0
+
+- fix: modal overflow : See merge request getto-systems-base/projects/css!532
+
+
 ## Version : 2.40.0
 
 - fix: modal : See merge request getto-systems-base/projects/css!530
