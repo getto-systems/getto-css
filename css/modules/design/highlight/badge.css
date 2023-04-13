@@ -14,36 +14,36 @@
 
 .badge_gray {
     color: var(--color-black);
-    border-color: var(--color-black);
-    background-color: var(--color-white-off);
+    border-color: var(--color-black-off);
+    background-color: var(--color-black-off);
 }
 
 .badge_alert {
-    color: var(--color-alert);
+    color: var(--color-white);
     border-color: var(--color-alert);
-    background-color: var(--color-alert-off);
+    background-color: var(--color-alert);
 }
 
 .badge_success {
-    color: var(--color-success);
+    color: var(--color-white);
     border-color: var(--color-success);
-    background-color: var(--color-success-off);
+    background-color: var(--color-success);
 }
 
 .badge_warning {
-    color: var(--color-warning);
+    color: var(--color-white);
     border-color: var(--color-warning);
-    background-color: var(--color-warning-off);
+    background-color: var(--color-warning);
 }
 
 .badge_pending {
-    color: var(--color-pending);
+    color: var(--color-white);
     border-color: var(--color-pending);
-    background-color: var(--color-pending-off);
+    background-color: var(--color-pending);
 }
 
 .badge_info {
-    color: var(--color-base);
+    color: var(--color-white);
     border-color: var(--color-base);
-    background-color: var(--color-base-off);
+    background-color: var(--color-base);
 }
