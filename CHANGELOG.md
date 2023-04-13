@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version : 2.43.0
+
+- fix: badge : See merge request getto-systems-base/projects/css!536
+
+
 ## Version : 2.42.0
 
 - fix: modal : See merge request getto-systems-base/projects/css!534
