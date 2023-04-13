@@ -14,7 +14,7 @@
 
 .badge_gray {
     color: var(--color-black);
-    border-color: var(--color-black-off);
+    border-color: var(--color-black);
     background-color: var(--color-black-off);
 }
 
